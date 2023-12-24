@@ -1,0 +1,16 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Throw the iPhone and start shooting" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhoneを投げて撮影開始"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

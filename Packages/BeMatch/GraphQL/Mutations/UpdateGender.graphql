@@ -1,0 +1,6 @@
+mutation UpdateGender($input: UpdateGenderInput!) {
+  updateGender(input:$input) {
+    id
+    gender
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "by %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "by %@"
+          }
+        }
+      }
+    },
+    "No.%lld: %lf meter" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "No.%1$lld: %2$lf meter"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No.%1$lld: %2$lf メートル"
+          }
+        }
+      }
+    },
+    "Ranking" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "直近24時間"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

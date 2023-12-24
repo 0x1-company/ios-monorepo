@@ -1,0 +1,8 @@
+# import ProfilePhoto from './ProfilePhoto.graphql'
+
+fragment SwipeCard on User {
+  id
+  images {
+    ...ProfilePhoto
+  }
+}

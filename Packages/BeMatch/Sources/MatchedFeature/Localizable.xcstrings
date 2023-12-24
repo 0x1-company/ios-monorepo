@@ -1,0 +1,19 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "🔗 BeRe.al/%@" : {
+
+    },
+    "Add BeReal." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeReal.を追加する"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

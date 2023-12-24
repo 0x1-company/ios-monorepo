@@ -1,0 +1,7 @@
+# import UserInternal from '../fragments/UserInternal.graphql'
+
+query CurrentUser {
+  currentUser {
+    ...UserInternal
+  }
+}

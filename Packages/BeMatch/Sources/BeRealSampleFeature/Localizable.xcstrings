@@ -1,0 +1,26 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Jump to BeReal." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeReal.に飛ぶ"
+          }
+        }
+      }
+    },
+    "Press \"Add to Photo\" in memory and save it 📸." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メモリーで、お気に入りを選んで「写真に追加」で保存してね 📸"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

@@ -1,0 +1,77 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "🔗 BeRe.al/%@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🔗 BeRe.al/%@"
+          }
+        }
+      }
+    },
+    "Add BeReal." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeRealを追加する"
+          }
+        }
+      }
+    },
+    "Are you sure you want to unmatch?" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本当にマッチ解除しますか？"
+          }
+        }
+      }
+    },
+    "Confirm" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マッチを解除する"
+          }
+        }
+      }
+    },
+    "Report" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通報する"
+          }
+        }
+      }
+    },
+    "Send Message" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メッセージ"
+          }
+        }
+      }
+    },
+    "Unmatch" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マッチを解除"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

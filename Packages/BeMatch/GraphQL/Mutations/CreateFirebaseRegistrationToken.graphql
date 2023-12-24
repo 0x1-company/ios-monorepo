@@ -1,0 +1,5 @@
+mutation CreateFirebaseRegistrationToken($input: CreateFirebaseRegistrationTokenInput!) {
+  createFirebaseRegistrationToken(input: $input) {
+    token
+  }
+}

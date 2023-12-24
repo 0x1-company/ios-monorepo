@@ -1,0 +1,6 @@
+query PushNotificationBadge {
+  pushNotificationBadge {
+    id
+    count
+  }
+}

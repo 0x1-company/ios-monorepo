@@ -1,0 +1,56 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Contact Us" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お問い合わせ"
+          }
+        }
+      }
+    },
+    "Delete Account" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウント削除"
+          }
+        }
+      }
+    },
+    "Edit Display Name" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表示名を編集"
+          }
+        }
+      }
+    },
+    "Privacy Policy" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プライバシーポリシー"
+          }
+        }
+      }
+    },
+    "Terms of use" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "利用規約"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

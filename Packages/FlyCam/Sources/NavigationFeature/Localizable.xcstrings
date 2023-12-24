@@ -1,0 +1,17 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "FlyCam." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FlyCam."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

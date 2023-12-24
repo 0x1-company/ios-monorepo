@@ -1,0 +1,3 @@
+mutation UpdateDisplayName($input: UpdateDisplayNameInput!) {
+  updateDisplayName(input: $input)
+}

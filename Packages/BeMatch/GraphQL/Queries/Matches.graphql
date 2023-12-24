@@ -1,0 +1,11 @@
+# import MatchGrid from '../fragments/MatchGrid.graphql'
+
+query Matches($first:Int!, $after:String) {
+  matches(first:$first, after:$after) {
+    edges {
+      node {
+        ...MatchGrid
+      }
+    }
+  }
+}

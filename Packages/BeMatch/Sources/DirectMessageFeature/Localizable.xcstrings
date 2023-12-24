@@ -1,0 +1,19 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "DirectMessage" : {
+
+    },
+    "Message" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メッセージ"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

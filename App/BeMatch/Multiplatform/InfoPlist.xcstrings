@@ -1,0 +1,138 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "👋 Talk to CEO!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "👋社長と話す！"
+          }
+        }
+      }
+    },
+    "👨🏻‍💻 Talk to Developer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "👨🏻‍💻エンジニアと話す！"
+          }
+        }
+      }
+    },
+    "🥺 Don't remove the BeMatch.!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🥺BeMatch.を消さないで"
+          }
+        }
+      }
+    },
+    "CFBundleName" : {
+      "comment" : "Bundle name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "BeMatch."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeMatch."
+          }
+        }
+      }
+    },
+    "Give it a secound chance!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "もう1度チャンスをください"
+          }
+        }
+      }
+    },
+    "If you want to talk about development discuss" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "もし開発について話したいならこちら"
+          }
+        }
+      }
+    },
+    "If you want to talk about product discuss" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "もしアプリについて話したいならこちら"
+          }
+        }
+      }
+    },
+    "NSCameraUsageDescription" : {
+      "comment" : "Privacy - Camera Usage Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Your camera are used to take profile picture."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたのカメラはプロフィール写真の撮影に使用されます。"
+          }
+        }
+      }
+    },
+    "NSContactsUsageDescription" : {
+      "comment" : "Privacy - Contacts Usage Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Your contacts are used to find friends and uploaded to a server."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "連絡先は友達を探すのに使用し、サーバーにアップロードされます。"
+          }
+        }
+      }
+    },
+    "NSPhotoLibraryUsageDescription" : {
+      "comment" : "Privacy - Photo Library Usage Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Your Photo Library are used to select profile picture."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたのフォトライブラリは、プロフィール写真を選択するために使用されます。"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

@@ -1,0 +1,48 @@
+name: Format
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.swift'
+      - '.github/workflows/format.yml'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  swift-format:
+    runs-on: macos-13
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo xcode-select -s /Applications/Xcode_15.0.1.app
+      - run: defaults write com.apple.dt.Xcode IDESkipMacroFingerprintValidation -bool YES
+      - uses: actions/cache@v3
+        with:
+          path: BuildTools/SwiftFormatTool/.build
+          key: ${{ runner.os }}-SwiftFormatTool-${{ hashFiles('BuildTools/SwiftFormatTool/Package.resolved') }}
+      - run: swift build -c release --package-path ./BuildTools/SwiftFormatTool --product swiftformat
+      - run: ./BuildTools/SwiftFormatTool/.build/release/swiftformat ./
+      - continue-on-error: true
+        uses: peter-evans/create-pull-request@v5
+        id: create-pr
+        with:
+          delete-branch: true
+          author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
+          committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
+          branch-suffix: short-commit-hash
+          commit-message: "refactor: 💡 swift-format"
+          title: Run swift-format
+      - continue-on-error: true
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          PR_URL: ${{ steps.create-pr.outputs.pull-request-url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - continue-on-error: true
+        run: gh pr review --approve "$PR_URL"
+        env:
+          PR_URL: ${{ steps.create-pr.outputs.pull-request-url }}
+          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}

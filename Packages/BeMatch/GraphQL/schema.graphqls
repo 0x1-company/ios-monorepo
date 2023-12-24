@@ -1,0 +1,242 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Banner {
+  description: String
+
+  """掲載終了時間"""
+  endAt: Date!
+  id: ID!
+
+  """掲載開始時間"""
+  startAt: Date!
+  title: String!
+  url: String!
+}
+
+input CreateFirebaseRegistrationTokenInput {
+  """registration token"""
+  token: String!
+}
+
+input CreateLikeInput {
+  """LIKEを送信する相手のID"""
+  targetUserId: String!
+}
+
+type CreateLikeResponse {
+  """マッチしなかった場合のみ返却される"""
+  feedback: Feedback
+
+  """マッチした場合のみ返却される"""
+  match: Match
+}
+
+input CreateNopeInput {
+  """NOPEを送信する相手のID"""
+  targetUserId: String!
+}
+
+input CreateReportInput {
+  """通報対象のユーザーID"""
+  targetUserId: String!
+
+  """通報理由"""
+  text: String!
+
+  """通報理由のタイトル"""
+  title: String!
+}
+
+"""Date custom scalar type"""
+scalar Date
+
+input DeleteMatchInput {
+  """削除したいユーザーID"""
+  targetUserId: String!
+}
+
+type Feedback {
+  """feedback type"""
+  feedbackType: FeedbackType!
+
+  """feedback id"""
+  id: ID!
+
+  """target user id"""
+  targetUserId: ID!
+
+  """user id"""
+  userId: ID!
+}
+
+enum FeedbackType {
+  LIKE
+  NOPE
+  UNSPECIFIED
+}
+
+type FirebaseRegistrationToken {
+  """firebase registration token id"""
+  id: ID!
+
+  """firebase registration token"""
+  token: String!
+}
+
+enum Gender {
+  FEMALE
+  MALE
+  OTHER
+}
+
+type Match {
+  createdAt: Date!
+
+  """match id"""
+  id: ID!
+
+  """既読かどうか"""
+  isRead: Boolean!
+
+  """マッチした相手"""
+  targetUser: User!
+
+  """target user id"""
+  targetUserId: ID!
+
+  """user id"""
+  userId: ID!
+}
+
+type MatchConnection {
+  edges: [MatchEdge!]!
+  pageInfo: PageInfo!
+}
+
+type MatchEdge {
+  cursor: String!
+  node: Match!
+}
+
+type Mutation {
+  """アカウントを閉じる"""
+  closeUser: Boolean!
+
+  """FirebaseのRegistrationTokenを作成する"""
+  createFirebaseRegistrationToken(input: CreateFirebaseRegistrationTokenInput!): FirebaseRegistrationToken!
+
+  """LIKEを作成する"""
+  createLike(input: CreateLikeInput!): CreateLikeResponse!
+
+  """NOPEを作成する"""
+  createNope(input: CreateNopeInput!): Feedback!
+
+  """ユーザーを通報する"""
+  createReport(input: CreateReportInput!): Boolean!
+
+  """ユーザーを作成する"""
+  createUser: User!
+
+  """マッチを削除する"""
+  deleteMatch(input: DeleteMatchInput!): Boolean!
+
+  """Matchを既読にする"""
+  readMatch(matchId: String!): Match!
+
+  """BeRealのユーザー名を更新する"""
+  updateBeReal(input: UpdateBeRealInput!): User!
+
+  """性別を更新する"""
+  updateGender(input: UpdateGenderInput!): User!
+
+  """プロフィール画像を更新する"""
+  updateUserImage(input: UpdateUserImageInput!): [UserImage!]!
+}
+
+type PageInfo {
+  """最後のedgeのカーソル"""
+  endCursor: String
+
+  """次のページがあるかどうか"""
+  hasNextPage: Boolean!
+
+  """最初のedgeのカーソル"""
+  startCursor: String
+}
+
+type PushNotificationBadge {
+  """バッジ数"""
+  count: Int!
+  id: ID!
+}
+
+type Query {
+  """バナー一覧"""
+  banners: [Banner!]!
+
+  """ログイン中ユーザーを取得"""
+  currentUser: User!
+
+  """マッチ一覧"""
+  matches(after: String, first: Int!): MatchConnection!
+  pushNotificationBadge: PushNotificationBadge!
+
+  """自分の受け取ったLikeを取得する"""
+  receivedLike: ReceivedLike!
+
+  """ユーザー一覧"""
+  recommendations: [User!]!
+}
+
+type ReceivedLike {
+  """受け取ったLike数"""
+  count: Int!
+  id: ID!
+
+  """Likeを送った最新ユーザー"""
+  latestUser: User
+}
+
+input UpdateBeRealInput {
+  """BeRealのユーザー名"""
+  username: String!
+}
+
+input UpdateGenderInput {
+  """性別"""
+  gender: Gender!
+}
+
+input UpdateUserImageInput {
+  """ユーザー画像URL"""
+  imageUrls: [String!]!
+}
+
+type User {
+  """BeRealのusername"""
+  berealUsername: String!
+
+  """firebase uid"""
+  firebaseUid: String!
+
+  """gender"""
+  gender: Gender!
+
+  """user id"""
+  id: ID!
+
+  """ユーザーの画像一覧"""
+  images: [UserImage!]!
+}
+
+type UserEdge {
+  cursor: String!
+  node: User!
+}
+
+type UserImage {
+  id: ID!
+  imageUrl: String!
+}

@@ -1,0 +1,14 @@
+# import ProfilePhoto from './ProfilePhoto.graphql';
+
+fragment MatchGrid on Match {
+  id
+  createdAt
+  isRead
+  targetUser {
+    id
+    berealUsername
+    images {
+      ...ProfilePhoto
+    }
+  }
+}

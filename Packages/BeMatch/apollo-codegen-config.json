@@ -1,0 +1,31 @@
+{
+    "schemaNamespace" : "BeMatch",
+    "input" : {
+      "operationSearchPaths" : [
+        "**/*.graphql"
+      ],
+      "schemaSearchPaths" : [
+        "**/*.graphqls"
+      ]
+    },
+    "output" : {
+      "testMocks" : {
+        "absolute" : {
+          "path": "./Sources/BeMatchTestMock"
+        }
+      },
+      "schemaTypes" : {
+        "path" : "./Sources/BeMatch",
+        "moduleType" : {
+          "embeddedInTarget" : {
+            "name" : "BeMatch",
+            "accessModifier": "public"
+          }
+        }
+      },
+      "operations" : {
+        "inSchemaModule" : {
+        }
+      }
+    }
+  }

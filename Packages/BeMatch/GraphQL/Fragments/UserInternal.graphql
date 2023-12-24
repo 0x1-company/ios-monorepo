@@ -1,0 +1,9 @@
+fragment UserInternal on User {
+  id
+  berealUsername
+  gender
+  images {
+    id
+    imageUrl
+  }
+}

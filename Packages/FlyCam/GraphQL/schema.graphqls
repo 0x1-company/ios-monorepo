@@ -1,0 +1,100 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Banner {
+  description: String
+
+  """掲載終了時間"""
+  endAt: Date!
+  id: ID!
+
+  """掲載開始時間"""
+  startAt: Date!
+  title: String!
+  url: String!
+}
+
+input CreateFirebaseRegistrationTokenInput {
+  """registration token"""
+  token: String!
+}
+
+input CreateReportInput {
+  """通報対象のユーザーID"""
+  targetUserId: String!
+
+  """通報理由"""
+  text: String!
+
+  """通報理由のタイトル"""
+  title: String!
+}
+
+"""Date custom scalar type"""
+scalar Date
+
+type FirebaseRegistrationToken {
+  """firebase registration token id"""
+  id: ID!
+
+  """firebase registration token"""
+  token: String!
+}
+
+type Mutation {
+  """アカウントを閉じる"""
+  closeUser: Boolean!
+
+  """FirebaseのRegistrationTokenを作成する"""
+  createFirebaseRegistrationToken(input: CreateFirebaseRegistrationTokenInput!): FirebaseRegistrationToken!
+
+  """ユーザーを通報する"""
+  createReport(input: CreateReportInput!): Boolean!
+
+  """ユーザーを作成する"""
+  createUser: User!
+
+  """プロフィールを更新する"""
+  updateDisplayName(input: UpdateDisplayNameInput!): Boolean!
+}
+
+type PageInfo {
+  """最後のedgeのカーソル"""
+  endCursor: String
+
+  """次のページがあるかどうか"""
+  hasNextPage: Boolean!
+
+  """最初のedgeのカーソル"""
+  startCursor: String
+}
+
+type PushNotificationBadge {
+  """バッジ数"""
+  count: Int!
+  id: ID!
+}
+
+type Query {
+  """バナー一覧"""
+  banners: [Banner!]!
+
+  """ログイン中ユーザーを取得"""
+  currentUser: User!
+  pushNotificationBadge: PushNotificationBadge!
+}
+
+input UpdateDisplayNameInput {
+  displayName: String!
+}
+
+type User {
+  displayName: String!
+  id: ID!
+}
+
+type UserEdge {
+  cursor: String!
+  node: User!
+}
