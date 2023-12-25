@@ -11,8 +11,8 @@ public struct CameraRecordLogic {
   public init() {}
 
   public struct State: Equatable {
+    let videoFileURL: URL
     let motionManager = CMMotionManager()
-    let delegate = Delegate()
 
     var videoCamera: VideoCameraLogic.State?
 
@@ -20,6 +20,12 @@ public struct CameraRecordLogic {
     var zeroGravityEndTime: Date?
 
     public init() {
+      @Dependency(\.uuid) var uuid
+      videoFileURL = FileManager.default
+        .temporaryDirectory
+        .appending(path: uuid().uuidString)
+        .appendingPathExtension("mov")
+
       if let videoDevice = AVCaptureDevice.default(for: AVMediaType.video), let videoInput = try? AVCaptureDeviceInput(device: videoDevice) {
         videoCamera = VideoCameraLogic.State(videoInput: videoInput)
       }
@@ -39,7 +45,6 @@ public struct CameraRecordLogic {
 
   @Dependency(\.date.now) var now
   @Dependency(\.analytics) var analytics
-  @Dependency(\.uuid) var uuid
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
@@ -64,17 +69,15 @@ public struct CameraRecordLogic {
         if accelerationMagnitude < GRAVITY_THRESHOLD {
           if state.zeroGravityStartTime == nil {
             state.zeroGravityStartTime = now
-
-//            let tempDirectory = URL(fileURLWithPath: NSTemporaryDirectory())
-//            let fileURL = tempDirectory.appendingPathComponent(uuid().uuidString + ".mov")
-//            print("fileURL: \(fileURL)")
-//            state.fileOutput.startRecording(to: fileURL, recordingDelegate: state.delegate)
+            let delegate = Delegate()
+            state.videoCamera?.fileOutput.startRecording(to: state.videoFileURL, recordingDelegate: delegate)
+            return .none
           }
         } else {
           guard state.zeroGravityStartTime != nil else { return .none }
           state.zeroGravityEndTime = now
           state.motionManager.stopAccelerometerUpdates()
-//          state.fileOutput.stopRecording()
+          state.videoCamera?.fileOutput.stopRecording()
 
           guard
             let startTime = state.zeroGravityStartTime,
@@ -82,10 +85,10 @@ public struct CameraRecordLogic {
           else { return .none }
           let zeroGravityTime = endTime.timeIntervalSince(startTime)
           let altitude = calculateAltitude(timeInZeroGravitySeconds: zeroGravityTime)
-          return .send(.delegate(.result(altitude, state.delegate.outputFileURL)))
+          return .send(.delegate(.result(altitude, state.videoFileURL)))
         }
         return .none
-
+        
       default:
         return .none
       }
@@ -115,11 +118,8 @@ public struct CameraRecordLogic {
     return altitude
   }
 
-  class Delegate: NSObject, AVCaptureFileOutputRecordingDelegate {
-    var outputFileURL = URL.cachesDirectory
-
-    func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
-      self.outputFileURL = outputFileURL
+  public class Delegate: NSObject, AVCaptureFileOutputRecordingDelegate {
+    public func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
     }
   }
 }
