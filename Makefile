@@ -17,15 +17,15 @@ secrets: # Set secrets
 	echo $(FLYCAM_FILE_FIREBASE_STAGING) | base64 -D > App/FlyCam/Multiplatform/Staging/GoogleService-Info.plist
 
 install-template: # Install template
-	@swift build -c release --package-path ./BuildTools/XCTemplateInstallerTool --product XCTemplateInstaller
-	./BuildTools/XCTemplateInstallerTool/.build/release/XCTemplateInstaller --xctemplate-path XCTemplates/TCA.xctemplate
+	@swift build -c release --package-path ./SwiftScripts/XCTemplateInstallerTool --product XCTemplateInstaller
+	./SwiftScripts/XCTemplateInstallerTool/.build/release/XCTemplateInstaller --xctemplate-path XCTemplates/TCA.xctemplate
 
 generate:
 	@cp ../bematch.jp/apps/bematch-server/schema.gql ./Packages/BeMatch/GraphQL/schema.graphqls
 	@cp ../flycam.jp/apps/flycam-server/schema.gql ./Packages/FlyCam/GraphQL/schema.graphqls
-	@cd BuildTools/ApolloTool && swift run Codegen --target BeMatch FlyCam
+	@cd SwiftScripts/ApolloTool && swift run Codegen --target BeMatch FlyCam
 	$(MAKE) format
 
 format:
-	@swift build -c release --package-path ./BuildTools/SwiftFormatTool --product swiftformat
-	./BuildTools/SwiftFormatTool/.build/release/swiftformat ./
+	@swift build -c release --package-path ./SwiftScripts/SwiftFormatTool --product swiftformat
+	./SwiftScripts/SwiftFormatTool/.build/release/swiftformat ./
