@@ -10,7 +10,7 @@ public struct ___VARIABLE_productName: identifier___Logic {
     public init() {}
   }
 
-  public enum Action: Equatable {
+  public enum Action {
     case onTask
     case onAppear
   }
@@ -18,7 +18,7 @@ public struct ___VARIABLE_productName: identifier___Logic {
   @Dependency(\.analytics) var analytics
 
   public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { _, action in
+    Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
         return .none
@@ -39,11 +39,11 @@ public struct ___VARIABLE_productName:identifier___View: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { _ in
+    WithViewStore(store, observe: { $0 }) { viewStore in
       List {
         Text("___VARIABLE_productName:identifier___", bundle: .module)
       }
-      .navigationTitle("___VARIABLE_productName:identifier___")
+      .navigationTitle(String(localized: "___VARIABLE_productName:identifier___", bundle: .module))
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
       .onAppear { store.send(.onAppear) }
