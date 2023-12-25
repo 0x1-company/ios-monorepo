@@ -65,7 +65,8 @@ public struct AppLogic {
       .onChange(of: \.account) { account, state, _ in
         guard
           case .success(false) = account.isForceUpdate,
-          case .success(false) = account.isMaintenance
+          case .success(false) = account.isMaintenance,
+          case .success = account.user
         else { return .none }
         state.child = .navigation()
         return .none

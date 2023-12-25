@@ -12,33 +12,24 @@ public struct CameraRecordLogic {
 
   public struct State: Equatable {
     let motionManager = CMMotionManager()
-    let captureSession = AVCaptureSession()
-    let fileOutput = AVCaptureMovieFileOutput()
-    let videoLayer: AVCaptureVideoPreviewLayer
     let delegate = Delegate()
+    
+    var videoCamera: VideoCameraLogic.State?
 
     var zeroGravityStartTime: Date?
     var zeroGravityEndTime: Date?
 
     public init() {
-      let videoDevice = AVCaptureDevice.default(for: AVMediaType.video)!
-
-      let videoInput = try! AVCaptureDeviceInput(device: videoDevice)
-      captureSession.addInput(videoInput)
-      captureSession.addOutput(fileOutput)
-
-      captureSession.beginConfiguration()
-      captureSession.sessionPreset = .high
-      captureSession.commitConfiguration()
-
-      videoLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-      videoLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+      if let videoDevice = AVCaptureDevice.default(for: AVMediaType.video), let videoInput = try? AVCaptureDeviceInput(device: videoDevice) {
+        videoCamera = VideoCameraLogic.State(videoInput: videoInput)
+      }
     }
   }
 
   public enum Action {
     case onTask
     case accelerometerUpdates(Result<CMAccelerometerData, Error>)
+    case videoCamera(VideoCameraLogic.Action)
     case delegate(Delegate)
 
     public enum Delegate: Equatable {
@@ -54,10 +45,6 @@ public struct CameraRecordLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
-        DispatchQueue.global(qos: .background).async { [captureSession = state.captureSession] in
-          captureSession.startRunning()
-        }
-
         let motionManager = state.motionManager
 
         guard motionManager.isAccelerometerAvailable
@@ -78,16 +65,16 @@ public struct CameraRecordLogic {
           if state.zeroGravityStartTime == nil {
             state.zeroGravityStartTime = now
 
-            let tempDirectory = URL(fileURLWithPath: NSTemporaryDirectory())
-            let fileURL = tempDirectory.appendingPathComponent(uuid().uuidString + ".mov")
-            print("fileURL: \(fileURL)")
-            state.fileOutput.startRecording(to: fileURL, recordingDelegate: state.delegate)
+//            let tempDirectory = URL(fileURLWithPath: NSTemporaryDirectory())
+//            let fileURL = tempDirectory.appendingPathComponent(uuid().uuidString + ".mov")
+//            print("fileURL: \(fileURL)")
+//            state.fileOutput.startRecording(to: fileURL, recordingDelegate: state.delegate)
           }
         } else {
           guard state.zeroGravityStartTime != nil else { return .none }
           state.zeroGravityEndTime = now
           state.motionManager.stopAccelerometerUpdates()
-          state.fileOutput.stopRecording()
+//          state.fileOutput.stopRecording()
 
           guard
             let startTime = state.zeroGravityStartTime,
@@ -102,6 +89,9 @@ public struct CameraRecordLogic {
       default:
         return .none
       }
+    }
+    .ifLet(\.videoCamera, action: \.videoCamera) {
+      VideoCameraLogic()
     }
   }
 
@@ -144,10 +134,14 @@ public struct CameraRecordView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 24) {
-        CALayerView(caLayer: viewStore.videoLayer)
-          .aspectRatio(3 / 4, contentMode: .fill)
-          .frame(width: UIScreen.main.bounds.width)
-          .clipShape(RoundedRectangle(cornerRadius: 24))
+        IfLetStore(
+          store.scope(state: \.videoCamera, action: \.videoCamera),
+          then: VideoCameraView.init(store:),
+          else: { Color.black }
+        )
+        .aspectRatio(3 / 4, contentMode: .fill)
+        .frame(width: UIScreen.main.bounds.width)
+        .clipShape(RoundedRectangle(cornerRadius: 24))
 
         Text("Throw the iPhone and start shooting", bundle: .module)
           .frame(maxHeight: .infinity)
