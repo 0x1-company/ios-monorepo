@@ -19,7 +19,6 @@ jobs:
       - run: xcodebuild -workspace FlyCam.xcworkspace -resolvePackageDependencies -scheme "App (Staging project)" -skipMacroValidation
       - run: xcodebuild -workspace SDK.xcworkspace -resolvePackageDependencies -scheme "AllLibrary" -skipMacroValidation
       - run: swift build -c release --package-path ./BuildTools/ApolloTool
-      - run: swift build -c release --package-path ./BuildTools/DependenciesGraph --product dgraph
       - run: swift build -c release --package-path ./BuildTools/SwiftFormatTool --product swiftformat
       - run: swift build -c release --package-path ./BuildTools/XCTemplateInstallerTool --product XCTemplateInstaller
       - continue-on-error: true
