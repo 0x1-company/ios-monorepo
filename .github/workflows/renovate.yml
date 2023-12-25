@@ -18,9 +18,9 @@ jobs:
       - run: xcodebuild -workspace BeMatch.xcworkspace -resolvePackageDependencies -scheme "App (Staging project)" -skipMacroValidation
       - run: xcodebuild -workspace FlyCam.xcworkspace -resolvePackageDependencies -scheme "App (Staging project)" -skipMacroValidation
       - run: xcodebuild -workspace SDK.xcworkspace -resolvePackageDependencies -scheme "AllLibrary" -skipMacroValidation
-      - run: swift build -c release --package-path ./BuildTools/ApolloTool
-      - run: swift build -c release --package-path ./BuildTools/SwiftFormatTool --product swiftformat
-      - run: swift build -c release --package-path ./BuildTools/XCTemplateInstallerTool --product XCTemplateInstaller
+      - run: swift build -c release --package-path ./SwiftScripts/ApolloTool
+      - run: swift build -c release --package-path ./SwiftScripts/SwiftFormatTool --product swiftformat
+      - run: swift build -c release --package-path ./SwiftScripts/XCTemplateInstallerTool --product XCTemplateInstaller
       - continue-on-error: true
         run: |
           git config --local user.name 'github-actions[bot]'
