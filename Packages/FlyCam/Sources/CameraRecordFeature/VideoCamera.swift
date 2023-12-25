@@ -14,11 +14,11 @@ public struct VideoCameraLogic {
     public init(videoInput: AVCaptureDeviceInput) {
       captureSession.addInput(videoInput)
       captureSession.addOutput(fileOutput)
-      
+
       captureSession.beginConfiguration()
       captureSession.sessionPreset = .high
       captureSession.commitConfiguration()
-      
+
       videoLayer = AVCaptureVideoPreviewLayer(session: captureSession)
       videoLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
     }
@@ -32,7 +32,7 @@ public struct VideoCameraLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
-        return .run(priority: .background) { [state = state] send in
+        return .run(priority: .background) { [state = state] _ in
           state.captureSession.startRunning()
         }
       }

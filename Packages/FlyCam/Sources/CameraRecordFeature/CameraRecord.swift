@@ -13,7 +13,7 @@ public struct CameraRecordLogic {
   public struct State: Equatable {
     let motionManager = CMMotionManager()
     let delegate = Delegate()
-    
+
     var videoCamera: VideoCameraLogic.State?
 
     var zeroGravityStartTime: Date?
@@ -132,7 +132,7 @@ public struct CameraRecordView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithViewStore(store, observe: { $0 }) { _ in
       VStack(spacing: 24) {
         IfLetStore(
           store.scope(state: \.videoCamera, action: \.videoCamera),
