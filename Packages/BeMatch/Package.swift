@@ -43,7 +43,7 @@ let package = Package(
   ],
   dependencies: [
     .package(path: "../SDK"),
-    .package(url: "https://github.com/apollographql/apollo-ios", from: "1.6.1"),
+    .package(url: "https://github.com/apollographql/apollo-ios", from: "1.7.1"),
     .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.1.5"),
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.5.6"),
     .package(url: "https://github.com/lorenzofiamingo/swiftui-cached-async-image", from: "2.1.1"),
