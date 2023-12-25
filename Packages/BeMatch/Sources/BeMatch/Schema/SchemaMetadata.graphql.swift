@@ -29,7 +29,7 @@ public extension BeMatch {
   enum SchemaMetadata: ApolloAPI.SchemaMetadata {
     public static let configuration: ApolloAPI.SchemaConfiguration.Type = SchemaConfiguration.self
 
-    public static func objectType(forTypename typename: String) -> Object? {
+    public static func objectType(forTypename typename: String) -> ApolloAPI.Object? {
       switch typename {
       case "Mutation": return BeMatch.Objects.Mutation
       case "FirebaseRegistrationToken": return BeMatch.Objects.FirebaseRegistrationToken

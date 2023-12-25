@@ -4,7 +4,7 @@
 import ApolloAPI
 
 public extension FlyCam.Objects {
-  static let User = Object(
+  static let User = ApolloAPI.Object(
     typename: "User",
     implementedInterfaces: []
   )

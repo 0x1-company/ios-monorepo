@@ -4,7 +4,7 @@
 import ApolloAPI
 
 public extension FlyCam.Objects {
-  static let Banner = Object(
+  static let Banner = ApolloAPI.Object(
     typename: "Banner",
     implementedInterfaces: []
   )

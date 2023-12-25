@@ -4,7 +4,7 @@
 import ApolloAPI
 
 public extension FlyCam.Objects {
-  static let FirebaseRegistrationToken = Object(
+  static let FirebaseRegistrationToken = ApolloAPI.Object(
     typename: "FirebaseRegistrationToken",
     implementedInterfaces: []
   )

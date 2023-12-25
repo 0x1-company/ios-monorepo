@@ -4,7 +4,7 @@
 import ApolloAPI
 
 public extension BeMatch.Objects {
-  static let Feedback = Object(
+  static let Feedback = ApolloAPI.Object(
     typename: "Feedback",
     implementedInterfaces: []
   )
