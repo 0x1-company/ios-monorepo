@@ -4,7 +4,7 @@
 import ApolloAPI
 
 public extension BeMatch.Objects {
-  static let ReceivedLike = Object(
+  static let ReceivedLike = ApolloAPI.Object(
     typename: "ReceivedLike",
     implementedInterfaces: []
   )

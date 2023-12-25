@@ -20,14 +20,11 @@ install-template: # Install template
 	@swift build -c release --package-path ./BuildTools/XCTemplateInstallerTool --product XCTemplateInstaller
 	./BuildTools/XCTemplateInstallerTool/.build/release/XCTemplateInstaller --xctemplate-path XCTemplates/TCA.xctemplate
 
-gql-schema:
-	@cp ../godapp.jp/apps/god-server/schema.gql ./GraphQL/schema.graphqls
-
-apollo-cli-install:
-	@swift package --package-path ./BuildTools/ApolloTool --allow-writing-to-package-directory apollo-cli-install
-
-apollo-generate:
-	./BuildTools/ApolloTool/apollo-ios-cli generate --ignore-version-mismatch
+generate:
+	@cp ../bematch.jp/apps/bematch-server/schema.gql ./Packages/BeMatch/GraphQL/schema.graphqls
+	@cp ../flycam.jp/apps/flycam-server/schema.gql ./Packages/FlyCam/GraphQL/schema.graphqls
+	@cd BuildTools/ApolloTool && swift run Codegen --target BeMatch FlyCam
+	make format
 
 format:
 	@swift build -c release --package-path ./BuildTools/SwiftFormatTool --product swiftformat

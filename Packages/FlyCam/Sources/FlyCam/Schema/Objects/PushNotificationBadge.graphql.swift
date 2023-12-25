@@ -4,7 +4,7 @@
 import ApolloAPI
 
 public extension FlyCam.Objects {
-  static let PushNotificationBadge = Object(
+  static let PushNotificationBadge = ApolloAPI.Object(
     typename: "PushNotificationBadge",
     implementedInterfaces: []
   )

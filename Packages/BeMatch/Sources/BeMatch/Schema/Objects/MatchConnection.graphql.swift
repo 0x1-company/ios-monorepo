@@ -4,7 +4,7 @@
 import ApolloAPI
 
 public extension BeMatch.Objects {
-  static let MatchConnection = Object(
+  static let MatchConnection = ApolloAPI.Object(
     typename: "MatchConnection",
     implementedInterfaces: []
   )

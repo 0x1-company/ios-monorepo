@@ -4,7 +4,7 @@
 import ApolloAPI
 
 public extension BeMatch.Objects {
-  static let UserImage = Object(
+  static let UserImage = ApolloAPI.Object(
     typename: "UserImage",
     implementedInterfaces: []
   )

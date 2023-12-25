@@ -4,7 +4,7 @@
 import ApolloAPI
 
 public extension FlyCam.Objects {
-  static let Query = Object(
+  static let Query = ApolloAPI.Object(
     typename: "Query",
     implementedInterfaces: []
   )

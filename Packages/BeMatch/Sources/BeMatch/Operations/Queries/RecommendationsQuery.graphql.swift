@@ -9,7 +9,7 @@ public extension BeMatch {
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
         #"query Recommendations { recommendations { __typename ...SwipeCard } }"#,
-        fragments: [SwipeCard.self, ProfilePhoto.self]
+        fragments: [ProfilePhoto.self, SwipeCard.self]
       ))
 
     public init() {}
