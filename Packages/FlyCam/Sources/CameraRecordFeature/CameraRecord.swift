@@ -13,11 +13,12 @@ public struct CameraRecordLogic {
   public struct State: Equatable {
     let videoFileURL: URL
     let motionManager = CMMotionManager()
-
-    var videoCamera: VideoCameraLogic.State?
-
     var zeroGravityStartTime: Date?
     var zeroGravityEndTime: Date?
+    
+    var isActivityIndicatorVisible = false
+    
+    var videoCamera: VideoCameraLogic.State?
 
     public init() {
       @Dependency(\.uuid) var uuid
@@ -35,6 +36,7 @@ public struct CameraRecordLogic {
   public enum Action {
     case onTask
     case accelerometerUpdates(Result<CMAccelerometerData, Error>)
+    case showResultDelayCompleted(Double)
     case videoCamera(VideoCameraLogic.Action)
     case delegate(Delegate)
 
@@ -45,6 +47,7 @@ public struct CameraRecordLogic {
 
   @Dependency(\.date.now) var now
   @Dependency(\.analytics) var analytics
+  @Dependency(\.continuousClock) var clock
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
@@ -71,13 +74,14 @@ public struct CameraRecordLogic {
             state.zeroGravityStartTime = now
             let delegate = Delegate()
             state.videoCamera?.fileOutput.startRecording(to: state.videoFileURL, recordingDelegate: delegate)
-            return .none
           }
         } else {
           guard state.zeroGravityStartTime != nil else { return .none }
+          state.isActivityIndicatorVisible = true
           state.zeroGravityEndTime = now
           state.motionManager.stopAccelerometerUpdates()
           state.videoCamera?.fileOutput.stopRecording()
+          state.videoCamera?.captureSession.stopRunning()
 
           guard
             let startTime = state.zeroGravityStartTime,
@@ -85,9 +89,17 @@ public struct CameraRecordLogic {
           else { return .none }
           let zeroGravityTime = endTime.timeIntervalSince(startTime)
           let altitude = calculateAltitude(timeInZeroGravitySeconds: zeroGravityTime)
-          return .send(.delegate(.result(altitude, state.videoFileURL)))
+
+          return .run { send in
+            try await self.clock.sleep(for: .seconds(2))
+            await send(.showResultDelayCompleted(altitude))
+          }
         }
         return .none
+        
+      case let .showResultDelayCompleted(altitude):
+        state.isActivityIndicatorVisible = false
+        return .send(.delegate(.result(altitude, state.videoFileURL)))
         
       default:
         return .none
@@ -132,7 +144,7 @@ public struct CameraRecordView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { _ in
+    WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 24) {
         IfLetStore(
           store.scope(state: \.videoCamera, action: \.videoCamera),
@@ -142,6 +154,11 @@ public struct CameraRecordView: View {
         .aspectRatio(3 / 4, contentMode: .fill)
         .frame(width: UIScreen.main.bounds.width)
         .clipShape(RoundedRectangle(cornerRadius: 24))
+        .overlay {
+          if viewStore.isActivityIndicatorVisible {
+            ProgressView()
+          }
+        }
 
         Text("Throw the iPhone and start shooting", bundle: .module)
           .frame(maxHeight: .infinity)
