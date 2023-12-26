@@ -8,13 +8,15 @@ func convertMovToGif(movUrl: URL) async throws -> URL {
   let generator = AVAssetImageGenerator(asset: asset)
   generator.appliesPreferredTrackTransform = true
   
+  let fps = 30.0
+  
   let duration = try await asset.load(.duration)
-  let frameCount = Int(duration.seconds * 10)
+  let frameCount = Int(duration.seconds * fps)
   
   var images = [CGImage]()
 
   for i in 0..<frameCount {
-    let cmTime = CMTimeMake(value: Int64(i), timescale: 10)
+    let cmTime = CMTimeMake(value: Int64(i), timescale: Int32(fps))
     let cgImage = try generator.copyCGImage(at: cmTime, actualTime: nil)
     images.append(cgImage)
   }
@@ -28,7 +30,7 @@ func convertMovToGif(movUrl: URL) async throws -> URL {
   CGImageDestinationSetProperties(destination, gifProperties as CFDictionary)
   
   for image in images {
-    let frameProperties = [kCGImagePropertyGIFDictionary as String: [kCGImagePropertyGIFDelayTime as String: 0.1]]
+    let frameProperties = [kCGImagePropertyGIFDictionary as String: [kCGImagePropertyGIFDelayTime as String: 1 / fps]]
     CGImageDestinationAddImage(destination, image, frameProperties as CFDictionary)
   }
   
