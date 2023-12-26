@@ -31,8 +31,9 @@ public struct LaunchView: View {
   }
 
   public var body: some View {
-    Color.black
-      .ignoresSafeArea()
+    Text("FlyCam", bundle: .module)
+      .font(.largeTitle)
+      .bold()
   }
 }
 
