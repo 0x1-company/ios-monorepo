@@ -13,6 +13,7 @@ var package = Package(
     .library(name: "ApolloClientHelpers", targets: ["ApolloClientHelpers"]),
     .library(name: "ApolloConcurrency", targets: ["ApolloConcurrency"]),
     .library(name: "AsyncValue", targets: ["AsyncValue"]),
+    .library(name: "AVPlayerNotificationClient", targets: ["AVPlayerNotificationClient"]),
     .library(name: "Build", targets: ["Build"]),
     .library(name: "ColorHex", targets: ["ColorHex"]),
     .library(name: "ConfigGlobalClient", targets: ["ConfigGlobalClient"]),
@@ -61,6 +62,10 @@ var package = Package(
       .product(name: "ApolloAPI", package: "apollo-ios"),
     ]),
     .target(name: "AsyncValue"),
+    .target(name: "AVPlayerNotificationClient", dependencies: [
+      .product(name: "Dependencies", package: "swift-dependencies"),
+      .product(name: "DependenciesMacros", package: "swift-dependencies"),
+    ]),
     .target(name: "Build", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
       .product(name: "DependenciesMacros", package: "swift-dependencies"),

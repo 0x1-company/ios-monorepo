@@ -1,4 +1,5 @@
 import AVKit
+import AVPlayerNotificationClient
 import ComposableArchitecture
 import FeedbackGeneratorClient
 import SwiftUI
@@ -20,20 +21,32 @@ public struct CameraResultLogic {
   public enum Action: Equatable {
     case onTask
     case sendButtonTapped
+    case didPlayToEndTime
   }
 
   @Dependency(\.feedbackGenerator) var feedbackGenerator
+  @Dependency(\.avplayerNotification.didPlayToEndTimeNotification) var didPlayToEndTimeNotification
 
   public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { _, action in
+    Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
-        return .none
+        state.player.play()
+        return .run { send in
+          for await _ in didPlayToEndTimeNotification() {
+            await send(.didPlayToEndTime)
+          }
+        }
 
       case .sendButtonTapped:
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
+        
+      case .didPlayToEndTime:
+        state.player.seek(to: CMTime.zero)
+        state.player.play()
+        return .none
       }
     }
   }
