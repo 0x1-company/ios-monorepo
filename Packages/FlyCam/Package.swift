@@ -34,6 +34,7 @@ let package = Package(
   dependencies: [
     .package(path: "../SDK"),
     .package(url: "https://github.com/apollographql/apollo-ios", from: "1.7.1"),
+    .package(url: "https://github.com/noppefoxwolf/AnimatedImage", from: "0.0.6"),
     .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.1.5"),
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.5.6"),
   ],
@@ -72,7 +73,9 @@ let package = Package(
     .target(name: "CameraResultFeature", dependencies: [
       .product(name: "AnalyticsClient", package: "SDK"),
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
+      .product(name: "AnimatedImage", package: "AnimatedImage"),
       .product(name: "AVPlayerNotificationClient", package: "SDK"),
+      .product(name: "AnimatedImageSwiftUI", package: "AnimatedImage"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "Constants"),

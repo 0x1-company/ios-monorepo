@@ -2,6 +2,8 @@ import AVKit
 import AVPlayerNotificationClient
 import ComposableArchitecture
 import FeedbackGeneratorClient
+import AnimatedImage
+import AnimatedImageSwiftUI
 import SwiftUI
 
 @Reducer
@@ -10,11 +12,11 @@ public struct CameraResultLogic {
 
   public struct State: Equatable {
     let altitude: Double
-    let player: AVPlayer
+    let gifURL: URL
 
-    public init(altitude: Double, videoURL: URL) {
+    public init(altitude: Double, gifURL: URL) {
       self.altitude = altitude
-      player = AVPlayer(url: videoURL)
+      self.gifURL = gifURL
     }
   }
 
@@ -31,7 +33,6 @@ public struct CameraResultLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
-        state.player.play()
         return .run { send in
           for await _ in didPlayToEndTimeNotification() {
             await send(.didPlayToEndTime)
@@ -44,8 +45,6 @@ public struct CameraResultLogic {
         }
 
       case .didPlayToEndTime:
-        state.player.seek(to: CMTime.zero)
-        state.player.play()
         return .none
       }
     }
@@ -62,10 +61,13 @@ public struct CameraResultView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 24) {
-        VideoPlayer(player: viewStore.player)
-          .aspectRatio(3 / 4, contentMode: .fill)
-          .frame(width: UIScreen.main.bounds.width)
-          .clipShape(RoundedRectangle(cornerRadius: 24))
+        AnimatedImagePlayer(
+          image: GifImage(data: try! Data(contentsOf: viewStore.gifURL)),
+          contentMode: .fill
+        )
+        .aspectRatio(3 / 4, contentMode: .fill)
+        .frame(width: UIScreen.main.bounds.width)
+        .clipShape(RoundedRectangle(cornerRadius: 24))
 
         VStack(spacing: 16) {
           Text("\(viewStore.altitude)メートル")
@@ -88,16 +90,4 @@ public struct CameraResultView: View {
       .task { await store.send(.onTask).finish() }
     }
   }
-}
-
-#Preview {
-  CameraResultView(
-    store: .init(
-      initialState: CameraResultLogic.State(
-        altitude: 1.0,
-        videoURL: .applicationDirectory
-      ),
-      reducer: { CameraResultLogic() }
-    )
-  )
 }

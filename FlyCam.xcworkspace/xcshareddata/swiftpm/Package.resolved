@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "animatedimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/noppefoxwolf/AnimatedImage",
+      "state" : {
+        "revision" : "45d6c3389cb04cc2a55a187343918b7524b1e769",
+        "version" : "0.0.6"
+      }
+    },
+    {
       "identity" : "apollo-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apollographql/apollo-ios",

@@ -17,6 +17,7 @@ public struct CameraLogic {
     case onTask
     case onAppear
     case closeButtonTapped
+    case showResult(Double, URL)
     case child(Child.Action)
     case delegate(Delegate)
 
@@ -44,13 +45,19 @@ public struct CameraLogic {
         }
 
       case let .child(.record(.delegate(.result(altitude, videoURL)))):
-        state.child = .result(
-          CameraResultLogic.State(altitude: altitude, videoURL: videoURL)
-        )
-        return .none
+        return .run { send in
+          let gifURL = try await convertMovToGif(movUrl: videoURL)
+          await send(.showResult(altitude, gifURL))
+        }
 
       case .child(.result(.sendButtonTapped)):
         return .send(.delegate(.dismiss), animation: .default)
+        
+      case let .showResult(altitude, gifURL):
+        state.child = .result(
+          CameraResultLogic.State(altitude: altitude, gifURL: gifURL)
+        )
+        return .none
 
       default:
         return .none
