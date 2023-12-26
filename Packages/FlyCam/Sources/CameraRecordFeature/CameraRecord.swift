@@ -16,10 +16,10 @@ public struct CameraRecordLogic {
     let motionManager = CMMotionManager()
     var zeroGravityStartTime: Date?
     var zeroGravityEndTime: Date?
-    
+
     var isRecording = false
     var isActivityIndicatorVisible = false
-    
+
     var videoCamera: VideoCameraLogic.State?
 
     public init() {
@@ -53,7 +53,7 @@ public struct CameraRecordLogic {
   @Dependency(\.analytics) var analytics
   @Dependency(\.continuousClock) var clock
   @Dependency(\.feedbackGenerator) var feedbackGenerator
-  
+
   enum Cancel {
     case accelerometerUpdates
   }
@@ -71,7 +71,7 @@ public struct CameraRecordLogic {
         let delegate = Delegate()
         state.videoCamera?.fileOutput.startRecording(to: state.videoFileURL, recordingDelegate: delegate)
         state.isRecording = true
-        
+
         return .run { send in
           await feedbackGenerator.impactOccurred()
           for await result in startAccelerometerUpdates(motionManager) {
@@ -99,7 +99,7 @@ public struct CameraRecordLogic {
             await send(.stopRecordDelayCompleted)
           }
         }
-        
+
       case .stopRecordDelayCompleted:
         state.videoCamera?.fileOutput.stopRecording()
         state.videoCamera?.captureSession.stopRunning()
@@ -108,7 +108,7 @@ public struct CameraRecordLogic {
           try await self.clock.sleep(for: .seconds(2))
           await send(.showResultDelayCompleted)
         }
-        
+
       case .showResultDelayCompleted:
         state.isActivityIndicatorVisible = false
         guard
@@ -118,7 +118,7 @@ public struct CameraRecordLogic {
         let zeroGravityTime = endTime.timeIntervalSince(startTime)
         let altitude = calculateAltitude(timeInZeroGravitySeconds: zeroGravityTime)
         return .send(.delegate(.result(altitude, state.videoFileURL)))
-        
+
       default:
         return .none
       }
@@ -149,8 +149,7 @@ public struct CameraRecordLogic {
   }
 
   public class Delegate: NSObject, AVCaptureFileOutputRecordingDelegate {
-    public func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
-    }
+    public func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {}
   }
 }
 
@@ -184,7 +183,7 @@ public struct CameraRecordView: View {
             .font(.system(.title3, weight: .semibold))
             .scaleEffect(viewStore.isRecording ? 0.0 : 1.0)
             .animation(.default, value: viewStore.isRecording)
-          
+
           Button {
             store.send(.startRecordButtonTapped)
           } label: {
