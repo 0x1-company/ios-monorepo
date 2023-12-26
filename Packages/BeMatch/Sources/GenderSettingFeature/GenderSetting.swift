@@ -63,7 +63,7 @@ public struct GenderSettingLogic {
             try await updateGender(input)
           }))
         }
-        
+
       case .skipButtonTapped:
         return .run { send in
           await feedbackGenerator.impactOccurred()
@@ -137,7 +137,7 @@ public struct GenderSettingView: View {
           ) {
             store.send(.nextButtonTapped)
           }
-          
+
           Button {
             store.send(.skipButtonTapped)
           } label: {
