@@ -1,12 +1,12 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Throw the iPhone and start shooting" : {
+    "Press the button to throw the iPhone" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iPhoneを投げて撮影開始"
+            "value" : "ボタンを押してiPhoneを投げる"
           }
         }
       }
