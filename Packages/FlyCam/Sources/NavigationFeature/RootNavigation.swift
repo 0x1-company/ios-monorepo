@@ -91,11 +91,10 @@ public struct RootNavigationView: View {
             }
         }
 
-        NavigationStack {
-          IfLetStore(
-            store.scope(state: \.camera, action: \.camera),
-            then: CameraView.init(store:)
-          )
+        IfLetStore(store.scope(state: \.camera, action: \.camera)) { store in
+          NavigationStack {
+            CameraView(store: store)
+          }
         }
         .opacity(viewStore.camera == nil ? 0.0 : 1.0)
       }
