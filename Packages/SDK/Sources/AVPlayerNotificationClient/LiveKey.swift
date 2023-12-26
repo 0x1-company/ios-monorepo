@@ -1,5 +1,5 @@
-import Dependencies
 import AVFoundation
+import Dependencies
 import NotificationCenter
 
 extension AVPlayerNotificationClient: DependencyKey {
