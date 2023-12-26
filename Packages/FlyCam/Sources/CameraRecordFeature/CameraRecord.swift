@@ -29,7 +29,8 @@ public struct CameraRecordLogic {
         .appending(path: uuid().uuidString)
         .appendingPathExtension("mov")
 
-      if let videoDevice = AVCaptureDevice.default(for: AVMediaType.video), let videoInput = try? AVCaptureDeviceInput(device: videoDevice) {
+      if let videoDevice = AVCaptureDevice.default(.builtInDualWideCamera, for: .video, position: .back),
+         let videoInput = try? AVCaptureDeviceInput(device: videoDevice) {
         videoCamera = VideoCameraLogic.State(videoInput: videoInput)
       }
     }
