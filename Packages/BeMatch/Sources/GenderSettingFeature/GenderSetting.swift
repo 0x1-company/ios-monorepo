@@ -23,6 +23,7 @@ public struct GenderSettingLogic {
   public enum Action {
     case onAppear
     case genderButtonTapped(BeMatch.Gender)
+    case skipButtonTapped
     case nextButtonTapped
     case updateGenderResponse(Result<BeMatch.UpdateGenderMutation.Data, Error>)
     case delegate(Delegate)
@@ -61,6 +62,12 @@ public struct GenderSettingLogic {
           await send(.updateGenderResponse(Result {
             try await updateGender(input)
           }))
+        }
+
+      case .skipButtonTapped:
+        return .run { send in
+          await feedbackGenerator.impactOccurred()
+          await send(.delegate(.nextScreen))
         }
 
       case .updateGenderResponse(.success):
@@ -122,12 +129,23 @@ public struct GenderSettingView: View {
 
         Spacer()
 
-        PrimaryButton(
-          String(localized: "Next", bundle: .module),
-          isLoading: viewStore.isActivityIndicatorVisible,
-          isDisabled: viewStore.selection == nil
-        ) {
-          store.send(.nextButtonTapped)
+        VStack(spacing: 0) {
+          PrimaryButton(
+            String(localized: "Next", bundle: .module),
+            isLoading: viewStore.isActivityIndicatorVisible,
+            isDisabled: viewStore.selection == nil
+          ) {
+            store.send(.nextButtonTapped)
+          }
+
+          Button {
+            store.send(.skipButtonTapped)
+          } label: {
+            Text("Skip", bundle: .module)
+              .frame(height: 50)
+              .foregroundStyle(Color.white)
+              .font(.system(.subheadline, weight: .semibold))
+          }
         }
         .padding(.horizontal, 16)
       }

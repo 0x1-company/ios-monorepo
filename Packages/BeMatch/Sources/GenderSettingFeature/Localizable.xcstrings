@@ -1,17 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "BeMatch." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeMatch."
-          }
-        }
-      }
-    },
     "Female" : {
       "localizations" : {
         "ja" : {
@@ -48,6 +37,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "その他"
+          }
+        }
+      }
+    },
+    "Skip" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スキップ"
           }
         }
       }
