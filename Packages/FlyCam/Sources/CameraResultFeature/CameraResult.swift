@@ -42,7 +42,7 @@ public struct CameraResultLogic {
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
-        
+
       case .didPlayToEndTime:
         state.player.seek(to: CMTime.zero)
         state.player.play()
