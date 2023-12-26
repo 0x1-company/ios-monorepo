@@ -66,7 +66,7 @@ public struct CameraRecordLogic {
       case .tool(.delegate(.startRecording)):
         let delegate = Delegate()
         state.videoCamera?.fileOutput.startRecording(to: state.videoFileURL, recordingDelegate: delegate)
-        
+
         return .merge(
           .run(operation: { _ in
             await feedbackGenerator.impactOccurred()
@@ -75,7 +75,7 @@ public struct CameraRecordLogic {
             .reduce(into: &state.accelerometer, action: .startAccelerometerUpdates)
             .map(Action.accelerometer)
         )
-        
+
       case .tool(.delegate(.stopRecording)):
         state.isActivityIndicatorVisible = true
         state.videoCamera?.fileOutput.stopRecording()
@@ -146,7 +146,7 @@ public struct CameraRecordView: View {
             ProgressView()
           }
         }
-        
+
         CaptureToolView(store: store.scope(state: \.tool, action: \.tool))
       }
       .padding(.vertical, 24)

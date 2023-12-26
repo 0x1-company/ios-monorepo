@@ -14,7 +14,7 @@ public struct CaptureToolLogic {
     case onTask
     case captureButtonTapped
     case delegate(Delegate)
-    
+
     public enum Delegate: Equatable {
       case startRecording
       case stopRecording
@@ -26,13 +26,13 @@ public struct CaptureToolLogic {
       switch action {
       case .onTask:
         return .none
-        
+
       case .captureButtonTapped:
         defer {
           state.isRecording.toggle()
         }
         return .send(.delegate(state.isRecording ? .stopRecording : .startRecording), animation: .default)
-        
+
       case .delegate:
         return .none
       }
@@ -46,16 +46,16 @@ public struct CaptureToolView: View {
   public init(store: StoreOf<CaptureToolLogic>) {
     self.store = store
   }
-  
+
   struct ViewState: Equatable {
     let isRecording: Bool
     let redSize: CGFloat
     let cornerRadius: CGFloat
-    
+
     init(state: CaptureToolLogic.State) {
-      self.isRecording = state.isRecording
-      self.redSize = state.isRecording ? 25 : 72
-      self.cornerRadius = state.isRecording ? 6 : 72 / 2
+      isRecording = state.isRecording
+      redSize = state.isRecording ? 25 : 72
+      cornerRadius = state.isRecording ? 6 : 72 / 2
     }
   }
 
@@ -74,7 +74,7 @@ public struct CaptureToolView: View {
               .stroke(Color.white, lineWidth: 6.0)
               .frame(width: 80, height: 80)
               .contentShape(Rectangle())
-                        
+
             Color.red
               .frame(width: viewStore.redSize, height: viewStore.redSize)
               .clipShape(RoundedRectangle(cornerRadius: viewStore.cornerRadius))
