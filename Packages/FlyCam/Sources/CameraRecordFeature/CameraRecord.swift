@@ -30,7 +30,8 @@ public struct CameraRecordLogic {
         .appendingPathExtension("mov")
 
       if let videoDevice = AVCaptureDevice.default(.builtInDualWideCamera, for: .video, position: .back),
-         let videoInput = try? AVCaptureDeviceInput(device: videoDevice) {
+         let videoInput = try? AVCaptureDeviceInput(device: videoDevice)
+      {
         videoCamera = VideoCameraLogic.State(videoInput: videoInput)
       }
     }
