@@ -23,7 +23,7 @@ public struct RankingEmptyLogic {
     Reduce<State, Action> { _, action in
       switch action {
       case .takeButtonTapped:
-        return .send(.delegate(.toCamera))
+        return .send(.delegate(.toCamera), animation: .default)
 
       case .delegate:
         return .none
