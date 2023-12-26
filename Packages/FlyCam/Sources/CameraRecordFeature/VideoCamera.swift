@@ -16,7 +16,7 @@ public struct VideoCameraLogic {
       captureSession.addOutput(fileOutput)
 
       captureSession.beginConfiguration()
-      captureSession.sessionPreset = .high
+      captureSession.sessionPreset = AVCaptureSession.Preset.hd1920x1080
       captureSession.commitConfiguration()
 
       videoLayer = AVCaptureVideoPreviewLayer(session: captureSession)
