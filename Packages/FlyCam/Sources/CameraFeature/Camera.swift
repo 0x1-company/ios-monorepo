@@ -18,9 +18,13 @@ public struct CameraLogic {
     case onAppear
     case closeButtonTapped
     case child(Child.Action)
+    case delegate(Delegate)
+
+    public enum Delegate: Equatable {
+      case dismiss
+    }
   }
 
-  @Dependency(\.dismiss) var dismiss
   @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   public var body: some Reducer<State, Action> {
@@ -34,9 +38,9 @@ public struct CameraLogic {
         return .none
 
       case .closeButtonTapped:
-        return .run { _ in
+        return .run { send in
           await feedbackGenerator.impactOccurred()
-          await dismiss()
+          await send(.delegate(.dismiss), animation: .default)
         }
 
       case let .child(.record(.delegate(.result(altitude, videoURL)))):
@@ -46,9 +50,7 @@ public struct CameraLogic {
         return .none
 
       case .child(.result(.sendButtonTapped)):
-        return .run { _ in
-          await dismiss()
-        }
+        return .send(.delegate(.dismiss), animation: .default)
 
       default:
         return .none

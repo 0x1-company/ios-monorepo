@@ -12,8 +12,7 @@ public struct RootNavigationLogic {
   public struct State: Equatable {
     var ranking = RankingLogic.State()
     var setting = SettingLogic.State()
-
-    @PresentationState var destination: Destination.State?
+    var camera: CameraLogic.State?
 
     public init() {}
   }
@@ -23,10 +22,9 @@ public struct RootNavigationLogic {
     case cameraButtonTapped
     case ranking(RankingLogic.Action)
     case setting(SettingLogic.Action)
-    case destination(PresentationAction<Destination.Action>)
+    case camera(CameraLogic.Action)
   }
 
-  @Dependency(\.mainQueue) var mainQueue
   @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   public var body: some Reducer<State, Action> {
@@ -38,36 +36,25 @@ public struct RootNavigationLogic {
         return .none
 
       case .cameraButtonTapped:
-        state.destination = .camera()
+        state.camera = .init()
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
 
       case .ranking(.list(.empty(.delegate(.toCamera)))):
-        state.destination = .camera()
+        state.camera = .init()
+        return .none
+
+      case .camera(.delegate(.dismiss)):
+        state.camera = nil
         return .none
 
       default:
         return .none
       }
     }
-    .ifLet(\.$destination, action: \.destination) {
-      Destination()
-    }
-  }
-
-  @Reducer
-  public struct Destination {
-    public enum State: Equatable {
-      case camera(CameraLogic.State = .init())
-    }
-
-    public enum Action {
-      case camera(CameraLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.camera, action: \.camera, child: CameraLogic.init)
+    .ifLet(\.camera, action: \.camera) {
+      CameraLogic()
     }
   }
 }
@@ -80,33 +67,38 @@ public struct RootNavigationView: View {
   }
 
   public var body: some View {
-    NavigationStack {
-      RankingView(store: store.scope(state: \.ranking, action: \.ranking))
-        .task { await store.send(.onTask).finish() }
-        .overlay(alignment: .bottom) {
-          Button {
-            store.send(.cameraButtonTapped)
-          } label: {
-            RoundedRectangle(cornerRadius: 80 / 2)
-              .stroke(Color.white, lineWidth: 6.0)
-              .frame(width: 80, height: 80)
-              .background(Material.ultraThin)
-              .clipShape(RoundedRectangle(cornerRadius: 80 / 2))
-          }
-          .padding(.bottom, 24)
+    WithViewStore(store, observe: { $0 }) { viewStore in
+      ZStack {
+        NavigationStack {
+          RankingView(store: store.scope(state: \.ranking, action: \.ranking))
+            .task { await store.send(.onTask).finish() }
+            .overlay(alignment: .bottom) {
+              Button {
+                store.send(.cameraButtonTapped, animation: .default)
+              } label: {
+                RoundedRectangle(cornerRadius: 80 / 2)
+                  .stroke(Color.white, lineWidth: 6.0)
+                  .frame(width: 80, height: 80)
+                  .background(Material.ultraThin)
+                  .clipShape(RoundedRectangle(cornerRadius: 80 / 2))
+              }
+              .padding(.bottom, 24)
+            }
+            .toolbar {
+              ToolbarItem(placement: .topBarTrailing) {
+                SettingView(store: store.scope(state: \.setting, action: \.setting))
+              }
+            }
         }
-        .toolbar {
-          ToolbarItem(placement: .topBarTrailing) {
-            SettingView(store: store.scope(state: \.setting, action: \.setting))
-          }
+
+        NavigationStack {
+          IfLetStore(
+            store.scope(state: \.camera, action: \.camera),
+            then: CameraView.init(store:)
+          )
         }
-        .fullScreenCover(
-          store: store.scope(state: \.$destination.camera, action: \.destination.camera)
-        ) { store in
-          NavigationStack {
-            CameraView(store: store)
-          }
-        }
+        .opacity(viewStore.camera == nil ? 0.0 : 1.0)
+      }
     }
   }
 }
