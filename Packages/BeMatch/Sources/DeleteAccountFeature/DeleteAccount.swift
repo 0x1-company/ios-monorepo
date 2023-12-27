@@ -116,17 +116,17 @@ public struct DeleteAccountLogic {
         state.alert = AlertState {
           TextState("Delete Account Completed", bundle: .module)
         } actions: {
-          ButtonState(role: .destructive, action: .confirmOkay) {
+          ButtonState(action: .confirmOkay) {
             TextState("OK", bundle: .module)
           }
         }
-        return .none
+        return .run { _ in
+          try? firebaseAuth.signOut()
+        }
         
       case .alert(.presented(.confirmOkay)):
-        return .run { send in
-          try? firebaseAuth.signOut()
-          await send(.delegate(.accountDeletionCompleted))
-        }
+        state.alert = nil
+        return .send(.delegate(.accountDeletionCompleted))
 
       default:
         return .none
