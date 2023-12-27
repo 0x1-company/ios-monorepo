@@ -41,11 +41,11 @@ public struct DeleteAccountLogic {
     public enum ConfirmationDialog: Equatable {
       case confirm
     }
-    
+
     public enum Alert: Equatable {
       case confirmOkay
     }
-    
+
     public enum Delegate: Equatable {
       case accountDeletionCompleted
     }
@@ -123,7 +123,7 @@ public struct DeleteAccountLogic {
         return .run { _ in
           try? firebaseAuth.signOut()
         }
-        
+
       case .alert(.presented(.confirmOkay)):
         state.alert = nil
         return .send(.delegate(.accountDeletionCompleted))
