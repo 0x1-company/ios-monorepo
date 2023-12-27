@@ -10,19 +10,24 @@ public struct RankingListLogic {
 
   public struct State: Equatable {
     let banners: IdentifiedArrayOf<BannerCardLogic.State>
+    let rows: IdentifiedArrayOf<RankingRowLogic.State>
 
     var empty: RankingEmptyLogic.State?
 
     public init(
-      banners: IdentifiedArrayOf<BannerCardLogic.State>
+      banners: IdentifiedArrayOf<BannerCardLogic.State>,
+      rows: IdentifiedArrayOf<RankingRowLogic.State>
     ) {
       self.banners = banners
+      self.rows = rows
+      self.empty = rows.isEmpty ? .init() : nil
     }
   }
 
   public enum Action {
     case onTask
     case banners(IdentifiedActionOf<BannerCardLogic>)
+    case rows(IdentifiedActionOf<RankingRowLogic>)
     case empty(RankingEmptyLogic.Action)
   }
 
@@ -32,7 +37,6 @@ public struct RankingListLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
-        state.empty = .init()
         return .none
 
       default:
@@ -61,39 +65,19 @@ public struct RankingListView: View {
             content: BannerCardView.init(store:)
           )
 
-          VStack(spacing: 12) {
-            Color.red
-              .aspectRatio(3 / 4, contentMode: .fit)
-              .frame(width: 114)
-              .clipShape(RoundedRectangle(cornerRadius: 16))
-              .frame(maxWidth: .infinity, alignment: .center)
-
-            Button {} label: {
-              Image(systemName: "square.and.arrow.up")
-                .font(.footnote)
-                .fontWeight(.semibold)
-                .frame(width: 44, height: 44)
-                .foregroundStyle(Color.primary)
-                .background(Color(uiColor: UIColor.tertiarySystemBackground))
-                .clipShape(Circle())
-            }
-          }
-
-          IfLetStore(
-            store.scope(state: \.empty, action: \.empty),
-            then: RankingEmptyView.init(store:)
+          ForEachStore(
+            store.scope(state: \.rows, action: \.rows),
+            content: RankingRowView.init(store:)
           )
-
-          ForEach(0 ..< 100) { index in
-            RankingRowView(
-              rank: index + 1,
-              altitude: 4.0,
-              displayName: "tomokisun"
-            )
-          }
         }
       }
       .task { await store.send(.onTask).finish() }
+      .overlay {
+        IfLetStore(
+          store.scope(state: \.empty, action: \.empty),
+          then: RankingEmptyView.init(store:)
+        )
+      }
     }
   }
 }
@@ -103,7 +87,8 @@ public struct RankingListView: View {
     RankingListView(
       store: .init(
         initialState: RankingListLogic.State(
-          banners: []
+          banners: [],
+          rows: []
         ),
         reducer: { RankingListLogic() }
       )
