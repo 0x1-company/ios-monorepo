@@ -41,7 +41,7 @@ public struct RankingLogic {
       case .onAppear:
         analytics.logScreen(screenName: "Ranking", of: self)
         return .none
-        
+
       case .refresh:
         return .run { send in
           await rankingRequest(send: send)
@@ -71,7 +71,7 @@ public struct RankingLogic {
       RankingListLogic()
     }
   }
-  
+
   func rankingRequest(send: Send<Action>) async {
     await withTaskCancellation(id: Cancel.ranking, cancelInFlight: true) {
       do {
