@@ -18,7 +18,7 @@ public struct AuthLogic {
           try await signInAnonymously()
         }))
       }
-      
+
     case .view(.navigation(.match(.setting(.destination(.presented(.deleteAccount(.delegate(.accountDeletionCompleted)))))))):
       return .run { send in
         await send(.signInAnonymouslyResponse(Result {
