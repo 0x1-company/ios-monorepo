@@ -8,7 +8,8 @@ public extension FlyCam {
     public static let operationName: String = "CreatePost"
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"mutation CreatePost($input: CreatePostInput!) { createPost(input: $input) { __typename id altitude videoUrl user { __typename id displayName } } }"#
+        #"mutation CreatePost($input: CreatePostInput!) { createPost(input: $input) { __typename ...RankingRow } }"#,
+        fragments: [RankingRow.self]
       ))
 
     public var input: CreatePostInput
@@ -41,33 +42,19 @@ public extension FlyCam {
         public static var __parentType: ApolloAPI.ParentType { FlyCam.Objects.Post }
         public static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
-          .field("id", FlyCam.ID.self),
-          .field("altitude", Double.self),
-          .field("videoUrl", String.self),
-          .field("user", User.self),
+          .fragment(RankingRow.self),
         ] }
 
         public var id: FlyCam.ID { __data["id"] }
         public var altitude: Double { __data["altitude"] }
         public var videoUrl: String { __data["videoUrl"] }
-        public var user: User { __data["user"] }
+        public var user: RankingRow.User { __data["user"] }
 
-        /// CreatePost.User
-        ///
-        /// Parent Type: `User`
-        public struct User: FlyCam.SelectionSet {
+        public struct Fragments: FragmentContainer {
           public let __data: DataDict
           public init(_dataDict: DataDict) { __data = _dataDict }
 
-          public static var __parentType: ApolloAPI.ParentType { FlyCam.Objects.User }
-          public static var __selections: [ApolloAPI.Selection] { [
-            .field("__typename", String.self),
-            .field("id", FlyCam.ID.self),
-            .field("displayName", String.self),
-          ] }
-
-          public var id: FlyCam.ID { __data["id"] }
-          public var displayName: String { __data["displayName"] }
+          public var rankingRow: RankingRow { _toFragment() }
         }
       }
     }

@@ -12,6 +12,13 @@ extension FirebaseStorageClient: DependencyKey {
         metadata.contentType = "image/png"
         _ = try await reference.putDataAsync(uploadData, metadata: metadata, onProgress: nil)
         return try await reference.downloadURL()
+      },
+      uploadMov: { path, uploadData in
+        let reference = storage.reference().child(path)
+        let metadata = StorageMetadata()
+        metadata.contentType = "video/quicktime"
+        _ = try await reference.putDataAsync(uploadData, metadata: metadata, onProgress: nil)
+        return try await reference.downloadURL()
       }
     )
   }()

@@ -1,11 +1,25 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%lfメートル" : {
-
+    "%lfMeter" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lfメートル"
+          }
+        }
+      }
     },
     "Send" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "送信"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

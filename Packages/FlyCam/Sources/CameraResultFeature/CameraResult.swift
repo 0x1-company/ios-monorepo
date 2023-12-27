@@ -2,6 +2,9 @@ import AVKit
 import AVPlayerNotificationClient
 import ComposableArchitecture
 import FeedbackGeneratorClient
+import FirebaseStorageClient
+import FlyCam
+import FlyCamClient
 import SwiftUI
 
 @Reducer
@@ -10,22 +13,40 @@ public struct CameraResultLogic {
 
   public struct State: Equatable {
     let altitude: Double
+    let videoURL: URL
     let player: AVPlayer
+
+    var isActivityIndicatorVisible = false
 
     public init(altitude: Double, videoURL: URL) {
       self.altitude = altitude
+      self.videoURL = videoURL
       player = AVPlayer(url: videoURL)
     }
   }
 
-  public enum Action: Equatable {
+  public enum Action {
     case onTask
     case sendButtonTapped
     case didPlayToEndTime
+    case uploadResponse(Result<URL, Error>)
+    case createPostResponse(Result<FlyCam.CreatePostMutation.Data, Error>)
+    case delegate(Delegate)
+
+    public enum Delegate: Equatable {
+      case sendCompleted
+    }
   }
 
+  @Dependency(\.uuid) var uuid
+  @Dependency(\.flycam.createPost) var createPost
+  @Dependency(\.firebaseStorage) var firebaseStorage
   @Dependency(\.feedbackGenerator) var feedbackGenerator
   @Dependency(\.avplayerNotification.didPlayToEndTimeNotification) var didPlayToEndTimeNotification
+
+  enum Cancel {
+    case createPost
+  }
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
@@ -39,13 +60,42 @@ public struct CameraResultLogic {
         }
 
       case .sendButtonTapped:
-        return .run { _ in
+        let path = "video/quicktime/\(uuid().uuidString).mov"
+
+        state.isActivityIndicatorVisible = true
+        return .run { [videoURL = state.videoURL] send in
+          let data = try Data(contentsOf: videoURL)
           await feedbackGenerator.impactOccurred()
+          await send(.uploadResponse(Result {
+            try await firebaseStorage.uploadMov(path: path, uploadData: data)
+          }))
         }
 
       case .didPlayToEndTime:
         state.player.seek(to: CMTime.zero)
         state.player.play()
+        return .none
+
+      case let .uploadResponse(.success(url)):
+        let input = FlyCam.CreatePostInput(
+          altitude: state.altitude,
+          videoUrl: url.absoluteString
+        )
+        return .run { send in
+          await send(.createPostResponse(Result {
+            try await createPost(input)
+          }))
+        }
+
+      case .uploadResponse(.failure):
+        state.isActivityIndicatorVisible = false
+        return .none
+
+      case .createPostResponse:
+        state.isActivityIndicatorVisible = false
+        return .send(.delegate(.sendCompleted), animation: .default)
+
+      default:
         return .none
       }
     }
@@ -68,15 +118,20 @@ public struct CameraResultView: View {
           .clipShape(RoundedRectangle(cornerRadius: 24))
 
         VStack(spacing: 16) {
-          Text("\(viewStore.altitude)メートル")
+          Text("\(viewStore.altitude)Meter", bundle: .module)
 
-          Button {
-            store.send(.sendButtonTapped)
-          } label: {
-            HStack(spacing: 4) {
-              Text("Send")
+          if viewStore.isActivityIndicatorVisible {
+            ProgressView()
+              .tint(Color.primary)
+          } else {
+            Button {
+              store.send(.sendButtonTapped)
+            } label: {
+              HStack(spacing: 4) {
+                Text("Send", bundle: .module)
 
-              Image(systemName: "paperplane.fill")
+                Image(systemName: "paperplane.fill")
+              }
             }
           }
         }

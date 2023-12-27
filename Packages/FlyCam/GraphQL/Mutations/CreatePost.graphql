@@ -1,11 +1,7 @@
+# import RankingRow from '../fragments/RankingRow.graphql'
+
 mutation CreatePost($input: CreatePostInput!) {
   createPost(input: $input) {
-    id
-    altitude
-    videoUrl
-    user {
-      id
-      displayName
-    }
+    ...RankingRow
   }
 }
