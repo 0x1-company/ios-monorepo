@@ -13,6 +13,7 @@ public struct DeleteAccountLogic {
   public init() {}
 
   public struct State: Equatable {
+    @PresentationState var alert: AlertState<Action.Alert>?
     @PresentationState var confirmationDialog: ConfirmationDialogState<Action.ConfirmationDialog>?
     @BindingState var otherReason = ""
     var selectedReasons: [String] = []
@@ -34,9 +35,19 @@ public struct DeleteAccountLogic {
     case closeUserResponse(Result<BeMatch.CloseUserMutation.Data, Error>)
     case binding(BindingAction<State>)
     case confirmationDialog(PresentationAction<ConfirmationDialog>)
+    case alert(PresentationAction<Alert>)
+    case delegate(Delegate)
 
     public enum ConfirmationDialog: Equatable {
       case confirm
+    }
+
+    public enum Alert: Equatable {
+      case confirmOkay
+    }
+
+    public enum Delegate: Equatable {
+      case accountDeletionCompleted
     }
   }
 
@@ -102,7 +113,20 @@ public struct DeleteAccountLogic {
         return .none
 
       case .closeUserResponse:
-        return .none
+        state.alert = AlertState {
+          TextState("Delete Account Completed", bundle: .module)
+        } actions: {
+          ButtonState(action: .confirmOkay) {
+            TextState("OK", bundle: .module)
+          }
+        }
+        return .run { _ in
+          try? firebaseAuth.signOut()
+        }
+
+      case .alert(.presented(.confirmOkay)):
+        state.alert = nil
+        return .send(.delegate(.accountDeletionCompleted))
 
       default:
         return .none
@@ -196,6 +220,7 @@ public struct DeleteAccountView: View {
       .confirmationDialog(
         store: store.scope(state: \.$confirmationDialog, action: \.confirmationDialog)
       )
+      .alert(store: store.scope(state: \.$alert, action: \.alert))
     }
   }
 }

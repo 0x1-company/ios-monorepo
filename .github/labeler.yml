@@ -1,8 +1,8 @@
 BeMatch:
-- any: ['Packages/BeMatch/**', 'App/BeMatch/**', ]
+- any: ['Packages/BeMatch/**']
 
 FlyCam:
-- any: ['Packages/FlyCam/**', 'App/FlyCam/**',]
+- any: ['Packages/FlyCam/**']
 
 SDK:
 - any: ['Packages/SDK/**']
