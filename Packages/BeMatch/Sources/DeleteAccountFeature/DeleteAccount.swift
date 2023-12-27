@@ -35,7 +35,7 @@ public struct DeleteAccountLogic {
     case closeUserResponse(Result<BeMatch.CloseUserMutation.Data, Error>)
     case binding(BindingAction<State>)
     case confirmationDialog(PresentationAction<ConfirmationDialog>)
-    case alert(Alert)
+    case alert(PresentationAction<Alert>)
     case delegate(Delegate)
 
     public enum ConfirmationDialog: Equatable {
