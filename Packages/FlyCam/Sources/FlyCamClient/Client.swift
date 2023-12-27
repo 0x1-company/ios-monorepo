@@ -11,6 +11,7 @@ public struct FlyCamClient: Sendable {
   public var updateDisplayName: @Sendable (FlyCam.UpdateDisplayNameInput) async throws -> FlyCam.UpdateDisplayNameMutation.Data
 
   public var ranking: @Sendable () -> AsyncThrowingStream<FlyCam.RankingQuery.Data, Error> = { .finished() }
+  public var createPost: @Sendable (FlyCam.CreatePostInput) async throws -> FlyCam.CreatePostMutation.Data
 
   public var createFirebaseRegistrationToken: @Sendable (FlyCam.CreateFirebaseRegistrationTokenInput) async throws -> FlyCam.CreateFirebaseRegistrationTokenMutation.Data
   public var pushNotificationBadge: @Sendable () -> AsyncThrowingStream<FlyCam.PushNotificationBadgeQuery.Data, Error> = { .finished() }

@@ -1,7 +1,12 @@
 # import BannerCard from '../fragments/BannerCard.graphql'
+# import RankingRow from '../fragments/RankingRow.graphql'
 
 query Ranking {
   banners {
     ...BannerCard
+  }
+
+  rankingsByPost {
+    ...RankingRow
   }
 }

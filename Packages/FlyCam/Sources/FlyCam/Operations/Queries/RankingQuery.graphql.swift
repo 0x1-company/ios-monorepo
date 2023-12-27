@@ -8,8 +8,8 @@ public extension FlyCam {
     public static let operationName: String = "Ranking"
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"query Ranking { banners { __typename ...BannerCard } }"#,
-        fragments: [BannerCard.self]
+        #"query Ranking { banners { __typename ...BannerCard } rankingsByPost { __typename ...RankingRow } }"#,
+        fragments: [BannerCard.self, RankingRow.self]
       ))
 
     public init() {}
@@ -21,10 +21,13 @@ public extension FlyCam {
       public static var __parentType: ApolloAPI.ParentType { FlyCam.Objects.Query }
       public static var __selections: [ApolloAPI.Selection] { [
         .field("banners", [Banner].self),
+        .field("rankingsByPost", [RankingsByPost].self),
       ] }
 
       /// バナー一覧
       public var banners: [Banner] { __data["banners"] }
+      /// 高度順ランキング
+      public var rankingsByPost: [RankingsByPost] { __data["rankingsByPost"] }
 
       /// Banner
       ///
@@ -53,6 +56,32 @@ public extension FlyCam {
           public init(_dataDict: DataDict) { __data = _dataDict }
 
           public var bannerCard: BannerCard { _toFragment() }
+        }
+      }
+
+      /// RankingsByPost
+      ///
+      /// Parent Type: `Post`
+      public struct RankingsByPost: FlyCam.SelectionSet {
+        public let __data: DataDict
+        public init(_dataDict: DataDict) { __data = _dataDict }
+
+        public static var __parentType: ApolloAPI.ParentType { FlyCam.Objects.Post }
+        public static var __selections: [ApolloAPI.Selection] { [
+          .field("__typename", String.self),
+          .fragment(RankingRow.self),
+        ] }
+
+        public var id: FlyCam.ID { __data["id"] }
+        public var altitude: Int { __data["altitude"] }
+        public var videoUrl: String { __data["videoUrl"] }
+        public var user: RankingRow.User { __data["user"] }
+
+        public struct Fragments: FragmentContainer {
+          public let __data: DataDict
+          public init(_dataDict: DataDict) { __data = _dataDict }
+
+          public var rankingRow: RankingRow { _toFragment() }
         }
       }
     }

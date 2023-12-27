@@ -26,6 +26,10 @@ public extension FlyCamClient {
         let query = FlyCam.RankingQuery()
         return apolloClient.watch(query: query)
       },
+      createPost: {
+        let mutation = FlyCam.CreatePostMutation(input: $0)
+        return try await apolloClient.perform(mutation: mutation)
+      },
       createFirebaseRegistrationToken: { input in
         let mutation = FlyCam.CreateFirebaseRegistrationTokenMutation(input: input)
         return try await apolloClient.perform(mutation: mutation)

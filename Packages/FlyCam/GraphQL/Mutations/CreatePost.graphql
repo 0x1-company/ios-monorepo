@@ -1,0 +1,11 @@
+mutation CreatePost($input: CreatePostInput!) {
+  createPost(input: $input) {
+    id
+    altitude
+    videoUrl
+    user {
+      id
+      displayName
+    }
+  }
+}
