@@ -48,7 +48,7 @@ public struct RootNavigationLogic {
       case .camera(.delegate(.dismiss)):
         state.camera = nil
         return .none
-        
+
       case .camera(.child(.result(.delegate(.sendCompleted)))):
         state.camera = nil
         return RankingLogic()
