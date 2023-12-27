@@ -20,15 +20,12 @@ input CreateFirebaseRegistrationTokenInput {
   token: String!
 }
 
-input CreateReportInput {
-  """通報対象のユーザーID"""
-  targetUserId: String!
+input CreatePostInput {
+  """高度"""
+  altitude: Float!
 
-  """通報理由"""
-  text: String!
-
-  """通報理由のタイトル"""
-  title: String!
+  """動画URL"""
+  videoUrl: String!
 }
 
 """Date custom scalar type"""
@@ -49,8 +46,8 @@ type Mutation {
   """FirebaseのRegistrationTokenを作成する"""
   createFirebaseRegistrationToken(input: CreateFirebaseRegistrationTokenInput!): FirebaseRegistrationToken!
 
-  """ユーザーを通報する"""
-  createReport(input: CreateReportInput!): Boolean!
+  """投稿する"""
+  createPost(input: CreatePostInput!): Post!
 
   """ユーザーを作成する"""
   createUser: User!
@@ -70,6 +67,13 @@ type PageInfo {
   startCursor: String
 }
 
+type Post {
+  altitude: Float!
+  id: ID!
+  user: User!
+  videoUrl: String!
+}
+
 type PushNotificationBadge {
   """バッジ数"""
   count: Int!
@@ -83,6 +87,9 @@ type Query {
   """ログイン中ユーザーを取得"""
   currentUser: User!
   pushNotificationBadge: PushNotificationBadge!
+
+  """高度順ランキング"""
+  rankingsByPost: [Post!]!
 }
 
 input UpdateDisplayNameInput {

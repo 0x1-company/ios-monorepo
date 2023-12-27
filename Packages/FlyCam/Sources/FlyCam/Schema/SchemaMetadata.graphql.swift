@@ -34,6 +34,7 @@ public extension FlyCam {
       case "Mutation": return FlyCam.Objects.Mutation
       case "FirebaseRegistrationToken": return FlyCam.Objects.FirebaseRegistrationToken
       case "User": return FlyCam.Objects.User
+      case "Post": return FlyCam.Objects.Post
       case "Query": return FlyCam.Objects.Query
       case "PushNotificationBadge": return FlyCam.Objects.PushNotificationBadge
       case "Banner": return FlyCam.Objects.Banner

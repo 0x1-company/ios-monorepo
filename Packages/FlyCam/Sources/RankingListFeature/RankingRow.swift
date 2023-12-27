@@ -1,4 +1,5 @@
 import ComposableArchitecture
+import FlyCam
 import SwiftUI
 
 @Reducer
@@ -6,18 +7,16 @@ public struct RankingRowLogic {
   public init() {}
 
   public struct State: Equatable, Identifiable {
+    public let id: String
     let rank: Int
     let altitude: Double
     let displayName: String
 
-    public var id: String {
-      return rank.description
-    }
-
-    public init(rank: Int, altitude: Double, displayName: String) {
-      self.rank = rank
-      self.altitude = altitude
-      self.displayName = displayName
+    public init(state: EnumeratedSequence<[FlyCam.RankingRow]>.Iterator.Element) {
+      id = state.element.id
+      rank = state.offset
+      altitude = state.element.altitude
+      displayName = state.element.user.displayName
     }
   }
 
@@ -69,18 +68,4 @@ public struct RankingRowView: View {
       }
     }
   }
-}
-
-#Preview {
-  RankingRowView(
-    store: .init(
-      initialState: RankingRowLogic.State(
-        rank: 1,
-        altitude: 1.0,
-        displayName: "tomokisun"
-      ),
-      reducer: { RankingRowLogic() }
-    )
-  )
-  .environment(\.colorScheme, .dark)
 }
