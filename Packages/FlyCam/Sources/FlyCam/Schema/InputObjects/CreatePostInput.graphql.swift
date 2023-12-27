@@ -12,7 +12,7 @@ public extension FlyCam {
     }
 
     public init(
-      altitude: Int,
+      altitude: Double,
       videoUrl: String
     ) {
       __data = InputDict([
@@ -22,7 +22,7 @@ public extension FlyCam {
     }
 
     /// 高度
-    public var altitude: Int {
+    public var altitude: Double {
       get { __data["altitude"] }
       set { __data["altitude"] = newValue }
     }

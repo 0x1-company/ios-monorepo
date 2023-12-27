@@ -51,9 +51,14 @@ public struct RankingLogic {
           .map(\.fragments.bannerCard)
           .map(BannerCardLogic.State.init(banner:))
 
+        let rows = data.rankingsByPost
+          .map(\.fragments.rankingRow)
+          .enumerated()
+          .map(RankingRowLogic.State.init(state:))
+
         state.list = RankingListLogic.State(
           banners: IdentifiedArrayOf(uniqueElements: banners),
-          rows: []
+          rows: IdentifiedArrayOf(uniqueElements: rows)
         )
         return .none
 

@@ -73,7 +73,7 @@ public extension FlyCam {
         ] }
 
         public var id: FlyCam.ID { __data["id"] }
-        public var altitude: Int { __data["altitude"] }
+        public var altitude: Double { __data["altitude"] }
         public var videoUrl: String { __data["videoUrl"] }
         public var user: RankingRow.User { __data["user"] }
 

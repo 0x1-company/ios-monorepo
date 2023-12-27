@@ -22,7 +22,7 @@ input CreateFirebaseRegistrationTokenInput {
 
 input CreatePostInput {
   """高度"""
-  altitude: Int!
+  altitude: Float!
 
   """動画URL"""
   videoUrl: String!
@@ -68,7 +68,7 @@ type PageInfo {
 }
 
 type Post {
-  altitude: Int!
+  altitude: Float!
   id: ID!
   user: User!
   videoUrl: String!

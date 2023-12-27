@@ -16,13 +16,13 @@ public extension FlyCam {
     public static var __selections: [ApolloAPI.Selection] { [
       .field("__typename", String.self),
       .field("id", FlyCam.ID.self),
-      .field("altitude", Int.self),
+      .field("altitude", Double.self),
       .field("videoUrl", String.self),
       .field("user", User.self),
     ] }
 
     public var id: FlyCam.ID { __data["id"] }
-    public var altitude: Int { __data["altitude"] }
+    public var altitude: Double { __data["altitude"] }
     public var videoUrl: String { __data["videoUrl"] }
     public var user: User { __data["user"] }
 
