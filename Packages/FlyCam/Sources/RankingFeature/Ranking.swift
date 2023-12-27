@@ -52,7 +52,8 @@ public struct RankingLogic {
           .map(BannerCardLogic.State.init(banner:))
 
         state.list = RankingListLogic.State(
-          banners: IdentifiedArrayOf(uniqueElements: banners)
+          banners: IdentifiedArrayOf(uniqueElements: banners),
+          rows: []
         )
         return .none
 
