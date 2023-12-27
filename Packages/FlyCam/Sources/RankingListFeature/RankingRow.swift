@@ -14,7 +14,7 @@ public struct RankingRowLogic {
 
     public init(state: EnumeratedSequence<[FlyCam.RankingRow]>.Iterator.Element) {
       id = state.element.id
-      rank = state.offset
+      rank = state.offset + 1
       altitude = state.element.altitude
       displayName = state.element.user.displayName
     }

@@ -76,7 +76,9 @@ public struct DisplayNameEditLogic {
 
       case .updateDisplayNameResponse:
         state.isActivityIndicatorVisible = false
-        return .none
+        return .run { send in
+          await dismiss()
+        }
 
       default:
         return .none
