@@ -2,6 +2,7 @@ import CameraRecordFeature
 import CameraResultFeature
 import ComposableArchitecture
 import FeedbackGeneratorClient
+import Photos
 import SwiftUI
 
 @Reducer
@@ -47,6 +48,13 @@ public struct CameraLogic {
         state.child = .result(
           CameraResultLogic.State(altitude: altitude, videoURL: videoURL)
         )
+        PHPhotoLibrary.shared().performChanges({
+          PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: videoURL)
+        }) { _, error in
+          if let error = error {
+            print("PHPhotoLibrary.shared().performChanges: \(error.localizedDescription)")
+          }
+        }
         return .none
 
       case .child(.result(.sendButtonTapped)):
@@ -101,7 +109,7 @@ public struct CameraView: View {
         )
       }
     }
-    .navigationTitle("Camera")
+    .navigationTitle("FlyCam")
     .navigationBarTitleDisplayMode(.inline)
     .task { await store.send(.onTask).finish() }
     .onAppear { store.send(.onAppear) }

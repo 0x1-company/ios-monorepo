@@ -62,7 +62,7 @@ public struct CameraResultView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 24) {
-        VideoPlayer(player: viewStore.player)
+        CALayerView(caLayer: AVPlayerLayer(player: viewStore.player))
           .aspectRatio(3 / 4, contentMode: .fill)
           .frame(width: UIScreen.main.bounds.width)
           .clipShape(RoundedRectangle(cornerRadius: 24))
@@ -88,16 +88,4 @@ public struct CameraResultView: View {
       .task { await store.send(.onTask).finish() }
     }
   }
-}
-
-#Preview {
-  CameraResultView(
-    store: .init(
-      initialState: CameraResultLogic.State(
-        altitude: 1.0,
-        videoURL: .applicationDirectory
-      ),
-      reducer: { CameraResultLogic() }
-    )
-  )
 }
