@@ -18,6 +18,7 @@ public struct RankingLogic {
   public enum Action {
     case onTask
     case onAppear
+    case refresh
     case list(RankingListLogic.Action)
     case rankingResponse(Result<FlyCam.RankingQuery.Data, Error>)
   }
@@ -34,17 +35,17 @@ public struct RankingLogic {
       switch action {
       case .onTask:
         return .run { send in
-          for try await data in flycam.ranking() {
-            await send(.rankingResponse(.success(data)))
-          }
-        } catch: { error, send in
-          await send(.rankingResponse(.failure(error)))
+          await rankingRequest(send: send)
         }
-        .cancellable(id: Cancel.ranking, cancelInFlight: true)
 
       case .onAppear:
         analytics.logScreen(screenName: "Ranking", of: self)
         return .none
+        
+      case .refresh:
+        return .run { send in
+          await rankingRequest(send: send)
+        }
 
       case let .rankingResponse(.success(data)):
         let banners = data.banners
@@ -68,6 +69,18 @@ public struct RankingLogic {
     }
     .ifLet(\.list, action: \.list) {
       RankingListLogic()
+    }
+  }
+  
+  func rankingRequest(send: Send<Action>) async {
+    await withTaskCancellation(id: Cancel.ranking, cancelInFlight: true) {
+      do {
+        for try await data in flycam.ranking() {
+          await send(.rankingResponse(.success(data)))
+        }
+      } catch {
+        await send(.rankingResponse(.failure(error)))
+      }
     }
   }
 }

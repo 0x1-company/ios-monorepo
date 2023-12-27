@@ -48,6 +48,12 @@ public struct RootNavigationLogic {
       case .camera(.delegate(.dismiss)):
         state.camera = nil
         return .none
+        
+      case .camera(.child(.result(.delegate(.sendCompleted)))):
+        state.camera = nil
+        return RankingLogic()
+          .reduce(into: &state.ranking, action: .refresh)
+          .map(Action.ranking)
 
       default:
         return .none

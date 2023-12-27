@@ -1,10 +1,10 @@
 import AVKit
 import AVPlayerNotificationClient
 import ComposableArchitecture
-import FlyCam
-import FlyCamClient
 import FeedbackGeneratorClient
 import FirebaseStorageClient
+import FlyCam
+import FlyCamClient
 import SwiftUI
 
 @Reducer
@@ -15,7 +15,7 @@ public struct CameraResultLogic {
     let altitude: Double
     let videoURL: URL
     let player: AVPlayer
-    
+
     var isActivityIndicatorVisible = false
 
     public init(altitude: Double, videoURL: URL) {
@@ -32,9 +32,9 @@ public struct CameraResultLogic {
     case uploadResponse(Result<URL, Error>)
     case createPostResponse(Result<FlyCam.CreatePostMutation.Data, Error>)
     case delegate(Delegate)
-    
+
     public enum Delegate: Equatable {
-      case dismiss
+      case sendCompleted
     }
   }
 
@@ -43,7 +43,7 @@ public struct CameraResultLogic {
   @Dependency(\.firebaseStorage) var firebaseStorage
   @Dependency(\.feedbackGenerator) var feedbackGenerator
   @Dependency(\.avplayerNotification.didPlayToEndTimeNotification) var didPlayToEndTimeNotification
-  
+
   enum Cancel {
     case createPost
   }
@@ -75,7 +75,7 @@ public struct CameraResultLogic {
         state.player.seek(to: CMTime.zero)
         state.player.play()
         return .none
-        
+
       case let .uploadResponse(.success(url)):
         let input = FlyCam.CreatePostInput(
           altitude: state.altitude,
@@ -86,15 +86,15 @@ public struct CameraResultLogic {
             try await createPost(input)
           }))
         }
-        
+
       case .uploadResponse(.failure):
         state.isActivityIndicatorVisible = false
         return .none
-        
+
       case .createPostResponse:
         state.isActivityIndicatorVisible = false
-        return .send(.delegate(.dismiss))
-        
+        return .send(.delegate(.sendCompleted), animation: .default)
+
       default:
         return .none
       }
@@ -119,7 +119,7 @@ public struct CameraResultView: View {
 
         VStack(spacing: 16) {
           Text("\(viewStore.altitude)Meter", bundle: .module)
-          
+
           if viewStore.isActivityIndicatorVisible {
             ProgressView()
               .tint(Color.primary)
