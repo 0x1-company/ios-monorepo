@@ -1,6 +1,8 @@
 import AVKit
 import AVPlayerNotificationClient
 import ComposableArchitecture
+import FlyCam
+import FlyCamClient
 import FeedbackGeneratorClient
 import SwiftUI
 
@@ -22,10 +24,16 @@ public struct CameraResultLogic {
     case onTask
     case sendButtonTapped
     case didPlayToEndTime
+    case createPostResponse(Result<FlyCam.CreatePostMutation.Data, Error>)
   }
 
+  @Dependency(\.flycam.createPost) var createPost
   @Dependency(\.feedbackGenerator) var feedbackGenerator
   @Dependency(\.avplayerNotification.didPlayToEndTimeNotification) var didPlayToEndTimeNotification
+  
+  enum Cancel {
+    case createPost
+  }
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
@@ -39,13 +47,26 @@ public struct CameraResultLogic {
         }
 
       case .sendButtonTapped:
-        return .run { _ in
+        let input = FlyCam.CreatePostInput(
+          altitude: state.altitude,
+          videoUrl: ""
+        )
+        return .run { send in
           await feedbackGenerator.impactOccurred()
+          await send(.createPostResponse(Result {
+            try await createPost(input)
+          }))
         }
 
       case .didPlayToEndTime:
         state.player.seek(to: CMTime.zero)
         state.player.play()
+        return .none
+        
+      case .createPostResponse:
+        return .none
+        
+      default:
         return .none
       }
     }
