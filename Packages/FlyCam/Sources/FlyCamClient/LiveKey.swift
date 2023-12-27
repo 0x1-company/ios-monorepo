@@ -33,10 +33,6 @@ public extension FlyCamClient {
       pushNotificationBadge: {
         let query = FlyCam.PushNotificationBadgeQuery()
         return apolloClient.watch(query: query)
-      },
-      createReport: { input in
-        let mutation = FlyCam.CreateReportMutation(input: input)
-        return try await apolloClient.perform(mutation: mutation)
       }
     )
   }
