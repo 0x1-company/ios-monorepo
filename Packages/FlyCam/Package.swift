@@ -15,6 +15,7 @@ let package = Package(
     .library(name: "CameraFeature", targets: ["CameraFeature"]),
     .library(name: "CameraRecordFeature", targets: ["CameraFeature"]),
     .library(name: "CameraResultFeature", targets: ["CameraFeature"]),
+    .library(name: "CaptureFeature", targets: ["CaptureFeature"]),
     .library(name: "Constants", targets: ["Constants"]),
     .library(name: "DeleteAccountFeature", targets: ["DeleteAccountFeature"]),
     .library(name: "DisplayNameEditFeature", targets: ["DisplayNameEditFeature"]),
@@ -70,6 +71,12 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "CameraResultFeature", dependencies: [
+      .product(name: "AnalyticsClient", package: "SDK"),
+      .product(name: "FeedbackGeneratorClient", package: "SDK"),
+      .product(name: "AVPlayerNotificationClient", package: "SDK"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
+    .target(name: "CaptureFeature", dependencies: [
       .product(name: "AnalyticsClient", package: "SDK"),
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "AVPlayerNotificationClient", package: "SDK"),
