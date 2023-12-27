@@ -57,7 +57,7 @@ public struct CameraLogic {
         }
         return .none
 
-      case .child(.result(.sendButtonTapped)):
+      case .child(.result(.delegate(.dismiss))):
         return .send(.delegate(.dismiss), animation: .default)
 
       default:

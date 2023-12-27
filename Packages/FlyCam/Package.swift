@@ -72,6 +72,7 @@ let package = Package(
     .target(name: "CameraResultFeature", dependencies: [
       "FlyCamClient",
       .product(name: "AnalyticsClient", package: "SDK"),
+      .product(name: "FirebaseStorageClient", package: "SDK"),
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "AVPlayerNotificationClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
