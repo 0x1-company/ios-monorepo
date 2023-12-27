@@ -1,8 +1,19 @@
 BeMatch:
-- any: ['Packages/BeMatch/**']
+- changed-files:
+  - any-glob-to-any-file:
+    - App/BeMatch/**
+    - Packages/BeMatch/**
+    - BeMatch.xcworkspace/**
 
 FlyCam:
-- any: ['Packages/FlyCam/**']
+- changed-files:
+  - any-glob-to-any-file:
+    - App/FlyCam/**
+    - Packages/FlyCam/**
+    - FlyCam.xcworkspace/**
 
 SDK:
-- any: ['Packages/SDK/**']
+- changed-files:
+  - any-glob-to-any-file:
+    - Packages/SDK/**
+    - SDK.xcworkspace/**
