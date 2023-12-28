@@ -1,3 +1,5 @@
+import AVKit
+import AVPlayerNotificationClient
 import ComposableArchitecture
 import FlyCam
 import SwiftUI
@@ -11,23 +13,45 @@ public struct RankingRowLogic {
     let rank: Int
     let altitude: Double
     let displayName: String
+    
+    let player: AVPlayer
 
     public init(state: EnumeratedSequence<[FlyCam.RankingRow]>.Iterator.Element) {
       id = state.element.id
       rank = state.offset + 1
       altitude = state.element.altitude
       displayName = state.element.user.displayName
+      let videoURL = URL(string: state.element.videoUrl)!
+      player = AVPlayer(url: videoURL)
     }
   }
 
   public enum Action {
     case onTask
+    case didPlayToEndTime
+  }
+  
+  @Dependency(\.avplayerNotification.didPlayToEndTimeNotification) var didPlayToEndTimeNotification
+  
+  enum Cancel {
+    case didPlayToEndTimeNotification
   }
 
   public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { _, action in
+    Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
+        state.player.play()
+        return .run { send in
+          for await _ in didPlayToEndTimeNotification() {
+            await send(.didPlayToEndTime)
+          }
+        }
+        .cancellable(id: Cancel.didPlayToEndTimeNotification, cancelInFlight: true)
+        
+      case .didPlayToEndTime:
+        state.player.seek(to: CMTime.zero)
+        state.player.play()
         return .none
       }
     }
@@ -61,11 +85,12 @@ public struct RankingRowView: View {
         .frame(height: 56)
         .padding(.horizontal, 16)
 
-        Color.red
-          .aspectRatio(3 / 4, contentMode: .fit)
+        VideoPlayer(player: viewStore.player)
+          .aspectRatio(3 / 4, contentMode: .fill)
+          .frame(width: UIScreen.main.bounds.width)
           .clipShape(RoundedRectangle(cornerRadius: 16))
-          .compositingGroup()
       }
+      .task { await store.send(.onTask).finish() }
     }
   }
 }
