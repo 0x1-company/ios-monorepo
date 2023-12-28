@@ -63,8 +63,8 @@ public struct RecommendationEmptyLogic {
 
       case let .currentUserResponse(.success(data)):
         state.sharedURL = data.currentUser.gender == .female
-          ? Constants.appStoreFemaleURL
-          : Constants.appStoreURL
+          ? Constants.appStoreFemaleForEmptyURL
+          : Constants.appStoreForEmptyURL
         return .none
 
       case let .onCompletion(completion):
@@ -103,7 +103,9 @@ public struct RecommendationEmptyView: View {
             .foregroundStyle(Color.white)
             .multilineTextAlignment(.center)
 
-          ShareLink(item: viewStore.sharedURL) {
+          Button {
+            store.send(.shareButtonTapped)
+          } label: {
             Text("Share", bundle: .module)
               .font(.system(.subheadline, weight: .semibold))
               .frame(height: 50)
