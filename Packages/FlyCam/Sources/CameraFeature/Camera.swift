@@ -1,3 +1,6 @@
+import AVFoundation
+import UIApplicationClient
+import AVFoundationClient
 import CameraRecordFeature
 import CameraResultFeature
 import ComposableArchitecture
@@ -11,6 +14,7 @@ public struct CameraLogic {
 
   public struct State: Equatable {
     var child = Child.State.record()
+    @PresentationState var alert: AlertState<Action.Alert>?
     public init() {}
   }
 
@@ -18,22 +22,36 @@ public struct CameraLogic {
     case onTask
     case onAppear
     case closeButtonTapped
+    case authorizationStatusResponse(AVAuthorizationStatus)
     case child(Child.Action)
+    case alert(PresentationAction<Alert>)
     case delegate(Delegate)
+    
+    public enum Alert: Equatable {
+      case openSettings
+      case notNow
+    }
 
     public enum Delegate: Equatable {
       case dismiss
     }
   }
 
+  @Dependency(\.openURL) var openURL
   @Dependency(\.feedbackGenerator) var feedbackGenerator
+  @Dependency(\.avfoundation.authorizationStatus) var authorizationStatus
+  @Dependency(\.application.openSettingsURLString) var openSettingsURLString
 
   public var body: some Reducer<State, Action> {
     Scope(state: \.child, action: \.child, child: Child.init)
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
-        return .none
+        return .run { send in
+          await send(.authorizationStatusResponse(
+            authorizationStatus(AVMediaType.video)
+          ))
+        }
 
       case .onAppear:
         return .none
@@ -43,19 +61,40 @@ public struct CameraLogic {
           await feedbackGenerator.impactOccurred()
           await send(.delegate(.dismiss), animation: .default)
         }
+        
+      case .authorizationStatusResponse(.denied):
+        state.alert = AlertState {
+          TextState("Enable Camera", bundle: .module)
+        } actions: {
+          ButtonState(action: .openSettings) {
+            TextState("Open Settings", bundle: .module)
+          }
+          ButtonState(role: .cancel, action: .notNow) {
+            TextState("Not Now", bundle: .module)
+          }
+        } message: {
+          TextState("Open Settings to enable the permission to use the camera.", bundle: .module)
+        }
+        return .none
 
       case let .child(.record(.delegate(.result(altitude, videoURL)))):
         state.child = .result(
           CameraResultLogic.State(altitude: altitude, videoURL: videoURL)
         )
-        PHPhotoLibrary.shared().performChanges({
-          PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: videoURL)
-        }) { _, error in
-          if let error = error {
-            print("PHPhotoLibrary.shared().performChanges: \(error.localizedDescription)")
-          }
-        }
         return .none
+        
+      case .alert(.presented(.openSettings)):
+        state.alert = nil
+        return .run { send in
+          let string = await openSettingsURLString()
+          guard let url = URL(string: string) else { return }
+          await openURL(url)
+          await send(.delegate(.dismiss), animation: .default)
+        }
+        
+      case .alert(.presented(.notNow)):
+        state.alert = nil
+        return .send(.delegate(.dismiss), animation: .default)
 
       default:
         return .none
@@ -123,6 +162,7 @@ public struct CameraView: View {
         }
       }
     }
+    .alert(store: store.scope(state: \.$alert, action: \.alert))
   }
 }
 
