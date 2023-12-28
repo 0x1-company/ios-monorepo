@@ -92,25 +92,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "あなたのカメラはプロフィール写真の撮影に使用されます。"
-          }
-        }
-      }
-    },
-    "NSContactsUsageDescription" : {
-      "comment" : "Privacy - Contacts Usage Description",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Your contacts are used to find friends and uploaded to a server."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "連絡先は友達を探すのに使用し、サーバーにアップロードされます。"
+            "value" : "あなたのカメラは投稿の撮影に使用されます。"
           }
         }
       }
@@ -123,6 +105,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Your Photo Library are used to select profile picture."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたのマイクは投稿の撮影に使用されます。"
           }
         }
       }
@@ -140,7 +128,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "あなたのフォトライブラリは、プロフィール写真を選択するために使用されます。"
+            "value" : "あなたのフォトライブラリは、投稿を保存するために使用されます。"
           }
         }
       }
