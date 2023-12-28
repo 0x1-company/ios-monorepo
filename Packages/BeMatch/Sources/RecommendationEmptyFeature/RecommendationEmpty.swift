@@ -103,7 +103,9 @@ public struct RecommendationEmptyView: View {
             .foregroundStyle(Color.white)
             .multilineTextAlignment(.center)
 
-          ShareLink(item: viewStore.sharedURL) {
+          Button {
+            store.send(.shareButtonTapped)
+          } label: {
             Text("Share", bundle: .module)
               .font(.system(.subheadline, weight: .semibold))
               .frame(height: 50)
