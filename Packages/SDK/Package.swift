@@ -9,6 +9,7 @@ var package = Package(
     .iOS(.v16),
   ],
   products: [
+    .library(name: "ActivityView", targets: ["ActivityView"]),
     .library(name: "AnalyticsClient", targets: ["AnalyticsClient"]),
     .library(name: "ApolloClientHelpers", targets: ["ApolloClientHelpers"]),
     .library(name: "ApolloConcurrency", targets: ["ApolloConcurrency"]),
@@ -48,6 +49,7 @@ var package = Package(
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.5.6"),
   ],
   targets: [
+    .target(name: "ActivityView"),
     .target(name: "AnalyticsClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
       .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),

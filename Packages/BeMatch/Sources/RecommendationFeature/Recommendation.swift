@@ -61,6 +61,8 @@ public struct RecommendationLogic {
           ? .empty()
           : .swipe(RecommendationSwipeLogic.State(rows: rows))
 
+        state.child = .empty()
+
         return .none
 
       case let .child(.swipe(.delegate(.matched(username)))):
