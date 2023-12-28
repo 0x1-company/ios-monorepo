@@ -63,8 +63,8 @@ public struct RecommendationEmptyLogic {
 
       case let .currentUserResponse(.success(data)):
         state.sharedURL = data.currentUser.gender == .female
-          ? Constants.appStoreFemaleForEmptyURL
-          : Constants.appStoreForEmptyURL
+          ? Constants.appStoreFemaleURL
+          : Constants.appStoreURL
         return .none
 
       case let .onCompletion(completion):
