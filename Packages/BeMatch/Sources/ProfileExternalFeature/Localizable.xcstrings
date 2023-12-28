@@ -1,7 +1,7 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "🔗 bere.al/%@" : {
+    "🔗 %@" : {
 
     },
     "🔗 BeRe.al/%@" : {
@@ -57,7 +57,6 @@
       }
     },
     "Send Message" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
