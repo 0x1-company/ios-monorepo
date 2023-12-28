@@ -89,6 +89,7 @@ public struct RankingRowView: View {
           .aspectRatio(3 / 4, contentMode: .fill)
           .frame(width: UIScreen.main.bounds.width)
           .clipShape(RoundedRectangle(cornerRadius: 16))
+          .disabled(true)
       }
       .task { await store.send(.onTask).finish() }
     }
