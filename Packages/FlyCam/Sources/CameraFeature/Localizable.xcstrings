@@ -1,8 +1,55 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Enable Camera" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラを使用する"
+          }
+        }
+      }
+    },
     "FlyCam" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FlyCam"
+          }
+        }
+      }
+    },
+    "Not Now" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あとで"
+          }
+        }
+      }
+    },
+    "Open Settings" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定を開く"
+          }
+        }
+      }
+    },
+    "Open Settings to enable the permission to use the camera." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラへのアクセスを許可するために設定を開いてください。"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

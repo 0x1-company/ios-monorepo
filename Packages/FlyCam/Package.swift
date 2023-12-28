@@ -50,7 +50,6 @@ let package = Package(
       .product(name: "ConfigGlobalClient", package: "SDK"),
       .product(name: "UserSettingsClient", package: "SDK"),
       .product(name: "FirebaseCoreClient", package: "SDK"),
-      .product(name: "UIApplicationClient", package: "SDK"),
       .product(name: "ApolloClientHelpers", package: "SDK"),
       .product(name: "UserNotificationClient", package: "SDK"),
       .product(name: "FirebaseMessagingClient", package: "SDK"),
@@ -63,6 +62,8 @@ let package = Package(
     .target(name: "CameraFeature", dependencies: [
       "CameraRecordFeature",
       "CameraResultFeature",
+      .product(name: "AVFoundationClient", package: "SDK"),
+      .product(name: "UIApplicationClient", package: "SDK"),
     ]),
     .target(name: "CameraRecordFeature", dependencies: [
       .product(name: "AnalyticsClient", package: "SDK"),
