@@ -195,6 +195,7 @@ let package = Package(
       "Styleguide",
       "BeMatchClient",
       "AnalyticsKeys",
+      .product(name: "ActivityView", package: "SDK"),
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),

@@ -60,6 +60,8 @@ public struct RecommendationLogic {
         state.child = rows.isEmpty
           ? .empty()
           : .swipe(RecommendationSwipeLogic.State(rows: rows))
+        
+        state.child = .empty()
 
         return .none
 
