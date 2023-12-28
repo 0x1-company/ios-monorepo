@@ -80,14 +80,16 @@ public struct MatchGridView: View {
                 .aspectRatio(3 / 4, contentMode: .fill)
             },
             placeholder: {
-              ProgressView()
-                .progressViewStyle(CircularProgressViewStyle())
-                .tint(Color.white)
+              Color.black
                 .aspectRatio(3 / 4, contentMode: .fill)
-                .background()
+                .overlay {
+                  ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .tint(Color.white)
+                }
             }
           )
-          .cornerRadius(6)
+          .clipShape(RoundedRectangle(cornerRadius: 6))
           .overlay(alignment: .bottom) {
             if !viewStore.match.isRead {
               Color.pink

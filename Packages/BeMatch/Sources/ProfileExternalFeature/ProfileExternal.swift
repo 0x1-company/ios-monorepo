@@ -315,7 +315,7 @@ public struct ProfileExternalView: View {
             }
             .padding(.horizontal, 16)
 
-            Text("🔗 \(viewStore.match.targetUser.berealUsername)")
+            Text("🔗 BeRe.al/\(viewStore.match.targetUser.berealUsername)")
               .font(.system(.caption))
           }
 
