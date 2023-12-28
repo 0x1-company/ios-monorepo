@@ -30,8 +30,6 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Your camera are used to take profile picture.</string>
-	<key>NSContactsUsageDescription</key>
-	<string>Your contacts are used to find friends and uploaded to a server.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Your Photo Library are used to select profile picture.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -63,7 +61,7 @@
 			<key>UIApplicationShortcutItemSubtitle</key>
 			<string>Give it a secound chance!</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>🥺 Don't remove the FlyCam!</string>
+			<string>🥺 Don&apos;t remove the FlyCam!</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>/</string>
 		</dict>
