@@ -1,12 +1,12 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Jump to BeReal." : {
+    "Next" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeReal.に飛ぶ"
+            "value" : "つぎへ"
           }
         }
       }

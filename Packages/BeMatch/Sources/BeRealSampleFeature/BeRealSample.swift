@@ -26,7 +26,6 @@ public struct BeRealSampleLogic {
     }
   }
 
-  @Dependency(\.openURL) var openURL
   @Dependency(\.analytics) var analytics
   @Dependency(\.feedbackGenerator) var feedbackGenerator
 
@@ -42,12 +41,8 @@ public struct BeRealSampleLogic {
         return .none
 
       case .nextButtonTapped:
-        guard let url = URL(string: "bere.al://") else {
-          return .none
-        }
         return .run { send in
           await feedbackGenerator.impactOccurred()
-          await openURL(url)
           await send(.delegate(.nextScreen))
         }
 
@@ -76,7 +71,7 @@ public struct BeRealSampleView: View {
         Spacer()
 
         PrimaryButton(
-          String(localized: "Jump to BeReal.", bundle: .module)
+          String(localized: "Next", bundle: .module)
         ) {
           store.send(.nextButtonTapped)
         }
