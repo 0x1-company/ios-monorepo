@@ -56,6 +56,9 @@ public struct DirectMessageLogic {
           DirectMessageRowLogic.State(text: state.message)
         )
         messages = state.rows
+        analytics.logEvent(name: "send_message", parameters: [
+          "text": state.message,
+        ])
         state.message.removeAll()
         return .none
 
