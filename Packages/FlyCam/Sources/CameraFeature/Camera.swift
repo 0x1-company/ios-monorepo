@@ -1,5 +1,4 @@
 import AVFoundation
-import UIApplicationClient
 import AVFoundationClient
 import CameraRecordFeature
 import CameraResultFeature
@@ -7,6 +6,7 @@ import ComposableArchitecture
 import FeedbackGeneratorClient
 import Photos
 import SwiftUI
+import UIApplicationClient
 
 @Reducer
 public struct CameraLogic {
@@ -26,7 +26,7 @@ public struct CameraLogic {
     case child(Child.Action)
     case alert(PresentationAction<Alert>)
     case delegate(Delegate)
-    
+
     public enum Alert: Equatable {
       case openSettings
       case notNow
@@ -61,7 +61,7 @@ public struct CameraLogic {
           await feedbackGenerator.impactOccurred()
           await send(.delegate(.dismiss), animation: .default)
         }
-        
+
       case .authorizationStatusResponse(.denied):
         state.alert = AlertState {
           TextState("Enable Camera", bundle: .module)
@@ -82,7 +82,7 @@ public struct CameraLogic {
           CameraResultLogic.State(altitude: altitude, videoURL: videoURL)
         )
         return .none
-        
+
       case .alert(.presented(.openSettings)):
         state.alert = nil
         return .run { send in
@@ -91,7 +91,7 @@ public struct CameraLogic {
           await openURL(url)
           await send(.delegate(.dismiss), animation: .default)
         }
-        
+
       case .alert(.presented(.notNow)):
         state.alert = nil
         return .send(.delegate(.dismiss), animation: .default)
