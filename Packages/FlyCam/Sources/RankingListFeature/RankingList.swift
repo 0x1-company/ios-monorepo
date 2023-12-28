@@ -9,8 +9,8 @@ public struct RankingListLogic {
   public init() {}
 
   public struct State: Equatable {
-    let banners: IdentifiedArrayOf<BannerCardLogic.State>
-    let rows: IdentifiedArrayOf<RankingRowLogic.State>
+    var banners: IdentifiedArrayOf<BannerCardLogic.State>
+    var rows: IdentifiedArrayOf<RankingRowLogic.State>
 
     var empty: RankingEmptyLogic.State?
 
@@ -42,6 +42,12 @@ public struct RankingListLogic {
       default:
         return .none
       }
+    }
+    .forEach(\.banners, action: \.banners) {
+      BannerCardLogic()
+    }
+    .forEach(\.rows, action: \.rows) {
+      RankingRowLogic()
     }
     .ifLet(\.empty, action: \.empty) {
       RankingEmptyLogic()

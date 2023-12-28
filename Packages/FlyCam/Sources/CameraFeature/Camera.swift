@@ -106,11 +106,14 @@ public struct CameraView: View {
         )
       }
     }
-    .navigationTitle("FlyCam")
     .navigationBarTitleDisplayMode(.inline)
     .task { await store.send(.onTask).finish() }
     .onAppear { store.send(.onAppear) }
     .toolbar {
+      ToolbarItem(placement: .principal) {
+        Text("FlyCam", bundle: .module)
+          .font(.system(.title3, weight: .semibold))
+      }
       ToolbarItem(placement: .topBarLeading) {
         Button {
           store.send(.closeButtonTapped)

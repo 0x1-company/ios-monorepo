@@ -102,10 +102,15 @@ public struct RankingView: View {
           .frame(maxWidth: .infinity, maxHeight: .infinity)
       }
     )
-    .navigationTitle(Text("Ranking", bundle: .module))
     .navigationBarTitleDisplayMode(.inline)
     .task { await store.send(.onTask).finish() }
     .onAppear { store.send(.onAppear) }
+    .toolbar {
+      ToolbarItem(placement: .principal) {
+        Text("FlyCam", bundle: .module)
+          .font(.system(.title3, weight: .semibold))
+      }
+    }
   }
 }
 

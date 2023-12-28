@@ -132,6 +132,7 @@ let package = Package(
       "Styleguide",
       "FlyCamClient",
       "BannerFeature",
+      .product(name: "AVPlayerNotificationClient", package: "SDK"),
     ]),
     .target(name: "ReportFeature", dependencies: [
       .product(name: "AnalyticsClient", package: "SDK"),
