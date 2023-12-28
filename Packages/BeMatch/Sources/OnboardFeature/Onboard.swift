@@ -43,7 +43,8 @@ public struct OnboardLogic {
         return .none
 
       case .path(.element(_, .gender(.delegate(.nextScreen)))):
-        state.path.append(.sample())
+//        state.path.append(.sample())
+        state.path.append(.capture())
         return .none
 
       case .path(.element(_, .sample(.delegate(.nextScreen)))):
