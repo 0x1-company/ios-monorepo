@@ -125,13 +125,16 @@ public struct DisplayNameEditView: View {
       .padding(.bottom, 16)
       .padding(.horizontal, 16)
       .multilineTextAlignment(.center)
-      .navigationTitle("FlyCam")
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
       .onAppear {
         isFocused = true
       }
       .toolbar {
+        ToolbarItem(placement: .principal) {
+          Text("FlyCam", bundle: .module)
+            .font(.system(.title3, weight: .semibold))
+        }
         ToolbarItem(placement: .topBarLeading) {
           Button {
             store.send(.closeButtonTapped)

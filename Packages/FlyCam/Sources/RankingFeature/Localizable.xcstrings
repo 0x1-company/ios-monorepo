@@ -12,6 +12,9 @@
         }
       }
     },
+    "FlyCam" : {
+
+    },
     "No.%lld: %lf meter" : {
       "extractionState" : "stale",
       "localizations" : {
