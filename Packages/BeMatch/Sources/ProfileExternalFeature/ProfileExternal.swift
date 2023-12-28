@@ -308,14 +308,14 @@ public struct ProfileExternalView: View {
           }
 
           VStack(spacing: 12) {
-//            PrimaryButton(
-//              String(localized: "Send Message", bundle: .module)
-//            ) {
-//              store.send(.addBeRealButtonTapped)
-//            }
-//            .padding(.horizontal, 16)
+            PrimaryButton(
+              String(localized: "Send Message", bundle: .module)
+            ) {
+              store.send(.addBeRealButtonTapped)
+            }
+            .padding(.horizontal, 16)
 
-            Text("🔗 bere.al/\(viewStore.match.targetUser.berealUsername)")
+            Text("🔗 \(viewStore.match.targetUser.berealUsername)")
               .font(.system(.caption))
           }
 
