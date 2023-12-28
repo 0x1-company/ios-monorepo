@@ -1,4 +1,4 @@
-name: Auth Assign
+name: Auto Assign
 
 on:
   pull_request:
