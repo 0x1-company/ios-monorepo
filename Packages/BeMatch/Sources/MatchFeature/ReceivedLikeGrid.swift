@@ -83,7 +83,7 @@ public struct ReceivedLikeGridView: View {
             .offset(y: 17)
         }
 
-        Text("Like")
+        Text("Liked by \(viewStore.count) people", bundle: .module)
           .font(.system(.subheadline, weight: .semibold))
           .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
       }
