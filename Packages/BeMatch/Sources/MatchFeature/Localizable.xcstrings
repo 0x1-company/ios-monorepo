@@ -20,6 +20,26 @@
           }
         }
       }
+    },
+    "OK" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "Swipe more to match!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "もっとスワイプしてマッチしよう！"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
