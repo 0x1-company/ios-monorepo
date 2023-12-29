@@ -118,6 +118,7 @@ public struct ReceivedLikeGridView: View {
           }
 
           Text("Liked by \(viewStore.count) people", bundle: .module)
+            .foregroundStyle(Color.primary)
             .font(.system(.subheadline, weight: .semibold))
             .frame(maxWidth: .infinity, minHeight: 54, maxHeight: .infinity, alignment: .leading)
         }
