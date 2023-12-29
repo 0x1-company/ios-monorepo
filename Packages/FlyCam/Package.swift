@@ -10,6 +10,7 @@ let package = Package(
     .iOS("16.4"),
   ],
   products: [
+    .library(name: "AnalyticsKeys", targets: ["AnalyticsKeys"]),
     .library(name: "AppFeature", targets: ["AppFeature"]),
     .library(name: "BannerFeature", targets: ["BannerFeature"]),
     .library(name: "CameraFeature", targets: ["CameraFeature"]),
@@ -38,6 +39,9 @@ let package = Package(
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.5.6"),
   ],
   targets: [
+    .target(name: "AnalyticsKeys", dependencies: [
+      .product(name: "AnalyticsClient", package: "SDK"),
+    ]),
     .target(name: "AppFeature", dependencies: [
       "LaunchFeature",
       "NavigationFeature",
@@ -55,7 +59,7 @@ let package = Package(
       .product(name: "FirebaseMessagingClient", package: "SDK"),
     ]),
     .target(name: "BannerFeature", dependencies: [
-      .product(name: "AnalyticsClient", package: "SDK"),
+      "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
@@ -66,13 +70,13 @@ let package = Package(
       .product(name: "UIApplicationClient", package: "SDK"),
     ]),
     .target(name: "CameraRecordFeature", dependencies: [
-      .product(name: "AnalyticsClient", package: "SDK"),
+      "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "CameraResultFeature", dependencies: [
       "FlyCamClient",
-      .product(name: "AnalyticsClient", package: "SDK"),
+      "AnalyticsKeys",
       .product(name: "FirebaseStorageClient", package: "SDK"),
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "AVPlayerNotificationClient", package: "SDK"),
@@ -81,7 +85,7 @@ let package = Package(
     .target(name: "Constants"),
     .target(name: "DeleteAccountFeature", dependencies: [
       "Styleguide",
-      .product(name: "AnalyticsClient", package: "SDK"),
+      "AnalyticsKeys",
       .product(name: "FirebaseAuthClient", package: "SDK"),
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
@@ -89,7 +93,7 @@ let package = Package(
     .target(name: "DisplayNameEditFeature", dependencies: [
       "Styleguide",
       "FlyCamClient",
-      .product(name: "AnalyticsClient", package: "SDK"),
+      "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
@@ -104,7 +108,7 @@ let package = Package(
     ]),
     .target(name: "ForceUpdateFeature", dependencies: [
       "Constants",
-      .product(name: "AnalyticsClient", package: "SDK"),
+      "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
@@ -112,7 +116,7 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "MaintenanceFeature", dependencies: [
-      .product(name: "AnalyticsClient", package: "SDK"),
+      "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
@@ -136,7 +140,7 @@ let package = Package(
       .product(name: "AVPlayerNotificationClient", package: "SDK"),
     ]),
     .target(name: "ReportFeature", dependencies: [
-      .product(name: "AnalyticsClient", package: "SDK"),
+      "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),

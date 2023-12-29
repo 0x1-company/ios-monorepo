@@ -31,6 +31,16 @@
         }
       }
     },
+    "Delete Account Completed" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウント削除が完了しました"
+          }
+        }
+      }
+    },
     "I don't know how to use it" : {
       "localizations" : {
         "ja" : {
@@ -67,6 +77,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "今はしない"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
           }
         }
       }

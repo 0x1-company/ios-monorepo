@@ -1,4 +1,7 @@
 import AnalyticsClient
+import AnalyticsKeys
+import FlyCam
+import FlyCamClient
 import ComposableArchitecture
 import FeedbackGeneratorClient
 import FirebaseAuthClient
@@ -10,6 +13,7 @@ public struct DeleteAccountLogic {
   public init() {}
 
   public struct State: Equatable {
+    @PresentationState var alert: AlertState<Action.Alert>?
     @PresentationState var confirmationDialog: ConfirmationDialogState<Action.ConfirmationDialog>?
     @BindingState var otherReason = ""
     var selectedReasons: [String] = []
@@ -28,17 +32,29 @@ public struct DeleteAccountLogic {
     case reasonButtonTapped(String)
     case deleteButtonTapped
     case notNowButtonTapped
+    case closeUserResponse(Result<FlyCam.CloseUserMutation.Data, Error>)
     case binding(BindingAction<State>)
     case confirmationDialog(PresentationAction<ConfirmationDialog>)
+    case alert(PresentationAction<Alert>)
+    case delegate(Delegate)
 
     public enum ConfirmationDialog: Equatable {
       case confirm
+    }
+
+    public enum Alert: Equatable {
+      case confirmOkay
+    }
+
+    public enum Delegate: Equatable {
+      case accountDeletionCompleted
     }
   }
 
   @Dependency(\.dismiss) var dismiss
   @Dependency(\.analytics) var analytics
   @Dependency(\.firebaseAuth) var firebaseAuth
+  @Dependency(\.flycam.closeUser) var closeUser
   @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   public var body: some Reducer<State, Action> {
@@ -50,11 +66,13 @@ public struct DeleteAccountLogic {
         return .none
 
       case .closeButtonTapped:
+        analytics.buttonClick(name: \.close)
         return .run { _ in
           await feedbackGenerator.impactOccurred()
           await dismiss()
         }
       case .notNowButtonTapped:
+        analytics.buttonClick(name: \.notNow)
         return .run { _ in
           await feedbackGenerator.impactOccurred()
           await dismiss()
@@ -83,18 +101,39 @@ public struct DeleteAccountLogic {
         let reasons = state.selectedReasons + [state.otherReason].filter { !$0.isEmpty }
         let reason = reasons.joined(separator: ",")
 
-        print(reason)
-
-        return .none
+        return .run { send in
+          analytics.buttonClick(name: \.delete, parameters: ["reason": reason])
+          await send(.closeUserResponse(Result {
+            try await closeUser()
+          }))
+        }
 
       case .confirmationDialog(.dismiss):
         state.confirmationDialog = nil
         return .none
 
+      case .closeUserResponse:
+        state.alert = AlertState {
+          TextState("Delete Account Completed", bundle: .module)
+        } actions: {
+          ButtonState(action: .confirmOkay) {
+            TextState("OK", bundle: .module)
+          }
+        }
+        return .run { _ in
+          try? firebaseAuth.signOut()
+        }
+
+      case .alert(.presented(.confirmOkay)):
+        state.alert = nil
+        return .send(.delegate(.accountDeletionCompleted))
+
       default:
         return .none
       }
     }
+    .ifLet(\.$alert, action: \.alert)
+    .ifLet(\.$confirmationDialog, action: \.confirmationDialog)
   }
 }
 
@@ -177,11 +216,13 @@ public struct DeleteAccountView: View {
               .bold()
               .foregroundStyle(Color.white)
           }
+          .buttonStyle(HoldDownButtonStyle())
         }
       }
       .confirmationDialog(
         store: store.scope(state: \.$confirmationDialog, action: \.confirmationDialog)
       )
+      .alert(store: store.scope(state: \.$alert, action: \.alert))
     }
   }
 }
