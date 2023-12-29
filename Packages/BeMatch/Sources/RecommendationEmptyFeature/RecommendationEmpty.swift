@@ -59,6 +59,7 @@ public struct RecommendationEmptyLogic {
 
       case .shareButtonTapped:
         state.isPresented = true
+        analytics.buttonClick(name: \.share)
         return .none
 
       case let .currentUserResponse(.success(data)):
