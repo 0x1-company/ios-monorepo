@@ -11,7 +11,7 @@ public struct ReceivedLikeGridLogic {
   public struct State: Equatable {
     let imageUrl: String
     let count: Int
-    
+
     @PresentationState var alert: AlertState<Action.Alert>?
 
     public init(imageUrl: String, count: Int) {
@@ -23,7 +23,7 @@ public struct ReceivedLikeGridLogic {
   public enum Action {
     case gridButtonTapped
     case alert(PresentationAction<Alert>)
-    
+
     public enum Alert: Equatable {
       case confirmOkay
     }
@@ -43,11 +43,11 @@ public struct ReceivedLikeGridLogic {
           TextState("Swipe more to match!", bundle: .module)
         }
         return .none
-        
+
       case .alert(.presented(.confirmOkay)):
         state.alert = nil
         return .none
-        
+
       case .alert:
         return .none
       }
