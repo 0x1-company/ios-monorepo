@@ -3,7 +3,7 @@ import ComposableArchitecture
 import FeedbackGeneratorClient
 import SwiftUI
 
-var messages: IdentifiedArrayOf<DirectMessageRowLogic.State> = []
+var messages: [String: IdentifiedArrayOf<DirectMessageRowLogic.State>] = [:]
 
 @Reducer
 public struct DirectMessageLogic {
@@ -17,7 +17,7 @@ public struct DirectMessageLogic {
 
     public init(username: String) {
       self.username = username
-      rows = messages
+      rows = messages[username] ?? []
     }
   }
 
@@ -55,7 +55,7 @@ public struct DirectMessageLogic {
         state.rows.append(
           DirectMessageRowLogic.State(text: state.message)
         )
-        messages = state.rows
+        messages[state.username] = state.rows
         analytics.logEvent(name: "send_message", parameters: [
           "text": state.message,
         ])
