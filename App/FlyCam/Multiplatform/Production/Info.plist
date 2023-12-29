@@ -98,6 +98,6 @@
 	<key>UIUserInterfaceStyle</key>
 	<string>Dark</string>
 	<key>endpointURL</key>
-	<string>https://bematch-server-fvkngnom3a-an.a.run.app/graphql</string>
+	<string>https://flycam-server-igajxy4pfq-an.a.run.app/graphql</string>
 </dict>
 </plist>
