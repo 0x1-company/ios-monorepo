@@ -325,6 +325,7 @@ public struct ProfileExternalView: View {
             } label: {
               Text("🔗 BeRe.al/\(viewStore.match.targetUser.berealUsername)")
                 .font(.system(.caption))
+                .foregroundStyle(Color.primary)
             }
           }
 
