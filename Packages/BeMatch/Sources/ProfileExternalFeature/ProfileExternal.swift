@@ -284,11 +284,13 @@ public struct ProfileExternalView: View {
                     .frame(width: UIScreen.main.bounds.size.width)
                 },
                 placeholder: {
-                  ProgressView()
-                    .tint(Color.white)
+                  Color.black
                     .aspectRatio(3 / 4, contentMode: .fill)
-                    .frame(width: UIScreen.main.bounds.size.width)
-                    .progressViewStyle(CircularProgressViewStyle())
+                    .overlay {
+                      ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .tint(Color.white)
+                    }
                 }
               )
             }
