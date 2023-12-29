@@ -1,4 +1,5 @@
 import AnalyticsClient
+import AnalyticsKeys
 import BeMatch
 import BeMatchClient
 import CachedAsyncImage
@@ -41,6 +42,7 @@ public struct ProfileExternalLogic {
     case backButtonTapped
     case forwardButtonTapped
     case addBeRealButtonTapped
+    case jumpBeRealButtonTapped
     case deleteMatchResponse(Result<BeMatch.DeleteMatchMutation.Data, Error>)
     case readMatchResponse(Result<BeMatch.ReadMatchMutation.Data, Error>)
     case destination(PresentationAction<Destination.Action>)
@@ -116,23 +118,26 @@ public struct ProfileExternalLogic {
 
       case .addBeRealButtonTapped:
         let username = state.match.targetUser.berealUsername
-//        guard let url = URL(string: "https://bere.al/\(username)")
-//        else { return .none }
-//
-//        analytics.buttonClick(name: .addBeReal, parameters: [
-//          "url": url.absoluteString,
-//          "match_id": state.match.id,
-//        ])
-//
-//        return .run { _ in
-//          await feedbackGenerator.impactOccurred()
-//          await openURL(url)
-//        }
         state.destination = .directMessage(
           DirectMessageLogic.State(username: username)
         )
         return .run { _ in
           await feedbackGenerator.impactOccurred()
+        }
+        
+      case .jumpBeRealButtonTapped:
+        let username = state.match.targetUser.berealUsername
+        guard let url = URL(string: "https://bere.al/\(username)")
+        else { return .none }
+        
+        analytics.buttonClick(name: \.addBeReal, parameters: [
+          "url": url.absoluteString,
+          "match_id": state.match.id,
+        ])
+        
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+          await openURL(url)
         }
 
       case .deleteMatchResponse:
@@ -315,8 +320,12 @@ public struct ProfileExternalView: View {
             }
             .padding(.horizontal, 16)
 
-            Text("🔗 BeRe.al/\(viewStore.match.targetUser.berealUsername)")
-              .font(.system(.caption))
+            Button {
+              store.send(.jumpBeRealButtonTapped)
+            } label: {
+              Text("🔗 BeRe.al/\(viewStore.match.targetUser.berealUsername)")
+                .font(.system(.caption))
+            }
           }
 
           Spacer()

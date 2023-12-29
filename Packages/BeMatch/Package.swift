@@ -182,12 +182,13 @@ let package = Package(
       .product(name: "FirebaseStorageClient", package: "SDK"),
     ]),
     .target(name: "ProfileExternalFeature", dependencies: [
-      "ReportFeature",
-      "DirectMessageFeature",
       "Constants",
       "Styleguide",
       "BeMatchClient",
       "SelectControl",
+      "AnalyticsKeys",
+      "ReportFeature",
+      "DirectMessageFeature",
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
     ]),
     .target(name: "RecommendationEmptyFeature", dependencies: [
