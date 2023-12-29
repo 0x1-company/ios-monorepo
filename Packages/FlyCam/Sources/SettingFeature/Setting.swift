@@ -87,7 +87,7 @@ public struct SettingView: View {
           Image(systemName: "square.and.pencil")
         }
       }
-      Link(destination: Constants.contactUsURL) {
+      Link(destination: Constants.faqURL) {
         Label {
           Text("Contact Us", bundle: .module)
         } icon: {
