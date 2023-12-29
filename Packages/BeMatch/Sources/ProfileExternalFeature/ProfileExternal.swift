@@ -124,17 +124,17 @@ public struct ProfileExternalLogic {
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
-        
+
       case .jumpBeRealButtonTapped:
         let username = state.match.targetUser.berealUsername
         guard let url = URL(string: "https://bere.al/\(username)")
         else { return .none }
-        
+
         analytics.buttonClick(name: \.addBeReal, parameters: [
           "url": url.absoluteString,
           "match_id": state.match.id,
         ])
-        
+
         return .run { _ in
           await feedbackGenerator.impactOccurred()
           await openURL(url)
