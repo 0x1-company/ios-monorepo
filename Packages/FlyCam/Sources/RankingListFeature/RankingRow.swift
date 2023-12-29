@@ -79,8 +79,8 @@ public struct RankingRowView: View {
           }
           .font(.system(.subheadline, weight: .semibold))
 
-          Image(systemName: "ellipsis")
-            .foregroundStyle(Color.secondary)
+//          Image(systemName: "ellipsis")
+//            .foregroundStyle(Color.secondary)
         }
         .frame(height: 56)
         .padding(.horizontal, 16)
