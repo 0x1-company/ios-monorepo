@@ -25,12 +25,12 @@ public struct CameraRecordLogic {
         .temporaryDirectory
         .appending(path: uuid().uuidString)
         .appendingPathExtension("mov")
-      
+
       let defaultDevice = AVCaptureDevice.default(for: .video)
       if let defaultDevice, let input = try? AVCaptureDeviceInput(device: defaultDevice) {
         videoCamera = VideoCameraLogic.State(videoInput: input)
       }
-      
+
       let dualWideDevice = AVCaptureDevice.default(.builtInDualWideCamera, for: .video, position: .back)
       if let dualWideDevice, let input = try? AVCaptureDeviceInput(device: dualWideDevice) {
         videoCamera = VideoCameraLogic.State(videoInput: input)
