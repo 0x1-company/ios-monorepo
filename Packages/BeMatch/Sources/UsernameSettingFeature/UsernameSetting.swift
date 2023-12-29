@@ -79,7 +79,7 @@ public struct UsernameSettingLogic {
       }
     }
   }
-  
+
   public func validateUsername(for username: String) -> Bool {
     let usernameRegex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9_]+(?:\\.[a-zA-Z0-9_]+)*$")
     let usernameTest = NSPredicate(format: "SELF MATCHES %@", usernameRegex.pattern)
