@@ -52,6 +52,7 @@ public struct ReceivedLikeGridLogic {
         return .none
       }
     }
+    .ifLet(\.$alert, action: \.alert)
   }
 }
 

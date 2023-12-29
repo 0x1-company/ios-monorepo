@@ -110,6 +110,7 @@ public struct ReportReasonLogic {
         return .none
       }
     }
+    .ifLet(\.$alert, action: \.alert)
   }
 }
 

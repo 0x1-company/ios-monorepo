@@ -132,6 +132,8 @@ public struct DeleteAccountLogic {
         return .none
       }
     }
+    .ifLet(\.$alert, action: \.alert)
+    .ifLet(\.$confirmationDialog, action: \.confirmationDialog)
   }
 }
 
