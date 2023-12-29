@@ -31,6 +31,9 @@
         }
       }
     },
+    "Delete Account Completed" : {
+
+    },
     "I don't know how to use it" : {
       "localizations" : {
         "ja" : {
@@ -70,6 +73,9 @@
           }
         }
       }
+    },
+    "OK" : {
+
     },
     "Other Reason" : {
       "localizations" : {
