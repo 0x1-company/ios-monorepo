@@ -35,8 +35,8 @@ By standardizing and reusing these feature specifications and designs, our devel
 
 ## FlyCam
 
-- https://flycam.jp
-- https://apps.apple.com/app/apple-store/id6474894591
+- https://docs.flycam.jp
+- https://testflight.apple.com/join/PIPZElKN
 
 
 # License
