@@ -2,9 +2,9 @@ import AnalyticsClient
 import BeMatch
 import BeMatchClient
 import ComposableArchitecture
-import SwiftUI
 import FeedbackGeneratorClient
 import ProfileSharedFeature
+import SwiftUI
 
 @Reducer
 public struct ProfileLogic {
@@ -12,7 +12,7 @@ public struct ProfileLogic {
 
   public struct State: Equatable {
     var currentUser: BeMatch.UserInternal?
-    
+
     var pictureSlider: PictureSliderLogic.State?
     public init() {}
   }
@@ -47,13 +47,13 @@ public struct ProfileLogic {
       case .onAppear:
         analytics.logScreen(screenName: "Profile", of: self)
         return .none
-        
+
       case .closeButtonTapped:
         return .run { _ in
           await feedbackGenerator.impactOccurred()
           await dismiss()
         }
-        
+
       case .jumpBeRealButtonTapped:
         guard let username = state.currentUser?.berealUsername
         else { return .none }
@@ -64,13 +64,13 @@ public struct ProfileLogic {
           await feedbackGenerator.impactOccurred()
           await openURL(url)
         }
-        
+
       case let .currentUserResponse(.success(data)):
         let currentUser = data.currentUser.fragments.userInternal
         state.currentUser = currentUser
         state.pictureSlider = .init(images: currentUser.images.map(\.fragments.pictureSliderImage))
         return .none
-        
+
       default:
         return .none
       }
@@ -115,7 +115,7 @@ public struct ProfileView: View {
           }
           .padding(.top, 56)
           .padding(.horizontal, 16)
-          
+
           IfLetStore(
             store.scope(state: \.pictureSlider, action: \.pictureSlider),
             then: PictureSliderView.init(store:),
@@ -125,7 +125,7 @@ public struct ProfileView: View {
                 .frame(width: UIScreen.main.bounds.width)
             }
           )
-          
+
           if let username = viewStore.currentUser?.berealUsername {
             Button {
               store.send(.jumpBeRealButtonTapped)
