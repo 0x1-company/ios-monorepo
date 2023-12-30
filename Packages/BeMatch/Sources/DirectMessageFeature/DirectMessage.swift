@@ -14,6 +14,7 @@ public struct DirectMessageLogic {
 
     var rows: IdentifiedArrayOf<DirectMessageRowLogic.State> = []
     @BindingState var message = String()
+    var isDisabled = true
 
     public init(username: String) {
       self.username = username
@@ -61,6 +62,10 @@ public struct DirectMessageLogic {
         ])
         state.message.removeAll()
         return .none
+        
+      case .binding:
+        state.isDisabled = state.username.isEmpty
+        return .none
 
       default:
         return .none
@@ -100,6 +105,7 @@ public struct DirectMessageView: View {
           .lineLimit(1 ... 10)
           .padding(.vertical, 8)
           .padding(.horizontal, 16)
+          .tint(Color.white)
           .background(Color(uiColor: UIColor.tertiarySystemBackground))
           .clipShape(RoundedRectangle(cornerRadius: 26))
 
@@ -109,6 +115,7 @@ public struct DirectMessageView: View {
             Image(systemName: "paperplane.fill")
               .foregroundStyle(Color.primary)
           }
+          .disabled(viewStore.isDisabled)
         }
         .padding(.vertical, 8)
         .padding(.horizontal, 16)
@@ -126,6 +133,7 @@ public struct DirectMessageView: View {
             store.send(.closeButtonTapped)
           } label: {
             Image(systemName: "chevron.down")
+              .foregroundStyle(Color.white)
               .font(.system(.headline, weight: .semibold))
           }
         }
