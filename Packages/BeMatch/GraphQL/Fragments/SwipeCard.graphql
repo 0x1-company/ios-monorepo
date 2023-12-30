@@ -1,8 +1,8 @@
-# import ProfilePhoto from './ProfilePhoto.graphql'
+# import PictureSliderImage from './PictureSliderImage.graphql'
 
 fragment SwipeCard on User {
   id
   images {
-    ...ProfilePhoto
+    ...PictureSliderImage
   }
 }

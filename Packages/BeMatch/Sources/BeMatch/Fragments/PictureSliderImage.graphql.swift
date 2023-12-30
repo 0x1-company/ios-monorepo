@@ -4,9 +4,9 @@
 @_exported import ApolloAPI
 
 public extension BeMatch {
-  struct ProfilePhoto: BeMatch.SelectionSet, Fragment {
+  struct PictureSliderImage: BeMatch.SelectionSet, Fragment {
     public static var fragmentDefinition: StaticString {
-      #"fragment ProfilePhoto on UserImage { __typename id imageUrl }"#
+      #"fragment PictureSliderImage on UserImage { __typename id imageUrl }"#
     }
 
     public let __data: DataDict
