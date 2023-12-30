@@ -1,8 +1,8 @@
 import AnalyticsClient
-import ProfileFeature
 import ComposableArchitecture
 import Constants
 import DeleteAccountFeature
+import ProfileFeature
 import SwiftUI
 
 @Reducer
