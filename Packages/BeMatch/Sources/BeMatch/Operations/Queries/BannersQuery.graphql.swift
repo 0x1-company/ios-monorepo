@@ -42,6 +42,7 @@ public extension BeMatch {
         public var id: BeMatch.ID { __data["id"] }
         public var title: String { __data["title"] }
         public var description: String? { __data["description"] }
+        public var buttonTitle: String { __data["buttonTitle"] }
         public var url: String { __data["url"] }
         /// 掲載開始時間
         public var startAt: BeMatch.Date { __data["startAt"] }
