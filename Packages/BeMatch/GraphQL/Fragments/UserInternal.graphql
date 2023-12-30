@@ -1,3 +1,5 @@
+# import PictureSliderImage from './PictureSliderImage.graphql'
+
 fragment UserInternal on User {
   id
   berealUsername
@@ -5,5 +7,6 @@ fragment UserInternal on User {
   images {
     id
     imageUrl
+    ...PictureSliderImage
   }
 }

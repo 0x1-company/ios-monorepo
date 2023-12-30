@@ -9,7 +9,7 @@ public extension BeMatch {
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
         #"mutation CreateUser { createUser { __typename ...UserInternal } }"#,
-        fragments: [UserInternal.self]
+        fragments: [PictureSliderImage.self, UserInternal.self]
       ))
 
     public init() {}
@@ -46,13 +46,33 @@ public extension BeMatch {
         /// gender
         public var gender: GraphQLEnum<BeMatch.Gender> { __data["gender"] }
         /// ユーザーの画像一覧
-        public var images: [UserInternal.Image] { __data["images"] }
+        public var images: [Image] { __data["images"] }
 
         public struct Fragments: FragmentContainer {
           public let __data: DataDict
           public init(_dataDict: DataDict) { __data = _dataDict }
 
           public var userInternal: UserInternal { _toFragment() }
+        }
+
+        /// CreateUser.Image
+        ///
+        /// Parent Type: `UserImage`
+        public struct Image: BeMatch.SelectionSet {
+          public let __data: DataDict
+          public init(_dataDict: DataDict) { __data = _dataDict }
+
+          public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.UserImage }
+
+          public var id: BeMatch.ID { __data["id"] }
+          public var imageUrl: String { __data["imageUrl"] }
+
+          public struct Fragments: FragmentContainer {
+            public let __data: DataDict
+            public init(_dataDict: DataDict) { __data = _dataDict }
+
+            public var pictureSliderImage: PictureSliderImage { _toFragment() }
+          }
         }
       }
     }

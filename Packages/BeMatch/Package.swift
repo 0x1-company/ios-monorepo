@@ -194,14 +194,7 @@ let package = Package(
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
     ]),
     .target(name: "ProfileFeature", dependencies: [
-      "Constants",
-      "Styleguide",
-      "BeMatchClient",
-      "SelectControl",
-      "AnalyticsKeys",
-      "ReportFeature",
-      "DirectMessageFeature",
-      .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
+      "ProfileSharedFeature",
     ]),
     .target(name: "ProfileSharedFeature", dependencies: [
       "Constants",
@@ -255,8 +248,9 @@ let package = Package(
     .target(name: "SelectControl"),
     .target(name: "SettingFeature", dependencies: [
       "Constants",
-      "DeleteAccountFeature",
       "AnalyticsKeys",
+      "ProfileFeature",
+      "DeleteAccountFeature",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
     ]),
     .target(name: "Styleguide"),

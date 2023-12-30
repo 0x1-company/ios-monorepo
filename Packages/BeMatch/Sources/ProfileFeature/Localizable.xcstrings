@@ -1,5 +1,9 @@
 {
   "sourceLanguage" : "en",
-  "strings" : {},
+  "strings" : {
+    "🔗 BeRe.al/%@" : {
+
+    }
+  },
   "version" : "1.0"
 }
