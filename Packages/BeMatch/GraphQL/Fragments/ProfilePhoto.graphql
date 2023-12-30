@@ -1,4 +1,0 @@
-fragment ProfilePhoto on UserImage {
-  id
-  imageUrl
-}

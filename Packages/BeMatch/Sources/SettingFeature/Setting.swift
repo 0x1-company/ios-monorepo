@@ -1,4 +1,5 @@
 import AnalyticsClient
+import ProfileFeature
 import ComposableArchitecture
 import Constants
 import DeleteAccountFeature
@@ -14,6 +15,7 @@ public struct SettingLogic {
   }
 
   public enum Action {
+    case myProfileButtonTapped
     case editProfileButtonTapped
     case deleteAccountButtonTapped
     case destination(PresentationAction<Destination.Action>)
@@ -29,6 +31,10 @@ public struct SettingLogic {
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
       switch action {
+      case .myProfileButtonTapped:
+        state.destination = .profile()
+        return .none
+
       case .editProfileButtonTapped:
         return .send(.delegate(.toEditProfile), animation: .default)
 
@@ -52,14 +58,19 @@ public struct SettingLogic {
   @Reducer
   public struct Destination {
     public enum State: Equatable {
+      case profile(ProfileLogic.State = .init())
       case deleteAccount(DeleteAccountLogic.State = .init())
     }
 
     public enum Action {
+      case profile(ProfileLogic.Action)
       case deleteAccount(DeleteAccountLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
+      Scope(state: \.profile, action: \.profile) {
+        ProfileLogic()
+      }
       Scope(state: \.deleteAccount, action: \.deleteAccount) {
         DeleteAccountLogic()
       }
@@ -76,6 +87,15 @@ public struct SettingView: View {
 
   public var body: some View {
     Menu {
+      Button {
+        store.send(.myProfileButtonTapped)
+      } label: {
+        Label {
+          Text("My Profile", bundle: .module)
+        } icon: {
+          Image(systemName: "person")
+        }
+      }
       Button {
         store.send(.editProfileButtonTapped)
       } label: {
@@ -127,6 +147,13 @@ public struct SettingView: View {
     ) { store in
       NavigationStack {
         DeleteAccountView(store: store)
+      }
+    }
+    .fullScreenCover(
+      store: store.scope(state: \.$destination.profile, action: \.destination.profile)
+    ) { store in
+      NavigationStack {
+        ProfileView(store: store)
       }
     }
   }

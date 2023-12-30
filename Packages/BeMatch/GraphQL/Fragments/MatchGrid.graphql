@@ -1,4 +1,4 @@
-# import ProfilePhoto from './ProfilePhoto.graphql';
+# import PictureSliderImage from './PictureSliderImage.graphql';
 
 fragment MatchGrid on Match {
   id
@@ -8,7 +8,7 @@ fragment MatchGrid on Match {
     id
     berealUsername
     images {
-      ...ProfilePhoto
+      ...PictureSliderImage
     }
   }
 }

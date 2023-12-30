@@ -6,7 +6,7 @@
 public extension BeMatch {
   struct UserInternal: BeMatch.SelectionSet, Fragment {
     public static var fragmentDefinition: StaticString {
-      #"fragment UserInternal on User { __typename id berealUsername gender images { __typename id imageUrl } }"#
+      #"fragment UserInternal on User { __typename id berealUsername gender images { __typename id imageUrl ...PictureSliderImage } }"#
     }
 
     public let __data: DataDict
@@ -42,10 +42,18 @@ public extension BeMatch {
         .field("__typename", String.self),
         .field("id", BeMatch.ID.self),
         .field("imageUrl", String.self),
+        .fragment(PictureSliderImage.self),
       ] }
 
       public var id: BeMatch.ID { __data["id"] }
       public var imageUrl: String { __data["imageUrl"] }
+
+      public struct Fragments: FragmentContainer {
+        public let __data: DataDict
+        public init(_dataDict: DataDict) { __data = _dataDict }
+
+        public var pictureSliderImage: PictureSliderImage { _toFragment() }
+      }
     }
   }
 }

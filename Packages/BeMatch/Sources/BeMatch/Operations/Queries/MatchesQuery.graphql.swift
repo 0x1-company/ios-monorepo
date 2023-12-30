@@ -9,7 +9,7 @@ public extension BeMatch {
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
         #"query Matches($first: Int!, $after: String) { matches(first: $first, after: $after) { __typename edges { __typename node { __typename ...MatchGrid } } } }"#,
-        fragments: [MatchGrid.self, ProfilePhoto.self]
+        fragments: [MatchGrid.self, PictureSliderImage.self]
       ))
 
     public var first: Int
