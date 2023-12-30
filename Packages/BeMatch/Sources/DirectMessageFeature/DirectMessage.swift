@@ -100,6 +100,7 @@ public struct DirectMessageView: View {
           .lineLimit(1 ... 10)
           .padding(.vertical, 8)
           .padding(.horizontal, 16)
+          .tint(Color.white)
           .background(Color(uiColor: UIColor.tertiarySystemBackground))
           .clipShape(RoundedRectangle(cornerRadius: 26))
 
@@ -126,6 +127,7 @@ public struct DirectMessageView: View {
             store.send(.closeButtonTapped)
           } label: {
             Image(systemName: "chevron.down")
+              .foregroundStyle(Color.white)
               .font(.system(.headline, weight: .semibold))
           }
         }
