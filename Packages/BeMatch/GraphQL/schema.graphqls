@@ -3,6 +3,7 @@
 # ------------------------------------------------------
 
 type Banner {
+  buttonTitle: String!
   description: String
 
   """掲載終了時間"""

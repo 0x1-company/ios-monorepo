@@ -6,7 +6,7 @@
 public extension BeMatch {
   struct BannerCard: BeMatch.SelectionSet, Fragment {
     public static var fragmentDefinition: StaticString {
-      #"fragment BannerCard on Banner { __typename id title description url startAt endAt }"#
+      #"fragment BannerCard on Banner { __typename id title description buttonTitle url startAt endAt }"#
     }
 
     public let __data: DataDict
@@ -18,6 +18,7 @@ public extension BeMatch {
       .field("id", BeMatch.ID.self),
       .field("title", String.self),
       .field("description", String?.self),
+      .field("buttonTitle", String.self),
       .field("url", String.self),
       .field("startAt", BeMatch.Date.self),
       .field("endAt", BeMatch.Date.self),
@@ -26,6 +27,7 @@ public extension BeMatch {
     public var id: BeMatch.ID { __data["id"] }
     public var title: String { __data["title"] }
     public var description: String? { __data["description"] }
+    public var buttonTitle: String { __data["buttonTitle"] }
     public var url: String { __data["url"] }
     /// 掲載開始時間
     public var startAt: BeMatch.Date { __data["startAt"] }

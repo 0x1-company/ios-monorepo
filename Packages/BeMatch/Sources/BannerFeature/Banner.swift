@@ -46,7 +46,7 @@ public struct BannerView: View {
 
         if let url = URL(string: viewStore.banner.url) {
           Link(destination: url) {
-            Text("Open", bundle: .module)
+            Text(viewStore.banner.buttonTitle)
               .font(.system(.caption2, weight: .semibold))
               .foregroundStyle(Color.black)
               .frame(height: 38)
@@ -75,6 +75,7 @@ public struct BannerView: View {
               "id": "id",
               "title": "BeMatch.の社長と話そう",
               "description": "アプリの改善策や不具合などあれば教えてください。",
+              "buttonTitle": "開く",
               "url": "https://bematch.jp",
               "startAt": 10,
               "endAt": 10,
