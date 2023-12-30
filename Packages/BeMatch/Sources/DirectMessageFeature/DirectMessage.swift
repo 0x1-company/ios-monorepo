@@ -14,6 +14,7 @@ public struct DirectMessageLogic {
 
     var rows: IdentifiedArrayOf<DirectMessageRowLogic.State> = []
     @BindingState var message = String()
+    var isDisabled = true
 
     public init(username: String) {
       self.username = username
@@ -60,6 +61,10 @@ public struct DirectMessageLogic {
           "text": state.message,
         ])
         state.message.removeAll()
+        return .none
+        
+      case .binding:
+        state.isDisabled = state.username.isEmpty
         return .none
 
       default:
@@ -110,6 +115,7 @@ public struct DirectMessageView: View {
             Image(systemName: "paperplane.fill")
               .foregroundStyle(Color.primary)
           }
+          .disabled(viewStore.isDisabled)
         }
         .padding(.vertical, 8)
         .padding(.horizontal, 16)
