@@ -62,7 +62,7 @@ public struct DirectMessageLogic {
         ])
         state.message.removeAll()
         return .none
-        
+
       case .binding:
         state.isDisabled = state.username.isEmpty
         return .none
