@@ -1,4 +1,5 @@
 import AnalyticsClient
+import AnalyticsKeys
 import ComposableArchitecture
 import FeedbackGeneratorClient
 import Styleguide
@@ -36,6 +37,11 @@ public struct MatchedLogic {
       case .addBeRealButtonTapped:
         guard let url = URL(string: "https://bere.al/\(state.username)")
         else { return .none }
+
+        analytics.buttonClick(name: \.addBeReal, parameters: [
+          "url": url.absoluteString,
+        ])
+
         return .run { _ in
           await feedbackGenerator.impactOccurred()
           await openURL(url)
