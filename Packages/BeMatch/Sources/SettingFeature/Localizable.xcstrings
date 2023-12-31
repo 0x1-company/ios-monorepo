@@ -32,7 +32,14 @@
       }
     },
     "My Profile" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自分のプロフィール"
+          }
+        }
+      }
     },
     "Privacy Policy" : {
       "localizations" : {
