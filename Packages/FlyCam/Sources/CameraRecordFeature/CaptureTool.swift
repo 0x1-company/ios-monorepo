@@ -62,7 +62,7 @@ public struct CaptureToolView: View {
   public var body: some View {
     WithViewStore(store, observe: ViewState.init) { viewStore in
       VStack(spacing: 12) {
-        Text("Press the button to throw the iPhone", bundle: .module)
+        Text("Press button to jump", bundle: .module)
           .frame(maxHeight: .infinity)
           .font(.system(.title3, weight: .semibold))
 
