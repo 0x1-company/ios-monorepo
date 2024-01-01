@@ -87,6 +87,7 @@ public struct AppLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .view(.onboard(.path(.element(_, .capture(.delegate(.nextScreen)))))):
+        analytics.setUserProperty(key: \.onboardCompleted, value: "true")
         state.view = .navigation()
         return .none
       case .view(.navigation(.match(.setting(.delegate(.toEditProfile))))):
