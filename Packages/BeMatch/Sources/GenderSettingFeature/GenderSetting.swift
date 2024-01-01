@@ -1,4 +1,5 @@
 import AnalyticsClient
+import AnalyticsKeys
 import BeMatch
 import BeMatchClient
 import ComposableArchitecture
@@ -72,6 +73,7 @@ public struct GenderSettingLogic {
 
       case .updateGenderResponse(.success):
         state.isActivityIndicatorVisible = false
+        analytics.setUserProperty(key: \.gender, value: state.selection?.rawValue)
         return .send(.delegate(.nextScreen))
 
       case .updateGenderResponse(.failure):
