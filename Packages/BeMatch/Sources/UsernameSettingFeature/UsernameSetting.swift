@@ -1,4 +1,5 @@
 import AnalyticsClient
+import AnalyticsKeys
 import BeMatch
 import BeMatchClient
 import ComposableArchitecture
@@ -63,6 +64,7 @@ public struct UsernameSettingLogic {
 
       case .updateBeRealResponse(.success):
         state.isActivityIndicatorVisible = false
+        analytics.setUserProperty(key: \.username, value: state.username)
         return .send(.delegate(.nextScreen))
 
       case .updateBeRealResponse(.failure):
