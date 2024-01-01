@@ -123,6 +123,7 @@ public struct BeRealCaptureLogic {
 
       case .updateUserImage(.success):
         state.isActivityIndicatorVisible = false
+        URLCache.shared.removeAllCachedResponses()
         return .send(.delegate(.nextScreen))
 
       case .updateUserImage(.failure):
