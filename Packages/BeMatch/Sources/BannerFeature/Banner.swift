@@ -1,3 +1,5 @@
+import AnalyticsKeys
+import AnalyticsClient
 import BeMatch
 import ComposableArchitecture
 import Styleguide
@@ -18,11 +20,33 @@ public struct BannerLogic {
       self.banner = banner
     }
   }
+  
+  @Dependency(\.openURL) var openURL
+  @Dependency(\.analytics) var analytics
 
-  public enum Action {}
+  public enum Action {
+    case bannerButtonTapped
+  }
 
   public var body: some Reducer<State, Action> {
-    EmptyReducer()
+    Reduce<State, Action> { state, action in
+      switch action {
+      case .bannerButtonTapped:
+        guard let url = URL(string: state.banner.url)
+        else { return .none }
+        
+        analytics.buttonClick(name: \.banner, parameters: [
+          "title": state.banner.title,
+          "description": state.banner.description ?? "",
+          "button_title": state.banner.buttonTitle,
+          "url": state.banner.url,
+        ])
+        
+        return .run { send in
+          await openURL(url)
+        }
+      }
+    }
   }
 }
 
@@ -44,16 +68,16 @@ public struct BannerView: View {
             .font(.system(.caption))
         }
 
-        if let url = URL(string: viewStore.banner.url) {
-          Link(destination: url) {
-            Text(viewStore.banner.buttonTitle)
-              .font(.system(.caption2, weight: .semibold))
-              .foregroundStyle(Color.black)
-              .frame(height: 38)
-              .frame(maxWidth: .infinity)
-              .background(Color.white)
-              .cornerRadius(12)
-          }
+        Button {
+          store.send(.bannerButtonTapped)
+        } label: {
+          Text(viewStore.banner.buttonTitle)
+            .font(.system(.caption2, weight: .semibold))
+            .foregroundStyle(Color.black)
+            .frame(height: 38)
+            .frame(maxWidth: .infinity)
+            .background(Color.white)
+            .cornerRadius(12)
         }
       }
       .padding(.all, 16)

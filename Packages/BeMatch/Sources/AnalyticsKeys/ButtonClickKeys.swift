@@ -1,6 +1,7 @@
 import AnalyticsClient
 
 public extension ButtonClickKeys {
+  var banner: String { "banner" }
   var forceUpdate: String { "force_update" }
   var like: String { "like" }
   var nope: String { "nope" }
