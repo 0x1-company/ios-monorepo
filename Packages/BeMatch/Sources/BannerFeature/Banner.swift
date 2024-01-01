@@ -1,5 +1,5 @@
-import AnalyticsKeys
 import AnalyticsClient
+import AnalyticsKeys
 import BeMatch
 import ComposableArchitecture
 import Styleguide
@@ -20,7 +20,7 @@ public struct BannerLogic {
       self.banner = banner
     }
   }
-  
+
   @Dependency(\.openURL) var openURL
   @Dependency(\.analytics) var analytics
 
@@ -34,15 +34,15 @@ public struct BannerLogic {
       case .bannerButtonTapped:
         guard let url = URL(string: state.banner.url)
         else { return .none }
-        
+
         analytics.buttonClick(name: \.banner, parameters: [
           "title": state.banner.title,
           "description": state.banner.description ?? "",
           "button_title": state.banner.buttonTitle,
           "url": state.banner.url,
         ])
-        
-        return .run { send in
+
+        return .run { _ in
           await openURL(url)
         }
       }
