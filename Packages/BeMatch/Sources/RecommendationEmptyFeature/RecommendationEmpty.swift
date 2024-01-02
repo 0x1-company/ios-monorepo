@@ -18,7 +18,13 @@ public struct RecommendationEmptyLogic {
   }
 
   public struct State: Equatable {
-    var sharedURL = Constants.appStoreForEmptyURL
+    var shareURL = Constants.appStoreForEmptyURL
+    var shareText: String {
+      return String(
+        localized: "I found an app to increase BeReal's friends, try it.\n\(shareURL.absoluteString)",
+        bundle: .module
+      )
+    }
     @BindingState var isPresented = false
     public init() {}
   }
@@ -63,7 +69,7 @@ public struct RecommendationEmptyLogic {
         return .none
 
       case let .currentUserResponse(.success(data)):
-        state.sharedURL = data.currentUser.gender == .female
+        state.shareURL = data.currentUser.gender == .female
           ? Constants.appStoreFemaleForEmptyURL
           : Constants.appStoreForEmptyURL
         return .none
@@ -124,7 +130,7 @@ public struct RecommendationEmptyView: View {
       .onAppear { store.send(.onAppear) }
       .sheet(isPresented: viewStore.$isPresented) {
         ActivityView(
-          activityItems: [viewStore.sharedURL],
+          activityItems: [viewStore.shareText],
           applicationActivities: nil
         ) { activityType, result, _, _ in
           store.send(
