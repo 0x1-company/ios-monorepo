@@ -8,8 +8,8 @@ public extension BeMatch {
     public static let operationName: String = "Matches"
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"query Matches($first: Int!, $after: String) { matches(first: $first, after: $after) { __typename edges { __typename node { __typename ...MatchGrid } } } }"#,
-        fragments: [MatchGrid.self, PictureSliderImage.self]
+        #"query Matches($first: Int!, $after: String) { matches(first: $first, after: $after) { __typename pageInfo { __typename ...NextPagination } edges { __typename node { __typename ...MatchGrid } } } }"#,
+        fragments: [MatchGrid.self, NextPagination.self, PictureSliderImage.self]
       ))
 
     public var first: Int
@@ -53,10 +53,38 @@ public extension BeMatch {
         public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.MatchConnection }
         public static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
+          .field("pageInfo", PageInfo.self),
           .field("edges", [Edge].self),
         ] }
 
+        public var pageInfo: PageInfo { __data["pageInfo"] }
         public var edges: [Edge] { __data["edges"] }
+
+        /// Matches.PageInfo
+        ///
+        /// Parent Type: `PageInfo`
+        public struct PageInfo: BeMatch.SelectionSet {
+          public let __data: DataDict
+          public init(_dataDict: DataDict) { __data = _dataDict }
+
+          public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.PageInfo }
+          public static var __selections: [ApolloAPI.Selection] { [
+            .field("__typename", String.self),
+            .fragment(NextPagination.self),
+          ] }
+
+          /// 次のページがあるかどうか
+          public var hasNextPage: Bool { __data["hasNextPage"] }
+          /// 最後のedgeのカーソル
+          public var endCursor: String? { __data["endCursor"] }
+
+          public struct Fragments: FragmentContainer {
+            public let __data: DataDict
+            public init(_dataDict: DataDict) { __data = _dataDict }
+
+            public var nextPagination: NextPagination { _toFragment() }
+          }
+        }
 
         /// Matches.Edge
         ///

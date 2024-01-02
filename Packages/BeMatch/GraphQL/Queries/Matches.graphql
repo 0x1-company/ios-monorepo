@@ -1,7 +1,11 @@
 # import MatchGrid from '../fragments/MatchGrid.graphql'
+# import NextPagination from '../fragments/NextPagination.graphql'
 
 query Matches($first:Int!, $after:String) {
   matches(first:$first, after:$after) {
+    pageInfo {
+      ...NextPagination
+    }
     edges {
       node {
         ...MatchGrid

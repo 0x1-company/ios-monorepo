@@ -19,6 +19,9 @@ public struct MatchLogic {
     var rows: IdentifiedArrayOf<MatchGridLogic.State> = []
     var banners: IdentifiedArrayOf<BannerLogic.State> = []
 
+    var hasNextPage = false
+    var after: String? = nil
+
     var notificationsReEnable: NotificationsReEnableLogic.State?
     var receivedLike: ReceivedLikeGridLogic.State?
     var empty: MatchEmptyLogic.State? = .init()
@@ -31,6 +34,7 @@ public struct MatchLogic {
   public enum Action {
     case onTask
     case onAppear
+    case scrollViewBottomReached
     case matchesResponse(Result<BeMatch.MatchesQuery.Data, Error>)
     case bannersResponse(Result<BeMatch.BannersQuery.Data, Error>)
     case receivedLikeResponse(Result<BeMatch.ReceivedLikeQuery.Data, Error>)
@@ -49,6 +53,10 @@ public struct MatchLogic {
   @Dependency(\.bematch.receivedLike) var receivedLike
   @Dependency(\.userNotifications.getNotificationSettings) var getNotificationSettings
 
+  enum Cancel {
+    case matches
+  }
+
   public var body: some Reducer<State, Action> {
     Scope(state: \.setting, action: \.setting) {
       SettingLogic()
@@ -59,7 +67,7 @@ public struct MatchLogic {
         return .run { send in
           await withTaskGroup(of: Void.self) { group in
             group.addTask {
-              await matchesRequest(send: send)
+              await matchesRequest(send: send, after: nil)
             }
             group.addTask {
               await receivedLikeRequest(send: send)
@@ -79,15 +87,20 @@ public struct MatchLogic {
         analytics.logScreen(screenName: "Match", of: self)
         return .none
 
-      case let .matchesResponse(.success(data)):
-        let matches = data.matches.edges.map(\.node.fragments.matchGrid)
-        state.rows = IdentifiedArrayOf(
-          uniqueElements: matches.map(MatchGridLogic.State.init)
-        )
-        return .none
+      case .scrollViewBottomReached:
+        return .run { [after = state.after] send in
+          await matchesRequest(send: send, after: after)
+        }
 
-      case .matchesResponse(.failure):
-        state.rows = []
+      case let .matchesResponse(.success(data)):
+        state.after = data.matches.pageInfo.endCursor
+        state.hasNextPage = data.matches.pageInfo.hasNextPage
+        
+        let matches = data.matches.edges.map(\.node.fragments.matchGrid)
+        for element in matches {
+          state.rows.updateOrAppend(MatchGridLogic.State(match: element))
+        }
+
         return .none
 
       case let .bannersResponse(.success(data)):
@@ -96,10 +109,6 @@ public struct MatchLogic {
             .map(\.fragments.bannerCard)
             .map(BannerLogic.State.init)
         )
-        return .none
-
-      case .bannersResponse(.failure):
-        state.banners = []
         return .none
 
       case let .receivedLikeResponse(.success(data)):
@@ -157,13 +166,15 @@ public struct MatchLogic {
     }
   }
 
-  func matchesRequest(send: Send<Action>) async {
-    do {
-      for try await data in matches(49, nil) {
-        await send(.matchesResponse(.success(data)))
+  func matchesRequest(send: Send<Action>, after: String?) async {
+    await withTaskCancellation(id: Cancel.matches, cancelInFlight: true) {
+      do {
+        for try await data in matches(50, after) {
+          await send(.matchesResponse(.success(data)))
+        }
+      } catch {
+        await send(.matchesResponse(.failure(error)))
       }
-    } catch {
-      await send(.matchesResponse(.failure(error)))
     }
   }
 
@@ -196,9 +207,9 @@ public struct MatchView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { _ in
+    WithViewStore(store, observe: { $0 }) { viewStore in
       ScrollView(.vertical) {
-        VStack(spacing: 16) {
+        LazyVStack(spacing: 16) {
           IfLetStore(
             store.scope(state: \.notificationsReEnable, action: \.notificationsReEnable),
             then: NotificationsReEnableView.init(store:)
@@ -234,6 +245,14 @@ public struct MatchView: View {
                 store.scope(state: \.rows, action: \.rows),
                 content: MatchGridView.init(store:)
               )
+            }
+
+            if viewStore.hasNextPage {
+              ProgressView()
+                .tint(Color.white)
+                .frame(height: 44)
+                .frame(maxWidth: .infinity)
+                .task { await store.send(.scrollViewBottomReached).finish() }
             }
           }
           .padding(.bottom, 24)
