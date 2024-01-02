@@ -95,7 +95,7 @@ public struct MatchLogic {
       case let .matchesResponse(.success(data)):
         state.after = data.matches.pageInfo.endCursor
         state.hasNextPage = data.matches.pageInfo.hasNextPage
-        
+
         let matches = data.matches.edges.map(\.node.fragments.matchGrid)
         for element in matches {
           state.rows.updateOrAppend(MatchGridLogic.State(match: element))
