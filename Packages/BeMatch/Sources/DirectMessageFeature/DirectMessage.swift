@@ -3,8 +3,6 @@ import ComposableArchitecture
 import FeedbackGeneratorClient
 import SwiftUI
 
-var messages: [String: IdentifiedArrayOf<DirectMessageRowLogic.State>] = [:]
-
 @Reducer
 public struct DirectMessageLogic {
   public init() {}
@@ -18,7 +16,12 @@ public struct DirectMessageLogic {
 
     public init(username: String) {
       self.username = username
-      rows = messages[username] ?? []
+      let decoder = JSONDecoder()
+      if let data = UserDefaults.standard.data(forKey: "messages-\(username)") {
+        if let rows = try? decoder.decode([DirectMessageRowLogic.State].self, from: data) {
+          self.rows = .init(uniqueElements: rows)
+        }
+      }
     }
   }
 
@@ -53,18 +56,22 @@ public struct DirectMessageLogic {
         }
 
       case .sendButtonTapped:
+        let encoder = JSONEncoder()
         state.rows.append(
           DirectMessageRowLogic.State(text: state.message)
         )
-        messages[state.username] = state.rows
+        if let data = try? encoder.encode(state.rows.elements) {
+          UserDefaults.standard.set(data, forKey: "messages-\(state.username)")
+        }
         analytics.logEvent(name: "send_message", parameters: [
           "text": state.message,
         ])
         state.message.removeAll()
+        state.isDisabled = true
         return .none
 
       case .binding:
-        state.isDisabled = state.username.isEmpty
+        state.isDisabled = state.message.isEmpty
         return .none
 
       default:
@@ -122,6 +129,7 @@ public struct DirectMessageView: View {
         .background(Color(uiColor: UIColor.secondarySystemBackground))
       }
       .navigationBarTitleDisplayMode(.inline)
+      .onAppear { store.send(.onAppear) }
       .toolbar {
         ToolbarItem(placement: .principal) {
           Text(viewStore.username)

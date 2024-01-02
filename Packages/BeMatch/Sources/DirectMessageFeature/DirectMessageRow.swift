@@ -5,7 +5,7 @@ import SwiftUI
 public struct DirectMessageRowLogic {
   public init() {}
 
-  public struct State: Equatable, Identifiable {
+  public struct State: Equatable, Identifiable, Codable {
     let text: String
 
     public var id: String {
