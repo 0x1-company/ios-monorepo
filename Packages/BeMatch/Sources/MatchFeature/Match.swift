@@ -81,9 +81,10 @@ public struct MatchLogic {
 
       case let .matchesResponse(.success(data)):
         let matches = data.matches.edges.map(\.node.fragments.matchGrid)
-        state.rows = IdentifiedArrayOf(
-          uniqueElements: matches.map(MatchGridLogic.State.init)
-        )
+        for element in matches {
+          state.rows.updateOrAppend(MatchGridLogic.State(match: element))
+        }
+
         return .none
 
       case .matchesResponse(.failure):
@@ -159,7 +160,17 @@ public struct MatchLogic {
 
   func matchesRequest(send: Send<Action>) async {
     do {
-      for try await data in matches(49, nil) {
+      for try await data in matches(50, nil) {
+        await send(.matchesResponse(.success(data)))
+      }
+    } catch {
+      await send(.matchesResponse(.failure(error)))
+    }
+  }
+  
+  func nextMatchesRequest(send: Send<Action>, after: String) async {
+    do {
+      for try await data in matches(50, after) {
         await send(.matchesResponse(.success(data)))
       }
     } catch {
