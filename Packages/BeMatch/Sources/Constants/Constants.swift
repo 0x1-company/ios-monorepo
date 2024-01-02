@@ -15,6 +15,7 @@ public enum Constants {
   public static let developerURL = URL(string: "https://instagram.com/tomokisun")!
 
   public static let quickActionURLs: [String: URL] = [
+    "/": Self.contactUsURL,
     "talk-to-founder": Self.founderURL,
     "talk-to-developer": Self.developerURL,
   ]

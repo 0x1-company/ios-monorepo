@@ -21,12 +21,12 @@
         }
       }
     },
-    "🥺 Don't remove the BeMatch.!" : {
+    "🥺 Contact us" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "🥺BeMatch.を消さないで"
+            "value" : "🥺 問い合わせする"
           }
         }
       }
@@ -45,16 +45,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "BeMatch."
-          }
-        }
-      }
-    },
-    "Give it a secound chance!" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "もう1度チャンスをください"
           }
         }
       }
@@ -129,6 +119,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "あなたのフォトライブラリは、プロフィール写真を選択するために使用されます。"
+          }
+        }
+      }
+    },
+    "Tell us about any glitches or improvements!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不具合や改善点をなんでも教えてください！"
           }
         }
       }
