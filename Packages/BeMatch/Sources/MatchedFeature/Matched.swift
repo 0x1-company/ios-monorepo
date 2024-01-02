@@ -2,6 +2,7 @@ import AnalyticsClient
 import AnalyticsKeys
 import ComposableArchitecture
 import FeedbackGeneratorClient
+import StoreKit
 import Styleguide
 import SwiftUI
 
@@ -45,6 +46,7 @@ public struct MatchedLogic {
         return .run { _ in
           await feedbackGenerator.impactOccurred()
           await openURL(url)
+          await dismiss()
         }
 
       case .closeButtonTapped:
@@ -57,6 +59,7 @@ public struct MatchedLogic {
 }
 
 public struct MatchedView: View {
+  @Environment(\.requestReview) var requestReview
   let store: StoreOf<MatchedLogic>
 
   public init(store: StoreOf<MatchedLogic>) {
@@ -85,6 +88,7 @@ public struct MatchedView: View {
       .padding(.horizontal, 16)
       .ignoresSafeArea()
       .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .task { requestReview() }
       .onAppear { store.send(.onAppear) }
       .overlay(alignment: .topLeading) {
         Button {
