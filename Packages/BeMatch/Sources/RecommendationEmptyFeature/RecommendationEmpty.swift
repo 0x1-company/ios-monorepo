@@ -25,6 +25,7 @@ public struct RecommendationEmptyLogic {
         bundle: .module
       )
     }
+
     @BindingState var isPresented = false
     public init() {}
   }
