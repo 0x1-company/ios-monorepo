@@ -6,6 +6,10 @@ extension FirebaseStorageClient: DependencyKey {
   public static let liveValue: Self = {
     let storage = Storage.storage()
     return Self(
+      delete: { path in
+        let reference = storage.reference().child(path)
+        return try await reference.delete()
+      },
       upload: { path, uploadData in
         let reference = storage.reference().child(path)
         let metadata = StorageMetadata()

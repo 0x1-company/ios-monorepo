@@ -43,6 +43,7 @@ public struct BeRealCaptureLogic {
     }
   }
 
+  @Dependency(\.uuid) var uuid
   @Dependency(\.analytics) var analytics
   @Dependency(\.firebaseStorage) var firebaseStorage
   @Dependency(\.firebaseAuth) var firebaseAuth
@@ -92,15 +93,16 @@ public struct BeRealCaptureLogic {
         state.images = Array(repeating: nil, count: 9)
 
         return .run { [items = state.photoPickerItems] send in
-          for (offset, i) in items.enumerated() {
+          for i in items {
             await send(.loadTransferableResponse(Result {
               try await i.loadTransferable(type: Data.self)
             }))
             let data = try await i.loadTransferable(type: Data.self)
             guard let data else { return }
+            let filename = "\(uuid().uuidString).png"
             await send(.uploadResponse(Result {
               try await firebaseStorage.upload(
-                path: "users/profile_images/\(uid)/\(offset).png",
+                path: "users/profile_images/\(uid)/\(filename)",
                 uploadData: data
               )
             }))
