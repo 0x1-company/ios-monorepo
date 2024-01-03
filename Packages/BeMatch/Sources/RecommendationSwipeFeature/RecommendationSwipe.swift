@@ -41,7 +41,7 @@ public struct RecommendationSwipeLogic {
   @Dependency(\.bematch.createLike) var createLike
   @Dependency(\.bematch.createNope) var createNope
   @Dependency(\.feedbackGenerator) var feedbackGenerator
-  
+
   enum Cancel {
     case like
     case nope
@@ -60,7 +60,7 @@ public struct RecommendationSwipeLogic {
       case .nopeButtonTapped:
         guard let last = state.rows.last else { return .none }
         let input = BeMatch.CreateNopeInput(targetUserId: last.data.id)
-        
+
         analytics.buttonClick(name: \.nope, parameters: [:])
 
         return .run { send in
@@ -75,7 +75,7 @@ public struct RecommendationSwipeLogic {
       case .likeButtonTapped:
         guard let last = state.rows.last else { return .none }
         let input = BeMatch.CreateLikeInput(targetUserId: last.data.id)
-        
+
         analytics.buttonClick(name: \.like, parameters: [:])
 
         return .run { send in
@@ -89,9 +89,9 @@ public struct RecommendationSwipeLogic {
 
       case let .rows(.element(id, .delegate(.nope))):
         let input = BeMatch.CreateNopeInput(targetUserId: id)
-        
+
         analytics.buttonClick(name: \.swipeNope, parameters: [:])
-        
+
         return .run { send in
           await feedbackGenerator.impactOccurred()
           try await self.clock.sleep(for: .seconds(1))
@@ -103,9 +103,9 @@ public struct RecommendationSwipeLogic {
 
       case let .rows(.element(id, .delegate(.like))):
         let input = BeMatch.CreateLikeInput(targetUserId: id)
-        
+
         analytics.buttonClick(name: \.swipeLike, parameters: [:])
-        
+
         return .run { send in
           await feedbackGenerator.impactOccurred()
           try await self.clock.sleep(for: .seconds(1))
