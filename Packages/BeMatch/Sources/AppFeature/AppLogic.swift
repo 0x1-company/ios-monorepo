@@ -105,7 +105,7 @@ public struct AppLogic {
     Scope(state: \.sceneDelegate, action: \.sceneDelegate, child: SceneDelegateLogic.init)
     Scope(state: \.view, action: \.view, child: View.init)
     AuthLogic()
-    FirestoreLogic()
+    ConfigGlobalLogic()
     QuickActionLogic()
     UserSettingsLogic()
   }

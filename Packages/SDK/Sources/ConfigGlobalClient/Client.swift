@@ -24,16 +24,19 @@ public extension ConfigGlobalClient {
         .split(separator: ".")
         .map(String.init)
         .compactMap(Int.init)
-
-      return minimumSupportedAppVersion
+      
+      let minimumSupportedAppVersion = minimumSupportedAppVersion
         .split(separator: ".")
         .map(String.init)
         .compactMap(Int.init)
-        .enumerated()
-        .map { index, element in
-          element > packageVersion[index]
-        }
-        .contains(true)
+
+      if packageVersion[0] != minimumSupportedAppVersion[0] {
+        return packageVersion[0] < minimumSupportedAppVersion[0] // 1.0.0 < 2.0.0
+      }
+      if packageVersion[1] != minimumSupportedAppVersion[1] {
+        return packageVersion[1] < minimumSupportedAppVersion[1] // 1.1.0 < 1.2.0
+      }
+      return packageVersion[2] < minimumSupportedAppVersion[2] // 1.0.0 < 1.0.1
     }
   }
 }
