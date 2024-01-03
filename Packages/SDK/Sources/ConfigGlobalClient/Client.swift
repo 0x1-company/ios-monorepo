@@ -24,7 +24,7 @@ public extension ConfigGlobalClient {
         .split(separator: ".")
         .map(String.init)
         .compactMap(Int.init)
-      
+
       let minimumSupportedAppVersion = minimumSupportedAppVersion
         .split(separator: ".")
         .map(String.init)
