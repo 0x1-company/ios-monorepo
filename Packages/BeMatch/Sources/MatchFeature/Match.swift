@@ -101,6 +101,9 @@ public struct MatchLogic {
           state.rows.updateOrAppend(MatchGridLogic.State(match: element))
         }
 
+        let sorted = state.rows.elements.sorted(by: { $0.createdAt > $1.createdAt })
+        state.rows = IdentifiedArrayOf(uniqueElements: sorted)
+
         return .none
 
       case let .bannersResponse(.success(data)):
