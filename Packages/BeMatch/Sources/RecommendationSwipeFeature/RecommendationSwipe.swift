@@ -36,10 +36,16 @@ public struct RecommendationSwipeLogic {
     }
   }
 
+  @Dependency(\.continuousClock) var clock
   @Dependency(\.analytics) var analytics
   @Dependency(\.bematch.createLike) var createLike
   @Dependency(\.bematch.createNope) var createNope
   @Dependency(\.feedbackGenerator) var feedbackGenerator
+  
+  enum Cancel {
+    case like
+    case nope
+  }
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
@@ -54,45 +60,60 @@ public struct RecommendationSwipeLogic {
       case .nopeButtonTapped:
         guard let last = state.rows.last else { return .none }
         let input = BeMatch.CreateNopeInput(targetUserId: last.data.id)
+        
+        analytics.buttonClick(name: \.nope, parameters: [:])
 
         return .run { send in
-          analytics.buttonClick(name: \.nope, parameters: [:])
           await feedbackGenerator.impactOccurred()
+          try await self.clock.sleep(for: .seconds(1))
           await send(.createNopeResponse(Result {
             try await createNope(input)
           }))
         }
+        .cancellable(id: Cancel.nope, cancelInFlight: true)
 
       case .likeButtonTapped:
         guard let last = state.rows.last else { return .none }
         let input = BeMatch.CreateLikeInput(targetUserId: last.data.id)
+        
+        analytics.buttonClick(name: \.like, parameters: [:])
+
         return .run { send in
-          analytics.buttonClick(name: \.like, parameters: [:])
           await feedbackGenerator.impactOccurred()
+          try await self.clock.sleep(for: .seconds(1))
           await send(.createLikeResponse(Result {
             try await createLike(input)
           }))
         }
+        .cancellable(id: Cancel.like, cancelInFlight: true)
 
       case let .rows(.element(id, .delegate(.nope))):
         let input = BeMatch.CreateNopeInput(targetUserId: id)
+        
+        analytics.buttonClick(name: \.swipeNope, parameters: [:])
+        
         return .run { send in
-          analytics.buttonClick(name: \.swipeNope, parameters: [:])
           await feedbackGenerator.impactOccurred()
+          try await self.clock.sleep(for: .seconds(1))
           await send(.createNopeResponse(Result {
             try await createNope(input)
           }))
         }
+        .cancellable(id: Cancel.nope, cancelInFlight: true)
 
       case let .rows(.element(id, .delegate(.like))):
         let input = BeMatch.CreateLikeInput(targetUserId: id)
+        
+        analytics.buttonClick(name: \.swipeLike, parameters: [:])
+        
         return .run { send in
-          analytics.buttonClick(name: \.swipeLike, parameters: [:])
           await feedbackGenerator.impactOccurred()
+          try await self.clock.sleep(for: .seconds(1))
           await send(.createLikeResponse(Result {
             try await createLike(input)
           }))
         }
+        .cancellable(id: Cancel.like, cancelInFlight: true)
 
       case let .createNopeResponse(.success(data)):
         state.rows.remove(id: data.createNope.targetUserId)
