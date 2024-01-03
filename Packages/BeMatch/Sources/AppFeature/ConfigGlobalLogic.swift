@@ -3,7 +3,7 @@ import ComposableArchitecture
 import ConfigGlobalClient
 
 @Reducer
-public struct FirestoreLogic {
+public struct ConfigGlobalLogic {
   @Dependency(\.configGlobal) var configGlobal
   @Dependency(\.build.bundleShortVersion) var bundleShortVersion
 
