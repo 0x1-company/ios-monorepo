@@ -36,7 +36,6 @@ public struct RecommendationSwipeLogic {
     }
   }
 
-  @Dependency(\.continuousClock) var clock
   @Dependency(\.analytics) var analytics
   @Dependency(\.bematch.createLike) var createLike
   @Dependency(\.bematch.createNope) var createNope
@@ -65,7 +64,6 @@ public struct RecommendationSwipeLogic {
 
         return .run { send in
           await feedbackGenerator.impactOccurred()
-          try await self.clock.sleep(for: .seconds(1))
           await send(.createNopeResponse(Result {
             try await createNope(input)
           }))
@@ -80,7 +78,6 @@ public struct RecommendationSwipeLogic {
 
         return .run { send in
           await feedbackGenerator.impactOccurred()
-          try await self.clock.sleep(for: .seconds(1))
           await send(.createLikeResponse(Result {
             try await createLike(input)
           }))
@@ -94,7 +91,6 @@ public struct RecommendationSwipeLogic {
 
         return .run { send in
           await feedbackGenerator.impactOccurred()
-          try await self.clock.sleep(for: .seconds(1))
           await send(.createNopeResponse(Result {
             try await createNope(input)
           }))
@@ -108,7 +104,6 @@ public struct RecommendationSwipeLogic {
 
         return .run { send in
           await feedbackGenerator.impactOccurred()
-          try await self.clock.sleep(for: .seconds(1))
           await send(.createLikeResponse(Result {
             try await createLike(input)
           }))
