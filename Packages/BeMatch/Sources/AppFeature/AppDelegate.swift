@@ -50,7 +50,6 @@ public struct AppDelegateLogic {
   @Dependency(\.firebaseAuth) var firebaseAuth
   @Dependency(\.userNotifications) var userNotifications
   @Dependency(\.firebaseMessaging) var firebaseMessaging
-  @Dependency(\.notificationCenter) var notificationCenter
   @Dependency(\.bematch.createFirebaseRegistrationToken) var createFirebaseRegistrationToken
   @Dependency(\.application.registerForRemoteNotifications) var registerForRemoteNotifications
 
@@ -78,11 +77,6 @@ public struct AppDelegateLogic {
           group.addTask {
             for await event in firebaseMessaging.delegate() {
               await send(.messaging(event))
-            }
-          }
-          group.addTask {
-            for await _ in await notificationCenter.didBecomeActiveNotification() {
-              await send(.didBecomeActiveNotification)
             }
           }
           group.addTask {
@@ -127,10 +121,6 @@ public struct AppDelegateLogic {
       return .run { send in
         await createFirebaseRegistrationTokenRequest(send: send)
       }
-
-    case .didBecomeActiveNotification:
-      appsFlyer.start()
-      return .none
 
     default:
       return .none
