@@ -44,7 +44,7 @@ var package = Package(
     .library(name: "WidgetClient", targets: ["WidgetClient"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/AppsFlyerSDK/AppsFlyerFramework-Dynamic", from: "6.12.2"),
+    .package(url: "https://github.com/AppsFlyerSDK/AppsFlyerFramework-Dynamic", from: "6.12.3"),
     .package(url: "https://github.com/apollographql/apollo-ios", from: "1.7.1"),
     .package(url: "https://github.com/facebook/facebook-ios-sdk", from: "16.3.1"),
     .package(url: "https://github.com/firebase/firebase-ios-sdk", from: "10.19.1"),
