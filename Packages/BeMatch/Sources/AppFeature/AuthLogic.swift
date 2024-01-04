@@ -1,10 +1,10 @@
-import BeMatchClient
-import AppsFlyerClient
-import AnalyticsKeys
 import AnalyticsClient
+import AnalyticsKeys
+import AppsFlyerClient
+import ATTrackingManagerClient
+import BeMatchClient
 import ComposableArchitecture
 import FirebaseAuthClient
-import ATTrackingManagerClient
 
 @Reducer
 public struct AuthLogic {
@@ -51,11 +51,11 @@ public struct AuthLogic {
       analytics.setUserProperty(key: \.id, value: user.id)
       analytics.setUserProperty(key: \.gender, value: user.gender.rawValue)
       analytics.setUserProperty(key: \.username, value: user.berealUsername)
-      
+
       appsFlyer.customerUserID(user.id)
       appsFlyer.waitForATTUserAuthorization(60)
       appsFlyer.start()
-      
+
       return .run { send in
         await send(.trackingAuthorization(
           await trackingManager.requestTrackingAuthorization()

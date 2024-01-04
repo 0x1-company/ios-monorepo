@@ -1,6 +1,6 @@
+import AppTrackingTransparency
 import Contacts
 import UserNotifications
-import AppTrackingTransparency
 
 public struct UserSettingsClient {
   public var update: (UpdateParam) async throws -> Void

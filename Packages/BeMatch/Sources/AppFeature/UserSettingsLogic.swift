@@ -10,7 +10,7 @@ public struct UserSettingsLogic {
   @Dependency(\.firebaseAuth) var firebaseAuth
   @Dependency(\.trackingManager) var trackingManager
   @Dependency(\.userNotifications) var userNotifications
-  
+
   public func reduce(
     into state: inout AppLogic.State,
     action: AppLogic.Action
@@ -23,7 +23,7 @@ public struct UserSettingsLogic {
 
         let notificationSettings = await userNotifications.getNotificationSettings()
         let notificationStatus = notificationSettings.authorizationStatus
-        
+
         let trackingAuthorizationStatus = trackingManager.trackingAuthorizationStatus()
 
         let param = UserSettingsClient.UpdateParam(

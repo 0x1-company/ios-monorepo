@@ -5,9 +5,9 @@ extension Build: DependencyKey {
   public static let liveValue = Self(
     isDebug: {
       #if DEBUG
-      true
+        true
       #else
-      false
+        false
       #endif
     },
     bundleURL: { Bundle.main.bundleURL },
