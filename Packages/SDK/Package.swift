@@ -13,6 +13,7 @@ var package = Package(
     .library(name: "AnalyticsClient", targets: ["AnalyticsClient"]),
     .library(name: "ApolloClientHelpers", targets: ["ApolloClientHelpers"]),
     .library(name: "ApolloConcurrency", targets: ["ApolloConcurrency"]),
+    .library(name: "AppsFlyerClient", targets: ["AppsFlyerClient"]),
     .library(name: "AsyncValue", targets: ["AsyncValue"]),
     .library(name: "AVFoundationClient", targets: ["AVFoundationClient"]),
     .library(name: "AVPlayerNotificationClient", targets: ["AVPlayerNotificationClient"]),
@@ -42,6 +43,7 @@ var package = Package(
     .library(name: "WidgetClient", targets: ["WidgetClient"]),
   ],
   dependencies: [
+    .package(url: "https://github.com/AppsFlyerSDK/AppsFlyerFramework-Dynamic", from: "6.12.2"),
     .package(url: "https://github.com/apollographql/apollo-ios", from: "1.7.1"),
     .package(url: "https://github.com/facebook/facebook-ios-sdk", from: "16.3.1"),
     .package(url: "https://github.com/firebase/firebase-ios-sdk", from: "10.19.1"),
@@ -63,6 +65,11 @@ var package = Package(
     .target(name: "ApolloConcurrency", dependencies: [
       .product(name: "Apollo", package: "apollo-ios"),
       .product(name: "ApolloAPI", package: "apollo-ios"),
+    ]),
+    .target(name: "AppsFlyerClient", dependencies: [
+      .product(name: "Dependencies", package: "swift-dependencies"),
+      .product(name: "DependenciesMacros", package: "swift-dependencies"),
+      .product(name: "AppsFlyerLib-Dynamic", package: "AppsFlyerFramework-Dynamic"),
     ]),
     .target(name: "AsyncValue"),
     .target(name: "AVFoundationClient", dependencies: [
