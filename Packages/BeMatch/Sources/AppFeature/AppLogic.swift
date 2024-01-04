@@ -1,4 +1,5 @@
 import AnalyticsKeys
+import AppsFlyerClient
 import AsyncValue
 import BeMatch
 import ComposableArchitecture
@@ -44,6 +45,7 @@ public struct AppLogic {
     case createUserResponse(Result<BeMatch.CreateUserMutation.Data, Error>)
   }
 
+  @Dependency(\.appsFlyer) var appsFlyer
   @Dependency(\.analytics) var analytics
   @Dependency(\.userDefaults) var userDefaults
 
@@ -79,6 +81,7 @@ public struct AppLogic {
       }
       .onChange(of: \.account.user) { user, _, _ in
         if case let .success(data) = user {
+          appsFlyer.customerUserID(data.id)
           analytics.setUserProperty(key: \.id, value: data.id)
           analytics.setUserProperty(key: \.gender, value: data.gender.rawValue)
           analytics.setUserProperty(key: \.username, value: data.berealUsername)

@@ -68,6 +68,7 @@ let package = Package(
       .product(name: "ApolloClientHelpers", package: "SDK"),
       .product(name: "FirebaseMessagingClient", package: "SDK"),
       .product(name: "ATTrackingManagerClient", package: "SDK"),
+      .product(name: "NotificationCenterClient", package: "SDK"),
     ]),
     .target(name: "BannerFeature", dependencies: [
       "BeMatch",

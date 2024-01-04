@@ -1,10 +1,12 @@
 import AnalyticsClient
+import AppsFlyerClient
 import BeMatch
 import BeMatchClient
 import ComposableArchitecture
 import FirebaseAuthClient
 import FirebaseCoreClient
 import FirebaseMessagingClient
+import NotificationCenterClient
 import UIApplicationClient
 import UIKit
 import UserDefaultsClient
@@ -21,6 +23,7 @@ public struct AppDelegateLogic {
     case configurationForConnecting(UIApplicationShortcutItem?)
     case userNotifications(UserNotificationClient.DelegateEvent)
     case messaging(FirebaseMessagingClient.DelegateAction)
+    case didBecomeActiveNotification
     case createFirebaseRegistrationTokenResponse(Result<BeMatch.CreateFirebaseRegistrationTokenMutation.Data, Error>)
     case delegate(Delegate)
 
@@ -38,12 +41,14 @@ public struct AppDelegateLogic {
     }
   }
 
+  @Dependency(\.appsFlyer) var appsFlyer
   @Dependency(\.analytics) var analytics
   @Dependency(\.userDefaults) var userDefaults
   @Dependency(\.firebaseCore) var firebaseCore
   @Dependency(\.firebaseAuth) var firebaseAuth
   @Dependency(\.userNotifications) var userNotifications
   @Dependency(\.firebaseMessaging) var firebaseMessaging
+  @Dependency(\.notificationCenter) var notificationCenter
   @Dependency(\.bematch.createFirebaseRegistrationToken) var createFirebaseRegistrationToken
   @Dependency(\.application.registerForRemoteNotifications) var registerForRemoteNotifications
 
@@ -51,6 +56,10 @@ public struct AppDelegateLogic {
     switch action {
     case .didFinishLaunching:
       firebaseCore.configure()
+
+      appsFlyer.appleAppID("")
+      appsFlyer.appsFlyerDevKey("")
+
       return .run { @MainActor send in
         await withThrowingTaskGroup(of: Void.self) { group in
           group.addTask {
@@ -61,6 +70,11 @@ public struct AppDelegateLogic {
           group.addTask {
             for await event in firebaseMessaging.delegate() {
               await send(.messaging(event))
+            }
+          }
+          group.addTask {
+            for await _ in notificationCenter.didBecomeActiveNotification() {
+              await send(.didBecomeActiveNotification)
             }
           }
           group.addTask {
@@ -105,6 +119,10 @@ public struct AppDelegateLogic {
       return .run { send in
         await createFirebaseRegistrationTokenRequest(send: send)
       }
+
+    case .didBecomeActiveNotification:
+      appsFlyer.start()
+      return .none
 
     default:
       return .none
