@@ -41,9 +41,8 @@ public struct RecommendationSwipeLogic {
   @Dependency(\.bematch.createNope) var createNope
   @Dependency(\.feedbackGenerator) var feedbackGenerator
 
-  enum Cancel {
-    case like
-    case nope
+  enum Cancel: Hashable {
+    case feedback(String)
   }
 
   public var body: some Reducer<State, Action> {
@@ -68,7 +67,7 @@ public struct RecommendationSwipeLogic {
             try await createNope(input)
           }))
         }
-        .cancellable(id: Cancel.nope, cancelInFlight: true)
+        .cancellable(id: Cancel.feedback(input.targetUserId), cancelInFlight: true)
 
       case .likeButtonTapped:
         guard let last = state.rows.last else { return .none }
@@ -82,7 +81,7 @@ public struct RecommendationSwipeLogic {
             try await createLike(input)
           }))
         }
-        .cancellable(id: Cancel.like, cancelInFlight: true)
+        .cancellable(id: Cancel.feedback(input.targetUserId), cancelInFlight: true)
 
       case let .rows(.element(id, .delegate(.nope))):
         let input = BeMatch.CreateNopeInput(targetUserId: id)
@@ -95,7 +94,7 @@ public struct RecommendationSwipeLogic {
             try await createNope(input)
           }))
         }
-        .cancellable(id: Cancel.nope, cancelInFlight: true)
+        .cancellable(id: Cancel.feedback(input.targetUserId), cancelInFlight: true)
 
       case let .rows(.element(id, .delegate(.like))):
         let input = BeMatch.CreateLikeInput(targetUserId: id)
@@ -108,7 +107,7 @@ public struct RecommendationSwipeLogic {
             try await createLike(input)
           }))
         }
-        .cancellable(id: Cancel.like, cancelInFlight: true)
+        .cancellable(id: Cancel.feedback(input.targetUserId), cancelInFlight: true)
 
       case let .createNopeResponse(.success(data)):
         state.rows.remove(id: data.createNope.targetUserId)
