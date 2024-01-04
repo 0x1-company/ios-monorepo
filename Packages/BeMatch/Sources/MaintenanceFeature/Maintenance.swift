@@ -35,7 +35,7 @@ public struct MaintenanceView: View {
           Text("Please wait for a while until service resumes.", bundle: .module)
             .font(.system(.body, weight: .semibold))
         }
-        
+
         Link(destination: Constants.contactUsURL) {
           Text("Contact us", bundle: .module)
             .font(.system(.subheadline, weight: .semibold))
