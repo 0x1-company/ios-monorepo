@@ -6,7 +6,7 @@ import ConfigGlobalClient
 public struct ConfigGlobalLogic {
   @Dependency(\.configGlobal) var configGlobal
   @Dependency(\.build.bundleShortVersion) var bundleShortVersion
-  
+
   enum Cancel {
     case config
   }
@@ -28,9 +28,16 @@ public struct ConfigGlobalLogic {
 
     case let .configResponse(.success(config)):
       let shortVersion = bundleShortVersion()
-      state.account.isForceUpdate = .success(config.isForceUpdate(shortVersion))
-      state.account.isMaintenance = .success(config.isMaintenance)
-      return .none
+      let isForceUpdate = config.isForceUpdate(shortVersion)
+      let isMaintenance = config.isMaintenance
+
+      state.account.isForceUpdate = .success(isForceUpdate)
+      state.account.isMaintenance = .success(isMaintenance)
+      
+      if isForceUpdate || isMaintenance {
+        return .none
+      }
+      return .send(.configFetched)
 
     case .configResponse(.failure):
       state.account.isForceUpdate = .success(false)
