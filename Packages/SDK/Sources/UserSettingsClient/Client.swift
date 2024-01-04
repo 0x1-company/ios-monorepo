@@ -1,5 +1,6 @@
 import Contacts
 import UserNotifications
+import AppTrackingTransparency
 
 public struct UserSettingsClient {
   public var update: (UpdateParam) async throws -> Void
@@ -7,13 +8,16 @@ public struct UserSettingsClient {
   public struct UpdateParam: Equatable {
     let uid: String
     let notificationStatus: String
+    let trackingAuthorizationStatus: String
 
     public init(
       uid: String,
-      notification: UNAuthorizationStatus
+      notification: UNAuthorizationStatus,
+      trackingAuthorization: ATTrackingManager.AuthorizationStatus
     ) {
       self.uid = uid
       notificationStatus = notification.stringValue
+      trackingAuthorizationStatus = trackingAuthorization.stringValue
     }
   }
 }
@@ -32,7 +36,24 @@ extension UNAuthorizationStatus {
     case .ephemeral:
       return "ephemeral"
     @unknown default:
-      fatalError()
+      return "unknow"
+    }
+  }
+}
+
+extension ATTrackingManager.AuthorizationStatus {
+  var stringValue: String {
+    switch self {
+    case .notDetermined:
+      return "notDetermined"
+    case .denied:
+      return "denied"
+    case .authorized:
+      return "authorized"
+    case .restricted:
+      return "restricted"
+    @unknown default:
+      return "unknow"
     }
   }
 }

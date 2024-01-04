@@ -1,10 +1,13 @@
 import AnalyticsClient
+import AppsFlyerClient
+import Build
 import BeMatch
 import BeMatchClient
 import ComposableArchitecture
 import FirebaseAuthClient
 import FirebaseCoreClient
 import FirebaseMessagingClient
+import NotificationCenterClient
 import UIApplicationClient
 import UIKit
 import UserDefaultsClient
@@ -21,6 +24,7 @@ public struct AppDelegateLogic {
     case configurationForConnecting(UIApplicationShortcutItem?)
     case userNotifications(UserNotificationClient.DelegateEvent)
     case messaging(FirebaseMessagingClient.DelegateAction)
+    case didBecomeActiveNotification
     case createFirebaseRegistrationTokenResponse(Result<BeMatch.CreateFirebaseRegistrationTokenMutation.Data, Error>)
     case delegate(Delegate)
 
@@ -38,6 +42,8 @@ public struct AppDelegateLogic {
     }
   }
 
+  @Dependency(\.build) var build
+  @Dependency(\.appsFlyer) var appsFlyer
   @Dependency(\.analytics) var analytics
   @Dependency(\.userDefaults) var userDefaults
   @Dependency(\.firebaseCore) var firebaseCore
@@ -51,6 +57,16 @@ public struct AppDelegateLogic {
     switch action {
     case .didFinishLaunching:
       firebaseCore.configure()
+
+      let isDebug = build.isDebug()
+      appsFlyer.isDebug(isDebug)
+      
+      let appleAppID = build.infoDictionary("apple-app-id", for: String.self) ?? ""
+      appsFlyer.appleAppID(appleAppID)
+      
+      let appsFlyerDevKey = build.infoDictionary("apps-flyer-dev-key", for: String.self) ?? ""
+      appsFlyer.appsFlyerDevKey(appsFlyerDevKey)
+
       return .run { @MainActor send in
         await withThrowingTaskGroup(of: Void.self) { group in
           group.addTask {

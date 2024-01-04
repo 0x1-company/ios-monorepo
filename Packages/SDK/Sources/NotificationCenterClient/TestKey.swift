@@ -1,5 +1,4 @@
 import Dependencies
-import XCTestDynamicOverlay
 
 public extension DependencyValues {
   var notificationCenter: NotificationCenterClient {
@@ -9,7 +8,5 @@ public extension DependencyValues {
 }
 
 extension NotificationCenterClient: TestDependencyKey {
-  public static let testValue = Self(
-    userDidTakeScreenshotNotification: unimplemented("\(Self.self).userDidTakeScreenshotNotification", placeholder: .finished)
-  )
+  public static let testValue = Self()
 }

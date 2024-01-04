@@ -123,6 +123,24 @@
         }
       }
     },
+    "NSUserTrackingUsageDescription" : {
+      "comment" : "Privacy - Tracking Usage Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Analytics are used to accurately measure"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アナリティクスを正確に計測するために使用します"
+          }
+        }
+      }
+    },
     "Tell us about any glitches or improvements!" : {
       "localizations" : {
         "ja" : {

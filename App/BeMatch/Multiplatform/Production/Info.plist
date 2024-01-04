@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Analytics are used to accurately measure</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -99,5 +101,9 @@
 	<string>Dark</string>
 	<key>endpointURL</key>
 	<string>https://bematch-server-fvkngnom3a-an.a.run.app/graphql</string>
+	<key>apps-flyer-dev-key</key>
+	<string>ArrQmb3aHuS47UnotusTAe</string>
+	<key>apple-app-id</key>
+	<string>6473888485</string>
 </dict>
 </plist>

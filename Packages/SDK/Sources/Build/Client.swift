@@ -1,6 +1,7 @@
 import Foundation
 
 public struct Build: Sendable {
+  public var isDebug: @Sendable () -> Bool
   public var bundleURL: @Sendable () -> URL
   public var bundleIdentifier: @Sendable () -> String?
   public var bundlePath: @Sendable () -> String

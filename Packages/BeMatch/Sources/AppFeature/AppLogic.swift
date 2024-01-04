@@ -1,4 +1,6 @@
 import AnalyticsKeys
+import AppTrackingTransparency
+import AppsFlyerClient
 import AsyncValue
 import BeMatch
 import ComposableArchitecture
@@ -42,8 +44,10 @@ public struct AppLogic {
     case configResponse(TaskResult<ConfigGlobalClient.Config>)
     case signInAnonymouslyResponse(Result<AuthDataResult, Error>)
     case createUserResponse(Result<BeMatch.CreateUserMutation.Data, Error>)
+    case trackingAuthorization(ATTrackingManager.AuthorizationStatus)
   }
 
+  @Dependency(\.appsFlyer) var appsFlyer
   @Dependency(\.analytics) var analytics
   @Dependency(\.userDefaults) var userDefaults
 
@@ -74,14 +78,6 @@ public struct AppLogic {
           state.view = .onboard(OnboardLogic.State(user: user))
         } else {
           state.view = .navigation()
-        }
-        return .none
-      }
-      .onChange(of: \.account.user) { user, _, _ in
-        if case let .success(data) = user {
-          analytics.setUserProperty(key: \.id, value: data.id)
-          analytics.setUserProperty(key: \.gender, value: data.gender.rawValue)
-          analytics.setUserProperty(key: \.username, value: data.berealUsername)
         }
         return .none
       }

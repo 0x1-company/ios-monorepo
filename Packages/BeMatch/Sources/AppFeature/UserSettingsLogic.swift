@@ -1,3 +1,4 @@
+import ATTrackingManagerClient
 import ComposableArchitecture
 import FirebaseAuthClient
 import UserNotificationClient
@@ -7,8 +8,9 @@ import UserSettingsClient
 public struct UserSettingsLogic {
   @Dependency(\.userSettings) var userSettings
   @Dependency(\.firebaseAuth) var firebaseAuth
+  @Dependency(\.trackingManager) var trackingManager
   @Dependency(\.userNotifications) var userNotifications
-
+  
   public func reduce(
     into state: inout AppLogic.State,
     action: AppLogic.Action
@@ -21,10 +23,13 @@ public struct UserSettingsLogic {
 
         let notificationSettings = await userNotifications.getNotificationSettings()
         let notificationStatus = notificationSettings.authorizationStatus
+        
+        let trackingAuthorizationStatus = trackingManager.trackingAuthorizationStatus()
 
         let param = UserSettingsClient.UpdateParam(
           uid: uid,
-          notification: notificationStatus
+          notification: notificationStatus,
+          trackingAuthorization: trackingAuthorizationStatus
         )
         try await userSettings.update(param)
       } catch: { error, _ in

@@ -4,6 +4,7 @@ import Dependencies
 
 extension ATTrackingManagerClient: DependencyKey {
   public static let liveValue = Self(
-    trackingAuthorizationStatus: { ATTrackingManager.trackingAuthorizationStatus }
+    trackingAuthorizationStatus: { ATTrackingManager.trackingAuthorizationStatus },
+    requestTrackingAuthorization: { await ATTrackingManager.requestTrackingAuthorization() }
   )
 }
