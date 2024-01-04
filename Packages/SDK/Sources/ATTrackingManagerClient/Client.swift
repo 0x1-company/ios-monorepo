@@ -1,6 +1,6 @@
+import AppTrackingTransparency
 import Dependencies
 import DependenciesMacros
-import AppTrackingTransparency
 
 @DependencyClient
 public struct ATTrackingManagerClient: Sendable {
