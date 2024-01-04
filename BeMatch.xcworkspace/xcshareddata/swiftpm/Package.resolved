@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AppsFlyerSDK/AppsFlyerFramework-Dynamic",
       "state" : {
-        "revision" : "fbda5a9f488d1954b830baf6ecb4c8c909b19cd3",
-        "version" : "6.12.2"
+        "revision" : "1f40fcadca6bb82d5cc85b52e23b3458e0728992",
+        "version" : "6.12.3"
       }
     },
     {
