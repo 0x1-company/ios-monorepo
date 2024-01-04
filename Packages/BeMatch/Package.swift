@@ -61,11 +61,13 @@ let package = Package(
       "ForceUpdateFeature",
       "MaintenanceFeature",
       .product(name: "AsyncValue", package: "SDK"),
+      .product(name: "AppsFlyerClient", package: "SDK"),
       .product(name: "ConfigGlobalClient", package: "SDK"),
       .product(name: "UserSettingsClient", package: "SDK"),
       .product(name: "FirebaseCoreClient", package: "SDK"),
       .product(name: "ApolloClientHelpers", package: "SDK"),
       .product(name: "FirebaseMessagingClient", package: "SDK"),
+      .product(name: "ATTrackingManagerClient", package: "SDK"),
     ]),
     .target(name: "BannerFeature", dependencies: [
       "BeMatch",
