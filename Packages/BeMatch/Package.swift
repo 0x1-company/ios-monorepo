@@ -134,6 +134,7 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "MaintenanceFeature", dependencies: [
+      "Constants",
       "Styleguide",
       "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
