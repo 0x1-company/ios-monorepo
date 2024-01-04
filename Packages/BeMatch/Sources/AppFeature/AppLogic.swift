@@ -38,6 +38,7 @@ public struct AppLogic {
     case appDelegate(AppDelegateLogic.Action)
     case sceneDelegate(SceneDelegateLogic.Action)
     case view(View.Action)
+    case configFetched
     case configResponse(TaskResult<ConfigGlobalClient.Config>)
     case signInAnonymouslyResponse(Result<AuthDataResult, Error>)
     case createUserResponse(Result<BeMatch.CreateUserMutation.Data, Error>)

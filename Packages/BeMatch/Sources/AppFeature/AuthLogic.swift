@@ -12,7 +12,7 @@ public struct AuthLogic {
     action: AppLogic.Action
   ) -> Effect<AppLogic.Action> {
     switch action {
-    case .appDelegate(.delegate(.didFinishLaunching)):
+    case .configFetched:
       return .run { send in
         await send(.signInAnonymouslyResponse(Result {
           try await signInAnonymously()
