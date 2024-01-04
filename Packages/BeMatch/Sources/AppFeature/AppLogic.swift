@@ -1,6 +1,6 @@
 import AnalyticsKeys
-import AppTrackingTransparency
 import AppsFlyerClient
+import AppTrackingTransparency
 import AsyncValue
 import BeMatch
 import ComposableArchitecture

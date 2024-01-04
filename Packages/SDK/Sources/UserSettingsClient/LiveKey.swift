@@ -11,7 +11,7 @@ extension UserSettingsClient: DependencyKey {
         .setData(
           [
             "notificationStatus": param.notificationStatus,
-            "trackingAuthorizationStatus": param.trackingAuthorizationStatus
+            "trackingAuthorizationStatus": param.trackingAuthorizationStatus,
           ],
           merge: true
         )
