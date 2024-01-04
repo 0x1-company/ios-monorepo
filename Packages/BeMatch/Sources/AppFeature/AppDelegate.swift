@@ -1,8 +1,8 @@
 import AnalyticsClient
 import AppsFlyerClient
-import Build
 import BeMatch
 import BeMatchClient
+import Build
 import ComposableArchitecture
 import FirebaseAuthClient
 import FirebaseCoreClient
@@ -60,10 +60,10 @@ public struct AppDelegateLogic {
 
       let isDebug = build.isDebug()
       appsFlyer.isDebug(isDebug)
-      
+
       let appleAppID = build.infoDictionary("apple-app-id", for: String.self) ?? ""
       appsFlyer.appleAppID(appleAppID)
-      
+
       let appsFlyerDevKey = build.infoDictionary("apps-flyer-dev-key", for: String.self) ?? ""
       appsFlyer.appsFlyerDevKey(appsFlyerDevKey)
 
