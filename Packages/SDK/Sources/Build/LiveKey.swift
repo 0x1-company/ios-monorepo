@@ -3,6 +3,13 @@ import Foundation
 
 extension Build: DependencyKey {
   public static let liveValue = Self(
+    isDebug: {
+      #if DEBUG
+      true
+      #else
+      false
+      #endif
+    },
     bundleURL: { Bundle.main.bundleURL },
     bundleIdentifier: { Bundle.main.bundleIdentifier },
     bundlePath: { Bundle.main.bundlePath },

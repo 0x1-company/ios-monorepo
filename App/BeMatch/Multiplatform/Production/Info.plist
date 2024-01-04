@@ -99,5 +99,9 @@
 	<string>Dark</string>
 	<key>endpointURL</key>
 	<string>https://bematch-server-fvkngnom3a-an.a.run.app/graphql</string>
+	<key>apps-flyer-dev-key</key>
+	<string>ArrQmb3aHuS47UnotusTAe</string>
+	<key>apple-app-id</key>
+	<string>6473888485</string>
 </dict>
 </plist>

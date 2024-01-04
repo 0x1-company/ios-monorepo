@@ -1,5 +1,6 @@
 import AnalyticsClient
 import AppsFlyerClient
+import Build
 import BeMatch
 import BeMatchClient
 import ComposableArchitecture
@@ -41,6 +42,7 @@ public struct AppDelegateLogic {
     }
   }
 
+  @Dependency(\.build) var build
   @Dependency(\.appsFlyer) var appsFlyer
   @Dependency(\.analytics) var analytics
   @Dependency(\.userDefaults) var userDefaults
@@ -57,8 +59,14 @@ public struct AppDelegateLogic {
     case .didFinishLaunching:
       firebaseCore.configure()
 
-      appsFlyer.appleAppID("")
-      appsFlyer.appsFlyerDevKey("")
+      let isDebug = build.isDebug()
+      appsFlyer.isDebug(isDebug)
+      
+      let appleAppID = build.infoDictionary("apple-app-id", for: String.self) ?? ""
+      appsFlyer.appleAppID(appleAppID)
+      
+      let appsFlyerDevKey = build.infoDictionary("apps-flyer-dev-key", for: String.self) ?? ""
+      appsFlyer.appsFlyerDevKey(appsFlyerDevKey)
 
       return .run { @MainActor send in
         await withThrowingTaskGroup(of: Void.self) { group in
@@ -73,7 +81,7 @@ public struct AppDelegateLogic {
             }
           }
           group.addTask {
-            for await _ in notificationCenter.didBecomeActiveNotification() {
+            for await _ in await notificationCenter.didBecomeActiveNotification() {
               await send(.didBecomeActiveNotification)
             }
           }
