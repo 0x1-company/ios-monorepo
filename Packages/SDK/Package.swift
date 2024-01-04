@@ -15,6 +15,7 @@ var package = Package(
     .library(name: "ApolloConcurrency", targets: ["ApolloConcurrency"]),
     .library(name: "AppsFlyerClient", targets: ["AppsFlyerClient"]),
     .library(name: "AsyncValue", targets: ["AsyncValue"]),
+    .library(name: "ATTrackingManagerClient", targets: ["ATTrackingManagerClient"]),
     .library(name: "AVFoundationClient", targets: ["AVFoundationClient"]),
     .library(name: "AVPlayerNotificationClient", targets: ["AVPlayerNotificationClient"]),
     .library(name: "Build", targets: ["Build"]),
@@ -72,6 +73,10 @@ var package = Package(
       .product(name: "AppsFlyerLib-Dynamic", package: "AppsFlyerFramework-Dynamic"),
     ]),
     .target(name: "AsyncValue"),
+    .target(name: "ATTrackingManagerClient", dependencies: [
+      .product(name: "Dependencies", package: "swift-dependencies"),
+      .product(name: "DependenciesMacros", package: "swift-dependencies"),
+    ]),
     .target(name: "AVFoundationClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
       .product(name: "DependenciesMacros", package: "swift-dependencies"),
