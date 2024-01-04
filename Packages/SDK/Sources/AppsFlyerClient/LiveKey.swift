@@ -1,5 +1,5 @@
-import Dependencies
 import AppsFlyerLib
+import Dependencies
 
 extension AppsFlyerClient: DependencyKey {
   public static let liveValue = Self(
@@ -11,4 +11,3 @@ extension AppsFlyerClient: DependencyKey {
     isDebug: { AppsFlyerLib.shared().isDebug = $0 }
   )
 }
-

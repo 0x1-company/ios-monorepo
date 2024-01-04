@@ -1,6 +1,6 @@
 import Dependencies
-import Foundation
 import DependenciesMacros
+import Foundation
 
 @DependencyClient
 public struct AppsFlyerClient: Sendable {
