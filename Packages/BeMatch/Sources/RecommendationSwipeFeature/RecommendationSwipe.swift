@@ -42,8 +42,6 @@ public struct RecommendationSwipeLogic {
   @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   enum Cancel: Hashable {
-    case like
-    case nope
     case feedback(String)
   }
 
