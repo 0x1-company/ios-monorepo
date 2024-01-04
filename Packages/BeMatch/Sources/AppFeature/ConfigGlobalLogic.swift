@@ -33,7 +33,7 @@ public struct ConfigGlobalLogic {
 
       state.account.isForceUpdate = .success(isForceUpdate)
       state.account.isMaintenance = .success(isMaintenance)
-      
+
       if isForceUpdate || isMaintenance {
         return .none
       }
