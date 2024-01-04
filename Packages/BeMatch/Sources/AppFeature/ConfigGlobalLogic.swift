@@ -6,6 +6,10 @@ import ConfigGlobalClient
 public struct ConfigGlobalLogic {
   @Dependency(\.configGlobal) var configGlobal
   @Dependency(\.build.bundleShortVersion) var bundleShortVersion
+  
+  enum Cancel {
+    case config
+  }
 
   public func reduce(
     into state: inout AppLogic.State,
@@ -13,7 +17,6 @@ public struct ConfigGlobalLogic {
   ) -> Effect<AppLogic.Action> {
     switch action {
     case .appDelegate(.delegate(.didFinishLaunching)):
-      enum Cancel { case id }
       return .run { send in
         for try await config in try await configGlobal.config() {
           await send(.configResponse(.success(config)), animation: .default)
@@ -21,12 +24,17 @@ public struct ConfigGlobalLogic {
       } catch: { error, send in
         await send(.configResponse(.failure(error)), animation: .default)
       }
-      .cancellable(id: Cancel.id)
+      .cancellable(id: Cancel.config, cancelInFlight: true)
 
     case let .configResponse(.success(config)):
       let shortVersion = bundleShortVersion()
       state.account.isForceUpdate = .success(config.isForceUpdate(shortVersion))
       state.account.isMaintenance = .success(config.isMaintenance)
+      return .none
+
+    case .configResponse(.failure):
+      state.account.isForceUpdate = .success(false)
+      state.account.isMaintenance = .success(true)
       return .none
 
     default:
