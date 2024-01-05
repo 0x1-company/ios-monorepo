@@ -1,4 +1,5 @@
 import AnalyticsKeys
+import TutorialFeature
 import AppsFlyerClient
 import AppTrackingTransparency
 import AsyncValue
@@ -26,6 +27,7 @@ public struct AppLogic {
     var appDelegate = AppDelegateLogic.State()
     var sceneDelegate = SceneDelegateLogic.State()
     var view: View.State = .launch()
+    var tutorial: TutorialLogic.State?
 
     public struct Account: Equatable {
       var user = AsyncValue<BeMatch.UserInternal>.none
@@ -40,6 +42,7 @@ public struct AppLogic {
     case appDelegate(AppDelegateLogic.Action)
     case sceneDelegate(SceneDelegateLogic.Action)
     case view(View.Action)
+    case tutorial(TutorialLogic.Action)
     case configFetched
     case configResponse(TaskResult<ConfigGlobalClient.Config>)
     case signInAnonymouslyResponse(Result<AuthDataResult, Error>)
@@ -53,6 +56,9 @@ public struct AppLogic {
 
   public var body: some Reducer<State, Action> {
     core
+      .ifLet(\.tutorial, action: \.tutorial) {
+        TutorialLogic()
+      }
       .onChange(of: \.account.isForceUpdate) { isForceUpdate, state, _ in
         if case .success(true) = isForceUpdate {
           state.view = .forceUpdate()
@@ -85,11 +91,18 @@ public struct AppLogic {
       switch action {
       case .view(.onboard(.path(.element(_, .capture(.delegate(.nextScreen)))))):
         analytics.setUserProperty(key: \.onboardCompleted, value: "true")
+        state.tutorial = .init()
         state.view = .navigation()
         return .none
+        
       case .view(.navigation(.match(.setting(.delegate(.toEditProfile))))):
         state.view = .onboard(OnboardLogic.State(user: state.account.user.value))
         return .none
+        
+      case .tutorial(.delegate(.finish)):
+        state.tutorial = nil
+        return .none
+        
       default:
         return .none
       }
@@ -176,6 +189,12 @@ public struct AppView: View {
           then: MaintenanceView.init(store:)
         )
       }
+    }
+    .overlay {
+      IfLetStore(
+        store.scope(state: \.tutorial, action: \.tutorial),
+        then: TutorialView.init(store:)
+      )
     }
   }
 }

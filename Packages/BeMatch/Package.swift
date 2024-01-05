@@ -263,8 +263,8 @@ let package = Package(
       "Constants",
       "AnalyticsKeys",
       "ProfileFeature",
+      "TutorialFeature",
       "DeleteAccountFeature",
-      .product(name: "FeedbackGeneratorClient", package: "SDK"),
     ]),
     .target(name: "Styleguide"),
     .target(name: "TutorialFeature", dependencies: [

@@ -128,7 +128,7 @@ public struct TutorialView: View {
 
         Spacer()
       }
-      .frame(maxWidth: .infinity)
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
       .multilineTextAlignment(.center)
       .background(Color.black.opacity(0.9))
       .task { await store.send(.onTask).finish() }
