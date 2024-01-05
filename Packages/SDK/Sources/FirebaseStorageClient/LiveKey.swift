@@ -10,6 +10,13 @@ extension FirebaseStorageClient: DependencyKey {
         let reference = storage.reference().child(path)
         return try await reference.delete()
       },
+      folderDelete: { path in
+        let reference = storage.reference().child(path)
+        let result = try await reference.listAll()
+        for document in result.items {
+          try await document.delete()
+        }
+      },
       upload: { path, uploadData in
         let reference = storage.reference().child(path)
         let metadata = StorageMetadata()

@@ -93,6 +93,8 @@ public struct BeRealCaptureLogic {
         state.images = Array(repeating: nil, count: 9)
 
         return .run { [items = state.photoPickerItems] send in
+          let userFolder = "users/profile_images/\(uid)"
+          try await firebaseStorage.folderDelete(path: userFolder)
           for i in items {
             await send(.loadTransferableResponse(Result {
               try await i.loadTransferable(type: Data.self)
@@ -102,7 +104,7 @@ public struct BeRealCaptureLogic {
             let filename = "\(uuid().uuidString).png"
             await send(.uploadResponse(Result {
               try await firebaseStorage.upload(
-                path: "users/profile_images/\(uid)/\(filename)",
+                path: "\(userFolder)/\(filename)",
                 uploadData: data
               )
             }))
