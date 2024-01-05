@@ -39,7 +39,7 @@ public struct SettingLogic {
 
       case .editProfileButtonTapped:
         return .send(.delegate(.toEditProfile), animation: .default)
-        
+
       case .howItWorksButtonTapped:
         state.destination = .tutorial()
         return .none
@@ -47,7 +47,7 @@ public struct SettingLogic {
       case .deleteAccountButtonTapped:
         state.destination = .deleteAccount()
         return .none
-        
+
       case .destination(.presented(.tutorial(.delegate(.finish)))):
         state.destination = nil
         return .none

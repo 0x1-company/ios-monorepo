@@ -110,7 +110,7 @@ public struct TutorialView: View {
             ) {
               store.send(.nextButtonTapped, animation: .default)
             }
-            
+
             Button {
               store.send(.skipButtonTapped)
             } label: {

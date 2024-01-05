@@ -1,5 +1,4 @@
 import AnalyticsKeys
-import TutorialFeature
 import AppsFlyerClient
 import AppTrackingTransparency
 import AsyncValue
@@ -15,6 +14,7 @@ import NavigationFeature
 import OnboardFeature
 import SwiftUI
 import TcaHelpers
+import TutorialFeature
 import UserDefaultsClient
 
 @Reducer
@@ -94,15 +94,15 @@ public struct AppLogic {
         state.tutorial = .init()
         state.view = .navigation()
         return .none
-        
+
       case .view(.navigation(.match(.setting(.delegate(.toEditProfile))))):
         state.view = .onboard(OnboardLogic.State(user: state.account.user.value))
         return .none
-        
+
       case .tutorial(.delegate(.finish)):
         state.tutorial = nil
         return .none
-        
+
       default:
         return .none
       }
