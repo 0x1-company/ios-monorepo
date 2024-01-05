@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "speech-balloon.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
