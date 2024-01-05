@@ -1,0 +1,85 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "24,000" : {
+
+    },
+    "benefits to each other!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "の特典がお互いにもらえる！"
+          }
+        }
+      }
+    },
+    "Both those who invited and those who were invited." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "招待した人も、された人も"
+          }
+        }
+      }
+    },
+    "Limited to the first 2,000 Users" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "先着2,000名限定"
+          }
+        }
+      }
+    },
+    "PremiumCampaign" : {
+
+    },
+    "PremiumPurchase" : {
+
+    },
+    "Recurring billing. You can cancel at any time. Payment will be charged to your iTunes account and your subscription will auto-renew at $500/week until you cancel in iTunes Store settings. By tapping Unlock, you agree to the Terms of Service and auto-renewal." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "定期課金。いつでもキャンセルできます。お支払いはiTunesアカウントに請求され、iTunes Storeの設定でキャンセルするまで、購読は¥500/週で自動更新されます。ロック解除をタップすると、利用規約と自動更新に同意したことになります。"
+          }
+        }
+      }
+    },
+    "Restore a purchase" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入を復元する"
+          }
+        }
+      }
+    },
+    "Share Invitation Code" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "招待コードをシェアする"
+          }
+        }
+      }
+    },
+    "When a friend enters your invitation code\n500 yen per week when you enter the code" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "友達があなたの招待コードを\n入力すると、週500円の"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

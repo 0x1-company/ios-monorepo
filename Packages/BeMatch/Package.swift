@@ -30,6 +30,7 @@ let package = Package(
     .library(name: "NavigationFeature", targets: ["NavigationFeature"]),
     .library(name: "NotificationsReEnableFeature", targets: ["NotificationsReEnableFeature"]),
     .library(name: "OnboardFeature", targets: ["OnboardFeature"]),
+    .library(name: "PremiumFeature", targets: ["PremiumFeature"]),
     .library(name: "ProfileExternalFeature", targets: ["ProfileExternalFeature"]),
     .library(name: "ProfileFeature", targets: ["ProfileFeature"]),
     .library(name: "ProfileSharedFeature", targets: ["ProfileSharedFeature"]),
@@ -186,6 +187,13 @@ let package = Package(
       .product(name: "FirebaseAuthClient", package: "SDK"),
       .product(name: "UserNotificationClient", package: "SDK"),
       .product(name: "FirebaseStorageClient", package: "SDK"),
+    ]),
+    .target(name: "PremiumFeature", dependencies: [
+      "Styleguide",
+      "AnalyticsKeys",
+      .product(name: "ColorHex", package: "SDK"),
+      .product(name: "FeedbackGeneratorClient", package: "SDK"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "ProfileExternalFeature", dependencies: [
       "Constants",
