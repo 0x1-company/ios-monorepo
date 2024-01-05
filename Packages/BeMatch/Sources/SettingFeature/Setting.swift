@@ -4,6 +4,7 @@ import Constants
 import DeleteAccountFeature
 import ProfileFeature
 import SwiftUI
+import TutorialFeature
 
 @Reducer
 public struct SettingLogic {
@@ -17,6 +18,7 @@ public struct SettingLogic {
   public enum Action {
     case myProfileButtonTapped
     case editProfileButtonTapped
+    case howItWorksButtonTapped
     case deleteAccountButtonTapped
     case destination(PresentationAction<Destination.Action>)
     case delegate(Delegate)
@@ -37,9 +39,17 @@ public struct SettingLogic {
 
       case .editProfileButtonTapped:
         return .send(.delegate(.toEditProfile), animation: .default)
+        
+      case .howItWorksButtonTapped:
+        state.destination = .tutorial()
+        return .none
 
       case .deleteAccountButtonTapped:
         state.destination = .deleteAccount()
+        return .none
+        
+      case .destination(.presented(.tutorial(.delegate(.finish)))):
+        state.destination = nil
         return .none
 
       case .destination(.dismiss):
@@ -60,11 +70,13 @@ public struct SettingLogic {
     public enum State: Equatable {
       case profile(ProfileLogic.State = .init())
       case deleteAccount(DeleteAccountLogic.State = .init())
+      case tutorial(TutorialLogic.State = .init())
     }
 
     public enum Action {
       case profile(ProfileLogic.Action)
       case deleteAccount(DeleteAccountLogic.Action)
+      case tutorial(TutorialLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
@@ -73,6 +85,9 @@ public struct SettingLogic {
       }
       Scope(state: \.deleteAccount, action: \.deleteAccount) {
         DeleteAccountLogic()
+      }
+      Scope(state: \.tutorial, action: \.tutorial) {
+        TutorialLogic()
       }
     }
   }
@@ -103,6 +118,15 @@ public struct SettingView: View {
           Text("Edit Profile", bundle: .module)
         } icon: {
           Image(systemName: "square.and.pencil")
+        }
+      }
+      Button {
+        store.send(.howItWorksButtonTapped)
+      } label: {
+        Label {
+          Text("How it works", bundle: .module)
+        } icon: {
+          Image(systemName: "info.circle")
         }
       }
       Link(destination: Constants.contactUsURL) {
@@ -156,6 +180,10 @@ public struct SettingView: View {
         ProfileView(store: store)
       }
     }
+    .fullScreenCover(
+      store: store.scope(state: \.$destination.tutorial, action: \.destination.tutorial),
+      content: TutorialView.init(store:)
+    )
   }
 }
 

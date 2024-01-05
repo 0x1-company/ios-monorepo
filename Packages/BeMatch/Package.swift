@@ -42,6 +42,7 @@ let package = Package(
     .library(name: "SelectControl", targets: ["SelectControl"]),
     .library(name: "SettingFeature", targets: ["SettingFeature"]),
     .library(name: "Styleguide", targets: ["Styleguide"]),
+    .library(name: "TutorialFeature", targets: ["TutorialFeature"]),
     .library(name: "UsernameSettingFeature", targets: ["UsernameSettingFeature"]),
   ],
   dependencies: [
@@ -262,10 +263,16 @@ let package = Package(
       "Constants",
       "AnalyticsKeys",
       "ProfileFeature",
+      "TutorialFeature",
       "DeleteAccountFeature",
-      .product(name: "FeedbackGeneratorClient", package: "SDK"),
     ]),
     .target(name: "Styleguide"),
+    .target(name: "TutorialFeature", dependencies: [
+      "Styleguide",
+      "AnalyticsKeys",
+      .product(name: "FeedbackGeneratorClient", package: "SDK"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
     .target(name: "UsernameSettingFeature", dependencies: [
       "Styleguide",
       "BeMatchClient",
