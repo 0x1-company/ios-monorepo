@@ -124,7 +124,7 @@ public struct SettingView: View {
         store.send(.howItWorksButtonTapped)
       } label: {
         Label {
-          Text("How it works", bundle: .module)
+          Text("How It Works", bundle: .module)
         } icon: {
           Image(systemName: "info.circle")
         }
@@ -138,7 +138,7 @@ public struct SettingView: View {
       }
       Link(destination: Constants.termsOfUseURL) {
         Label {
-          Text("Terms of use", bundle: .module)
+          Text("Terms of Use", bundle: .module)
         } icon: {
           Image(systemName: "signature")
         }
