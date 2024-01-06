@@ -4,6 +4,7 @@ import BeMatch
 import BeMatchClient
 import ComposableArchitecture
 import FeedbackGeneratorClient
+import ReportFeature
 import Styleguide
 import SwiftUI
 import TcaHelpers
@@ -14,6 +15,7 @@ public struct RecommendationSwipeLogic {
 
   public struct State: Equatable {
     var rows: IdentifiedArrayOf<SwipeCardLogic.State> = []
+    @PresentationState var destination: Destination.State?
 
     public init(rows: [BeMatch.SwipeCard]) {
       self.rows = .init(uniqueElements: rows.map(SwipeCardLogic.State.init))
@@ -28,6 +30,7 @@ public struct RecommendationSwipeLogic {
     case createLikeResponse(Result<BeMatch.CreateLikeMutation.Data, Error>)
     case createNopeResponse(Result<BeMatch.CreateNopeMutation.Data, Error>)
     case rows(IdentifiedActionOf<SwipeCardLogic>)
+    case destination(PresentationAction<Destination.Action>)
     case delegate(Delegate)
 
     public enum Delegate: Equatable {
@@ -109,6 +112,12 @@ public struct RecommendationSwipeLogic {
         }
         .cancellable(id: Cancel.feedback(input.targetUserId), cancelInFlight: true)
 
+      case let .rows(.element(id, .delegate(.report))):
+        state.destination = .report(
+          ReportLogic.State(targetUserId: id)
+        )
+        return .none
+
       case let .createNopeResponse(.success(data)):
         state.rows.remove(id: data.createNope.targetUserId)
         return .none
@@ -126,6 +135,10 @@ public struct RecommendationSwipeLogic {
           state.rows.remove(id: feedback.targetUserId)
         }
         return .none
+        
+      case .destination(.dismiss):
+        state.destination = nil
+        return .none
 
       default:
         return .none
@@ -134,10 +147,30 @@ public struct RecommendationSwipeLogic {
     .forEach(\.rows, action: \.rows) {
       SwipeCardLogic()
     }
+    .ifLet(\.$destination, action: \.destination) {
+      Destination()
+    }
     .onChange(of: \.rows) { rows, _, _ in
       rows.isEmpty
         ? Effect<Action>.send(.delegate(.finished), animation: .default)
         : Effect<Action>.none
+    }
+  }
+
+  @Reducer
+  public struct Destination {
+    public enum State: Equatable {
+      case report(ReportLogic.State)
+    }
+
+    public enum Action {
+      case report(ReportLogic.Action)
+    }
+
+    public var body: some Reducer<State, Action> {
+      Scope(state: \.report, action: \.report) {
+        ReportLogic()
+      }
     }
   }
 }

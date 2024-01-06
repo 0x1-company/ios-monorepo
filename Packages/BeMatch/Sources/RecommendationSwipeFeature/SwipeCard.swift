@@ -25,7 +25,7 @@ public struct SwipeCardLogic {
   }
 
   public enum Action: BindableAction {
-    case onTask
+    case reportButtonTapped
     case backButtonTapped
     case forwardButtonTapped
     case swipeToLike
@@ -36,6 +36,7 @@ public struct SwipeCardLogic {
     public enum Delegate: Equatable {
       case like
       case nope
+      case report
     }
   }
 
@@ -46,6 +47,9 @@ public struct SwipeCardLogic {
     BindingReducer()
     Reduce<State, Action> { state, action in
       switch action {
+      case .reportButtonTapped:
+        return .send(.delegate(.report), animation: .default)
+
       case .backButtonTapped:
         let images = state.data.images
         if let index = images.firstIndex(of: state.selection), index > 0 {
