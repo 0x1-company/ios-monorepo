@@ -99,11 +99,11 @@ public struct SettingsLogic {
           await feedbackGenerator.impactOccurred()
           await openURL(Constants.appStoreReviewURL)
         }
-        
+
       case .versionButtonTapped where state.creationDate == nil:
         let user = firebaseAuth.currentUser()
         guard let creationDate = user?.metadata.creationDate else { return .none }
-        
+
         state.creationDate = CreationDateLogic.State(
           creationDate: creationDate
         )

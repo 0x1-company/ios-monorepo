@@ -17,11 +17,11 @@ public struct CreationDateLogic {
   public enum Action {
     case onTask
   }
-  
+
   @Dependency(\.date.now) var now
   @Dependency(\.locale) var locale
   @Dependency(\.calendar) var calendar
-  
+
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
       switch action {
@@ -32,12 +32,12 @@ public struct CreationDateLogic {
           to: now
         )
         let daysAgo = components.day ?? 0
-        
+
         let dateFormatter = DateFormatter()
         dateFormatter.locale = locale
         dateFormatter.dateStyle = .long
         let formattedCreationDate = dateFormatter.string(from: state.creationDate)
-        
+
         state.creationDateString = String(
           localized: "You joined BeMatch \(daysAgo) days ago on \(formattedCreationDate)",
           bundle: .module
@@ -67,7 +67,7 @@ public struct CreationDateView: View {
   CreationDateView(
     store: .init(
       initialState: CreationDateLogic.State(
-        creationDate: Date.now.addingTimeInterval(-20000000)
+        creationDate: Date.now.addingTimeInterval(-20_000_000)
       ),
       reducer: { CreationDateLogic() }
     )
