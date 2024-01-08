@@ -1,15 +1,15 @@
+import ActivityView
 import AnalyticsClient
 import AnalyticsKeys
-import ActivityView
-import Constants
 import Build
 import ComposableArchitecture
+import Constants
 import SwiftUI
 
 @Reducer
 public struct SettingsLogic {
   public init() {}
-  
+
   public struct CompletionWithItems: Equatable {
     public let activityType: UIActivity.ActivityType?
     public let result: Bool
@@ -26,10 +26,10 @@ public struct SettingsLogic {
         bundle: .module
       )
     }
-    
+
     public init() {
       @Dependency(\.build) var build
-      self.bundleShortVersion = build.bundleShortVersion()
+      bundleShortVersion = build.bundleShortVersion()
     }
   }
 
@@ -58,12 +58,12 @@ public struct SettingsLogic {
       case .onAppear:
         analytics.logScreen(screenName: "Settings", of: self)
         return .none
-        
+
       case .shareButtonTapped:
         state.isSharePresented = true
         analytics.buttonClick(name: \.share)
         return .none
-        
+
       case let .onCompletion(completion):
         state.isSharePresented = false
         analytics.logEvent("activity_completion", [
@@ -71,7 +71,7 @@ public struct SettingsLogic {
           "result": completion.result,
         ])
         return .none
-        
+
       default:
         return .none
       }
@@ -104,7 +104,7 @@ public struct SettingsView: View {
               .foregroundStyle(Color.primary)
             }
           }
-          
+
           Button {
             store.send(.editProfileButtonTapped)
           } label: {
@@ -155,7 +155,7 @@ public struct SettingsView: View {
         } header: {
           Text("Help", bundle: .module)
         }
-        
+
         Section {
           Button {
             store.send(.otherButtonTapped)
@@ -188,7 +188,7 @@ public struct SettingsView: View {
               .foregroundStyle(Color.primary)
             }
           }
-          
+
           Link(destination: Constants.termsOfUseURL) {
             LabeledContent {
               Image(systemName: "chevron.right")
@@ -201,7 +201,7 @@ public struct SettingsView: View {
               .foregroundStyle(Color.primary)
             }
           }
-          
+
           Button {
             store.send(.shareButtonTapped)
           } label: {
@@ -216,7 +216,7 @@ public struct SettingsView: View {
               .foregroundStyle(Color.primary)
             }
           }
-          
+
           Button {
             store.send(.rateButtonTapped)
           } label: {

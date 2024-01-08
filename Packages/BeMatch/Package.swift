@@ -27,6 +27,7 @@ let package = Package(
     .library(name: "MatchedFeature", targets: ["MatchedFeature"]),
     .library(name: "MatchEmptyFeature", targets: ["MatchEmptyFeature"]),
     .library(name: "MatchFeature", targets: ["MatchFeature"]),
+    .library(name: "MatchNavigationFeature", targets: ["MatchNavigationFeature"]),
     .library(name: "NavigationFeature", targets: ["NavigationFeature"]),
     .library(name: "NotificationsReEnableFeature", targets: ["NotificationsReEnableFeature"]),
     .library(name: "OnboardFeature", targets: ["OnboardFeature"]),
@@ -40,7 +41,6 @@ let package = Package(
     .library(name: "RecommendationSwipeFeature", targets: ["RecommendationSwipeFeature"]),
     .library(name: "ReportFeature", targets: ["ReportFeature"]),
     .library(name: "SelectControl", targets: ["SelectControl"]),
-    .library(name: "SettingFeature", targets: ["SettingFeature"]),
     .library(name: "SettingsFeature", targets: ["SettingsFeature"]),
     .library(name: "Styleguide", targets: ["Styleguide"]),
     .library(name: "TutorialFeature", targets: ["TutorialFeature"]),
@@ -161,7 +161,7 @@ let package = Package(
     ]),
     .target(name: "MatchFeature", dependencies: [
       "BannerFeature",
-      "SettingFeature",
+      "SettingsFeature",
       "MatchEmptyFeature",
       "ProfileExternalFeature",
       "NotificationsReEnableFeature",
@@ -169,9 +169,13 @@ let package = Package(
       .product(name: "UserNotificationClient", package: "SDK"),
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
     ]),
+    .target(name: "MatchNavigationFeature", dependencies: [
+      "MatchFeature",
+      "SettingsFeature",
+    ]),
     .target(name: "NavigationFeature", dependencies: [
       "RecommendationFeature",
-      "MatchFeature",
+      "MatchNavigationFeature",
     ]),
     .target(name: "NotificationsReEnableFeature", dependencies: [
       .product(name: "UIApplicationClient", package: "SDK"),
@@ -261,13 +265,6 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "SelectControl"),
-    .target(name: "SettingFeature", dependencies: [
-      "Constants",
-      "AnalyticsKeys",
-      "ProfileFeature",
-      "TutorialFeature",
-      "DeleteAccountFeature",
-    ]),
     .target(name: "SettingsFeature", dependencies: [
       "Constants",
       "AnalyticsKeys",

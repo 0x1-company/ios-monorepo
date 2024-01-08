@@ -2,7 +2,7 @@ import BeMatch
 import BeMatchClient
 import ComposableArchitecture
 import FeedbackGeneratorClient
-import MatchFeature
+import MatchNavigationFeature
 import RecommendationFeature
 import SwiftUI
 import UserNotificationClient
@@ -19,7 +19,7 @@ public struct RootNavigationLogic {
 
   public struct State: Equatable {
     var recommendation = RecommendationLogic.State()
-    var match = MatchLogic.State()
+    var match = MatchNavigationLogic.State()
 
     @BindingState var tab = Tab.swipe
 
@@ -29,7 +29,7 @@ public struct RootNavigationLogic {
   public enum Action: BindableAction {
     case onTask
     case recommendation(RecommendationLogic.Action)
-    case match(MatchLogic.Action)
+    case match(MatchNavigationLogic.Action)
     case binding(BindingAction<State>)
     case pushNotificationBadgeResponse(Result<BeMatch.PushNotificationBadgeQuery.Data, Error>)
   }
@@ -49,7 +49,7 @@ public struct RootNavigationLogic {
       RecommendationLogic()
     }
     Scope(state: \.match, action: \.match) {
-      MatchLogic()
+      MatchNavigationLogic()
     }
     Reduce<State, Action> { state, action in
       switch action {
@@ -62,7 +62,7 @@ public struct RootNavigationLogic {
           }
         }
 
-      case .match(.empty(.delegate(.toRecommendation))):
+      case .match(.match(.empty(.delegate(.toRecommendation)))):
         state.tab = .swipe
         return .none
 
@@ -120,20 +120,18 @@ public struct RootNavigationView: View {
           .frame(width: 30, height: 30)
         }
 
-        NavigationStack {
-          MatchView(store: store.scope(state: \.match, action: \.match))
-        }
-        .tag(RootNavigationLogic.Tab.match)
-        .tabItem {
-          Image(
-            viewStore.tab.is(\.match)
-              ? ImageResource.starActive
-              : ImageResource.starDeactive
-          )
-          .resizable()
-          .aspectRatio(contentMode: .fit)
-          .frame(width: 30, height: 30)
-        }
+        MatchNavigationView(store: store.scope(state: \.match, action: \.match))
+          .tag(RootNavigationLogic.Tab.match)
+          .tabItem {
+            Image(
+              viewStore.tab.is(\.match)
+                ? ImageResource.starActive
+                : ImageResource.starDeactive
+            )
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 30, height: 30)
+          }
       }
       .task { await store.send(.onTask).finish() }
     }

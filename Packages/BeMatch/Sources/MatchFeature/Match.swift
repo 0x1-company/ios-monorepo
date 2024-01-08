@@ -5,7 +5,6 @@ import BeMatchClient
 import ComposableArchitecture
 import MatchEmptyFeature
 import NotificationsReEnableFeature
-import SettingFeature
 import Styleguide
 import SwiftUI
 import TcaHelpers
@@ -26,8 +25,6 @@ public struct MatchLogic {
     var receivedLike: ReceivedLikeGridLogic.State?
     var empty: MatchEmptyLogic.State? = .init()
 
-    var setting = SettingLogic.State()
-
     public init() {}
   }
 
@@ -44,7 +41,6 @@ public struct MatchLogic {
     case notificationsReEnable(NotificationsReEnableLogic.Action)
     case receivedLike(ReceivedLikeGridLogic.Action)
     case empty(MatchEmptyLogic.Action)
-    case setting(SettingLogic.Action)
   }
 
   @Dependency(\.analytics) var analytics
@@ -58,9 +54,6 @@ public struct MatchLogic {
   }
 
   public var body: some Reducer<State, Action> {
-    Scope(state: \.setting, action: \.setting) {
-      SettingLogic()
-    }
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
@@ -269,9 +262,6 @@ public struct MatchView: View {
       .toolbar {
         ToolbarItem(placement: .principal) {
           Image(ImageResource.beMatch)
-        }
-        ToolbarItem(placement: .topBarTrailing) {
-          SettingView(store: store.scope(state: \.setting, action: \.setting))
         }
       }
     }

@@ -20,7 +20,7 @@ public struct SettingsOtherLogic {
     case deleteAccountButtonTapped
     case confirmationDialog(PresentationAction<ConfirmationDialog>)
     case deleteAccount(PresentationAction<DeleteAccountLogic.Action>)
-    
+
     public enum ConfirmationDialog {
       case clear
     }
@@ -37,7 +37,7 @@ public struct SettingsOtherLogic {
       case .onAppear:
         analytics.logScreen(screenName: "SettingsOther", of: self)
         return .none
-        
+
       case .clearCacheButtonTapped:
         state.confirmationDialog = ConfirmationDialogState {
           TextState("Clear cache", bundle: .module)
@@ -49,19 +49,19 @@ public struct SettingsOtherLogic {
           TextState("Clearing cache can help fix some issues", bundle: .module)
         }
         return .none
-        
+
       case .deleteAccountButtonTapped:
         state.deleteAccount = .init()
         return .none
-        
+
       case .confirmationDialog(.presented(.clear)):
         state.confirmationDialog = nil
         return .none
-        
+
       case .deleteAccount(.dismiss):
         state.deleteAccount = nil
         return .none
-        
+
       default:
         return .none
       }
@@ -81,7 +81,7 @@ public struct SettingsOtherView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithViewStore(store, observe: { $0 }) { _ in
       List {
         Section {
           Button {
@@ -99,7 +99,7 @@ public struct SettingsOtherView: View {
             }
           }
         }
-        
+
         Section {
           Button(role: .destructive) {
             store.send(.deleteAccountButtonTapped)
