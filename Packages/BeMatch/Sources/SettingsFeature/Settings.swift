@@ -107,7 +107,9 @@ public struct SettingsLogic {
         state.creationDate = CreationDateLogic.State(
           creationDate: creationDate
         )
-        return .none
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
 
       case let .onCompletion(completion):
         state.isSharePresented = false
@@ -281,7 +283,7 @@ public struct SettingsView: View {
         } footer: {
           VStack(spacing: 0) {
             Button {
-              store.send(.versionButtonTapped)
+              store.send(.versionButtonTapped, animation: .default)
             } label: {
               Text("Version \(viewStore.bundleShortVersion)", bundle: .module)
                 .frame(height: 44)
