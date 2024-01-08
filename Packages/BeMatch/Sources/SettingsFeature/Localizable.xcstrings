@@ -71,6 +71,16 @@
         }
       }
     },
+    "Edit profile will not delete your account." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロフィールを編集してもアカウントは削除されません"
+          }
+        }
+      }
+    },
     "Help" : {
       "localizations" : {
         "ja" : {
