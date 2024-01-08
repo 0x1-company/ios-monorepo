@@ -34,7 +34,18 @@
         }
       }
     },
+    "What's your username on BeReal?" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeRealのユーザーネーム\nを設定してください"
+          }
+        }
+      }
+    },
     "What's your username?" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
