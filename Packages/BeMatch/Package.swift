@@ -41,6 +41,7 @@ let package = Package(
     .library(name: "ReportFeature", targets: ["ReportFeature"]),
     .library(name: "SelectControl", targets: ["SelectControl"]),
     .library(name: "SettingFeature", targets: ["SettingFeature"]),
+    .library(name: "SettingsFeature", targets: ["SettingsFeature"]),
     .library(name: "Styleguide", targets: ["Styleguide"]),
     .library(name: "TutorialFeature", targets: ["TutorialFeature"]),
     .library(name: "UsernameSettingFeature", targets: ["UsernameSettingFeature"]),
@@ -266,6 +267,14 @@ let package = Package(
       "ProfileFeature",
       "TutorialFeature",
       "DeleteAccountFeature",
+    ]),
+    .target(name: "SettingsFeature", dependencies: [
+      "Constants",
+      "AnalyticsKeys",
+      "ProfileFeature",
+      "TutorialFeature",
+      "DeleteAccountFeature",
+      .product(name: "Build", package: "SDK"),
     ]),
     .target(name: "Styleguide"),
     .target(name: "TutorialFeature", dependencies: [
