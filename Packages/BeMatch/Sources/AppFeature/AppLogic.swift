@@ -95,7 +95,7 @@ public struct AppLogic {
         state.view = .navigation()
         return .none
 
-      case .view(.navigation(.match(.setting(.delegate(.toEditProfile))))):
+      case .view(.navigation(.match(.path(.element(_, .settings(.editProfileButtonTapped)))))):
         state.view = .onboard(OnboardLogic.State(user: state.account.user.value))
         return .none
 

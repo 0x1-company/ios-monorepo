@@ -26,12 +26,12 @@ public struct AuthLogic {
         }))
       }
 
-    case .view(.navigation(.match(.setting(.destination(.presented(.deleteAccount(.delegate(.accountDeletionCompleted)))))))):
-      return .run { send in
-        await send(.signInAnonymouslyResponse(Result {
-          try await signInAnonymously()
-        }))
-      }
+//    case .view(.navigation(.match(.setting(.destination(.presented(.deleteAccount(.delegate(.accountDeletionCompleted)))))))):
+//      return .run { send in
+//        await send(.signInAnonymouslyResponse(Result {
+//          try await signInAnonymously()
+//        }))
+//      }
 
     case .signInAnonymouslyResponse(.success):
       return .run { send in
