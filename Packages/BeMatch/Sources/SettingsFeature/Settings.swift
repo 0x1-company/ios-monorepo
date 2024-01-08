@@ -1,10 +1,10 @@
 import ActivityView
-import FeedbackGeneratorClient
 import AnalyticsClient
 import AnalyticsKeys
 import Build
 import ComposableArchitecture
 import Constants
+import FeedbackGeneratorClient
 import ProfileFeature
 import SwiftUI
 import TutorialFeature
@@ -70,14 +70,14 @@ public struct SettingsLogic {
       case .onAppear:
         analytics.logScreen(screenName: "Settings", of: self)
         return .none
-        
+
       case .myProfileButtonTapped:
         state.destination = .profile()
         return .none
-        
+
       case .editProfileButtonTapped:
         return .send(.delegate(.toEditProfile), animation: .default)
-        
+
       case .howItWorksButtonTapped:
         state.destination = .tutorial()
         return .none
@@ -86,10 +86,10 @@ public struct SettingsLogic {
         state.isSharePresented = true
         analytics.buttonClick(name: \.share)
         return .none
-        
+
       case .rateButtonTapped:
         analytics.buttonClick(name: \.storeRate)
-        return .run { send in
+        return .run { _ in
           await feedbackGenerator.impactOccurred()
           await openURL(Constants.appStoreReviewURL)
         }
@@ -101,7 +101,7 @@ public struct SettingsLogic {
           "result": completion.result,
         ])
         return .none
-        
+
       case .destination(.presented(.tutorial(.delegate(.finish)))):
         state.destination = nil
         return .none
