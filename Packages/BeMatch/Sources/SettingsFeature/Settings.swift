@@ -159,12 +159,8 @@ public struct SettingsView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Label {
-                Text("My Profile", bundle: .module)
-              } icon: {
-                Image(systemName: "person")
-              }
-              .foregroundStyle(Color.primary)
+              Text("My Profile", bundle: .module)
+                .foregroundStyle(Color.primary)
             }
           }
 
@@ -174,12 +170,8 @@ public struct SettingsView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Label {
-                Text("Edit Profile", bundle: .module)
-              } icon: {
-                Image(systemName: "square.and.pencil")
-              }
-              .foregroundStyle(Color.primary)
+              Text("Edit Profile", bundle: .module)
+                .foregroundStyle(Color.primary)
             }
           }
         } header: {
@@ -193,12 +185,8 @@ public struct SettingsView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Label {
-                Text("How It Works", bundle: .module)
-              } icon: {
-                Image(systemName: "info.circle")
-              }
-              .foregroundStyle(Color.primary)
+              Text("How It Works", bundle: .module)
+                .foregroundStyle(Color.primary)
             }
           }
 
@@ -206,12 +194,8 @@ public struct SettingsView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Label {
-                Text("Contact Us", bundle: .module)
-              } icon: {
-                Image(systemName: "questionmark.circle")
-              }
-              .foregroundStyle(Color.primary)
+              Text("Contact Us", bundle: .module)
+                .foregroundStyle(Color.primary)
             }
           }
 
@@ -226,12 +210,8 @@ public struct SettingsView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Label {
-                Text("Other", bundle: .module)
-              } icon: {
-                Image(systemName: "hammer.circle")
-              }
-              .foregroundStyle(Color.primary)
+              Text("Other", bundle: .module)
+                .foregroundStyle(Color.primary)
             }
           }
         } header: {
@@ -243,12 +223,8 @@ public struct SettingsView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Label {
-                Text("Terms of Use", bundle: .module)
-              } icon: {
-                Image(systemName: "signature")
-              }
-              .foregroundStyle(Color.primary)
+              Text("Terms of Use", bundle: .module)
+                .foregroundStyle(Color.primary)
             }
           }
 
@@ -256,12 +232,8 @@ public struct SettingsView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Label {
-                Text("Privacy Policy", bundle: .module)
-              } icon: {
-                Image(systemName: "lock")
-              }
-              .foregroundStyle(Color.primary)
+              Text("Privacy Policy", bundle: .module)
+                .foregroundStyle(Color.primary)
             }
           }
 
@@ -271,12 +243,8 @@ public struct SettingsView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Label {
-                Text("Share BeMatch.", bundle: .module)
-              } icon: {
-                Image(systemName: "square.and.arrow.up")
-              }
-              .foregroundStyle(Color.primary)
+              Text("Share BeMatch.", bundle: .module)
+                .foregroundStyle(Color.primary)
             }
           }
 
@@ -286,12 +254,8 @@ public struct SettingsView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Label {
-                Text("Rate BeMatch.", bundle: .module)
-              } icon: {
-                Image(systemName: "star")
-              }
-              .foregroundStyle(Color.primary)
+              Text("Rate BeMatch.", bundle: .module)
+                .foregroundStyle(Color.primary)
             }
           }
         } header: {
