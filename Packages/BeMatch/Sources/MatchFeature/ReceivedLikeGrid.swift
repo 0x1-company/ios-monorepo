@@ -92,11 +92,13 @@ public struct ReceivedLikeGridView: View {
                 .blur(radius: 18)
             },
             placeholder: {
-              ProgressView()
-                .progressViewStyle(CircularProgressViewStyle())
-                .tint(Color.white)
+              Color.black
                 .aspectRatio(3 / 4, contentMode: .fill)
-                .background()
+                .overlay {
+                  ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .tint(Color.white)
+                }
             }
           )
           .cornerRadius(6)
