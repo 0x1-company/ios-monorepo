@@ -159,11 +159,7 @@ public struct SettingsView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Label {
-                Text("My Profile", bundle: .module)
-              } icon: {
-                Image(systemName: "person")
-              }
+              Text("My Profile", bundle: .module)
               .foregroundStyle(Color.primary)
             }
           }
@@ -174,11 +170,7 @@ public struct SettingsView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Label {
-                Text("Edit Profile", bundle: .module)
-              } icon: {
-                Image(systemName: "square.and.pencil")
-              }
+              Text("Edit Profile", bundle: .module)
               .foregroundStyle(Color.primary)
             }
           }
@@ -193,11 +185,7 @@ public struct SettingsView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Label {
-                Text("How It Works", bundle: .module)
-              } icon: {
-                Image(systemName: "info.circle")
-              }
+              Text("How It Works", bundle: .module)
               .foregroundStyle(Color.primary)
             }
           }
@@ -206,11 +194,7 @@ public struct SettingsView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Label {
-                Text("Contact Us", bundle: .module)
-              } icon: {
-                Image(systemName: "questionmark.circle")
-              }
+              Text("Contact Us", bundle: .module)
               .foregroundStyle(Color.primary)
             }
           }
@@ -226,11 +210,7 @@ public struct SettingsView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Label {
-                Text("Other", bundle: .module)
-              } icon: {
-                Image(systemName: "hammer.circle")
-              }
+              Text("Other", bundle: .module)
               .foregroundStyle(Color.primary)
             }
           }
@@ -243,11 +223,7 @@ public struct SettingsView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Label {
-                Text("Terms of Use", bundle: .module)
-              } icon: {
-                Image(systemName: "signature")
-              }
+              Text("Terms of Use", bundle: .module)
               .foregroundStyle(Color.primary)
             }
           }
@@ -256,11 +232,7 @@ public struct SettingsView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Label {
-                Text("Privacy Policy", bundle: .module)
-              } icon: {
-                Image(systemName: "lock")
-              }
+              Text("Privacy Policy", bundle: .module)
               .foregroundStyle(Color.primary)
             }
           }
@@ -271,11 +243,7 @@ public struct SettingsView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Label {
-                Text("Share BeMatch.", bundle: .module)
-              } icon: {
-                Image(systemName: "square.and.arrow.up")
-              }
+              Text("Share BeMatch.", bundle: .module)
               .foregroundStyle(Color.primary)
             }
           }
@@ -286,11 +254,7 @@ public struct SettingsView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Label {
-                Text("Rate BeMatch.", bundle: .module)
-              } icon: {
-                Image(systemName: "star")
-              }
+              Text("Rate BeMatch.", bundle: .module)
               .foregroundStyle(Color.primary)
             }
           }

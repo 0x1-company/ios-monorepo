@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "Report" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {

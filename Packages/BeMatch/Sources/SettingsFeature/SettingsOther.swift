@@ -90,11 +90,7 @@ public struct SettingsOtherView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Label {
-                Text("Clear cache", bundle: .module)
-              } icon: {
-                Image(systemName: "clear")
-              }
+              Text("Clear cache", bundle: .module)
               .foregroundStyle(Color.primary)
             }
           }
