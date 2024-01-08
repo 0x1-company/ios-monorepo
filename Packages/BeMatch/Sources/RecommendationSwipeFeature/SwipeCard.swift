@@ -144,6 +144,41 @@ public struct SwipeCardView: View {
         }
         .offset(translation)
         .rotationEffect(.degrees(Double(translation.width / 300) * 25), anchor: .bottom)
+        .overlay {
+          VStack(spacing: 0) {
+            HStack(spacing: 0) {
+              Color.clear
+                .contentShape(Rectangle())
+                .onTapGesture {
+                  store.send(.backButtonTapped)
+                }
+
+              Color.clear
+                .contentShape(Rectangle())
+                .onTapGesture {
+                  store.send(.forwardButtonTapped)
+                }
+            }
+          }
+        }
+        .overlay(alignment: .topTrailing) {
+          Menu {
+            Button(role: .destructive) {
+              store.send(.reportButtonTapped)
+            } label: {
+              Label {
+                Text("Report", bundle: .module)
+              } icon: {
+                Image(systemName: "exclamationmark.triangle")
+              }
+            }
+          } label: {
+            Image(systemName: "ellipsis")
+              .bold()
+              .foregroundStyle(Color.white)
+              .frame(width: 44, height: 44)
+          }
+        }
         .gesture(
           DragGesture()
             .onChanged { translation = $0.translation }
@@ -157,18 +192,6 @@ public struct SwipeCardView: View {
                 store.send(.swipeToNope)
               default:
                 translation = CGSize.zero
-              }
-            }
-        )
-        .gesture(
-          DragGesture(minimumDistance: 0)
-            .onEnded { value in
-              if value.translation.equalTo(.zero) {
-                if value.location.x <= proxy.size.width / 2 {
-                  store.send(.backButtonTapped)
-                } else {
-                  store.send(.forwardButtonTapped)
-                }
               }
             }
         )

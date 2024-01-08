@@ -220,6 +220,10 @@ public struct RecommendationSwipeView: View {
       .buttonStyle(HoldDownButtonStyle())
       .task { await store.send(.onTask).finish() }
       .onAppear { store.send(.onAppear) }
+      .sheet(
+        store: store.scope(state: \.$destination.report, action: \.destination.report),
+        content: ReportView.init(store:)
+      )
     }
   }
 }

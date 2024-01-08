@@ -11,17 +11,6 @@
         }
       }
     },
-    "Add BeReal." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeRealを追加する"
-          }
-        }
-      }
-    },
     "Are you sure you want to unmatch?" : {
       "localizations" : {
         "ja" : {
