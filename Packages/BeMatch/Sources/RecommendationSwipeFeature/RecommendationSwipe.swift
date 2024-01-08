@@ -135,7 +135,7 @@ public struct RecommendationSwipeLogic {
           state.rows.remove(id: feedback.targetUserId)
         }
         return .none
-        
+
       case .destination(.dismiss):
         state.destination = nil
         return .none
