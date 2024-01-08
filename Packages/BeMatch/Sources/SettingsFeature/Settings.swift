@@ -1,10 +1,13 @@
 import ActivityView
+import FeedbackGeneratorClient
 import AnalyticsClient
 import AnalyticsKeys
 import Build
 import ComposableArchitecture
 import Constants
+import ProfileFeature
 import SwiftUI
+import TutorialFeature
 
 @Reducer
 public struct SettingsLogic {
@@ -16,6 +19,7 @@ public struct SettingsLogic {
   }
 
   public struct State: Equatable {
+    @PresentationState var destination: Destination.State?
     @BindingState var isSharePresented = false
     var bundleShortVersion: String
 
@@ -43,10 +47,18 @@ public struct SettingsLogic {
     case shareButtonTapped
     case rateButtonTapped
     case onCompletion(CompletionWithItems)
+    case destination(PresentationAction<Destination.Action>)
     case binding(BindingAction<State>)
+    case delegate(Delegate)
+
+    public enum Delegate: Equatable {
+      case toEditProfile
+    }
   }
 
+  @Dependency(\.openURL) var openURL
   @Dependency(\.analytics) var analytics
+  @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   public var body: some Reducer<State, Action> {
     BindingReducer()
@@ -58,11 +70,28 @@ public struct SettingsLogic {
       case .onAppear:
         analytics.logScreen(screenName: "Settings", of: self)
         return .none
+        
+      case .myProfileButtonTapped:
+        state.destination = .profile()
+        return .none
+        
+      case .editProfileButtonTapped:
+        return .send(.delegate(.toEditProfile), animation: .default)
+        
+      case .howItWorksButtonTapped:
+        state.destination = .tutorial()
+        return .none
 
       case .shareButtonTapped:
         state.isSharePresented = true
         analytics.buttonClick(name: \.share)
         return .none
+        
+      case .rateButtonTapped:
+        return .run { send in
+          await feedbackGenerator.impactOccurred()
+          await openURL(Constants.appStoreReviewURL)
+        }
 
       case let .onCompletion(completion):
         state.isSharePresented = false
@@ -71,9 +100,39 @@ public struct SettingsLogic {
           "result": completion.result,
         ])
         return .none
+        
+      case .destination(.presented(.tutorial(.delegate(.finish)))):
+        state.destination = nil
+        return .none
+
+      case .destination(.dismiss):
+        state.destination = nil
+        return .none
 
       default:
         return .none
+      }
+    }
+  }
+
+  @Reducer
+  public struct Destination {
+    public enum State: Equatable {
+      case profile(ProfileLogic.State = .init())
+      case tutorial(TutorialLogic.State = .init())
+    }
+
+    public enum Action {
+      case profile(ProfileLogic.Action)
+      case tutorial(TutorialLogic.Action)
+    }
+
+    public var body: some Reducer<State, Action> {
+      Scope(state: \.profile, action: \.profile) {
+        ProfileLogic()
+      }
+      Scope(state: \.tutorial, action: \.tutorial) {
+        TutorialLogic()
       }
     }
   }
@@ -243,6 +302,17 @@ public struct SettingsView: View {
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
       .onAppear { store.send(.onAppear) }
+      .fullScreenCover(
+        store: store.scope(state: \.$destination.profile, action: \.destination.profile)
+      ) { store in
+        NavigationStack {
+          ProfileView(store: store)
+        }
+      }
+      .fullScreenCover(
+        store: store.scope(state: \.$destination.tutorial, action: \.destination.tutorial),
+        content: TutorialView.init(store:)
+      )
       .sheet(isPresented: viewStore.$isSharePresented) {
         ActivityView(
           activityItems: [viewStore.shareText],
