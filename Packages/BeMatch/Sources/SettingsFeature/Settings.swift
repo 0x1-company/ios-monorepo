@@ -1,4 +1,6 @@
 import AnalyticsClient
+import AnalyticsKeys
+import ActivityView
 import Constants
 import Build
 import ComposableArchitecture
@@ -7,9 +9,23 @@ import SwiftUI
 @Reducer
 public struct SettingsLogic {
   public init() {}
+  
+  public struct CompletionWithItems: Equatable {
+    public let activityType: UIActivity.ActivityType?
+    public let result: Bool
+  }
 
   public struct State: Equatable {
+    @BindingState var isSharePresented = false
     var bundleShortVersion: String
+
+    var shareURL = Constants.appStoreForEmptyURL
+    var shareText: String {
+      return String(
+        localized: "I found an app to increase BeReal's friends, try it.\n\(shareURL.absoluteString)",
+        bundle: .module
+      )
+    }
     
     public init() {
       @Dependency(\.build) var build
@@ -17,7 +33,7 @@ public struct SettingsLogic {
     }
   }
 
-  public enum Action {
+  public enum Action: BindableAction {
     case onTask
     case onAppear
     case myProfileButtonTapped
@@ -26,11 +42,14 @@ public struct SettingsLogic {
     case otherButtonTapped
     case shareButtonTapped
     case rateButtonTapped
+    case onCompletion(CompletionWithItems)
+    case binding(BindingAction<State>)
   }
 
   @Dependency(\.analytics) var analytics
 
   public var body: some Reducer<State, Action> {
+    BindingReducer()
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
@@ -38,6 +57,19 @@ public struct SettingsLogic {
 
       case .onAppear:
         analytics.logScreen(screenName: "Settings", of: self)
+        return .none
+        
+      case .shareButtonTapped:
+        state.isSharePresented = true
+        analytics.buttonClick(name: \.share)
+        return .none
+        
+      case let .onCompletion(completion):
+        state.isSharePresented = false
+        analytics.logEvent("activity_completion", [
+          "activity_type": completion.activityType?.rawValue,
+          "result": completion.result,
+        ])
         return .none
         
       default:
@@ -211,6 +243,22 @@ public struct SettingsView: View {
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
       .onAppear { store.send(.onAppear) }
+      .sheet(isPresented: viewStore.$isSharePresented) {
+        ActivityView(
+          activityItems: [viewStore.shareText],
+          applicationActivities: nil
+        ) { activityType, result, _, _ in
+          store.send(
+            .onCompletion(
+              SettingsLogic.CompletionWithItems(
+                activityType: activityType,
+                result: result
+              )
+            )
+          )
+        }
+        .presentationDetents([.medium, .large])
+      }
     }
   }
 }

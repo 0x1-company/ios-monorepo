@@ -275,6 +275,7 @@ let package = Package(
       "TutorialFeature",
       "DeleteAccountFeature",
       .product(name: "Build", package: "SDK"),
+      .product(name: "ActivityView", package: "SDK"),
     ]),
     .target(name: "Styleguide"),
     .target(name: "TutorialFeature", dependencies: [
