@@ -22,6 +22,7 @@ public struct SettingsLogic {
     case onAppear
     case myProfileButtonTapped
     case editProfileButtonTapped
+    case howItWorksButtonTapped
     case otherButtonTapped
     case shareButtonTapped
     case rateButtonTapped
@@ -89,6 +90,39 @@ public struct SettingsView: View {
         } header: {
           Text("PROFILE", bundle: .module)
         }
+
+        Section {
+          Button {
+            store.send(.howItWorksButtonTapped)
+          } label: {
+            LabeledContent {
+              Image(systemName: "chevron.right")
+            } label: {
+              Label {
+                Text("How It Works", bundle: .module)
+              } icon: {
+                Image(systemName: "info.circle")
+              }
+              .foregroundStyle(Color.primary)
+            }
+          }
+
+          Link(destination: Constants.contactUsURL) {
+            LabeledContent {
+              Image(systemName: "chevron.right")
+            } label: {
+              Label {
+                Text("Contact Us", bundle: .module)
+              } icon: {
+                Image(systemName: "questionmark.circle")
+              }
+              .foregroundStyle(Color.primary)
+            }
+          }
+
+        } header: {
+          Text("Help", bundle: .module)
+        }
         
         Section {
           Button {
@@ -109,25 +143,6 @@ public struct SettingsView: View {
           Text("Settings", bundle: .module)
         }
 
-        Section {
-          Link(destination: Constants.contactUsURL) {
-            LabeledContent {
-              Image(systemName: "chevron.right")
-            } label: {
-              Label {
-                Text("Contact Us", bundle: .module)
-              } icon: {
-                Image(systemName: "questionmark.circle")
-              }
-              .foregroundStyle(Color.primary)
-            }
-          }
-
-        } header: {
-          Text("Help", bundle: .module)
-        }
-
-        
         Section {
           Link(destination: Constants.termsOfUseURL) {
             LabeledContent {

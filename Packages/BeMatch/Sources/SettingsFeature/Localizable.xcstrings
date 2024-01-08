@@ -11,6 +11,16 @@
         }
       }
     },
+    "Contact Us" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お問い合わせ"
+          }
+        }
+      }
+    },
     "Delete Account" : {
       "localizations" : {
         "ja" : {
@@ -27,6 +37,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "プロフィール編集"
+          }
+        }
+      }
+    },
+    "Help" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ヘルプ"
+          }
+        }
+      }
+    },
+    "How It Works" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeMatchの使い方"
           }
         }
       }
