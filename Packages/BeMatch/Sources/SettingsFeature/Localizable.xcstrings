@@ -190,6 +190,22 @@
           }
         }
       }
+    },
+    "You joined BeMatch %lld days ago on %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You joined BeMatch %1$lld days ago on %2$@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたは%1$lld日前（%2$@）にBeMatchに参加しました。"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

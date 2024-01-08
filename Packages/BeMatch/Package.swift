@@ -273,6 +273,7 @@ let package = Package(
       "DeleteAccountFeature",
       .product(name: "Build", package: "SDK"),
       .product(name: "ActivityView", package: "SDK"),
+      .product(name: "FirebaseAuthClient", package: "SDK"),
     ]),
     .target(name: "Styleguide"),
     .target(name: "TutorialFeature", dependencies: [
