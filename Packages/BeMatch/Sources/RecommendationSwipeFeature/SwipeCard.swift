@@ -25,7 +25,7 @@ public struct SwipeCardLogic {
   }
 
   public enum Action: BindableAction {
-    case onTask
+    case reportButtonTapped
     case backButtonTapped
     case forwardButtonTapped
     case swipeToLike
@@ -36,6 +36,7 @@ public struct SwipeCardLogic {
     public enum Delegate: Equatable {
       case like
       case nope
+      case report
     }
   }
 
@@ -46,6 +47,9 @@ public struct SwipeCardLogic {
     BindingReducer()
     Reduce<State, Action> { state, action in
       switch action {
+      case .reportButtonTapped:
+        return .send(.delegate(.report), animation: .default)
+
       case .backButtonTapped:
         let images = state.data.images
         if let index = images.firstIndex(of: state.selection), index > 0 {
@@ -140,6 +144,41 @@ public struct SwipeCardView: View {
         }
         .offset(translation)
         .rotationEffect(.degrees(Double(translation.width / 300) * 25), anchor: .bottom)
+        .overlay {
+          VStack(spacing: 0) {
+            HStack(spacing: 0) {
+              Color.clear
+                .contentShape(Rectangle())
+                .onTapGesture {
+                  store.send(.backButtonTapped)
+                }
+
+              Color.clear
+                .contentShape(Rectangle())
+                .onTapGesture {
+                  store.send(.forwardButtonTapped)
+                }
+            }
+          }
+        }
+        .overlay(alignment: .topTrailing) {
+          Menu {
+            Button(role: .destructive) {
+              store.send(.reportButtonTapped)
+            } label: {
+              Label {
+                Text("Report", bundle: .module)
+              } icon: {
+                Image(systemName: "exclamationmark.triangle")
+              }
+            }
+          } label: {
+            Image(systemName: "ellipsis")
+              .bold()
+              .foregroundStyle(Color.white)
+              .frame(width: 44, height: 44)
+          }
+        }
         .gesture(
           DragGesture()
             .onChanged { translation = $0.translation }
@@ -153,18 +192,6 @@ public struct SwipeCardView: View {
                 store.send(.swipeToNope)
               default:
                 translation = CGSize.zero
-              }
-            }
-        )
-        .gesture(
-          DragGesture(minimumDistance: 0)
-            .onEnded { value in
-              if value.translation.equalTo(.zero) {
-                if value.location.x <= proxy.size.width / 2 {
-                  store.send(.backButtonTapped)
-                } else {
-                  store.send(.forwardButtonTapped)
-                }
               }
             }
         )
