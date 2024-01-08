@@ -49,7 +49,7 @@ var package = Package(
     .package(url: "https://github.com/facebook/facebook-ios-sdk", from: "16.3.1"),
     .package(url: "https://github.com/firebase/firebase-ios-sdk", from: "10.19.1"),
     .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.1.5"),
-    .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.5.6"),
+    .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.6.0"),
   ],
   targets: [
     .target(name: "ActivityView"),
