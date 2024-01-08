@@ -160,21 +160,18 @@ public struct SwipeCardView: View {
               }
             }
         )
-        .overlay {
-          HStack(spacing: 0) {
-            Color.clear
-              .contentShape(Rectangle())
-              .onTapGesture {
-                store.send(.backButtonTapped)
+        .gesture(
+          DragGesture(minimumDistance: 0)
+            .onEnded { value in
+              if value.translation.equalTo(.zero) {
+                if value.location.x <= proxy.size.width / 2 {
+                  store.send(.backButtonTapped)
+                } else {
+                  store.send(.forwardButtonTapped)
+                }
               }
-
-            Color.clear
-              .contentShape(Rectangle())
-              .onTapGesture {
-                store.send(.forwardButtonTapped)
-              }
-          }
-        }
+            }
+        )
       }
     }
   }

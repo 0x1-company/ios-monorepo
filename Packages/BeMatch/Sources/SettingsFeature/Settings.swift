@@ -160,7 +160,7 @@ public struct SettingsView: View {
               Image(systemName: "chevron.right")
             } label: {
               Text("My Profile", bundle: .module)
-              .foregroundStyle(Color.primary)
+                .foregroundStyle(Color.primary)
             }
           }
 
@@ -171,7 +171,7 @@ public struct SettingsView: View {
               Image(systemName: "chevron.right")
             } label: {
               Text("Edit Profile", bundle: .module)
-              .foregroundStyle(Color.primary)
+                .foregroundStyle(Color.primary)
             }
           }
         } header: {
@@ -186,7 +186,7 @@ public struct SettingsView: View {
               Image(systemName: "chevron.right")
             } label: {
               Text("How It Works", bundle: .module)
-              .foregroundStyle(Color.primary)
+                .foregroundStyle(Color.primary)
             }
           }
 
@@ -195,7 +195,7 @@ public struct SettingsView: View {
               Image(systemName: "chevron.right")
             } label: {
               Text("Contact Us", bundle: .module)
-              .foregroundStyle(Color.primary)
+                .foregroundStyle(Color.primary)
             }
           }
 
@@ -211,7 +211,7 @@ public struct SettingsView: View {
               Image(systemName: "chevron.right")
             } label: {
               Text("Other", bundle: .module)
-              .foregroundStyle(Color.primary)
+                .foregroundStyle(Color.primary)
             }
           }
         } header: {
@@ -224,7 +224,7 @@ public struct SettingsView: View {
               Image(systemName: "chevron.right")
             } label: {
               Text("Terms of Use", bundle: .module)
-              .foregroundStyle(Color.primary)
+                .foregroundStyle(Color.primary)
             }
           }
 
@@ -233,7 +233,7 @@ public struct SettingsView: View {
               Image(systemName: "chevron.right")
             } label: {
               Text("Privacy Policy", bundle: .module)
-              .foregroundStyle(Color.primary)
+                .foregroundStyle(Color.primary)
             }
           }
 
@@ -244,7 +244,7 @@ public struct SettingsView: View {
               Image(systemName: "chevron.right")
             } label: {
               Text("Share BeMatch.", bundle: .module)
-              .foregroundStyle(Color.primary)
+                .foregroundStyle(Color.primary)
             }
           }
 
@@ -255,7 +255,7 @@ public struct SettingsView: View {
               Image(systemName: "chevron.right")
             } label: {
               Text("Rate BeMatch.", bundle: .module)
-              .foregroundStyle(Color.primary)
+                .foregroundStyle(Color.primary)
             }
           }
         } header: {
