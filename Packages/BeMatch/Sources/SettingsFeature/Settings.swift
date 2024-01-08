@@ -114,6 +114,9 @@ public struct SettingsLogic {
         return .none
       }
     }
+    .ifLet(\.$destination, action: \.destination) {
+      Destination()
+    }
   }
 
   @Reducer
