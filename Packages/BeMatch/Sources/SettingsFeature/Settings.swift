@@ -5,6 +5,7 @@ import Build
 import ComposableArchitecture
 import Constants
 import FeedbackGeneratorClient
+import FirebaseAuthClient
 import ProfileFeature
 import SwiftUI
 import TutorialFeature
@@ -21,7 +22,9 @@ public struct SettingsLogic {
   public struct State: Equatable {
     @PresentationState var destination: Destination.State?
     @BindingState var isSharePresented = false
+
     var bundleShortVersion: String
+    var creationDate: CreationDateLogic.State?
 
     var shareURL = Constants.appStoreForEmptyURL
     var shareText: String {
@@ -46,7 +49,9 @@ public struct SettingsLogic {
     case otherButtonTapped
     case shareButtonTapped
     case rateButtonTapped
+    case versionButtonTapped
     case onCompletion(CompletionWithItems)
+    case creationDate(CreationDateLogic.Action)
     case destination(PresentationAction<Destination.Action>)
     case binding(BindingAction<State>)
     case delegate(Delegate)
@@ -58,6 +63,7 @@ public struct SettingsLogic {
 
   @Dependency(\.openURL) var openURL
   @Dependency(\.analytics) var analytics
+  @Dependency(\.firebaseAuth) var firebaseAuth
   @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   public var body: some Reducer<State, Action> {
@@ -93,6 +99,15 @@ public struct SettingsLogic {
           await feedbackGenerator.impactOccurred()
           await openURL(Constants.appStoreReviewURL)
         }
+        
+      case .versionButtonTapped where state.creationDate == nil:
+        let user = firebaseAuth.currentUser()
+        guard let creationDate = user?.metadata.creationDate else { return .none }
+        
+        state.creationDate = CreationDateLogic.State(
+          creationDate: creationDate
+        )
+        return .none
 
       case let .onCompletion(completion):
         state.isSharePresented = false
@@ -116,6 +131,9 @@ public struct SettingsLogic {
     }
     .ifLet(\.$destination, action: \.destination) {
       Destination()
+    }
+    .ifLet(\.creationDate, action: \.creationDate) {
+      CreationDateLogic()
     }
   }
 
@@ -261,9 +279,22 @@ public struct SettingsView: View {
         } header: {
           Text("ABOUT", bundle: .module)
         } footer: {
-          Text("Version \(viewStore.bundleShortVersion)", bundle: .module)
-            .frame(height: 44)
-            .frame(maxWidth: .infinity, alignment: .center)
+          VStack(spacing: 0) {
+            Button {
+              store.send(.versionButtonTapped)
+            } label: {
+              Text("Version \(viewStore.bundleShortVersion)", bundle: .module)
+                .frame(height: 44)
+                .foregroundStyle(Color.secondary)
+            }
+
+            IfLetStore(
+              store.scope(state: \.creationDate, action: \.creationDate),
+              then: CreationDateView.init(store:)
+            )
+          }
+          .frame(maxWidth: .infinity, alignment: .center)
+          .multilineTextAlignment(.center)
         }
       }
       .navigationTitle(String(localized: "Settings", bundle: .module))
