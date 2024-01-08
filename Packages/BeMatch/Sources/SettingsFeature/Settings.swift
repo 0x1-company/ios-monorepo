@@ -88,6 +88,7 @@ public struct SettingsLogic {
         return .none
         
       case .rateButtonTapped:
+        analytics.buttonClick(name: \.storeRate)
         return .run { send in
           await feedbackGenerator.impactOccurred()
           await openURL(Constants.appStoreReviewURL)

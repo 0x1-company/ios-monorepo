@@ -12,4 +12,5 @@ public extension ButtonClickKeys {
   var notNow: String { "not_now" }
   var delete: String { "delete" }
   var share: String { "share" }
+  var storeRate: String { "store_rate" }
 }
