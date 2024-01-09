@@ -250,7 +250,7 @@ public struct SettingsView: View {
             }
           }
 
-          Link(destination: Constants.termsOfUseURL) {
+          Link(destination: Constants.privacyPolicyURL) {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
