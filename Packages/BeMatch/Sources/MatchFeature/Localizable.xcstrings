@@ -1,6 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Liked by %@ people" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@人にLikeされてます"
+          }
+        }
+      }
+    },
     "Liked by %lld people" : {
       "localizations" : {
         "ja" : {
