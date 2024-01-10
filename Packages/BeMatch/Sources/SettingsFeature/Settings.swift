@@ -239,7 +239,7 @@ public struct SettingsView: View {
         } header: {
           Text("Settings", bundle: .module)
         }
-        
+
         Section {
           Link(destination: Constants.instagramURL) {
             LabeledContent {
@@ -249,7 +249,7 @@ public struct SettingsView: View {
                 .foregroundStyle(Color.primary)
             }
           }
-          
+
           Link(destination: Constants.tiktokURL) {
             LabeledContent {
               Image(systemName: "chevron.right")
@@ -311,7 +311,7 @@ public struct SettingsView: View {
                 .foregroundStyle(Color.primary)
             }
           }
-          
+
           Button {
             store.send(.versionButtonTapped, animation: .default)
           } label: {
