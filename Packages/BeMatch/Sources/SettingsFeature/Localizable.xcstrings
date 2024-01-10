@@ -81,6 +81,16 @@
         }
       }
     },
+    "FOLLOW ME" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フォローしてね"
+          }
+        }
+      }
+    },
     "Help" : {
       "localizations" : {
         "ja" : {
@@ -107,6 +117,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "BeRealの友だち増やせるアプリ見つけたからやってみてw w w\n%@"
+          }
+        }
+      }
+    },
+    "Instagram" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instagram"
           }
         }
       }
@@ -191,12 +211,32 @@
         }
       }
     },
+    "TikTok" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TikTok"
+          }
+        }
+      }
+    },
     "Version %@" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Version %@"
+          }
+        }
+      }
+    },
+    "X" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "X"
           }
         }
       }
