@@ -239,6 +239,37 @@ public struct SettingsView: View {
         } header: {
           Text("Settings", bundle: .module)
         }
+        
+        Section {
+          Link(destination: Constants.instagramURL) {
+            LabeledContent {
+              Image(systemName: "chevron.right")
+            } label: {
+              Text("Instagram", bundle: .module)
+                .foregroundStyle(Color.primary)
+            }
+          }
+          
+          Link(destination: Constants.tiktokURL) {
+            LabeledContent {
+              Image(systemName: "chevron.right")
+            } label: {
+              Text("TikTok", bundle: .module)
+                .foregroundStyle(Color.primary)
+            }
+          }
+
+          Link(destination: Constants.xURL) {
+            LabeledContent {
+              Image(systemName: "chevron.right")
+            } label: {
+              Text("X", bundle: .module)
+                .foregroundStyle(Color.primary)
+            }
+          }
+        } header: {
+          Text("FOLLOW ME", bundle: .module)
+        }
 
         Section {
           Link(destination: Constants.termsOfUseURL) {
@@ -280,54 +311,25 @@ public struct SettingsView: View {
                 .foregroundStyle(Color.primary)
             }
           }
+          
+          Button {
+            store.send(.versionButtonTapped, animation: .default)
+          } label: {
+            LabeledContent {
+              Text(viewStore.bundleShortVersion)
+            } label: {
+              Text("Version", bundle: .module)
+                .foregroundStyle(Color.primary)
+            }
+          }
         } header: {
           Text("ABOUT", bundle: .module)
-        }
-        
-        Section {
-          Link(destination: Constants.instagramURL) {
-            LabeledContent {
-              Image(systemName: "chevron.right")
-            } label: {
-              Text("Instagram", bundle: .module)
-                .foregroundStyle(Color.primary)
-            }
-          }
-          
-          Link(destination: Constants.tiktokURL) {
-            LabeledContent {
-              Image(systemName: "chevron.right")
-            } label: {
-              Text("TikTok", bundle: .module)
-                .foregroundStyle(Color.primary)
-            }
-          }
-
-          Link(destination: Constants.xURL) {
-            LabeledContent {
-              Image(systemName: "chevron.right")
-            } label: {
-              Text("X", bundle: .module)
-                .foregroundStyle(Color.primary)
-            }
-          }
-        } header: {
-          Text("FOLLOW ME", bundle: .module)
         } footer: {
-          VStack(spacing: 24) {
-            Button {
-              store.send(.versionButtonTapped, animation: .default)
-            } label: {
-              Text("Version \(viewStore.bundleShortVersion)", bundle: .module)
-                .foregroundStyle(Color.secondary)
-            }
-
-            IfLetStore(
-              store.scope(state: \.creationDate, action: \.creationDate),
-              then: CreationDateView.init(store:)
-            )
-          }
-          .padding(.vertical, 24)
+          IfLetStore(
+            store.scope(state: \.creationDate, action: \.creationDate),
+            then: CreationDateView.init(store:)
+          )
+          .padding(.bottom, 24)
           .frame(maxWidth: .infinity, alignment: .center)
           .multilineTextAlignment(.center)
         }

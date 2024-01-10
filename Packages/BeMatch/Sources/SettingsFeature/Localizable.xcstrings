@@ -221,12 +221,12 @@
         }
       }
     },
-    "Version %@" : {
+    "Version" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Version %@"
+            "value" : "バージョン"
           }
         }
       }
