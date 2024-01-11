@@ -114,7 +114,9 @@ public struct OnboardView: View {
         CaseLet(
           /OnboardLogic.Path.State.capture,
           action: OnboardLogic.Path.Action.capture,
-          then: BeRealCaptureView.init(store:)
+          then: { store in
+            BeRealCaptureView(store: store, nextButtonStyle: .next)
+          }
         )
       }
     }

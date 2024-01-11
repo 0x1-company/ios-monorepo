@@ -1,5 +1,6 @@
 import AnalyticsKeys
 import BeMatch
+import BeRealCaptureFeature
 import ComposableArchitecture
 import GenderSettingFeature
 import UsernameSettingFeature
@@ -20,6 +21,7 @@ public struct EditProfileLogic {
     case onAppear
     case onTask
     case currentUserResponse(Result<BeMatch.CurrentUserQuery.Data, Error>)
+    case beRealCaptureButtonTapped
     case genderSettingButtonTapped
     case usernameSettingButtonTapped
     case destination(PresentationAction<Destination.Action>)
@@ -57,6 +59,10 @@ public struct EditProfileLogic {
       case .currentUserResponse(.failure):
         return .none
 
+      case .beRealCaptureButtonTapped:
+        state.destination = .beRealCapture(BeRealCaptureLogic.State())
+        return .none
+
       case .genderSettingButtonTapped:
         state.destination = .genderSetting(GenderSettingLogic.State(gender: state.user?.gender.value))
         return .none
@@ -69,10 +75,11 @@ public struct EditProfileLogic {
         state.destination = nil
         return .none
 
-      case .destination(.presented(.genderSetting(.delegate(.nextScreen)))),
+      case .destination(.presented(.beRealCapture(.delegate(.nextScreen)))),
+        .destination(.presented(.genderSetting(.delegate(.nextScreen)))),
         .destination(.presented(.usernameSetting(.delegate(.nextScreen)))):
         state.destination = nil // TODO: fix for natural transition
-        return .concatenate(.send(.onTask), .send(.delegate(.profileUpdated)))
+        return .send(.delegate(.profileUpdated))
 
       case .destination:
         return .none
@@ -89,16 +96,21 @@ public struct EditProfileLogic {
   @Reducer
   public struct Destination {
     public enum State: Equatable {
+      case beRealCapture(BeRealCaptureLogic.State)
       case genderSetting(GenderSettingLogic.State)
       case usernameSetting(UsernameSettingLogic.State)
     }
 
     public enum Action {
+      case beRealCapture(BeRealCaptureLogic.Action)
       case genderSetting(GenderSettingLogic.Action)
       case usernameSetting(UsernameSettingLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
+      Scope(state: \.beRealCapture, action: \.beRealCapture) {
+        BeRealCaptureLogic()
+      }
       Scope(state: \.genderSetting, action: \.genderSetting) {
         GenderSettingLogic()
       }
@@ -141,6 +153,17 @@ public struct EditProfileView: View {
                 .foregroundStyle(Color.primary)
             }
           }
+
+          Button {
+            store.send(.beRealCaptureButtonTapped)
+          } label: {
+            LabeledContent {
+              Image(systemName: "chevron.right")
+            } label: {
+              Text("Profile Image", bundle: .module)
+                .foregroundStyle(Color.primary)
+            }
+          }
         } header: {
           Text("PROFILE", bundle: .module)
         }
@@ -164,6 +187,16 @@ public struct EditProfileView: View {
         action: EditProfileLogic.Destination.Action.usernameSetting
       ) { store in
         UsernameSettingView(store: store, nextButtonStyle: .save)
+      }
+      .navigationDestination(
+        store: store.scope(
+          state: \.$destination,
+          action: EditProfileLogic.Action.destination
+        ),
+        state: /EditProfileLogic.Destination.State.beRealCapture,
+        action: EditProfileLogic.Destination.Action.beRealCapture
+      ) { store in
+        BeRealCaptureView(store: store, nextButtonStyle: .save)
       }
       .navigationTitle(String(localized: "Edit Profile", bundle: .module))
       .multilineTextAlignment(.center)

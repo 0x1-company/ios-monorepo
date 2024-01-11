@@ -126,6 +126,7 @@ let package = Package(
       "AnalyticsKeys",
       "BeMatch",
       "BeMatchClient",
+      "BeRealCaptureFeature",
       "GenderSettingFeature",
       "UsernameSettingFeature",
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
