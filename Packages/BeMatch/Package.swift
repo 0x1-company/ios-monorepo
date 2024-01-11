@@ -20,6 +20,7 @@ let package = Package(
     .library(name: "Constants", targets: ["Constants"]),
     .library(name: "DeleteAccountFeature", targets: ["DeleteAccountFeature"]),
     .library(name: "DirectMessageFeature", targets: ["DirectMessageFeature"]),
+    .library(name: "EditProfileFeature", targets: ["EditProfileFeature"]),
     .library(name: "ForceUpdateFeature", targets: ["ForceUpdateFeature"]),
     .library(name: "GenderSettingFeature", targets: ["GenderSettingFeature"]),
     .library(name: "LaunchFeature", targets: ["LaunchFeature"]),
@@ -119,6 +120,12 @@ let package = Package(
     .target(name: "DirectMessageFeature", dependencies: [
       "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
+    .target(name: "EditProfileFeature", dependencies: [
+      "AnalyticsKeys",
+      "GenderSettingFeature",
+      "UsernameSettingFeature",
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "ForceUpdateFeature", dependencies: [
@@ -268,6 +275,7 @@ let package = Package(
     .target(name: "SettingsFeature", dependencies: [
       "Constants",
       "AnalyticsKeys",
+      "EditProfileFeature",
       "ProfileFeature",
       "TutorialFeature",
       "DeleteAccountFeature",

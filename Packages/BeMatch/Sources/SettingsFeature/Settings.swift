@@ -4,6 +4,7 @@ import AnalyticsKeys
 import Build
 import ComposableArchitecture
 import Constants
+import EditProfileFeature
 import FeedbackGeneratorClient
 import FirebaseAuthClient
 import ProfileFeature
@@ -57,7 +58,6 @@ public struct SettingsLogic {
     case delegate(Delegate)
 
     public enum Delegate: Equatable {
-      case toEditProfile
     }
   }
 
@@ -82,7 +82,8 @@ public struct SettingsLogic {
         return .none
 
       case .editProfileButtonTapped:
-        return .send(.delegate(.toEditProfile), animation: .default)
+        state.destination = .editProfile()
+        return .none
 
       case .howItWorksButtonTapped:
         state.destination = .tutorial()
@@ -142,16 +143,21 @@ public struct SettingsLogic {
   @Reducer
   public struct Destination {
     public enum State: Equatable {
+      case editProfile(EditProfileLogic.State = .init())
       case profile(ProfileLogic.State = .init())
       case tutorial(TutorialLogic.State = .init())
     }
 
     public enum Action {
+      case editProfile(EditProfileLogic.Action)
       case profile(ProfileLogic.Action)
       case tutorial(TutorialLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
+      Scope(state: \.editProfile, action: \.editProfile) {
+        EditProfileLogic()
+      }
       Scope(state: \.profile, action: \.profile) {
         ProfileLogic()
       }
@@ -364,6 +370,16 @@ public struct SettingsView: View {
           )
         }
         .presentationDetents([.medium, .large])
+      }
+      .navigationDestination(
+        store: store.scope(
+          state: \.$destination,
+          action: SettingsLogic.Action.destination
+        ),
+        state: /SettingsLogic.Destination.State.editProfile,
+        action: SettingsLogic.Destination.Action.editProfile
+      ) { store in
+        EditProfileView(store: store)
       }
     }
   }
