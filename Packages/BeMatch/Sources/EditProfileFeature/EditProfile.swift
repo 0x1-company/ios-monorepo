@@ -23,6 +23,11 @@ public struct EditProfileLogic {
     case genderSettingButtonTapped
     case usernameSettingButtonTapped
     case destination(PresentationAction<Destination.Action>)
+    case delegate(Delegate)
+
+    public enum Delegate: Equatable {
+      case profileUpdated
+    }
   }
 
   @Dependency(\.analytics) var analytics
@@ -48,10 +53,13 @@ public struct EditProfileLogic {
 
       case .destination(.presented(.genderSetting(.delegate(.nextScreen)))),
         .destination(.presented(.usernameSetting(.delegate(.nextScreen)))):
-        state.destination = nil // TODO: fix for natural
-        return .none
+        state.destination = nil // TODO: fix for natural transition
+        return .send(.delegate(.profileUpdated))
 
       case .destination:
+        return .none
+
+      case .delegate:
         return .none
       }
     }
