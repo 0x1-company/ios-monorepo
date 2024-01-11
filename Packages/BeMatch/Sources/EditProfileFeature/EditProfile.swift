@@ -127,7 +127,7 @@ public struct EditProfileView: View {
         state: /EditProfileLogic.Destination.State.genderSetting,
         action: EditProfileLogic.Destination.Action.genderSetting
       ) { store in
-        GenderSettingView(store: store)
+        GenderSettingView(store: store, nextButtonStyle: .save, canSkip: false)
       }
       .navigationDestination(
         store: store.scope(
@@ -137,7 +137,7 @@ public struct EditProfileView: View {
         state: /EditProfileLogic.Destination.State.usernameSetting,
         action: EditProfileLogic.Destination.Action.usernameSetting
       ) { store in
-        UsernameSettingView(store: store)
+        UsernameSettingView(store: store, nextButtonStyle: .save)
       }
       .navigationTitle(String(localized: "Edit Profile", bundle: .module))
       .multilineTextAlignment(.center)

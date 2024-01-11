@@ -107,11 +107,21 @@ public struct UsernameSettingLogic {
 }
 
 public struct UsernameSettingView: View {
+  public enum NextButtonStyle: Equatable {
+    case next
+    case save
+  }
+
   @FocusState var isFocused: Bool
   let store: StoreOf<UsernameSettingLogic>
+  private let nextButtonStyle: NextButtonStyle
 
-  public init(store: StoreOf<UsernameSettingLogic>) {
+  public init(
+    store: StoreOf<UsernameSettingLogic>,
+    nextButtonStyle: NextButtonStyle
+  ) {
     self.store = store
+    self.nextButtonStyle = nextButtonStyle
   }
 
   public var body: some View {
@@ -142,7 +152,9 @@ public struct UsernameSettingView: View {
         Spacer()
 
         PrimaryButton(
-          String(localized: "Next", bundle: .module),
+          nextButtonStyle == .save
+            ? String(localized: "Save", bundle: .module)
+            : String(localized: "Next", bundle: .module),
           isLoading: viewStore.isActivityIndicatorVisible,
           isDisabled: viewStore.isDisabled
         ) {
@@ -175,7 +187,8 @@ public struct UsernameSettingView: View {
           username: ""
         ),
         reducer: { UsernameSettingLogic() }
-      )
+      ),
+      nextButtonStyle: .next
     )
   }
   .environment(\.colorScheme, .dark)
