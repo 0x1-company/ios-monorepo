@@ -1,6 +1,7 @@
 import ActivityView
 import AnalyticsClient
 import AnalyticsKeys
+import BeMatch
 import Build
 import ComposableArchitecture
 import Constants
@@ -26,6 +27,7 @@ public struct SettingsLogic {
 
     var bundleShortVersion: String
     var creationDate: CreationDateLogic.State?
+    var user: BeMatch.UserInternal?
 
     var shareURL = Constants.appStoreForEmptyURL
     var shareText: String {
@@ -35,9 +37,10 @@ public struct SettingsLogic {
       )
     }
 
-    public init() {
+    public init(user: BeMatch.UserInternal?) {
       @Dependency(\.build) var build
       bundleShortVersion = build.bundleShortVersion()
+        self.user = user
     }
   }
 
@@ -82,7 +85,7 @@ public struct SettingsLogic {
         return .none
 
       case .editProfileButtonTapped:
-        state.destination = .editProfile()
+          state.destination = .editProfile(EditProfileLogic.State(user: state.user))
         return .none
 
       case .howItWorksButtonTapped:
@@ -143,7 +146,7 @@ public struct SettingsLogic {
   @Reducer
   public struct Destination {
     public enum State: Equatable {
-      case editProfile(EditProfileLogic.State = .init())
+      case editProfile(EditProfileLogic.State)
       case profile(ProfileLogic.State = .init())
       case tutorial(TutorialLogic.State = .init())
     }
@@ -389,7 +392,7 @@ public struct SettingsView: View {
   NavigationStack {
     SettingsView(
       store: .init(
-        initialState: SettingsLogic.State(),
+        initialState: SettingsLogic.State(user: nil),
         reducer: { SettingsLogic() }
       )
     )

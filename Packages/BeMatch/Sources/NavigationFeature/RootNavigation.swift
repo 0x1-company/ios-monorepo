@@ -19,11 +19,13 @@ public struct RootNavigationLogic {
 
   public struct State: Equatable {
     var recommendation = RecommendationLogic.State()
-    var match = MatchNavigationLogic.State()
+    var match: MatchNavigationLogic.State
 
     @BindingState var tab = Tab.swipe
 
-    public init() {}
+    public init(user: BeMatch.UserInternal?) {
+      self.match = MatchNavigationLogic.State(user: user)
+    }
   }
 
   public enum Action: BindableAction {
@@ -141,7 +143,7 @@ public struct RootNavigationView: View {
 #Preview {
   RootNavigationView(
     store: .init(
-      initialState: RootNavigationLogic.State(),
+      initialState: RootNavigationLogic.State(user: nil),
       reducer: { RootNavigationLogic() }
     )
   )

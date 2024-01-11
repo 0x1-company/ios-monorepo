@@ -1,4 +1,5 @@
 import AnalyticsKeys
+import BeMatch
 import ComposableArchitecture
 import GenderSettingFeature
 import UsernameSettingFeature
@@ -10,8 +11,11 @@ public struct EditProfileLogic {
 
   public struct State: Equatable {
     @PresentationState var destination: Destination.State?
+    var user: BeMatch.UserInternal?
 
-    public init() {}
+    public init(user: BeMatch.UserInternal?) {
+      self.user = user
+    }
   }
 
   public enum Action {
@@ -31,15 +35,20 @@ public struct EditProfileLogic {
         return .none
 
       case .genderSettingButtonTapped:
-        state.destination = .genderSetting(GenderSettingLogic.State(gender: nil))
+        state.destination = .genderSetting(GenderSettingLogic.State(gender: state.user?.gender.value))
         return .none
 
       case .usernameSettingButtonTapped:
-        state.destination = .usernameSetting(UsernameSettingLogic.State(username: ""))
+        state.destination = .usernameSetting(UsernameSettingLogic.State(username: state.user?.berealUsername ?? ""))
         return .none
 
       case .destination(.dismiss):
         state.destination = nil
+        return .none
+
+      case .destination(.presented(.genderSetting(.delegate(.nextScreen)))),
+        .destination(.presented(.usernameSetting(.delegate(.nextScreen)))):
+        state.destination = nil // TODO: fix for natural
         return .none
 
       case .destination:
@@ -82,11 +91,58 @@ public struct EditProfileView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { _ in
-      Text("Edit Profile")
-        .multilineTextAlignment(.center)
-        .navigationBarTitleDisplayMode(.inline)
-        .onAppear { store.send(.onAppear) }
+    WithViewStore(store, observe: { $0 }) { viewStore in
+      List {
+        Section {
+          Button {
+            store.send(.usernameSettingButtonTapped)
+          } label: {
+            LabeledContent {
+              Image(systemName: "chevron.right")
+            } label: {
+            Text("Username", bundle: .module)
+              .foregroundStyle(Color.primary)
+            }
+          }
+
+          Button {
+            store.send(.genderSettingButtonTapped)
+          } label: {
+            LabeledContent {
+              Image(systemName: "chevron.right")
+            } label: {
+              Text("Gender", bundle: .module)
+                .foregroundStyle(Color.primary)
+            }
+          }
+        } header: {
+          Text("PROFILE", bundle: .module)
+        }
+      }
+      .navigationDestination(
+        store: store.scope(
+          state: \.$destination,
+          action: EditProfileLogic.Action.destination
+        ),
+        state: /EditProfileLogic.Destination.State.genderSetting,
+        action: EditProfileLogic.Destination.Action.genderSetting
+      ) { store in
+        GenderSettingView(store: store)
+      }
+      .navigationDestination(
+        store: store.scope(
+          state: \.$destination,
+          action: EditProfileLogic.Action.destination
+        ),
+        state: /EditProfileLogic.Destination.State.usernameSetting,
+        action: EditProfileLogic.Destination.Action.usernameSetting
+      ) { store in
+        UsernameSettingView(store: store)
+      }
+      .navigationTitle(String(localized: "Edit Profile", bundle: .module))
+      .multilineTextAlignment(.center)
+      .navigationBarTitleDisplayMode(.inline)
+      .onAppear { store.send(.onAppear) }
     }
   }
 }

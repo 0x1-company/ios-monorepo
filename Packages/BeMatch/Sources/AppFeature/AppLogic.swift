@@ -83,7 +83,7 @@ public struct AppLogic {
         } else if user.images.count < 3 {
           state.view = .onboard(OnboardLogic.State(user: user))
         } else {
-          state.view = .navigation()
+          state.view = .navigation(RootNavigationLogic.State(user: state.account.user.value))
         }
         return .none
       }
@@ -92,7 +92,7 @@ public struct AppLogic {
       case .view(.onboard(.path(.element(_, .capture(.delegate(.nextScreen)))))):
         analytics.setUserProperty(key: \.onboardCompleted, value: "true")
         state.tutorial = .init()
-        state.view = .navigation()
+        state.view = .navigation(RootNavigationLogic.State(user: state.account.user.value))
         return .none
 
       case .tutorial(.delegate(.finish)):
@@ -121,7 +121,7 @@ public struct AppLogic {
     public enum State: Equatable {
       case launch(LaunchLogic.State = .init())
       case onboard(OnboardLogic.State)
-      case navigation(RootNavigationLogic.State = .init())
+      case navigation(RootNavigationLogic.State)
       case forceUpdate(ForceUpdateLogic.State = .init())
       case maintenance(MaintenanceLogic.State = .init())
     }
