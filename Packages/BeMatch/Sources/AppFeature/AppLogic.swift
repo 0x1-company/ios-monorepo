@@ -83,7 +83,7 @@ public struct AppLogic {
         } else if user.images.count < 3 {
           state.view = .onboard(OnboardLogic.State(user: user))
         } else {
-          state.view = .navigation(RootNavigationLogic.State(user: state.account.user.value))
+          state.view = .navigation(RootNavigationLogic.State())
         }
         return .none
       }
@@ -92,7 +92,7 @@ public struct AppLogic {
       case .view(.onboard(.path(.element(_, .capture(.delegate(.nextScreen)))))):
         analytics.setUserProperty(key: \.onboardCompleted, value: "true")
         state.tutorial = .init()
-        state.view = .navigation(RootNavigationLogic.State(user: state.account.user.value))
+        state.view = .navigation(RootNavigationLogic.State())
         return .none
 
       case .tutorial(.delegate(.finish)):

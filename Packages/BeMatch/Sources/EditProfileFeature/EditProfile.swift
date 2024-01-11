@@ -13,13 +13,13 @@ public struct EditProfileLogic {
     @PresentationState var destination: Destination.State?
     var user: BeMatch.UserInternal?
 
-    public init(user: BeMatch.UserInternal?) {
-      self.user = user
-    }
+    public init() {}
   }
 
   public enum Action {
     case onAppear
+    case onTask
+    case currentUserResponse(Result<BeMatch.CurrentUserQuery.Data, Error>)
     case genderSettingButtonTapped
     case usernameSettingButtonTapped
     case destination(PresentationAction<Destination.Action>)
@@ -31,6 +31,7 @@ public struct EditProfileLogic {
   }
 
   @Dependency(\.analytics) var analytics
+  @Dependency(\.bematch.currentUser) var currentUser
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
@@ -39,13 +40,30 @@ public struct EditProfileLogic {
         analytics.logScreen(screenName: "EditProfile", of: self)
         return .none
 
+      case .onTask:
+        return .run { send in
+          for try await data in currentUser() {
+            await send(.currentUserResponse(.success(data)))
+          }
+        } catch: { error, send in
+          await send(.currentUserResponse(.failure(error)))
+        }
+
+      case let .currentUserResponse(.success(data)):
+        let currentUser = data.currentUser.fragments.userInternal
+        state.user = currentUser
+        return .none
+
+      case .currentUserResponse(.failure):
+        return .none
+
       case .genderSettingButtonTapped:
         state.destination = .genderSetting(GenderSettingLogic.State(gender: state.user?.gender.value))
         return .none
 
       case .usernameSettingButtonTapped:
         state.destination = .usernameSetting(UsernameSettingLogic.State(username: state.user?.berealUsername ?? ""))
-        return .none
+          return .none
 
       case .destination(.dismiss):
         state.destination = nil
@@ -54,7 +72,7 @@ public struct EditProfileLogic {
       case .destination(.presented(.genderSetting(.delegate(.nextScreen)))),
         .destination(.presented(.usernameSetting(.delegate(.nextScreen)))):
         state.destination = nil // TODO: fix for natural transition
-        return .send(.delegate(.profileUpdated))
+        return .concatenate(.send(.onTask), .send(.delegate(.profileUpdated)))
 
       case .destination:
         return .none
@@ -150,6 +168,7 @@ public struct EditProfileView: View {
       .navigationTitle(String(localized: "Edit Profile", bundle: .module))
       .multilineTextAlignment(.center)
       .navigationBarTitleDisplayMode(.inline)
+      .task { await store.send(.onTask).finish() }
       .onAppear { store.send(.onAppear) }
     }
   }

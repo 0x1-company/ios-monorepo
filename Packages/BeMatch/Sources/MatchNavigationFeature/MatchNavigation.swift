@@ -12,11 +12,8 @@ public struct MatchNavigationLogic {
   public struct State: Equatable {
     var match = MatchLogic.State()
     var path = StackState<Path.State>()
-    var user: BeMatch.UserInternal?
 
-    public init(user: BeMatch.UserInternal?) {
-      self.user = user
-    }
+    public init() {}
   }
 
   public enum Action {
@@ -34,7 +31,7 @@ public struct MatchNavigationLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .settingsButtonTapped:
-        state.path.append(.settings(SettingsLogic.State(user: state.user)))
+        state.path.append(.settings(SettingsLogic.State()))
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
@@ -120,7 +117,7 @@ public struct MatchNavigationView: View {
 #Preview {
   MatchNavigationView(
     store: .init(
-        initialState: MatchNavigationLogic.State(user: nil),
+      initialState: MatchNavigationLogic.State(),
       reducer: { MatchNavigationLogic() }
     )
   )

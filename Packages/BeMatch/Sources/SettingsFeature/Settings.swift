@@ -27,7 +27,6 @@ public struct SettingsLogic {
 
     var bundleShortVersion: String
     var creationDate: CreationDateLogic.State?
-    var user: BeMatch.UserInternal?
 
     var shareURL = Constants.appStoreForEmptyURL
     var shareText: String {
@@ -37,10 +36,9 @@ public struct SettingsLogic {
       )
     }
 
-    public init(user: BeMatch.UserInternal?) {
+    public init() {
       @Dependency(\.build) var build
       bundleShortVersion = build.bundleShortVersion()
-        self.user = user
     }
   }
 
@@ -85,7 +83,7 @@ public struct SettingsLogic {
         return .none
 
       case .editProfileButtonTapped:
-          state.destination = .editProfile(EditProfileLogic.State(user: state.user))
+          state.destination = .editProfile(EditProfileLogic.State())
         return .none
 
       case .howItWorksButtonTapped:
@@ -392,7 +390,7 @@ public struct SettingsView: View {
   NavigationStack {
     SettingsView(
       store: .init(
-        initialState: SettingsLogic.State(user: nil),
+        initialState: SettingsLogic.State(),
         reducer: { SettingsLogic() }
       )
     )

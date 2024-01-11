@@ -125,6 +125,7 @@ let package = Package(
     .target(name: "EditProfileFeature", dependencies: [
       "AnalyticsKeys",
       "BeMatch",
+      "BeMatchClient",
       "GenderSettingFeature",
       "UsernameSettingFeature",
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
