@@ -58,8 +58,7 @@ public struct SettingsLogic {
     case binding(BindingAction<State>)
     case delegate(Delegate)
 
-    public enum Delegate: Equatable {
-    }
+    public enum Delegate: Equatable {}
   }
 
   @Dependency(\.openURL) var openURL
@@ -83,7 +82,7 @@ public struct SettingsLogic {
         return .none
 
       case .editProfileButtonTapped:
-          state.destination = .editProfile(EditProfileLogic.State())
+        state.destination = .editProfile(EditProfileLogic.State())
         return .none
 
       case .howItWorksButtonTapped:

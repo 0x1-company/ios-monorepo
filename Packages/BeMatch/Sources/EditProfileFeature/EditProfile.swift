@@ -3,8 +3,8 @@ import BeMatch
 import BeRealCaptureFeature
 import ComposableArchitecture
 import GenderSettingFeature
-import UsernameSettingFeature
 import SwiftUI
+import UsernameSettingFeature
 
 @Reducer
 public struct EditProfileLogic {
@@ -69,15 +69,15 @@ public struct EditProfileLogic {
 
       case .usernameSettingButtonTapped:
         state.destination = .usernameSetting(UsernameSettingLogic.State(username: state.user?.berealUsername ?? ""))
-          return .none
+        return .none
 
       case .destination(.dismiss):
         state.destination = nil
         return .none
 
       case .destination(.presented(.beRealCapture(.delegate(.nextScreen)))),
-        .destination(.presented(.genderSetting(.delegate(.nextScreen)))),
-        .destination(.presented(.usernameSetting(.delegate(.nextScreen)))):
+           .destination(.presented(.genderSetting(.delegate(.nextScreen)))),
+           .destination(.presented(.usernameSetting(.delegate(.nextScreen)))):
         state.destination = nil // TODO: fix for natural transition
         return .send(.delegate(.profileUpdated))
 
@@ -129,7 +129,7 @@ public struct EditProfileView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithViewStore(store, observe: { $0 }) { _ in
       List {
         Section {
           Button {
@@ -138,8 +138,8 @@ public struct EditProfileView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-            Text("Username", bundle: .module)
-              .foregroundStyle(Color.primary)
+              Text("Username", bundle: .module)
+                .foregroundStyle(Color.primary)
             }
           }
 

@@ -163,7 +163,7 @@ public struct GenderSettingView: View {
                 .frame(height: 50)
                 .foregroundStyle(Color.white)
                 .font(.system(.subheadline, weight: .semibold))
-              }
+            }
           }
         }
         .padding(.horizontal, 16)
