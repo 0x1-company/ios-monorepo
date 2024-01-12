@@ -34,6 +34,17 @@
         }
       }
     },
+    "Save" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存する"
+          }
+        }
+      }
+    },
     "What's your username on BeReal?" : {
       "localizations" : {
         "ja" : {

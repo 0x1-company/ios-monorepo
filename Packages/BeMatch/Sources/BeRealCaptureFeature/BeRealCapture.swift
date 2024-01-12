@@ -152,10 +152,20 @@ public struct BeRealCaptureLogic {
 }
 
 public struct BeRealCaptureView: View {
-  let store: StoreOf<BeRealCaptureLogic>
+  public enum NextButtonStyle: Equatable {
+    case next
+    case save
+  }
 
-  public init(store: StoreOf<BeRealCaptureLogic>) {
+  let store: StoreOf<BeRealCaptureLogic>
+  private let nextButtonStyle: NextButtonStyle
+
+  public init(
+    store: StoreOf<BeRealCaptureLogic>,
+    nextButtonStyle: NextButtonStyle = .next
+  ) {
     self.store = store
+    self.nextButtonStyle = nextButtonStyle
   }
 
   public var body: some View {
@@ -192,7 +202,9 @@ public struct BeRealCaptureView: View {
           }
 
           PrimaryButton(
-            String(localized: "Next", bundle: .module),
+            nextButtonStyle == .save
+              ? String(localized: "Save", bundle: .module)
+              : String(localized: "Next", bundle: .module),
             isLoading: viewStore.isActivityIndicatorVisible,
             isDisabled: viewStore.isDisabled
           ) {
@@ -224,7 +236,8 @@ public struct BeRealCaptureView: View {
       store: .init(
         initialState: BeRealCaptureLogic.State(),
         reducer: { BeRealCaptureLogic() }
-      )
+      ),
+      nextButtonStyle: .next
     )
   }
   .environment(\.colorScheme, .dark)

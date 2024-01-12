@@ -88,10 +88,23 @@ public struct GenderSettingLogic {
 }
 
 public struct GenderSettingView: View {
-  let store: StoreOf<GenderSettingLogic>
+  public enum NextButtonStyle: Equatable {
+    case next
+    case save
+  }
 
-  public init(store: StoreOf<GenderSettingLogic>) {
+  let store: StoreOf<GenderSettingLogic>
+  private let nextButtonStyle: NextButtonStyle
+  private let canSkip: Bool
+
+  public init(
+    store: StoreOf<GenderSettingLogic>,
+    nextButtonStyle: NextButtonStyle,
+    canSkip: Bool
+  ) {
     self.store = store
+    self.nextButtonStyle = nextButtonStyle
+    self.canSkip = canSkip
   }
 
   func genderText(_ gender: BeMatch.Gender) -> LocalizedStringKey {
@@ -133,20 +146,24 @@ public struct GenderSettingView: View {
 
         VStack(spacing: 0) {
           PrimaryButton(
-            String(localized: "Next", bundle: .module),
+            nextButtonStyle == .save
+              ? String(localized: "Save", bundle: .module)
+              : String(localized: "Next", bundle: .module),
             isLoading: viewStore.isActivityIndicatorVisible,
             isDisabled: viewStore.selection == nil
           ) {
             store.send(.nextButtonTapped)
           }
 
-          Button {
-            store.send(.skipButtonTapped)
-          } label: {
-            Text("Skip", bundle: .module)
-              .frame(height: 50)
-              .foregroundStyle(Color.white)
-              .font(.system(.subheadline, weight: .semibold))
+          if canSkip {
+            Button {
+              store.send(.skipButtonTapped)
+            } label: {
+              Text("Skip", bundle: .module)
+                .frame(height: 50)
+                .foregroundStyle(Color.white)
+                .font(.system(.subheadline, weight: .semibold))
+            }
           }
         }
         .padding(.horizontal, 16)
@@ -171,7 +188,9 @@ public struct GenderSettingView: View {
       store: .init(
         initialState: GenderSettingLogic.State(gender: nil),
         reducer: { GenderSettingLogic() }
-      )
+      ),
+      nextButtonStyle: .next,
+      canSkip: true
     )
   }
   .environment(\.colorScheme, .dark)

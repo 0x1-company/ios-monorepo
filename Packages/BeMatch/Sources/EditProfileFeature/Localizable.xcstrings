@@ -1,17 +1,8 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Delete a photo" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "写真を削除"
-          }
-        }
-      }
-    },
     "Edit Profile" : {
+      "extractionState" : "manual",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -21,33 +12,46 @@
         }
       }
     },
-    "Next" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "つぎへ"
-          }
-        }
-      }
-    },
-    "Save" : {
+    "Gender" : {
       "extractionState" : "manual",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "保存する"
+            "value" : "性別"
           }
         }
       }
     },
-    "Set your saved photo to your profile (it will be public 🌏)" : {
+    "PROFILE" : {
+      "extractionState" : "manual",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "保存した写真を3枚プロフィールに設定しよう（公開されるよ 🌏）"
+            "value" : "プロフィール"
+          }
+        }
+      }
+    },
+    "Profile Image" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロフィール画像"
+          }
+        }
+      }
+    },
+    "Username" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ユーザーネーム"
           }
         }
       }

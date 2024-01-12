@@ -90,14 +90,19 @@ public struct OnboardView: View {
 
   public var body: some View {
     NavigationStackStore(store.scope(state: \.path, action: \.path)) {
-      UsernameSettingView(store: store.scope(state: \.username, action: \.username))
+      UsernameSettingView(
+        store: store.scope(state: \.username, action: \.username),
+        nextButtonStyle: .next
+      )
     } destination: { store in
       switch store {
       case .gender:
         CaseLet(
           /OnboardLogic.Path.State.gender,
           action: OnboardLogic.Path.Action.gender,
-          then: GenderSettingView.init(store:)
+          then: { store in
+            GenderSettingView(store: store, nextButtonStyle: .next, canSkip: true)
+          }
         )
       case .sample:
         CaseLet(
@@ -109,7 +114,9 @@ public struct OnboardView: View {
         CaseLet(
           /OnboardLogic.Path.State.capture,
           action: OnboardLogic.Path.Action.capture,
-          then: BeRealCaptureView.init(store:)
+          then: { store in
+            BeRealCaptureView(store: store, nextButtonStyle: .next)
+          }
         )
       }
     }

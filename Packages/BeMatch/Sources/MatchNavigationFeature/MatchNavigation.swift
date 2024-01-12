@@ -1,3 +1,4 @@
+import BeMatch
 import ComposableArchitecture
 import FeedbackGeneratorClient
 import MatchFeature
@@ -30,7 +31,7 @@ public struct MatchNavigationLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .settingsButtonTapped:
-        state.path.append(.settings())
+        state.path.append(.settings(SettingsLogic.State()))
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
@@ -54,7 +55,7 @@ public struct MatchNavigationLogic {
   @Reducer
   public struct Path {
     public enum State: Equatable {
-      case settings(SettingsLogic.State = .init())
+      case settings(SettingsLogic.State)
       case other(SettingsOtherLogic.State = .init())
     }
 
