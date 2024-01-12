@@ -129,80 +129,72 @@ public struct EditProfileView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { _ in
-      List {
-        Section {
-          Button {
-            store.send(.usernameSettingButtonTapped)
+    List {
+      Section {
+        Button {
+          store.send(.usernameSettingButtonTapped)
+        } label: {
+          LabeledContent {
+            Image(systemName: "chevron.right")
           } label: {
-            LabeledContent {
-              Image(systemName: "chevron.right")
-            } label: {
-              Text("Username", bundle: .module)
-                .foregroundStyle(Color.primary)
-            }
+            Text("Username", bundle: .module)
+              .foregroundStyle(Color.primary)
           }
-
-          Button {
-            store.send(.genderSettingButtonTapped)
-          } label: {
-            LabeledContent {
-              Image(systemName: "chevron.right")
-            } label: {
-              Text("Gender", bundle: .module)
-                .foregroundStyle(Color.primary)
-            }
-          }
-
-          Button {
-            store.send(.beRealCaptureButtonTapped)
-          } label: {
-            LabeledContent {
-              Image(systemName: "chevron.right")
-            } label: {
-              Text("Profile Image", bundle: .module)
-                .foregroundStyle(Color.primary)
-            }
-          }
-        } header: {
-          Text("PROFILE", bundle: .module)
         }
+
+        Button {
+          store.send(.genderSettingButtonTapped)
+        } label: {
+          LabeledContent {
+            Image(systemName: "chevron.right")
+          } label: {
+            Text("Gender", bundle: .module)
+              .foregroundStyle(Color.primary)
+          }
+        }
+
+        Button {
+          store.send(.beRealCaptureButtonTapped)
+        } label: {
+          LabeledContent {
+            Image(systemName: "chevron.right")
+          } label: {
+            Text("Profile Image", bundle: .module)
+              .foregroundStyle(Color.primary)
+          }
+        }
+      } header: {
+        Text("PROFILE", bundle: .module)
       }
-      .navigationDestination(
-        store: store.scope(
-          state: \.$destination,
-          action: EditProfileLogic.Action.destination
-        ),
-        state: /EditProfileLogic.Destination.State.genderSetting,
-        action: EditProfileLogic.Destination.Action.genderSetting
-      ) { store in
-        GenderSettingView(store: store, nextButtonStyle: .save, canSkip: false)
-      }
-      .navigationDestination(
-        store: store.scope(
-          state: \.$destination,
-          action: EditProfileLogic.Action.destination
-        ),
-        state: /EditProfileLogic.Destination.State.usernameSetting,
-        action: EditProfileLogic.Destination.Action.usernameSetting
-      ) { store in
-        UsernameSettingView(store: store, nextButtonStyle: .save)
-      }
-      .navigationDestination(
-        store: store.scope(
-          state: \.$destination,
-          action: EditProfileLogic.Action.destination
-        ),
-        state: /EditProfileLogic.Destination.State.beRealCapture,
-        action: EditProfileLogic.Destination.Action.beRealCapture
-      ) { store in
-        BeRealCaptureView(store: store, nextButtonStyle: .save)
-      }
-      .navigationTitle(String(localized: "Edit Profile", bundle: .module))
-      .multilineTextAlignment(.center)
-      .navigationBarTitleDisplayMode(.inline)
-      .task { await store.send(.onTask).finish() }
-      .onAppear { store.send(.onAppear) }
+    }
+    .multilineTextAlignment(.center)
+    .navigationTitle(String(localized: "Edit Profile", bundle: .module))
+    .navigationBarTitleDisplayMode(.inline)
+    .task { await store.send(.onTask).finish() }
+    .onAppear { store.send(.onAppear) }
+    .navigationDestination(
+      store: store.scope(
+        state: \.$destination.genderSetting,
+        action: \.destination.genderSetting
+      )
+    ) { store in
+      GenderSettingView(store: store, nextButtonStyle: .save, canSkip: false)
+    }
+    .navigationDestination(
+      store: store.scope(
+        state: \.$destination.usernameSetting,
+        action: \.destination.usernameSetting
+      )
+    ) { store in
+      UsernameSettingView(store: store, nextButtonStyle: .save)
+    }
+    .navigationDestination(
+      store: store.scope(
+        state: \.$destination.beRealCapture,
+        action: \.destination.beRealCapture
+      )
+    ) { store in
+      BeRealCaptureView(store: store, nextButtonStyle: .save)
     }
   }
 }
