@@ -3,7 +3,7 @@ import ComposableArchitecture
 import SwiftUI
 
 @Reducer
-public struct PremiumPurchaseLogic {
+public struct MembershipPurchaseLogic {
   public init() {}
 
   public struct State: Equatable {
@@ -24,26 +24,26 @@ public struct PremiumPurchaseLogic {
         return .none
 
       case .onAppear:
-        analytics.logScreen(screenName: "PremiumPurchase", of: self)
+        analytics.logScreen(screenName: "MembershipPurchase", of: self)
         return .none
       }
     }
   }
 }
 
-public struct PremiumPurchaseView: View {
-  let store: StoreOf<PremiumPurchaseLogic>
+public struct MembershipPurchaseView: View {
+  let store: StoreOf<MembershipPurchaseLogic>
 
-  public init(store: StoreOf<PremiumPurchaseLogic>) {
+  public init(store: StoreOf<MembershipPurchaseLogic>) {
     self.store = store
   }
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { _ in
       List {
-        Text("PremiumPurchase", bundle: .module)
+        Text("MembershipPurchase", bundle: .module)
       }
-      .navigationTitle(String(localized: "PremiumPurchase", bundle: .module))
+      .navigationTitle(String(localized: "MembershipPurchase", bundle: .module))
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
       .onAppear { store.send(.onAppear) }
@@ -52,10 +52,10 @@ public struct PremiumPurchaseView: View {
 }
 
 #Preview {
-  PremiumPurchaseView(
+  MembershipPurchaseView(
     store: .init(
-      initialState: PremiumPurchaseLogic.State(),
-      reducer: { PremiumPurchaseLogic() }
+      initialState: MembershipPurchaseLogic.State(),
+      reducer: { MembershipPurchaseLogic() }
     )
   )
 }
