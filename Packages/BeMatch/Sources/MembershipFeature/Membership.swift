@@ -3,7 +3,7 @@ import ComposableArchitecture
 import SwiftUI
 
 @Reducer
-public struct PremiumLogic {
+public struct MembershipLogic {
   public init() {}
 
   public struct State: Equatable {
@@ -25,7 +25,7 @@ public struct PremiumLogic {
     Reduce<State, Action> { _, action in
       switch action {
       case .onAppear:
-        analytics.logScreen(screenName: "Premium", of: self)
+        analytics.logScreen(screenName: "Membership", of: self)
         return .none
 
       case .closeButtonTapped:
@@ -42,30 +42,30 @@ public struct PremiumLogic {
   @Reducer
   public struct Child {
     public enum State: Equatable {
-      case campaign(PremiumCampaignLogic.State)
-      case purchase(PremiumPurchaseLogic.State)
+      case campaign(MembershipCampaignLogic.State)
+      case purchase(MembershipPurchaseLogic.State)
     }
 
     public enum Action {
-      case campaign(PremiumCampaignLogic.Action)
-      case purchase(PremiumPurchaseLogic.Action)
+      case campaign(MembershipCampaignLogic.Action)
+      case purchase(MembershipPurchaseLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
       Scope(state: \.campaign, action: \.campaign) {
-        PremiumCampaignLogic()
+        MembershipCampaignLogic()
       }
       Scope(state: \.purchase, action: \.purchase) {
-        PremiumPurchaseLogic()
+        MembershipPurchaseLogic()
       }
     }
   }
 }
 
-public struct PremiumView: View {
-  let store: StoreOf<PremiumLogic>
+public struct MembershipView: View {
+  let store: StoreOf<MembershipLogic>
 
-  public init(store: StoreOf<PremiumLogic>) {
+  public init(store: StoreOf<MembershipLogic>) {
     self.store = store
   }
 
@@ -74,15 +74,15 @@ public struct PremiumView: View {
       switch initialState {
       case .campaign:
         CaseLet(
-          /PremiumLogic.Child.State.campaign,
-          action: PremiumLogic.Child.Action.campaign,
-          then: PremiumCampaignView.init(store:)
+          /MembershipLogic.Child.State.campaign,
+          action: MembershipLogic.Child.Action.campaign,
+          then: MembershipCampaignView.init(store:)
         )
       case .purchase:
         CaseLet(
-          /PremiumLogic.Child.State.purchase,
-          action: PremiumLogic.Child.Action.purchase,
-          then: PremiumPurchaseView.init(store:)
+          /MembershipLogic.Child.State.purchase,
+          action: MembershipLogic.Child.Action.purchase,
+          then: MembershipPurchaseView.init(store:)
         )
       }
     }
@@ -100,10 +100,10 @@ public struct PremiumView: View {
 }
 
 #Preview {
-  PremiumView(
+  MembershipView(
     store: .init(
-      initialState: PremiumLogic.State(),
-      reducer: { PremiumLogic() }
+      initialState: MembershipLogic.State(),
+      reducer: { MembershipLogic() }
     )
   )
 }

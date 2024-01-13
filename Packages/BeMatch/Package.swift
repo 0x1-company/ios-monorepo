@@ -32,7 +32,7 @@ let package = Package(
     .library(name: "NavigationFeature", targets: ["NavigationFeature"]),
     .library(name: "NotificationsReEnableFeature", targets: ["NotificationsReEnableFeature"]),
     .library(name: "OnboardFeature", targets: ["OnboardFeature"]),
-    .library(name: "PremiumFeature", targets: ["PremiumFeature"]),
+    .library(name: "MembershipFeature", targets: ["MembershipFeature"]),
     .library(name: "ProfileExternalFeature", targets: ["ProfileExternalFeature"]),
     .library(name: "ProfileFeature", targets: ["ProfileFeature"]),
     .library(name: "ProfileSharedFeature", targets: ["ProfileSharedFeature"]),
@@ -204,7 +204,7 @@ let package = Package(
       .product(name: "UserNotificationClient", package: "SDK"),
       .product(name: "FirebaseStorageClient", package: "SDK"),
     ]),
-    .target(name: "PremiumFeature", dependencies: [
+    .target(name: "MembershipFeature", dependencies: [
       "Styleguide",
       "AnalyticsKeys",
       .product(name: "ColorHex", package: "SDK"),

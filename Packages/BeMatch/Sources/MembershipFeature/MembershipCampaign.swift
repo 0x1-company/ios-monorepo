@@ -3,7 +3,7 @@ import ComposableArchitecture
 import SwiftUI
 
 @Reducer
-public struct PremiumCampaignLogic {
+public struct MembershipCampaignLogic {
   public init() {}
 
   public struct State: Equatable {
@@ -39,10 +39,10 @@ public struct PremiumCampaignLogic {
   }
 }
 
-public struct PremiumCampaignView: View {
-  let store: StoreOf<PremiumCampaignLogic>
+public struct MembershipCampaignView: View {
+  let store: StoreOf<MembershipCampaignLogic>
 
-  public init(store: StoreOf<PremiumCampaignLogic>) {
+  public init(store: StoreOf<MembershipCampaignLogic>) {
     self.store = store
   }
 
@@ -74,10 +74,10 @@ public struct PremiumCampaignView: View {
 }
 
 #Preview {
-  PremiumCampaignView(
+  MembershipCampaignView(
     store: .init(
-      initialState: PremiumCampaignLogic.State(),
-      reducer: { PremiumCampaignLogic() }
+      initialState: MembershipCampaignLogic.State(),
+      reducer: { MembershipCampaignLogic() }
     )
   )
   .environment(\.colorScheme, .dark)
