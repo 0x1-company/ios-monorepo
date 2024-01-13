@@ -78,7 +78,7 @@ public struct AppLogic {
           case .success(false) = account.isMaintenance,
           case let .success(user) = account.user
         else { return .none }
-        
+
         guard case .active = user.status else {
           state.child = .banned()
           return .none
