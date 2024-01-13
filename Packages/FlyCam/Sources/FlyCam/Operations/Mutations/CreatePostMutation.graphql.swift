@@ -48,7 +48,7 @@ public extension FlyCam {
         public var id: FlyCam.ID { __data["id"] }
         public var altitude: Double { __data["altitude"] }
         public var videoUrl: String { __data["videoUrl"] }
-        public var user: RankingRow.User { __data["user"] }
+        public var user: User { __data["user"] }
 
         public struct Fragments: FragmentContainer {
           public let __data: DataDict
@@ -56,6 +56,8 @@ public extension FlyCam {
 
           public var rankingRow: RankingRow { _toFragment() }
         }
+
+        public typealias User = RankingRow.User
       }
     }
   }

@@ -16,7 +16,7 @@ public struct UserSettingsLogic {
     action: AppLogic.Action
   ) -> Effect<AppLogic.Action> {
     switch action {
-    case .view(.navigation(.onTask)):
+    case .child(.navigation(.onTask)):
       return .run { _ in
         let currentUser = firebaseAuth.currentUser()
         guard let uid = currentUser?.uid else { return }
