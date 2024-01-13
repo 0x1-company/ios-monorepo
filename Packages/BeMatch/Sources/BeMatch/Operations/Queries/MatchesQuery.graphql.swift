@@ -120,7 +120,7 @@ public extension BeMatch {
             /// 既読かどうか
             public var isRead: Bool { __data["isRead"] }
             /// マッチした相手
-            public var targetUser: MatchGrid.TargetUser { __data["targetUser"] }
+            public var targetUser: TargetUser { __data["targetUser"] }
 
             public struct Fragments: FragmentContainer {
               public let __data: DataDict
@@ -128,6 +128,8 @@ public extension BeMatch {
 
               public var matchGrid: MatchGrid { _toFragment() }
             }
+
+            public typealias TargetUser = MatchGrid.TargetUser
           }
         }
       }

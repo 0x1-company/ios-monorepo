@@ -92,6 +92,19 @@ enum Gender {
   OTHER
 }
 
+type InvitationCampaign {
+  id: ID!
+
+  """招待キャンペーンの発行数"""
+  quantity: Int!
+}
+
+type InvitationCode {
+  """招待コード"""
+  code: String!
+  id: ID!
+}
+
 type Match {
   createdAt: Date!
 
@@ -180,6 +193,12 @@ type Query {
   """ログイン中ユーザーを取得"""
   currentUser: User!
 
+  """招待キャンペーンを取得"""
+  invitationCampaign: InvitationCampaign
+
+  """招待コードを取得"""
+  invitationCode: InvitationCode!
+
   """マッチ一覧"""
   matches(after: String, first: Int!): MatchConnection!
   pushNotificationBadge: PushNotificationBadge!
@@ -198,6 +217,9 @@ type ReceivedLike {
 
   """Likeを送った最新ユーザー"""
   latestUser: User
+
+  """表示の最大かどうか"""
+  reachedLimit: Boolean!
 }
 
 input UpdateBeRealInput {
@@ -230,6 +252,7 @@ type User {
 
   """ユーザーの画像一覧"""
   images: [UserImage!]!
+  status: UserStatus!
 }
 
 type UserEdge {
@@ -240,4 +263,10 @@ type UserEdge {
 type UserImage {
   id: ID!
   imageUrl: String!
+}
+
+enum UserStatus {
+  ACTIVE
+  BANNED
+  CLOSED
 }
