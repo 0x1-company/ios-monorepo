@@ -1,0 +1,36 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "It's important to us that BeMatch is a welcoming and safe space for everyone.\nUnfortunately, we found that you violated our Terms of Use and so we've made the decision to remove you from the BeMatch Platform." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeMatchでは、すべての人にとって安心で安全な場所でであることを重視しています。残念ながらあなたの行為が利用規約に違反したことが判明したため、当社はあなたをBeMatchのプラットフォームから削除することを決定しました。"
+          }
+        }
+      }
+    },
+    "You will no longer be able to access your BeMatch account or create new accounts in the future." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたは今後、BeMatchのアカウントにアクセスしたり、新しいアカウントを作成することは出来ません。"
+          }
+        }
+      }
+    },
+    "Your account has been banned from BeMatch." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたのBeMatchアカウントは利用停止されました。"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

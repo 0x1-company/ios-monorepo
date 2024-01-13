@@ -2,6 +2,7 @@ import AnalyticsKeys
 import AppsFlyerClient
 import AppTrackingTransparency
 import AsyncValue
+import BannedFeature
 import BeMatch
 import ComposableArchitecture
 import ConfigGlobalClient
@@ -26,7 +27,7 @@ public struct AppLogic {
 
     var appDelegate = AppDelegateLogic.State()
     var sceneDelegate = SceneDelegateLogic.State()
-    var view: View.State = .launch()
+    var child: Child.State = .launch()
     var tutorial: TutorialLogic.State?
 
     public struct Account: Equatable {
@@ -41,7 +42,7 @@ public struct AppLogic {
   public enum Action {
     case appDelegate(AppDelegateLogic.Action)
     case sceneDelegate(SceneDelegateLogic.Action)
-    case view(View.Action)
+    case child(Child.Action)
     case tutorial(TutorialLogic.Action)
     case configFetched
     case configResponse(TaskResult<ConfigGlobalClient.Config>)
@@ -61,13 +62,13 @@ public struct AppLogic {
       }
       .onChange(of: \.account.isForceUpdate) { isForceUpdate, state, _ in
         if case .success(true) = isForceUpdate {
-          state.view = .forceUpdate()
+          state.child = .forceUpdate()
         }
         return .none
       }
       .onChange(of: \.account.isMaintenance) { isMaintenance, state, _ in
         if case .success(true) = isMaintenance {
-          state.view = .maintenance()
+          state.child = .maintenance()
         }
         return .none
       }
@@ -79,20 +80,20 @@ public struct AppLogic {
         else { return .none }
 
         if user.berealUsername.isEmpty {
-          state.view = .onboard(OnboardLogic.State(user: user))
+          state.child = .onboard(OnboardLogic.State(user: user))
         } else if user.images.count < 3 {
-          state.view = .onboard(OnboardLogic.State(user: user))
+          state.child = .onboard(OnboardLogic.State(user: user))
         } else {
-          state.view = .navigation(RootNavigationLogic.State())
+          state.child = .navigation(RootNavigationLogic.State())
         }
         return .none
       }
     Reduce<State, Action> { state, action in
       switch action {
-      case .view(.onboard(.path(.element(_, .capture(.delegate(.nextScreen)))))):
+      case .child(.onboard(.path(.element(_, .capture(.delegate(.nextScreen)))))):
         analytics.setUserProperty(key: \.onboardCompleted, value: "true")
         state.tutorial = .init()
-        state.view = .navigation(RootNavigationLogic.State())
+        state.child = .navigation(RootNavigationLogic.State())
         return .none
 
       case .tutorial(.delegate(.finish)):
@@ -109,7 +110,7 @@ public struct AppLogic {
   var core: some Reducer<State, Action> {
     Scope(state: \.appDelegate, action: \.appDelegate, child: AppDelegateLogic.init)
     Scope(state: \.sceneDelegate, action: \.sceneDelegate, child: SceneDelegateLogic.init)
-    Scope(state: \.view, action: \.view, child: View.init)
+    Scope(state: \.child, action: \.child, child: Child.init)
     AuthLogic()
     ConfigGlobalLogic()
     QuickActionLogic()
@@ -117,13 +118,14 @@ public struct AppLogic {
   }
 
   @Reducer
-  public struct View {
+  public struct Child {
     public enum State: Equatable {
       case launch(LaunchLogic.State = .init())
       case onboard(OnboardLogic.State)
       case navigation(RootNavigationLogic.State)
       case forceUpdate(ForceUpdateLogic.State = .init())
       case maintenance(MaintenanceLogic.State = .init())
+      case banned(BannedLogic.State = .init())
     }
 
     public enum Action {
@@ -132,6 +134,7 @@ public struct AppLogic {
       case navigation(RootNavigationLogic.Action)
       case forceUpdate(ForceUpdateLogic.Action)
       case maintenance(MaintenanceLogic.Action)
+      case banned(BannedLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
@@ -140,6 +143,7 @@ public struct AppLogic {
       Scope(state: \.navigation, action: \.navigation, child: RootNavigationLogic.init)
       Scope(state: \.forceUpdate, action: \.forceUpdate, child: ForceUpdateLogic.init)
       Scope(state: \.maintenance, action: \.maintenance, child: MaintenanceLogic.init)
+      Scope(state: \.banned, action: \.banned, child: BannedLogic.init)
     }
   }
 }
@@ -152,37 +156,43 @@ public struct AppView: View {
   }
 
   public var body: some View {
-    SwitchStore(store.scope(state: \.view, action: \.view)) { initialState in
+    SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
       switch initialState {
       case .launch:
         CaseLet(
-          /AppLogic.View.State.launch,
-          action: AppLogic.View.Action.launch,
+          /AppLogic.Child.State.launch,
+          action: AppLogic.Child.Action.launch,
           then: LaunchView.init(store:)
         )
       case .onboard:
         CaseLet(
-          /AppLogic.View.State.onboard,
-          action: AppLogic.View.Action.onboard,
+          /AppLogic.Child.State.onboard,
+          action: AppLogic.Child.Action.onboard,
           then: OnboardView.init(store:)
         )
       case .navigation:
         CaseLet(
-          /AppLogic.View.State.navigation,
-          action: AppLogic.View.Action.navigation,
+          /AppLogic.Child.State.navigation,
+          action: AppLogic.Child.Action.navigation,
           then: RootNavigationView.init(store:)
         )
       case .forceUpdate:
         CaseLet(
-          /AppLogic.View.State.forceUpdate,
-          action: AppLogic.View.Action.forceUpdate,
+          /AppLogic.Child.State.forceUpdate,
+          action: AppLogic.Child.Action.forceUpdate,
           then: ForceUpdateView.init(store:)
         )
       case .maintenance:
         CaseLet(
-          /AppLogic.View.State.maintenance,
-          action: AppLogic.View.Action.maintenance,
+          /AppLogic.Child.State.maintenance,
+          action: AppLogic.Child.Action.maintenance,
           then: MaintenanceView.init(store:)
+        )
+      case .banned:
+        CaseLet(
+          /AppLogic.Child.State.banned,
+          action: AppLogic.Child.Action.banned,
+          then: BannedView.init(store:)
         )
       }
     }
