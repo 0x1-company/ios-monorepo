@@ -12,6 +12,7 @@ let package = Package(
   products: [
     .library(name: "AnalyticsKeys", targets: ["AnalyticsKeys"]),
     .library(name: "AppFeature", targets: ["AppFeature"]),
+    .library(name: "BannedFeature", targets: ["BannedFeature"]),
     .library(name: "BannerFeature", targets: ["BannerFeature"]),
     .library(name: "BeMatch", targets: ["BeMatch"]),
     .library(name: "BeMatchClient", targets: ["BeMatchClient"]),
@@ -60,6 +61,7 @@ let package = Package(
     ]),
     .target(name: "AppFeature", dependencies: [
       "LaunchFeature",
+      "BannedFeature",
       "OnboardFeature",
       "NavigationFeature",
       "ForceUpdateFeature",
@@ -73,6 +75,11 @@ let package = Package(
       .product(name: "FirebaseMessagingClient", package: "SDK"),
       .product(name: "ATTrackingManagerClient", package: "SDK"),
       .product(name: "NotificationCenterClient", package: "SDK"),
+    ]),
+    .target(name: "BannedFeature", dependencies: [
+      "Styleguide",
+      "AnalyticsKeys",
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "BannerFeature", dependencies: [
       "BeMatch",
