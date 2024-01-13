@@ -7,7 +7,7 @@ public struct MembershipLogic {
   public init() {}
 
   public struct State: Equatable {
-    var child = Child.State.campaign(.init())
+    var child: Child.State? = .campaign(.init())
     public init() {}
   }
 
@@ -21,7 +21,6 @@ public struct MembershipLogic {
   @Dependency(\.analytics) var analytics
 
   public var body: some Reducer<State, Action> {
-    Scope(state: \.child, action: \.child, child: Child.init)
     Reduce<State, Action> { _, action in
       switch action {
       case .onAppear:
@@ -36,6 +35,9 @@ public struct MembershipLogic {
       default:
         return .none
       }
+    }
+    .ifLet(\.child, action: \.child) {
+      Child()
     }
   }
 
@@ -70,22 +72,28 @@ public struct MembershipView: View {
   }
 
   public var body: some View {
-    SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
-      switch initialState {
-      case .campaign:
-        CaseLet(
-          /MembershipLogic.Child.State.campaign,
-          action: MembershipLogic.Child.Action.campaign,
-          then: MembershipCampaignView.init(store:)
-        )
-      case .purchase:
-        CaseLet(
-          /MembershipLogic.Child.State.purchase,
-          action: MembershipLogic.Child.Action.purchase,
-          then: MembershipPurchaseView.init(store:)
-        )
+    IfLetStore(store.scope(state: \.child, action: \.child)) { store in
+      SwitchStore(store) { initialState in
+        switch initialState {
+        case .campaign:
+          CaseLet(
+            /MembershipLogic.Child.State.campaign,
+            action: MembershipLogic.Child.Action.campaign,
+            then: MembershipCampaignView.init(store:)
+          )
+        case .purchase:
+          CaseLet(
+            /MembershipLogic.Child.State.purchase,
+            action: MembershipLogic.Child.Action.purchase,
+            then: MembershipPurchaseView.init(store:)
+          )
+        }
       }
+    } else: {
+      ProgressView()
+        .tint(Color.primary)
     }
+    .ignoresSafeArea()
     .onAppear { store.send(.onAppear) }
     .toolbar {
       ToolbarItem(placement: .topBarLeading) {
@@ -93,6 +101,7 @@ public struct MembershipView: View {
           store.send(.closeButtonTapped)
         } label: {
           Image(systemName: "xmark")
+            .foregroundStyle(Color.primary)
         }
       }
     }
@@ -100,10 +109,14 @@ public struct MembershipView: View {
 }
 
 #Preview {
-  MembershipView(
-    store: .init(
-      initialState: MembershipLogic.State(),
-      reducer: { MembershipLogic() }
+  NavigationStack {
+    MembershipView(
+      store: .init(
+        initialState: MembershipLogic.State(),
+        reducer: { MembershipLogic() }
+      )
     )
-  )
+  }
+  .environment(\.colorScheme, .dark)
+  .environment(\.locale, Locale(identifier: "ja-JP"))
 }
