@@ -13,6 +13,7 @@ import LaunchFeature
 import MaintenanceFeature
 import NavigationFeature
 import OnboardFeature
+import StoreKit
 import SwiftUI
 import TcaHelpers
 import TutorialFeature
@@ -49,6 +50,7 @@ public struct AppLogic {
     case signInAnonymouslyResponse(Result<AuthDataResult, Error>)
     case createUserResponse(Result<BeMatch.CreateUserMutation.Data, Error>)
     case trackingAuthorization(ATTrackingManager.AuthorizationStatus)
+    case transaction(Result<StoreKit.Transaction, Error>)
   }
 
   @Dependency(\.appsFlyer) var appsFlyer
@@ -120,6 +122,7 @@ public struct AppLogic {
     ConfigGlobalLogic()
     QuickActionLogic()
     UserSettingsLogic()
+    StoreLogic()
   }
 
   @Reducer
