@@ -15,7 +15,6 @@ public struct MembershipLogic {
 
   public enum Action {
     case onTask
-    case onAppear
     case closeButtonTapped
     case activeInvitationCampaignResponse(Result<BeMatch.ActiveInvitationCampaignQuery.Data, Error>)
     case child(Child.Action)
@@ -41,10 +40,6 @@ public struct MembershipLogic {
           await send(.activeInvitationCampaignResponse(.failure(error)))
         }
         .cancellable(id: Cancel.activeInvitationCampaign, cancelInFlight: true)
-
-      case .onAppear:
-        analytics.logScreen(screenName: "Membership", of: self)
-        return .none
 
       case .closeButtonTapped:
         return .run { _ in
@@ -126,7 +121,6 @@ public struct MembershipView: View {
     }
     .ignoresSafeArea()
     .task { await store.send(.onTask).finish() }
-    .onAppear { store.send(.onAppear) }
     .toolbar {
       ToolbarItem(placement: .topBarLeading) {
         Button {
