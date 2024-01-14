@@ -1,6 +1,8 @@
 import AnalyticsClient
 import ComposableArchitecture
 import SwiftUI
+import BeMatch
+import BeMatchClient
 
 @Reducer
 public struct MembershipLogic {
