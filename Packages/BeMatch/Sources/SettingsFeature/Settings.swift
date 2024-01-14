@@ -47,6 +47,7 @@ public struct SettingsLogic {
     case onAppear
     case myProfileButtonTapped
     case editProfileButtonTapped
+    case invitationCodeButtonTapped
     case howItWorksButtonTapped
     case otherButtonTapped
     case shareButtonTapped
@@ -197,6 +198,17 @@ public struct SettingsView: View {
               Image(systemName: "chevron.right")
             } label: {
               Text("Edit Profile", bundle: .module)
+                .foregroundStyle(Color.primary)
+            }
+          }
+          
+          Button {
+            store.send(.invitationCodeButtonTapped)
+          } label: {
+            LabeledContent {
+              Image(systemName: "chevron.right")
+            } label: {
+              Text("Invitation Code", bundle: .module)
                 .foregroundStyle(Color.primary)
             }
           }

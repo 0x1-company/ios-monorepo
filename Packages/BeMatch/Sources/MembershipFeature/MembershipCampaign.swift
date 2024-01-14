@@ -1,4 +1,5 @@
 import AnalyticsClient
+import BeMatch
 import ComposableArchitecture
 import SwiftUI
 
@@ -7,9 +8,14 @@ public struct MembershipCampaignLogic {
   public init() {}
 
   public struct State: Equatable {
+    let campaign: BeMatch.ActiveInvitationCampaignQuery.Data.ActiveInvitationCampaign
+
     var invitationCampaign = InvitationCampaignLogic.State()
     var invitationCodeCampaign = InvitationCodeCampaignLogic.State()
-    public init() {}
+    
+    public init(campaign: BeMatch.ActiveInvitationCampaignQuery.Data.ActiveInvitationCampaign) {
+      self.campaign = campaign
+    }
   }
 
   public enum Action {
@@ -71,15 +77,4 @@ public struct MembershipCampaignView: View {
       .task { await store.send(.onTask).finish() }
     }
   }
-}
-
-#Preview {
-  MembershipCampaignView(
-    store: .init(
-      initialState: MembershipCampaignLogic.State(),
-      reducer: { MembershipCampaignLogic() }
-    )
-  )
-  .environment(\.colorScheme, .dark)
-  .environment(\.locale, Locale(identifier: "ja-JP"))
 }

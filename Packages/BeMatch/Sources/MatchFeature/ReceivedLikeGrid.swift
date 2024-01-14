@@ -3,6 +3,7 @@ import CachedAsyncImage
 import ComposableArchitecture
 import Styleguide
 import SwiftUI
+import MembershipFeature
 
 @Reducer
 public struct ReceivedLikeGridLogic {
@@ -15,7 +16,7 @@ public struct ReceivedLikeGridLogic {
       return count > 99 ? "99+" : count.description
     }
 
-    @PresentationState var alert: AlertState<Action.Alert>?
+    @PresentationState var membership: MembershipLogic.State?
 
     public init(imageUrl: String, count: Int) {
       self.imageUrl = imageUrl
@@ -25,37 +26,27 @@ public struct ReceivedLikeGridLogic {
 
   public enum Action {
     case gridButtonTapped
-    case alert(PresentationAction<Alert>)
-
-    public enum Alert: Equatable {
-      case confirmOkay
-    }
+    case membership(PresentationAction<MembershipLogic.Action>)
   }
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
       switch action {
       case .gridButtonTapped:
-        state.alert = AlertState {
-          TextState("Liked by \(state.receivedCount) people", bundle: .module)
-        } actions: {
-          ButtonState(action: .confirmOkay) {
-            TextState("OK", bundle: .module)
-          }
-        } message: {
-          TextState("Swipe more to match!", bundle: .module)
-        }
+        state.membership = .init()
         return .none
 
-      case .alert(.presented(.confirmOkay)):
-        state.alert = nil
+      case .membership(.presented(.closeButtonTapped)):
+        state.membership = nil
         return .none
-
-      case .alert:
+        
+      case .membership:
         return .none
       }
     }
-    .ifLet(\.$alert, action: \.alert)
+    .ifLet(\.$membership, action: \.membership) {
+      MembershipLogic()
+    }
   }
 }
 
@@ -128,7 +119,13 @@ public struct ReceivedLikeGridView: View {
             .frame(maxWidth: .infinity, minHeight: 54, maxHeight: .infinity, alignment: .leading)
         }
       }
-      .alert(store: store.scope(state: \.$alert, action: \.alert))
+      .fullScreenCover(
+        store: store.scope(state: \.$membership, action: \.membership)
+      ) { store in
+        NavigationStack {
+          MembershipView(store: store)
+        }
+      }
     }
   }
 }
