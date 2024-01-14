@@ -1,9 +1,9 @@
 import BeMatch
 import CachedAsyncImage
 import ComposableArchitecture
+import MembershipFeature
 import Styleguide
 import SwiftUI
-import MembershipFeature
 
 @Reducer
 public struct ReceivedLikeGridLogic {
@@ -39,7 +39,7 @@ public struct ReceivedLikeGridLogic {
       case .membership(.presented(.closeButtonTapped)):
         state.membership = nil
         return .none
-        
+
       case .membership:
         return .none
       }

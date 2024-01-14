@@ -2,8 +2,8 @@ import AnalyticsClient
 import BeMatch
 import BeMatchClient
 import ComposableArchitecture
-import SwiftUI
 import Styleguide
+import SwiftUI
 
 @Reducer
 public struct InvitationCodeLogic {
@@ -24,7 +24,7 @@ public struct InvitationCodeLogic {
 
   @Dependency(\.bematch) var bematch
   @Dependency(\.analytics) var analytics
-  
+
   enum Cancel {
     case invitationCode
   }
@@ -45,14 +45,14 @@ public struct InvitationCodeLogic {
       case .onAppear:
         analytics.logScreen(screenName: "InvitationCode", of: self)
         return .none
-        
+
       case .shareInvitationCodeButtonTapped:
         return .none
-        
+
       case let .invitationCodeResponse(.success(data)):
         state.code = data.invitationCode.code
         return .none
-        
+
       default:
         return .none
       }
