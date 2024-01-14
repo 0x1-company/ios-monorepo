@@ -8,7 +8,7 @@ import StoreKitHelpers
 public struct StoreLogic {
   @Dependency(\.store) var storeClient
   @Dependency(\.bematch) var bematch
-  
+
   enum Cancel {
     case transactionUpdates
   }
@@ -31,7 +31,7 @@ public struct StoreLogic {
       .cancellable(id: Cancel.transactionUpdates, cancelInFlight: true)
 
     case let .transaction(.success(transaction)):
-      return .run { send in
+      return .run { _ in
         let isProduction = transaction.environment == .production
         let environment: BeMatch.AppleSubscriptionEnvironment = isProduction ? .production : .sandbox
         let input = BeMatch.CreateAppleSubscriptionInput(
@@ -39,7 +39,7 @@ public struct StoreLogic {
           transactionId: transaction.id.description
         )
         let data = try await bematch.createAppleSubscription(input)
-        if (data.createAppleSubscription) {
+        if data.createAppleSubscription {
           await transaction.finish()
         }
       }
