@@ -24,6 +24,7 @@ let package = Package(
     .library(name: "EditProfileFeature", targets: ["EditProfileFeature"]),
     .library(name: "ForceUpdateFeature", targets: ["ForceUpdateFeature"]),
     .library(name: "GenderSettingFeature", targets: ["GenderSettingFeature"]),
+    .library(name: "InvitationCodeFeature", targets: ["InvitationCodeFeature"]),
     .library(name: "LaunchFeature", targets: ["LaunchFeature"]),
     .library(name: "MaintenanceFeature", targets: ["MaintenanceFeature"]),
     .library(name: "MatchedFeature", targets: ["MatchedFeature"]),
@@ -154,6 +155,12 @@ let package = Package(
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
+    .target(name: "InvitationCodeFeature", dependencies: [
+      "Styleguide",
+      "BeMatchClient",
+      "AnalyticsKeys",
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
     .target(name: "LaunchFeature", dependencies: [
       "Styleguide",
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
@@ -192,6 +199,7 @@ let package = Package(
     .target(name: "MatchNavigationFeature", dependencies: [
       "MatchFeature",
       "SettingsFeature",
+      "InvitationCodeFeature",
     ]),
     .target(name: "MembershipFeature", dependencies: [
       "Styleguide",
@@ -313,3 +321,4 @@ let package = Package(
     ]),
   ]
 )
+
