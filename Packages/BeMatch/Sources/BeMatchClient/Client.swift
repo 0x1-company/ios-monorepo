@@ -26,4 +26,11 @@ public struct BeMatchClient: Sendable {
   public var pushNotificationBadge: @Sendable () -> AsyncThrowingStream<BeMatch.PushNotificationBadgeQuery.Data, Error> = { .finished() }
 
   public var createReport: @Sendable (BeMatch.CreateReportInput) async throws -> BeMatch.CreateReportMutation.Data
+
+  public var createInvitation: @Sendable (BeMatch.CreateInvitationInput) async throws -> BeMatch.CreateInvitationMutation.Data
+  public var invitationCode: @Sendable () -> AsyncThrowingStream<BeMatch.InvitationCodeQuery.Data, Error> = { .finished() }
+  public var activeInvitationCampaign: @Sendable () -> AsyncThrowingStream<BeMatch.ActiveInvitationCampaignQuery.Data, Error> = { .finished() }
+
+  public var activePremiumMemberships: @Sendable () -> AsyncThrowingStream<BeMatch.ActivePremiumMembershipsQuery.Data, Error> = { .finished() }
+  public var createAppleSubscription: @Sendable (BeMatch.CreateAppleSubscriptionInput) async throws -> BeMatch.CreateAppleSubscriptionMutation.Data
 }
