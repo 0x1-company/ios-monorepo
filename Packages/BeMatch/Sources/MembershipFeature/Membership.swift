@@ -9,22 +9,39 @@ public struct MembershipLogic {
   public init() {}
 
   public struct State: Equatable {
-    var child: Child.State? = .campaign(.init())
+    var child: Child.State?
     public init() {}
   }
 
   public enum Action {
+    case onTask
     case onAppear
     case closeButtonTapped
+    case activeInvitationCampaignResponse(Result<BeMatch.ActiveInvitationCampaignQuery.Data, Error>)
     case child(Child.Action)
   }
 
   @Dependency(\.dismiss) var dismiss
+  @Dependency(\.bematch) var bematch
   @Dependency(\.analytics) var analytics
+  
+  enum Cancel {
+    case activeInvitationCampaign
+  }
 
   public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { _, action in
+    Reduce<State, Action> { state, action in
       switch action {
+      case .onTask:
+        return .run { send in
+          for try await data in bematch.activeInvitationCampaign() {
+            await send(.activeInvitationCampaignResponse(.success(data)))
+          }
+        } catch: { error, send in
+          await send(.activeInvitationCampaignResponse(.failure(error)))
+        }
+        .cancellable(id: Cancel.activeInvitationCampaign, cancelInFlight: true)
+
       case .onAppear:
         analytics.logScreen(screenName: "Membership", of: self)
         return .none
@@ -33,6 +50,18 @@ public struct MembershipLogic {
         return .run { _ in
           await dismiss()
         }
+        
+      case let .activeInvitationCampaignResponse(.success(data)):
+        if let campaign = data.activeInvitationCampaign {
+          state.child = .campaign(MembershipCampaignLogic.State(campaign: campaign))
+        } else {
+          state.child = .purchase(MembershipPurchaseLogic.State())
+        }
+        return .none
+        
+      case .activeInvitationCampaignResponse(.failure):
+        state.child = .purchase(MembershipPurchaseLogic.State())
+        return .none
 
       default:
         return .none
@@ -96,6 +125,7 @@ public struct MembershipView: View {
         .tint(Color.primary)
     }
     .ignoresSafeArea()
+    .task { await store.send(.onTask).finish() }
     .onAppear { store.send(.onAppear) }
     .toolbar {
       ToolbarItem(placement: .topBarLeading) {
