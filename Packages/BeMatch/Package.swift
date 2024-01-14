@@ -67,6 +67,8 @@ let package = Package(
       "ForceUpdateFeature",
       "MaintenanceFeature",
       .product(name: "AsyncValue", package: "SDK"),
+      .product(name: "StoreKitClient", package: "SDK"),
+      .product(name: "StoreKitHelpers", package: "SDK"),
       .product(name: "AppsFlyerClient", package: "SDK"),
       .product(name: "ConfigGlobalClient", package: "SDK"),
       .product(name: "UserSettingsClient", package: "SDK"),
