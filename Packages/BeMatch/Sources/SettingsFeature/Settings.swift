@@ -201,7 +201,7 @@ public struct SettingsView: View {
                 .foregroundStyle(Color.primary)
             }
           }
-          
+
           Button {
             store.send(.invitationCodeButtonTapped)
           } label: {

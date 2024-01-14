@@ -1,8 +1,8 @@
 import AnalyticsClient
-import ComposableArchitecture
-import SwiftUI
 import BeMatch
 import BeMatchClient
+import ComposableArchitecture
+import SwiftUI
 
 @Reducer
 public struct MembershipLogic {
@@ -24,7 +24,7 @@ public struct MembershipLogic {
   @Dependency(\.dismiss) var dismiss
   @Dependency(\.bematch) var bematch
   @Dependency(\.analytics) var analytics
-  
+
   enum Cancel {
     case activeInvitationCampaign
   }
@@ -50,7 +50,7 @@ public struct MembershipLogic {
         return .run { _ in
           await dismiss()
         }
-        
+
       case let .activeInvitationCampaignResponse(.success(data)):
         if let campaign = data.activeInvitationCampaign {
           state.child = .campaign(MembershipCampaignLogic.State(campaign: campaign))
@@ -58,7 +58,7 @@ public struct MembershipLogic {
           state.child = .purchase(MembershipPurchaseLogic.State())
         }
         return .none
-        
+
       case .activeInvitationCampaignResponse(.failure):
         state.child = .purchase(MembershipPurchaseLogic.State())
         return .none

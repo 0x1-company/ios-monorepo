@@ -1,7 +1,7 @@
 import BeMatch
-import InvitationCodeFeature
 import ComposableArchitecture
 import FeedbackGeneratorClient
+import InvitationCodeFeature
 import MatchFeature
 import SettingsFeature
 import SwiftUI
@@ -43,7 +43,7 @@ public struct MatchNavigationLogic {
       case .path(.element(_, .settings(.otherButtonTapped))):
         state.path.append(.other())
         return .none
-        
+
       case .path(.element(_, .settings(.invitationCodeButtonTapped))):
         state.path.append(.invitationCode())
         return .none
@@ -115,7 +115,7 @@ public struct MatchNavigationView: View {
             action: MatchNavigationLogic.Path.Action.other,
             then: SettingsOtherView.init(store:)
           )
-          
+
         case .invitationCode:
           CaseLet(
             /MatchNavigationLogic.Path.State.invitationCode,

@@ -12,7 +12,7 @@ public struct MembershipCampaignLogic {
 
     var invitationCampaign = InvitationCampaignLogic.State()
     var invitationCodeCampaign = InvitationCodeCampaignLogic.State()
-    
+
     public init(campaign: BeMatch.ActiveInvitationCampaignQuery.Data.ActiveInvitationCampaign) {
       self.campaign = campaign
     }
