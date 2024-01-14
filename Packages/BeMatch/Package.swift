@@ -182,6 +182,7 @@ let package = Package(
       "BannerFeature",
       "SettingsFeature",
       "MatchEmptyFeature",
+      "MembershipFeature",
       "ProfileExternalFeature",
       "NotificationsReEnableFeature",
       .product(name: "TcaHelpers", package: "SDK"),
