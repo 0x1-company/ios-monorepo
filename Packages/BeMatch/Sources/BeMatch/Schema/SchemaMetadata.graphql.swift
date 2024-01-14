@@ -40,10 +40,13 @@ public extension BeMatch {
       case "UserImage": return BeMatch.Objects.UserImage
       case "Query": return BeMatch.Objects.Query
       case "PushNotificationBadge": return BeMatch.Objects.PushNotificationBadge
+      case "InvitationCode": return BeMatch.Objects.InvitationCode
       case "ReceivedLike": return BeMatch.Objects.ReceivedLike
       case "MatchConnection": return BeMatch.Objects.MatchConnection
       case "PageInfo": return BeMatch.Objects.PageInfo
       case "MatchEdge": return BeMatch.Objects.MatchEdge
+      case "PremiumMembership": return BeMatch.Objects.PremiumMembership
+      case "InvitationCampaign": return BeMatch.Objects.InvitationCampaign
       case "Banner": return BeMatch.Objects.Banner
       default: return nil
       }

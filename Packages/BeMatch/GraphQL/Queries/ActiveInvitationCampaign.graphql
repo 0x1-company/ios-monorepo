@@ -1,0 +1,6 @@
+query ActiveInvitationCampaign {
+  activeInvitationCampaign {
+    id
+    quantity
+  }
+}
