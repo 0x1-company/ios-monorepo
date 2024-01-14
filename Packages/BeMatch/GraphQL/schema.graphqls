@@ -2,6 +2,11 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+enum AppleSubscriptionEnvironment {
+  PRODUCTION
+  SANDBOX
+}
+
 type Banner {
   buttonTitle: String!
   description: String
@@ -16,9 +21,18 @@ type Banner {
   url: String!
 }
 
+input CreateAppleSubscriptionInput {
+  environment: AppleSubscriptionEnvironment!
+  transactionId: String!
+}
+
 input CreateFirebaseRegistrationTokenInput {
   """registration token"""
   token: String!
+}
+
+input CreateInvitationInput {
+  code: String!
 }
 
 input CreateLikeInput {
@@ -32,6 +46,14 @@ type CreateLikeResponse {
 
   """マッチした場合のみ返却される"""
   match: Match
+}
+
+input CreateMessageInput {
+  """メッセージを送信する対象のユーザー"""
+  targetUserId: String!
+
+  """メッセージ内容"""
+  text: String!
 }
 
 input CreateNopeInput {
@@ -56,6 +78,11 @@ scalar Date
 input DeleteMatchInput {
   """削除したいユーザーID"""
   targetUserId: String!
+}
+
+input DeleteMessageInput {
+  """削除するメッセージのID"""
+  messageId: String!
 }
 
 type Feedback {
@@ -134,15 +161,57 @@ type MatchEdge {
   node: Match!
 }
 
+type Message {
+  """When the message is created"""
+  createdAt: Date!
+
+  """When the message is deleted by a user"""
+  deletedAt: Date
+
+  """direct message id"""
+  id: ID!
+
+  """When the message is read by a target user"""
+  readAt: Date
+
+  """target user id"""
+  targetUserId: ID!
+
+  """message content"""
+  text: String!
+
+  """user id"""
+  userId: ID!
+}
+
+type MessageConnection {
+  edges: [MessageEdge!]!
+  pageInfo: PageInfo!
+}
+
+type MessageEdge {
+  cursor: String!
+  node: Message!
+}
+
 type Mutation {
   """アカウントを閉じる"""
   closeUser: Boolean!
 
+  """Appleの課金契約を記録する"""
+  createAppleSubscription(input: CreateAppleSubscriptionInput!): Boolean!
+
   """FirebaseのRegistrationTokenを作成する"""
   createFirebaseRegistrationToken(input: CreateFirebaseRegistrationTokenInput!): FirebaseRegistrationToken!
 
+  """招待を作成"""
+  createInvitation(input: CreateInvitationInput!): Boolean!
+
   """LIKEを作成する"""
   createLike(input: CreateLikeInput!): CreateLikeResponse!
+
+  """メッセージの作成"""
+  createMessage(input: CreateMessageInput!): Message!
 
   """NOPEを作成する"""
   createNope(input: CreateNopeInput!): Feedback!
@@ -156,8 +225,14 @@ type Mutation {
   """マッチを削除する"""
   deleteMatch(input: DeleteMatchInput!): Boolean!
 
+  """メッセージの削除"""
+  deleteMessage(input: DeleteMessageInput!): Boolean!
+
   """Matchを既読にする"""
   readMatch(matchId: String!): Match!
+
+  """この mutation を呼ぶ前に作成されたメッセージすべてを既読にする"""
+  readMessages(input: ReadMessageInput!): Int!
 
   """BeRealのユーザー名を更新する"""
   updateBeReal(input: UpdateBeRealInput!): User!
@@ -180,6 +255,16 @@ type PageInfo {
   startCursor: String
 }
 
+type PremiumMembership {
+  expireAt: Date!
+  id: ID!
+  premiumKind: PremiumType!
+}
+
+enum PremiumType {
+  PRO
+}
+
 type PushNotificationBadge {
   """バッジ数"""
   count: Int!
@@ -187,20 +272,35 @@ type PushNotificationBadge {
 }
 
 type Query {
+  """招待キャンペーンを取得"""
+  activeInvitationCampaign: InvitationCampaign
+
+  """期限内のメンバーシップを取得"""
+  activePremiumMemberships: [PremiumMembership!]!
+
   """バナー一覧"""
   banners: [Banner!]!
 
   """ログイン中ユーザーを取得"""
   currentUser: User!
 
-  """招待キャンペーンを取得"""
-  invitationCampaign: InvitationCampaign
-
   """招待コードを取得"""
   invitationCode: InvitationCode!
 
   """マッチ一覧"""
   matches(after: String, first: Int!): MatchConnection!
+
+  """特定のユーザーとのダイレクトメッセージ一覧"""
+  messagesWith(
+    after: String
+    first: Int!
+
+    """メッセージ相手のユーザーID"""
+    targetUserId: ID!
+
+    """自身のユーザーID"""
+    userId: ID!
+  ): MessageConnection!
   pushNotificationBadge: PushNotificationBadge!
 
   """自分の受け取ったLikeを取得する"""
@@ -208,6 +308,11 @@ type Query {
 
   """ユーザー一覧"""
   recommendations: [User!]!
+}
+
+input ReadMessageInput {
+  """既読にするメッセージの送信ユーザーID"""
+  targetUserId: String!
 }
 
 type ReceivedLike {

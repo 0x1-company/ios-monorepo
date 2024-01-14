@@ -73,6 +73,26 @@ public extension BeMatchClient {
       createReport: { input in
         let mutation = BeMatch.CreateReportMutation(input: input)
         return try await apolloClient.perform(mutation: mutation)
+      },
+      createInvitation: { input in
+        let mutation = BeMatch.CreateInvitationMutation(input: input)
+        return try await apolloClient.perform(mutation: mutation)
+      },
+      invitationCode: {
+        let query = BeMatch.InvitationCodeQuery()
+        return apolloClient.watch(query: query)
+      },
+      activeInvitationCampaign: {
+        let query = BeMatch.ActiveInvitationCampaignQuery()
+        return apolloClient.watch(query: query)
+      },
+      activePremiumMemberships: {
+        let query = BeMatch.ActivePremiumMembershipsQuery()
+        return apolloClient.watch(query: query)
+      },
+      createAppleSubscription: { input in
+        let mutation = BeMatch.CreateAppleSubscriptionMutation(input: input)
+        return try await apolloClient.perform(mutation: mutation)
       }
     )
   }
