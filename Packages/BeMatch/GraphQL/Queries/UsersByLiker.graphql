@@ -1,0 +1,7 @@
+# import SwipeCard from '../fragments/SwipeCard.graphql'
+
+query UsersByLiker {
+  usersByLiker {
+    ...SwipeCard
+  }
+}

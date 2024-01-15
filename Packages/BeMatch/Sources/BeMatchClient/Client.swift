@@ -19,6 +19,7 @@ public struct BeMatchClient: Sendable {
   public var deleteMatch: @Sendable (BeMatch.DeleteMatchInput) async throws -> BeMatch.DeleteMatchMutation.Data
   public var readMatch: @Sendable (String) async throws -> BeMatch.ReadMatchMutation.Data
   public var receivedLike: @Sendable () -> AsyncThrowingStream<BeMatch.ReceivedLikeQuery.Data, Error> = { .finished() }
+  public var usersByLiker: @Sendable () -> AsyncThrowingStream<BeMatch.UsersByLikerQuery.Data, Error> = { .finished() }
 
   public var banners: @Sendable () -> AsyncThrowingStream<BeMatch.BannersQuery.Data, Error> = { .finished() }
 
@@ -31,6 +32,6 @@ public struct BeMatchClient: Sendable {
   public var invitationCode: @Sendable () -> AsyncThrowingStream<BeMatch.InvitationCodeQuery.Data, Error> = { .finished() }
   public var membership: @Sendable () -> AsyncThrowingStream<BeMatch.MembershipQuery.Data, Error> = { .finished() }
 
-  public var activePremiumMemberships: @Sendable () -> AsyncThrowingStream<BeMatch.ActivePremiumMembershipsQuery.Data, Error> = { .finished() }
+  public var hasPremiumMembershipsQuery: @Sendable () -> AsyncThrowingStream<BeMatch.HasPremiumMembershipsQuery.Data, Error> = { .finished() }
   public var createAppleSubscription: @Sendable (BeMatch.CreateAppleSubscriptionInput) async throws -> BeMatch.CreateAppleSubscriptionMutation.Data
 }

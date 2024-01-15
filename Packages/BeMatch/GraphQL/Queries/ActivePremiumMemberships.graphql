@@ -1,6 +1,0 @@
-query ActivePremiumMemberships {
-  activePremiumMemberships {
-    id
-    expireAt
-  }
-}

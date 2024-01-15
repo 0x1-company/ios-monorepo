@@ -255,16 +255,6 @@ type PageInfo {
   startCursor: String
 }
 
-type PremiumMembership {
-  expireAt: Date!
-  id: ID!
-  premiumKind: PremiumType!
-}
-
-enum PremiumType {
-  PRO
-}
-
 type PushNotificationBadge {
   """バッジ数"""
   count: Int!
@@ -275,14 +265,14 @@ type Query {
   """招待キャンペーンを取得"""
   activeInvitationCampaign: InvitationCampaign
 
-  """期限内のメンバーシップを取得"""
-  activePremiumMemberships: [PremiumMembership!]!
-
   """バナー一覧"""
   banners: [Banner!]!
 
   """ログイン中ユーザーを取得"""
   currentUser: User!
+
+  """メンバーシップが有効かどうか"""
+  hasPremiumMembership: Boolean!
 
   """招待コードを取得"""
   invitationCode: InvitationCode!
@@ -308,6 +298,9 @@ type Query {
 
   """ユーザー一覧"""
   recommendations: [User!]!
+
+  """LIKEしてくれたユーザー一覧"""
+  usersByLiker: [User!]!
 }
 
 input ReadMessageInput {
