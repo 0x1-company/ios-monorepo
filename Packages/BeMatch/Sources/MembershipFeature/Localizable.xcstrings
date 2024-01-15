@@ -24,12 +24,12 @@
         }
       }
     },
-    "Limited to the first 2,000 Users" : {
+    "Limited to the first %lld Users" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "先着2,000名限定"
+            "value" : "先着%lld名限定"
           }
         }
       }
@@ -57,22 +57,22 @@
         }
       }
     },
-    "Share Invitation Code" : {
+    "Send Invitation Code" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "招待コードをシェアする"
+            "value" : "招待コードを送る"
           }
         }
       }
     },
-    "When a friend enters your invitation code\n500 yen per week when you enter the code" : {
+    "Upgrade for ¥500/week" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "友達があなたの招待コードを\n入力すると、週500円の"
+            "value" : "¥500円/週でアップグレードする"
           }
         }
       }

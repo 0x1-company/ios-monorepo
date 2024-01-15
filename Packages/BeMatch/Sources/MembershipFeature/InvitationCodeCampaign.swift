@@ -8,6 +8,7 @@ public struct InvitationCodeCampaignLogic {
   public init() {}
 
   public struct State: Equatable {
+    var code = "ACF"
     public init() {}
   }
 
@@ -40,14 +41,25 @@ public struct InvitationCodeCampaignView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { _ in
+    WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 16) {
-        Text("When a friend enters your invitation code\n500 yen per week when you enter the code", bundle: .module)
-          .font(.body)
+        Image(ImageResource.bematchCampaign)
+          .resizable()
+          .padding(.horizontal, 60)
 
         VStack(spacing: 16) {
+          Image(ImageResource.inviteTicket)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .overlay(alignment: .center) {
+              Text(viewStore.code)
+                .foregroundStyle(Color(0xFFFF_CC00))
+                .font(.system(.largeTitle, design: .rounded, weight: .bold))
+                .offset(x: -35, y: 8)
+            }
+
           PrimaryButton(
-            String(localized: "Share Invitation Code", bundle: .module)
+            String(localized: "Send Invitation Code", bundle: .module)
           ) {}
         }
         .padding(.all, 16)
@@ -57,6 +69,7 @@ public struct InvitationCodeCampaignView: View {
       }
       .padding(.vertical, 24)
       .background()
+      .multilineTextAlignment(.center)
       .task { await store.send(.onTask).finish() }
       .onAppear { store.send(.onAppear) }
     }
