@@ -24,8 +24,25 @@
         }
       }
     },
+    "I gave you an invitation code [%@] for 1 year free BeMatch PRO worth 24,000 yen! 🎁.\n\nWhen you become a BeMatch PRO...\n■ See who you are Liked by.\n\nBeReal exchange app \"BeMatch.\" Download it! 🤞🏻\nhttps://apps.apple.com/jp/app/id6473888485" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "24,000円分のBeMatch PROが1年間無料になる招待コード【%@】を贈りました！🎁\n\nBeMatch PROになると…\n■ 誰にLikeされているかを見れる\n\nBeReal交換アプリ「BeMatch.」ダウンロードしてね！🤞🏻\nhttps://apps.apple.com/jp/app/id6473888485"
+          }
+        }
+      }
+    },
     "I joined BeMatch PRO" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeMatch PROの購入が完了しました"
+          }
+        }
+      }
     },
     "Limited to the first %lld Users" : {
       "localizations" : {
@@ -51,6 +68,7 @@
       }
     },
     "Restore a purchase" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {

@@ -208,6 +208,7 @@ let package = Package(
       "BeMatchClient",
       .product(name: "Build", package: "SDK"),
       .product(name: "ColorHex", package: "SDK"),
+      .product(name: "ActivityView", package: "SDK"),
       .product(name: "StoreKitClient", package: "SDK"),
       .product(name: "StoreKitHelpers", package: "SDK"),
       .product(name: "FeedbackGeneratorClient", package: "SDK"),

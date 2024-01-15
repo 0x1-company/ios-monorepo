@@ -16,7 +16,12 @@ public struct InvitationCodeCampaignLogic {
   }
 
   public enum Action {
-    case onTask
+    case invitationCodeButtonTapped
+    case delegate(Delegate)
+
+    public enum Delegate: Equatable {
+      case sendInvitationCode
+    }
   }
 
   @Dependency(\.analytics) var analytics
@@ -24,7 +29,9 @@ public struct InvitationCodeCampaignLogic {
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { _, action in
       switch action {
-      case .onTask:
+      case .invitationCodeButtonTapped:
+        return .send(.delegate(.sendInvitationCode))
+      default:
         return .none
       }
     }
@@ -58,7 +65,9 @@ public struct InvitationCodeCampaignView: View {
 
           PrimaryButton(
             String(localized: "Send Invitation Code", bundle: .module)
-          ) {}
+          ) {
+            store.send(.invitationCodeButtonTapped)
+          }
         }
         .padding(.all, 16)
         .background(Color(uiColor: UIColor.secondarySystemBackground))
@@ -68,7 +77,6 @@ public struct InvitationCodeCampaignView: View {
       .padding(.vertical, 24)
       .background()
       .multilineTextAlignment(.center)
-      .task { await store.send(.onTask).finish() }
     }
   }
 }
