@@ -24,6 +24,9 @@
         }
       }
     },
+    "I joined BeMatch PRO" : {
+
+    },
     "Limited to the first %lld Users" : {
       "localizations" : {
         "ja" : {
@@ -33,6 +36,9 @@
           }
         }
       }
+    },
+    "OK" : {
+
     },
     "Recurring billing. You can cancel at any time. Payment will be charged to your iTunes account and your subscription will auto-renew at $500/week until you cancel in iTunes Store settings. By tapping Unlock, you agree to the Terms of Service and auto-renewal." : {
       "localizations" : {

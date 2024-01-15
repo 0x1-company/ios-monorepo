@@ -8,7 +8,7 @@ public extension BeMatch {
     public static let operationName: String = "Membership"
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"query Membership { activeInvitationCampaign { __typename id quantity } invitationCode { __typename id code } }"#
+        #"query Membership { activeInvitationCampaign { __typename id quantity } invitationCode { __typename id code } currentUser { __typename id } }"#
       ))
 
     public init() {}
@@ -21,12 +21,15 @@ public extension BeMatch {
       public static var __selections: [ApolloAPI.Selection] { [
         .field("activeInvitationCampaign", ActiveInvitationCampaign?.self),
         .field("invitationCode", InvitationCode.self),
+        .field("currentUser", CurrentUser.self),
       ] }
 
       /// 招待キャンペーンを取得
       public var activeInvitationCampaign: ActiveInvitationCampaign? { __data["activeInvitationCampaign"] }
       /// 招待コードを取得
       public var invitationCode: InvitationCode { __data["invitationCode"] }
+      /// ログイン中ユーザーを取得
+      public var currentUser: CurrentUser { __data["currentUser"] }
 
       /// ActiveInvitationCampaign
       ///
@@ -64,6 +67,23 @@ public extension BeMatch {
         public var id: BeMatch.ID { __data["id"] }
         /// 招待コード
         public var code: String { __data["code"] }
+      }
+
+      /// CurrentUser
+      ///
+      /// Parent Type: `User`
+      public struct CurrentUser: BeMatch.SelectionSet {
+        public let __data: DataDict
+        public init(_dataDict: DataDict) { __data = _dataDict }
+
+        public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.User }
+        public static var __selections: [ApolloAPI.Selection] { [
+          .field("__typename", String.self),
+          .field("id", BeMatch.ID.self),
+        ] }
+
+        /// user id
+        public var id: BeMatch.ID { __data["id"] }
       }
     }
   }

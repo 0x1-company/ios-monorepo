@@ -15,6 +15,7 @@
 		B783E0E82A11FFBE002E782F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B783E0E72A11FFBE002E782F /* Assets.xcassets */; };
 		B783E0EB2A11FFBE002E782F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B783E0EA2A11FFBE002E782F /* Preview Assets.xcassets */; };
 		B783E1042A12000A002E782F /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B783E1032A12000A002E782F /* App.swift */; };
+		B7BC78BA2B55571C00C0B97E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7BC78B92B55571C00C0B97E /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,6 +43,7 @@
 		B783E1272A120081002E782F /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		B783E16F2A121FCD002E782F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Production/Info.plist; sourceTree = "<group>"; };
 		B783E1742A137F38002E782F /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = App.entitlements; path = Production/App.entitlements; sourceTree = "<group>"; };
+		B7BC78B92B55571C00C0B97E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B7CCF99F2A7AF46D00B64CFE /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "Production/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -53,6 +55,7 @@
 				B7765AF82B46C82A001B5C13 /* AppTrackingTransparency.framework in Frameworks */,
 				B73B5D592B37BDB0003623AF /* AppFeature in Frameworks */,
 				B7765AF62B46C825001B5C13 /* AdSupport.framework in Frameworks */,
+				B7BC78BA2B55571C00C0B97E /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +104,7 @@
 		B783E1052A120032002E782F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B7BC78B92B55571C00C0B97E /* StoreKit.framework */,
 				B7765AF72B46C82A001B5C13 /* AppTrackingTransparency.framework */,
 				B7765AF52B46C825001B5C13 /* AdSupport.framework */,
 				B783E1252A120081002E782F /* WidgetKit.framework */,

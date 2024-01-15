@@ -17,7 +17,10 @@ public struct MembershipLogic {
     var isActivityIndicatorVisible = false
 
     let bematchProOneWeekId: String
+    var appAccountToken: UUID?
     var product: StoreKit.Product?
+
+    @PresentationState var destination: Destination.State?
 
     public init() {
       @Dependency(\.build) var build
@@ -31,12 +34,19 @@ public struct MembershipLogic {
     case productsResponse(Result<[Product], Error>)
     case membershipResponse(Result<BeMatch.MembershipQuery.Data, Error>)
     case purchaseResponse(Result<StoreKit.Transaction, Error>)
+    case createAppleSubscriptionResponse(Result<BeMatch.CreateAppleSubscriptionMutation.Data, Error>)
+    case transactionFinish(StoreKit.Transaction)
     case child(Child.Action)
+    case destination(PresentationAction<Destination.Action>)
+    case delegate(Delegate)
+
+    public enum Delegate: Equatable {
+      case dismiss
+    }
   }
 
   @Dependency(\.build) var build
   @Dependency(\.store) var store
-  @Dependency(\.dismiss) var dismiss
   @Dependency(\.bematch) var bematch
   @Dependency(\.analytics) var analytics
 
@@ -63,13 +73,12 @@ public struct MembershipLogic {
         }
 
       case .closeButtonTapped:
-        return .run { _ in
-          await dismiss()
-        }
+        return .send(.delegate(.dismiss))
 
       case .child(.campaign(.delegate(.purchase))):
-        let appAccountToken = UUID()
-        guard let product = state.product
+        guard
+          let product = state.product,
+          let appAccountToken = state.appAccountToken
         else { return .none }
 
         state.isActivityIndicatorVisible = true
@@ -103,6 +112,9 @@ public struct MembershipLogic {
         return .none
 
       case let .membershipResponse(.success(data)):
+        let userId = data.currentUser.id
+        state.appAccountToken = UUID(uuidString: userId)
+        
         let campaign = data.activeInvitationCampaign
         let invitationCode = data.invitationCode
 
@@ -126,11 +138,46 @@ public struct MembershipLogic {
 
       case let .purchaseResponse(.success(transaction)):
         state.isActivityIndicatorVisible = false
-        return .none
+        if transaction.environment == .xcode {
+          return .run { send in
+            await send(.transactionFinish(transaction))
+          }
+        }
+        let isProduction = transaction.environment == .production
+        let environment: BeMatch.AppleSubscriptionEnvironment = isProduction ? .production : .sandbox
+        let input = BeMatch.CreateAppleSubscriptionInput(
+          environment: GraphQLEnum(environment),
+          transactionId: transaction.id.description
+        )
+        return .run { send in
+          let data = try await bematch.createAppleSubscription(input)
+          guard data.createAppleSubscription else { return }
+          await send(.transactionFinish(transaction))
+        } catch: { error, send in
+          await send(.createAppleSubscriptionResponse(.failure(error)))
+        }
 
       case .purchaseResponse(.failure):
         state.isActivityIndicatorVisible = false
         return .none
+
+      case let .transactionFinish(transaction):
+        state.destination = .alert(
+          AlertState {
+            TextState("I joined BeMatch PRO", bundle: .module)
+          } actions: {
+            ButtonState(action: .confirmOkay) {
+              TextState("OK", bundle: .module)
+            }
+          }
+        )
+        return .run { _ in
+          await transaction.finish()
+        }
+
+      case .destination(.presented(.alert(.confirmOkay))):
+        state.destination = nil
+        return .send(.delegate(.dismiss))
 
       default:
         return .none
@@ -182,6 +229,25 @@ public struct MembershipLogic {
       }
     }
   }
+
+  @Reducer
+  public struct Destination {
+    public enum State: Equatable {
+      case alert(AlertState<Action.Alert>)
+    }
+
+    public enum Action {
+      case alert(Alert)
+
+      public enum Alert: Equatable {
+        case confirmOkay
+      }
+    }
+
+    public var body: some Reducer<State, Action> {
+      EmptyReducer()
+    }
+  }
 }
 
 public struct MembershipView: View {
@@ -216,13 +282,16 @@ public struct MembershipView: View {
       }
       .ignoresSafeArea()
       .task { await store.send(.onTask).finish() }
+      .alert(store: store.scope(state: \.$destination.alert, action: \.destination.alert))
       .toolbar {
-        ToolbarItem(placement: .topBarLeading) {
-          Button {
-            store.send(.closeButtonTapped)
-          } label: {
-            Image(systemName: "xmark")
-              .foregroundStyle(Color.primary)
+        if !viewStore.isActivityIndicatorVisible {
+          ToolbarItem(placement: .topBarLeading) {
+            Button {
+              store.send(.closeButtonTapped)
+            } label: {
+              Image(systemName: "xmark")
+                .foregroundStyle(Color.primary)
+            }
           }
         }
       }
