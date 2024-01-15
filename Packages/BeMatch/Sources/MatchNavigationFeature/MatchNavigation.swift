@@ -1,5 +1,4 @@
 import BeMatch
-import ReceivedLikeSwipeFeature
 import BeMatchClient
 import ComposableArchitecture
 import FeedbackGeneratorClient
@@ -7,6 +6,7 @@ import InvitationCodeFeature
 import MatchFeature
 import MembershipFeature
 import ProfileExternalFeature
+import ReceivedLikeSwipeFeature
 import SettingsFeature
 import SwiftUI
 
@@ -84,7 +84,7 @@ public struct MatchNavigationLogic {
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
-        
+
       case .destination(.presented(.receivedLikeSwipe(.delegate(.dismiss)))):
         state.destination = nil
         return .run { _ in
