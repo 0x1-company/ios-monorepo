@@ -68,7 +68,7 @@ public struct InvitationLogic {
         return .none
 
       case .binding:
-        state.isDisabled = state.code.count >= 6
+        state.isDisabled = state.code.count < 6
         return .none
 
       default:
@@ -105,21 +105,23 @@ public struct InvitationView: View {
 
         Spacer()
 
-        PrimaryButton(
-          String(localized: "Next", bundle: .module),
-          isLoading: viewStore.isActivityIndicatorVisible,
-          isDisabled: viewStore.isDisabled
-        ) {
-          store.send(.nextButtonTapped)
-        }
+        VStack(spacing: 0) {
+          PrimaryButton(
+            String(localized: "Next", bundle: .module),
+            isLoading: viewStore.isActivityIndicatorVisible,
+            isDisabled: viewStore.isDisabled
+          ) {
+            store.send(.nextButtonTapped)
+          }
 
-        Button {
-          store.send(.skipButtonTapped)
-        } label: {
-          Text("Skip", bundle: .module)
-            .frame(height: 50)
-            .foregroundStyle(Color.white)
-            .font(.system(.subheadline, weight: .semibold))
+          Button {
+            store.send(.skipButtonTapped)
+          } label: {
+            Text("Skip", bundle: .module)
+              .frame(height: 50)
+              .foregroundStyle(Color.white)
+              .font(.system(.subheadline, weight: .semibold))
+          }
         }
       }
       .multilineTextAlignment(.center)
