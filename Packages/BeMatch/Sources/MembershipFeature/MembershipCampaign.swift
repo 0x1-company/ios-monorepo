@@ -8,12 +8,12 @@ public struct MembershipCampaignLogic {
   public init() {}
 
   public struct State: Equatable {
-    let campaign: BeMatch.ActiveInvitationCampaignQuery.Data.ActiveInvitationCampaign
+    let campaign: BeMatch.MembershipQuery.Data.ActiveInvitationCampaign
 
     var invitationCampaign: InvitationCampaignLogic.State
     var invitationCodeCampaign = InvitationCodeCampaignLogic.State()
 
-    public init(campaign: BeMatch.ActiveInvitationCampaignQuery.Data.ActiveInvitationCampaign) {
+    public init(campaign: BeMatch.MembershipQuery.Data.ActiveInvitationCampaign) {
       self.campaign = campaign
       invitationCampaign = InvitationCampaignLogic.State(quantity: campaign.quantity)
     }
@@ -107,7 +107,7 @@ public struct MembershipCampaignView: View {
   MembershipCampaignView(
     store: .init(
       initialState: MembershipCampaignLogic.State(
-        campaign: BeMatch.ActiveInvitationCampaignQuery.Data.ActiveInvitationCampaign(
+        campaign: BeMatch.MembershipQuery.Data.ActiveInvitationCampaign(
           _dataDict: DataDict(
             data: [
               "id": "1",

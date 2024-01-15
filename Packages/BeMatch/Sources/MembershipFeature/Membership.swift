@@ -18,7 +18,7 @@ public struct MembershipLogic {
   public enum Action {
     case onTask
     case closeButtonTapped
-    case activeInvitationCampaignResponse(Result<BeMatch.ActiveInvitationCampaignQuery.Data, Error>)
+    case membershipResponse(Result<BeMatch.MembershipQuery.Data, Error>)
     case child(Child.Action)
   }
 
@@ -27,7 +27,7 @@ public struct MembershipLogic {
   @Dependency(\.analytics) var analytics
 
   enum Cancel {
-    case activeInvitationCampaign
+    case membership
   }
 
   public var body: some Reducer<State, Action> {
@@ -35,20 +35,20 @@ public struct MembershipLogic {
       switch action {
       case .onTask:
         return .run { send in
-          for try await data in bematch.activeInvitationCampaign() {
-            await send(.activeInvitationCampaignResponse(.success(data)))
+          for try await data in bematch.membership() {
+            await send(.membershipResponse(.success(data)))
           }
         } catch: { error, send in
-          await send(.activeInvitationCampaignResponse(.failure(error)))
+          await send(.membershipResponse(.failure(error)))
         }
-        .cancellable(id: Cancel.activeInvitationCampaign, cancelInFlight: true)
+        .cancellable(id: Cancel.membership, cancelInFlight: true)
 
       case .closeButtonTapped:
         return .run { _ in
           await dismiss()
         }
 
-      case let .activeInvitationCampaignResponse(.success(data)):
+      case let .membershipResponse(.success(data)):
         if let campaign = data.activeInvitationCampaign {
           state.child = .campaign(MembershipCampaignLogic.State(campaign: campaign))
         } else {
@@ -56,7 +56,7 @@ public struct MembershipLogic {
         }
         return .none
 
-      case .activeInvitationCampaignResponse(.failure):
+      case .membershipResponse(.failure):
         state.child = .purchase(MembershipPurchaseLogic.State())
         return .none
 

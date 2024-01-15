@@ -82,8 +82,8 @@ public extension BeMatchClient {
         let query = BeMatch.InvitationCodeQuery()
         return apolloClient.watch(query: query)
       },
-      activeInvitationCampaign: {
-        let query = BeMatch.ActiveInvitationCampaignQuery()
+      membership: {
+        let query = BeMatch.MembershipQuery()
         return apolloClient.watch(query: query)
       },
       activePremiumMemberships: {
