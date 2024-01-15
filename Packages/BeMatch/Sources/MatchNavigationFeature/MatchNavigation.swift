@@ -1,11 +1,11 @@
 import BeMatch
-import ProfileExternalFeature
 import ComposableArchitecture
 import FeedbackGeneratorClient
 import InvitationCodeFeature
 import MatchFeature
-import SettingsFeature
 import MembershipFeature
+import ProfileExternalFeature
+import SettingsFeature
 import SwiftUI
 
 @Reducer
@@ -49,7 +49,7 @@ public struct MatchNavigationLogic {
       case .path(.element(_, .settings(.invitationCodeButtonTapped))):
         state.path.append(.invitationCode())
         return .none
-        
+
       case let .match(.rows(.element(id, .matchButtonTapped))):
         guard let row = state.match.rows[id: id] else { return .none }
         state.destination = .profileExternal(
@@ -58,7 +58,7 @@ public struct MatchNavigationLogic {
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
-        
+
       case .match(.receivedLike(.gridButtonTapped)):
         // TODO: membership or received like list
         state.destination = .membership()
@@ -71,7 +71,7 @@ public struct MatchNavigationLogic {
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
-        
+
       case .destination(.dismiss):
         state.destination = nil
         return .none
@@ -108,7 +108,7 @@ public struct MatchNavigationLogic {
       Scope(state: \.invitationCode, action: \.invitationCode, child: InvitationCodeLogic.init)
     }
   }
-  
+
   @Reducer
   public struct Destination {
     public enum State: Equatable {
@@ -121,7 +121,7 @@ public struct MatchNavigationLogic {
       case alert(Alert)
       case membership(MembershipLogic.Action)
       case profileExternal(ProfileExternalLogic.Action)
-      
+
       public enum Alert: Equatable {
         case confirmOkay
       }

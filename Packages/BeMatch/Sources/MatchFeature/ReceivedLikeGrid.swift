@@ -26,7 +26,7 @@ public struct ReceivedLikeGridLogic {
   }
 
   public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { state, action in
+    Reduce<State, Action> { _, action in
       switch action {
       case .gridButtonTapped:
         return .none
