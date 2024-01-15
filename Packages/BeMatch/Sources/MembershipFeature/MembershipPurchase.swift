@@ -13,7 +13,6 @@ public struct MembershipPurchaseLogic {
 
   public enum Action {
     case onTask
-    case onAppear
   }
 
   @Dependency(\.analytics) var analytics

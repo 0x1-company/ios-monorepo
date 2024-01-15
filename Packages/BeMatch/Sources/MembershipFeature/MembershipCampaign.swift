@@ -22,8 +22,14 @@ public struct MembershipCampaignLogic {
 
   public enum Action {
     case onTask
+    case upgradeButtonTapped
     case invitationCampaign(InvitationCampaignLogic.Action)
     case invitationCodeCampaign(InvitationCodeCampaignLogic.Action)
+    case delegate(Delegate)
+
+    public enum Delegate: Equatable {
+      case purchase
+    }
   }
 
   @Dependency(\.analytics) var analytics
@@ -39,6 +45,9 @@ public struct MembershipCampaignLogic {
       switch action {
       case .onTask:
         return .none
+
+      case .upgradeButtonTapped:
+        return .send(.delegate(.purchase))
 
       default:
         return .none
@@ -90,7 +99,9 @@ public struct MembershipCampaignView: View {
           }
           .buttonStyle(ConversionPrimaryButtonStyle())
 
-          Button {} label: {
+          Button {
+            store.send(.upgradeButtonTapped)
+          } label: {
             Text("Upgrade for ¥500/week", bundle: .module)
           }
           .buttonStyle(ConversionSecondaryButtonStyle())

@@ -105,5 +105,7 @@
 	<string>ArrQmb3aHuS47UnotusTAe</string>
 	<key>apple-app-id</key>
 	<string>6473888485</string>
+	<key>BEMATCH_PRO_ID</key>
+	<string>jp.bematch.ios.production.subscription.pro.1week</string>
 </dict>
 </plist>
