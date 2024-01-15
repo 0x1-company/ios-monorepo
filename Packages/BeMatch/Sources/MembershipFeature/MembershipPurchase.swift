@@ -52,7 +52,7 @@ public struct MembershipPurchaseView: View {
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { _ in
-      VStack(spacing: 8) {
+      VStack(spacing: 16) {
         ScrollView {
           VStack(spacing: 24) {
             Image(ImageResource.purchaseHeader)

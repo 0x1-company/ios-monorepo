@@ -8,7 +8,11 @@ public struct InvitationCampaignLogic {
   public init() {}
 
   public struct State: Equatable {
-    public init() {}
+    let quantity: Int
+    
+    public init(quantity: Int) {
+      self.quantity = quantity
+    }
   }
 
   public enum Action {
@@ -62,9 +66,9 @@ public struct InvitationCampaignView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { _ in
+    WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 12) {
-        Text("Limited to the first 2,000 Users", bundle: .module)
+        Text("Limited to the first \(viewStore.quantity) Users", bundle: .module)
           .font(.system(.headline, weight: .semibold))
           .padding(.vertical, 6)
           .padding(.horizontal, 8)
@@ -100,7 +104,9 @@ public struct InvitationCampaignView: View {
 #Preview {
   InvitationCampaignView(
     store: .init(
-      initialState: InvitationCampaignLogic.State(),
+      initialState: InvitationCampaignLogic.State(
+        quantity: 2000
+      ),
       reducer: { InvitationCampaignLogic() }
     )
   )
