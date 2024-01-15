@@ -1,4 +1,5 @@
 import BeMatch
+import BeMatchClient
 import ComposableArchitecture
 import FeedbackGeneratorClient
 import InvitationCodeFeature
@@ -26,9 +27,15 @@ public struct MatchNavigationLogic {
     case match(MatchLogic.Action)
     case path(StackAction<Path.State, Path.Action>)
     case destination(PresentationAction<Destination.Action>)
+    case hasPremiumMembershipResponse(Result<BeMatch.HasPremiumMembershipQuery.Data, Error>)
   }
 
+  @Dependency(\.bematch) var bematch
   @Dependency(\.feedbackGenerator) var feedbackGenerator
+
+  enum Cancel {
+    case hasPremiumMembership
+  }
 
   public var body: some Reducer<State, Action> {
     Scope(state: \.match, action: \.match) {
@@ -60,10 +67,15 @@ public struct MatchNavigationLogic {
         }
 
       case .match(.receivedLike(.gridButtonTapped)):
-        // TODO: membership or received like list
-        state.destination = .membership()
-        return .run { _ in
-          await feedbackGenerator.impactOccurred()
+        return .run { send in
+          await withTaskGroup(of: Void.self) { group in
+            group.addTask {
+              await hasPremiumMembershipRequest(send: send)
+            }
+            group.addTask {
+              await feedbackGenerator.impactOccurred()
+            }
+          }
         }
 
       case .destination(.presented(.membership(.closeButtonTapped))):
@@ -75,6 +87,13 @@ public struct MatchNavigationLogic {
       case .destination(.dismiss):
         state.destination = nil
         return .none
+        
+      case let .hasPremiumMembershipResponse(.success(data)):
+        if data.hasPremiumMembership {
+        } else {
+          state.destination = .membership()
+        }
+        return .none
 
       default:
         return .none
@@ -85,6 +104,18 @@ public struct MatchNavigationLogic {
     }
     .ifLet(\.$destination, action: \.destination) {
       Destination()
+    }
+  }
+
+  func hasPremiumMembershipRequest(send: Send<Action>) async {
+    await withTaskCancellation(id: Cancel.hasPremiumMembership, cancelInFlight: true) {
+      do {
+        for try await data in bematch.hasPremiumMembership() {
+          await send(.hasPremiumMembershipResponse(.success(data)))
+        }
+      } catch {
+        await send(.hasPremiumMembershipResponse(.failure(error)))
+      }
     }
   }
 

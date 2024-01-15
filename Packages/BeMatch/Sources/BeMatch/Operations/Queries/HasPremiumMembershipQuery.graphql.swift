@@ -4,11 +4,11 @@
 @_exported import ApolloAPI
 
 public extension BeMatch {
-  class HasPremiumMembershipsQuery: GraphQLQuery {
-    public static let operationName: String = "HasPremiumMemberships"
+  class HasPremiumMembershipQuery: GraphQLQuery {
+    public static let operationName: String = "HasPremiumMembership"
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"query HasPremiumMemberships { hasPremiumMembership }"#
+        #"query HasPremiumMembership { hasPremiumMembership }"#
       ))
 
     public init() {}

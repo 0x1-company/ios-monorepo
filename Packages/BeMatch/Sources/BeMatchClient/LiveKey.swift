@@ -90,8 +90,8 @@ public extension BeMatchClient {
         let query = BeMatch.MembershipQuery()
         return apolloClient.watch(query: query)
       },
-      hasPremiumMembershipsQuery: {
-        let query = BeMatch.HasPremiumMembershipsQuery()
+      hasPremiumMembership: {
+        let query = BeMatch.HasPremiumMembershipQuery()
         return apolloClient.watch(query: query)
       },
       createAppleSubscription: { input in

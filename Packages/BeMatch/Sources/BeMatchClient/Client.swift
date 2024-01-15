@@ -32,6 +32,6 @@ public struct BeMatchClient: Sendable {
   public var invitationCode: @Sendable () -> AsyncThrowingStream<BeMatch.InvitationCodeQuery.Data, Error> = { .finished() }
   public var membership: @Sendable () -> AsyncThrowingStream<BeMatch.MembershipQuery.Data, Error> = { .finished() }
 
-  public var hasPremiumMembershipsQuery: @Sendable () -> AsyncThrowingStream<BeMatch.HasPremiumMembershipsQuery.Data, Error> = { .finished() }
+  public var hasPremiumMembership: @Sendable () -> AsyncThrowingStream<BeMatch.HasPremiumMembershipQuery.Data, Error> = { .finished() }
   public var createAppleSubscription: @Sendable (BeMatch.CreateAppleSubscriptionInput) async throws -> BeMatch.CreateAppleSubscriptionMutation.Data
 }
