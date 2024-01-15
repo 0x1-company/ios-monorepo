@@ -25,6 +25,7 @@ let package = Package(
     .library(name: "ForceUpdateFeature", targets: ["ForceUpdateFeature"]),
     .library(name: "GenderSettingFeature", targets: ["GenderSettingFeature"]),
     .library(name: "InvitationCodeFeature", targets: ["InvitationCodeFeature"]),
+    .library(name: "InvitationFeature", targets: ["InvitationFeature"]),
     .library(name: "LaunchFeature", targets: ["LaunchFeature"]),
     .library(name: "MaintenanceFeature", targets: ["MaintenanceFeature"]),
     .library(name: "MatchedFeature", targets: ["MatchedFeature"]),
@@ -161,6 +162,12 @@ let package = Package(
       "AnalyticsKeys",
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
+    .target(name: "InvitationFeature", dependencies: [
+      "Styleguide",
+      "BeMatchClient",
+      "AnalyticsKeys",
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
     .target(name: "LaunchFeature", dependencies: [
       "Styleguide",
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
@@ -224,6 +231,7 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "OnboardFeature", dependencies: [
+      "InvitationFeature",
       "BeRealCaptureFeature",
       "BeRealSampleFeature",
       "GenderSettingFeature",

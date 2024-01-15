@@ -1,4 +1,5 @@
 import BeMatch
+import InvitationFeature
 import BeRealCaptureFeature
 import BeRealSampleFeature
 import ComposableArchitecture
@@ -49,6 +50,13 @@ public struct OnboardLogic {
       case .path(.element(_, .sample(.delegate(.nextScreen)))):
         state.path.append(.capture())
         return .none
+        
+      case .path(.element(_, .capture(.delegate(.nextScreen)))):
+        state.path.append(.invitation())
+        return .none
+        
+      case .path(.element(_, .invitation(.delegate(.nextScreen)))):
+        return .none
 
       default:
         return .none
@@ -65,18 +73,21 @@ public struct OnboardLogic {
       case gender(GenderSettingLogic.State)
       case sample(BeRealSampleLogic.State = .init())
       case capture(BeRealCaptureLogic.State = .init())
+      case invitation(InvitationLogic.State = .init())
     }
 
     public enum Action {
       case gender(GenderSettingLogic.Action)
       case sample(BeRealSampleLogic.Action)
       case capture(BeRealCaptureLogic.Action)
+      case invitation(InvitationLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
       Scope(state: \.gender, action: \.gender, child: GenderSettingLogic.init)
       Scope(state: \.sample, action: \.sample, child: BeRealSampleLogic.init)
       Scope(state: \.capture, action: \.capture, child: BeRealCaptureLogic.init)
+      Scope(state: \.invitation, action: \.invitation, child: InvitationLogic.init)
     }
   }
 }
@@ -117,6 +128,12 @@ public struct OnboardView: View {
           then: { store in
             BeRealCaptureView(store: store, nextButtonStyle: .next)
           }
+        )
+      case .invitation:
+        CaseLet(
+          /OnboardLogic.Path.State.invitation,
+           action: OnboardLogic.Path.Action.invitation,
+           then: InvitationView.init(store:)
         )
       }
     }
