@@ -124,6 +124,9 @@ public struct ReceivedLikeSwipeLogic {
         state.rows = IdentifiedArrayOf(uniqueElements: rows)
         
         return .none
+        
+      case .usersByLikerResponse(.failure):
+        return .send(.delegate(.dismiss))
 
       case let .createNopeResponse(.success(data)):
         state.rows.remove(id: data.createNope.targetUserId)
