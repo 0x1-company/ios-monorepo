@@ -124,6 +124,7 @@ public struct InvitationView: View {
           }
         }
       }
+      .padding(.top, 24)
       .multilineTextAlignment(.center)
       .navigationBarTitleDisplayMode(.inline)
       .onAppear {
