@@ -214,8 +214,6 @@ public struct SettingsView: View {
           }
         } header: {
           Text("PROFILE", bundle: .module)
-        } footer: {
-          Text("Edit profile will not delete your account.", bundle: .module)
         }
 
         Section {
