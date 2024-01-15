@@ -186,6 +186,9 @@ public struct MembershipLogic {
     .ifLet(\.child, action: \.child) {
       Child()
     }
+    .ifLet(\.$destination, action: \.destination) {
+      Destination()
+    }
   }
 
   func productsRequest(send: Send<Action>, ids: [String]) async {

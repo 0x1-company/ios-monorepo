@@ -38,6 +38,7 @@ let package = Package(
     .library(name: "ProfileExternalFeature", targets: ["ProfileExternalFeature"]),
     .library(name: "ProfileFeature", targets: ["ProfileFeature"]),
     .library(name: "ProfileSharedFeature", targets: ["ProfileSharedFeature"]),
+    .library(name: "ReceivedLikeSwipeFeature", targets: ["ReceivedLikeSwipeFeature"]),
     .library(name: "RecommendationEmptyFeature", targets: ["RecommendationEmptyFeature"]),
     .library(name: "RecommendationFeature", targets: ["RecommendationFeature"]),
     .library(name: "RecommendationLoadingFeature", targets: ["RecommendationLoadingFeature"]),
@@ -199,6 +200,7 @@ let package = Package(
       "MembershipFeature",
       "InvitationCodeFeature",
       "ProfileExternalFeature",
+      "ReceivedLikeSwipeFeature",
     ]),
     .target(name: "MembershipFeature", dependencies: [
       "Styleguide",
@@ -254,6 +256,11 @@ let package = Package(
       "ReportFeature",
       "DirectMessageFeature",
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
+    ]),
+    .target(name: "ReceivedLikeSwipeFeature", dependencies: [
+      "BeMatchClient",
+      "MatchedFeature",
+      "SwipeCardFeature",
     ]),
     .target(name: "RecommendationEmptyFeature", dependencies: [
       "Constants",
