@@ -124,6 +124,10 @@ public struct SettingsLogic {
       case .destination(.presented(.tutorial(.delegate(.finish)))):
         state.destination = nil
         return .none
+        
+      case .destination(.presented(.editProfile(.delegate(.dismiss)))):
+        state.destination = nil
+        return .none
 
       case .destination(.dismiss):
         state.destination = nil
@@ -354,17 +358,6 @@ public struct SettingsView: View {
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
       .onAppear { store.send(.onAppear) }
-      .fullScreenCover(
-        store: store.scope(state: \.$destination.profile, action: \.destination.profile)
-      ) { store in
-        NavigationStack {
-          ProfileView(store: store)
-        }
-      }
-      .fullScreenCover(
-        store: store.scope(state: \.$destination.tutorial, action: \.destination.tutorial),
-        content: TutorialView.init(store:)
-      )
       .sheet(isPresented: viewStore.$isSharePresented) {
         ActivityView(
           activityItems: [viewStore.shareText],
@@ -381,15 +374,26 @@ public struct SettingsView: View {
         }
         .presentationDetents([.medium, .large])
       }
-      .navigationDestination(
-        store: store.scope(
-          state: \.$destination,
-          action: SettingsLogic.Action.destination
-        ),
-        state: /SettingsLogic.Destination.State.editProfile,
-        action: SettingsLogic.Destination.Action.editProfile
+      .fullScreenCover(
+        store: store.scope(state: \.$destination.tutorial, action: \.destination.tutorial),
+        content: TutorialView.init(store:)
+      )
+      .fullScreenCover(
+        store: store.scope(state: \.$destination.profile, action: \.destination.profile)
       ) { store in
-        EditProfileView(store: store)
+        NavigationStack {
+          ProfileView(store: store)
+        }
+      }
+      .fullScreenCover(
+        store: store.scope(
+          state: \.$destination.editProfile,
+          action: \.destination.editProfile
+        )
+      ) { store in
+        NavigationStack {
+          EditProfileView(store: store)
+        }
       }
     }
   }
@@ -405,5 +409,5 @@ public struct SettingsView: View {
     )
   }
   .environment(\.colorScheme, .dark)
-//  .environment(\.locale, Locale(identifier: "ja-JP"))
+  .environment(\.locale, Locale(identifier: "ja-JP"))
 }

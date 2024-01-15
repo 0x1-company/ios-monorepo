@@ -20,14 +20,16 @@ public struct EditProfileLogic {
   public enum Action {
     case onAppear
     case onTask
-    case currentUserResponse(Result<BeMatch.CurrentUserQuery.Data, Error>)
+    case closeButtonTapped
     case beRealCaptureButtonTapped
     case genderSettingButtonTapped
     case usernameSettingButtonTapped
+    case currentUserResponse(Result<BeMatch.CurrentUserQuery.Data, Error>)
     case destination(PresentationAction<Destination.Action>)
     case delegate(Delegate)
 
     public enum Delegate: Equatable {
+      case dismiss
       case profileUpdated
     }
   }
@@ -38,10 +40,6 @@ public struct EditProfileLogic {
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
       switch action {
-      case .onAppear:
-        analytics.logScreen(screenName: "EditProfile", of: self)
-        return .none
-
       case .onTask:
         return .run { send in
           for try await data in currentUser() {
@@ -51,13 +49,12 @@ public struct EditProfileLogic {
           await send(.currentUserResponse(.failure(error)))
         }
 
-      case let .currentUserResponse(.success(data)):
-        let currentUser = data.currentUser.fragments.userInternal
-        state.user = currentUser
+      case .onAppear:
+        analytics.logScreen(screenName: "EditProfile", of: self)
         return .none
-
-      case .currentUserResponse(.failure):
-        return .none
+        
+      case .closeButtonTapped:
+        return .send(.delegate(.dismiss))
 
       case .beRealCaptureButtonTapped:
         state.destination = .beRealCapture(BeRealCaptureLogic.State())
@@ -69,6 +66,14 @@ public struct EditProfileLogic {
 
       case .usernameSettingButtonTapped:
         state.destination = .usernameSetting(UsernameSettingLogic.State(username: state.user?.berealUsername ?? ""))
+        return .none
+        
+      case let .currentUserResponse(.success(data)):
+        let currentUser = data.currentUser.fragments.userInternal
+        state.user = currentUser
+        return .none
+
+      case .currentUserResponse(.failure):
         return .none
 
       case .destination(.dismiss):
@@ -172,6 +177,17 @@ public struct EditProfileView: View {
     .navigationBarTitleDisplayMode(.inline)
     .task { await store.send(.onTask).finish() }
     .onAppear { store.send(.onAppear) }
+    .toolbar {
+      ToolbarItem(placement: .topBarLeading) {
+        Button {
+          store.send(.closeButtonTapped)
+        } label: {
+          Image(systemName: "xmark")
+            .bold()
+            .foregroundStyle(Color.white)
+        }
+      }
+    }
     .navigationDestination(
       store: store.scope(
         state: \.$destination.genderSetting,
