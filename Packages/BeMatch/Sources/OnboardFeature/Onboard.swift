@@ -1,10 +1,10 @@
 import BeMatch
-import InvitationFeature
 import BeRealCaptureFeature
 import BeRealSampleFeature
 import ComposableArchitecture
 import FirebaseAuth
 import GenderSettingFeature
+import InvitationFeature
 import SwiftUI
 import UserDefaultsClient
 import UsernameSettingFeature
@@ -50,11 +50,11 @@ public struct OnboardLogic {
       case .path(.element(_, .sample(.delegate(.nextScreen)))):
         state.path.append(.capture())
         return .none
-        
+
       case .path(.element(_, .capture(.delegate(.nextScreen)))):
         state.path.append(.invitation())
         return .none
-        
+
       case .path(.element(_, .invitation(.delegate(.nextScreen)))):
         return .none
 
@@ -132,8 +132,8 @@ public struct OnboardView: View {
       case .invitation:
         CaseLet(
           /OnboardLogic.Path.State.invitation,
-           action: OnboardLogic.Path.Action.invitation,
-           then: InvitationView.init(store:)
+          action: OnboardLogic.Path.Action.invitation,
+          then: InvitationView.init(store:)
         )
       }
     }
