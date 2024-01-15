@@ -38,6 +38,7 @@ let package = Package(
     .library(name: "ProfileExternalFeature", targets: ["ProfileExternalFeature"]),
     .library(name: "ProfileFeature", targets: ["ProfileFeature"]),
     .library(name: "ProfileSharedFeature", targets: ["ProfileSharedFeature"]),
+    .library(name: "ReceivedLikeSwipeFeature", targets: ["ReceivedLikeSwipeFeature"]),
     .library(name: "RecommendationEmptyFeature", targets: ["RecommendationEmptyFeature"]),
     .library(name: "RecommendationFeature", targets: ["RecommendationFeature"]),
     .library(name: "RecommendationLoadingFeature", targets: ["RecommendationLoadingFeature"]),
@@ -46,6 +47,7 @@ let package = Package(
     .library(name: "SelectControl", targets: ["SelectControl"]),
     .library(name: "SettingsFeature", targets: ["SettingsFeature"]),
     .library(name: "Styleguide", targets: ["Styleguide"]),
+    .library(name: "SwipeCardFeature", targets: ["SwipeCardFeature"]),
     .library(name: "TutorialFeature", targets: ["TutorialFeature"]),
     .library(name: "UsernameSettingFeature", targets: ["UsernameSettingFeature"]),
   ],
@@ -198,6 +200,7 @@ let package = Package(
       "MembershipFeature",
       "InvitationCodeFeature",
       "ProfileExternalFeature",
+      "ReceivedLikeSwipeFeature",
     ]),
     .target(name: "MembershipFeature", dependencies: [
       "Styleguide",
@@ -254,6 +257,11 @@ let package = Package(
       "DirectMessageFeature",
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
     ]),
+    .target(name: "ReceivedLikeSwipeFeature", dependencies: [
+      "BeMatchClient",
+      "MatchedFeature",
+      "SwipeCardFeature",
+    ]),
     .target(name: "RecommendationEmptyFeature", dependencies: [
       "Constants",
       "Styleguide",
@@ -282,6 +290,7 @@ let package = Package(
       "SelectControl",
       "ReportFeature",
       "AnalyticsKeys",
+      "SwipeCardFeature",
       .product(name: "TcaHelpers", package: "SDK"),
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
@@ -307,6 +316,13 @@ let package = Package(
       .product(name: "FirebaseAuthClient", package: "SDK"),
     ]),
     .target(name: "Styleguide"),
+    .target(name: "SwipeCardFeature", dependencies: [
+      "BeMatch",
+      "SelectControl",
+      .product(name: "FeedbackGeneratorClient", package: "SDK"),
+      .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
     .target(name: "TutorialFeature", dependencies: [
       "Styleguide",
       "AnalyticsKeys",

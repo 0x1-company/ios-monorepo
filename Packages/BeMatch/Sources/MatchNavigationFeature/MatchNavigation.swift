@@ -1,4 +1,5 @@
 import BeMatch
+import ReceivedLikeSwipeFeature
 import BeMatchClient
 import ComposableArchitecture
 import FeedbackGeneratorClient
@@ -83,6 +84,12 @@ public struct MatchNavigationLogic {
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
+        
+      case .destination(.presented(.receivedLikeSwipe(.delegate(.dismiss)))):
+        state.destination = nil
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
 
       case .destination(.dismiss):
         state.destination = nil
@@ -90,6 +97,7 @@ public struct MatchNavigationLogic {
 
       case let .hasPremiumMembershipResponse(.success(data)):
         if data.hasPremiumMembership {
+          state.destination = .receivedLikeSwipe()
         } else {
           state.destination = .membership()
         }
@@ -146,12 +154,14 @@ public struct MatchNavigationLogic {
       case alert(AlertState<Action.Alert>)
       case membership(MembershipLogic.State = .init())
       case profileExternal(ProfileExternalLogic.State)
+      case receivedLikeSwipe(ReceivedLikeSwipeLogic.State = .init())
     }
 
     public enum Action {
       case alert(Alert)
       case membership(MembershipLogic.Action)
       case profileExternal(ProfileExternalLogic.Action)
+      case receivedLikeSwipe(ReceivedLikeSwipeLogic.Action)
 
       public enum Alert: Equatable {
         case confirmOkay
@@ -164,6 +174,9 @@ public struct MatchNavigationLogic {
       }
       Scope(state: \.profileExternal, action: \.profileExternal) {
         ProfileExternalLogic()
+      }
+      Scope(state: \.receivedLikeSwipe, action: \.receivedLikeSwipe) {
+        ReceivedLikeSwipeLogic()
       }
     }
   }
@@ -222,6 +235,13 @@ public struct MatchNavigationView: View {
     ) { store in
       NavigationStack {
         MembershipView(store: store)
+      }
+    }
+    .fullScreenCover(
+      store: store.scope(state: \.$destination.receivedLikeSwipe, action: \.destination.receivedLikeSwipe)
+    ) { store in
+      NavigationStack {
+        ReceivedLikeSwipeView(store: store)
       }
     }
   }

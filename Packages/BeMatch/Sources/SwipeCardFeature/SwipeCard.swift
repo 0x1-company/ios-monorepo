@@ -1,4 +1,3 @@
-import AnalyticsClient
 import BeMatch
 import CachedAsyncImage
 import ComposableArchitecture
@@ -11,7 +10,7 @@ public struct SwipeCardLogic {
   public init() {}
 
   public struct State: Equatable, Identifiable {
-    let data: BeMatch.SwipeCard
+    public let data: BeMatch.SwipeCard
     @BindingState var selection: BeMatch.SwipeCard.Image
 
     public var id: String {
@@ -40,7 +39,6 @@ public struct SwipeCardLogic {
     }
   }
 
-  @Dependency(\.analytics) var analytics
   @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   public var body: some Reducer<State, Action> {

@@ -1,0 +1,16 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "People who Liked you" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "あなたをLikeした人"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
