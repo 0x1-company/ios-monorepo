@@ -1,7 +1,6 @@
 import BeMatch
 import CachedAsyncImage
 import ComposableArchitecture
-import MembershipFeature
 import Styleguide
 import SwiftUI
 
@@ -16,8 +15,6 @@ public struct ReceivedLikeGridLogic {
       return count > 99 ? "99+" : count.description
     }
 
-    @PresentationState var membership: MembershipLogic.State?
-
     public init(imageUrl: String, count: Int) {
       self.imageUrl = imageUrl
       self.count = count
@@ -26,26 +23,14 @@ public struct ReceivedLikeGridLogic {
 
   public enum Action {
     case gridButtonTapped
-    case membership(PresentationAction<MembershipLogic.Action>)
   }
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
       switch action {
       case .gridButtonTapped:
-        state.membership = .init()
-        return .none
-
-      case .membership(.presented(.closeButtonTapped)):
-        state.membership = nil
-        return .none
-
-      case .membership:
         return .none
       }
-    }
-    .ifLet(\.$membership, action: \.membership) {
-      MembershipLogic()
     }
   }
 }
@@ -117,13 +102,6 @@ public struct ReceivedLikeGridView: View {
             .foregroundStyle(Color.primary)
             .font(.system(.subheadline, weight: .semibold))
             .frame(maxWidth: .infinity, minHeight: 54, maxHeight: .infinity, alignment: .leading)
-        }
-      }
-      .fullScreenCover(
-        store: store.scope(state: \.$membership, action: \.membership)
-      ) { store in
-        NavigationStack {
-          MembershipView(store: store)
         }
       }
     }

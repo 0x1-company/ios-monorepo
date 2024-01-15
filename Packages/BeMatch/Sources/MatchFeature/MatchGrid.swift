@@ -2,7 +2,6 @@ import BeMatch
 import CachedAsyncImage
 import ComposableArchitecture
 import FeedbackGeneratorClient
-import ProfileExternalFeature
 import Styleguide
 import SwiftUI
 
@@ -15,15 +14,13 @@ public struct MatchGridLogic {
       match.id
     }
 
-    let match: BeMatch.MatchGrid
+    public let match: BeMatch.MatchGrid
 
     var createdAt: Date {
       guard let timeInterval = TimeInterval(match.createdAt)
       else { return .now }
       return Date(timeIntervalSince1970: timeInterval / 1000.0)
     }
-
-    @PresentationState var profileExternal: ProfileExternalLogic.State?
 
     public init(match: BeMatch.MatchGrid) {
       self.match = match
@@ -32,7 +29,6 @@ public struct MatchGridLogic {
 
   public enum Action {
     case matchButtonTapped
-    case profileExternal(PresentationAction<ProfileExternalLogic.Action>)
   }
 
   @Dependency(\.feedbackGenerator) var feedbackGenerator
@@ -41,17 +37,8 @@ public struct MatchGridLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .matchButtonTapped:
-        state.profileExternal = .init(match: state.match)
-        return .run { _ in
-          await feedbackGenerator.impactOccurred()
-        }
-
-      default:
         return .none
       }
-    }
-    .ifLet(\.$profileExternal, action: \.profileExternal) {
-      ProfileExternalLogic()
     }
   }
 }
@@ -116,11 +103,6 @@ public struct MatchGridView: View {
         }
       }
       .buttonStyle(HoldDownButtonStyle())
-      .fullScreenCover(
-        store: store.scope(state: \.$profileExternal, action: \.profileExternal)
-      ) { store in
-        ProfileExternalView(store: store)
-      }
     }
   }
 }
