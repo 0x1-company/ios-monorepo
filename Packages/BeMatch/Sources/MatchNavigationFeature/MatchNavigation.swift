@@ -1,9 +1,11 @@
 import BeMatch
+import ProfileExternalFeature
 import ComposableArchitecture
 import FeedbackGeneratorClient
 import InvitationCodeFeature
 import MatchFeature
 import SettingsFeature
+import MembershipFeature
 import SwiftUI
 
 @Reducer
@@ -12,7 +14,9 @@ public struct MatchNavigationLogic {
 
   public struct State: Equatable {
     var match = MatchLogic.State()
+
     var path = StackState<Path.State>()
+    @PresentationState var destination: Destination.State?
 
     public init() {}
   }
@@ -21,6 +25,7 @@ public struct MatchNavigationLogic {
     case settingsButtonTapped
     case match(MatchLogic.Action)
     case path(StackAction<Path.State, Path.Action>)
+    case destination(PresentationAction<Destination.Action>)
   }
 
   @Dependency(\.feedbackGenerator) var feedbackGenerator
@@ -37,9 +42,6 @@ public struct MatchNavigationLogic {
           await feedbackGenerator.impactOccurred()
         }
 
-      case .match:
-        return .none
-
       case .path(.element(_, .settings(.otherButtonTapped))):
         state.path.append(.other())
         return .none
@@ -47,13 +49,42 @@ public struct MatchNavigationLogic {
       case .path(.element(_, .settings(.invitationCodeButtonTapped))):
         state.path.append(.invitationCode())
         return .none
+        
+      case let .match(.rows(.element(id, .matchButtonTapped))):
+        guard let row = state.match.rows[id: id] else { return .none }
+        state.destination = .profileExternal(
+          ProfileExternalLogic.State(match: row.match)
+        )
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
+        
+      case .match(.receivedLike(.gridButtonTapped)):
+        // TODO: membership or received like list
+        state.destination = .membership()
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
 
-      case .path:
+      case .destination(.presented(.membership(.closeButtonTapped))):
+        state.destination = nil
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
+        
+      case .destination(.dismiss):
+        state.destination = nil
+        return .none
+
+      default:
         return .none
       }
     }
     .forEach(\.path, action: \.path) {
       Path()
+    }
+    .ifLet(\.$destination, action: \.destination) {
+      Destination()
     }
   }
 
@@ -75,6 +106,34 @@ public struct MatchNavigationLogic {
       Scope(state: \.settings, action: \.settings, child: SettingsLogic.init)
       Scope(state: \.other, action: \.other, child: SettingsOtherLogic.init)
       Scope(state: \.invitationCode, action: \.invitationCode, child: InvitationCodeLogic.init)
+    }
+  }
+  
+  @Reducer
+  public struct Destination {
+    public enum State: Equatable {
+      case alert(AlertState<Action.Alert>)
+      case membership(MembershipLogic.State = .init())
+      case profileExternal(ProfileExternalLogic.State)
+    }
+
+    public enum Action {
+      case alert(Alert)
+      case membership(MembershipLogic.Action)
+      case profileExternal(ProfileExternalLogic.Action)
+      
+      public enum Alert: Equatable {
+        case confirmOkay
+      }
+    }
+
+    public var body: some Reducer<State, Action> {
+      Scope(state: \.membership, action: \.membership) {
+        MembershipLogic()
+      }
+      Scope(state: \.profileExternal, action: \.profileExternal) {
+        ProfileExternalLogic()
+      }
     }
   }
 }
@@ -126,6 +185,14 @@ public struct MatchNavigationView: View {
       }
     }
     .tint(Color.primary)
+    .alert(store: store.scope(state: \.$destination.alert, action: \.destination.alert))
+    .fullScreenCover(
+      store: store.scope(state: \.$destination.membership, action: \.destination.membership)
+    ) { store in
+      NavigationStack {
+        MembershipView(store: store)
+      }
+    }
   }
 }
 

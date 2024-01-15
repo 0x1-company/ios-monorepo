@@ -187,8 +187,6 @@ let package = Package(
       "BannerFeature",
       "SettingsFeature",
       "MatchEmptyFeature",
-      "MembershipFeature",
-      "ProfileExternalFeature",
       "NotificationsReEnableFeature",
       .product(name: "TcaHelpers", package: "SDK"),
       .product(name: "UserNotificationClient", package: "SDK"),
@@ -197,7 +195,9 @@ let package = Package(
     .target(name: "MatchNavigationFeature", dependencies: [
       "MatchFeature",
       "SettingsFeature",
+      "MembershipFeature",
       "InvitationCodeFeature",
+      "ProfileExternalFeature",
     ]),
     .target(name: "MembershipFeature", dependencies: [
       "Styleguide",

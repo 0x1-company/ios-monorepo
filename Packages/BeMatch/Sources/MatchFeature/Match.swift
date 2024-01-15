@@ -15,7 +15,7 @@ public struct MatchLogic {
   public init() {}
 
   public struct State: Equatable {
-    var rows: IdentifiedArrayOf<MatchGridLogic.State> = []
+    public var rows: IdentifiedArrayOf<MatchGridLogic.State> = []
     var banners: IdentifiedArrayOf<BannerLogic.State> = []
 
     var hasNextPage = false
