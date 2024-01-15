@@ -17,7 +17,6 @@ public struct InvitationCampaignLogic {
 
   public enum Action {
     case onTask
-    case onAppear
   }
 
   @Dependency(\.analytics) var analytics
@@ -26,10 +25,6 @@ public struct InvitationCampaignLogic {
     Reduce<State, Action> { _, action in
       switch action {
       case .onTask:
-        return .none
-
-      case .onAppear:
-        analytics.logScreen(screenName: "InvitationCampaign", of: self)
         return .none
       }
     }
@@ -96,7 +91,6 @@ public struct InvitationCampaignView: View {
       .background(backgroundGradient)
       .multilineTextAlignment(.center)
       .task { await store.send(.onTask).finish() }
-      .onAppear { store.send(.onAppear) }
     }
   }
 }

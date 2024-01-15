@@ -8,13 +8,15 @@ public struct InvitationCodeCampaignLogic {
   public init() {}
 
   public struct State: Equatable {
-    var code = "ACF"
-    public init() {}
+    let code: String
+    
+    public init(code: String) {
+      self.code = code
+    }
   }
 
   public enum Action {
     case onTask
-    case onAppear
   }
 
   @Dependency(\.analytics) var analytics
@@ -23,10 +25,6 @@ public struct InvitationCodeCampaignLogic {
     Reduce<State, Action> { _, action in
       switch action {
       case .onTask:
-        return .none
-
-      case .onAppear:
-        analytics.logScreen(screenName: "InvitationCodeCampaign", of: self)
         return .none
       }
     }
@@ -71,7 +69,6 @@ public struct InvitationCodeCampaignView: View {
       .background()
       .multilineTextAlignment(.center)
       .task { await store.send(.onTask).finish() }
-      .onAppear { store.send(.onAppear) }
     }
   }
 }
@@ -79,7 +76,7 @@ public struct InvitationCodeCampaignView: View {
 #Preview {
   InvitationCodeCampaignView(
     store: .init(
-      initialState: InvitationCodeCampaignLogic.State(),
+      initialState: InvitationCodeCampaignLogic.State(code: "ABCDEF"),
       reducer: { InvitationCodeCampaignLogic() }
     )
   )

@@ -49,10 +49,20 @@ public struct MembershipLogic {
         }
 
       case let .membershipResponse(.success(data)):
-        if let campaign = data.activeInvitationCampaign {
-          state.child = .campaign(MembershipCampaignLogic.State(campaign: campaign))
+        let campaign = data.activeInvitationCampaign
+        let invitationCode = data.invitationCode
+        
+        if let campaign {
+          state.child = .campaign(
+            MembershipCampaignLogic.State(
+              campaign: campaign,
+              code: invitationCode.code
+            )
+          )
         } else {
-          state.child = .purchase(MembershipPurchaseLogic.State())
+          state.child = .purchase(
+            MembershipPurchaseLogic.State()
+          )
         }
         return .none
 

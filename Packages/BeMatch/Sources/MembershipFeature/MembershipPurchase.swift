@@ -23,10 +23,6 @@ public struct MembershipPurchaseLogic {
       switch action {
       case .onTask:
         return .none
-
-      case .onAppear:
-        analytics.logScreen(screenName: "MembershipPurchase", of: self)
-        return .none
       }
     }
   }
@@ -92,7 +88,6 @@ public struct MembershipPurchaseView: View {
       }
       .background()
       .task { await store.send(.onTask).finish() }
-      .onAppear { store.send(.onAppear) }
     }
   }
 }

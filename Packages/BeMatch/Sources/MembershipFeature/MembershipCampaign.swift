@@ -11,11 +11,12 @@ public struct MembershipCampaignLogic {
     let campaign: BeMatch.MembershipQuery.Data.ActiveInvitationCampaign
 
     var invitationCampaign: InvitationCampaignLogic.State
-    var invitationCodeCampaign = InvitationCodeCampaignLogic.State()
+    var invitationCodeCampaign: InvitationCodeCampaignLogic.State
 
-    public init(campaign: BeMatch.MembershipQuery.Data.ActiveInvitationCampaign) {
+    public init(campaign: BeMatch.MembershipQuery.Data.ActiveInvitationCampaign, code: String) {
       self.campaign = campaign
       invitationCampaign = InvitationCampaignLogic.State(quantity: campaign.quantity)
+      self.invitationCodeCampaign = InvitationCodeCampaignLogic.State(code: code)
     }
   }
 
@@ -115,7 +116,8 @@ public struct MembershipCampaignView: View {
             ],
             fulfilledFragments: []
           )
-        )
+        ),
+        code: "ABCDEF"
       ),
       reducer: { MembershipCampaignLogic() }
     )
