@@ -48,6 +48,7 @@ public struct SettingsLogic {
     case myProfileButtonTapped
     case editProfileButtonTapped
     case invitationCodeButtonTapped
+    case bematchProButtonTapped
     case howItWorksButtonTapped
     case otherButtonTapped
     case shareButtonTapped
@@ -57,9 +58,6 @@ public struct SettingsLogic {
     case creationDate(CreationDateLogic.Action)
     case destination(PresentationAction<Destination.Action>)
     case binding(BindingAction<State>)
-    case delegate(Delegate)
-
-    public enum Delegate: Equatable {}
   }
 
   @Dependency(\.openURL) var openURL
@@ -122,6 +120,10 @@ public struct SettingsLogic {
         return .none
 
       case .destination(.presented(.tutorial(.delegate(.finish)))):
+        state.destination = nil
+        return .none
+
+      case .destination(.presented(.editProfile(.delegate(.dismiss)))):
         state.destination = nil
         return .none
 
@@ -209,6 +211,17 @@ public struct SettingsView: View {
               Image(systemName: "chevron.right")
             } label: {
               Text("Invitation Code", bundle: .module)
+                .foregroundStyle(Color.primary)
+            }
+          }
+
+          Button {
+            store.send(.bematchProButtonTapped)
+          } label: {
+            LabeledContent {
+              Image(systemName: "chevron.right")
+            } label: {
+              Text("BeMatch PRO", bundle: .module)
                 .foregroundStyle(Color.primary)
             }
           }
@@ -354,17 +367,6 @@ public struct SettingsView: View {
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
       .onAppear { store.send(.onAppear) }
-      .fullScreenCover(
-        store: store.scope(state: \.$destination.profile, action: \.destination.profile)
-      ) { store in
-        NavigationStack {
-          ProfileView(store: store)
-        }
-      }
-      .fullScreenCover(
-        store: store.scope(state: \.$destination.tutorial, action: \.destination.tutorial),
-        content: TutorialView.init(store:)
-      )
       .sheet(isPresented: viewStore.$isSharePresented) {
         ActivityView(
           activityItems: [viewStore.shareText],
@@ -381,15 +383,26 @@ public struct SettingsView: View {
         }
         .presentationDetents([.medium, .large])
       }
-      .navigationDestination(
-        store: store.scope(
-          state: \.$destination,
-          action: SettingsLogic.Action.destination
-        ),
-        state: /SettingsLogic.Destination.State.editProfile,
-        action: SettingsLogic.Destination.Action.editProfile
+      .fullScreenCover(
+        store: store.scope(state: \.$destination.tutorial, action: \.destination.tutorial),
+        content: TutorialView.init(store:)
+      )
+      .fullScreenCover(
+        store: store.scope(state: \.$destination.profile, action: \.destination.profile)
       ) { store in
-        EditProfileView(store: store)
+        NavigationStack {
+          ProfileView(store: store)
+        }
+      }
+      .fullScreenCover(
+        store: store.scope(
+          state: \.$destination.editProfile,
+          action: \.destination.editProfile
+        )
+      ) { store in
+        NavigationStack {
+          EditProfileView(store: store)
+        }
       }
     }
   }
@@ -405,5 +418,5 @@ public struct SettingsView: View {
     )
   }
   .environment(\.colorScheme, .dark)
-//  .environment(\.locale, Locale(identifier: "ja-JP"))
+  .environment(\.locale, Locale(identifier: "ja-JP"))
 }

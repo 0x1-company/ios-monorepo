@@ -11,6 +11,16 @@
         }
       }
     },
+    "BeMatch PRO" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeMatch PRO"
+          }
+        }
+      }
+    },
     "Clear BeMatch cache" : {
       "localizations" : {
         "ja" : {
