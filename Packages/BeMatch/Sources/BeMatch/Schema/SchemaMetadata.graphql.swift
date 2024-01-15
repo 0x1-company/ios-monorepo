@@ -45,7 +45,6 @@ public extension BeMatch {
       case "MatchConnection": return BeMatch.Objects.MatchConnection
       case "PageInfo": return BeMatch.Objects.PageInfo
       case "MatchEdge": return BeMatch.Objects.MatchEdge
-      case "PremiumMembership": return BeMatch.Objects.PremiumMembership
       case "InvitationCampaign": return BeMatch.Objects.InvitationCampaign
       case "Banner": return BeMatch.Objects.Banner
       default: return nil

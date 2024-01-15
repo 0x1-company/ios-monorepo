@@ -58,6 +58,10 @@ public extension BeMatchClient {
         let query = BeMatch.ReceivedLikeQuery()
         return apolloClient.watch(query: query)
       },
+      usersByLiker: {
+        let query = BeMatch.UsersByLikerQuery()
+        return apolloClient.watch(query: query)
+      },
       banners: {
         let query = BeMatch.BannersQuery()
         return apolloClient.watch(query: query)
@@ -86,8 +90,8 @@ public extension BeMatchClient {
         let query = BeMatch.MembershipQuery()
         return apolloClient.watch(query: query)
       },
-      activePremiumMemberships: {
-        let query = BeMatch.ActivePremiumMembershipsQuery()
+      hasPremiumMembershipsQuery: {
+        let query = BeMatch.HasPremiumMembershipsQuery()
         return apolloClient.watch(query: query)
       },
       createAppleSubscription: { input in
