@@ -15,7 +15,7 @@ public struct MembershipCampaignLogic {
 
     public init(campaign: BeMatch.ActiveInvitationCampaignQuery.Data.ActiveInvitationCampaign) {
       self.campaign = campaign
-      self.invitationCampaign = InvitationCampaignLogic.State(quantity: campaign.quantity)
+      invitationCampaign = InvitationCampaignLogic.State(quantity: campaign.quantity)
     }
   }
 
@@ -71,29 +71,25 @@ public struct MembershipCampaignView: View {
                 action: \.invitationCodeCampaign
               )
             )
-            
+
             VStack(spacing: 60) {
               Image(ImageResource.membershipBenefit)
                 .resizable()
-              
+
               PurchaseAboutView()
             }
             .padding(.horizontal, 16)
           }
           .padding(.bottom, 80)
         }
-        
+
         VStack(spacing: 16) {
-          Button {
-            
-          } label: {
+          Button {} label: {
             Text("Send Invitation Code", bundle: .module)
           }
           .buttonStyle(ConversionPrimaryButtonStyle())
-          
-          Button {
-            
-          } label: {
+
+          Button {} label: {
             Text("Upgrade for ¥500/week", bundle: .module)
           }
           .buttonStyle(ConversionSecondaryButtonStyle())
@@ -114,7 +110,7 @@ public struct MembershipCampaignView: View {
         campaign: BeMatch.ActiveInvitationCampaignQuery.Data.ActiveInvitationCampaign(
           _dataDict: DataDict(
             data: [
-              "id":"1",
+              "id": "1",
               "quantity": 2000,
             ],
             fulfilledFragments: []

@@ -9,7 +9,7 @@ public struct InvitationCampaignLogic {
 
   public struct State: Equatable {
     let quantity: Int
-    
+
     public init(quantity: Int) {
       self.quantity = quantity
     }
