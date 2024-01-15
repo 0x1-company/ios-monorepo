@@ -87,7 +87,7 @@ public struct MatchNavigationLogic {
       case .destination(.dismiss):
         state.destination = nil
         return .none
-        
+
       case let .hasPremiumMembershipResponse(.success(data)):
         if data.hasPremiumMembership {
         } else {
