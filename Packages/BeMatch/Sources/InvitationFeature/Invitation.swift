@@ -32,7 +32,7 @@ public struct InvitationLogic {
 
   @Dependency(\.bematch) var bematch
   @Dependency(\.analytics) var analytics
-  
+
   enum Cancel {
     case createInvitation
   }
@@ -44,10 +44,10 @@ public struct InvitationLogic {
       case .onAppear:
         analytics.logScreen(screenName: "Invitation", of: self)
         return .none
-        
+
       case .nextButtonTapped:
         state.isActivityIndicatorVisible = true
-        
+
         let input = BeMatch.CreateInvitationInput(code: state.code)
         return .run { send in
           await send(.createInvitationResponse(Result {
@@ -55,22 +55,22 @@ public struct InvitationLogic {
           }))
         }
         .cancellable(id: Cancel.createInvitation, cancelInFlight: true)
-        
+
       case .skipButtonTapped:
         return .send(.delegate(.nextScreen))
-        
+
       case .createInvitationResponse(.success):
         state.isActivityIndicatorVisible = false
         return .send(.delegate(.nextScreen))
-        
+
       case .createInvitationResponse(.failure):
         state.isActivityIndicatorVisible = false
         return .none
-        
+
       case .binding:
         state.isDisabled = state.code.count >= 6
         return .none
-        
+
       default:
         return .none
       }
@@ -92,7 +92,7 @@ public struct InvitationView: View {
         Text("If you have an invitation code.\nPlease let us know.", bundle: .module)
           .frame(height: 50)
           .font(.system(.title3, weight: .semibold))
-        
+
         TextField(text: viewStore.$code) {
           Text("Invitation Code", bundle: .module)
         }
@@ -102,9 +102,9 @@ public struct InvitationView: View {
         .autocorrectionDisabled()
         .focused($isFocused)
         .font(.system(.title3, weight: .semibold))
-        
+
         Spacer()
-        
+
         PrimaryButton(
           String(localized: "Next", bundle: .module),
           isLoading: viewStore.isActivityIndicatorVisible,
@@ -112,7 +112,7 @@ public struct InvitationView: View {
         ) {
           store.send(.nextButtonTapped)
         }
-        
+
         Button {
           store.send(.skipButtonTapped)
         } label: {
