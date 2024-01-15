@@ -48,6 +48,7 @@ public struct SettingsLogic {
     case myProfileButtonTapped
     case editProfileButtonTapped
     case invitationCodeButtonTapped
+    case bematchProButtonTapped
     case howItWorksButtonTapped
     case otherButtonTapped
     case shareButtonTapped
@@ -57,9 +58,6 @@ public struct SettingsLogic {
     case creationDate(CreationDateLogic.Action)
     case destination(PresentationAction<Destination.Action>)
     case binding(BindingAction<State>)
-    case delegate(Delegate)
-
-    public enum Delegate: Equatable {}
   }
 
   @Dependency(\.openURL) var openURL
@@ -124,7 +122,7 @@ public struct SettingsLogic {
       case .destination(.presented(.tutorial(.delegate(.finish)))):
         state.destination = nil
         return .none
-        
+
       case .destination(.presented(.editProfile(.delegate(.dismiss)))):
         state.destination = nil
         return .none
@@ -213,6 +211,17 @@ public struct SettingsView: View {
               Image(systemName: "chevron.right")
             } label: {
               Text("Invitation Code", bundle: .module)
+                .foregroundStyle(Color.primary)
+            }
+          }
+
+          Button {
+            store.send(.bematchProButtonTapped)
+          } label: {
+            LabeledContent {
+              Image(systemName: "chevron.right")
+            } label: {
+              Text("BeMatch PRO", bundle: .module)
                 .foregroundStyle(Color.primary)
             }
           }

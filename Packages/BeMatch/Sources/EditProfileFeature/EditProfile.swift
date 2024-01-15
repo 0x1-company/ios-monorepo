@@ -52,7 +52,7 @@ public struct EditProfileLogic {
       case .onAppear:
         analytics.logScreen(screenName: "EditProfile", of: self)
         return .none
-        
+
       case .closeButtonTapped:
         return .send(.delegate(.dismiss))
 
@@ -67,7 +67,7 @@ public struct EditProfileLogic {
       case .usernameSettingButtonTapped:
         state.destination = .usernameSetting(UsernameSettingLogic.State(username: state.user?.berealUsername ?? ""))
         return .none
-        
+
       case let .currentUserResponse(.success(data)):
         let currentUser = data.currentUser.fragments.userInternal
         state.user = currentUser
