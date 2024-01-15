@@ -1,0 +1,11 @@
+query Membership {
+  activeInvitationCampaign {
+    id
+    quantity
+  }
+
+  invitationCode {
+    id
+    code
+  }
+}

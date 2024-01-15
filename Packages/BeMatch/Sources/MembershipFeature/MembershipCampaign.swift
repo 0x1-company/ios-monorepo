@@ -8,21 +8,28 @@ public struct MembershipCampaignLogic {
   public init() {}
 
   public struct State: Equatable {
-    let campaign: BeMatch.ActiveInvitationCampaignQuery.Data.ActiveInvitationCampaign
+    let campaign: BeMatch.MembershipQuery.Data.ActiveInvitationCampaign
 
     var invitationCampaign: InvitationCampaignLogic.State
-    var invitationCodeCampaign = InvitationCodeCampaignLogic.State()
+    var invitationCodeCampaign: InvitationCodeCampaignLogic.State
 
-    public init(campaign: BeMatch.ActiveInvitationCampaignQuery.Data.ActiveInvitationCampaign) {
+    public init(campaign: BeMatch.MembershipQuery.Data.ActiveInvitationCampaign, code: String) {
       self.campaign = campaign
       invitationCampaign = InvitationCampaignLogic.State(quantity: campaign.quantity)
+      invitationCodeCampaign = InvitationCodeCampaignLogic.State(code: code)
     }
   }
 
   public enum Action {
     case onTask
+    case upgradeButtonTapped
     case invitationCampaign(InvitationCampaignLogic.Action)
     case invitationCodeCampaign(InvitationCodeCampaignLogic.Action)
+    case delegate(Delegate)
+
+    public enum Delegate: Equatable {
+      case purchase
+    }
   }
 
   @Dependency(\.analytics) var analytics
@@ -38,6 +45,9 @@ public struct MembershipCampaignLogic {
       switch action {
       case .onTask:
         return .none
+
+      case .upgradeButtonTapped:
+        return .send(.delegate(.purchase))
 
       default:
         return .none
@@ -89,7 +99,9 @@ public struct MembershipCampaignView: View {
           }
           .buttonStyle(ConversionPrimaryButtonStyle())
 
-          Button {} label: {
+          Button {
+            store.send(.upgradeButtonTapped)
+          } label: {
             Text("Upgrade for ¥500/week", bundle: .module)
           }
           .buttonStyle(ConversionSecondaryButtonStyle())
@@ -107,7 +119,7 @@ public struct MembershipCampaignView: View {
   MembershipCampaignView(
     store: .init(
       initialState: MembershipCampaignLogic.State(
-        campaign: BeMatch.ActiveInvitationCampaignQuery.Data.ActiveInvitationCampaign(
+        campaign: BeMatch.MembershipQuery.Data.ActiveInvitationCampaign(
           _dataDict: DataDict(
             data: [
               "id": "1",
@@ -115,7 +127,8 @@ public struct MembershipCampaignView: View {
             ],
             fulfilledFragments: []
           )
-        )
+        ),
+        code: "ABCDEF"
       ),
       reducer: { MembershipCampaignLogic() }
     )

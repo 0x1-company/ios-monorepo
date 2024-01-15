@@ -1,7 +1,11 @@
 import AnalyticsClient
 import BeMatch
 import BeMatchClient
+import Build
 import ComposableArchitecture
+import StoreKit
+import StoreKitClient
+import StoreKitHelpers
 import SwiftUI
 
 @Reducer
@@ -12,52 +16,120 @@ public struct MembershipLogic {
     var child: Child.State?
     var isActivityIndicatorVisible = false
 
-    public init() {}
+    let bematchProOneWeekId: String
+    var product: StoreKit.Product?
+
+    public init() {
+      @Dependency(\.build) var build
+      bematchProOneWeekId = build.infoDictionary("BEMATCH_PRO_ID", for: String.self)!
+    }
   }
 
   public enum Action {
     case onTask
     case closeButtonTapped
-    case activeInvitationCampaignResponse(Result<BeMatch.ActiveInvitationCampaignQuery.Data, Error>)
+    case productsResponse(Result<[Product], Error>)
+    case membershipResponse(Result<BeMatch.MembershipQuery.Data, Error>)
+    case purchaseResponse(Result<StoreKit.Transaction, Error>)
     case child(Child.Action)
   }
 
+  @Dependency(\.build) var build
+  @Dependency(\.store) var store
   @Dependency(\.dismiss) var dismiss
   @Dependency(\.bematch) var bematch
   @Dependency(\.analytics) var analytics
 
   enum Cancel {
-    case activeInvitationCampaign
+    case products
+    case purchase
+    case membership
   }
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
-        return .run { send in
-          for try await data in bematch.activeInvitationCampaign() {
-            await send(.activeInvitationCampaignResponse(.success(data)))
+        return .run { [id = state.bematchProOneWeekId] send in
+          await withTaskGroup(of: Void.self) { group in
+            group.addTask {
+              await productsRequest(send: send, ids: [id])
+            }
+
+            group.addTask {
+              await membershipRequest(send: send)
+            }
           }
-        } catch: { error, send in
-          await send(.activeInvitationCampaignResponse(.failure(error)))
         }
-        .cancellable(id: Cancel.activeInvitationCampaign, cancelInFlight: true)
 
       case .closeButtonTapped:
         return .run { _ in
           await dismiss()
         }
 
-      case let .activeInvitationCampaignResponse(.success(data)):
-        if let campaign = data.activeInvitationCampaign {
-          state.child = .campaign(MembershipCampaignLogic.State(campaign: campaign))
+      case .child(.campaign(.delegate(.purchase))):
+        let appAccountToken = UUID()
+        guard let product = state.product
+        else { return .none }
+        
+        state.isActivityIndicatorVisible = true
+
+        return .run { send in
+          let result = try await store.purchase(product, appAccountToken)
+
+          switch result {
+          case let .success(verificationResult):
+            await send(.purchaseResponse(Result {
+              try checkVerified(verificationResult)
+            }))
+            
+          case .pending:
+            await send(.purchaseResponse(.failure(InAppPurchaseError.pending)))
+          case .userCancelled:
+            await send(.purchaseResponse(.failure(InAppPurchaseError.userCancelled)))
+          @unknown default:
+            fatalError()
+          }
+        } catch: { error, send in
+          await send(.purchaseResponse(.failure(error)))
+        }
+        .cancellable(id: Cancel.purchase, cancelInFlight: true)
+
+      case let .productsResponse(.success(products)):
+        guard
+          let product = products.first(where: { $0.id == state.bematchProOneWeekId })
+        else { return .none }
+        state.product = product
+        return .none
+
+      case let .membershipResponse(.success(data)):
+        let campaign = data.activeInvitationCampaign
+        let invitationCode = data.invitationCode
+
+        if let campaign {
+          state.child = .campaign(
+            MembershipCampaignLogic.State(
+              campaign: campaign,
+              code: invitationCode.code
+            )
+          )
         } else {
-          state.child = .purchase(MembershipPurchaseLogic.State())
+          state.child = .purchase(
+            MembershipPurchaseLogic.State()
+          )
         }
         return .none
 
-      case .activeInvitationCampaignResponse(.failure):
+      case .membershipResponse(.failure):
         state.child = .purchase(MembershipPurchaseLogic.State())
+        return .none
+        
+      case let .purchaseResponse(.success(transaction)):
+        state.isActivityIndicatorVisible = false
+        return .none
+        
+      case .purchaseResponse(.failure):
+        state.isActivityIndicatorVisible = false
         return .none
 
       default:
@@ -66,6 +138,26 @@ public struct MembershipLogic {
     }
     .ifLet(\.child, action: \.child) {
       Child()
+    }
+  }
+
+  func productsRequest(send: Send<Action>, ids: [String]) async {
+    await withTaskCancellation(id: Cancel.products, cancelInFlight: true) {
+      await send(.productsResponse(Result {
+        try await store.products(ids)
+      }))
+    }
+  }
+
+  func membershipRequest(send: Send<Action>) async {
+    await withTaskCancellation(id: Cancel.membership, cancelInFlight: true) {
+      do {
+        for try await data in bematch.membership() {
+          await send(.membershipResponse(.success(data)))
+        }
+      } catch {
+        await send(.membershipResponse(.failure(error)))
+      }
     }
   }
 
