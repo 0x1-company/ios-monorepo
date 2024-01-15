@@ -1,8 +1,8 @@
 import AnalyticsClient
-import MatchedFeature
 import BeMatch
 import BeMatchClient
 import ComposableArchitecture
+import MatchedFeature
 import SwiftUI
 import SwipeCardFeature
 
@@ -29,7 +29,7 @@ public struct ReceivedLikeSwipeLogic {
     case rows(IdentifiedActionOf<SwipeCardLogic>)
     case destination(PresentationAction<Destination.Action>)
     case delegate(Delegate)
-    
+
     public enum Delegate: Equatable {
       case dismiss
     }
@@ -57,7 +57,7 @@ public struct ReceivedLikeSwipeLogic {
       case .onAppear:
         analytics.logScreen(screenName: "ReceivedLikeSwipe", of: self)
         return .none
-        
+
       case .closeButtonTapped:
         return .send(.delegate(.dismiss))
 
@@ -114,17 +114,17 @@ public struct ReceivedLikeSwipeLogic {
           }))
         }
         .cancellable(id: Cancel.feedback(input.targetUserId), cancelInFlight: true)
-        
+
       case let .usersByLikerResponse(.success(data)):
         let rows = data.usersByLiker
           .map(\.fragments.swipeCard)
           .filter { !$0.images.isEmpty }
           .map(SwipeCardLogic.State.init)
-        
+
         state.rows = IdentifiedArrayOf(uniqueElements: rows)
-        
+
         return .none
-        
+
       case .usersByLikerResponse(.failure):
         return .send(.delegate(.dismiss))
 
@@ -156,7 +156,7 @@ public struct ReceivedLikeSwipeLogic {
       Destination()
     }
   }
-  
+
   func usersByLikerRequest(send: Send<Action>) async {
     await withTaskCancellation(id: Cancel.usersByLiker, cancelInFlight: true) {
       do {
@@ -168,7 +168,7 @@ public struct ReceivedLikeSwipeLogic {
       }
     }
   }
-  
+
   @Reducer
   public struct Destination {
     public enum State: Equatable {
