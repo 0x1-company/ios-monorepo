@@ -1,3 +1,4 @@
+import ActivityView
 import AnalyticsClient
 import BeMatch
 import BeMatchClient
@@ -12,6 +13,11 @@ import SwiftUI
 public struct MembershipLogic {
   public init() {}
 
+  public struct CompletionWithItems: Equatable {
+    public let activityType: UIActivity.ActivityType?
+    public let result: Bool
+  }
+
   public struct State: Equatable {
     var child: Child.State?
     var isActivityIndicatorVisible = false
@@ -20,7 +26,23 @@ public struct MembershipLogic {
     var appAccountToken: UUID?
     var product: StoreKit.Product?
 
+    var invitationCode = ""
+
+    @BindingState var isPresented = false
     @PresentationState var destination: Destination.State?
+
+    var shareText: String {
+      let text: String.LocalizationValue = """
+      I gave you an invitation code [\(invitationCode)] for 1 year free BeMatch PRO worth 24,000 yen! 🎁.
+
+      When you become a BeMatch PRO...
+      ■ See who you are Liked by.
+
+      BeReal exchange app "BeMatch." Download it! 🤞🏻
+      https://apps.apple.com/jp/app/id6473888485
+      """
+      return String(localized: text, bundle: .module)
+    }
 
     public init() {
       @Dependency(\.build) var build
@@ -28,7 +50,7 @@ public struct MembershipLogic {
     }
   }
 
-  public enum Action {
+  public enum Action: BindableAction {
     case onTask
     case closeButtonTapped
     case productsResponse(Result<[Product], Error>)
@@ -36,8 +58,10 @@ public struct MembershipLogic {
     case purchaseResponse(Result<StoreKit.Transaction, Error>)
     case createAppleSubscriptionResponse(Result<BeMatch.CreateAppleSubscriptionMutation.Data, Error>)
     case transactionFinish(StoreKit.Transaction)
+    case onCompletion(CompletionWithItems)
     case child(Child.Action)
     case destination(PresentationAction<Destination.Action>)
+    case binding(BindingAction<State>)
     case delegate(Delegate)
 
     public enum Delegate: Equatable {
@@ -57,6 +81,7 @@ public struct MembershipLogic {
   }
 
   public var body: some Reducer<State, Action> {
+    BindingReducer()
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
@@ -74,6 +99,11 @@ public struct MembershipLogic {
 
       case .closeButtonTapped:
         return .send(.delegate(.dismiss))
+
+      case .child(.campaign(.delegate(.sendInvitationCode))),
+           .child(.campaign(.invitationCodeCampaign(.delegate(.sendInvitationCode)))):
+        state.isPresented = true
+        return .none
 
       case .child(.campaign(.delegate(.purchase))):
         guard
@@ -114,6 +144,7 @@ public struct MembershipLogic {
       case let .membershipResponse(.success(data)):
         let userId = data.currentUser.id
         state.appAccountToken = UUID(uuidString: userId)
+        state.invitationCode = data.invitationCode.code
 
         let campaign = data.activeInvitationCampaign
         let invitationCode = data.invitationCode
@@ -159,6 +190,14 @@ public struct MembershipLogic {
 
       case .purchaseResponse(.failure):
         state.isActivityIndicatorVisible = false
+        return .none
+
+      case let .onCompletion(completion):
+        state.isPresented = false
+        analytics.logEvent("invitation_code_completion", [
+          "activity_type": completion.activityType?.rawValue,
+          "result": completion.result,
+        ])
         return .none
 
       case let .transactionFinish(transaction):
@@ -306,6 +345,22 @@ public struct MembershipView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.black.opacity(0.6))
         }
+      }
+      .sheet(isPresented: viewStore.$isPresented) {
+        ActivityView(
+          activityItems: [viewStore.shareText],
+          applicationActivities: nil
+        ) { activityType, result, _, _ in
+          store.send(
+            .onCompletion(
+              MembershipLogic.CompletionWithItems(
+                activityType: activityType,
+                result: result
+              )
+            )
+          )
+        }
+        .presentationDetents([.medium, .large])
       }
     }
   }

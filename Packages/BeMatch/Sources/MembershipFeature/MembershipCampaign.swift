@@ -22,12 +22,14 @@ public struct MembershipCampaignLogic {
 
   public enum Action {
     case onTask
+    case invitationCodeButtonTapped
     case upgradeButtonTapped
     case invitationCampaign(InvitationCampaignLogic.Action)
     case invitationCodeCampaign(InvitationCodeCampaignLogic.Action)
     case delegate(Delegate)
 
     public enum Delegate: Equatable {
+      case sendInvitationCode
       case purchase
     }
   }
@@ -45,6 +47,9 @@ public struct MembershipCampaignLogic {
       switch action {
       case .onTask:
         return .none
+
+      case .invitationCodeButtonTapped:
+        return .send(.delegate(.sendInvitationCode))
 
       case .upgradeButtonTapped:
         return .send(.delegate(.purchase))
@@ -94,7 +99,9 @@ public struct MembershipCampaignView: View {
         }
 
         VStack(spacing: 16) {
-          Button {} label: {
+          Button {
+            store.send(.invitationCodeButtonTapped)
+          } label: {
             Text("Send Invitation Code", bundle: .module)
           }
           .buttonStyle(ConversionPrimaryButtonStyle())
