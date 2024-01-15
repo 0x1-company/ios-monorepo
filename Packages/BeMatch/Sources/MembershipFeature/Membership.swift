@@ -71,7 +71,7 @@ public struct MembershipLogic {
         let appAccountToken = UUID()
         guard let product = state.product
         else { return .none }
-        
+
         state.isActivityIndicatorVisible = true
 
         return .run { send in
@@ -82,7 +82,7 @@ public struct MembershipLogic {
             await send(.purchaseResponse(Result {
               try checkVerified(verificationResult)
             }))
-            
+
           case .pending:
             await send(.purchaseResponse(.failure(InAppPurchaseError.pending)))
           case .userCancelled:
@@ -123,11 +123,11 @@ public struct MembershipLogic {
       case .membershipResponse(.failure):
         state.child = .purchase(MembershipPurchaseLogic.State())
         return .none
-        
+
       case let .purchaseResponse(.success(transaction)):
         state.isActivityIndicatorVisible = false
         return .none
-        
+
       case .purchaseResponse(.failure):
         state.isActivityIndicatorVisible = false
         return .none
