@@ -114,7 +114,7 @@ public struct MembershipLogic {
       case let .membershipResponse(.success(data)):
         let userId = data.currentUser.id
         state.appAccountToken = UUID(uuidString: userId)
-        
+
         let campaign = data.activeInvitationCampaign
         let invitationCode = data.invitationCode
 

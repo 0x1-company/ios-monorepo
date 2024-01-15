@@ -7,6 +7,7 @@ import FeedbackGeneratorClient
 import ReportFeature
 import Styleguide
 import SwiftUI
+import SwipeCardFeature
 import TcaHelpers
 
 @Reducer
