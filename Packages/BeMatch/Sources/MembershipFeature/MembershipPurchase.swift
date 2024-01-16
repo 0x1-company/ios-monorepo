@@ -17,6 +17,7 @@ public struct MembershipPurchaseLogic {
 
   public enum Action {
     case onTask
+    case onAppear
     case upgradeButtonTapped
     case delegate(Delegate)
 
@@ -31,6 +32,10 @@ public struct MembershipPurchaseLogic {
     Reduce<State, Action> { _, action in
       switch action {
       case .onTask:
+        return .none
+        
+      case .onAppear:
+        analytics.logScreen(screenName: "MembershipPurchase", of: self)
         return .none
 
       case .upgradeButtonTapped:
@@ -101,6 +106,7 @@ public struct MembershipPurchaseView: View {
       }
       .background()
       .task { await store.send(.onTask).finish() }
+      .onAppear { store.send(.onAppear) }
     }
   }
 }

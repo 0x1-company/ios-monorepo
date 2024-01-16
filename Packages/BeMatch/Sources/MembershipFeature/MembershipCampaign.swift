@@ -35,6 +35,7 @@ public struct MembershipCampaignLogic {
 
   public enum Action {
     case onTask
+    case onAppear
     case invitationCodeButtonTapped
     case upgradeButtonTapped
     case invitationCampaign(InvitationCampaignLogic.Action)
@@ -63,6 +64,10 @@ public struct MembershipCampaignLogic {
     Reduce<State, Action> { _, action in
       switch action {
       case .onTask:
+        return .none
+        
+      case .onAppear:
+        analytics.logScreen(screenName: "MembershipCampaign", of: self)
         return .none
 
       case .invitationCodeButtonTapped:
@@ -145,6 +150,7 @@ public struct MembershipCampaignView: View {
       }
       .background()
       .task { await store.send(.onTask).finish() }
+      .onAppear { store.send(.onAppear) }
     }
   }
 }
