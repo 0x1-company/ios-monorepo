@@ -57,6 +57,9 @@ public struct InvitationCodeCampaignView: View {
               .font(.system(.largeTitle, design: .rounded, weight: .bold))
               .offset(x: -35, y: 8)
           }
+          .onTapGesture {
+            store.send(.invitationCodeButtonTapped)
+          }
 
         PrimaryButton(
           String(localized: "Send Invitation Code", bundle: .module)
