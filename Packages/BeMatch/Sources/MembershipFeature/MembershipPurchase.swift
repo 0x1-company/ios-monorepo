@@ -8,7 +8,11 @@ public struct MembershipPurchaseLogic {
   public init() {}
 
   public struct State: Equatable {
-    public init() {}
+    let displayPrice: String
+
+    public init(displayPrice: String) {
+      self.displayPrice = displayPrice
+    }
   }
 
   public enum Action {
@@ -58,7 +62,7 @@ public struct MembershipPurchaseView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { _ in
+    WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 16) {
         ScrollView {
           VStack(spacing: 24) {
@@ -69,7 +73,7 @@ public struct MembershipPurchaseView: View {
               Button {
                 store.send(.upgradeButtonTapped)
               } label: {
-                Text("続ける - ¥500円/週")
+                Text("Upgrade for \(viewStore.displayPrice)/week", bundle: .module)
               }
               .buttonStyle(ConversionPrimaryButtonStyle())
 
@@ -89,9 +93,11 @@ public struct MembershipPurchaseView: View {
         Button {
           store.send(.upgradeButtonTapped)
         } label: {
-          Text("続ける - ¥500円/週")
+          Text("Upgrade for \(viewStore.displayPrice)/week", bundle: .module)
         }
         .buttonStyle(ConversionPrimaryButtonStyle())
+        .padding(.horizontal, 16)
+        .padding(.bottom, 36)
       }
       .background()
       .task { await store.send(.onTask).finish() }
@@ -103,7 +109,9 @@ public struct MembershipPurchaseView: View {
   NavigationStack {
     MembershipPurchaseView(
       store: .init(
-        initialState: MembershipPurchaseLogic.State(),
+        initialState: MembershipPurchaseLogic.State(
+          displayPrice: "¥500"
+        ),
         reducer: { MembershipPurchaseLogic() }
       )
     )

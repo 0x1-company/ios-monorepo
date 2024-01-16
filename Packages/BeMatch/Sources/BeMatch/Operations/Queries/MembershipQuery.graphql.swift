@@ -8,7 +8,7 @@ public extension BeMatch {
     public static let operationName: String = "Membership"
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"query Membership { activeInvitationCampaign { __typename id quantity } invitationCode { __typename id code } currentUser { __typename id } }"#
+        #"query Membership { activeInvitationCampaign { __typename id quantity durationWeeks } invitationCode { __typename id code } currentUser { __typename id } }"#
       ))
 
     public init() {}
@@ -43,11 +43,14 @@ public extension BeMatch {
           .field("__typename", String.self),
           .field("id", BeMatch.ID.self),
           .field("quantity", Int.self),
+          .field("durationWeeks", Int.self),
         ] }
 
         public var id: BeMatch.ID { __data["id"] }
         /// 招待キャンペーンの発行数
         public var quantity: Int { __data["quantity"] }
+        /// 何週間メンバーシップを付与するのか
+        public var durationWeeks: Int { __data["durationWeeks"] }
       }
 
       /// InvitationCode

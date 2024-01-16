@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "24,000" : {
-
-    },
     "benefits to each other!" : {
       "localizations" : {
         "ja" : {
@@ -55,7 +52,14 @@
       }
     },
     "OK" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
     },
     "Recurring billing. You can cancel at any time. Payment will be charged to your iTunes account and your subscription will auto-renew at $500/week until you cancel in iTunes Store settings. By tapping Unlock, you agree to the Terms of Service and auto-renewal." : {
       "localizations" : {
@@ -63,17 +67,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "定期課金。いつでもキャンセルできます。お支払いはiTunesアカウントに請求され、iTunes Storeの設定でキャンセルするまで、購読は¥500/週で自動更新されます。ロック解除をタップすると、利用規約と自動更新に同意したことになります。"
-          }
-        }
-      }
-    },
-    "Restore a purchase" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "購入を復元する"
           }
         }
       }
@@ -88,18 +81,15 @@
         }
       }
     },
-    "Upgrade for ¥500/week" : {
+    "Upgrade for %@/week" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¥500円/週でアップグレードする"
+            "value" : "続ける - %@/週"
           }
         }
       }
-    },
-    "続ける - ¥500円/週" : {
-
     }
   },
   "version" : "1.0"

@@ -9,13 +9,22 @@ public struct MembershipCampaignLogic {
 
   public struct State: Equatable {
     let campaign: BeMatch.MembershipQuery.Data.ActiveInvitationCampaign
+    let displayPrice: String
 
     var invitationCampaign: InvitationCampaignLogic.State
     var invitationCodeCampaign: InvitationCodeCampaignLogic.State
 
-    public init(campaign: BeMatch.MembershipQuery.Data.ActiveInvitationCampaign, code: String) {
+    public init(
+      campaign: BeMatch.MembershipQuery.Data.ActiveInvitationCampaign,
+      code: String,
+      displayPrice: String
+    ) {
       self.campaign = campaign
-      invitationCampaign = InvitationCampaignLogic.State(quantity: campaign.quantity)
+      self.displayPrice = displayPrice
+      invitationCampaign = InvitationCampaignLogic.State(
+        quantity: campaign.quantity,
+        durationWeeks: campaign.durationWeeks
+      )
       invitationCodeCampaign = InvitationCodeCampaignLogic.State(code: code)
     }
   }
@@ -69,7 +78,7 @@ public struct MembershipCampaignView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { _ in
+    WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 16) {
         ScrollView {
           VStack(spacing: 0) {
@@ -109,7 +118,7 @@ public struct MembershipCampaignView: View {
           Button {
             store.send(.upgradeButtonTapped)
           } label: {
-            Text("Upgrade for ¥500/week", bundle: .module)
+            Text("Upgrade for \(viewStore.displayPrice)/week", bundle: .module)
           }
           .buttonStyle(ConversionSecondaryButtonStyle())
         }
@@ -135,7 +144,8 @@ public struct MembershipCampaignView: View {
             fulfilledFragments: []
           )
         ),
-        code: "ABCDEF"
+        code: "ABCDEF",
+        displayPrice: "¥500"
       ),
       reducer: { MembershipCampaignLogic() }
     )
