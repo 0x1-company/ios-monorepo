@@ -8,6 +8,7 @@ public enum Constants {
   public static let appStoreFemaleURL = URL(string: Self.appStoreURL.absoluteString + "?ppid=9130a5b1-9ebf-46aa-ae5b-5bc7d22a33dc")!
   public static let appStoreForEmptyURL = URL(string: Self.appStoreURL.absoluteString + "?pt=126551170&ct=recommendation-empty-male&mt=8")!
   public static let appStoreFemaleForEmptyURL = URL(string: Self.appStoreFemaleURL.absoluteString + "&pt=126551170&ct=recommendation-empty-female&mt=8")!
+  public static let appStoreInviteURL = URL(string: Self.appStoreURL.absoluteString + "?pt=126551170&ct=invite&mt=8")!
 
   public static let appStoreReviewURL = URL(string: "https://itunes.apple.com/us/app/apple-store/id\(Self.appId)?mt=8&action=write-review")!
 

@@ -32,18 +32,7 @@ public struct MembershipLogic {
     @BindingState var isPresented = false
     @PresentationState var destination: Destination.State?
 
-    var shareText: String {
-      let text: String.LocalizationValue = """
-      I gave you an invitation code [\(invitationCode)] for 1 year free BeMatch PRO worth 24,000 yen! 🎁.
-
-      When you become a BeMatch PRO...
-      ■ See who you are Liked by.
-
-      BeReal exchange app "BeMatch." Download it! 🤞🏻
-      https://apps.apple.com/jp/app/id6473888485
-      """
-      return String(localized: text, bundle: .module)
-    }
+    var shareText = ""
 
     public init() {
       @Dependency(\.build) var build
@@ -150,6 +139,20 @@ public struct MembershipLogic {
               displayPrice: product.displayPrice
             )
           )
+          
+          let price = campaign.durationWeeks * 500
+          
+          let localizationValue: String.LocalizationValue = """
+          I gave you an invitation code [\(data.invitationCode.code)] for free BeMatch PRO worth \(price) yen! 🎁.
+
+          When you become a BeMatch PRO...
+          ■ See who you are Liked by.
+
+          BeReal exchange app "BeMatch." Download it! 🤞🏻
+          https://bematch.onelink.me/nob4/mhxumci1
+          """
+          state.shareText = String(localized: localizationValue, bundle: .module)
+
         } else if let product {
           state.child = .purchase(
             MembershipPurchaseLogic.State(
