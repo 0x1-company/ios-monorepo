@@ -210,7 +210,7 @@ public struct MembershipLogic {
       let campaign = changedState.data?.activeInvitationCampaign
       let code = changedState.data?.invitationCode.code
       let product = changedState.product
-      
+
       if let campaign, let code, let product {
         state.child = .campaign(
           MembershipCampaignLogic.State(
