@@ -15,7 +15,7 @@ public struct MembershipPurchaseLogic {
     case onTask
     case upgradeButtonTapped
     case delegate(Delegate)
-    
+
     public enum Delegate: Equatable {
       case purchase
     }
@@ -28,10 +28,10 @@ public struct MembershipPurchaseLogic {
       switch action {
       case .onTask:
         return .none
-        
+
       case .upgradeButtonTapped:
         return .send(.delegate(.purchase))
-        
+
       default:
         return .none
       }
