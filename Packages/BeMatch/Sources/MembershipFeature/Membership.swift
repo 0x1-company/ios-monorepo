@@ -8,6 +8,7 @@ import StoreKit
 import StoreKitClient
 import StoreKitHelpers
 import SwiftUI
+import TcaHelpers
 
 @Reducer
 public struct MembershipLogic {
@@ -21,6 +22,7 @@ public struct MembershipLogic {
   public struct State: Equatable {
     var child: Child.State?
     var isActivityIndicatorVisible = false
+    var data: BeMatch.MembershipQuery.Data?
 
     let bematchProOneWeekId: String
     var appAccountToken: UUID?
@@ -146,26 +148,7 @@ public struct MembershipLogic {
         let userId = data.currentUser.id
         state.appAccountToken = UUID(uuidString: userId)
         state.invitationCode = data.invitationCode.code
-
-        let campaign = data.activeInvitationCampaign
-        let invitationCode = data.invitationCode
-
-        if let campaign {
-          state.child = .campaign(
-            MembershipCampaignLogic.State(
-              campaign: campaign,
-              code: invitationCode.code
-            )
-          )
-        } else {
-          state.child = .purchase(
-            MembershipPurchaseLogic.State()
-          )
-        }
-        return .none
-
-      case .membershipResponse(.failure):
-        state.child = .purchase(MembershipPurchaseLogic.State())
+        state.data = data
         return .none
 
       case let .purchaseResponse(.success(transaction)):
@@ -222,6 +205,28 @@ public struct MembershipLogic {
       default:
         return .none
       }
+    }
+    .onChange(of: { $0 }) { changedState, state, _ in
+      let campaign = changedState.data?.activeInvitationCampaign
+      let code = changedState.data?.invitationCode.code
+      let product = changedState.product
+      
+      if let campaign, let code, let product {
+        state.child = .campaign(
+          MembershipCampaignLogic.State(
+            campaign: campaign,
+            code: code,
+            displayPrice: product.displayPrice
+          )
+        )
+      } else if let product {
+        state.child = .purchase(
+          MembershipPurchaseLogic.State(
+            displayPrice: product.displayPrice
+          )
+        )
+      }
+      return .none
     }
     .ifLet(\.child, action: \.child) {
       Child()
