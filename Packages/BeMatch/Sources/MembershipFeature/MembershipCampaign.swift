@@ -12,6 +12,7 @@ public struct MembershipCampaignLogic {
     let displayPrice: String
 
     var invitationCampaign: InvitationCampaignLogic.State
+    var invitationCampaignPrice: InvitationCampaignPriceLogic.State
     var invitationCodeCampaign: InvitationCodeCampaignLogic.State
 
     public init(
@@ -25,6 +26,9 @@ public struct MembershipCampaignLogic {
         quantity: campaign.quantity,
         durationWeeks: campaign.durationWeeks
       )
+      invitationCampaignPrice = InvitationCampaignPriceLogic.State(
+        durationWeeks: campaign.durationWeeks
+      )
       invitationCodeCampaign = InvitationCodeCampaignLogic.State(code: code)
     }
   }
@@ -34,6 +38,7 @@ public struct MembershipCampaignLogic {
     case invitationCodeButtonTapped
     case upgradeButtonTapped
     case invitationCampaign(InvitationCampaignLogic.Action)
+    case invitationCampaignPrice(InvitationCampaignPriceLogic.Action)
     case invitationCodeCampaign(InvitationCodeCampaignLogic.Action)
     case delegate(Delegate)
 
@@ -51,6 +56,9 @@ public struct MembershipCampaignLogic {
     }
     Scope(state: \.invitationCodeCampaign, action: \.invitationCodeCampaign) {
       InvitationCodeCampaignLogic()
+    }
+    Scope(state: \.invitationCampaignPrice, action: \.invitationCampaignPrice) {
+      InvitationCampaignPriceLogic()
     }
     Reduce<State, Action> { _, action in
       switch action {
@@ -89,6 +97,13 @@ public struct MembershipCampaignView: View {
               )
             )
 
+            InvitationCampaignPriceView(
+              store: store.scope(
+                state: \.invitationCampaignPrice,
+                action: \.invitationCampaignPrice
+              )
+            )
+
             InvitationCodeCampaignView(
               store: store.scope(
                 state: \.invitationCodeCampaign,
@@ -98,6 +113,9 @@ public struct MembershipCampaignView: View {
 
             VStack(spacing: 60) {
               Image(ImageResource.membershipBenefit)
+                .resizable()
+              
+              Image(ImageResource.howToReceiveBenefit)
                 .resizable()
 
               PurchaseAboutView()

@@ -85,9 +85,16 @@ public struct InvitationCampaignView: View {
           Text("Both those who invited and those who were invited.", bundle: .module)
 
           VStack(spacing: 8) {
-            Text(viewStore.totalBenefit.description)
-              .foregroundStyle(textGradient)
-              .font(.system(size: 72, weight: .heavy))
+            HStack(spacing: 8) {
+              Text(viewStore.totalBenefit.description)
+                .font(.system(size: 72, weight: .heavy))
+              VStack(spacing: 0) {
+                Text("円")
+                Text("分")
+              }
+              .font(.system(size: 22, weight: .bold))
+            }
+            .foregroundStyle(textGradient)
 
             Text("benefits to each other!", bundle: .module)
           }
