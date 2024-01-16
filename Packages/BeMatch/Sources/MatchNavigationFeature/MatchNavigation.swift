@@ -245,6 +245,10 @@ public struct MatchNavigationView: View {
         ReceivedLikeSwipeView(store: store)
       }
     }
+    .fullScreenCover(
+      store: store.scope(state: \.$destination.profileExternal, action: \.destination.profileExternal),
+      content: ProfileExternalView.init(store:)
+    )
   }
 }
 
