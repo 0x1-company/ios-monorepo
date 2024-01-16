@@ -22,7 +22,6 @@ public struct MembershipLogic {
   public struct State: Equatable {
     var child: Child.State?
     var isActivityIndicatorVisible = false
-    var data: BeMatch.MembershipQuery.Data?
 
     let bematchProOneWeekId: String
     var appAccountToken: UUID?
@@ -55,8 +54,7 @@ public struct MembershipLogic {
   public enum Action: BindableAction {
     case onTask
     case closeButtonTapped
-    case productsResponse(Result<[Product], Error>)
-    case membershipResponse(Result<BeMatch.MembershipQuery.Data, Error>)
+    case response(Result<[Product], Error>, Result<BeMatch.MembershipQuery.Data, Error>)
     case purchaseResponse(Result<StoreKit.Transaction, Error>)
     case createAppleSubscriptionResponse(Result<BeMatch.CreateAppleSubscriptionMutation.Data, Error>)
     case transactionFinish(StoreKit.Transaction)
@@ -77,9 +75,8 @@ public struct MembershipLogic {
   @Dependency(\.analytics) var analytics
 
   enum Cancel {
-    case products
     case purchase
-    case membership
+    case response
   }
 
   public var body: some Reducer<State, Action> {
@@ -88,16 +85,15 @@ public struct MembershipLogic {
       switch action {
       case .onTask:
         return .run { [id = state.bematchProOneWeekId] send in
-          await withTaskGroup(of: Void.self) { group in
-            group.addTask {
-              await productsRequest(send: send, ids: [id])
-            }
-
-            group.addTask {
-              await membershipRequest(send: send)
-            }
+          for try await data in bematch.membership() {
+            await send(.response(Result {
+              try await store.products([id])
+            }, .success(data)))
           }
+        } catch: { error, send in
+          await send(.response(.success([]), .failure(error)))
         }
+        .cancellable(id: Cancel.response, cancelInFlight: true)
 
       case .closeButtonTapped:
         return .send(.delegate(.dismiss))
@@ -137,18 +133,30 @@ public struct MembershipLogic {
         }
         .cancellable(id: Cancel.purchase, cancelInFlight: true)
 
-      case let .productsResponse(.success(products)):
-        guard
-          let product = products.first(where: { $0.id == state.bematchProOneWeekId })
-        else { return .none }
-        state.product = product
-        return .none
-
-      case let .membershipResponse(.success(data)):
+      case let .response(.success(products), .success(data)):
         let userId = data.currentUser.id
         state.appAccountToken = UUID(uuidString: userId)
         state.invitationCode = data.invitationCode.code
-        state.data = data
+        
+        let campaign = data.activeInvitationCampaign
+        let product = products.first(where: { $0.id == state.bematchProOneWeekId })
+        state.product = product
+        
+        if let campaign, let product {
+          state.child = .campaign(
+            MembershipCampaignLogic.State(
+              campaign: campaign,
+              code: data.invitationCode.code,
+              displayPrice: product.displayPrice
+            )
+          )
+        } else if let product {
+          state.child = .purchase(
+            MembershipPurchaseLogic.State(
+              displayPrice: product.displayPrice
+            )
+          )
+        }
         return .none
 
       case let .purchaseResponse(.success(transaction)):
@@ -206,54 +214,11 @@ public struct MembershipLogic {
         return .none
       }
     }
-    .onChange(of: { $0 }) { changedState, state, _ in
-      let campaign = changedState.data?.activeInvitationCampaign
-      let code = changedState.data?.invitationCode.code
-      let product = changedState.product
-
-      state.invitationCode = code ?? ""
-      if let campaign, let code, let product {
-        state.child = .campaign(
-          MembershipCampaignLogic.State(
-            campaign: campaign,
-            code: code,
-            displayPrice: product.displayPrice
-          )
-        )
-      } else if let product {
-        state.child = .purchase(
-          MembershipPurchaseLogic.State(
-            displayPrice: product.displayPrice
-          )
-        )
-      }
-      return .none
-    }
     .ifLet(\.child, action: \.child) {
       Child()
     }
     .ifLet(\.$destination, action: \.destination) {
       Destination()
-    }
-  }
-
-  func productsRequest(send: Send<Action>, ids: [String]) async {
-    await withTaskCancellation(id: Cancel.products, cancelInFlight: true) {
-      await send(.productsResponse(Result {
-        try await store.products(ids)
-      }))
-    }
-  }
-
-  func membershipRequest(send: Send<Action>) async {
-    await withTaskCancellation(id: Cancel.membership, cancelInFlight: true) {
-      do {
-        for try await data in bematch.membership() {
-          await send(.membershipResponse(.success(data)))
-        }
-      } catch {
-        await send(.membershipResponse(.failure(error)))
-      }
     }
   }
 
