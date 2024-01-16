@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "0" : {
+
+    },
     "benefits to each other!" : {
       "localizations" : {
         "ja" : {
@@ -90,6 +93,25 @@
           }
         }
       }
+    },
+    "When a friend enters your invitation code\nyou will receive a" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "友達があなたの招待コードを\n入力すると、お互いに"
+          }
+        }
+      }
+    },
+    "が%@" : {
+
+    },
+    "円" : {
+
+    },
+    "分" : {
+
     }
   },
   "version" : "1.0"

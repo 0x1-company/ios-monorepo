@@ -48,35 +48,29 @@ public struct InvitationCodeCampaignView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 16) {
-        Image(ImageResource.bematchCampaign)
+        Image(ImageResource.inviteTicket)
           .resizable()
-          .padding(.horizontal, 60)
-
-        VStack(spacing: 16) {
-          Image(ImageResource.inviteTicket)
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .overlay(alignment: .center) {
-              Text(viewStore.code)
-                .foregroundStyle(Color(0xFFFF_CC00))
-                .font(.system(.largeTitle, design: .rounded, weight: .bold))
-                .offset(x: -35, y: 8)
-            }
-
-          PrimaryButton(
-            String(localized: "Send Invitation Code", bundle: .module)
-          ) {
-            store.send(.invitationCodeButtonTapped)
+          .aspectRatio(contentMode: .fit)
+          .overlay(alignment: .center) {
+            Text(viewStore.code)
+              .foregroundStyle(Color(0xFFFF_CC00))
+              .font(.system(.largeTitle, design: .rounded, weight: .bold))
+              .offset(x: -35, y: 8)
           }
+
+        PrimaryButton(
+          String(localized: "Send Invitation Code", bundle: .module)
+        ) {
+          store.send(.invitationCodeButtonTapped)
         }
-        .padding(.all, 16)
-        .background(Color(uiColor: UIColor.secondarySystemBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 16))
-        .padding(.horizontal, 16)
       }
+      .padding(.all, 16)
+      .multilineTextAlignment(.center)
+      .background(Color(uiColor: UIColor.secondarySystemBackground))
+      .clipShape(RoundedRectangle(cornerRadius: 16))
+      .padding(.horizontal, 16)
       .padding(.vertical, 24)
       .background()
-      .multilineTextAlignment(.center)
     }
   }
 }
