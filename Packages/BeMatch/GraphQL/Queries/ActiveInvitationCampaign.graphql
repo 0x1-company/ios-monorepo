@@ -2,5 +2,6 @@ query ActiveInvitationCampaign {
   activeInvitationCampaign {
     id
     quantity
+    durationWeeks
   }
 }

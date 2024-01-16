@@ -120,6 +120,8 @@ enum Gender {
 }
 
 type InvitationCampaign {
+  """何週間メンバーシップを付与するのか"""
+  durationWeeks: Int!
   id: ID!
 
   """招待キャンペーンの発行数"""

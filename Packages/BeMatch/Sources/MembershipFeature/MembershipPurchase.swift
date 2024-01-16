@@ -13,6 +13,12 @@ public struct MembershipPurchaseLogic {
 
   public enum Action {
     case onTask
+    case upgradeButtonTapped
+    case delegate(Delegate)
+    
+    public enum Delegate: Equatable {
+      case purchase
+    }
   }
 
   @Dependency(\.analytics) var analytics
@@ -21,6 +27,12 @@ public struct MembershipPurchaseLogic {
     Reduce<State, Action> { _, action in
       switch action {
       case .onTask:
+        return .none
+        
+      case .upgradeButtonTapped:
+        return .send(.delegate(.purchase))
+        
+      default:
         return .none
       }
     }
@@ -54,13 +66,12 @@ public struct MembershipPurchaseView: View {
               .resizable()
 
             VStack(spacing: 40) {
-              Text("続ける - ¥500円/週")
-                .font(.system(.subheadline, weight: .semibold))
-                .frame(height: 50)
-                .frame(maxWidth: .infinity)
-                .foregroundStyle(Color.black)
-                .background(gradient)
-                .clipShape(RoundedRectangle(cornerRadius: 16))
+              Button {
+                store.send(.upgradeButtonTapped)
+              } label: {
+                Text("続ける - ¥500円/週")
+              }
+              .buttonStyle(ConversionPrimaryButtonStyle())
 
               VStack(spacing: 60) {
                 Image(ImageResource.membershipBenefit)
@@ -75,15 +86,12 @@ public struct MembershipPurchaseView: View {
           .padding(.horizontal, 16)
         }
 
-        Text("続ける - ¥500円/週")
-          .font(.system(.subheadline, weight: .semibold))
-          .frame(height: 50)
-          .frame(maxWidth: .infinity)
-          .foregroundStyle(Color.black)
-          .background(gradient)
-          .clipShape(RoundedRectangle(cornerRadius: 16))
-          .padding(.horizontal, 16)
-          .padding(.bottom, 36)
+        Button {
+          store.send(.upgradeButtonTapped)
+        } label: {
+          Text("続ける - ¥500円/週")
+        }
+        .buttonStyle(ConversionPrimaryButtonStyle())
       }
       .background()
       .task { await store.send(.onTask).finish() }
