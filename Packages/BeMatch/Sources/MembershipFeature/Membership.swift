@@ -105,7 +105,8 @@ public struct MembershipLogic {
         state.isPresented = true
         return .none
 
-      case .child(.campaign(.delegate(.purchase))):
+      case .child(.campaign(.delegate(.purchase))),
+           .child(.purchase(.delegate(.purchase))):
         guard
           let product = state.product,
           let appAccountToken = state.appAccountToken
