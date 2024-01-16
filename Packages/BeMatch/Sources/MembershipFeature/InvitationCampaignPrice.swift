@@ -9,7 +9,7 @@ public struct InvitationCampaignPriceLogic {
   public struct State: Equatable {
     let durationWeeks: Int
     var displayDuration = ""
-    
+
     public init(durationWeeks: Int) {
       self.durationWeeks = durationWeeks
     }
@@ -30,18 +30,18 @@ public struct InvitationCampaignPriceLogic {
       }
     }
   }
-  
+
   func formatDuration(_ durationWeeks: Int) -> String {
     if durationWeeks <= 3 {
       return "\(durationWeeks)週間"
     }
-    
+
     let months = durationWeeks / 4
     let remainingWeeks = durationWeeks % 4
-    
+
     let years = months / 12
     let remainingMonths = months % 12
-    
+
     var result: [String] = []
     if years > 0 {
       result.append("\(years)年間")
@@ -52,7 +52,7 @@ public struct InvitationCampaignPriceLogic {
     if remainingWeeks > 0 {
       result.append("\(remainingWeeks)週間")
     }
-    
+
     return result.joined(separator: ", ")
   }
 }
