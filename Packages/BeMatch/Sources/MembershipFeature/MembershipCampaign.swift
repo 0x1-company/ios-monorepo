@@ -65,7 +65,7 @@ public struct MembershipCampaignLogic {
       switch action {
       case .onTask:
         return .none
-        
+
       case .onAppear:
         analytics.logScreen(screenName: "MembershipCampaign", of: self)
         return .none
