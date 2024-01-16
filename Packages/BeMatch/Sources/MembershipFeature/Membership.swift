@@ -211,6 +211,7 @@ public struct MembershipLogic {
       let code = changedState.data?.invitationCode.code
       let product = changedState.product
 
+      state.invitationCode = code ?? ""
       if let campaign, let code, let product {
         state.child = .campaign(
           MembershipCampaignLogic.State(
