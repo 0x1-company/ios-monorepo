@@ -114,7 +114,7 @@ public struct MembershipCampaignView: View {
             VStack(spacing: 60) {
               Image(ImageResource.membershipBenefit)
                 .resizable()
-              
+
               Image(ImageResource.howToReceiveBenefit)
                 .resizable()
 
