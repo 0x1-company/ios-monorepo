@@ -33,7 +33,7 @@ public struct MembershipPurchaseLogic {
       switch action {
       case .onTask:
         return .none
-        
+
       case .onAppear:
         analytics.logScreen(screenName: "MembershipPurchase", of: self)
         return .none

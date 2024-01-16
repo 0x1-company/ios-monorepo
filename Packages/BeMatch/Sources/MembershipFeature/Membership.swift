@@ -126,11 +126,11 @@ public struct MembershipLogic {
         let userId = data.currentUser.id
         state.appAccountToken = UUID(uuidString: userId)
         state.invitationCode = data.invitationCode.code
-        
+
         let campaign = data.activeInvitationCampaign
         let product = products.first(where: { $0.id == state.bematchProOneWeekId })
         state.product = product
-        
+
         if let campaign, let product {
           state.child = .campaign(
             MembershipCampaignLogic.State(
@@ -139,9 +139,9 @@ public struct MembershipLogic {
               displayPrice: product.displayPrice
             )
           )
-          
+
           let price = campaign.durationWeeks * 500
-          
+
           let localizationValue: String.LocalizationValue = """
           I gave you an invitation code [\(data.invitationCode.code)] for free BeMatch PRO worth \(price) yen! 🎁.
 
