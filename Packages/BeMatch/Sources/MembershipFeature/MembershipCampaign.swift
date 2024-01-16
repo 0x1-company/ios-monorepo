@@ -15,7 +15,10 @@ public struct MembershipCampaignLogic {
 
     public init(campaign: BeMatch.MembershipQuery.Data.ActiveInvitationCampaign, code: String) {
       self.campaign = campaign
-      invitationCampaign = InvitationCampaignLogic.State(quantity: campaign.quantity)
+      invitationCampaign = InvitationCampaignLogic.State(
+        quantity: campaign.quantity,
+        durationWeeks: campaign.durationWeeks
+      )
       invitationCodeCampaign = InvitationCodeCampaignLogic.State(code: code)
     }
   }

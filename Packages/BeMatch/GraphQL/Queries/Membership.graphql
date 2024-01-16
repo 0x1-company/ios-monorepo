@@ -2,6 +2,7 @@ query Membership {
   activeInvitationCampaign {
     id
     quantity
+    durationWeeks
   }
 
   invitationCode {

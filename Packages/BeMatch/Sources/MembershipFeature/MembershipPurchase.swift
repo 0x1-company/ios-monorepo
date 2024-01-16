@@ -92,6 +92,8 @@ public struct MembershipPurchaseView: View {
           Text("続ける - ¥500円/週")
         }
         .buttonStyle(ConversionPrimaryButtonStyle())
+        .padding(.horizontal, 16)
+        .padding(.bottom, 36)
       }
       .background()
       .task { await store.send(.onTask).finish() }

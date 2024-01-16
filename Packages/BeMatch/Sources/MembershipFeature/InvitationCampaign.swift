@@ -9,9 +9,12 @@ public struct InvitationCampaignLogic {
 
   public struct State: Equatable {
     let quantity: Int
+    let durationWeeks: Int
+    var totalBenefit = 0
 
-    public init(quantity: Int) {
+    public init(quantity: Int, durationWeeks: Int) {
       self.quantity = quantity
+      self.durationWeeks = durationWeeks
     }
   }
 
@@ -22,9 +25,11 @@ public struct InvitationCampaignLogic {
   @Dependency(\.analytics) var analytics
 
   public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { _, action in
+    Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
+        let price = 500
+        state.totalBenefit = price * state.durationWeeks
         return .none
       }
     }
@@ -76,7 +81,7 @@ public struct InvitationCampaignView: View {
           Text("Both those who invited and those who were invited.", bundle: .module)
 
           VStack(spacing: 8) {
-            Text("24,000")
+            Text(viewStore.totalBenefit.description)
               .foregroundStyle(textGradient)
               .font(.system(size: 72, weight: .heavy))
 
@@ -99,7 +104,8 @@ public struct InvitationCampaignView: View {
   InvitationCampaignView(
     store: .init(
       initialState: InvitationCampaignLogic.State(
-        quantity: 2000
+        quantity: 2000,
+        durationWeeks: 48
       ),
       reducer: { InvitationCampaignLogic() }
     )
