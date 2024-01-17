@@ -11,6 +11,7 @@ permissions:
 jobs:
   auto-assign:
     runs-on: ubuntu-latest
+    if: ${{ github.actor != 'renovate' }}
     steps:
       - name: Set GitHub assignees
         env:
