@@ -80,12 +80,6 @@ public struct InvitationCodeView: View {
                 .font(.system(.largeTitle, design: .rounded, weight: .bold))
                 .offset(x: -35, y: 8)
             }
-
-          PrimaryButton(
-            String(localized: "Share Invitation Code", bundle: .module)
-          ) {
-            store.send(.shareInvitationCodeButtonTapped)
-          }
         }
         .padding(.all, 16)
         .background(Color(uiColor: UIColor.secondarySystemBackground))
