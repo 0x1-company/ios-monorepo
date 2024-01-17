@@ -50,7 +50,7 @@ public struct BannedView: View {
         Text("You will no longer be able to access your BeMatch account or create new accounts in the future.", bundle: .module)
           .font(.system(.body, weight: .semibold))
           .foregroundStyle(Color.secondary)
-        
+
         Text("id: \(viewStore.userId)")
           .font(.system(.body, weight: .semibold))
           .foregroundStyle(Color.secondary)
