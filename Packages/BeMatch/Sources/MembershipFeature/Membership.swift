@@ -180,7 +180,9 @@ public struct MembershipLogic {
           guard data.createAppleSubscription else { return }
           await send(.transactionFinish(transaction))
         } catch: { error, send in
-          await send(.createAppleSubscriptionResponse(.failure(error)))
+          async let finish: Void = send(.transactionFinish(transaction))
+          async let failure: Void = send(.createAppleSubscriptionResponse(.failure(error)))
+          _ = await (finish, failure)
         }
 
       case .purchaseResponse(.failure):
