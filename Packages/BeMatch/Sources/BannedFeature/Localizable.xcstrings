@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "id: %@" : {
+
+    },
     "It's important to us that BeMatch is a welcoming and safe space for everyone.\nUnfortunately, we found that you violated our Terms of Use and so we've made the decision to remove you from the BeMatch Platform." : {
       "localizations" : {
         "ja" : {

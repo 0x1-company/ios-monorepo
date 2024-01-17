@@ -82,7 +82,9 @@ public struct AppLogic {
         else { return .none }
 
         guard case .active = user.status else {
-          state.child = .banned()
+          state.child = .banned(
+            BannedLogic.State(userId: user.id)
+          )
           return .none
         }
 
@@ -133,7 +135,7 @@ public struct AppLogic {
       case navigation(RootNavigationLogic.State)
       case forceUpdate(ForceUpdateLogic.State = .init())
       case maintenance(MaintenanceLogic.State = .init())
-      case banned(BannedLogic.State = .init())
+      case banned(BannedLogic.State)
     }
 
     public enum Action {
