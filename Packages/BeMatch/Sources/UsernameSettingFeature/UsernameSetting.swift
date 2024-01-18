@@ -12,9 +12,9 @@ public struct UsernameSettingLogic {
   public init() {}
 
   public struct State: Equatable {
-    var isDisabled = true
     var isActivityIndicatorVisible = false
     @BindingState var username: String
+    @PresentationState var alert: AlertState<Action.Alert>?
 
     public init(username: String) {
       self.username = username
@@ -26,7 +26,12 @@ public struct UsernameSettingLogic {
     case nextButtonTapped
     case updateBeRealResponse(Result<BeMatch.UpdateBeRealMutation.Data, Error>)
     case binding(BindingAction<State>)
+    case alert(PresentationAction<Alert>)
     case delegate(Delegate)
+    
+    public enum Alert: Equatable {
+      case confirmOkay
+    }
 
     public enum Delegate: Equatable {
       case nextScreen
@@ -69,40 +74,25 @@ public struct UsernameSettingLogic {
 
       case .updateBeRealResponse(.failure):
         state.isActivityIndicatorVisible = false
+        state.alert = AlertState {
+          TextState("Error", bundle: .module)
+        } actions: {
+          ButtonState(action: .confirmOkay) {
+            TextState("OK", bundle: .module)
+          }
+        } message: {
+          TextState("username must be a string at least 4 characters long and up to 30 characters long containing only letters, numbers, underscores, and periods except that no two periods shall be in sequence or undefined", bundle: .module)
+        }
         return .none
-
-      case .binding:
-        let isEnabled = validateUsername(for: state.username)
-        state.isDisabled = !isEnabled
+        
+      case .alert(.presented(.confirmOkay)):
         return .none
 
       default:
         return .none
       }
     }
-  }
-
-  public func validateUsername(for username: String) -> Bool {
-    let usernameRegex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9_]+(?:\\.[a-zA-Z0-9_]+)*$")
-    let usernameTest = NSPredicate(format: "SELF MATCHES %@", usernameRegex.pattern)
-
-    if !usernameTest.evaluate(with: username) {
-      return false
-    }
-
-    if username.count < 4 || username.count > 30 {
-      return false
-    }
-
-    if username.contains("..") {
-      return false
-    }
-
-    if username.hasPrefix(".") || username.hasSuffix(".") {
-      return false
-    }
-
-    return true
+    .ifLet(\.$alert, action: \.alert)
   }
 }
 
@@ -155,8 +145,7 @@ public struct UsernameSettingView: View {
           nextButtonStyle == .save
             ? String(localized: "Save", bundle: .module)
             : String(localized: "Next", bundle: .module),
-          isLoading: viewStore.isActivityIndicatorVisible,
-          isDisabled: viewStore.isDisabled
+          isLoading: viewStore.isActivityIndicatorVisible
         ) {
           store.send(.nextButtonTapped)
         }
@@ -175,6 +164,7 @@ public struct UsernameSettingView: View {
           Image(ImageResource.beMatch)
         }
       }
+      .alert(store: store.scope(state: \.$alert, action: \.alert))
     }
   }
 }

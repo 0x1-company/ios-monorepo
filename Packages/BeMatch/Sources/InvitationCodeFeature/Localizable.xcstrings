@@ -15,6 +15,7 @@
 
     },
     "Share Invitation Code" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {

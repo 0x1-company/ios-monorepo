@@ -20,7 +20,7 @@ public extension ApolloClient {
           if let data = response.data {
             continuation.yield(data)
           } else if let error = response.errors?.last {
-            continuation.yield(with: .failure(GodServerError(error: error)))
+            continuation.yield(with: .failure(ServerError(error: error)))
           } else {
             continuation.finish(throwing: nil)
           }
@@ -51,7 +51,7 @@ public extension ApolloClient {
               continuation.resume(returning: data)
             }
             if let error = response.errors?.last {
-              continuation.resume(throwing: GodServerError(error: error))
+              continuation.resume(throwing: ServerError(error: error))
             }
           case let .failure(error):
             continuation.resume(throwing: error)
@@ -62,13 +62,13 @@ public extension ApolloClient {
   }
 }
 
-public struct GodServerError: Error {
+public struct ServerError: Error {
   public let message: String
   public let extensions: [String: Any]
-  public var code: GodServerErrorCode? {
+  public var code: ServerErrorCode? {
     guard let code = extensions["code"] as? String
     else { return nil }
-    return GodServerErrorCode(rawValue: code)
+    return ServerErrorCode(rawValue: code)
   }
 
   public init(
@@ -79,7 +79,7 @@ public struct GodServerError: Error {
     self.extensions = extensions
   }
 
-  public enum GodServerErrorCode: String {
+  public enum ServerErrorCode: String {
     case badUserInput = "BAD_USER_INPUT"
     case forbidden = "FORBIDDEN"
     case unauthenticated = "UNAUTHENTICATED"
@@ -89,7 +89,7 @@ public struct GodServerError: Error {
   }
 }
 
-public extension GodServerError {
+public extension ServerError {
   init(error: GraphQLError) {
     self.init(
       message: error.message ?? "",
