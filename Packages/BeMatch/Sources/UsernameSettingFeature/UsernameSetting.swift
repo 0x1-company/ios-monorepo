@@ -1,6 +1,5 @@
 import AnalyticsClient
 import AnalyticsKeys
-import ApolloConcurrency
 import BeMatch
 import BeMatchClient
 import ComposableArchitecture
@@ -73,7 +72,7 @@ public struct UsernameSettingLogic {
         analytics.setUserProperty(key: \.username, value: state.username)
         return .send(.delegate(.nextScreen))
 
-      case let .updateBeRealResponse(.failure(error as ServerError)) where error.code == .badUserInput:
+      case .updateBeRealResponse(.failure):
         state.isActivityIndicatorVisible = false
         state.alert = AlertState {
           TextState("Error", bundle: .module)
@@ -84,10 +83,6 @@ public struct UsernameSettingLogic {
         } message: {
           TextState("username must be a string at least 4 characters long and up to 30 characters long containing only letters, numbers, underscores, and periods except that no two periods shall be in sequence or undefined", bundle: .module)
         }
-        return .none
-        
-      case .updateBeRealResponse(.failure):
-        state.isActivityIndicatorVisible = false
         return .none
         
       case .alert(.presented(.confirmOkay)):
