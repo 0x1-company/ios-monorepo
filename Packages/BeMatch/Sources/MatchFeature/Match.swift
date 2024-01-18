@@ -84,7 +84,7 @@ public struct MatchLogic {
         return .run { [after = state.after] send in
           await matchesRequest(send: send, after: after)
         }
-        
+
       case let .rows(.element(id, _)):
         state.rows.remove(id: id)
         return .none
