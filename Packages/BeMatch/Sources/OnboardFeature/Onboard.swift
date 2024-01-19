@@ -29,7 +29,7 @@ public struct OnboardLogic {
     case username(UsernameSettingLogic.Action)
     case path(StackAction<Path.State, Path.Action>)
     case delegate(Delegate)
-    
+
     public enum Delegate {
       case finish
     }
