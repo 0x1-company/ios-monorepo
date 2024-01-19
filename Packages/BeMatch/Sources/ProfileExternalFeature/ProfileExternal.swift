@@ -46,9 +46,14 @@ public struct ProfileExternalLogic {
     case deleteMatchResponse(Result<BeMatch.DeleteMatchMutation.Data, Error>)
     case readMatchResponse(Result<BeMatch.ReadMatchMutation.Data, Error>)
     case destination(PresentationAction<Destination.Action>)
+    case delegate(Delegate)
 
     public enum ConfirmationDialog: Equatable {
       case confirm
+    }
+    
+    public enum Delegate: Equatable {
+      case unmatch(String)
     }
   }
 
@@ -141,7 +146,9 @@ public struct ProfileExternalLogic {
         }
 
       case .deleteMatchResponse:
-        return .run { _ in
+        let matchId = state.match.id
+        return .run { send in
+          await send(.delegate(.unmatch(matchId)))
           await dismiss()
         }
 

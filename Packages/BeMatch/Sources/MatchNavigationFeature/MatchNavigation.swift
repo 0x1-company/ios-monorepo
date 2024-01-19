@@ -80,6 +80,10 @@ public struct MatchNavigationLogic {
           }
         }
 
+      case let .destination(.presented(.profileExternal(.delegate(.unmatch(id))))):
+        state.match.rows.remove(id: id)
+        return .none
+
       case .destination(.presented(.membership(.closeButtonTapped))):
         state.destination = nil
         return .run { _ in

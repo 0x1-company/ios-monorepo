@@ -85,10 +85,6 @@ public struct MatchLogic {
           await matchesRequest(send: send, after: after)
         }
 
-      case let .rows(.element(id, _)):
-        state.rows.remove(id: id)
-        return .none
-
       case let .matchesResponse(.success(data)):
         state.after = data.matches.pageInfo.endCursor
         state.hasNextPage = data.matches.pageInfo.hasNextPage
