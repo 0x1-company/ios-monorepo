@@ -99,7 +99,7 @@ public struct AppLogic {
       }
     Reduce<State, Action> { state, action in
       switch action {
-      case .child(.onboard(.path(.element(_, .invitation(.delegate(.nextScreen)))))):
+      case .child(.onboard(.delegate(.finish))):
         analytics.setUserProperty(key: \.onboardCompleted, value: "true")
         state.tutorial = .init()
         state.child = .navigation(RootNavigationLogic.State())

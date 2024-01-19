@@ -28,6 +28,11 @@ public struct OnboardLogic {
     case onTask
     case username(UsernameSettingLogic.Action)
     case path(StackAction<Path.State, Path.Action>)
+    case delegate(Delegate)
+    
+    public enum Delegate {
+      case finish
+    }
   }
 
   @Dependency(\.userDefaults) var userDefaults
@@ -52,11 +57,11 @@ public struct OnboardLogic {
         return .none
 
       case .path(.element(_, .capture(.delegate(.nextScreen)))):
-        state.path.append(.invitation())
-        return .none
+//        state.path.append(.invitation())
+        return .send(.delegate(.finish))
 
       case .path(.element(_, .invitation(.delegate(.nextScreen)))):
-        return .none
+        return .send(.delegate(.finish))
 
       default:
         return .none
