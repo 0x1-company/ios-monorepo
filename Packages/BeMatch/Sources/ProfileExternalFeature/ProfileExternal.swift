@@ -51,7 +51,7 @@ public struct ProfileExternalLogic {
     public enum ConfirmationDialog: Equatable {
       case confirm
     }
-    
+
     public enum Delegate: Equatable {
       case unmatch(String)
     }
