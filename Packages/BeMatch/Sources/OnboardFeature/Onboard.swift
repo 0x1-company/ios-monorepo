@@ -40,7 +40,7 @@ public struct OnboardLogic {
 
   @Dependency(\.bematch) var bematch
   @Dependency(\.userDefaults) var userDefaults
-  
+
   enum Cancel {
     case activeInvitationCampaign
   }
