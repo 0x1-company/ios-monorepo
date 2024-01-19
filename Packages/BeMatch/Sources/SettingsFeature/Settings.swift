@@ -204,16 +204,16 @@ public struct SettingsView: View {
             }
           }
 
-          Button {
-            store.send(.invitationCodeButtonTapped)
-          } label: {
-            LabeledContent {
-              Image(systemName: "chevron.right")
-            } label: {
-              Text("Invitation Code", bundle: .module)
-                .foregroundStyle(Color.primary)
-            }
-          }
+//          Button {
+//            store.send(.invitationCodeButtonTapped)
+//          } label: {
+//            LabeledContent {
+//              Image(systemName: "chevron.right")
+//            } label: {
+//              Text("Invitation Code", bundle: .module)
+//                .foregroundStyle(Color.primary)
+//            }
+//          }
 
           Button {
             store.send(.bematchProButtonTapped)
