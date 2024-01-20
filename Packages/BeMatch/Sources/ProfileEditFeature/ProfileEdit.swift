@@ -7,7 +7,7 @@ import SwiftUI
 import UsernameSettingFeature
 
 @Reducer
-public struct EditProfileLogic {
+public struct ProfileEditLogic {
   public init() {}
 
   public struct State: Equatable {
@@ -50,7 +50,7 @@ public struct EditProfileLogic {
         }
 
       case .onAppear:
-        analytics.logScreen(screenName: "EditProfile", of: self)
+        analytics.logScreen(screenName: "ProfileEdit", of: self)
         return .none
 
       case .closeButtonTapped:
@@ -126,10 +126,10 @@ public struct EditProfileLogic {
   }
 }
 
-public struct EditProfileView: View {
-  let store: StoreOf<EditProfileLogic>
+public struct ProfileEditView: View {
+  let store: StoreOf<ProfileEditLogic>
 
-  public init(store: StoreOf<EditProfileLogic>) {
+  public init(store: StoreOf<ProfileEditLogic>) {
     self.store = store
   }
 
