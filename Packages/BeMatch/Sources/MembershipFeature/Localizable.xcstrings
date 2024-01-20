@@ -1,8 +1,65 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%lld month" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lldヶ月"
+          }
+        }
+      }
+    },
+    "%lld week" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld週間"
+          }
+        }
+      }
+    },
+    "%lld year" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld年間"
+          }
+        }
+      }
+    },
     "0" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0"
+          }
+        }
+      }
+    },
+    "1. Send invitation code" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1.招待コードを送る"
+          }
+        }
+      }
+    },
+    "2. %@ free for both parties!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2.お互いに%@無料！"
+          }
+        }
+      }
     },
     "benefits to each other!" : {
       "localizations" : {
@@ -20,6 +77,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "招待した人も、された人も"
+          }
+        }
+      }
+    },
+    "How to Receive Benefits" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特典の受け取り方"
           }
         }
       }
@@ -80,6 +147,16 @@
         }
       }
     },
+    "Send an invitation code to a friend who hasn't used BeMatch." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "まだBeMatch.を使っていない友達に招待コードを贈りましょう！"
+          }
+        }
+      }
+    },
     "Send Invitation Code" : {
       "localizations" : {
         "ja" : {
@@ -106,6 +183,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "友達があなたの招待コードを\n入力すると、お互いに"
+          }
+        }
+      }
+    },
+    "When they enter the Invitation Code and register, you will both receive BeMatch.PRO for sure!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "相手が招待コードを入力して登録すると、お互いにBeMatch.PROを必ずプレゼント！"
           }
         }
       }

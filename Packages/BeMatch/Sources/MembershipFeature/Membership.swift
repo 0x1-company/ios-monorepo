@@ -136,7 +136,8 @@ public struct MembershipLogic {
             MembershipCampaignLogic.State(
               campaign: campaign,
               code: data.invitationCode.code,
-              displayPrice: product.displayPrice
+              displayPrice: product.displayPrice,
+              displayDuration: formatDuration(campaign.durationWeeks)
             )
           )
 
@@ -225,6 +226,31 @@ public struct MembershipLogic {
     .ifLet(\.$destination, action: \.destination) {
       Destination()
     }
+  }
+  
+  func formatDuration(_ durationWeeks: Int) -> String {
+    if durationWeeks <= 3 {
+      return String(localized: "\(durationWeeks) week", bundle: .module)
+    }
+
+    let months = durationWeeks / 4
+    let remainingWeeks = durationWeeks % 4
+
+    let years = months / 12
+    let remainingMonths = months % 12
+
+    var result: [String] = []
+    if years > 0 {
+      result.append(String(localized: "\(years) year", bundle: .module))
+    }
+    if remainingMonths > 0 {
+      result.append(String(localized: "\(remainingMonths) month", bundle: .module))
+    }
+    if remainingWeeks > 0 {
+      result.append(String(localized: "\(remainingWeeks) week", bundle: .module))
+    }
+
+    return result.joined(separator: ", ")
   }
 
   @Reducer

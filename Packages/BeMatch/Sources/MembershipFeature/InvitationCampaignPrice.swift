@@ -1,4 +1,3 @@
-import AnalyticsClient
 import ComposableArchitecture
 import SwiftUI
 
@@ -7,53 +6,17 @@ public struct InvitationCampaignPriceLogic {
   public init() {}
 
   public struct State: Equatable {
-    let durationWeeks: Int
-    var displayDuration = ""
+    var displayDuration: String
 
-    public init(durationWeeks: Int) {
-      self.durationWeeks = durationWeeks
+    public init(displayDuration: String) {
+      self.displayDuration = displayDuration
     }
   }
 
-  public enum Action {
-    case onTask
-  }
-
-  @Dependency(\.analytics) var analytics
+  public enum Action {}
 
   public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { state, action in
-      switch action {
-      case .onTask:
-        state.displayDuration = formatDuration(state.durationWeeks)
-        return .none
-      }
-    }
-  }
-
-  func formatDuration(_ durationWeeks: Int) -> String {
-    if durationWeeks <= 3 {
-      return "\(durationWeeks)週間"
-    }
-
-    let months = durationWeeks / 4
-    let remainingWeeks = durationWeeks % 4
-
-    let years = months / 12
-    let remainingMonths = months % 12
-
-    var result: [String] = []
-    if years > 0 {
-      result.append("\(years)年間")
-    }
-    if remainingMonths > 0 {
-      result.append("\(remainingMonths)ヶ月間")
-    }
-    if remainingWeeks > 0 {
-      result.append("\(remainingWeeks)週間")
-    }
-
-    return result.joined(separator: ", ")
+    EmptyReducer()
   }
 }
 
@@ -97,20 +60,6 @@ public struct InvitationCampaignPriceView: View {
       }
       .background()
       .multilineTextAlignment(.center)
-      .task { await store.send(.onTask).finish() }
     }
   }
-}
-
-#Preview {
-  InvitationCampaignPriceView(
-    store: .init(
-      initialState: InvitationCampaignPriceLogic.State(
-        durationWeeks: 4
-      ),
-      reducer: { InvitationCampaignPriceLogic() }
-    )
-  )
-  .environment(\.colorScheme, .dark)
-  .environment(\.locale, Locale(identifier: "ja-JP"))
 }
