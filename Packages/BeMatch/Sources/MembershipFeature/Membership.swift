@@ -213,7 +213,7 @@ public struct MembershipLogic {
 
       case .destination(.presented(.alert(.confirmOkay))):
         state.destination = nil
-        return .send(.delegate(.dismiss))
+        return .send(.onTask)
 
       default:
         return .none

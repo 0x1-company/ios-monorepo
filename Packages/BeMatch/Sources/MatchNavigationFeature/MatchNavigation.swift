@@ -84,7 +84,7 @@ public struct MatchNavigationLogic {
         state.match.rows.remove(id: id)
         return .none
 
-      case .destination(.presented(.membership(.closeButtonTapped))):
+      case .destination(.presented(.membership(.delegate(.dismiss)))):
         state.destination = nil
         return .run { _ in
           await feedbackGenerator.impactOccurred()
