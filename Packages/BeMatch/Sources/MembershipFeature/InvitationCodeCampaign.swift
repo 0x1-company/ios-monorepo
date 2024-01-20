@@ -61,11 +61,12 @@ public struct InvitationCodeCampaignView: View {
             store.send(.invitationCodeButtonTapped)
           }
 
-        PrimaryButton(
-          String(localized: "Send Invitation Code", bundle: .module)
-        ) {
+        Button {
           store.send(.invitationCodeButtonTapped)
+        } label: {
+          Text("Send Invitation Code", bundle: .module)
         }
+        .buttonStyle(ConversionSecondaryButtonStyle())
       }
       .padding(.all, 16)
       .multilineTextAlignment(.center)

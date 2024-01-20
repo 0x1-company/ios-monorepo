@@ -10,6 +10,7 @@ public struct MembershipCampaignLogic {
   public struct State: Equatable {
     let campaign: BeMatch.MembershipQuery.Data.ActiveInvitationCampaign
     let displayPrice: String
+    let displayDuration: String
 
     var invitationCampaign: InvitationCampaignLogic.State
     var invitationCampaignPrice: InvitationCampaignPriceLogic.State
@@ -18,16 +19,18 @@ public struct MembershipCampaignLogic {
     public init(
       campaign: BeMatch.MembershipQuery.Data.ActiveInvitationCampaign,
       code: String,
-      displayPrice: String
+      displayPrice: String,
+      displayDuration: String
     ) {
       self.campaign = campaign
       self.displayPrice = displayPrice
+      self.displayDuration = displayDuration
       invitationCampaign = InvitationCampaignLogic.State(
         quantity: campaign.quantity,
         durationWeeks: campaign.durationWeeks
       )
       invitationCampaignPrice = InvitationCampaignPriceLogic.State(
-        durationWeeks: campaign.durationWeeks
+        displayDuration: displayDuration
       )
       invitationCodeCampaign = InvitationCodeCampaignLogic.State(code: code)
     }
@@ -119,9 +122,11 @@ public struct MembershipCampaignView: View {
             VStack(spacing: 60) {
               Image(ImageResource.membershipBenefit)
                 .resizable()
+                .aspectRatio(contentMode: .fill)
 
-              Image(ImageResource.howToReceiveBenefit)
-                .resizable()
+              HowToReceiveBenefitView(
+                displayDuration: viewStore.displayDuration
+              )
 
               PurchaseAboutView()
             }
@@ -164,12 +169,14 @@ public struct MembershipCampaignView: View {
             data: [
               "id": "1",
               "quantity": 2000,
+              "durationWeeks": 4,
             ],
             fulfilledFragments: []
           )
         ),
         code: "ABCDEF",
-        displayPrice: "¥500"
+        displayPrice: "¥500",
+        displayDuration: "1 week"
       ),
       reducer: { MembershipCampaignLogic() }
     )
