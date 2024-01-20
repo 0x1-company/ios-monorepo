@@ -21,7 +21,6 @@ let package = Package(
     .library(name: "Constants", targets: ["Constants"]),
     .library(name: "DeleteAccountFeature", targets: ["DeleteAccountFeature"]),
     .library(name: "DirectMessageFeature", targets: ["DirectMessageFeature"]),
-    .library(name: "EditProfileFeature", targets: ["EditProfileFeature"]),
     .library(name: "ForceUpdateFeature", targets: ["ForceUpdateFeature"]),
     .library(name: "GenderSettingFeature", targets: ["GenderSettingFeature"]),
     .library(name: "InvitationCodeFeature", targets: ["InvitationCodeFeature"]),
@@ -36,6 +35,7 @@ let package = Package(
     .library(name: "NavigationFeature", targets: ["NavigationFeature"]),
     .library(name: "NotificationsReEnableFeature", targets: ["NotificationsReEnableFeature"]),
     .library(name: "OnboardFeature", targets: ["OnboardFeature"]),
+    .library(name: "ProfileEditFeature", targets: ["ProfileEditFeature"]),
     .library(name: "ProfileExternalFeature", targets: ["ProfileExternalFeature"]),
     .library(name: "ProfileFeature", targets: ["ProfileFeature"]),
     .library(name: "ProfileSharedFeature", targets: ["ProfileSharedFeature"]),
@@ -131,15 +131,6 @@ let package = Package(
     .target(name: "DirectMessageFeature", dependencies: [
       "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-    ]),
-    .target(name: "EditProfileFeature", dependencies: [
-      "AnalyticsKeys",
-      "BeMatch",
-      "BeMatchClient",
-      "BeRealCaptureFeature",
-      "GenderSettingFeature",
-      "UsernameSettingFeature",
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "ForceUpdateFeature", dependencies: [
@@ -244,6 +235,15 @@ let package = Package(
       .product(name: "UserNotificationClient", package: "SDK"),
       .product(name: "FirebaseStorageClient", package: "SDK"),
     ]),
+    .target(name: "ProfileEditFeature", dependencies: [
+      "AnalyticsKeys",
+      "BeMatch",
+      "BeMatchClient",
+      "BeRealCaptureFeature",
+      "GenderSettingFeature",
+      "UsernameSettingFeature",
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
     .target(name: "ProfileExternalFeature", dependencies: [
       "Constants",
       "Styleguide",
@@ -317,7 +317,7 @@ let package = Package(
     .target(name: "SettingsFeature", dependencies: [
       "Constants",
       "AnalyticsKeys",
-      "EditProfileFeature",
+      "ProfileEditFeature",
       "ProfileFeature",
       "TutorialFeature",
       "DeleteAccountFeature",

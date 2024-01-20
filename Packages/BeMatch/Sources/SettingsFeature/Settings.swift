@@ -5,7 +5,7 @@ import BeMatch
 import Build
 import ComposableArchitecture
 import Constants
-import EditProfileFeature
+import ProfileEditFeature
 import FeedbackGeneratorClient
 import FirebaseAuthClient
 import ProfileFeature
@@ -81,7 +81,7 @@ public struct SettingsLogic {
         return .none
 
       case .editProfileButtonTapped:
-        state.destination = .editProfile(EditProfileLogic.State())
+        state.destination = .profileEdit()
         return .none
 
       case .howItWorksButtonTapped:
@@ -123,7 +123,7 @@ public struct SettingsLogic {
         state.destination = nil
         return .none
 
-      case .destination(.presented(.editProfile(.delegate(.dismiss)))):
+      case .destination(.presented(.profileEdit(.delegate(.dismiss)))):
         state.destination = nil
         return .none
 
@@ -146,20 +146,20 @@ public struct SettingsLogic {
   @Reducer
   public struct Destination {
     public enum State: Equatable {
-      case editProfile(EditProfileLogic.State)
+      case profileEdit(ProfileEditLogic.State = .init())
       case profile(ProfileLogic.State = .init())
       case tutorial(TutorialLogic.State = .init())
     }
 
     public enum Action {
-      case editProfile(EditProfileLogic.Action)
+      case profileEdit(ProfileEditLogic.Action)
       case profile(ProfileLogic.Action)
       case tutorial(TutorialLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
-      Scope(state: \.editProfile, action: \.editProfile) {
-        EditProfileLogic()
+      Scope(state: \.profileEdit, action: \.profileEdit) {
+        ProfileEditLogic()
       }
       Scope(state: \.profile, action: \.profile) {
         ProfileLogic()
@@ -396,12 +396,12 @@ public struct SettingsView: View {
       }
       .fullScreenCover(
         store: store.scope(
-          state: \.$destination.editProfile,
-          action: \.destination.editProfile
+          state: \.$destination.profileEdit,
+          action: \.destination.profileEdit
         )
       ) { store in
         NavigationStack {
-          EditProfileView(store: store)
+          ProfileEditView(store: store)
         }
       }
     }
