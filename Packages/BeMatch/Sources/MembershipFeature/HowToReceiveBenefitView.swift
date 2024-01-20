@@ -1,29 +1,29 @@
-import SwiftUI
 import Styleguide
+import SwiftUI
 
 struct HowToReceiveBenefitView: View {
   let displayDuration: String
-  
+
   var body: some View {
     VStack(spacing: 24) {
       VStack(spacing: 8) {
         Text("1. Send invitation code", bundle: .module)
           .font(.system(.title3, weight: .semibold))
-        
+
         Text("Send an invitation code to a friend who hasn't used BeMatch.", bundle: .module)
       }
-      
+
       Image(ImageResource.line)
         .resizable()
         .aspectRatio(contentMode: .fit)
-      
+
       VStack(spacing: 8) {
         Text("2. \(displayDuration) free for both parties!", bundle: .module)
           .font(.system(.title3, weight: .semibold))
-        
+
         Text("When they enter the Invitation Code and register, you will both receive BeMatch.PRO for sure!", bundle: .module)
       }
-      
+
       Image(ImageResource.invitationCodeSample)
         .resizable()
         .aspectRatio(contentMode: .fit)

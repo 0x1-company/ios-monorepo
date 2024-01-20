@@ -227,7 +227,7 @@ public struct MembershipLogic {
       Destination()
     }
   }
-  
+
   func formatDuration(_ durationWeeks: Int) -> String {
     if durationWeeks <= 3 {
       return String(localized: "\(durationWeeks) week", bundle: .module)
