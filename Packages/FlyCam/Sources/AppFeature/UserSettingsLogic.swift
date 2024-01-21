@@ -24,7 +24,8 @@ public struct UserSettingsLogic {
 
         let param = UserSettingsClient.UpdateParam(
           uid: uid,
-          notification: notificationStatus
+          notification: notificationStatus,
+          trackingAuthorization: .notDetermined
         )
         try await userSettings.update(param)
       } catch: { error, _ in
