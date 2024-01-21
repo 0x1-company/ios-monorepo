@@ -2,11 +2,22 @@
   "sourceLanguage" : "en",
   "strings" : {
     "Press button to jump" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ボタンを押してジャンプする"
+          }
+        }
+      }
+    },
+    "Press button to record start" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ボタンを押して撮影開始"
           }
         }
       }
