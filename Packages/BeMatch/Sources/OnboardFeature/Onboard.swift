@@ -81,6 +81,7 @@ public struct OnboardLogic {
         return .none
 
       case .path(.element(_, .capture(.delegate(.howTo)))):
+        state.destination = .sample()
         return .none
 
       case .path(.element(_, .capture(.delegate(.nextScreen)))):

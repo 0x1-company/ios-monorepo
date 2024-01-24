@@ -232,69 +232,69 @@ public struct BeRealCaptureView: View {
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
-      ScrollView {
-        VStack(spacing: 36) {
-          VStack(spacing: 8) {
-            Text("Set your saved photo to your profile (it will be public 🌏)", bundle: .module)
-              .lineLimit(2)
-              .frame(minHeight: 50)
-              .layoutPriority(1)
-              .font(.system(.title3, weight: .semibold))
+      VStack(spacing: 8) {
+        ScrollView {
+          VStack(spacing: 36) {
+            VStack(spacing: 8) {
+              Text("Set your saved photo to your profile (it will be public 🌏)", bundle: .module)
+                .lineLimit(2)
+                .frame(minHeight: 50)
+                .layoutPriority(1)
+                .font(.system(.title3, weight: .semibold))
 
-            if viewStore.isWarningTextVisible {
-              Button {
-                store.send(.howToButtonTapped)
-              } label: {
-                HStack(spacing: 2) {
-                  Image(systemName: "exclamationmark.triangle.fill")
-                    .foregroundStyle(Color.yellow)
+              if viewStore.isWarningTextVisible {
+                Button {
+                  store.send(.howToButtonTapped)
+                } label: {
+                  HStack(spacing: 2) {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                      .foregroundStyle(Color.yellow)
 
-                  Text("Select a photo saved with BeReal.", bundle: .module)
-                    .foregroundStyle(Color.secondary)
+                    Text("Select a photo saved with BeReal.", bundle: .module)
+                      .foregroundStyle(Color.secondary)
+                  }
+                  .font(.callout)
                 }
-                .font(.callout)
+              }
+            }
+
+            LazyVGrid(
+              columns: Array(
+                repeating: GridItem(spacing: 16),
+                count: 3
+              ),
+              alignment: .center,
+              spacing: 16
+            ) {
+              ForEach(
+                Array(viewStore.images.enumerated()),
+                id: \.offset
+              ) { offset, state in
+                PhotoGrid(
+                  state: state,
+                  selection: viewStore.$photoPickerItems,
+                  onDelete: {
+                    store.send(.onDelete(offset))
+                  }
+                )
+                .id(offset)
               }
             }
           }
-
-          LazyVGrid(
-            columns: Array(
-              repeating: GridItem(spacing: 16),
-              count: 3
-            ),
-            alignment: .center,
-            spacing: 16
-          ) {
-            ForEach(
-              Array(viewStore.images.enumerated()),
-              id: \.offset
-            ) { offset, state in
-              PhotoGrid(
-                state: state,
-                selection: viewStore.$photoPickerItems,
-                onDelete: {
-                  store.send(.onDelete(offset))
-                }
-              )
-              .id(offset)
-            }
-          }
-
-          Spacer()
-
-          PrimaryButton(
-            nextButtonStyle == .save
-              ? String(localized: "Save", bundle: .module)
-              : String(localized: "Next", bundle: .module),
-            isLoading: viewStore.isActivityIndicatorVisible
-          ) {
-            store.send(.nextButtonTapped)
-          }
+          .padding(.top, 24)
         }
-        .padding(.top, 24)
-        .padding(.bottom, 16)
-        .padding(.horizontal, 16)
+        
+        PrimaryButton(
+          nextButtonStyle == .save
+            ? String(localized: "Save", bundle: .module)
+            : String(localized: "Next", bundle: .module),
+          isLoading: viewStore.isActivityIndicatorVisible
+        ) {
+          store.send(.nextButtonTapped)
+        }
       }
+      .padding(.bottom, 16)
+      .padding(.horizontal, 16)
       .multilineTextAlignment(.center)
       .navigationBarTitleDisplayMode(.inline)
       .onAppear { store.send(.onAppear) }
