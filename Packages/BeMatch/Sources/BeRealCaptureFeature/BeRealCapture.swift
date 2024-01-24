@@ -101,7 +101,7 @@ public struct BeRealCaptureLogic {
             }))
             let data = try await i.loadTransferable(type: Data.self)
             guard let data else { return }
-            let filename = "\(uuid().uuidString).png"
+            let filename = "\(uuid().uuidString).jpeg"
             await send(.uploadResponse(Result {
               try await firebaseStorage.upload(
                 path: "\(userFolder)/\(filename)",
