@@ -283,7 +283,7 @@ public struct BeRealCaptureView: View {
           }
           .padding(.top, 24)
         }
-        
+
         PrimaryButton(
           nextButtonStyle == .save
             ? String(localized: "Save", bundle: .module)
