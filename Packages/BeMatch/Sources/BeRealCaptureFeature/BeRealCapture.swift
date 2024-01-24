@@ -8,7 +8,6 @@ import FirebaseStorageClient
 import PhotosUI
 import Styleguide
 import SwiftUI
-import TcaHelpers
 
 @Reducer
 public struct BeRealCaptureLogic {
@@ -16,10 +15,10 @@ public struct BeRealCaptureLogic {
 
   public struct State: Equatable {
     @BindingState var photoPickerItems: [PhotosPickerItem] = []
-    var images: [URL?] = Array(repeating: nil, count: 9)
+    var images: [Data?] = Array(repeating: nil, count: 9)
     var isActivityIndicatorVisible = false
-    var isDisabled = true
-    @PresentationState var confirmationDialog: ConfirmationDialogState<Action.ConfirmationDialog>?
+
+    @PresentationState var destination: Destination.State?
     public init() {}
   }
 
@@ -27,16 +26,13 @@ public struct BeRealCaptureLogic {
     case onAppear
     case onDelete(Int)
     case nextButtonTapped
-    case loadTransferableResponse(Result<Data?, Error>)
+    case loadTransferableResponse(Int, Result<Data?, Error>)
+    case loadTransferableFinished
     case uploadResponse(Result<URL, Error>)
     case updateUserImage(Result<BeMatch.UpdateUserImageMutation.Data, Error>)
-    case confirmationDialog(PresentationAction<ConfirmationDialog>)
+    case destination(PresentationAction<Destination.Action>)
     case binding(BindingAction<State>)
     case delegate(Delegate)
-
-    public enum ConfirmationDialog: Equatable {
-      case distory(Int)
-    }
 
     public enum Delegate: Equatable {
       case nextScreen
@@ -59,67 +55,80 @@ public struct BeRealCaptureLogic {
         return .none
 
       case let .onDelete(offset):
-        state.confirmationDialog = ConfirmationDialogState {
-          TextState("Edit Profile", bundle: .module)
-        } actions: {
-          ButtonState(role: .destructive, action: .distory(offset)) {
-            TextState("Delete a photo", bundle: .module)
-          }
-        } message: {
-          TextState("Edit Profile", bundle: .module)
-        }
+        state.destination = .confirmationDialog(.deletePhoto(offset))
         return .none
 
-      case .nextButtonTapped:
-        state.isActivityIndicatorVisible = true
-        let imageUrls = state.images
-          .compactMap { $0 }
-          .map(\.absoluteString)
-        let input = BeMatch.UpdateUserImageInput(imageUrls: imageUrls)
-        return .run { send in
-          await feedbackGenerator.impactOccurred()
-          await send(.updateUserImage(Result {
-            try await updateUserImage(input)
-          }), animation: .default)
-        }
-
       case .binding(\.$photoPickerItems):
-        guard
-          !state.photoPickerItems.isEmpty,
-          let uid = firebaseAuth.currentUser()?.uid
+        guard !state.photoPickerItems.isEmpty
         else { return .none }
 
         state.isActivityIndicatorVisible = true
         state.images = Array(repeating: nil, count: 9)
 
         return .run { [items = state.photoPickerItems] send in
-          let userFolder = "users/profile_images/\(uid)"
-          try await firebaseStorage.folderDelete(path: userFolder)
-          for i in items {
-            await send(.loadTransferableResponse(Result {
-              try await i.loadTransferable(type: Data.self)
-            }))
-            let data = try await i.loadTransferable(type: Data.self)
-            guard let data else { return }
-            let filename = "\(uuid().uuidString).jpeg"
-            await send(.uploadResponse(Result {
-              try await firebaseStorage.upload(
-                path: "\(userFolder)/\(filename)",
-                uploadData: data
-              )
+          for (offset, element) in items.enumerated() {
+            await send(.loadTransferableResponse(offset, Result {
+              try await element.loadTransferable(type: Data.self)
             }))
           }
+          await send(.loadTransferableFinished)
         }
-
-      case let .uploadResponse(.success(url)):
-        state.isActivityIndicatorVisible = false
-        for i in 0 ..< state.images.count {
-          if state.images[i] == nil {
-            state.images[i] = url
-            break
-          }
-        }
+        
+      case let .loadTransferableResponse(offset, .success(data)):
+        state.images[offset] = data
         return .none
+        
+      case let .loadTransferableResponse(offset, .failure):
+        state.images[offset] = nil
+        state.isActivityIndicatorVisible = false
+        return .none
+        
+      case .loadTransferableFinished:
+        state.isActivityIndicatorVisible = false
+        return .none
+        
+      case .nextButtonTapped:
+        guard let uid = firebaseAuth.currentUser()?.uid
+        else { return .none }
+        
+        let validImages = state.images.compactMap { $0 }
+        guard validImages.count >= 3 else {
+          state.destination = .alert(.pleaseSelectPhotos())
+          return .none
+        }
+        
+        state.isActivityIndicatorVisible = true
+
+        return .run { send in
+          var imageUrls: [URL] = []
+          let userFolder = "users/profile_images/\(uid)"
+          
+          do {
+            try await withThrowingTaskGroup(of: URL.self) { group in
+              for imageData in validImages {
+                group.addTask {
+                  try await firebaseStorage.upload(
+                    path: userFolder + "/\(uuid().uuidString).jpeg",
+                    uploadData: imageData
+                  )
+                }
+              }
+              
+              for try await result in group {
+                imageUrls.append(result)
+              }
+            }
+          } catch {
+            await send(.uploadResponse(.failure(error)))
+          }
+          
+          let input = BeMatch.UpdateUserImageInput(
+            imageUrls: imageUrls.map(\.absoluteString)
+          )
+          await send(.updateUserImage(Result {
+            try await updateUserImage(input)
+          }))
+        }
 
       case .uploadResponse(.failure):
         state.isActivityIndicatorVisible = false
@@ -127,26 +136,50 @@ public struct BeRealCaptureLogic {
 
       case .updateUserImage(.success):
         state.isActivityIndicatorVisible = false
-        URLCache.shared.removeAllCachedResponses()
         return .send(.delegate(.nextScreen))
 
       case .updateUserImage(.failure):
         state.isActivityIndicatorVisible = false
         return .none
 
-      case let .confirmationDialog(.presented(.distory(offset))):
+      case let .destination(.presented(.confirmationDialog(.distory(offset)))):
         state.images[offset] = nil
         state.photoPickerItems.remove(at: offset)
-        state.confirmationDialog = nil
+        state.destination = nil
+        return .none
+        
+      case .destination(.presented(.alert(.confirmOkay))):
+        state.destination = nil
         return .none
 
       default:
         return .none
       }
     }
-    .onChange(of: \.images) { images, state, _ in
-      state.isDisabled = images.compactMap { $0 }.count < 3
-      return .none
+  }
+  
+  @Reducer
+  public struct Destination {
+    public enum State: Equatable {
+      case alert(AlertState<Action.Alert>)
+      case confirmationDialog(ConfirmationDialogState<Action.ConfirmationDialog>)
+    }
+
+    public enum Action {
+      case alert(Alert)
+      case confirmationDialog(ConfirmationDialog)
+      
+      public enum Alert: Equatable {
+        case confirmOkay
+      }
+
+      public enum ConfirmationDialog: Equatable {
+        case distory(Int)
+      }
+    }
+    
+    public var body: some Reducer<State, Action> {
+      EmptyReducer()
     }
   }
 }
@@ -189,9 +222,9 @@ public struct BeRealCaptureView: View {
             ForEach(
               Array(viewStore.images.enumerated()),
               id: \.offset
-            ) { offset, image in
+            ) { offset, imageData in
               PhotoGrid(
-                image: image,
+                imageData: imageData,
                 selection: viewStore.$photoPickerItems,
                 onDelete: {
                   store.send(.onDelete(offset))
@@ -200,13 +233,14 @@ public struct BeRealCaptureView: View {
               .id(offset)
             }
           }
+          
+          Spacer()
 
           PrimaryButton(
             nextButtonStyle == .save
               ? String(localized: "Save", bundle: .module)
               : String(localized: "Next", bundle: .module),
-            isLoading: viewStore.isActivityIndicatorVisible,
-            isDisabled: viewStore.isDisabled
+            isLoading: viewStore.isActivityIndicatorVisible
           ) {
             store.send(.nextButtonTapped)
           }
@@ -223,9 +257,42 @@ public struct BeRealCaptureView: View {
           Image(ImageResource.beMatch)
         }
       }
-      .confirmationDialog(
-        store: store.scope(state: \.$confirmationDialog, action: \.confirmationDialog)
+      .alert(
+        store: store.scope(
+          state: \.$destination.alert,
+          action: \.destination.alert
+        )
       )
+      .confirmationDialog(
+        store: store.scope(
+          state: \.$destination.confirmationDialog,
+          action: \.destination.confirmationDialog
+        )
+      )
+    }
+  }
+}
+
+extension AlertState where Action == BeRealCaptureLogic.Destination.Action.Alert {
+  static func pleaseSelectPhotos() -> Self {
+    Self {
+      TextState("Please select at least 3 saved photos.", bundle: .module)
+    } actions: {
+      ButtonState(action: .confirmOkay) {
+        TextState("OK", bundle: .module)
+      }
+    }
+  }
+}
+
+extension ConfirmationDialogState where Action == BeRealCaptureLogic.Destination.Action.ConfirmationDialog {
+  static func deletePhoto(_ offset: Int) -> Self {
+    Self {
+      TextState("Edit Profile", bundle: .module)
+    } actions: {
+      ButtonState(role: .destructive, action: .distory(offset)) {
+        TextState("Delete a photo", bundle: .module)
+      }
     }
   }
 }
