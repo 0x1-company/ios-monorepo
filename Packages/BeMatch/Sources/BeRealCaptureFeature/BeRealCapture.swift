@@ -18,7 +18,7 @@ public struct BeRealCaptureLogic {
     var images: [Data?] = Array(repeating: nil, count: 9)
     var isActivityIndicatorVisible = false
 
-    @PresentationState var confirmationDialog: ConfirmationDialogState<Action.ConfirmationDialog>?
+    @PresentationState var destination: Destination.State?
     public init() {}
   }
 
@@ -30,13 +30,9 @@ public struct BeRealCaptureLogic {
     case loadTransferableFinished
     case uploadResponse(Result<URL, Error>)
     case updateUserImage(Result<BeMatch.UpdateUserImageMutation.Data, Error>)
-    case confirmationDialog(PresentationAction<ConfirmationDialog>)
+    case destination(PresentationAction<Destination.Action>)
     case binding(BindingAction<State>)
     case delegate(Delegate)
-
-    public enum ConfirmationDialog: Equatable {
-      case distory(Int)
-    }
 
     public enum Delegate: Equatable {
       case nextScreen
@@ -59,15 +55,7 @@ public struct BeRealCaptureLogic {
         return .none
 
       case let .onDelete(offset):
-        state.confirmationDialog = ConfirmationDialogState {
-          TextState("Edit Profile", bundle: .module)
-        } actions: {
-          ButtonState(role: .destructive, action: .distory(offset)) {
-            TextState("Delete a photo", bundle: .module)
-          }
-        } message: {
-          TextState("Edit Profile", bundle: .module)
-        }
+        state.destination = .confirmationDialog(.deletePhoto(offset))
         return .none
 
       case .binding(\.$photoPickerItems):
@@ -105,6 +93,7 @@ public struct BeRealCaptureLogic {
         
         let validImages = state.images.compactMap { $0 }
         guard validImages.count >= 3 else {
+          state.destination = .alert(.pleaseSelectPhotos())
           return .none
         }
         
@@ -153,15 +142,44 @@ public struct BeRealCaptureLogic {
         state.isActivityIndicatorVisible = false
         return .none
 
-      case let .confirmationDialog(.presented(.distory(offset))):
+      case let .destination(.presented(.confirmationDialog(.distory(offset)))):
         state.images[offset] = nil
         state.photoPickerItems.remove(at: offset)
-        state.confirmationDialog = nil
+        state.destination = nil
+        return .none
+        
+      case .destination(.presented(.alert(.confirmOkay))):
+        state.destination = nil
         return .none
 
       default:
         return .none
       }
+    }
+  }
+  
+  @Reducer
+  public struct Destination {
+    public enum State: Equatable {
+      case alert(AlertState<Action.Alert>)
+      case confirmationDialog(ConfirmationDialogState<Action.ConfirmationDialog>)
+    }
+
+    public enum Action {
+      case alert(Alert)
+      case confirmationDialog(ConfirmationDialog)
+      
+      public enum Alert: Equatable {
+        case confirmOkay
+      }
+
+      public enum ConfirmationDialog: Equatable {
+        case distory(Int)
+      }
+    }
+    
+    public var body: some Reducer<State, Action> {
+      EmptyReducer()
     }
   }
 }
@@ -239,9 +257,42 @@ public struct BeRealCaptureView: View {
           Image(ImageResource.beMatch)
         }
       }
-      .confirmationDialog(
-        store: store.scope(state: \.$confirmationDialog, action: \.confirmationDialog)
+      .alert(
+        store: store.scope(
+          state: \.$destination.alert,
+          action: \.destination.alert
+        )
       )
+      .confirmationDialog(
+        store: store.scope(
+          state: \.$destination.confirmationDialog,
+          action: \.destination.confirmationDialog
+        )
+      )
+    }
+  }
+}
+
+extension AlertState where Action == BeRealCaptureLogic.Destination.Action.Alert {
+  static func pleaseSelectPhotos() -> Self {
+    Self {
+      TextState("Please select at least 3 saved photos.", bundle: .module)
+    } actions: {
+      ButtonState(action: .confirmOkay) {
+        TextState("OK", bundle: .module)
+      }
+    }
+  }
+}
+
+extension ConfirmationDialogState where Action == BeRealCaptureLogic.Destination.Action.ConfirmationDialog {
+  static func deletePhoto(_ offset: Int) -> Self {
+    Self {
+      TextState("Edit Profile", bundle: .module)
+    } actions: {
+      ButtonState(role: .destructive, action: .distory(offset)) {
+        TextState("Delete a photo", bundle: .module)
+      }
     }
   }
 }
