@@ -187,7 +187,7 @@ public struct MembershipLogic {
       case .purchaseResponse(.failure):
         state.isActivityIndicatorVisible = false
         return .none
-        
+
       case .createAppleSubscriptionResponse(.failure):
         state.isActivityIndicatorVisible = false
         return .none
