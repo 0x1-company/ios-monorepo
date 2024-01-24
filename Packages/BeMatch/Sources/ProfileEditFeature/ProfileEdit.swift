@@ -86,11 +86,11 @@ public struct ProfileEditLogic {
            .destination(.presented(.usernameSetting(.delegate(.nextScreen)))):
         state.destination = nil
         return .send(.delegate(.profileUpdated))
-        
+
       case .destination(.presented(.beRealCapture(.delegate(.howTo)))):
         state.destination = .beRealSample()
         return .none
-        
+
       case .destination(.presented(.beRealSample(.delegate(.nextScreen)))):
         state.destination = nil
         return .none
