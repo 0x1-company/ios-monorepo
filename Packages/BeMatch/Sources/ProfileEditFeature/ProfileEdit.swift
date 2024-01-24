@@ -1,6 +1,7 @@
 import AnalyticsKeys
 import BeMatch
 import BeRealCaptureFeature
+import BeRealSampleFeature
 import ComposableArchitecture
 import GenderSettingFeature
 import SwiftUI
@@ -83,8 +84,16 @@ public struct ProfileEditLogic {
       case .destination(.presented(.beRealCapture(.delegate(.nextScreen)))),
            .destination(.presented(.genderSetting(.delegate(.nextScreen)))),
            .destination(.presented(.usernameSetting(.delegate(.nextScreen)))):
-        state.destination = nil // TODO: fix for natural transition
+        state.destination = nil
         return .send(.delegate(.profileUpdated))
+        
+      case .destination(.presented(.beRealCapture(.delegate(.howTo)))):
+        state.destination = .beRealSample()
+        return .none
+        
+      case .destination(.presented(.beRealSample(.delegate(.nextScreen)))):
+        state.destination = nil
+        return .none
 
       case .destination:
         return .none
@@ -101,18 +110,23 @@ public struct ProfileEditLogic {
   @Reducer
   public struct Destination {
     public enum State: Equatable {
-      case beRealCapture(BeRealCaptureLogic.State)
+      case beRealSample(BeRealSampleLogic.State = .init())
+      case beRealCapture(BeRealCaptureLogic.State = .init())
       case genderSetting(GenderSettingLogic.State)
       case usernameSetting(UsernameSettingLogic.State)
     }
 
     public enum Action {
+      case beRealSample(BeRealSampleLogic.Action)
       case beRealCapture(BeRealCaptureLogic.Action)
       case genderSetting(GenderSettingLogic.Action)
       case usernameSetting(UsernameSettingLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
+      Scope(state: \.beRealSample, action: \.beRealSample) {
+        BeRealSampleLogic()
+      }
       Scope(state: \.beRealCapture, action: \.beRealCapture) {
         BeRealCaptureLogic()
       }
@@ -186,6 +200,16 @@ public struct ProfileEditView: View {
             .bold()
             .foregroundStyle(Color.white)
         }
+      }
+    }
+    .sheet(
+      store: store.scope(
+        state: \.$destination.beRealSample,
+        action: \.destination.beRealSample
+      )
+    ) { store in
+      NavigationStack {
+        BeRealSampleView(store: store)
       }
     }
     .navigationDestination(

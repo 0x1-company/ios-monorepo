@@ -2,13 +2,41 @@ import PhotosUI
 import Styleguide
 import SwiftUI
 
-struct PhotoGrid: View {
-  let imageData: Data?
+public struct PhotoGrid: View {
+  let state: State
   @Binding var selection: [PhotosPickerItem]
   let onDelete: () -> Void
+  
+  public enum State: Equatable {
+    case active(UIImage)
+    case warning(UIImage)
+    case empty
+    
+    var isActive: Bool {
+      guard case .active = self else {
+        return false
+      }
+      return true
+    }
+    
+    var isWarning: Bool {
+      guard case .warning = self else {
+        return false
+      }
+      return true
+    }
+    
+    var imageData: Data? {
+      guard case let .active(uIImage) = self else {
+        return nil
+      }
+      return uIImage.jpegData(compressionQuality: 1)
+    }
+  }
 
-  var body: some View {
-    if let imageData, let image = UIImage(data: imageData) {
+  public var body: some View {
+    switch state {
+    case let .active(image):
       Button(action: onDelete) {
         Image(uiImage: image)
           .resizable()
@@ -21,7 +49,28 @@ struct PhotoGrid: View {
           }
       }
       .buttonStyle(HoldDownButtonStyle())
-    } else {
+    case let .warning(image):
+      Button(action: onDelete) {
+        ZStack {
+          Image(uiImage: image)
+            .resizable()
+          
+          Color.black.opacity(0.8)
+          
+          Image(systemName: "exclamationmark.triangle.fill")
+            .frame(width: 32, height: 32)
+            .foregroundStyle(Color.yellow)
+        }
+        .aspectRatio(3 / 4, contentMode: .fill)
+        .clipped()
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .overlay {
+          RoundedRectangle(cornerRadius: 10)
+            .stroke(Color(uiColor: UIColor.opaqueSeparator), lineWidth: 1)
+        }
+      }
+      .buttonStyle(HoldDownButtonStyle())
+    case .empty:
       PhotosPicker(
         selection: $selection,
         maxSelectionCount: 9,
@@ -49,7 +98,7 @@ struct PhotoGrid: View {
 
 #Preview {
   PhotoGrid(
-    imageData: nil,
+    state: .empty,
     selection: .constant([]),
     onDelete: {}
   )

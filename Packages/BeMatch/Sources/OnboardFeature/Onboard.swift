@@ -19,6 +19,7 @@ public struct OnboardLogic {
     var username: UsernameSettingLogic.State
     var path = StackState<Path.State>()
     var hasInvitationCampaign = false
+    @PresentationState var destination: Destination.State?
 
     public init(user: BeMatch.UserInternal?) {
       self.user = user
@@ -31,6 +32,7 @@ public struct OnboardLogic {
     case activeInvitationCampaign(Result<BeMatch.ActiveInvitationCampaignQuery.Data, Error>)
     case username(UsernameSettingLogic.Action)
     case path(StackAction<Path.State, Path.Action>)
+    case destination(PresentationAction<Destination.Action>)
     case delegate(Delegate)
 
     public enum Delegate {
@@ -77,6 +79,9 @@ public struct OnboardLogic {
       case .path(.element(_, .sample(.delegate(.nextScreen)))):
         state.path.append(.capture())
         return .none
+        
+      case .path(.element(_, .capture(.delegate(.howTo)))):
+        return .none
 
       case .path(.element(_, .capture(.delegate(.nextScreen)))):
         if state.hasInvitationCampaign {
@@ -87,6 +92,10 @@ public struct OnboardLogic {
 
       case .path(.element(_, .invitation(.delegate(.nextScreen)))):
         return .send(.delegate(.finish))
+        
+      case .destination(.presented(.sample(.delegate(.nextScreen)))):
+        state.destination = nil
+        return .none
 
       default:
         return .none
@@ -94,6 +103,9 @@ public struct OnboardLogic {
     }
     .forEach(\.path, action: \.path) {
       Path()
+    }
+    .ifLet(\.$destination, action: \.destination) {
+      Destination()
     }
   }
 
@@ -118,6 +130,21 @@ public struct OnboardLogic {
       Scope(state: \.sample, action: \.sample, child: BeRealSampleLogic.init)
       Scope(state: \.capture, action: \.capture, child: BeRealCaptureLogic.init)
       Scope(state: \.invitation, action: \.invitation, child: InvitationLogic.init)
+    }
+  }
+  
+  @Reducer
+  public struct Destination {
+    public enum State: Equatable {
+      case sample(BeRealSampleLogic.State = .init())
+    }
+
+    public enum Action {
+      case sample(BeRealSampleLogic.Action)
+    }
+
+    public var body: some Reducer<State, Action> {
+      Scope(state: \.sample, action: \.sample, child: BeRealSampleLogic.init)
     }
   }
 }
@@ -169,5 +196,12 @@ public struct OnboardView: View {
     }
     .tint(Color.white)
     .task { await store.send(.onTask).finish() }
+    .sheet(
+      store: store.scope(state: \.$destination.sample, action: \.destination.sample)
+    ) { store in
+      NavigationStack {
+        BeRealSampleView(store: store)
+      }
+    }
   }
 }

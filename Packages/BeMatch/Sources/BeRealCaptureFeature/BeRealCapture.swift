@@ -15,8 +15,11 @@ public struct BeRealCaptureLogic {
 
   public struct State: Equatable {
     @BindingState var photoPickerItems: [PhotosPickerItem] = []
-    var images: [Data?] = Array(repeating: nil, count: 9)
+    var images: [PhotoGrid.State] = Array(repeating: .empty, count: 9)
     var isActivityIndicatorVisible = false
+    var isWarningTextVisible: Bool {
+      !images.filter(\.isWarning).isEmpty
+    }
 
     @PresentationState var destination: Destination.State?
     public init() {}
@@ -25,6 +28,7 @@ public struct BeRealCaptureLogic {
   public enum Action: BindableAction {
     case onAppear
     case onDelete(Int)
+    case howToButtonTapped
     case nextButtonTapped
     case loadTransferableResponse(Int, Result<Data?, Error>)
     case loadTransferableFinished
@@ -36,6 +40,7 @@ public struct BeRealCaptureLogic {
 
     public enum Delegate: Equatable {
       case nextScreen
+      case howTo
     }
   }
 
@@ -57,13 +62,15 @@ public struct BeRealCaptureLogic {
       case let .onDelete(offset):
         state.destination = .confirmationDialog(.deletePhoto(offset))
         return .none
+        
+      case .howToButtonTapped:
+        return .send(.delegate(.howTo))
 
       case .binding(\.$photoPickerItems):
         guard !state.photoPickerItems.isEmpty
         else { return .none }
 
         state.isActivityIndicatorVisible = true
-        state.images = Array(repeating: nil, count: 9)
 
         return .run { [items = state.photoPickerItems] send in
           for (offset, element) in items.enumerated() {
@@ -74,12 +81,24 @@ public struct BeRealCaptureLogic {
           await send(.loadTransferableFinished)
         }
 
-      case let .loadTransferableResponse(offset, .success(data)):
-        state.images[offset] = data
+      case let .loadTransferableResponse(offset, .success(.some(data))):
+        if let image = UIImage(data: data) {
+          if image.size == CGSize(width: 1500, height: 2000) {
+            state.images[offset] = .active(image)
+          } else {
+            state.images[offset] = .warning(image)
+          }
+        } else {
+          state.images[offset] = .empty
+        }
+        return .none
+        
+      case let .loadTransferableResponse(offset, .success(.none)):
+        state.images[offset] = .empty
         return .none
 
       case let .loadTransferableResponse(offset, .failure):
-        state.images[offset] = nil
+        state.images[offset] = .empty
         state.isActivityIndicatorVisible = false
         return .none
 
@@ -88,14 +107,20 @@ public struct BeRealCaptureLogic {
         return .none
 
       case .nextButtonTapped:
-        guard let uid = firebaseAuth.currentUser()?.uid
-        else { return .none }
-
-        let validImages = state.images.compactMap { $0 }
+        let notBeRealIamges = state.images.filter(\.isWarning)
+        guard notBeRealIamges.isEmpty else {
+          state.destination = .alert(.selectPhotoWithBeReal())
+          return .none
+        }
+        
+        let validImages = state.images.filter(\.isActive)
         guard validImages.count >= 3 else {
           state.destination = .alert(.pleaseSelectPhotos())
           return .none
         }
+        
+        guard let uid = firebaseAuth.currentUser()?.uid
+        else { return .none }
 
         state.isActivityIndicatorVisible = true
 
@@ -105,7 +130,8 @@ public struct BeRealCaptureLogic {
 
           do {
             try await withThrowingTaskGroup(of: URL.self) { group in
-              for imageData in validImages {
+              for imageState in validImages {
+                guard let imageData = imageState.imageData else { return }
                 group.addTask {
                   try await firebaseStorage.upload(
                     path: userFolder + "/\(uuid().uuidString).jpeg",
@@ -143,18 +169,21 @@ public struct BeRealCaptureLogic {
         return .none
 
       case let .destination(.presented(.confirmationDialog(.distory(offset)))):
-        state.images[offset] = nil
+        state.images[offset] = .empty
         state.photoPickerItems.remove(at: offset)
         state.destination = nil
         return .none
 
       case .destination(.presented(.alert(.confirmOkay))):
         state.destination = nil
-        return .none
+        return .send(.delegate(.howTo))
 
       default:
         return .none
       }
+    }
+    .ifLet(\.$destination, action: \.destination) {
+      Destination()
     }
   }
 
@@ -205,11 +234,28 @@ public struct BeRealCaptureView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       ScrollView {
         VStack(spacing: 36) {
-          Text("Set your saved photo to your profile (it will be public 🌏)", bundle: .module)
-            .lineLimit(2)
-            .frame(minHeight: 50)
-            .layoutPriority(1)
-            .font(.system(.title3, weight: .semibold))
+          VStack(spacing: 8) {
+            Text("Set your saved photo to your profile (it will be public 🌏)", bundle: .module)
+              .lineLimit(2)
+              .frame(minHeight: 50)
+              .layoutPriority(1)
+              .font(.system(.title3, weight: .semibold))
+            
+            if viewStore.isWarningTextVisible {
+              Button {
+                store.send(.howToButtonTapped)
+              } label: {
+                HStack(spacing: 2) {
+                  Image(systemName: "exclamationmark.triangle.fill")
+                    .foregroundStyle(Color.yellow)
+                  
+                  Text("Select a photo saved with BeReal.", bundle: .module)
+                    .foregroundStyle(Color.secondary)
+                }
+                .font(.callout)
+              }
+            }
+          }
 
           LazyVGrid(
             columns: Array(
@@ -222,9 +268,9 @@ public struct BeRealCaptureView: View {
             ForEach(
               Array(viewStore.images.enumerated()),
               id: \.offset
-            ) { offset, imageData in
+            ) { offset, state in
               PhotoGrid(
-                imageData: imageData,
+                state: state,
                 selection: viewStore.$photoPickerItems,
                 onDelete: {
                   store.send(.onDelete(offset))
@@ -284,6 +330,19 @@ extension AlertState where Action == BeRealCaptureLogic.Destination.Action.Alert
     }
   }
 }
+
+extension AlertState where Action == BeRealCaptureLogic.Destination.Action.Alert {
+  static func selectPhotoWithBeReal() -> Self {
+    Self {
+      TextState("Select a photo saved with BeReal.", bundle: .module)
+    } actions: {
+      ButtonState(action: .confirmOkay) {
+        TextState("OK", bundle: .module)
+      }
+    }
+  }
+}
+
 
 extension ConfirmationDialogState where Action == BeRealCaptureLogic.Destination.Action.ConfirmationDialog {
   static func deletePhoto(_ offset: Int) -> Self {
