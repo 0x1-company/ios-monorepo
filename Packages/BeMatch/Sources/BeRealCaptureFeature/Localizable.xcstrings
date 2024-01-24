@@ -62,6 +62,16 @@
         }
       }
     },
+    "Select a photo saved with BeReal." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeRealで保存した写真を選択してください"
+          }
+        }
+      }
+    },
     "Set your saved photo to your profile (it will be public 🌏)" : {
       "localizations" : {
         "ja" : {

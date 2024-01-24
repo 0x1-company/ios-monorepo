@@ -236,9 +236,10 @@ let package = Package(
       .product(name: "FirebaseStorageClient", package: "SDK"),
     ]),
     .target(name: "ProfileEditFeature", dependencies: [
-      "AnalyticsKeys",
       "BeMatch",
       "BeMatchClient",
+      "AnalyticsKeys",
+      "BeRealSampleFeature",
       "BeRealCaptureFeature",
       "GenderSettingFeature",
       "UsernameSettingFeature",
