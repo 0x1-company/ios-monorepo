@@ -181,12 +181,14 @@ public struct MembershipLogic {
           guard data.createAppleSubscription else { return }
           await send(.transactionFinish(transaction))
         } catch: { error, send in
-          async let finish: Void = send(.transactionFinish(transaction))
-          async let failure: Void = send(.createAppleSubscriptionResponse(.failure(error)))
-          _ = await (finish, failure)
+          await send(.createAppleSubscriptionResponse(.failure(error)))
         }
 
       case .purchaseResponse(.failure):
+        state.isActivityIndicatorVisible = false
+        return .none
+        
+      case .createAppleSubscriptionResponse(.failure):
         state.isActivityIndicatorVisible = false
         return .none
 
