@@ -81,7 +81,7 @@ public struct UsernameSettingLogic {
             TextState("OK", bundle: .module)
           }
         } message: {
-          TextState("username must be a string at least 4 characters long and up to 30 characters long containing only letters, numbers, underscores, and periods except that no two periods shall be in sequence or undefined", bundle: .module)
+          TextState("username must be a string at least 3 characters long and up to 30 characters long containing only letters, numbers, underscores, and periods except that no two periods shall be in sequence or undefined", bundle: .module)
         }
         return .none
 
