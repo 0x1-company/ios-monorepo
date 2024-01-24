@@ -8,7 +8,6 @@ import FirebaseStorageClient
 import PhotosUI
 import Styleguide
 import SwiftUI
-import TcaHelpers
 
 @Reducer
 public struct BeRealCaptureLogic {
@@ -16,9 +15,9 @@ public struct BeRealCaptureLogic {
 
   public struct State: Equatable {
     @BindingState var photoPickerItems: [PhotosPickerItem] = []
-    var images: [URL?] = Array(repeating: nil, count: 9)
+    var images: [Data?] = Array(repeating: nil, count: 9)
     var isActivityIndicatorVisible = false
-    var isDisabled = true
+
     @PresentationState var confirmationDialog: ConfirmationDialogState<Action.ConfirmationDialog>?
     public init() {}
   }
@@ -27,7 +26,8 @@ public struct BeRealCaptureLogic {
     case onAppear
     case onDelete(Int)
     case nextButtonTapped
-    case loadTransferableResponse(Result<Data?, Error>)
+    case loadTransferableResponse(Int, Result<Data?, Error>)
+    case loadTransferableFinished
     case uploadResponse(Result<URL, Error>)
     case updateUserImage(Result<BeMatch.UpdateUserImageMutation.Data, Error>)
     case confirmationDialog(PresentationAction<ConfirmationDialog>)
@@ -70,56 +70,76 @@ public struct BeRealCaptureLogic {
         }
         return .none
 
-      case .nextButtonTapped:
-        state.isActivityIndicatorVisible = true
-        let imageUrls = state.images
-          .compactMap { $0 }
-          .map(\.absoluteString)
-        let input = BeMatch.UpdateUserImageInput(imageUrls: imageUrls)
-        return .run { send in
-          await feedbackGenerator.impactOccurred()
-          await send(.updateUserImage(Result {
-            try await updateUserImage(input)
-          }), animation: .default)
-        }
-
       case .binding(\.$photoPickerItems):
-        guard
-          !state.photoPickerItems.isEmpty,
-          let uid = firebaseAuth.currentUser()?.uid
+        guard !state.photoPickerItems.isEmpty
         else { return .none }
 
         state.isActivityIndicatorVisible = true
         state.images = Array(repeating: nil, count: 9)
 
         return .run { [items = state.photoPickerItems] send in
-          let userFolder = "users/profile_images/\(uid)"
-          try await firebaseStorage.folderDelete(path: userFolder)
-          for i in items {
-            await send(.loadTransferableResponse(Result {
-              try await i.loadTransferable(type: Data.self)
-            }))
-            let data = try await i.loadTransferable(type: Data.self)
-            guard let data else { return }
-            let filename = "\(uuid().uuidString).jpeg"
-            await send(.uploadResponse(Result {
-              try await firebaseStorage.upload(
-                path: "\(userFolder)/\(filename)",
-                uploadData: data
-              )
+          for (offset, element) in items.enumerated() {
+            await send(.loadTransferableResponse(offset, Result {
+              try await element.loadTransferable(type: Data.self)
             }))
           }
+          await send(.loadTransferableFinished)
         }
-
-      case let .uploadResponse(.success(url)):
-        state.isActivityIndicatorVisible = false
-        for i in 0 ..< state.images.count {
-          if state.images[i] == nil {
-            state.images[i] = url
-            break
-          }
-        }
+        
+      case let .loadTransferableResponse(offset, .success(data)):
+        state.images[offset] = data
         return .none
+        
+      case let .loadTransferableResponse(offset, .failure):
+        state.images[offset] = nil
+        state.isActivityIndicatorVisible = false
+        return .none
+        
+      case .loadTransferableFinished:
+        state.isActivityIndicatorVisible = false
+        return .none
+        
+      case .nextButtonTapped:
+        guard let uid = firebaseAuth.currentUser()?.uid
+        else { return .none }
+        
+        let validImages = state.images.compactMap { $0 }
+        guard validImages.count >= 3 else {
+          return .none
+        }
+        
+        state.isActivityIndicatorVisible = true
+
+        return .run { send in
+          var imageUrls: [URL] = []
+          let userFolder = "users/profile_images/\(uid)"
+          
+          do {
+            try await withThrowingTaskGroup(of: URL.self) { group in
+              for imageData in validImages {
+                group.addTask {
+                  try await firebaseStorage.upload(
+                    path: userFolder + "/\(uuid().uuidString).jpeg",
+                    uploadData: imageData
+                  )
+                }
+              }
+              
+              for try await result in group {
+                imageUrls.append(result)
+              }
+            }
+          } catch {
+            await send(.uploadResponse(.failure(error)))
+          }
+          
+          let input = BeMatch.UpdateUserImageInput(
+            imageUrls: imageUrls.map(\.absoluteString)
+          )
+          await send(.updateUserImage(Result {
+            try await updateUserImage(input)
+          }))
+        }
 
       case .uploadResponse(.failure):
         state.isActivityIndicatorVisible = false
@@ -127,7 +147,6 @@ public struct BeRealCaptureLogic {
 
       case .updateUserImage(.success):
         state.isActivityIndicatorVisible = false
-        URLCache.shared.removeAllCachedResponses()
         return .send(.delegate(.nextScreen))
 
       case .updateUserImage(.failure):
@@ -143,10 +162,6 @@ public struct BeRealCaptureLogic {
       default:
         return .none
       }
-    }
-    .onChange(of: \.images) { images, state, _ in
-      state.isDisabled = images.compactMap { $0 }.count < 3
-      return .none
     }
   }
 }
@@ -189,9 +204,9 @@ public struct BeRealCaptureView: View {
             ForEach(
               Array(viewStore.images.enumerated()),
               id: \.offset
-            ) { offset, image in
+            ) { offset, imageData in
               PhotoGrid(
-                image: image,
+                imageData: imageData,
                 selection: viewStore.$photoPickerItems,
                 onDelete: {
                   store.send(.onDelete(offset))
@@ -200,13 +215,14 @@ public struct BeRealCaptureView: View {
               .id(offset)
             }
           }
+          
+          Spacer()
 
           PrimaryButton(
             nextButtonStyle == .save
               ? String(localized: "Save", bundle: .module)
               : String(localized: "Next", bundle: .module),
-            isLoading: viewStore.isActivityIndicatorVisible,
-            isDisabled: viewStore.isDisabled
+            isLoading: viewStore.isActivityIndicatorVisible
           ) {
             store.send(.nextButtonTapped)
           }

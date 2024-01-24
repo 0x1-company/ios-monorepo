@@ -1,61 +1,55 @@
-import CachedAsyncImage
 import PhotosUI
 import Styleguide
 import SwiftUI
 
 struct PhotoGrid: View {
-  let image: URL?
+  let imageData: Data?
   @Binding var selection: [PhotosPickerItem]
   let onDelete: () -> Void
 
   var body: some View {
-    CachedAsyncImage(
-      url: image,
-      urlCache: .shared,
-      scale: 1,
-      content: { content in
-        Button(action: onDelete) {
-          content
-            .resizable()
-            .aspectRatio(3 / 4, contentMode: .fill)
-            .clipped()
-            .cornerRadius(10)
-            .overlay {
-              RoundedRectangle(cornerRadius: 10)
-                .stroke(Color(uiColor: UIColor.opaqueSeparator), lineWidth: 1)
-            }
-        }
-      },
-      placeholder: {
-        PhotosPicker(
-          selection: $selection,
-          maxSelectionCount: 9,
-          selectionBehavior: .default,
-          preferredItemEncoding: .automatic
-        ) {
-          Color(uiColor: UIColor.secondarySystemBackground)
-            .aspectRatio(3 / 4, contentMode: .fill)
-            .cornerRadius(10)
-            .overlay {
-              PlusIcon()
-            }
-            .overlay {
-              RoundedRectangle(cornerRadius: 10)
-                .stroke(
-                  Color(uiColor: UIColor.opaqueSeparator),
-                  style: StrokeStyle(dash: [8, 8])
-                )
-            }
-        }
+    if let imageData, let image = UIImage(data: imageData) {
+      Button(action: onDelete) {
+        Image(uiImage: image)
+          .resizable()
+          .aspectRatio(3 / 4, contentMode: .fill)
+          .clipped()
+          .clipShape(RoundedRectangle(cornerRadius: 10))
+          .overlay {
+            RoundedRectangle(cornerRadius: 10)
+              .stroke(Color(uiColor: UIColor.opaqueSeparator), lineWidth: 1)
+          }
       }
-    )
-    .buttonStyle(HoldDownButtonStyle())
+      .buttonStyle(HoldDownButtonStyle())
+    } else {
+      PhotosPicker(
+        selection: $selection,
+        maxSelectionCount: 9,
+        selectionBehavior: .default,
+        preferredItemEncoding: .automatic
+      ) {
+        Color(uiColor: UIColor.secondarySystemBackground)
+          .aspectRatio(3 / 4, contentMode: .fill)
+          .cornerRadius(10)
+          .overlay {
+            PlusIcon()
+          }
+          .overlay {
+            RoundedRectangle(cornerRadius: 10)
+              .stroke(
+                Color(uiColor: UIColor.opaqueSeparator),
+                style: StrokeStyle(dash: [8, 8])
+              )
+          }
+      }
+      .buttonStyle(HoldDownButtonStyle())
+    }
   }
 }
 
 #Preview {
   PhotoGrid(
-    image: nil,
+    imageData: nil,
     selection: .constant([]),
     onDelete: {}
   )
