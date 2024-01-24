@@ -146,15 +146,18 @@ public struct SwipeCardView: View {
           DragGesture()
             .onChanged { translation = $0.translation }
             .onEnded { _ in
-              switch translation.width {
-              case let width where width > 100:
-                translation = CGSize(width: 900, height: translation.height)
-                store.send(.swipeToLike)
-              case let width where width < -100:
-                translation = CGSize(width: -900, height: translation.height)
-                store.send(.swipeToNope)
-              default:
-                translation = CGSize.zero
+              let targetHorizontalTranslation = UIScreen.main.bounds.width / 2 + max(proxy.size.height, proxy.size.width) / 2
+              withAnimation {
+                switch translation.width {
+                case let width where width > 100:
+                  translation = CGSize(width: targetHorizontalTranslation, height: translation.height)
+                  store.send(.swipeToLike)
+                case let width where width < -100:
+                  translation = CGSize(width: -targetHorizontalTranslation, height: translation.height)
+                  store.send(.swipeToNope)
+                default:
+                  translation = CGSize.zero
+                }
               }
             }
         )
