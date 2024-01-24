@@ -62,7 +62,7 @@ public struct BeRealCaptureLogic {
       case let .onDelete(offset):
         state.destination = .confirmationDialog(.deletePhoto(offset))
         return .none
-        
+
       case .howToButtonTapped:
         return .send(.delegate(.howTo))
 
@@ -92,7 +92,7 @@ public struct BeRealCaptureLogic {
           state.images[offset] = .empty
         }
         return .none
-        
+
       case let .loadTransferableResponse(offset, .success(.none)):
         state.images[offset] = .empty
         return .none
@@ -112,13 +112,13 @@ public struct BeRealCaptureLogic {
           state.destination = .alert(.selectPhotoWithBeReal())
           return .none
         }
-        
+
         let validImages = state.images.filter(\.isActive)
         guard validImages.count >= 3 else {
           state.destination = .alert(.pleaseSelectPhotos())
           return .none
         }
-        
+
         guard let uid = firebaseAuth.currentUser()?.uid
         else { return .none }
 
@@ -240,7 +240,7 @@ public struct BeRealCaptureView: View {
               .frame(minHeight: 50)
               .layoutPriority(1)
               .font(.system(.title3, weight: .semibold))
-            
+
             if viewStore.isWarningTextVisible {
               Button {
                 store.send(.howToButtonTapped)
@@ -248,7 +248,7 @@ public struct BeRealCaptureView: View {
                 HStack(spacing: 2) {
                   Image(systemName: "exclamationmark.triangle.fill")
                     .foregroundStyle(Color.yellow)
-                  
+
                   Text("Select a photo saved with BeReal.", bundle: .module)
                     .foregroundStyle(Color.secondary)
                 }
@@ -342,7 +342,6 @@ extension AlertState where Action == BeRealCaptureLogic.Destination.Action.Alert
     }
   }
 }
-
 
 extension ConfirmationDialogState where Action == BeRealCaptureLogic.Destination.Action.ConfirmationDialog {
   static func deletePhoto(_ offset: Int) -> Self {

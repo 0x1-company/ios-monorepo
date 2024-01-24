@@ -79,7 +79,7 @@ public struct OnboardLogic {
       case .path(.element(_, .sample(.delegate(.nextScreen)))):
         state.path.append(.capture())
         return .none
-        
+
       case .path(.element(_, .capture(.delegate(.howTo)))):
         return .none
 
@@ -92,7 +92,7 @@ public struct OnboardLogic {
 
       case .path(.element(_, .invitation(.delegate(.nextScreen)))):
         return .send(.delegate(.finish))
-        
+
       case .destination(.presented(.sample(.delegate(.nextScreen)))):
         state.destination = nil
         return .none
@@ -132,7 +132,7 @@ public struct OnboardLogic {
       Scope(state: \.invitation, action: \.invitation, child: InvitationLogic.init)
     }
   }
-  
+
   @Reducer
   public struct Destination {
     public enum State: Equatable {
