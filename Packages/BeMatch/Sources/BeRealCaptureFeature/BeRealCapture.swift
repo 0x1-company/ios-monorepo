@@ -73,36 +73,36 @@ public struct BeRealCaptureLogic {
           }
           await send(.loadTransferableFinished)
         }
-        
+
       case let .loadTransferableResponse(offset, .success(data)):
         state.images[offset] = data
         return .none
-        
+
       case let .loadTransferableResponse(offset, .failure):
         state.images[offset] = nil
         state.isActivityIndicatorVisible = false
         return .none
-        
+
       case .loadTransferableFinished:
         state.isActivityIndicatorVisible = false
         return .none
-        
+
       case .nextButtonTapped:
         guard let uid = firebaseAuth.currentUser()?.uid
         else { return .none }
-        
+
         let validImages = state.images.compactMap { $0 }
         guard validImages.count >= 3 else {
           state.destination = .alert(.pleaseSelectPhotos())
           return .none
         }
-        
+
         state.isActivityIndicatorVisible = true
 
         return .run { send in
           var imageUrls: [URL] = []
           let userFolder = "users/profile_images/\(uid)"
-          
+
           do {
             try await withThrowingTaskGroup(of: URL.self) { group in
               for imageData in validImages {
@@ -113,7 +113,7 @@ public struct BeRealCaptureLogic {
                   )
                 }
               }
-              
+
               for try await result in group {
                 imageUrls.append(result)
               }
@@ -121,7 +121,7 @@ public struct BeRealCaptureLogic {
           } catch {
             await send(.uploadResponse(.failure(error)))
           }
-          
+
           let input = BeMatch.UpdateUserImageInput(
             imageUrls: imageUrls.map(\.absoluteString)
           )
@@ -147,7 +147,7 @@ public struct BeRealCaptureLogic {
         state.photoPickerItems.remove(at: offset)
         state.destination = nil
         return .none
-        
+
       case .destination(.presented(.alert(.confirmOkay))):
         state.destination = nil
         return .none
@@ -157,7 +157,7 @@ public struct BeRealCaptureLogic {
       }
     }
   }
-  
+
   @Reducer
   public struct Destination {
     public enum State: Equatable {
@@ -168,7 +168,7 @@ public struct BeRealCaptureLogic {
     public enum Action {
       case alert(Alert)
       case confirmationDialog(ConfirmationDialog)
-      
+
       public enum Alert: Equatable {
         case confirmOkay
       }
@@ -177,7 +177,7 @@ public struct BeRealCaptureLogic {
         case distory(Int)
       }
     }
-    
+
     public var body: some Reducer<State, Action> {
       EmptyReducer()
     }
@@ -233,7 +233,7 @@ public struct BeRealCaptureView: View {
               .id(offset)
             }
           }
-          
+
           Spacer()
 
           PrimaryButton(
