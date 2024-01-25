@@ -43,3 +43,8 @@ By standardizing and reusing these feature specifications and designs, our devel
 
 For more information see our full [license](./LICENSE).
 
+# Contact
+
+Please contact me if you would like to build an app together.
+- https://x.com/tomokisun
+- tomokisun@0x1.company
