@@ -3,6 +3,7 @@ import BeMatch
 import BeRealCaptureFeature
 import BeRealSampleFeature
 import ComposableArchitecture
+import FeedbackGeneratorClient
 import GenderSettingFeature
 import SwiftUI
 import UsernameSettingFeature
@@ -36,6 +37,7 @@ public struct ProfileEditLogic {
   }
 
   @Dependency(\.analytics) var analytics
+  @Dependency(\.feedbackGenerator) var feedbackGenerator
   @Dependency(\.bematch.currentUser) var currentUser
 
   public var body: some Reducer<State, Action> {
@@ -59,15 +61,21 @@ public struct ProfileEditLogic {
 
       case .beRealCaptureButtonTapped:
         state.destination = .beRealCapture(BeRealCaptureLogic.State())
-        return .none
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
 
       case .genderSettingButtonTapped:
         state.destination = .genderSetting(GenderSettingLogic.State(gender: state.user?.gender.value))
-        return .none
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
 
       case .usernameSettingButtonTapped:
         state.destination = .usernameSetting(UsernameSettingLogic.State(username: state.user?.berealUsername ?? ""))
-        return .none
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
 
       case let .currentUserResponse(.success(data)):
         let currentUser = data.currentUser.fragments.userInternal
@@ -89,7 +97,9 @@ public struct ProfileEditLogic {
 
       case .destination(.presented(.beRealCapture(.delegate(.howTo)))):
         state.destination = .beRealSample()
-        return .none
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
 
       case .destination(.presented(.beRealSample(.delegate(.nextScreen)))):
         state.destination = nil
