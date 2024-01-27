@@ -242,6 +242,9 @@ type Mutation {
   """性別を更新する"""
   updateGender(input: UpdateGenderInput!): User!
 
+  """一言コメントを更新する"""
+  updateShortComment(input: UpdateShortCommentInput!): User!
+
   """プロフィール画像を更新する"""
   updateUserImage(input: UpdateUserImageInput!): [UserImage!]!
 }
@@ -332,6 +335,10 @@ input UpdateGenderInput {
   gender: Gender!
 }
 
+input UpdateShortCommentInput {
+  shortComment: String!
+}
+
 input UpdateUserImageInput {
   """ユーザー画像URL"""
   imageUrls: [String!]!
@@ -352,6 +359,7 @@ type User {
 
   """ユーザーの画像一覧"""
   images: [UserImage!]!
+  shortComment: String
   status: UserStatus!
 }
 
@@ -363,6 +371,7 @@ type UserEdge {
 type UserImage {
   id: ID!
   imageUrl: String!
+  order: Int!
 }
 
 enum UserStatus {

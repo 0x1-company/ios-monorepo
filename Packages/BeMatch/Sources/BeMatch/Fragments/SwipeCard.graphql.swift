@@ -6,7 +6,7 @@
 public extension BeMatch {
   struct SwipeCard: BeMatch.SelectionSet, Fragment {
     public static var fragmentDefinition: StaticString {
-      #"fragment SwipeCard on User { __typename id images { __typename ...PictureSliderImage } }"#
+      #"fragment SwipeCard on User { __typename id shortComment images { __typename ...PictureSliderImage } }"#
     }
 
     public let __data: DataDict
@@ -16,11 +16,13 @@ public extension BeMatch {
     public static var __selections: [ApolloAPI.Selection] { [
       .field("__typename", String.self),
       .field("id", BeMatch.ID.self),
+      .field("shortComment", String?.self),
       .field("images", [Image].self),
     ] }
 
     /// user id
     public var id: BeMatch.ID { __data["id"] }
+    public var shortComment: String? { __data["shortComment"] }
     /// ユーザーの画像一覧
     public var images: [Image] { __data["images"] }
 
