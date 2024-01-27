@@ -220,6 +220,17 @@ public struct ProfileEditView: View {
               .foregroundStyle(Color.primary)
           }
         }
+        
+        Button {
+          store.send(.shortCommentButtonTapped)
+        } label: {
+          LabeledContent {
+            Image(systemName: "chevron.right")
+          } label: {
+            Text("Short Comment", bundle: .module)
+              .foregroundStyle(Color.primary)
+          }
+        }
       } header: {
         Text("PROFILE", bundle: .module)
       }
