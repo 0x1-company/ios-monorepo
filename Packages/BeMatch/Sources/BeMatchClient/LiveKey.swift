@@ -30,6 +30,10 @@ public extension BeMatchClient {
         let mutation = BeMatch.UpdateUserImageMutation(input: input)
         return try await apolloClient.perform(mutation: mutation)
       },
+      updateShortComment: { input in
+        let mutation = BeMatch.UpdateShortCommentMutation(input: input)
+        return try await apolloClient.perform(mutation: mutation)
+      },
       recommendations: {
         let query = BeMatch.RecommendationsQuery()
         return apolloClient.watch(query: query)

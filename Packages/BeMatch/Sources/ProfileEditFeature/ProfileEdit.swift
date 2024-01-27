@@ -1,11 +1,11 @@
 import AnalyticsKeys
-import ShortCommentSettingFeature
 import BeMatch
 import BeRealCaptureFeature
 import BeRealSampleFeature
 import ComposableArchitecture
 import FeedbackGeneratorClient
 import GenderSettingFeature
+import ShortCommentSettingFeature
 import SwiftUI
 import UsernameSettingFeature
 
@@ -86,7 +86,7 @@ public struct ProfileEditLogic {
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
-        
+
       case .shortCommentButtonTapped:
         state.destination = .shortComment(
           ShortCommentSettingLogic.State(
@@ -220,7 +220,7 @@ public struct ProfileEditView: View {
               .foregroundStyle(Color.primary)
           }
         }
-        
+
         Button {
           store.send(.shortCommentButtonTapped)
         } label: {

@@ -1,6 +1,8 @@
 import AnalyticsClient
-import Styleguide
+import BeMatch
+import BeMatchClient
 import ComposableArchitecture
+import Styleguide
 import SwiftUI
 
 @Reducer
@@ -10,14 +12,14 @@ public struct ShortCommentSettingLogic {
   public struct State: Equatable {
     @BindingState var shortComment: String
     @BindingState var focus: Focus?
-    
+
     var isDisabled = true
     var isActivityIndicatorVisible = false
 
     public init(shortComment: String?) {
       self.shortComment = shortComment ?? ""
     }
-    
+
     enum Focus: Hashable {
       case shortComment
     }
@@ -27,14 +29,16 @@ public struct ShortCommentSettingLogic {
     case onTask
     case onAppear
     case saveButtonTapped
+    case updateShortCommentResponse(Result<BeMatch.UpdateShortCommentMutation.Data, Error>)
     case binding(BindingAction<State>)
     case delegate(Delegate)
-    
+
     public enum Delegate: Equatable {
       case nextScreen
     }
   }
 
+  @Dependency(\.bematch) var bematch
   @Dependency(\.analytics) var analytics
 
   public var body: some Reducer<State, Action> {
@@ -48,15 +52,31 @@ public struct ShortCommentSettingLogic {
       case .onAppear:
         analytics.logScreen(screenName: "ShortCommentSetting", of: self)
         return .none
-        
+
       case .saveButtonTapped:
         state.focus = nil
+        state.isActivityIndicatorVisible = true
+        let input = BeMatch.UpdateShortCommentInput(
+          shortComment: state.shortComment
+        )
+        return .run { send in
+          await send(.updateShortCommentResponse(Result {
+            try await bematch.updateShortComment(input)
+          }))
+        }
+
+      case .updateShortCommentResponse(.success):
+        state.isActivityIndicatorVisible = false
         return .send(.delegate(.nextScreen))
-        
+
+      case .updateShortCommentResponse(.failure):
+        state.isActivityIndicatorVisible = false
+        return .none
+
       case .binding:
         state.isDisabled = state.shortComment.isEmpty
         return .none
-        
+
       default:
         return .none
       }
@@ -79,7 +99,7 @@ public struct ShortCommentSettingView: View {
           .frame(height: 50)
           .font(.system(.title3, weight: .semibold))
           .multilineTextAlignment(.center)
-        
+
         VStack(spacing: 64) {
           TextEditor(text: viewStore.$shortComment)
             .frame(height: 140)
@@ -91,9 +111,9 @@ public struct ShortCommentSettingView: View {
             .foregroundStyle(Color.secondary)
             .multilineTextAlignment(.center)
         }
-        
+
         Spacer()
-        
+
         PrimaryButton(
           String(localized: "Save", bundle: .module),
           isLoading: viewStore.isActivityIndicatorVisible,
