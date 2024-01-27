@@ -47,6 +47,7 @@ let package = Package(
     .library(name: "ReportFeature", targets: ["ReportFeature"]),
     .library(name: "SelectControl", targets: ["SelectControl"]),
     .library(name: "SettingsFeature", targets: ["SettingsFeature"]),
+    .library(name: "ShortCommentSettingFeature", targets: ["ShortCommentSettingFeature"]),
     .library(name: "Styleguide", targets: ["Styleguide"]),
     .library(name: "SwipeCardFeature", targets: ["SwipeCardFeature"]),
     .library(name: "TutorialFeature", targets: ["TutorialFeature"]),
@@ -236,13 +237,11 @@ let package = Package(
       .product(name: "FirebaseStorageClient", package: "SDK"),
     ]),
     .target(name: "ProfileEditFeature", dependencies: [
-      "BeMatch",
-      "BeMatchClient",
-      "AnalyticsKeys",
       "BeRealSampleFeature",
       "BeRealCaptureFeature",
       "GenderSettingFeature",
       "UsernameSettingFeature",
+      "ShortCommentSettingFeature",
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "ProfileExternalFeature", dependencies: [
@@ -325,6 +324,13 @@ let package = Package(
       .product(name: "Build", package: "SDK"),
       .product(name: "ActivityView", package: "SDK"),
       .product(name: "FirebaseAuthClient", package: "SDK"),
+    ]),
+    .target(name: "ShortCommentSettingFeature", dependencies: [
+      "Styleguide",
+      "BeMatchClient",
+      "AnalyticsKeys",
+      .product(name: "FeedbackGeneratorClient", package: "SDK"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "Styleguide"),
     .target(name: "SwipeCardFeature", dependencies: [

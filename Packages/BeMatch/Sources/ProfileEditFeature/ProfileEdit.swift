@@ -1,4 +1,5 @@
 import AnalyticsKeys
+import ShortCommentSettingFeature
 import BeMatch
 import BeRealCaptureFeature
 import BeRealSampleFeature
@@ -26,6 +27,7 @@ public struct ProfileEditLogic {
     case beRealCaptureButtonTapped
     case genderSettingButtonTapped
     case usernameSettingButtonTapped
+    case shortCommentButtonTapped
     case currentUserResponse(Result<BeMatch.CurrentUserQuery.Data, Error>)
     case destination(PresentationAction<Destination.Action>)
     case delegate(Delegate)
@@ -60,19 +62,37 @@ public struct ProfileEditLogic {
         return .send(.delegate(.dismiss))
 
       case .beRealCaptureButtonTapped:
-        state.destination = .beRealCapture(BeRealCaptureLogic.State())
+        state.destination = .beRealCapture()
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
 
       case .genderSettingButtonTapped:
-        state.destination = .genderSetting(GenderSettingLogic.State(gender: state.user?.gender.value))
+        state.destination = .genderSetting(
+          GenderSettingLogic.State(
+            gender: state.user?.gender.value
+          )
+        )
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
 
       case .usernameSettingButtonTapped:
-        state.destination = .usernameSetting(UsernameSettingLogic.State(username: state.user?.berealUsername ?? ""))
+        state.destination = .usernameSetting(
+          UsernameSettingLogic.State(
+            username: state.user?.berealUsername ?? ""
+          )
+        )
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
+        
+      case .shortCommentButtonTapped:
+        state.destination = .shortComment(
+          ShortCommentSettingLogic.State(
+            shortComment: state.user?.shortComment
+          )
+        )
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
@@ -91,7 +111,8 @@ public struct ProfileEditLogic {
 
       case .destination(.presented(.beRealCapture(.delegate(.nextScreen)))),
            .destination(.presented(.genderSetting(.delegate(.nextScreen)))),
-           .destination(.presented(.usernameSetting(.delegate(.nextScreen)))):
+           .destination(.presented(.usernameSetting(.delegate(.nextScreen)))),
+           .destination(.presented(.shortComment(.delegate(.nextScreen)))):
         state.destination = nil
         return .send(.delegate(.profileUpdated))
 
@@ -103,7 +124,9 @@ public struct ProfileEditLogic {
 
       case .destination(.presented(.beRealSample(.delegate(.nextScreen)))):
         state.destination = nil
-        return .none
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
 
       case .destination:
         return .none
@@ -124,6 +147,7 @@ public struct ProfileEditLogic {
       case beRealCapture(BeRealCaptureLogic.State = .init())
       case genderSetting(GenderSettingLogic.State)
       case usernameSetting(UsernameSettingLogic.State)
+      case shortComment(ShortCommentSettingLogic.State)
     }
 
     public enum Action {
@@ -131,6 +155,7 @@ public struct ProfileEditLogic {
       case beRealCapture(BeRealCaptureLogic.Action)
       case genderSetting(GenderSettingLogic.Action)
       case usernameSetting(UsernameSettingLogic.Action)
+      case shortComment(ShortCommentSettingLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
@@ -145,6 +170,9 @@ public struct ProfileEditLogic {
       }
       Scope(state: \.usernameSetting, action: \.usernameSetting) {
         UsernameSettingLogic()
+      }
+      Scope(state: \.shortComment, action: \.shortComment) {
+        ShortCommentSettingLogic()
       }
     }
   }
@@ -246,5 +274,12 @@ public struct ProfileEditView: View {
     ) { store in
       BeRealCaptureView(store: store, nextButtonStyle: .save)
     }
+    .navigationDestination(
+      store: store.scope(
+        state: \.$destination.shortComment,
+        action: \.destination.shortComment
+      ),
+      destination: ShortCommentSettingView.init(store:)
+    )
   }
 }
