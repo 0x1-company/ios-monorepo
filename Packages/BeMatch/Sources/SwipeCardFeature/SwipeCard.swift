@@ -140,6 +140,27 @@ public struct SwipeCardView: View {
             }
           }
         }
+        .overlay(alignment: .bottom) {
+          if let shortComment = viewStore.data.shortComment {
+            ZStack(alignment: .bottom) {
+              LinearGradient(
+                colors: [
+                  Color.black.opacity(0.0),
+                  Color.black.opacity(1.0),
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+              )
+
+              Text(shortComment)
+                .font(.system(.subheadline, weight: .semibold))
+                .padding(.bottom, 8)
+                .padding(.horizontal, 16)
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 16))
+            .frame(width: proxy.size.width, height: proxy.size.width * (4 / 3) / 2)
+          }
+        }
         .offset(translation)
         .rotationEffect(.degrees(Double(translation.width / 300) * 25), anchor: .bottom)
         .gesture(
@@ -176,4 +197,75 @@ public struct SwipeCardView: View {
       }
     }
   }
+}
+
+#Preview {
+  SwipeCardView(
+    store: .init(
+      initialState: SwipeCardLogic.State(
+        data: BeMatch.SwipeCard(
+          _dataDict: DataDict(
+            data: [
+              "id": "1",
+              "shortComment": "生まれたからには世界中の人と仲良くなりたいです。近くに住んでいる人いたら教えてください。",
+              "images": [
+                DataDict(
+                  data: [
+                    "id": "1",
+                    "imageUrl": "https://asia-northeast1-bematch-staging.cloudfunctions.net/onRequestResizedImage/users/profile_images/vJ2NQU467OgyW6czPxFvfWoUOFC2/1.png?size=600x800",
+                  ],
+                  fulfilledFragments: []
+                ),
+                DataDict(
+                  data: [
+                    "id": "2",
+                    "imageUrl": "https://asia-northeast1-bematch-staging.cloudfunctions.net/onRequestResizedImage/users/profile_images/vJ2NQU467OgyW6czPxFvfWoUOFC2/2.png?size=600x800",
+                  ],
+                  fulfilledFragments: []
+                ),
+              ],
+            ],
+            fulfilledFragments: []
+          )
+        )
+      ),
+      reducer: SwipeCardLogic.init
+    )
+  )
+  .environment(\.colorScheme, .dark)
+}
+
+#Preview {
+  SwipeCardView(
+    store: .init(
+      initialState: SwipeCardLogic.State(
+        data: BeMatch.SwipeCard(
+          _dataDict: DataDict(
+            data: [
+              "id": "1",
+              "images": [
+                DataDict(
+                  data: [
+                    "id": "1",
+                    "imageUrl": "https://asia-northeast1-bematch-staging.cloudfunctions.net/onRequestResizedImage/users/profile_images/vJ2NQU467OgyW6czPxFvfWoUOFC2/1.png?size=600x800",
+                  ],
+                  fulfilledFragments: []
+                ),
+                DataDict(
+                  data: [
+                    "id": "2",
+                    "imageUrl": "https://asia-northeast1-bematch-staging.cloudfunctions.net/onRequestResizedImage/users/profile_images/vJ2NQU467OgyW6czPxFvfWoUOFC2/2.png?size=600x800",
+                  ],
+                  fulfilledFragments: []
+                ),
+              ],
+            ],
+            fulfilledFragments: []
+          )
+        )
+      ),
+      reducer: SwipeCardLogic.init
+    )
+  )
+  .environment(\.colorScheme, .dark)
 }

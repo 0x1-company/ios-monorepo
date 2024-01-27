@@ -1,0 +1,29 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Do not write your BeReal username or other social networking IDs. Your profile will not be visible to others." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeRealのユーザーネームや他のSNSのIDを書かないでください。あなたのプロフィールが他の人に表示されなくなります。"
+          }
+        }
+      }
+    },
+    "Save" : {
+
+    },
+    "Write a short comment.\nLet's appeal!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一言コメントを書いて\nアピールしよう"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

@@ -2,6 +2,7 @@
 
 fragment SwipeCard on User {
   id
+  shortComment
   images {
     ...PictureSliderImage
   }

@@ -4,6 +4,7 @@ fragment UserInternal on User {
   id
   berealUsername
   gender
+  shortComment
   status
   images {
     id

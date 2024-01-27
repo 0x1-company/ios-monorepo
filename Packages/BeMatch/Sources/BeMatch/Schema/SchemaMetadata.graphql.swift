@@ -32,10 +32,10 @@ public extension BeMatch {
     public static func objectType(forTypename typename: String) -> ApolloAPI.Object? {
       switch typename {
       case "Mutation": return BeMatch.Objects.Mutation
+      case "User": return BeMatch.Objects.User
       case "FirebaseRegistrationToken": return BeMatch.Objects.FirebaseRegistrationToken
       case "CreateLikeResponse": return BeMatch.Objects.CreateLikeResponse
       case "Match": return BeMatch.Objects.Match
-      case "User": return BeMatch.Objects.User
       case "Feedback": return BeMatch.Objects.Feedback
       case "UserImage": return BeMatch.Objects.UserImage
       case "Query": return BeMatch.Objects.Query

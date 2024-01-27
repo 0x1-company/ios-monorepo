@@ -41,6 +41,7 @@ public extension BeMatch {
 
         /// user id
         public var id: BeMatch.ID { __data["id"] }
+        public var shortComment: String? { __data["shortComment"] }
         /// ユーザーの画像一覧
         public var images: [Image] { __data["images"] }
 

@@ -45,6 +45,16 @@
         }
       }
     },
+    "Short Comment" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一言コメント"
+          }
+        }
+      }
+    },
     "Username" : {
       "extractionState" : "manual",
       "localizations" : {

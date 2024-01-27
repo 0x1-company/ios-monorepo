@@ -10,6 +10,7 @@ public struct BeMatchClient: Sendable {
   public var updateGender: @Sendable (BeMatch.UpdateGenderInput) async throws -> BeMatch.UpdateGenderMutation.Data
   public var updateBeReal: @Sendable (BeMatch.UpdateBeRealInput) async throws -> BeMatch.UpdateBeRealMutation.Data
   public var updateUserImage: @Sendable (BeMatch.UpdateUserImageInput) async throws -> BeMatch.UpdateUserImageMutation.Data
+  public var updateShortComment: @Sendable (BeMatch.UpdateShortCommentInput) async throws -> BeMatch.UpdateShortCommentMutation.Data
 
   public var recommendations: @Sendable () -> AsyncThrowingStream<BeMatch.RecommendationsQuery.Data, Error> = { .finished() }
   public var createLike: @Sendable (BeMatch.CreateLikeInput) async throws -> BeMatch.CreateLikeMutation.Data
