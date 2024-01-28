@@ -7,10 +7,10 @@ import ComposableArchitecture
 import Constants
 import DirectMessageFeature
 import FeedbackGeneratorClient
+import ProfileSharedFeature
 import ReportFeature
 import Styleguide
 import SwiftUI
-import ProfileSharedFeature
 
 @Reducer
 public struct ProfileExternalLogic {
@@ -20,7 +20,7 @@ public struct ProfileExternalLogic {
     let match: BeMatch.MatchGrid
     @BindingState var selection: BeMatch.MatchGrid.TargetUser.Image
     @PresentationState var destination: Destination.State?
-    
+
     var pictureSlider: PictureSliderLogic.State?
 
     var createdAt: Date {
