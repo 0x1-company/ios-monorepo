@@ -245,14 +245,9 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "ProfileExternalFeature", dependencies: [
-      "Constants",
-      "Styleguide",
-      "BeMatchClient",
-      "SelectControl",
-      "AnalyticsKeys",
       "ReportFeature",
       "DirectMessageFeature",
-      .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
+      "ProfileSharedFeature",
     ]),
     .target(name: "ProfileFeature", dependencies: [
       "ProfileSharedFeature",
