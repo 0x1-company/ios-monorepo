@@ -9,7 +9,7 @@ public extension BeMatch {
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
         #"query Matches($first: Int!, $after: String) { matches(first: $first, after: $after) { __typename pageInfo { __typename ...NextPagination } edges { __typename node { __typename ...MatchGrid } } } }"#,
-        fragments: [MatchGrid.self, NextPagination.self, PictureSliderImage.self]
+        fragments: [MatchGrid.self, NextPagination.self, PictureSlider.self]
       ))
 
     public var first: Int
@@ -129,7 +129,34 @@ public extension BeMatch {
               public var matchGrid: MatchGrid { _toFragment() }
             }
 
-            public typealias TargetUser = MatchGrid.TargetUser
+            /// Matches.Edge.Node.TargetUser
+            ///
+            /// Parent Type: `User`
+            public struct TargetUser: BeMatch.SelectionSet {
+              public let __data: DataDict
+              public init(_dataDict: DataDict) { __data = _dataDict }
+
+              public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.User }
+
+              /// user id
+              public var id: BeMatch.ID { __data["id"] }
+              /// BeRealのusername
+              public var berealUsername: String { __data["berealUsername"] }
+              public var shortComment: ShortComment? { __data["shortComment"] }
+              /// ユーザーの画像一覧
+              public var images: [Image] { __data["images"] }
+
+              public struct Fragments: FragmentContainer {
+                public let __data: DataDict
+                public init(_dataDict: DataDict) { __data = _dataDict }
+
+                public var pictureSlider: PictureSlider { _toFragment() }
+              }
+
+              public typealias ShortComment = PictureSlider.ShortComment
+
+              public typealias Image = PictureSlider.Image
+            }
           }
         }
       }

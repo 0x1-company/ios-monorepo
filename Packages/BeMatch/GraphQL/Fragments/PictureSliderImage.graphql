@@ -1,4 +1,0 @@
-fragment PictureSliderImage on UserImage {
-  id
-  imageUrl
-}

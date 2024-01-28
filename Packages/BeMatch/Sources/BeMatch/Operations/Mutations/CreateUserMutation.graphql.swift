@@ -9,7 +9,7 @@ public extension BeMatch {
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
         #"mutation CreateUser { createUser { __typename ...UserInternal } }"#,
-        fragments: [PictureSliderImage.self, UserInternal.self]
+        fragments: [PictureSlider.self, UserInternal.self]
       ))
 
     public init() {}
@@ -55,6 +55,7 @@ public extension BeMatch {
           public init(_dataDict: DataDict) { __data = _dataDict }
 
           public var userInternal: UserInternal { _toFragment() }
+          public var pictureSlider: PictureSlider { _toFragment() }
         }
 
         /// CreateUser.Image
@@ -68,16 +69,20 @@ public extension BeMatch {
 
           public var id: BeMatch.ID { __data["id"] }
           public var imageUrl: String { __data["imageUrl"] }
-
-          public struct Fragments: FragmentContainer {
-            public let __data: DataDict
-            public init(_dataDict: DataDict) { __data = _dataDict }
-
-            public var pictureSliderImage: PictureSliderImage { _toFragment() }
-          }
         }
 
-        public typealias ShortComment = UserInternal.ShortComment
+        /// CreateUser.ShortComment
+        ///
+        /// Parent Type: `ShortComment`
+        public struct ShortComment: BeMatch.SelectionSet {
+          public let __data: DataDict
+          public init(_dataDict: DataDict) { __data = _dataDict }
+
+          public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.ShortComment }
+
+          public var id: BeMatch.ID { __data["id"] }
+          public var body: String { __data["body"] }
+        }
       }
     }
   }

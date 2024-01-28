@@ -68,7 +68,7 @@ public struct ProfileLogic {
       case let .currentUserResponse(.success(data)):
         let currentUser = data.currentUser.fragments.userInternal
         state.currentUser = currentUser
-        state.pictureSlider = .init(images: currentUser.images.map(\.fragments.pictureSliderImage))
+        state.pictureSlider = .init(data: currentUser.fragments.pictureSlider)
         return .none
 
       default:

@@ -6,7 +6,7 @@
 public extension BeMatch {
   struct UserInternal: BeMatch.SelectionSet, Fragment {
     public static var fragmentDefinition: StaticString {
-      #"fragment UserInternal on User { __typename id berealUsername gender status images { __typename id imageUrl ...PictureSliderImage } shortComment { __typename id body } }"#
+      #"fragment UserInternal on User { __typename id berealUsername gender status images { __typename id imageUrl } shortComment { __typename id body } ...PictureSlider }"#
     }
 
     public let __data: DataDict
@@ -21,6 +21,7 @@ public extension BeMatch {
       .field("status", GraphQLEnum<BeMatch.UserStatus>.self),
       .field("images", [Image].self),
       .field("shortComment", ShortComment?.self),
+      .fragment(PictureSlider.self),
     ] }
 
     /// user id
@@ -34,6 +35,13 @@ public extension BeMatch {
     public var images: [Image] { __data["images"] }
     public var shortComment: ShortComment? { __data["shortComment"] }
 
+    public struct Fragments: FragmentContainer {
+      public let __data: DataDict
+      public init(_dataDict: DataDict) { __data = _dataDict }
+
+      public var pictureSlider: PictureSlider { _toFragment() }
+    }
+
     /// Image
     ///
     /// Parent Type: `UserImage`
@@ -46,18 +54,10 @@ public extension BeMatch {
         .field("__typename", String.self),
         .field("id", BeMatch.ID.self),
         .field("imageUrl", String.self),
-        .fragment(PictureSliderImage.self),
       ] }
 
       public var id: BeMatch.ID { __data["id"] }
       public var imageUrl: String { __data["imageUrl"] }
-
-      public struct Fragments: FragmentContainer {
-        public let __data: DataDict
-        public init(_dataDict: DataDict) { __data = _dataDict }
-
-        public var pictureSliderImage: PictureSliderImage { _toFragment() }
-      }
     }
 
     /// ShortComment
