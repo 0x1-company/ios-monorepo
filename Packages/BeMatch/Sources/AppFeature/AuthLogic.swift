@@ -1,6 +1,6 @@
-import Apollo
 import AnalyticsClient
 import AnalyticsKeys
+import Apollo
 import AppsFlyerClient
 import ATTrackingManagerClient
 import BeMatchClient
@@ -62,7 +62,7 @@ public struct AuthLogic {
           await trackingManager.requestTrackingAuthorization()
         ))
       }
-      
+
     case let .createUserResponse(.failure(error as ResponseCodeInterceptor.ResponseCodeError)):
       print(error.localizedDescription)
       return .none
