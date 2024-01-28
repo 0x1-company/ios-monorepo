@@ -96,30 +96,36 @@ public struct ShortCommentSettingView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 32) {
         Text("Write a short comment.\nLet's appeal!", bundle: .module)
-          .frame(height: 50)
+          .frame(minHeight: 50)
           .font(.system(.title3, weight: .semibold))
           .multilineTextAlignment(.center)
 
-        VStack(spacing: 64) {
+        VStack(spacing: 8) {
           TextEditor(text: viewStore.$shortComment)
             .frame(height: 140)
             .lineLimit(1 ... 3)
             .focused($focus, equals: .shortComment)
+            .overlay(
+              RoundedRectangle(cornerRadius: 12)
+                .stroke(Color.primary, lineWidth: 1.0)
+            )
 
           Text("Do not write your BeReal username or other social networking IDs. Your profile will not be visible to others.", bundle: .module)
             .font(.caption)
+            .frame(minHeight: 50)
             .foregroundStyle(Color.secondary)
-            .multilineTextAlignment(.center)
         }
 
-        Spacer()
-
-        PrimaryButton(
-          String(localized: "Save", bundle: .module),
-          isLoading: viewStore.isActivityIndicatorVisible,
-          isDisabled: viewStore.isDisabled
-        ) {
-          store.send(.saveButtonTapped)
+        VStack(spacing: 0) {
+          Spacer()
+          
+          PrimaryButton(
+            String(localized: "Save", bundle: .module),
+            isLoading: viewStore.isActivityIndicatorVisible,
+            isDisabled: viewStore.isDisabled
+          ) {
+            store.send(.saveButtonTapped)
+          }
         }
       }
       .padding(.top, 24)
