@@ -107,5 +107,11 @@
 	<string>6473888434</string>
 	<key>BEMATCH_PRO_ID</key>
 	<string>jp.bematch.ios.staging.subscription.pro</string>
+	<key>FacebookAppID</key>
+	<string>398553079297373</string>
+	<key>FacebookClientToken</key>
+	<string>c0105ac08c9f2af92ea97f15eebc4387</string>
+	<key>FacebookDisplayName</key>
+	<string>BeMatch.</string>
 </dict>
 </plist>
