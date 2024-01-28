@@ -1,6 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Account deletion failed." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウント削除に失敗しました。"
+          }
+        }
+      }
+    },
     "Are you sure you want to delete your account?" : {
       "localizations" : {
         "ja" : {
