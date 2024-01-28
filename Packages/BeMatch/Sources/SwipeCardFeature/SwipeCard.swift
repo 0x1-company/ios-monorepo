@@ -140,6 +140,25 @@ public struct SwipeCardView: View {
             }
           }
         }
+        .overlay(alignment: .topTrailing) {
+          Menu {
+            Button {
+              store.send(.reportButtonTapped)
+            } label: {
+              Label {
+                Text("Report", bundle: .module)
+              } icon: {
+                Image(systemName: "exclamationmark.triangle")
+              }
+            }
+          } label: {
+            Image(systemName: "ellipsis")
+              .bold()
+              .foregroundStyle(Color.white)
+              .frame(width: 44, height: 44)
+              .padding(.all, 4)
+          }
+        }
         .overlay(alignment: .bottom) {
           if let shortComment = viewStore.data.shortComment?.body {
             ZStack(alignment: .bottom) {
@@ -207,7 +226,16 @@ public struct SwipeCardView: View {
           _dataDict: DataDict(
             data: [
               "id": "1",
-              "shortComment": "生まれたからには世界中の人と仲良くなりたいです。近くに住んでいる人いたら教えてください。",
+              "shortComment": [
+                DataDict(
+                  data: [
+                    "id": "1",
+                    "userId": "1",
+                    "body": "生まれたからには世界中の人と仲良くなりたいです。近くに住んでいる人いたら教えてください。"
+                  ],
+                  fulfilledFragments: []
+                ),
+              ],
               "images": [
                 DataDict(
                   data: [
