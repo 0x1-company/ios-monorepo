@@ -112,7 +112,7 @@ public struct DeleteAccountLogic {
         state.confirmationDialog = nil
         return .none
 
-      case .closeUserResponse:
+      case .closeUserResponse(.success):
         state.alert = AlertState {
           TextState("Delete Account Completed", bundle: .module)
         } actions: {
@@ -120,13 +120,26 @@ public struct DeleteAccountLogic {
             TextState("OK", bundle: .module)
           }
         }
-        return .run { _ in
+        return .run { send in
           try? firebaseAuth.signOut()
+          await send(.delegate(.accountDeletionCompleted))
         }
+
+      case let .closeUserResponse(.failure(error)):
+        state.alert = AlertState {
+          TextState("Account deletion failed.", bundle: .module)
+        } actions: {
+          ButtonState(action: .confirmOkay) {
+            TextState("OK", bundle: .module)
+          }
+        } message: {
+          TextState(error.localizedDescription)
+        }
+        return .none
 
       case .alert(.presented(.confirmOkay)):
         state.alert = nil
-        return .send(.delegate(.accountDeletionCompleted))
+        return .none
 
       default:
         return .none
