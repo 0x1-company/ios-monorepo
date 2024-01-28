@@ -12,16 +12,16 @@ public extension BeMatch {
     }
 
     public init(
-      shortComment: String
+      body: String
     ) {
       __data = InputDict([
-        "shortComment": shortComment,
+        "body": body,
       ])
     }
 
-    public var shortComment: String {
-      get { __data["shortComment"] }
-      set { __data["shortComment"] = newValue }
+    public var body: String {
+      get { __data["body"] }
+      set { __data["body"] = newValue }
     }
   }
 }

@@ -6,7 +6,7 @@
 public extension BeMatch {
   struct MatchGrid: BeMatch.SelectionSet, Fragment {
     public static var fragmentDefinition: StaticString {
-      #"fragment MatchGrid on Match { __typename id createdAt isRead targetUser { __typename id berealUsername images { __typename ...PictureSliderImage } } }"#
+      #"fragment MatchGrid on Match { __typename id createdAt isRead targetUser { __typename id berealUsername ...PictureSlider } }"#
     }
 
     public let __data: DataDict
@@ -41,39 +41,27 @@ public extension BeMatch {
         .field("__typename", String.self),
         .field("id", BeMatch.ID.self),
         .field("berealUsername", String.self),
-        .field("images", [Image].self),
+        .fragment(PictureSlider.self),
       ] }
 
       /// user id
       public var id: BeMatch.ID { __data["id"] }
       /// BeRealのusername
       public var berealUsername: String { __data["berealUsername"] }
+      public var shortComment: ShortComment? { __data["shortComment"] }
       /// ユーザーの画像一覧
       public var images: [Image] { __data["images"] }
 
-      /// TargetUser.Image
-      ///
-      /// Parent Type: `UserImage`
-      public struct Image: BeMatch.SelectionSet {
+      public struct Fragments: FragmentContainer {
         public let __data: DataDict
         public init(_dataDict: DataDict) { __data = _dataDict }
 
-        public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.UserImage }
-        public static var __selections: [ApolloAPI.Selection] { [
-          .field("__typename", String.self),
-          .fragment(PictureSliderImage.self),
-        ] }
-
-        public var id: BeMatch.ID { __data["id"] }
-        public var imageUrl: String { __data["imageUrl"] }
-
-        public struct Fragments: FragmentContainer {
-          public let __data: DataDict
-          public init(_dataDict: DataDict) { __data = _dataDict }
-
-          public var pictureSliderImage: PictureSliderImage { _toFragment() }
-        }
+        public var pictureSlider: PictureSlider { _toFragment() }
       }
+
+      public typealias ShortComment = PictureSlider.ShortComment
+
+      public typealias Image = PictureSlider.Image
     }
   }
 }

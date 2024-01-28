@@ -325,6 +325,12 @@ type ReceivedLike {
   reachedLimit: Boolean!
 }
 
+type ShortComment {
+  body: String!
+  id: ID!
+  userId: String!
+}
+
 input UpdateBeRealInput {
   """BeRealのユーザー名"""
   username: String!
@@ -336,7 +342,7 @@ input UpdateGenderInput {
 }
 
 input UpdateShortCommentInput {
-  shortComment: String!
+  body: String!
 }
 
 input UpdateUserImageInput {
@@ -359,7 +365,7 @@ type User {
 
   """ユーザーの画像一覧"""
   images: [UserImage!]!
-  shortComment: String
+  shortComment: ShortComment
   status: UserStatus!
 }
 

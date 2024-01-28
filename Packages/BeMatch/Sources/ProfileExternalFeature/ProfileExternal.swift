@@ -8,9 +8,9 @@ import Constants
 import DirectMessageFeature
 import FeedbackGeneratorClient
 import ReportFeature
-import SelectControl
 import Styleguide
 import SwiftUI
+import ProfileSharedFeature
 
 @Reducer
 public struct ProfileExternalLogic {
@@ -20,6 +20,8 @@ public struct ProfileExternalLogic {
     let match: BeMatch.MatchGrid
     @BindingState var selection: BeMatch.MatchGrid.TargetUser.Image
     @PresentationState var destination: Destination.State?
+    
+    var pictureSlider: PictureSliderLogic.State?
 
     var createdAt: Date {
       guard let timeInterval = TimeInterval(match.createdAt)
@@ -39,13 +41,12 @@ public struct ProfileExternalLogic {
     case closeButtonTapped
     case unmatchButtonTapped
     case reportButtonTapped
-    case backButtonTapped
-    case forwardButtonTapped
     case addBeRealButtonTapped
     case jumpBeRealButtonTapped
     case deleteMatchResponse(Result<BeMatch.DeleteMatchMutation.Data, Error>)
     case readMatchResponse(Result<BeMatch.ReadMatchMutation.Data, Error>)
     case destination(PresentationAction<Destination.Action>)
+    case pictureSlider(PictureSliderLogic.Action)
     case delegate(Delegate)
 
     public enum ConfirmationDialog: Equatable {
@@ -103,24 +104,6 @@ public struct ProfileExternalLogic {
           await dismiss()
         }
 
-      case .backButtonTapped:
-        let images = state.match.targetUser.images
-        if let index = images.firstIndex(of: state.selection), index > 0 {
-          state.selection = images[index - 1]
-        }
-        return .run { _ in
-          await feedbackGenerator.impactOccurred()
-        }
-
-      case .forwardButtonTapped:
-        let images = state.match.targetUser.images
-        if let index = images.firstIndex(of: state.selection), index < images.count - 1 {
-          state.selection = images[index + 1]
-        }
-        return .run { _ in
-          await feedbackGenerator.impactOccurred()
-        }
-
       case .addBeRealButtonTapped:
         let username = state.match.targetUser.berealUsername
         state.destination = .directMessage(
@@ -173,6 +156,9 @@ public struct ProfileExternalLogic {
     }
     .ifLet(\.$destination, action: \.destination) {
       Destination()
+    }
+    .ifLet(\.pictureSlider, action: \.pictureSlider) {
+      PictureSliderLogic()
     }
   }
 
@@ -271,55 +257,15 @@ public struct ProfileExternalView: View {
           .padding(.top, 56)
           .padding(.horizontal, 16)
 
-          SelectControl(
-            current: viewStore.selection,
-            items: viewStore.match.targetUser.images
+          IfLetStore(
+            store.scope(state: \.pictureSlider, action: \.pictureSlider),
+            then: PictureSliderView.init(store:),
+            else: {
+              Color.black
+                .aspectRatio(3 / 4, contentMode: .fill)
+                .frame(width: UIScreen.main.bounds.width)
+            }
           )
-          .padding(.top, 3)
-          .padding(.horizontal, 16)
-
-          ForEach(viewStore.match.targetUser.images, id: \.id) { image in
-            if image == viewStore.selection {
-              CachedAsyncImage(
-                url: URL(string: image.imageUrl),
-                urlCache: .shared,
-                scale: displayScale,
-                content: { content in
-                  content
-                    .resizable()
-                    .aspectRatio(3 / 4, contentMode: .fit)
-                    .frame(width: UIScreen.main.bounds.size.width)
-                },
-                placeholder: {
-                  Color.black
-                    .aspectRatio(3 / 4, contentMode: .fill)
-                    .overlay {
-                      ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle())
-                        .tint(Color.white)
-                    }
-                }
-              )
-            }
-          }
-          .cornerRadius(16)
-          .aspectRatio(3 / 4, contentMode: .fill)
-          .frame(width: UIScreen.main.bounds.size.width)
-          .overlay {
-            HStack(spacing: 0) {
-              Color.clear
-                .contentShape(Rectangle())
-                .onTapGesture {
-                  store.send(.backButtonTapped)
-                }
-
-              Color.clear
-                .contentShape(Rectangle())
-                .onTapGesture {
-                  store.send(.forwardButtonTapped)
-                }
-            }
-          }
 
           VStack(spacing: 12) {
             PrimaryButton(

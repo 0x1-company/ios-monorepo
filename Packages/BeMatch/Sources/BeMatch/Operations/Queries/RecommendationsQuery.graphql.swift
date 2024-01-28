@@ -9,7 +9,7 @@ public extension BeMatch {
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
         #"query Recommendations { recommendations { __typename ...SwipeCard } }"#,
-        fragments: [PictureSliderImage.self, SwipeCard.self]
+        fragments: [PictureSlider.self, SwipeCard.self]
       ))
 
     public init() {}
@@ -41,7 +41,7 @@ public extension BeMatch {
 
         /// user id
         public var id: BeMatch.ID { __data["id"] }
-        public var shortComment: String? { __data["shortComment"] }
+        public var shortComment: ShortComment? { __data["shortComment"] }
         /// ユーザーの画像一覧
         public var images: [Image] { __data["images"] }
 
@@ -50,27 +50,23 @@ public extension BeMatch {
           public init(_dataDict: DataDict) { __data = _dataDict }
 
           public var swipeCard: SwipeCard { _toFragment() }
+          public var pictureSlider: PictureSlider { _toFragment() }
         }
 
-        /// Recommendation.Image
+        /// Recommendation.ShortComment
         ///
-        /// Parent Type: `UserImage`
-        public struct Image: BeMatch.SelectionSet {
+        /// Parent Type: `ShortComment`
+        public struct ShortComment: BeMatch.SelectionSet {
           public let __data: DataDict
           public init(_dataDict: DataDict) { __data = _dataDict }
 
-          public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.UserImage }
+          public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.ShortComment }
 
           public var id: BeMatch.ID { __data["id"] }
-          public var imageUrl: String { __data["imageUrl"] }
-
-          public struct Fragments: FragmentContainer {
-            public let __data: DataDict
-            public init(_dataDict: DataDict) { __data = _dataDict }
-
-            public var pictureSliderImage: PictureSliderImage { _toFragment() }
-          }
+          public var body: String { __data["body"] }
         }
+
+        public typealias Image = PictureSlider.Image
       }
     }
   }

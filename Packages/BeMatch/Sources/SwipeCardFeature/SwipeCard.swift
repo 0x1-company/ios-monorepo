@@ -141,7 +141,7 @@ public struct SwipeCardView: View {
           }
         }
         .overlay(alignment: .bottom) {
-          if let shortComment = viewStore.data.shortComment {
+          if let shortComment = viewStore.data.shortComment?.body {
             ZStack(alignment: .bottom) {
               LinearGradient(
                 colors: [

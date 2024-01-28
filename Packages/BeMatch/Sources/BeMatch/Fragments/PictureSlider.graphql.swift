@@ -4,9 +4,9 @@
 @_exported import ApolloAPI
 
 public extension BeMatch {
-  struct SwipeCard: BeMatch.SelectionSet, Fragment {
+  struct PictureSlider: BeMatch.SelectionSet, Fragment {
     public static var fragmentDefinition: StaticString {
-      #"fragment SwipeCard on User { __typename id shortComment { __typename id body } ...PictureSlider }"#
+      #"fragment PictureSlider on User { __typename id shortComment { __typename id body } images { __typename id imageUrl } }"#
     }
 
     public let __data: DataDict
@@ -17,7 +17,7 @@ public extension BeMatch {
       .field("__typename", String.self),
       .field("id", BeMatch.ID.self),
       .field("shortComment", ShortComment?.self),
-      .fragment(PictureSlider.self),
+      .field("images", [Image].self),
     ] }
 
     /// user id
@@ -25,13 +25,6 @@ public extension BeMatch {
     public var shortComment: ShortComment? { __data["shortComment"] }
     /// ユーザーの画像一覧
     public var images: [Image] { __data["images"] }
-
-    public struct Fragments: FragmentContainer {
-      public let __data: DataDict
-      public init(_dataDict: DataDict) { __data = _dataDict }
-
-      public var pictureSlider: PictureSlider { _toFragment() }
-    }
 
     /// ShortComment
     ///
@@ -51,6 +44,22 @@ public extension BeMatch {
       public var body: String { __data["body"] }
     }
 
-    public typealias Image = PictureSlider.Image
+    /// Image
+    ///
+    /// Parent Type: `UserImage`
+    public struct Image: BeMatch.SelectionSet {
+      public let __data: DataDict
+      public init(_dataDict: DataDict) { __data = _dataDict }
+
+      public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.UserImage }
+      public static var __selections: [ApolloAPI.Selection] { [
+        .field("__typename", String.self),
+        .field("id", BeMatch.ID.self),
+        .field("imageUrl", String.self),
+      ] }
+
+      public var id: BeMatch.ID { __data["id"] }
+      public var imageUrl: String { __data["imageUrl"] }
+    }
   }
 }

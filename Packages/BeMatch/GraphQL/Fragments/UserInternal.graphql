@@ -1,14 +1,17 @@
-# import PictureSliderImage from './PictureSliderImage.graphql'
+# import PictureSlider from './PictureSlider.graphql'
 
 fragment UserInternal on User {
   id
   berealUsername
   gender
-  shortComment
   status
   images {
     id
     imageUrl
-    ...PictureSliderImage
   }
+  shortComment {
+    id
+    body
+  }
+  ...PictureSlider
 }

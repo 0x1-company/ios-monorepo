@@ -9,7 +9,7 @@ public extension BeMatch {
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
         #"query CurrentUser { currentUser { __typename ...UserInternal } }"#,
-        fragments: [PictureSliderImage.self, UserInternal.self]
+        fragments: [PictureSlider.self, UserInternal.self]
       ))
 
     public init() {}
@@ -45,16 +45,17 @@ public extension BeMatch {
         public var berealUsername: String { __data["berealUsername"] }
         /// gender
         public var gender: GraphQLEnum<BeMatch.Gender> { __data["gender"] }
-        public var shortComment: String? { __data["shortComment"] }
         public var status: GraphQLEnum<BeMatch.UserStatus> { __data["status"] }
         /// ユーザーの画像一覧
         public var images: [Image] { __data["images"] }
+        public var shortComment: ShortComment? { __data["shortComment"] }
 
         public struct Fragments: FragmentContainer {
           public let __data: DataDict
           public init(_dataDict: DataDict) { __data = _dataDict }
 
           public var userInternal: UserInternal { _toFragment() }
+          public var pictureSlider: PictureSlider { _toFragment() }
         }
 
         /// CurrentUser.Image
@@ -68,13 +69,19 @@ public extension BeMatch {
 
           public var id: BeMatch.ID { __data["id"] }
           public var imageUrl: String { __data["imageUrl"] }
+        }
 
-          public struct Fragments: FragmentContainer {
-            public let __data: DataDict
-            public init(_dataDict: DataDict) { __data = _dataDict }
+        /// CurrentUser.ShortComment
+        ///
+        /// Parent Type: `ShortComment`
+        public struct ShortComment: BeMatch.SelectionSet {
+          public let __data: DataDict
+          public init(_dataDict: DataDict) { __data = _dataDict }
 
-            public var pictureSliderImage: PictureSliderImage { _toFragment() }
-          }
+          public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.ShortComment }
+
+          public var id: BeMatch.ID { __data["id"] }
+          public var body: String { __data["body"] }
         }
       }
     }

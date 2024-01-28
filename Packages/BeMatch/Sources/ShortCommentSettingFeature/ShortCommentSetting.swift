@@ -57,7 +57,7 @@ public struct ShortCommentSettingLogic {
         state.focus = nil
         state.isActivityIndicatorVisible = true
         let input = BeMatch.UpdateShortCommentInput(
-          shortComment: state.shortComment
+          body: state.shortComment
         )
         return .run { send in
           await send(.updateShortCommentResponse(Result {

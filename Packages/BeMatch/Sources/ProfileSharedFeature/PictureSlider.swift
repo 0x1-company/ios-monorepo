@@ -10,12 +10,12 @@ public struct PictureSliderLogic {
   public init() {}
 
   public struct State: Equatable {
-    var images: [BeMatch.PictureSliderImage]
-    @BindingState var selection: BeMatch.PictureSliderImage
+    let data: BeMatch.PictureSlider
+    @BindingState var selection: BeMatch.PictureSlider.Image
 
-    public init(images: [BeMatch.PictureSliderImage]) {
-      self.images = images
-      selection = images[0]
+    public init(data: BeMatch.PictureSlider) {
+      self.data = data
+      selection = data.images[0]
     }
   }
 
@@ -32,16 +32,16 @@ public struct PictureSliderLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .backButtonTapped:
-        if let index = state.images.firstIndex(of: state.selection), index > 0 {
-          state.selection = state.images[index - 1]
+        if let index = state.data.images.firstIndex(of: state.selection), index > 0 {
+          state.selection = state.data.images[index - 1]
         }
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
 
       case .forwardButtonTapped:
-        if let index = state.images.firstIndex(of: state.selection), index < state.images.count - 1 {
-          state.selection = state.images[index + 1]
+        if let index = state.data.images.firstIndex(of: state.selection), index < state.data.images.count - 1 {
+          state.selection = state.data.images[index + 1]
         }
         return .run { _ in
           await feedbackGenerator.impactOccurred()
@@ -66,12 +66,12 @@ public struct PictureSliderView: View {
       VStack(spacing: 24) {
         SelectControl(
           current: viewStore.selection,
-          items: viewStore.images
+          items: viewStore.data.images
         )
         .padding(.top, 3)
         .padding(.horizontal, 16)
 
-        ForEach(viewStore.images, id: \.id) { picture in
+        ForEach(viewStore.data.images, id: \.id) { picture in
           if picture == viewStore.selection {
             CachedAsyncImage(
               url: URL(string: picture.imageUrl),
@@ -95,6 +95,31 @@ public struct PictureSliderView: View {
             )
           }
         }
+        .overlay(alignment: .bottom) {
+          if let shortComment = viewStore.data.shortComment?.body {
+            VStack(spacing: 0) {
+              Spacer()
+
+              ZStack(alignment: .bottom) {
+                LinearGradient(
+                  colors: [
+                    Color.black.opacity(0.0),
+                    Color.black.opacity(1.0),
+                  ],
+                  startPoint: .top,
+                  endPoint: .bottom
+                )
+
+                Text(shortComment)
+                  .font(.system(.subheadline, weight: .semibold))
+                  .padding(.bottom, 8)
+                  .padding(.horizontal, 16)
+              }
+              .frame(maxWidth: .infinity, maxHeight: .infinity)
+              .clipShape(RoundedRectangle(cornerRadius: 16))
+            }
+          }
+        }
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .aspectRatio(3 / 4, contentMode: .fill)
         .frame(width: UIScreen.main.bounds.size.width)
@@ -116,15 +141,4 @@ public struct PictureSliderView: View {
       }
     }
   }
-}
-
-#Preview {
-  PictureSliderView(
-    store: .init(
-      initialState: PictureSliderLogic.State(
-        images: []
-      ),
-      reducer: { PictureSliderLogic() }
-    )
-  )
 }
