@@ -118,7 +118,7 @@ public struct ShortCommentSettingView: View {
 
         VStack(spacing: 0) {
           Spacer()
-          
+
           PrimaryButton(
             String(localized: "Save", bundle: .module),
             isLoading: viewStore.isActivityIndicatorVisible,
