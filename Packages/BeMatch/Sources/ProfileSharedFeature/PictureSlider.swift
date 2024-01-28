@@ -97,27 +97,23 @@ public struct PictureSliderView: View {
         }
         .overlay(alignment: .bottom) {
           if let shortComment = viewStore.data.shortComment?.body {
-            VStack(spacing: 0) {
-              Spacer()
+            ZStack(alignment: .bottom) {
+              LinearGradient(
+                colors: [
+                  Color.black.opacity(0.0),
+                  Color.black.opacity(1.0),
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+              )
 
-              ZStack(alignment: .bottom) {
-                LinearGradient(
-                  colors: [
-                    Color.black.opacity(0.0),
-                    Color.black.opacity(1.0),
-                  ],
-                  startPoint: .top,
-                  endPoint: .bottom
-                )
-
-                Text(shortComment)
-                  .font(.system(.subheadline, weight: .semibold))
-                  .padding(.bottom, 8)
-                  .padding(.horizontal, 16)
-              }
-              .frame(maxWidth: .infinity, maxHeight: .infinity)
-              .clipShape(RoundedRectangle(cornerRadius: 16))
+              Text(shortComment)
+                .font(.system(.subheadline, weight: .semibold))
+                .padding(.bottom, 8)
+                .padding(.horizontal, 16)
             }
+            .clipShape(RoundedRectangle(cornerRadius: 16))
+            .frame(height: UIScreen.main.bounds.width / 3 * 2)
           }
         }
         .clipShape(RoundedRectangle(cornerRadius: 16))
