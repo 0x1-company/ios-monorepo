@@ -33,6 +33,7 @@ public extension BeMatch {
       switch typename {
       case "Mutation": return BeMatch.Objects.Mutation
       case "User": return BeMatch.Objects.User
+      case "ShortComment": return BeMatch.Objects.ShortComment
       case "FirebaseRegistrationToken": return BeMatch.Objects.FirebaseRegistrationToken
       case "CreateLikeResponse": return BeMatch.Objects.CreateLikeResponse
       case "Match": return BeMatch.Objects.Match

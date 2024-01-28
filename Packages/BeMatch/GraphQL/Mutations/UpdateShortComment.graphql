@@ -1,6 +1,9 @@
 mutation UpdateShortComment($input: UpdateShortCommentInput!) {
   updateShortComment(input:$input) {
     id
-    shortComment
+    shortComment {
+      id
+      body
+    }
   }
 }

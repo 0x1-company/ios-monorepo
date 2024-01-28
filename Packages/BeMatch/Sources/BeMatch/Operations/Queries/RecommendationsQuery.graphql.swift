@@ -41,7 +41,7 @@ public extension BeMatch {
 
         /// user id
         public var id: BeMatch.ID { __data["id"] }
-        public var shortComment: String? { __data["shortComment"] }
+        public var shortComment: ShortComment? { __data["shortComment"] }
         /// ユーザーの画像一覧
         public var images: [Image] { __data["images"] }
 
@@ -51,6 +51,8 @@ public extension BeMatch {
 
           public var swipeCard: SwipeCard { _toFragment() }
         }
+
+        public typealias ShortComment = SwipeCard.ShortComment
 
         /// Recommendation.Image
         ///

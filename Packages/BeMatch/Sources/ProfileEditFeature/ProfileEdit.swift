@@ -90,7 +90,7 @@ public struct ProfileEditLogic {
       case .shortCommentButtonTapped:
         state.destination = .shortComment(
           ShortCommentSettingLogic.State(
-            shortComment: state.user?.shortComment
+            shortComment: state.user?.shortComment?.body
           )
         )
         return .run { _ in

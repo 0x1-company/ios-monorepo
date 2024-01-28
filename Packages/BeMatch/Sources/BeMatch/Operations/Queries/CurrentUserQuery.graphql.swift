@@ -45,10 +45,10 @@ public extension BeMatch {
         public var berealUsername: String { __data["berealUsername"] }
         /// gender
         public var gender: GraphQLEnum<BeMatch.Gender> { __data["gender"] }
-        public var shortComment: String? { __data["shortComment"] }
         public var status: GraphQLEnum<BeMatch.UserStatus> { __data["status"] }
         /// ユーザーの画像一覧
         public var images: [Image] { __data["images"] }
+        public var shortComment: ShortComment? { __data["shortComment"] }
 
         public struct Fragments: FragmentContainer {
           public let __data: DataDict
@@ -76,6 +76,8 @@ public extension BeMatch {
             public var pictureSliderImage: PictureSliderImage { _toFragment() }
           }
         }
+
+        public typealias ShortComment = UserInternal.ShortComment
       }
     }
   }
