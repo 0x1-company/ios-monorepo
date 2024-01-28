@@ -231,7 +231,7 @@ public struct SwipeCardView: View {
                   data: [
                     "id": "1",
                     "userId": "1",
-                    "body": "生まれたからには世界中の人と仲良くなりたいです。近くに住んでいる人いたら教えてください。"
+                    "body": "生まれたからには世界中の人と仲良くなりたいです。近くに住んでいる人いたら教えてください。",
                   ],
                   fulfilledFragments: []
                 ),
