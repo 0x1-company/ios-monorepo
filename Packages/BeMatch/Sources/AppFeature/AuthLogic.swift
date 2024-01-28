@@ -1,3 +1,4 @@
+import Apollo
 import AnalyticsClient
 import AnalyticsKeys
 import AppsFlyerClient
@@ -61,6 +62,10 @@ public struct AuthLogic {
           await trackingManager.requestTrackingAuthorization()
         ))
       }
+      
+    case let .createUserResponse(.failure(error as ResponseCodeInterceptor.ResponseCodeError)):
+      print(error.localizedDescription)
+      return .none
 
     case .createUserResponse(.failure):
       print("account banned")
