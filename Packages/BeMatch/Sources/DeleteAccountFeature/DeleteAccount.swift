@@ -97,7 +97,7 @@ public struct DeleteAccountLogic {
           analytics.buttonClick(name: \.delete, parameters: ["reason": reason])
           await send(.closeUserResponse(Result {
             try await closeUser()
-         }))
+          }))
         }
 
       case .closeUserResponse(.success):
@@ -141,18 +141,18 @@ public struct DeleteAccountLogic {
       Destination()
     }
   }
-  
+
   @Reducer
   public struct Destination {
     public enum State: Equatable {
       case alert(AlertState<Action.Alert>)
       case confirmationDialog(ConfirmationDialogState<Action.ConfirmationDialog>)
     }
-    
+
     public enum Action {
       case alert(Alert)
       case confirmationDialog(ConfirmationDialog)
-      
+
       public enum ConfirmationDialog: Equatable {
         case confirm
       }
@@ -161,7 +161,7 @@ public struct DeleteAccountLogic {
         case confirmOkay
       }
     }
-    
+
     public var body: some Reducer<State, Action> {
       Scope(state: \.alert, action: \.alert) {}
       Scope(state: \.confirmationDialog, action: \.confirmationDialog) {}
