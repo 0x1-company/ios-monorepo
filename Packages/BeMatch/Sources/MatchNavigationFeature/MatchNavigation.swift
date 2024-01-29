@@ -174,6 +174,7 @@ public struct MatchNavigationLogic {
     }
 
     public var body: some Reducer<State, Action> {
+      Scope(state: \.alert, action: \.alert) {}
       Scope(state: \.membership, action: \.membership) {
         MembershipLogic()
       }

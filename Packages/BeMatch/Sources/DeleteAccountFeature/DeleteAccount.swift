@@ -13,8 +13,7 @@ public struct DeleteAccountLogic {
   public init() {}
 
   public struct State: Equatable {
-    @PresentationState var alert: AlertState<Action.Alert>?
-    @PresentationState var confirmationDialog: ConfirmationDialogState<Action.ConfirmationDialog>?
+    @PresentationState var destination: Destination.State?
     @BindingState var otherReason = ""
     var selectedReasons: [String] = []
     let reasons = [
@@ -34,17 +33,8 @@ public struct DeleteAccountLogic {
     case notNowButtonTapped
     case closeUserResponse(Result<BeMatch.CloseUserMutation.Data, Error>)
     case binding(BindingAction<State>)
-    case confirmationDialog(PresentationAction<ConfirmationDialog>)
-    case alert(PresentationAction<Alert>)
+    case destination(PresentationAction<Destination.Action>)
     case delegate(Delegate)
-
-    public enum ConfirmationDialog: Equatable {
-      case confirm
-    }
-
-    public enum Alert: Equatable {
-      case confirmOkay
-    }
 
     public enum Delegate: Equatable {
       case accountDeletionCompleted
@@ -86,18 +76,20 @@ public struct DeleteAccountLogic {
         return .none
 
       case .deleteButtonTapped:
-        state.confirmationDialog = ConfirmationDialogState {
-          TextState("Delete Account", bundle: .module)
-        } actions: {
-          ButtonState(role: .destructive, action: .confirm) {
-            TextState("Confirm", bundle: .module)
+        state.destination = .confirmationDialog(
+          ConfirmationDialogState {
+            TextState("Delete Account", bundle: .module)
+          } actions: {
+            ButtonState(role: .destructive, action: .confirm) {
+              TextState("Confirm", bundle: .module)
+            }
+          } message: {
+            TextState("Are you sure you want to delete your account?", bundle: .module)
           }
-        } message: {
-          TextState("Are you sure you want to delete your account?", bundle: .module)
-        }
+        )
         return .none
 
-      case .confirmationDialog(.presented(.confirm)):
+      case .destination(.presented(.confirmationDialog(.confirm))):
         let reasons = state.selectedReasons + [state.otherReason].filter { !$0.isEmpty }
         let reason = reasons.joined(separator: ",")
 
@@ -105,48 +97,75 @@ public struct DeleteAccountLogic {
           analytics.buttonClick(name: \.delete, parameters: ["reason": reason])
           await send(.closeUserResponse(Result {
             try await closeUser()
-          }))
+         }))
         }
-
-      case .confirmationDialog(.dismiss):
-        state.confirmationDialog = nil
-        return .none
 
       case .closeUserResponse(.success):
-        state.alert = AlertState {
-          TextState("Delete Account Completed", bundle: .module)
-        } actions: {
-          ButtonState(action: .confirmOkay) {
-            TextState("OK", bundle: .module)
+        state.destination = .alert(
+          AlertState {
+            TextState("Delete Account Completed", bundle: .module)
+          } actions: {
+            ButtonState(action: .confirmOkay) {
+              TextState("OK", bundle: .module)
+            }
           }
-        }
+        )
         return .run { send in
           try? firebaseAuth.signOut()
           await send(.delegate(.accountDeletionCompleted))
         }
 
       case let .closeUserResponse(.failure(error)):
-        state.alert = AlertState {
-          TextState("Account deletion failed.", bundle: .module)
-        } actions: {
-          ButtonState(action: .confirmOkay) {
-            TextState("OK", bundle: .module)
+        state.destination = .alert(
+          AlertState {
+            TextState("Account deletion failed.", bundle: .module)
+          } actions: {
+            ButtonState(action: .confirmOkay) {
+              TextState("OK", bundle: .module)
+            }
+          } message: {
+            TextState(error.localizedDescription)
           }
-        } message: {
-          TextState(error.localizedDescription)
-        }
+        )
         return .none
 
-      case .alert(.presented(.confirmOkay)):
-        state.alert = nil
+      case .destination(.presented(.alert(.confirmOkay))):
+        state.destination = nil
         return .none
 
       default:
         return .none
       }
     }
-    .ifLet(\.$alert, action: \.alert)
-    .ifLet(\.$confirmationDialog, action: \.confirmationDialog)
+    .ifLet(\.$destination, action: \.destination) {
+      Destination()
+    }
+  }
+  
+  @Reducer
+  public struct Destination {
+    public enum State: Equatable {
+      case alert(AlertState<Action.Alert>)
+      case confirmationDialog(ConfirmationDialogState<Action.ConfirmationDialog>)
+    }
+    
+    public enum Action {
+      case alert(Alert)
+      case confirmationDialog(ConfirmationDialog)
+      
+      public enum ConfirmationDialog: Equatable {
+        case confirm
+      }
+
+      public enum Alert: Equatable {
+        case confirmOkay
+      }
+    }
+    
+    public var body: some Reducer<State, Action> {
+      Scope(state: \.alert, action: \.alert) {}
+      Scope(state: \.confirmationDialog, action: \.confirmationDialog) {}
+    }
   }
 }
 
@@ -232,10 +251,15 @@ public struct DeleteAccountView: View {
           .buttonStyle(HoldDownButtonStyle())
         }
       }
-      .confirmationDialog(
-        store: store.scope(state: \.$confirmationDialog, action: \.confirmationDialog)
+      .alert(
+        store: store.scope(state: \.$destination.alert, action: \.destination.alert)
       )
-      .alert(store: store.scope(state: \.$alert, action: \.alert))
+      .confirmationDialog(
+        store: store.scope(
+          state: \.$destination.confirmationDialog,
+          action: \.destination.confirmationDialog
+        )
+      )
     }
   }
 }

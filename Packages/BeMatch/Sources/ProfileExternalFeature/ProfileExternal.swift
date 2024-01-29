@@ -190,6 +190,7 @@ public struct ProfileExternalLogic {
     public var body: some Reducer<State, Action> {
       Scope(state: \.report, action: \.report, child: ReportLogic.init)
       Scope(state: \.directMessage, action: \.directMessage, child: DirectMessageLogic.init)
+      Scope(state: \.confirmationDialog, action: \.confirmationDialog) {}
     }
   }
 }
