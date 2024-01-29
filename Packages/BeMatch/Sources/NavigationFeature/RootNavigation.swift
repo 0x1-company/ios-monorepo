@@ -13,7 +13,7 @@ public struct RootNavigationLogic {
 
   @CasePathable
   public enum Tab {
-    case swipe
+    case recommendation
     case match
   }
 
@@ -21,7 +21,7 @@ public struct RootNavigationLogic {
     var recommendation = RecommendationLogic.State()
     var match = MatchNavigationLogic.State()
 
-    @BindingState var tab = Tab.swipe
+    @BindingState var tab = Tab.recommendation
 
     public init() {}
   }
@@ -63,7 +63,7 @@ public struct RootNavigationLogic {
         }
 
       case .match(.match(.empty(.delegate(.toRecommendation)))):
-        state.tab = .swipe
+        state.tab = .recommendation
         return .none
 
       case .binding(\.$tab):
@@ -108,10 +108,10 @@ public struct RootNavigationView: View {
         NavigationStack {
           RecommendationView(store: store.scope(state: \.recommendation, action: \.recommendation))
         }
-        .tag(RootNavigationLogic.Tab.swipe)
+        .tag(RootNavigationLogic.Tab.recommendation)
         .tabItem {
           Image(
-            viewStore.tab.is(\.swipe)
+            viewStore.tab.is(\.recommendation)
               ? ImageResource.searchActive
               : ImageResource.searchDeactive
           )
