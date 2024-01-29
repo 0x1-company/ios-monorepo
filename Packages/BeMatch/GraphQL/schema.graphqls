@@ -72,6 +72,10 @@ input CreateReportInput {
   title: String!
 }
 
+input CreateUserInput {
+  countryCode: String
+}
+
 """Date custom scalar type"""
 scalar Date
 
@@ -224,6 +228,9 @@ type Mutation {
   """ユーザーを作成する"""
   createUser: User!
 
+  """ユーザーを作成する"""
+  createUserV2(input: CreateUserInput!): User!
+
   """マッチを削除する"""
   deleteMatch(input: DeleteMatchInput!): Boolean!
 
@@ -365,6 +372,8 @@ type User {
 
   """ユーザーの画像一覧"""
   images: [UserImage!]!
+
+  """一言コメント"""
   shortComment: ShortComment
   status: UserStatus!
 }

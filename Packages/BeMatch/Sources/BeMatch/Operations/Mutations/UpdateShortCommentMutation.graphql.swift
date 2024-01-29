@@ -47,6 +47,7 @@ public extension BeMatch {
 
         /// user id
         public var id: BeMatch.ID { __data["id"] }
+        /// 一言コメント
         public var shortComment: ShortComment? { __data["shortComment"] }
 
         /// UpdateShortComment.ShortComment
