@@ -5,7 +5,7 @@ import DependenciesMacros
 @DependencyClient
 public struct BeMatchClient: Sendable {
   public var currentUser: @Sendable () -> AsyncThrowingStream<BeMatch.CurrentUserQuery.Data, Error> = { .finished() }
-  public var createUser: @Sendable () async throws -> BeMatch.CreateUserMutation.Data
+  public var createUser: @Sendable (BeMatch.CreateUserInput) async throws -> BeMatch.CreateUserMutation.Data
   public var closeUser: @Sendable () async throws -> BeMatch.CloseUserMutation.Data
   public var updateGender: @Sendable (BeMatch.UpdateGenderInput) async throws -> BeMatch.UpdateGenderMutation.Data
   public var updateBeReal: @Sendable (BeMatch.UpdateBeRealInput) async throws -> BeMatch.UpdateBeRealMutation.Data

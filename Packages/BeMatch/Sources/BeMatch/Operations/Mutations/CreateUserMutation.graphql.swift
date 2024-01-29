@@ -8,11 +8,17 @@ public extension BeMatch {
     public static let operationName: String = "CreateUser"
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"mutation CreateUser { createUser { __typename ...UserInternal } }"#,
+        #"mutation CreateUser($input: CreateUserInput!) { createUserV2(input: $input) { __typename ...UserInternal } }"#,
         fragments: [PictureSlider.self, UserInternal.self]
       ))
 
-    public init() {}
+    public var input: CreateUserInput
+
+    public init(input: CreateUserInput) {
+      self.input = input
+    }
+
+    public var __variables: Variables? { ["input": input] }
 
     public struct Data: BeMatch.SelectionSet {
       public let __data: DataDict
@@ -20,16 +26,16 @@ public extension BeMatch {
 
       public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.Mutation }
       public static var __selections: [ApolloAPI.Selection] { [
-        .field("createUser", CreateUser.self),
+        .field("createUserV2", CreateUserV2.self, arguments: ["input": .variable("input")]),
       ] }
 
       /// ユーザーを作成する
-      public var createUser: CreateUser { __data["createUser"] }
+      public var createUserV2: CreateUserV2 { __data["createUserV2"] }
 
-      /// CreateUser
+      /// CreateUserV2
       ///
       /// Parent Type: `User`
-      public struct CreateUser: BeMatch.SelectionSet {
+      public struct CreateUserV2: BeMatch.SelectionSet {
         public let __data: DataDict
         public init(_dataDict: DataDict) { __data = _dataDict }
 
@@ -48,6 +54,7 @@ public extension BeMatch {
         public var status: GraphQLEnum<BeMatch.UserStatus> { __data["status"] }
         /// ユーザーの画像一覧
         public var images: [Image] { __data["images"] }
+        /// 一言コメント
         public var shortComment: ShortComment? { __data["shortComment"] }
 
         public struct Fragments: FragmentContainer {
@@ -58,7 +65,7 @@ public extension BeMatch {
           public var pictureSlider: PictureSlider { _toFragment() }
         }
 
-        /// CreateUser.Image
+        /// CreateUserV2.Image
         ///
         /// Parent Type: `UserImage`
         public struct Image: BeMatch.SelectionSet {
@@ -71,7 +78,7 @@ public extension BeMatch {
           public var imageUrl: String { __data["imageUrl"] }
         }
 
-        /// CreateUser.ShortComment
+        /// CreateUserV2.ShortComment
         ///
         /// Parent Type: `ShortComment`
         public struct ShortComment: BeMatch.SelectionSet {

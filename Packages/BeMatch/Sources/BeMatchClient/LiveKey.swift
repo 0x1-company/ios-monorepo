@@ -10,8 +10,8 @@ public extension BeMatchClient {
         let query = BeMatch.CurrentUserQuery()
         return apolloClient.watch(query: query)
       },
-      createUser: {
-        let mutation = BeMatch.CreateUserMutation()
+      createUser: { input in
+        let mutation = BeMatch.CreateUserMutation(input: input)
         return try await apolloClient.perform(mutation: mutation)
       },
       closeUser: {

@@ -48,6 +48,7 @@ public extension BeMatch {
       public var id: BeMatch.ID { __data["id"] }
       /// BeRealのusername
       public var berealUsername: String { __data["berealUsername"] }
+      /// 一言コメント
       public var shortComment: ShortComment? { __data["shortComment"] }
       /// ユーザーの画像一覧
       public var images: [Image] { __data["images"] }

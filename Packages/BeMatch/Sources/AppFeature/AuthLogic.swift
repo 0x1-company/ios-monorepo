@@ -3,12 +3,14 @@ import AnalyticsKeys
 import Apollo
 import AppsFlyerClient
 import ATTrackingManagerClient
+import BeMatch
 import BeMatchClient
 import ComposableArchitecture
 import FirebaseAuthClient
 
 @Reducer
 public struct AuthLogic {
+  @Dependency(\.locale) var locale
   @Dependency(\.appsFlyer) var appsFlyer
   @Dependency(\.analytics) var analytics
   @Dependency(\.bematch.createUser) var createUser
@@ -35,9 +37,13 @@ public struct AuthLogic {
       }
 
     case .signInAnonymouslyResponse(.success):
+      let countryCode = locale.region?.identifier
+      let input = BeMatch.CreateUserInput(
+        countryCode: countryCode ?? .null
+      )
       return .run { send in
         await send(.createUserResponse(Result {
-          try await createUser()
+          try await createUser(input)
         }))
       }
 
@@ -45,7 +51,7 @@ public struct AuthLogic {
       return .none
 
     case let .createUserResponse(.success(data)):
-      let user = data.createUser.fragments.userInternal
+      let user = data.createUserV2.fragments.userInternal
 
       state.account.user = .success(user)
 

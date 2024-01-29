@@ -48,6 +48,7 @@ public extension BeMatch {
         public var status: GraphQLEnum<BeMatch.UserStatus> { __data["status"] }
         /// ユーザーの画像一覧
         public var images: [Image] { __data["images"] }
+        /// 一言コメント
         public var shortComment: ShortComment? { __data["shortComment"] }
 
         public struct Fragments: FragmentContainer {
