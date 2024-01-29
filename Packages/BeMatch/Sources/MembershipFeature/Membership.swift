@@ -292,7 +292,7 @@ public struct MembershipLogic {
     }
 
     public var body: some Reducer<State, Action> {
-      EmptyReducer()
+      Scope(state: \.alert, action: \.alert) {}
     }
   }
 }

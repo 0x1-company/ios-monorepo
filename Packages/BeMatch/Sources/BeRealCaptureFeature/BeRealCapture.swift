@@ -208,7 +208,8 @@ public struct BeRealCaptureLogic {
     }
 
     public var body: some Reducer<State, Action> {
-      EmptyReducer()
+      Scope(state: \.alert, action: \.alert) {}
+      Scope(state: \.confirmationDialog, action: \.confirmationDialog) {}
     }
   }
 }
