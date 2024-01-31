@@ -12,6 +12,7 @@ fragment UserInternal on User {
   shortComment {
     id
     body
+    status
   }
   ...PictureSlider
 }
