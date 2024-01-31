@@ -12,6 +12,7 @@ public struct ShortCommentSettingLogic {
   public struct State: Equatable {
     @BindingState var shortComment: String
     @BindingState var focus: Focus?
+    @PresentationState var alert: AlertState<Action.Alert>?
 
     var isDisabled = true
     var isActivityIndicatorVisible = false
@@ -31,7 +32,12 @@ public struct ShortCommentSettingLogic {
     case saveButtonTapped
     case updateShortCommentResponse(Result<BeMatch.UpdateShortCommentMutation.Data, Error>)
     case binding(BindingAction<State>)
+    case alert(PresentationAction<Alert>)
     case delegate(Delegate)
+    
+    public enum Alert: Equatable {
+      case confirmOkay
+    }
 
     public enum Delegate: Equatable {
       case nextScreen
@@ -69,18 +75,32 @@ public struct ShortCommentSettingLogic {
         state.isActivityIndicatorVisible = false
         return .send(.delegate(.nextScreen))
 
-      case .updateShortCommentResponse(.failure):
+      case let .updateShortCommentResponse(.failure(error)):
         state.isActivityIndicatorVisible = false
+        state.alert = AlertState {
+          TextState("Failed to save short comment.", bundle: .module)
+        } actions: {
+          ButtonState(action: .confirmOkay) {
+            TextState("OK", bundle: .module)
+          }
+        } message: {
+          TextState(error.localizedDescription)
+        }
         return .none
 
       case .binding:
         state.isDisabled = state.shortComment.isEmpty
+        return .none
+        
+      case .alert(.presented(.confirmOkay)):
+        state.alert = nil
         return .none
 
       default:
         return .none
       }
     }
+    .ifLet(\.$alert, action: \.alert)
   }
 }
 
