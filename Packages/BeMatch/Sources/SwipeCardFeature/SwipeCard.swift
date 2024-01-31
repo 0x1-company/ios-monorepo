@@ -176,6 +176,7 @@ public struct SwipeCardView: View {
                 .padding(.bottom, 8)
                 .padding(.horizontal, 16)
             }
+            .multilineTextAlignment(.center)
             .clipShape(RoundedRectangle(cornerRadius: 16))
             .frame(width: proxy.size.width, height: proxy.size.width * (4 / 3) / 2)
           }
