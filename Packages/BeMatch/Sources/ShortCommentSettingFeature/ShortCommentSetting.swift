@@ -34,7 +34,7 @@ public struct ShortCommentSettingLogic {
     case binding(BindingAction<State>)
     case alert(PresentationAction<Alert>)
     case delegate(Delegate)
-    
+
     public enum Alert: Equatable {
       case confirmOkay
     }
@@ -91,7 +91,7 @@ public struct ShortCommentSettingLogic {
       case .binding:
         state.isDisabled = state.shortComment.isEmpty
         return .none
-        
+
       case .alert(.presented(.confirmOkay)):
         state.alert = nil
         return .none
