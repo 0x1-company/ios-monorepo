@@ -112,6 +112,7 @@ public struct PictureSliderView: View {
                 .padding(.bottom, 8)
                 .padding(.horizontal, 16)
             }
+            .multilineTextAlignment(.center)
             .clipShape(RoundedRectangle(cornerRadius: 16))
             .frame(height: UIScreen.main.bounds.width / 3 * 2)
           }
