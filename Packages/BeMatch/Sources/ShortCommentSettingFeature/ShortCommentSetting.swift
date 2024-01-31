@@ -14,11 +14,13 @@ public struct ShortCommentSettingLogic {
     @BindingState var focus: Focus?
     @PresentationState var alert: AlertState<Action.Alert>?
 
-    var isDisabled = true
+    var isDisabled: Bool
     var isActivityIndicatorVisible = false
 
     public init(shortComment: String?) {
-      self.shortComment = shortComment ?? ""
+      let shortComment = shortComment ?? ""
+      self.shortComment = shortComment
+      self.isDisabled = shortComment.isEmpty
     }
 
     enum Focus: Hashable {
@@ -122,9 +124,10 @@ public struct ShortCommentSettingView: View {
 
         VStack(spacing: 8) {
           TextEditor(text: viewStore.$shortComment)
-            .frame(height: 140)
+            .frame(height: 100)
             .lineLimit(1 ... 3)
             .focused($focus, equals: .shortComment)
+            .padding()
             .overlay(
               RoundedRectangle(cornerRadius: 12)
                 .stroke(Color.primary, lineWidth: 1.0)
