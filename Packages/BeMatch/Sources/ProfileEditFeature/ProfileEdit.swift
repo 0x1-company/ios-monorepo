@@ -184,7 +184,7 @@ public struct ProfileEditView: View {
   public init(store: StoreOf<ProfileEditLogic>) {
     self.store = store
   }
-  
+
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       Group {
