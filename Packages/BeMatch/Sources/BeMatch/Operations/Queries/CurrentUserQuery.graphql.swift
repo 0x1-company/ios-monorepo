@@ -83,6 +83,7 @@ public extension BeMatch {
 
           public var id: BeMatch.ID { __data["id"] }
           public var body: String { __data["body"] }
+          public var status: GraphQLEnum<BeMatch.ShortCommentStatus> { __data["status"] }
         }
       }
     }

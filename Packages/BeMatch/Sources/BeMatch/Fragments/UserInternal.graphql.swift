@@ -6,7 +6,7 @@
 public extension BeMatch {
   struct UserInternal: BeMatch.SelectionSet, Fragment {
     public static var fragmentDefinition: StaticString {
-      #"fragment UserInternal on User { __typename id berealUsername gender status images { __typename id imageUrl } shortComment { __typename id body } ...PictureSlider }"#
+      #"fragment UserInternal on User { __typename id berealUsername gender status images { __typename id imageUrl } shortComment { __typename id body status } ...PictureSlider }"#
     }
 
     public let __data: DataDict
@@ -73,10 +73,12 @@ public extension BeMatch {
         .field("__typename", String.self),
         .field("id", BeMatch.ID.self),
         .field("body", String.self),
+        .field("status", GraphQLEnum<BeMatch.ShortCommentStatus>.self),
       ] }
 
       public var id: BeMatch.ID { __data["id"] }
       public var body: String { __data["body"] }
+      public var status: GraphQLEnum<BeMatch.ShortCommentStatus> { __data["status"] }
     }
   }
 }

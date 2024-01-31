@@ -313,6 +313,9 @@ type Query {
 
   """LIKEしてくれたユーザー一覧"""
   usersByLiker: [User!]!
+
+  """最近一言コメントを更新したユーザー一覧"""
+  usersByRecentShortComments: [User!]!
 }
 
 input ReadMessageInput {
@@ -335,7 +338,14 @@ type ReceivedLike {
 type ShortComment {
   body: String!
   id: ID!
+  status: ShortCommentStatus!
   userId: String!
+}
+
+enum ShortCommentStatus {
+  APPROVED
+  IN_REVIEW
+  REJECTED
 }
 
 input UpdateBeRealInput {
