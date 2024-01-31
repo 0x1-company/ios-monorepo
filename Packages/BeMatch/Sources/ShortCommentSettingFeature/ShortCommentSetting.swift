@@ -20,7 +20,7 @@ public struct ShortCommentSettingLogic {
     public init(shortComment: String?) {
       let shortComment = shortComment ?? ""
       self.shortComment = shortComment
-      self.isDisabled = shortComment.isEmpty
+      isDisabled = shortComment.isEmpty
     }
 
     enum Focus: Hashable {
