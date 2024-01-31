@@ -1,3 +1,8 @@
+GitHub:
+- changed-files:
+  - any-glob-to-any-file:
+    - .github/**
+
 BeMatch:
 - changed-files:
   - any-glob-to-any-file:

@@ -1,7 +1,8 @@
 name: Renovate
 
 on:
-  push:
+  pull_request:
+    types: [opened]
     branches:
       - 'renovate/**'
 
@@ -27,3 +28,8 @@ jobs:
           git config --local user.email 'github-actions[bot]@users.noreply.github.com'
           git commit -am "chore: 🤖 update package.resolved"
           git push
+      - continue-on-error: true
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
