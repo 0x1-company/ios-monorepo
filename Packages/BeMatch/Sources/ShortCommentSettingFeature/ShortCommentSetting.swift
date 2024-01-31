@@ -154,6 +154,7 @@ public struct ShortCommentSettingView: View {
       .task { await store.send(.onTask).finish() }
       .onAppear { store.send(.onAppear) }
       .bind(viewStore.$focus, to: $focus)
+      .alert(store: store.scope(state: \.$alert, action: \.alert))
       .toolbar {
         ToolbarItem(placement: .principal) {
           Image(ImageResource.beMatch)
