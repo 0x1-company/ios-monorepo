@@ -11,8 +11,35 @@
         }
       }
     },
+    "Failed to save short comment." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一言コメントの保存に失敗しました。"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
     "Save" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存する"
+          }
+        }
+      }
     },
     "Write a short comment.\nLet's appeal!" : {
       "localizations" : {
