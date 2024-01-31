@@ -27,7 +27,7 @@ jobs:
           sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ github.event.inputs.version }}/g" App/BeMatch/Multiplatform/Staging/Info.plist
           sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ github.event.inputs.version }}/g" App/BeMatch/Multiplatform/Production/Info.plist
       - continue-on-error: true
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v6
         id: create-pr
         with:
           delete-branch: true
@@ -59,7 +59,7 @@ jobs:
           sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ github.event.inputs.version }}/g" App/FlyCam/Multiplatform/Staging/Info.plist
           sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ github.event.inputs.version }}/g" App/FlyCam/Multiplatform/Production/Info.plist
       - continue-on-error: true
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v6
         id: create-pr
         with:
           delete-branch: true
