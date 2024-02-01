@@ -16,7 +16,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "一言コメントの保存に失敗しました。"
+            "value" : "ひとことの保存に失敗しました。"
           }
         }
       }
@@ -46,7 +46,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "一言コメントを書いて\nアピールしよう"
+            "value" : "ひとことを書いて\nアピールしよう"
           }
         }
       }
