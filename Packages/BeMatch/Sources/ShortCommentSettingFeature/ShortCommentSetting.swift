@@ -1,4 +1,5 @@
 import AnalyticsClient
+import ApolloConcurrency
 import BeMatch
 import BeMatchClient
 import ComposableArchitecture
@@ -77,7 +78,7 @@ public struct ShortCommentSettingLogic {
         state.isActivityIndicatorVisible = false
         return .send(.delegate(.nextScreen))
 
-      case let .updateShortCommentResponse(.failure(error)):
+      case let .updateShortCommentResponse(.failure(error as ServerError)):
         state.isActivityIndicatorVisible = false
         state.alert = AlertState {
           TextState("Failed to save short comment.", bundle: .module)
@@ -86,7 +87,7 @@ public struct ShortCommentSettingLogic {
             TextState("OK", bundle: .module)
           }
         } message: {
-          TextState(error.localizedDescription)
+          TextState(error.message)
         }
         return .none
 

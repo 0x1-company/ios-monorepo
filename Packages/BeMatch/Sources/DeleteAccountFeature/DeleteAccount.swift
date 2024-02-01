@@ -1,5 +1,6 @@
 import AnalyticsClient
 import AnalyticsKeys
+import ApolloConcurrency
 import BeMatch
 import BeMatchClient
 import ComposableArchitecture
@@ -115,7 +116,7 @@ public struct DeleteAccountLogic {
           await send(.delegate(.accountDeletionCompleted))
         }
 
-      case let .closeUserResponse(.failure(error)):
+      case let .closeUserResponse(.failure(error as ServerError)):
         state.destination = .alert(
           AlertState {
             TextState("Account deletion failed.", bundle: .module)
@@ -124,7 +125,7 @@ public struct DeleteAccountLogic {
               TextState("OK", bundle: .module)
             }
           } message: {
-            TextState(error.localizedDescription)
+            TextState(error.message)
           }
         )
         return .none
