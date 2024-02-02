@@ -3,10 +3,10 @@ import BeMatch
 import BeMatchClient
 import ComposableArchitecture
 import MatchedFeature
+import ReportFeature
 import Styleguide
 import SwiftUI
 import SwipeCardFeature
-import ReportFeature
 
 @Reducer
 public struct CategorySwipeLogic {
@@ -135,7 +135,7 @@ public struct CategorySwipeLogic {
           state.rows.remove(id: feedback.targetUserId)
         }
         return .none
-        
+
       case let .rows(.element(id, .delegate(.report))):
         state.destination = .report(ReportLogic.State(targetUserId: id))
         return .none

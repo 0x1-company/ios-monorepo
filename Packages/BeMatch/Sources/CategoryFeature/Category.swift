@@ -30,7 +30,7 @@ public struct CategoryLogic {
 
   @Dependency(\.bematch) var bematch
   @Dependency(\.analytics) var analytics
-  
+
   enum Cancel {
     case userCategories
   }
@@ -42,7 +42,7 @@ public struct CategoryLogic {
         return .run { send in
           await userCategoriesRequest(send: send)
         }
-        
+
       case .child(.list(.swipe(.presented(.delegate(.dismiss))))):
         return .run { send in
           await userCategoriesRequest(send: send)
@@ -74,7 +74,7 @@ public struct CategoryLogic {
       Child()
     }
   }
-  
+
   private func userCategoriesRequest(send: Send<Action>) async {
     await withTaskCancellation(id: Cancel.userCategories, cancelInFlight: true) {
       do {
