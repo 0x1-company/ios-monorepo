@@ -1,4 +1,7 @@
 import AnalyticsClient
+import ApolloConcurrency
+import BeMatch
+import BeMatchClient
 import CategoryEmptyFeature
 import CategoryListFeature
 import ComposableArchitecture
@@ -10,26 +13,58 @@ public struct CategoryLogic {
 
   public struct State: Equatable {
     var child: Child.State?
+    @PresentationState var alert: AlertState<Action.Alert>?
     public init() {}
   }
 
   public enum Action {
     case onTask
+    case userCategoriesResponse(Result<BeMatch.UserCategoriesQuery.Data, Error>)
     case child(Child.Action)
+    case alert(PresentationAction<Alert>)
+
+    public enum Alert: Equatable {
+      case confirmOkay
+    }
   }
 
+  @Dependency(\.bematch) var bematch
   @Dependency(\.analytics) var analytics
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
+        return .run { send in
+          for try await data in bematch.userCategories() {
+            await send(.userCategoriesResponse(.success(data)))
+          }
+        } catch: { error, send in
+          await send(.userCategoriesResponse(.failure(error)))
+        }
+
+      case let .userCategoriesResponse(.success(data)):
+        let uniqueElements = data.userCategories
+          .filter { !$0.users.isEmpty }
+          .sorted(by: { $0.order < $1.order })
+          .map(CategorySectionLogic.State.init(userCategory:))
+        state.child = .list(
+          CategoryListLogic.State(uniqueElements: uniqueElements)
+        )
+        return .none
+
+      case let .userCategoriesResponse(.failure(error as ServerError)):
+        state.child = .empty()
+        state.alert = AlertState {
+          TextState(error.message)
+        }
         return .none
 
       default:
         return .none
       }
     }
+    .ifLet(\.$alert, action: \.alert)
     .ifLet(\.child, action: \.child) {
       Child()
     }
@@ -62,27 +97,36 @@ public struct CategoryView: View {
   }
 
   public var body: some View {
-    IfLetStore(store.scope(state: \.child, action: \.child)) { store in
-      SwitchStore(store) { initialState in
-        switch initialState {
-        case .empty:
-          CaseLet(
-            /CategoryLogic.Child.State.empty,
-            action: CategoryLogic.Child.Action.empty,
-            then: CategoryEmptyView.init(store:)
-          )
-        case .list:
-          CaseLet(
-            /CategoryLogic.Child.State.list,
-            action: CategoryLogic.Child.Action.list,
-            then: CategoryListView.init(store:)
-          )
+    NavigationStack {
+      IfLetStore(store.scope(state: \.child, action: \.child)) { store in
+        SwitchStore(store) { initialState in
+          switch initialState {
+          case .empty:
+            CaseLet(
+              /CategoryLogic.Child.State.empty,
+              action: CategoryLogic.Child.Action.empty,
+              then: CategoryEmptyView.init(store:)
+            )
+          case .list:
+            CaseLet(
+              /CategoryLogic.Child.State.list,
+              action: CategoryLogic.Child.Action.list,
+              then: CategoryListView.init(store:)
+            )
+          }
+        }
+      } else: {
+        ProgressView()
+      }
+      .navigationBarTitleDisplayMode(.inline)
+      .task { await store.send(.onTask).finish() }
+      .alert(store: store.scope(state: \.$alert, action: \.alert))
+      .toolbar {
+        ToolbarItem(placement: .principal) {
+          Image(ImageResource.beMatch)
         }
       }
-    } else: {
-      ProgressView()
     }
-    .task { await store.send(.onTask).finish() }
   }
 }
 

@@ -1,4 +1,5 @@
 import AnalyticsClient
+import BeMatch
 import ComposableArchitecture
 import SwiftUI
 
@@ -7,12 +8,15 @@ public struct CategoryListLogic {
   public init() {}
 
   public struct State: Equatable {
-    public init() {}
+    var rows: IdentifiedArrayOf<CategorySectionLogic.State> = []
+    public init(uniqueElements: [CategorySectionLogic.State]) {
+      rows = IdentifiedArrayOf(uniqueElements: uniqueElements)
+    }
   }
 
   public enum Action {
     case onTask
-    case onAppear
+    case rows(IdentifiedActionOf<CategorySectionLogic>)
   }
 
   @Dependency(\.analytics) var analytics
@@ -23,10 +27,12 @@ public struct CategoryListLogic {
       case .onTask:
         return .none
 
-      case .onAppear:
-        analytics.logScreen(screenName: "CategoryList", of: self)
+      case .rows:
         return .none
       }
+    }
+    .forEach(\.rows, action: \.rows) {
+      CategorySectionLogic()
     }
   }
 }
@@ -39,42 +45,16 @@ public struct CategoryListView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { _ in
-      ScrollView(.vertical) {
-        VStack(spacing: 24) {
-          ForEach(0..<5) { _ in
-            VStack(alignment: .leading, spacing: 8) {
-              Text("See who likes you")
-                .font(.system(.callout, weight: .semibold))
-                .padding(.horizontal, 16)
-              ScrollView(.horizontal) {
-                HStack(spacing: 12) {
-                  ForEach(0..<10) { _ in
-                    Color.blue
-                      .frame(width: 150, height: 200)
-                      .clipShape(RoundedRectangle(cornerRadius: 8))
-                  }
-                }
-                .padding(.horizontal, 16)
-              }
-            }
-          }
-        }
+    ScrollView(.vertical) {
+      VStack(spacing: 24) {
+        ForEachStore(
+          store.scope(state: \.rows, action: \.rows),
+          content: CategorySectionView.init(store:)
+        )
       }
-      .task { await store.send(.onTask).finish() }
-      .onAppear { store.send(.onAppear) }
+      .padding(.top, 16)
+      .padding(.bottom, 24)
     }
+    .task { await store.send(.onTask).finish() }
   }
-}
-
-#Preview {
-  NavigationStack {
-    CategoryListView(
-      store: .init(
-        initialState: CategoryListLogic.State(),
-        reducer: { CategoryListLogic() }
-      )
-    )
-  }
-  .environment(\.colorScheme, .dark)
 }

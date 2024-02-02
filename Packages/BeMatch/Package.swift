@@ -129,12 +129,16 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "CategoryFeature", dependencies: [
+      "BeMatchClient",
       "CategoryEmptyFeature",
       "CategoryListFeature",
     ]),
     .target(name: "CategoryListFeature", dependencies: [
       "AnalyticsKeys",
+      "BeMatch",
+      "Styleguide",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
+      .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "Constants"),
@@ -232,6 +236,7 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "NavigationFeature", dependencies: [
+      "CategoryFeature",
       "RecommendationFeature",
       "MatchNavigationFeature",
     ]),
