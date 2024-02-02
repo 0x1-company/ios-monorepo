@@ -48,7 +48,7 @@ public struct CategoryEmptyView: View {
       VStack(spacing: 24) {
         Image(ImageResource.empty)
           .resizable()
-          .aspectRatio(contentMode: .fill)
+          .aspectRatio(contentMode: .fit)
           .frame(width: 120)
 
         Text("Looks like he's gone.", bundle: .module)
