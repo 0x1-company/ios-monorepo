@@ -1,8 +1,8 @@
 import AnalyticsClient
-import FeedbackGeneratorClient
 import BeMatch
-import ComposableArchitecture
 import CategorySwipeFeature
+import ComposableArchitecture
+import FeedbackGeneratorClient
 import SwiftUI
 
 @Reducer
@@ -12,7 +12,7 @@ public struct CategoryListLogic {
   public struct State: Equatable {
     var rows: IdentifiedArrayOf<CategorySectionLogic.State> = []
     @PresentationState var swipe: CategorySwipeLogic.State?
-    
+
     public init(uniqueElements: [CategorySectionLogic.State]) {
       rows = IdentifiedArrayOf(uniqueElements: uniqueElements)
     }
@@ -37,13 +37,13 @@ public struct CategoryListLogic {
         guard let row = state.rows[id: id] else { return .none }
         state.swipe = CategorySwipeLogic.State(userCategory: row.userCategory)
         return .none
-        
+
       case .swipe(.presented(.delegate(.dismiss))):
         state.swipe = nil
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
-        
+
       default:
         return .none
       }
