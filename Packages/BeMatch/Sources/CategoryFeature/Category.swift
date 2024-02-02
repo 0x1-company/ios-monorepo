@@ -43,7 +43,12 @@ public struct CategoryLogic {
           await userCategoriesRequest(send: send)
         }
 
-      case .child(.list(.swipe(.dismiss))):
+      case .child(.list(.swipe(.presented(.delegate(.dismiss))))):
+        return .run { send in
+          await userCategoriesRequest(send: send)
+        }
+
+      case .child(.empty(.emptyButtonTapped)):
         return .run { send in
           await userCategoriesRequest(send: send)
         }
