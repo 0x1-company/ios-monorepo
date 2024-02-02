@@ -21,6 +21,7 @@ public struct CategorySectionLogic {
         uniqueElements: userCategory.users
           .map(\.fragments.swipeCard)
           .map(CategoryRowLogic.State.init(user:))
+          .reversed()
       )
     }
   }
