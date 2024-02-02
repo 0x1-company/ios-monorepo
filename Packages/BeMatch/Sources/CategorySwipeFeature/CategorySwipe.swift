@@ -1,9 +1,9 @@
 import AnalyticsClient
-import Styleguide
 import BeMatch
 import BeMatchClient
 import ComposableArchitecture
 import MatchedFeature
+import Styleguide
 import SwiftUI
 import SwipeCardFeature
 
@@ -15,12 +15,12 @@ public struct CategorySwipeLogic {
     var title: String
     var rows: IdentifiedArrayOf<SwipeCardLogic.State> = []
     var background: BeMatch.UserCategoriesQuery.Data.UserCategory.Background
-    
+
     @PresentationState var destination: Destination.State?
 
     public init(userCategory: BeMatch.UserCategoriesQuery.Data.UserCategory) {
       title = userCategory.title
-      self.background = userCategory.background
+      background = userCategory.background
       rows = IdentifiedArrayOf(
         uniqueElements: userCategory.users
           .map(\.fragments.swipeCard)
@@ -183,10 +183,10 @@ public struct CategorySwipeView: View {
   public init(store: StoreOf<CategorySwipeLogic>) {
     self.store = store
   }
-  
+
   func backgroundGradient(background: BeMatch.UserCategoriesQuery.Data.UserCategory.Background) -> LinearGradient {
     let colors = background.colors
-      .compactMap { UInt.init($0, radix: 16) }
+      .compactMap { UInt($0, radix: 16) }
       .map { Color($0, opacity: 1.0) }
     return LinearGradient(
       colors: colors,
