@@ -12,14 +12,16 @@ import SwipeCardFeature
 public struct CategorySwipeLogic {
   public init() {}
 
-  public struct State: Equatable {
-    var title: String
+  public struct State: Equatable, Identifiable {
+    let id: String
+    let title: String
     var rows: IdentifiedArrayOf<SwipeCardLogic.State> = []
-    var background: BeMatch.UserCategoriesQuery.Data.UserCategory.Background
+    let background: BeMatch.UserCategoriesQuery.Data.UserCategory.Background
 
     @PresentationState var destination: Destination.State?
 
     public init(userCategory: BeMatch.UserCategoriesQuery.Data.UserCategory) {
+      id = userCategory.id
       title = userCategory.title
       background = userCategory.background
       rows = IdentifiedArrayOf(
@@ -59,7 +61,8 @@ public struct CategorySwipeLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
-        analytics.logScreen(screenName: "CategorySwipe", of: self)
+        let screenName = "CategorySwipe_\(state.id)"
+        analytics.logScreen(screenName: screenName, of: self)
         return .none
 
       case .closeButtonTapped:
