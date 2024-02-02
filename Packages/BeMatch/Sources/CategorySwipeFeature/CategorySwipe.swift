@@ -12,7 +12,7 @@ import SwipeCardFeature
 public struct CategorySwipeLogic {
   public init() {}
 
-  public struct State: Equatable, Identifiable {
+  public struct State: Equatable {
     let id: String
     let title: String
     var rows: IdentifiedArrayOf<SwipeCardLogic.State> = []
