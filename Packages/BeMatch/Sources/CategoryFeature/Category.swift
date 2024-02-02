@@ -30,17 +30,22 @@ public struct CategoryLogic {
 
   @Dependency(\.bematch) var bematch
   @Dependency(\.analytics) var analytics
+  
+  enum Cancel {
+    case userCategories
+  }
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
         return .run { send in
-          for try await data in bematch.userCategories() {
-            await send(.userCategoriesResponse(.success(data)))
-          }
-        } catch: { error, send in
-          await send(.userCategoriesResponse(.failure(error)))
+          await userCategoriesRequest(send: send)
+        }
+        
+      case .child(.list(.swipe(.dismiss))):
+        return .run { send in
+          await userCategoriesRequest(send: send)
         }
 
       case let .userCategoriesResponse(.success(data)):
@@ -67,6 +72,18 @@ public struct CategoryLogic {
     .ifLet(\.$alert, action: \.alert)
     .ifLet(\.child, action: \.child) {
       Child()
+    }
+  }
+  
+  private func userCategoriesRequest(send: Send<Action>) async {
+    await withTaskCancellation(id: Cancel.userCategories, cancelInFlight: true) {
+      do {
+        for try await data in bematch.userCategories() {
+          await send(.userCategoriesResponse(.success(data)))
+        }
+      } catch {
+        await send(.userCategoriesResponse(.failure(error)))
+      }
     }
   }
 
