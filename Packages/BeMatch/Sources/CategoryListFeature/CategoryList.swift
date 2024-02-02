@@ -27,6 +27,10 @@ public struct CategoryListLogic {
       case .onTask:
         return .none
 
+//      case let .rows(.element(id, .rows(.element(_, .rowButtonTapped)))):
+//        guard let row = state.rows[id: id] else { return .none }
+//        return .none
+
       case .rows:
         return .none
       }
