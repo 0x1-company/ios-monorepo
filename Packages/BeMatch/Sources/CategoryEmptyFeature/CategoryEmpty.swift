@@ -49,8 +49,10 @@ public struct CategoryEmptyView: View {
         Image(ImageResource.empty)
           .resizable()
           .aspectRatio(contentMode: .fill)
+          .frame(width: 120)
 
         Text("Looks like he's gone.", bundle: .module)
+          .font(.system(.title3, weight: .semibold))
 
         PrimaryButton(
           String(localized: "Swipe others", bundle: .module)
@@ -58,6 +60,7 @@ public struct CategoryEmptyView: View {
           store.send(.emptyButtonTapped)
         }
       }
+      .padding(.horizontal, 16)
       .multilineTextAlignment(.center)
       .task { await store.send(.onTask).finish() }
     }

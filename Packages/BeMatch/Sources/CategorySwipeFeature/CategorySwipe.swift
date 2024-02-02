@@ -18,7 +18,7 @@ public struct CategorySwipeLogic {
     let title: String
     var rows: IdentifiedArrayOf<SwipeCardLogic.State> = []
     let background: BeMatch.UserCategoriesQuery.Data.UserCategory.Background
-    var empty = CategoryEmptyLogic.State(colorCodes: [])
+    var empty = CategoryEmptyLogic.State()
 
     @PresentationState var destination: Destination.State?
 
@@ -69,6 +69,9 @@ public struct CategorySwipeLogic {
         let screenName = "CategorySwipe_\(state.id)"
         analytics.logScreen(screenName: screenName, of: self)
         return .none
+
+      case .empty(.emptyButtonTapped):
+        return .send(.delegate(.dismiss))
 
       case .closeButtonTapped:
         return .send(.delegate(.dismiss))
