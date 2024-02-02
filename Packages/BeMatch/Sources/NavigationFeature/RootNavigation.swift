@@ -1,5 +1,6 @@
 import BeMatch
 import BeMatchClient
+import CategoryFeature
 import ComposableArchitecture
 import FeedbackGeneratorClient
 import MatchNavigationFeature
@@ -14,11 +15,13 @@ public struct RootNavigationLogic {
   @CasePathable
   public enum Tab {
     case recommendation
+    case category
     case match
   }
 
   public struct State: Equatable {
     var recommendation = RecommendationLogic.State()
+    var category = CategoryLogic.State()
     var match = MatchNavigationLogic.State()
 
     @BindingState var tab = Tab.recommendation
@@ -29,6 +32,7 @@ public struct RootNavigationLogic {
   public enum Action: BindableAction {
     case onTask
     case recommendation(RecommendationLogic.Action)
+    case category(CategoryLogic.Action)
     case match(MatchNavigationLogic.Action)
     case binding(BindingAction<State>)
     case pushNotificationBadgeResponse(Result<BeMatch.PushNotificationBadgeQuery.Data, Error>)
@@ -47,6 +51,9 @@ public struct RootNavigationLogic {
     BindingReducer()
     Scope(state: \.recommendation, action: \.recommendation) {
       RecommendationLogic()
+    }
+    Scope(state: \.category, action: \.category) {
+      CategoryLogic()
     }
     Scope(state: \.match, action: \.match) {
       MatchNavigationLogic()
@@ -119,6 +126,19 @@ public struct RootNavigationView: View {
           .aspectRatio(contentMode: .fit)
           .frame(width: 30, height: 30)
         }
+
+        CategoryView(store: store.scope(state: \.category, action: \.category))
+          .tag(RootNavigationLogic.Tab.category)
+          .tabItem {
+            Image(
+              viewStore.tab.is(\.category)
+                ? ImageResource.categoryActive
+                : ImageResource.categoryDeactive
+            )
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 30, height: 30)
+          }
 
         MatchNavigationView(store: store.scope(state: \.match, action: \.match))
           .tag(RootNavigationLogic.Tab.match)

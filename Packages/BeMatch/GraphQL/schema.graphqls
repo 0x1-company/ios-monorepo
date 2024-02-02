@@ -138,6 +138,12 @@ type InvitationCode {
   id: ID!
 }
 
+type LinearGradient {
+  colors: [String!]!
+  endPoint: UnitPoint!
+  startPoint: UnitPoint!
+}
+
 type Match {
   createdAt: Date!
 
@@ -226,7 +232,7 @@ type Mutation {
   createReport(input: CreateReportInput!): Boolean!
 
   """ユーザーを作成する"""
-  createUser: User!
+  createUser: User! @deprecated(reason: "use createUserV2")
 
   """ユーザーを作成する"""
   createUserV2(input: CreateUserInput!): User!
@@ -288,6 +294,7 @@ type Query {
 
   """招待コードを取得"""
   invitationCode: InvitationCode!
+  lang: String!
 
   """マッチ一覧"""
   matches(after: String, first: Int!): MatchConnection!
@@ -310,6 +317,7 @@ type Query {
 
   """ユーザー一覧"""
   recommendations: [User!]!
+  userCategories: [UserCategory!]!
 
   """LIKEしてくれたユーザー一覧"""
   usersByLiker: [User!]!
@@ -346,6 +354,17 @@ enum ShortCommentStatus {
   APPROVED
   IN_REVIEW
   REJECTED
+}
+
+enum UnitPoint {
+  BOTTOM
+  BOTTOM_LEADING
+  BOTTOM_TRAILING
+  LEADING
+  TOP
+  TOP_LEADING
+  TOP_TRAILING
+  TRAILING
 }
 
 input UpdateBeRealInput {
@@ -386,6 +405,14 @@ type User {
   """一言コメント"""
   shortComment: ShortComment
   status: UserStatus!
+}
+
+type UserCategory {
+  background: LinearGradient!
+  id: ID!
+  order: Int!
+  title: String!
+  users: [User!]!
 }
 
 type UserEdge {

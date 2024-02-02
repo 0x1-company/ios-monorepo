@@ -105,6 +105,10 @@ public extension BeMatchClient {
       createAppleSubscription: { input in
         let mutation = BeMatch.CreateAppleSubscriptionMutation(input: input)
         return try await apolloClient.perform(mutation: mutation)
+      },
+      userCategories: {
+        let query = BeMatch.UserCategoriesQuery()
+        return apolloClient.watch(query: query)
       }
     )
   }

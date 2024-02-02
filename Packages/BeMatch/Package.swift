@@ -18,6 +18,9 @@ let package = Package(
     .library(name: "BeMatchClient", targets: ["BeMatchClient"]),
     .library(name: "BeRealCaptureFeature", targets: ["BeRealCaptureFeature"]),
     .library(name: "BeRealSampleFeature", targets: ["BeRealSampleFeature"]),
+    .library(name: "CategoryEmptyFeature", targets: ["CategoryEmptyFeature"]),
+    .library(name: "CategoryFeature", targets: ["CategoryFeature"]),
+    .library(name: "CategoryListFeature", targets: ["CategoryListFeature"]),
     .library(name: "Constants", targets: ["Constants"]),
     .library(name: "DeleteAccountFeature", targets: ["DeleteAccountFeature"]),
     .library(name: "DirectMessageFeature", targets: ["DirectMessageFeature"]),
@@ -120,6 +123,24 @@ let package = Package(
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
+    .target(name: "CategoryEmptyFeature", dependencies: [
+      "AnalyticsKeys",
+      .product(name: "FeedbackGeneratorClient", package: "SDK"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
+    .target(name: "CategoryFeature", dependencies: [
+      "BeMatchClient",
+      "CategoryEmptyFeature",
+      "CategoryListFeature",
+    ]),
+    .target(name: "CategoryListFeature", dependencies: [
+      "AnalyticsKeys",
+      "BeMatch",
+      "Styleguide",
+      .product(name: "FeedbackGeneratorClient", package: "SDK"),
+      .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
     .target(name: "Constants"),
     .target(name: "DeleteAccountFeature", dependencies: [
       "Styleguide",
@@ -215,6 +236,7 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "NavigationFeature", dependencies: [
+      "CategoryFeature",
       "RecommendationFeature",
       "MatchNavigationFeature",
     ]),

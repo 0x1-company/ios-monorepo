@@ -40,6 +40,8 @@ public extension BeMatch {
       case "Feedback": return BeMatch.Objects.Feedback
       case "UserImage": return BeMatch.Objects.UserImage
       case "Query": return BeMatch.Objects.Query
+      case "UserCategory": return BeMatch.Objects.UserCategory
+      case "LinearGradient": return BeMatch.Objects.LinearGradient
       case "PushNotificationBadge": return BeMatch.Objects.PushNotificationBadge
       case "InvitationCode": return BeMatch.Objects.InvitationCode
       case "ReceivedLike": return BeMatch.Objects.ReceivedLike

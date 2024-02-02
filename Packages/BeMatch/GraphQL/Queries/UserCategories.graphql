@@ -1,0 +1,17 @@
+# import SwipeCard from '../fragments/SwipeCard.graphql'
+
+query UserCategories {
+  userCategories {
+    id
+    title
+    order
+    background {
+      startPoint
+      endPoint
+      colors
+    }
+    users {
+      ...SwipeCard
+    }
+  }
+}
