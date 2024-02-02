@@ -1,6 +1,7 @@
 import AnalyticsClient
 import BeMatch
 import BeMatchClient
+import CategoryEmptyFeature
 import ComposableArchitecture
 import MatchedFeature
 import ReportFeature
@@ -17,6 +18,7 @@ public struct CategorySwipeLogic {
     let title: String
     var rows: IdentifiedArrayOf<SwipeCardLogic.State> = []
     let background: BeMatch.UserCategoriesQuery.Data.UserCategory.Background
+    var empty = CategoryEmptyLogic.State(colorCodes: [])
 
     @PresentationState var destination: Destination.State?
 
@@ -41,10 +43,12 @@ public struct CategorySwipeLogic {
     case createNopeResponse(Result<BeMatch.CreateNopeMutation.Data, Error>)
     case rows(IdentifiedActionOf<SwipeCardLogic>)
     case destination(PresentationAction<Destination.Action>)
+    case empty(CategoryEmptyLogic.Action)
     case delegate(Delegate)
 
     public enum Delegate: Equatable {
       case dismiss
+      case finished
     }
   }
 
@@ -58,6 +62,7 @@ public struct CategorySwipeLogic {
   }
 
   public var body: some Reducer<State, Action> {
+    Scope(state: \.empty, action: \.empty, child: CategoryEmptyLogic.init)
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
@@ -194,40 +199,46 @@ public struct CategorySwipeView: View {
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
-      VStack(spacing: 16) {
-        ZStack {
-          ForEachStore(
-            store.scope(state: \.rows, action: \.rows),
-            content: SwipeCardView.init(store:)
-          )
-        }
-        .aspectRatio(3 / 4, contentMode: .fit)
+      Group {
+        if viewStore.rows.isEmpty {
+          CategoryEmptyView(store: store.scope(state: \.empty, action: \.empty))
+        } else {
+          VStack(spacing: 16) {
+            ZStack {
+              ForEachStore(
+                store.scope(state: \.rows, action: \.rows),
+                content: SwipeCardView.init(store:)
+              )
+            }
+            .aspectRatio(3 / 4, contentMode: .fit)
 
-        HStack(spacing: 40) {
-          Button {
-            store.send(.nopeButtonTapped)
-          } label: {
-            Image(ImageResource.xmark)
-              .resizable()
-              .frame(width: 56, height: 56)
-              .clipShape(Circle())
+            HStack(spacing: 40) {
+              Button {
+                store.send(.nopeButtonTapped)
+              } label: {
+                Image(ImageResource.xmark)
+                  .resizable()
+                  .frame(width: 56, height: 56)
+                  .clipShape(Circle())
+              }
+
+              Button {
+                store.send(.likeButtonTapped)
+              } label: {
+                Image(ImageResource.heart)
+                  .resizable()
+                  .frame(width: 56, height: 56)
+                  .clipShape(Circle())
+              }
+            }
+
+            Spacer()
           }
-
-          Button {
-            store.send(.likeButtonTapped)
-          } label: {
-            Image(ImageResource.heart)
-              .resizable()
-              .frame(width: 56, height: 56)
-              .clipShape(Circle())
-          }
+          .padding(.top, 32)
+          .padding(.horizontal, 16)
         }
-
-        Spacer()
       }
-      .padding(.top, 32)
-      .padding(.horizontal, 16)
-      .frame(maxWidth: .infinity)
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
       .background(backgroundGradient(background: viewStore.background))
       .navigationTitle(viewStore.title)
       .navigationBarTitleDisplayMode(.inline)

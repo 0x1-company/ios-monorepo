@@ -48,6 +48,11 @@ public struct CategoryLogic {
           await userCategoriesRequest(send: send)
         }
 
+      case .child(.empty(.emptyButtonTapped)):
+        return .run { send in
+          await userCategoriesRequest(send: send)
+        }
+
       case let .userCategoriesResponse(.success(data)):
         let uniqueElements = data.userCategories
           .filter { !$0.users.isEmpty }

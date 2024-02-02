@@ -126,12 +126,13 @@ let package = Package(
     ]),
     .target(name: "CategoryEmptyFeature", dependencies: [
       "AnalyticsKeys",
+      "Styleguide",
+      "BeMatch",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "CategoryFeature", dependencies: [
       "BeMatchClient",
-      "CategoryEmptyFeature",
       "CategoryListFeature",
     ]),
     .target(name: "CategoryListFeature", dependencies: [
@@ -149,6 +150,7 @@ let package = Package(
       "BeMatchClient",
       "MatchedFeature",
       "SwipeCardFeature",
+      "CategoryEmptyFeature",
     ]),
     .target(name: "Constants"),
     .target(name: "DeleteAccountFeature", dependencies: [

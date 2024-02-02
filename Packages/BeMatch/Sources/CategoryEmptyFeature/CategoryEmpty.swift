@@ -1,5 +1,7 @@
 import AnalyticsClient
 import ComposableArchitecture
+import FeedbackGeneratorClient
+import Styleguide
 import SwiftUI
 
 @Reducer
@@ -12,20 +14,23 @@ public struct CategoryEmptyLogic {
 
   public enum Action {
     case onTask
-    case onAppear
+    case emptyButtonTapped
   }
 
   @Dependency(\.analytics) var analytics
+  @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { _, action in
       switch action {
       case .onTask:
-        return .none
-
-      case .onAppear:
         analytics.logScreen(screenName: "CategoryEmpty", of: self)
         return .none
+
+      case .emptyButtonTapped:
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
       }
     }
   }
@@ -40,22 +45,33 @@ public struct CategoryEmptyView: View {
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { _ in
-      List {
-        Text("CategoryEmpty", bundle: .module)
+      VStack(spacing: 24) {
+        Image(ImageResource.empty)
+          .resizable()
+          .aspectRatio(contentMode: .fill)
+
+        Text("Looks like he's gone.", bundle: .module)
+
+        PrimaryButton(
+          String(localized: "Swipe others", bundle: .module)
+        ) {
+          store.send(.emptyButtonTapped)
+        }
       }
-      .navigationTitle(String(localized: "CategoryEmpty", bundle: .module))
-      .navigationBarTitleDisplayMode(.inline)
+      .multilineTextAlignment(.center)
       .task { await store.send(.onTask).finish() }
-      .onAppear { store.send(.onAppear) }
     }
   }
 }
 
 #Preview {
-  CategoryEmptyView(
-    store: .init(
-      initialState: CategoryEmptyLogic.State(),
-      reducer: { CategoryEmptyLogic() }
+  NavigationStack {
+    CategoryEmptyView(
+      store: .init(
+        initialState: CategoryEmptyLogic.State(),
+        reducer: { CategoryEmptyLogic() }
+      )
     )
-  )
+  }
+  .environment(\.colorScheme, .dark)
 }
