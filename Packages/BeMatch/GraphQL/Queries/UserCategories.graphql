@@ -5,11 +5,7 @@ query UserCategories {
     id
     title
     order
-    background {
-      startPoint
-      endPoint
-      colors
-    }
+    colors
     users {
       ...SwipeCard
     }

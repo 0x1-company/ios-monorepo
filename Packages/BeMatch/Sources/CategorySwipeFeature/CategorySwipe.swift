@@ -17,7 +17,7 @@ public struct CategorySwipeLogic {
     let id: String
     let title: String
     var rows: IdentifiedArrayOf<SwipeCardLogic.State> = []
-    let background: BeMatch.UserCategoriesQuery.Data.UserCategory.Background
+    let colors: [Color]
     var empty = CategoryEmptyLogic.State()
 
     @PresentationState var destination: Destination.State?
@@ -25,12 +25,14 @@ public struct CategorySwipeLogic {
     public init(userCategory: BeMatch.UserCategoriesQuery.Data.UserCategory) {
       id = userCategory.id
       title = userCategory.title
-      background = userCategory.background
       rows = IdentifiedArrayOf(
         uniqueElements: userCategory.users
           .map(\.fragments.swipeCard)
           .map(SwipeCardLogic.State.init(data:))
       )
+      colors = userCategory.colors
+        .compactMap { UInt($0, radix: 16) }
+        .map { Color($0, opacity: 1.0) }
     }
   }
 
@@ -189,17 +191,6 @@ public struct CategorySwipeView: View {
     self.store = store
   }
 
-  func backgroundGradient(background: BeMatch.UserCategoriesQuery.Data.UserCategory.Background) -> LinearGradient {
-    let colors = background.colors
-      .compactMap { UInt($0, radix: 16) }
-      .map { Color($0, opacity: 1.0) }
-    return LinearGradient(
-      colors: colors,
-      startPoint: .top,
-      endPoint: .bottom
-    )
-  }
-
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       Group {
@@ -242,7 +233,13 @@ public struct CategorySwipeView: View {
         }
       }
       .frame(maxWidth: .infinity, maxHeight: .infinity)
-      .background(backgroundGradient(background: viewStore.background))
+      .background(
+        LinearGradient(
+          colors: viewStore.colors,
+          startPoint: UnitPoint.top,
+          endPoint: UnitPoint.bottom
+        )
+      )
       .navigationTitle(viewStore.title)
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
