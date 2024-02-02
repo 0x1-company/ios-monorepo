@@ -230,6 +230,7 @@ public struct CategorySwipeView: View {
       }
       .padding(.top, 32)
       .padding(.horizontal, 16)
+      .frame(maxWidth: .infinity)
       .background(backgroundGradient(background: viewStore.background))
       .navigationTitle(viewStore.title)
       .navigationBarTitleDisplayMode(.inline)
