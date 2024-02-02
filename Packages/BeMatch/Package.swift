@@ -145,6 +145,7 @@ let package = Package(
     ]),
     .target(name: "CategorySwipeFeature", dependencies: [
       "Styleguide",
+      "ReportFeature",
       "BeMatchClient",
       "MatchedFeature",
       "SwipeCardFeature",

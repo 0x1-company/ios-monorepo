@@ -6,6 +6,7 @@ import MatchedFeature
 import Styleguide
 import SwiftUI
 import SwipeCardFeature
+import ReportFeature
 
 @Reducer
 public struct CategorySwipeLogic {
@@ -34,7 +35,6 @@ public struct CategorySwipeLogic {
     case closeButtonTapped
     case nopeButtonTapped
     case likeButtonTapped
-    case usersByLikerResponse(Result<BeMatch.UsersByLikerQuery.Data, Error>)
     case createLikeResponse(Result<BeMatch.CreateLikeMutation.Data, Error>)
     case createNopeResponse(Result<BeMatch.CreateNopeMutation.Data, Error>)
     case rows(IdentifiedActionOf<SwipeCardLogic>)
@@ -119,19 +119,6 @@ public struct CategorySwipeLogic {
         }
         .cancellable(id: Cancel.feedback(input.targetUserId), cancelInFlight: true)
 
-      case let .usersByLikerResponse(.success(data)):
-        let rows = data.usersByLiker
-          .map(\.fragments.swipeCard)
-          .filter { !$0.images.isEmpty }
-          .map(SwipeCardLogic.State.init)
-
-        state.rows = IdentifiedArrayOf(uniqueElements: rows)
-
-        return .none
-
-      case .usersByLikerResponse(.failure):
-        return .send(.delegate(.dismiss))
-
       case let .createNopeResponse(.success(data)):
         state.rows.remove(id: data.createNope.targetUserId)
         return .none
@@ -147,6 +134,10 @@ public struct CategorySwipeLogic {
         } else if let feedback = data.createLike.feedback {
           state.rows.remove(id: feedback.targetUserId)
         }
+        return .none
+        
+      case let .rows(.element(id, .delegate(.report))):
+        state.destination = .report(ReportLogic.State(targetUserId: id))
         return .none
 
       default:
@@ -165,14 +156,17 @@ public struct CategorySwipeLogic {
   public struct Destination {
     public enum State: Equatable {
       case matched(MatchedLogic.State)
+      case report(ReportLogic.State)
     }
 
     public enum Action {
       case matched(MatchedLogic.Action)
+      case report(ReportLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
       Scope(state: \.matched, action: \.matched, child: MatchedLogic.init)
+      Scope(state: \.report, action: \.report, child: ReportLogic.init)
     }
   }
 }
@@ -250,6 +244,10 @@ public struct CategorySwipeView: View {
       .fullScreenCover(
         store: store.scope(state: \.$destination.matched, action: \.destination.matched),
         content: MatchedView.init(store:)
+      )
+      .sheet(
+        store: store.scope(state: \.$destination.report, action: \.destination.report),
+        content: ReportView.init(store:)
       )
     }
   }
