@@ -117,6 +117,7 @@ public struct CategoryView: View {
         }
       } else: {
         ProgressView()
+          .tint(Color.white)
       }
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
