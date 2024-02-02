@@ -138,12 +138,6 @@ type InvitationCode {
   id: ID!
 }
 
-type LinearGradient {
-  colors: [String!]!
-  endPoint: UnitPoint!
-  startPoint: UnitPoint!
-}
-
 type Match {
   createdAt: Date!
 
@@ -356,17 +350,6 @@ enum ShortCommentStatus {
   REJECTED
 }
 
-enum UnitPoint {
-  BOTTOM
-  BOTTOM_LEADING
-  BOTTOM_TRAILING
-  LEADING
-  TOP
-  TOP_LEADING
-  TOP_TRAILING
-  TRAILING
-}
-
 input UpdateBeRealInput {
   """BeRealのユーザー名"""
   username: String!
@@ -408,7 +391,7 @@ type User {
 }
 
 type UserCategory {
-  background: LinearGradient!
+  colors: [String!]!
   id: ID!
   order: Int!
   title: String!

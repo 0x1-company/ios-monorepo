@@ -8,7 +8,7 @@ public extension BeMatch {
     public static let operationName: String = "UserCategories"
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"query UserCategories { userCategories { __typename id title order background { __typename startPoint endPoint colors } users { __typename ...SwipeCard } } }"#,
+        #"query UserCategories { userCategories { __typename id title order colors users { __typename ...SwipeCard } } }"#,
         fragments: [PictureSlider.self, SwipeCard.self]
       ))
 
@@ -38,35 +38,15 @@ public extension BeMatch {
           .field("id", BeMatch.ID.self),
           .field("title", String.self),
           .field("order", Int.self),
-          .field("background", Background.self),
+          .field("colors", [String].self),
           .field("users", [User].self),
         ] }
 
         public var id: BeMatch.ID { __data["id"] }
         public var title: String { __data["title"] }
         public var order: Int { __data["order"] }
-        public var background: Background { __data["background"] }
+        public var colors: [String] { __data["colors"] }
         public var users: [User] { __data["users"] }
-
-        /// UserCategory.Background
-        ///
-        /// Parent Type: `LinearGradient`
-        public struct Background: BeMatch.SelectionSet {
-          public let __data: DataDict
-          public init(_dataDict: DataDict) { __data = _dataDict }
-
-          public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.LinearGradient }
-          public static var __selections: [ApolloAPI.Selection] { [
-            .field("__typename", String.self),
-            .field("startPoint", GraphQLEnum<BeMatch.UnitPoint>.self),
-            .field("endPoint", GraphQLEnum<BeMatch.UnitPoint>.self),
-            .field("colors", [String].self),
-          ] }
-
-          public var startPoint: GraphQLEnum<BeMatch.UnitPoint> { __data["startPoint"] }
-          public var endPoint: GraphQLEnum<BeMatch.UnitPoint> { __data["endPoint"] }
-          public var colors: [String] { __data["colors"] }
-        }
 
         /// UserCategory.User
         ///
