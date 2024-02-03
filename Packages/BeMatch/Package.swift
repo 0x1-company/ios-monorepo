@@ -136,9 +136,10 @@ let package = Package(
       "CategoryListFeature",
     ]),
     .target(name: "CategoryListFeature", dependencies: [
-      "AnalyticsKeys",
       "BeMatch",
       "Styleguide",
+      "AnalyticsKeys",
+      "MembershipFeature",
       "CategorySwipeFeature",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),

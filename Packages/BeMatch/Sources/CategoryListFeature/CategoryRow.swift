@@ -12,13 +12,15 @@ public struct CategoryRowLogic {
 
   public struct State: Equatable, Identifiable {
     let user: BeMatch.SwipeCard
+    let isBlur: Bool
 
     public var id: String {
       return user.id
     }
 
-    public init(user: BeMatch.SwipeCard) {
+    public init(user: BeMatch.SwipeCard, isBlur: Bool) {
       self.user = user
+      self.isBlur = isBlur
     }
   }
 
@@ -49,6 +51,17 @@ public struct CategoryRowView: View {
     self.store = store
   }
 
+  var goldGradient: LinearGradient {
+    LinearGradient(
+      colors: [
+        Color(0xFFE8_B423),
+        Color(0xFFF5_D068),
+      ],
+      startPoint: .leading,
+      endPoint: .trailing
+    )
+  }
+
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       Button {
@@ -71,19 +84,29 @@ public struct CategoryRowView: View {
                 .tint(Color.white)
             }
         }
+        .blur(radius: viewStore.isBlur ? 18 : 0)
         .clipShape(RoundedRectangle(cornerRadius: 8))
         .overlay(alignment: .bottom) {
-          LinearGradient(
-            colors: [
-              Color.black.opacity(0.0),
-              Color.black.opacity(1.0),
-            ],
-            startPoint: .top,
-            endPoint: .bottom
-          )
-          .frame(height: 100)
-          .clipShape(RoundedRectangle(cornerRadius: 8))
+          if !viewStore.isBlur {
+            LinearGradient(
+              colors: [
+                Color.black.opacity(0.0),
+                Color.black.opacity(1.0),
+              ],
+              startPoint: .top,
+              endPoint: .bottom
+            )
+            .frame(height: 100)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+          }
         }
+        .overlay {
+          if viewStore.isBlur {
+            RoundedRectangle(cornerRadius: 8)
+              .stroke(goldGradient, lineWidth: 3)
+          }
+        }
+        .padding(.vertical, 2)
       }
       .buttonStyle(HoldDownButtonStyle())
     }

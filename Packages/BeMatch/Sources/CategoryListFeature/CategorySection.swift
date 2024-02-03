@@ -20,7 +20,7 @@ public struct CategorySectionLogic {
       rows = IdentifiedArrayOf(
         uniqueElements: userCategory.users
           .map(\.fragments.swipeCard)
-          .map(CategoryRowLogic.State.init(user:))
+          .map { CategoryRowLogic.State(user: $0, isBlur: $0.id == "RECEIVED_LIKE") }
           .reversed()
       )
     }
