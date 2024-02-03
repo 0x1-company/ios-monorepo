@@ -64,7 +64,7 @@ public struct CategoryListLogic {
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
-        
+
       case .destination(.presented(.membership(.delegate(.dismiss)))):
         state.destination = nil
         return .run { _ in
