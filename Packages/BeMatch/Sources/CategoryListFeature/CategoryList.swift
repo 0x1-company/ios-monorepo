@@ -125,13 +125,17 @@ public struct CategoryListView: View {
       .padding(.bottom, 24)
     }
     .fullScreenCover(
-      store: store.scope(
-        state: \.$destination.swipe,
-        action: \.destination.swipe
-      )
+      store: store.scope(state: \.$destination.swipe, action: \.destination.swipe)
     ) { store in
       NavigationStack {
         CategorySwipeView(store: store)
+      }
+    }
+    .fullScreenCover(
+      store: store.scope(state: \.$destination.membership, action: \.destination.membership)
+    ) { store in
+      NavigationStack {
+        MembershipView(store: store)
       }
     }
   }
