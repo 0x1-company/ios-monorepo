@@ -64,6 +64,12 @@ public struct CategoryListLogic {
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
+        
+      case .destination(.presented(.membership(.delegate(.dismiss)))):
+        state.destination = nil
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
 
       case let .hasPremiumMembershipResponse(userCategory, .success(data)):
         if data.hasPremiumMembership {
@@ -122,7 +128,7 @@ public struct CategoryListView: View {
         )
       }
       .padding(.top, 16)
-      .padding(.bottom, 24)
+      .padding(.bottom, 48)
     }
     .fullScreenCover(
       store: store.scope(state: \.$destination.swipe, action: \.destination.swipe)
