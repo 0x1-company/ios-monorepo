@@ -10,6 +10,7 @@ let package = Package(
     .iOS("16.4"),
   ],
   products: [
+    .library(name: "AchievementFeature", targets: ["AchievementFeature"]),
     .library(name: "AnalyticsKeys", targets: ["AnalyticsKeys"]),
     .library(name: "AppFeature", targets: ["AppFeature"]),
     .library(name: "BannedFeature", targets: ["BannedFeature"]),
@@ -65,6 +66,10 @@ let package = Package(
     .package(url: "https://github.com/lorenzofiamingo/swiftui-cached-async-image", from: "2.1.1"),
   ],
   targets: [
+    .target(name: "AchievementFeature", dependencies: [
+      "AnalyticsKeys",
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
     .target(name: "AnalyticsKeys", dependencies: [
       .product(name: "AnalyticsClient", package: "SDK"),
     ]),

@@ -1,0 +1,25 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "999" : {
+
+    },
+    "Achievement" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アチーブメント"
+          }
+        }
+      }
+    },
+    "count of swipes" : {
+
+    },
+    "Heart" : {
+
+    }
+  },
+  "version" : "1.0"
+}
