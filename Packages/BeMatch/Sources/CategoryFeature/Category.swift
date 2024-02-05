@@ -39,6 +39,7 @@ public struct CategoryLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
+        analytics.logScreen(screenName: "Category", of: self)
         return .run { send in
           await userCategoriesRequest(send: send)
         }
