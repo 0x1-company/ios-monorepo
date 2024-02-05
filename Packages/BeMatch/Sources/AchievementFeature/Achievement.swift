@@ -84,10 +84,25 @@ public struct AchievementView: View {
           }
         }
         .padding(.all, 16)
+        .padding(.bottom, 80)
       }
       .navigationTitle(String(localized: "Achievement", bundle: .module))
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
+      .overlay(alignment: .bottom) {
+        Button {
+          
+        } label: {
+          Label("Share", systemImage: "square.and.arrow.up")
+            .padding(.vertical, 16)
+            .padding(.horizontal, 24)
+            .foregroundStyle(Color.primary)
+            .font(.system(.subheadline, weight: .semibold))
+            .background(Color(uiColor: UIColor.systemFill))
+            .clipShape(RoundedRectangle(cornerRadius: 16))
+        }
+        .padding(.bottom, 16)
+      }
     }
   }
 }
