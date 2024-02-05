@@ -6,9 +6,9 @@ struct AchievementRatingWidgetView: View {
       Text("RATING", bundle: .module)
         .foregroundStyle(Color.secondary)
         .font(.system(.headline, weight: .semibold))
-      
+
       HStack(spacing: 8) {
-        ForEach(0..<5) { _ in
+        ForEach(0 ..< 5) { _ in
           Image(systemName: "star.fill")
             .font(.system(size: 40))
         }
@@ -21,7 +21,7 @@ struct AchievementRatingWidgetView: View {
         Text("0.1%")
           .font(.system(size: 64, weight: .semibold, design: .rounded))
       }
-      
+
       Text("Count of swipes across Japan", bundle: .module)
         .foregroundStyle(Color.secondary)
         .font(.system(.headline, weight: .semibold))
