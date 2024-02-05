@@ -23,14 +23,3 @@ struct AchievementWidgetView: View {
     .padding(.horizontal, 12)
   }
 }
-
-#Preview {
-  NavigationStack {
-    AchievementWidgetView(
-      systemImage: "heart.fill",
-      titleKey: "SWIPE",
-      text: "count of swipes"
-    )
-  }
-  .environment(\.colorScheme, .dark)
-}

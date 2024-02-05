@@ -50,13 +50,13 @@ public struct AchievementView: View {
             AchievementWidgetView(
               systemImage: "heart.fill",
               titleKey: "SWIPE",
-              text: "count of swipes"
+              text: "Count of swipes"
             )
             
             AchievementWidgetView(
               systemImage: "star.fill",
               titleKey: "MATCH",
-              text: "count of match"
+              text: "Count of match"
             )
           }
           
@@ -64,13 +64,13 @@ public struct AchievementView: View {
             AchievementWidgetView(
               systemImage: "airplane",
               titleKey: "VISITOR",
-              text: "count of visitor"
+              text: "Count of visitor"
             )
             
             AchievementWidgetView(
               systemImage: "flame.fill",
               titleKey: "LOGIN",
-              text: "count of login"
+              text: "Consecutive login"
             )
           }
           
@@ -102,4 +102,5 @@ public struct AchievementView: View {
     )
   }
   .environment(\.colorScheme, .dark)
+  .environment(\.locale, Locale(identifier: "ja-JP"))
 }

@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "0.1%" : {
+
+    },
     "999" : {
 
     },
@@ -14,10 +17,88 @@
         }
       }
     },
+    "Consecutive login" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "連続ログイン"
+          }
+        }
+      }
+    },
+    "Count of match" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マッチした数"
+          }
+        }
+      }
+    },
     "count of swipes" : {
 
     },
-    "Heart" : {
+    "Count of swipes" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スワイプした数"
+          }
+        }
+      }
+    },
+    "Count of swipes across Japan" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日本全体でのスワイプ数"
+          }
+        }
+      }
+    },
+    "Count of visitor" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロフィールを見られた数"
+          }
+        }
+      }
+    },
+    "HISTORY" : {
+
+    },
+    "LOGIN" : {
+
+    },
+    "MATCH" : {
+
+    },
+    "RATING" : {
+
+    },
+    "Started December 28, 2023" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2023年12月28日開始"
+          }
+        }
+      }
+    },
+    "SWIPE" : {
+
+    },
+    "Top" : {
+
+    },
+    "VISITOR" : {
 
     }
   },
