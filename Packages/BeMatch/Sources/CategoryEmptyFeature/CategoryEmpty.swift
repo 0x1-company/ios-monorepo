@@ -1,4 +1,3 @@
-import AnalyticsClient
 import ComposableArchitecture
 import FeedbackGeneratorClient
 import Styleguide
@@ -13,20 +12,14 @@ public struct CategoryEmptyLogic {
   }
 
   public enum Action {
-    case onTask
     case emptyButtonTapped
   }
 
-  @Dependency(\.analytics) var analytics
   @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { _, action in
       switch action {
-      case .onTask:
-        analytics.logScreen(screenName: "CategoryEmpty", of: self)
-        return .none
-
       case .emptyButtonTapped:
         return .run { _ in
           await feedbackGenerator.impactOccurred()
@@ -62,7 +55,6 @@ public struct CategoryEmptyView: View {
       }
       .padding(.horizontal, 16)
       .multilineTextAlignment(.center)
-      .task { await store.send(.onTask).finish() }
     }
   }
 }
