@@ -5,10 +5,10 @@ import BeMatchClient
 import ComposableArchitecture
 import MatchedFeature
 import ReportFeature
+import Styleguide
 import SwiftUI
 import SwipeCardFeature
 import TcaHelpers
-import Styleguide
 
 @Reducer
 public struct SwipeLogic {
