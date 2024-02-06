@@ -17,7 +17,6 @@ public struct BeRealSampleLogic {
 
   public enum Action {
     case onTask
-    case onAppear
     case nextButtonTapped
     case delegate(Delegate)
 
@@ -34,9 +33,6 @@ public struct BeRealSampleLogic {
       switch action {
       case .onTask:
         state.player.play()
-        return .none
-
-      case .onAppear:
         analytics.logScreen(screenName: "BeRealSample", of: self)
         return .none
 
@@ -84,7 +80,6 @@ public struct BeRealSampleView: View {
       .multilineTextAlignment(.center)
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
-      .onAppear { store.send(.onAppear) }
       .toolbar {
         ToolbarItem(placement: .principal) {
           Image(ImageResource.beMatch)

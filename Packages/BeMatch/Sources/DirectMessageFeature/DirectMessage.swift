@@ -27,7 +27,6 @@ public struct DirectMessageLogic {
 
   public enum Action: BindableAction {
     case onTask
-    case onAppear
     case closeButtonTapped
     case sendButtonTapped
     case rows(IdentifiedActionOf<DirectMessageRowLogic>)
@@ -43,9 +42,6 @@ public struct DirectMessageLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
-        return .none
-
-      case .onAppear:
         analytics.logScreen(screenName: "DirectMessage", of: self)
         return .none
 
@@ -129,7 +125,7 @@ public struct DirectMessageView: View {
         .background(Color(uiColor: UIColor.secondarySystemBackground))
       }
       .navigationBarTitleDisplayMode(.inline)
-      .onAppear { store.send(.onAppear) }
+      .task { await store.send(.onTask).finish() }
       .toolbar {
         ToolbarItem(placement: .principal) {
           Text(viewStore.username)

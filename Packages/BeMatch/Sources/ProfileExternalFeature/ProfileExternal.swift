@@ -70,14 +70,12 @@ public struct ProfileExternalLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
+        analytics.logScreen(screenName: "ProfileExternal", of: self)
+
         let matchId = state.match.id
         return .run { send in
           await readMatchRequest(matchId: matchId, send: send)
         }
-
-      case .onAppear:
-        analytics.logScreen(screenName: "ProfileExternal", of: self)
-        return .none
 
       case .unmatchButtonTapped:
         state.destination = .confirmationDialog(
@@ -296,7 +294,6 @@ public struct ProfileExternalView: View {
       .background(Material.ultraThin)
       .presentationBackground(Color.clear)
       .task { await store.send(.onTask).finish() }
-      .onAppear { store.send(.onAppear) }
       .confirmationDialog(
         store: store.scope(
           state: \.$destination.confirmationDialog,

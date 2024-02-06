@@ -35,7 +35,6 @@ public struct ReportReasonLogic {
 
   public enum Action: BindableAction {
     case onTask
-    case onAppear
     case sendButtonTapped
     case binding(BindingAction<State>)
     case alert(PresentationAction<Alert>)
@@ -60,9 +59,6 @@ public struct ReportReasonLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
-        return .none
-
-      case .onAppear:
         analytics.logScreen(screenName: "ReportReason", of: self)
         return .none
 
@@ -165,7 +161,6 @@ public struct ReportReasonView: View {
       .navigationTitle(Text("Report a BeMatch.", bundle: .module))
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
-      .onAppear { store.send(.onAppear) }
       .bind(viewStore.$focus, to: $focus)
       .alert(store: store.scope(state: \.$alert, action: \.alert))
     }

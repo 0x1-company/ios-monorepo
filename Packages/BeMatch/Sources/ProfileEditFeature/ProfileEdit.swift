@@ -21,7 +21,6 @@ public struct ProfileEditLogic {
   }
 
   public enum Action {
-    case onAppear
     case onTask
     case closeButtonTapped
     case beRealCaptureButtonTapped
@@ -46,6 +45,7 @@ public struct ProfileEditLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
+        analytics.logScreen(screenName: "ProfileEdit", of: self)
         return .run { send in
           for try await data in currentUser() {
             await send(.currentUserResponse(.success(data)))
@@ -53,10 +53,6 @@ public struct ProfileEditLogic {
         } catch: { error, send in
           await send(.currentUserResponse(.failure(error)))
         }
-
-      case .onAppear:
-        analytics.logScreen(screenName: "ProfileEdit", of: self)
-        return .none
 
       case .closeButtonTapped:
         return .send(.delegate(.dismiss))
@@ -249,7 +245,6 @@ public struct ProfileEditView: View {
       .navigationTitle(String(localized: "Edit Profile", bundle: .module))
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
-      .onAppear { store.send(.onAppear) }
       .toolbar {
         ToolbarItem(placement: .topBarLeading) {
           Button {

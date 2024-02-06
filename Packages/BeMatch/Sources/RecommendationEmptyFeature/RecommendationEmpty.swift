@@ -32,7 +32,6 @@ public struct RecommendationEmptyLogic {
 
   public enum Action: BindableAction {
     case onTask
-    case onAppear
     case shareButtonTapped
     case currentUserResponse(Result<BeMatch.CurrentUserQuery.Data, Error>)
     case onCompletion(CompletionWithItems)
@@ -51,6 +50,7 @@ public struct RecommendationEmptyLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
+        analytics.logScreen(screenName: "RecommendationEmpty", of: self)
         return .run { send in
           for try await data in currentUser() {
             await send(.currentUserResponse(.success(data)))
@@ -59,10 +59,6 @@ public struct RecommendationEmptyLogic {
           await send(.currentUserResponse(.failure(error)))
         }
         .cancellable(id: Cancel.currentUser, cancelInFlight: true)
-
-      case .onAppear:
-        analytics.logScreen(screenName: "RecommendationEmpty", of: self)
-        return .none
 
       case .shareButtonTapped:
         state.isPresented = true
@@ -128,7 +124,6 @@ public struct RecommendationEmptyView: View {
       .padding(.horizontal, 16)
       .background(Color.black)
       .task { await store.send(.onTask).finish() }
-      .onAppear { store.send(.onAppear) }
       .sheet(isPresented: viewStore.$isPresented) {
         ActivityView(
           activityItems: [viewStore.shareText],

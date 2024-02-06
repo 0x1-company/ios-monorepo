@@ -31,7 +31,6 @@ public struct ShortCommentSettingLogic {
 
   public enum Action: BindableAction {
     case onTask
-    case onAppear
     case saveButtonTapped
     case updateShortCommentResponse(Result<BeMatch.UpdateShortCommentMutation.Data, Error>)
     case binding(BindingAction<State>)
@@ -56,9 +55,6 @@ public struct ShortCommentSettingLogic {
       switch action {
       case .onTask:
         state.focus = .shortComment
-        return .none
-
-      case .onAppear:
         analytics.logScreen(screenName: "ShortCommentSetting", of: self)
         return .none
 
@@ -156,7 +152,6 @@ public struct ShortCommentSettingView: View {
       .padding(.horizontal, 16)
       .padding(.bottom, 16)
       .task { await store.send(.onTask).finish() }
-      .onAppear { store.send(.onAppear) }
       .bind(viewStore.$focus, to: $focus)
       .alert(store: store.scope(state: \.$alert, action: \.alert))
       .toolbar {

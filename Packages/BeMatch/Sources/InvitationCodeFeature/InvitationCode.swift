@@ -17,7 +17,6 @@ public struct InvitationCodeLogic {
 
   public enum Action {
     case onTask
-    case onAppear
     case shareInvitationCodeButtonTapped
     case invitationCodeResponse(Result<BeMatch.InvitationCodeQuery.Data, Error>)
   }
@@ -33,6 +32,7 @@ public struct InvitationCodeLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
+        analytics.logScreen(screenName: "InvitationCode", of: self)
         return .run { send in
           for try await data in bematch.invitationCode() {
             await send(.invitationCodeResponse(.success(data)))
@@ -41,10 +41,6 @@ public struct InvitationCodeLogic {
           await send(.invitationCodeResponse(.failure(error)))
         }
         .cancellable(id: Cancel.invitationCode, cancelInFlight: true)
-
-      case .onAppear:
-        analytics.logScreen(screenName: "InvitationCode", of: self)
-        return .none
 
       case .shareInvitationCodeButtonTapped:
         return .none
@@ -91,7 +87,6 @@ public struct InvitationCodeView: View {
       .navigationTitle(String(localized: "Invitation Code", bundle: .module))
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
-      .onAppear { store.send(.onAppear) }
     }
   }
 }

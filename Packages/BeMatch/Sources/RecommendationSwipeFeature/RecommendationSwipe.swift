@@ -25,7 +25,6 @@ public struct RecommendationSwipeLogic {
 
   public enum Action {
     case onTask
-    case onAppear
     case nopeButtonTapped
     case likeButtonTapped
     case createLikeResponse(Result<BeMatch.CreateLikeMutation.Data, Error>)
@@ -53,9 +52,6 @@ public struct RecommendationSwipeLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
-        return .none
-
-      case .onAppear:
         analytics.logScreen(screenName: "RecommendationSwipe", of: self)
         return .none
 
@@ -220,7 +216,6 @@ public struct RecommendationSwipeView: View {
       .background(Color.black)
       .buttonStyle(HoldDownButtonStyle())
       .task { await store.send(.onTask).finish() }
-      .onAppear { store.send(.onAppear) }
       .sheet(
         store: store.scope(state: \.$destination.report, action: \.destination.report),
         content: ReportView.init(store:)

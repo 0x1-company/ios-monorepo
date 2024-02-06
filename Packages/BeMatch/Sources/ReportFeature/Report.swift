@@ -19,7 +19,6 @@ public struct ReportLogic {
 
   public enum Action {
     case onTask
-    case onAppear
     case titleButtonTapped(String)
     case path(StackAction<Path.State, Path.Action>)
   }
@@ -30,7 +29,7 @@ public struct ReportLogic {
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
       switch action {
-      case .onAppear:
+      case .onTask:
         analytics.logScreen(screenName: "Report", of: self)
         return .none
 
@@ -120,6 +119,7 @@ public struct ReportView: View {
       }
     }
     .tint(Color.white)
+    .task { await store.send(.onTask).finish() }
   }
 }
 

@@ -22,7 +22,7 @@ public struct UsernameSettingLogic {
   }
 
   public enum Action: BindableAction {
-    case onAppear
+    case onTask
     case nextButtonTapped
     case updateBeRealResponse(Result<BeMatch.UpdateBeRealMutation.Data, Error>)
     case binding(BindingAction<State>)
@@ -50,7 +50,7 @@ public struct UsernameSettingLogic {
     BindingReducer()
     Reduce<State, Action> { state, action in
       switch action {
-      case .onAppear:
+      case .onTask:
         analytics.logScreen(screenName: "UsernameSetting", of: self)
         return .none
 
@@ -155,9 +155,9 @@ public struct UsernameSettingView: View {
       .padding(.horizontal, 16)
       .multilineTextAlignment(.center)
       .navigationBarTitleDisplayMode(.inline)
+      .task { await store.send(.onTask).finish() }
       .onAppear {
         isFocused = true
-        store.send(.onAppear)
       }
       .toolbar {
         ToolbarItem(placement: .principal) {

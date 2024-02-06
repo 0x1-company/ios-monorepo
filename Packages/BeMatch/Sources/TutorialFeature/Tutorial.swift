@@ -18,7 +18,7 @@ public struct TutorialLogic {
   }
 
   public enum Action {
-    case onAppear
+    case onTask
     case nextButtonTapped
     case skipButtonTapped
     case finishButtonTapped
@@ -35,7 +35,7 @@ public struct TutorialLogic {
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
       switch action {
-      case .onAppear:
+      case .onTask:
         analytics.logScreen(screenName: "Tutorial", of: self)
         return .none
 
@@ -127,7 +127,7 @@ public struct TutorialView: View {
       .frame(maxWidth: .infinity, maxHeight: .infinity)
       .multilineTextAlignment(.center)
       .background(Color.black.opacity(0.9))
-      .onAppear { store.send(.onAppear) }
+      .task { await store.send(.onTask).finish() }
       .onTapGesture {
         if !viewStore.isOnTapGestureDisabled {
           store.send(.nextButtonTapped, animation: .default)

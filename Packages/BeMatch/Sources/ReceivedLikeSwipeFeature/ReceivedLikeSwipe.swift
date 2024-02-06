@@ -19,7 +19,6 @@ public struct ReceivedLikeSwipeLogic {
 
   public enum Action {
     case onTask
-    case onAppear
     case closeButtonTapped
     case nopeButtonTapped
     case likeButtonTapped
@@ -50,13 +49,10 @@ public struct ReceivedLikeSwipeLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
+        analytics.logScreen(screenName: "ReceivedLikeSwipe", of: self)
         return .run { send in
           await usersByLikerRequest(send: send)
         }
-
-      case .onAppear:
-        analytics.logScreen(screenName: "ReceivedLikeSwipe", of: self)
-        return .none
 
       case .closeButtonTapped:
         return .send(.delegate(.dismiss))
@@ -229,7 +225,6 @@ public struct ReceivedLikeSwipeView: View {
     .navigationTitle(String(localized: "People who Liked you", bundle: .module))
     .navigationBarTitleDisplayMode(.inline)
     .task { await store.send(.onTask).finish() }
-    .onAppear { store.send(.onAppear) }
     .toolbar {
       ToolbarItem(placement: .topBarLeading) {
         Button {
