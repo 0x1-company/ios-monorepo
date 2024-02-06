@@ -8,6 +8,7 @@ import ReportFeature
 import SwiftUI
 import SwipeCardFeature
 import TcaHelpers
+import Styleguide
 
 @Reducer
 public struct SwipeLogic {
@@ -187,6 +188,7 @@ public struct SwipeView: View {
             .clipShape(Circle())
         }
       }
+      .buttonStyle(HoldDownButtonStyle())
 
       Spacer()
     }

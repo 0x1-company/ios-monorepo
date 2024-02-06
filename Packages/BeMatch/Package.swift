@@ -361,6 +361,7 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "SwipeFeature", dependencies: [
+      "Styleguide",
       "ReportFeature",
       "MatchedFeature",
       "SwipeCardFeature",
