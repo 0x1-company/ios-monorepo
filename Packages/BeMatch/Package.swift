@@ -55,6 +55,7 @@ let package = Package(
     .library(name: "ShortCommentSettingFeature", targets: ["ShortCommentSettingFeature"]),
     .library(name: "Styleguide", targets: ["Styleguide"]),
     .library(name: "SwipeCardFeature", targets: ["SwipeCardFeature"]),
+    .library(name: "SwipeFeature", targets: ["SwipeFeature"]),
     .library(name: "TutorialFeature", targets: ["TutorialFeature"]),
     .library(name: "UsernameSettingFeature", targets: ["UsernameSettingFeature"]),
   ],
@@ -373,6 +374,12 @@ let package = Package(
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
+    .target(name: "SwipeFeature", dependencies: [
+      "ReportFeature",
+      "MatchedFeature",
+      "SwipeCardFeature",
+      .product(name: "TcaHelpers", package: "SDK"),
     ]),
     .target(name: "TutorialFeature", dependencies: [
       "Styleguide",
