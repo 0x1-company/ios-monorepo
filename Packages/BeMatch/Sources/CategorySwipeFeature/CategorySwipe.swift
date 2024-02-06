@@ -8,6 +8,7 @@ import ReportFeature
 import Styleguide
 import SwiftUI
 import SwipeCardFeature
+import SwipeFeature
 
 @Reducer
 public struct CategorySwipeLogic {
@@ -16,36 +17,26 @@ public struct CategorySwipeLogic {
   public struct State: Equatable {
     let id: String
     let title: String
-    var rows: IdentifiedArrayOf<SwipeCardLogic.State> = []
     let colors: [Color]
-    var empty = CategoryEmptyLogic.State()
-
-    @PresentationState var destination: Destination.State?
+    var child: Child.State
 
     public init(userCategory: BeMatch.UserCategoriesQuery.Data.UserCategory) {
       id = userCategory.id
       title = userCategory.title
-      rows = IdentifiedArrayOf(
-        uniqueElements: userCategory.users
-          .map(\.fragments.swipeCard)
-          .map(SwipeCardLogic.State.init(data:))
-      )
       colors = userCategory.colors
         .compactMap { UInt($0, radix: 16) }
         .map { Color($0, opacity: 1.0) }
+
+      let rows = userCategory.users
+        .map(\.fragments.swipeCard)
+      child = .swipe(SwipeLogic.State(rows: rows))
     }
   }
 
   public enum Action {
     case onTask
     case closeButtonTapped
-    case nopeButtonTapped
-    case likeButtonTapped
-    case createLikeResponse(Result<BeMatch.CreateLikeMutation.Data, Error>)
-    case createNopeResponse(Result<BeMatch.CreateNopeMutation.Data, Error>)
-    case rows(IdentifiedActionOf<SwipeCardLogic>)
-    case destination(PresentationAction<Destination.Action>)
-    case empty(CategoryEmptyLogic.Action)
+    case child(Child.Action)
     case delegate(Delegate)
 
     public enum Delegate: Equatable {
@@ -64,7 +55,7 @@ public struct CategorySwipeLogic {
   }
 
   public var body: some Reducer<State, Action> {
-    Scope(state: \.empty, action: \.empty, child: CategoryEmptyLogic.init)
+    Scope(state: \.child, action: \.child, child: Child.init)
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
@@ -72,114 +63,37 @@ public struct CategorySwipeLogic {
         analytics.logScreen(screenName: screenName, of: self)
         return .none
 
-      case .empty(.emptyButtonTapped):
+      case .child(.swipe(.delegate(.finished))):
+        state.child = .empty()
+        return .none
+
+      case .child(.empty(.emptyButtonTapped)):
         return .send(.delegate(.dismiss))
 
       case .closeButtonTapped:
         return .send(.delegate(.dismiss))
 
-      case .nopeButtonTapped:
-        guard let last = state.rows.last else { return .none }
-        let input = BeMatch.CreateNopeInput(targetUserId: last.data.id)
-
-        analytics.buttonClick(name: \.nope, parameters: [:])
-
-        return .run { send in
-          await feedbackGenerator.impactOccurred()
-          await send(.createNopeResponse(Result {
-            try await createNope(input)
-          }))
-        }
-        .cancellable(id: Cancel.feedback(input.targetUserId), cancelInFlight: true)
-
-      case .likeButtonTapped:
-        guard let last = state.rows.last else { return .none }
-        let input = BeMatch.CreateLikeInput(targetUserId: last.data.id)
-
-        analytics.buttonClick(name: \.like, parameters: [:])
-
-        return .run { send in
-          await feedbackGenerator.impactOccurred()
-          await send(.createLikeResponse(Result {
-            try await createLike(input)
-          }))
-        }
-        .cancellable(id: Cancel.feedback(input.targetUserId), cancelInFlight: true)
-
-      case let .rows(.element(id, .delegate(.nope))):
-        let input = BeMatch.CreateNopeInput(targetUserId: id)
-
-        analytics.buttonClick(name: \.swipeNope, parameters: [:])
-
-        return .run { send in
-          await feedbackGenerator.impactOccurred()
-          await send(.createNopeResponse(Result {
-            try await createNope(input)
-          }))
-        }
-        .cancellable(id: Cancel.feedback(input.targetUserId), cancelInFlight: true)
-
-      case let .rows(.element(id, .delegate(.like))):
-        let input = BeMatch.CreateLikeInput(targetUserId: id)
-
-        analytics.buttonClick(name: \.swipeLike, parameters: [:])
-
-        return .run { send in
-          await feedbackGenerator.impactOccurred()
-          await send(.createLikeResponse(Result {
-            try await createLike(input)
-          }))
-        }
-        .cancellable(id: Cancel.feedback(input.targetUserId), cancelInFlight: true)
-
-      case let .createNopeResponse(.success(data)):
-        state.rows.remove(id: data.createNope.targetUserId)
-        return .none
-
-      case let .createLikeResponse(.success(data)):
-        if let match = data.createLike.match {
-          let targetUser = match.targetUser
-          state.rows.remove(id: targetUser.id)
-          let username = targetUser.berealUsername
-          state.destination = .matched(MatchedLogic.State(username: username))
-          return .none
-
-        } else if let feedback = data.createLike.feedback {
-          state.rows.remove(id: feedback.targetUserId)
-        }
-        return .none
-
-      case let .rows(.element(id, .delegate(.report))):
-        state.destination = .report(ReportLogic.State(targetUserId: id))
-        return .none
-
       default:
         return .none
       }
     }
-    .forEach(\.rows, action: \.rows) {
-      SwipeCardLogic()
-    }
-    .ifLet(\.$destination, action: \.destination) {
-      Destination()
-    }
   }
 
   @Reducer
-  public struct Destination {
+  public struct Child {
     public enum State: Equatable {
-      case matched(MatchedLogic.State)
-      case report(ReportLogic.State)
+      case swipe(SwipeLogic.State)
+      case empty(CategoryEmptyLogic.State = .init())
     }
 
     public enum Action {
-      case matched(MatchedLogic.Action)
-      case report(ReportLogic.Action)
+      case swipe(SwipeLogic.Action)
+      case empty(CategoryEmptyLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
-      Scope(state: \.matched, action: \.matched, child: MatchedLogic.init)
-      Scope(state: \.report, action: \.report, child: ReportLogic.init)
+      Scope(state: \.swipe, action: \.swipe, child: SwipeLogic.init)
+      Scope(state: \.empty, action: \.empty, child: CategoryEmptyLogic.init)
     }
   }
 }
@@ -193,43 +107,20 @@ public struct CategorySwipeView: View {
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
-      Group {
-        if viewStore.rows.isEmpty {
-          CategoryEmptyView(store: store.scope(state: \.empty, action: \.empty))
-        } else {
-          VStack(spacing: 16) {
-            ZStack {
-              ForEachStore(
-                store.scope(state: \.rows, action: \.rows),
-                content: SwipeCardView.init(store:)
-              )
-            }
-            .aspectRatio(3 / 4, contentMode: .fit)
-
-            HStack(spacing: 40) {
-              Button {
-                store.send(.nopeButtonTapped)
-              } label: {
-                Image(ImageResource.xmark)
-                  .resizable()
-                  .frame(width: 56, height: 56)
-                  .clipShape(Circle())
-              }
-
-              Button {
-                store.send(.likeButtonTapped)
-              } label: {
-                Image(ImageResource.heart)
-                  .resizable()
-                  .frame(width: 56, height: 56)
-                  .clipShape(Circle())
-              }
-            }
-
-            Spacer()
-          }
-          .padding(.top, 32)
-          .padding(.horizontal, 16)
+      SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
+        switch initialState {
+        case .swipe:
+          CaseLet(
+            /CategorySwipeLogic.Child.State.swipe,
+            action: CategorySwipeLogic.Child.Action.swipe,
+            then: SwipeView.init(store:)
+          )
+        case .empty:
+          CaseLet(
+            /CategorySwipeLogic.Child.State.empty,
+            action: CategorySwipeLogic.Child.Action.empty,
+            then: CategoryEmptyView.init(store:)
+          )
         }
       }
       .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -255,14 +146,6 @@ public struct CategorySwipeView: View {
           }
         }
       }
-      .fullScreenCover(
-        store: store.scope(state: \.$destination.matched, action: \.destination.matched),
-        content: MatchedView.init(store:)
-      )
-      .sheet(
-        store: store.scope(state: \.$destination.report, action: \.destination.report),
-        content: ReportView.init(store:)
-      )
     }
   }
 }
