@@ -1,3 +1,5 @@
+import AnalyticsKeys
+import AnalyticsClient
 import BeMatch
 import BeMatchClient
 import ComposableArchitecture
@@ -37,6 +39,7 @@ public struct SwipeLogic {
     }
   }
 
+  @Dependency(\.analytics) var analytics
   @Dependency(\.bematch) var bematch
   @Dependency(\.feedbackGenerator) var feedbackGenerator
 
@@ -50,6 +53,8 @@ public struct SwipeLogic {
       case .nopeButtonTapped:
         guard let last = state.rows.last else { return .none }
         state.rows.remove(id: last.data.id)
+        analytics.buttonClick(name: \.nope)
+        
         return .run { send in
           await feedbackGenerator.impactOccurred()
           await createNope(send: send, targetUserId: last.data.id)
@@ -58,6 +63,8 @@ public struct SwipeLogic {
       case .likeButtonTapped:
         guard let last = state.rows.last else { return .none }
         state.rows.remove(id: last.data.id)
+        analytics.buttonClick(name: \.like)
+        
         return .run { send in
           await feedbackGenerator.impactOccurred()
           await createLike(send: send, targetUserId: last.data.id)
@@ -65,6 +72,8 @@ public struct SwipeLogic {
 
       case let .rows(.element(id, .delegate(.nope))):
         state.rows.remove(id: id)
+        analytics.buttonClick(name: \.swipeNope)
+
         return .run { send in
           await feedbackGenerator.impactOccurred()
           await createNope(send: send, targetUserId: id)
@@ -72,6 +81,8 @@ public struct SwipeLogic {
 
       case let .rows(.element(id, .delegate(.like))):
         state.rows.remove(id: id)
+        analytics.buttonClick(name: \.swipeLike)
+
         return .run { send in
           await feedbackGenerator.impactOccurred()
           await createLike(send: send, targetUserId: id)
