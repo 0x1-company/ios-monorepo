@@ -12,7 +12,7 @@ public struct RecommendationSwipeLogic {
     var swipe: SwipeLogic.State
 
     public init(rows: [BeMatch.SwipeCard]) {
-      self.swipe = SwipeLogic.State(rows: rows)
+      swipe = SwipeLogic.State(rows: rows)
     }
   }
 
@@ -20,12 +20,12 @@ public struct RecommendationSwipeLogic {
     case onTask
     case swipe(SwipeLogic.Action)
   }
-  
+
   @Dependency(\.analytics) var analytics
 
   public var body: some Reducer<State, Action> {
     Scope(state: \.swipe, action: \.swipe, child: SwipeLogic.init)
-    Reduce<State, Action> { state, action in
+    Reduce<State, Action> { _, action in
       switch action {
       case .onTask:
         analytics.logScreen(screenName: "RecommendationSwipe", of: self)

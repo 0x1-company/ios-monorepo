@@ -1,5 +1,5 @@
-import AnalyticsKeys
 import AnalyticsClient
+import AnalyticsKeys
 import BeMatch
 import BeMatchClient
 import ComposableArchitecture
@@ -54,7 +54,7 @@ public struct SwipeLogic {
         guard let last = state.rows.last else { return .none }
         state.rows.remove(id: last.data.id)
         analytics.buttonClick(name: \.nope)
-        
+
         return .run { send in
           await feedbackGenerator.impactOccurred()
           await createNope(send: send, targetUserId: last.data.id)
@@ -64,7 +64,7 @@ public struct SwipeLogic {
         guard let last = state.rows.last else { return .none }
         state.rows.remove(id: last.data.id)
         analytics.buttonClick(name: \.like)
-        
+
         return .run { send in
           await feedbackGenerator.impactOccurred()
           await createLike(send: send, targetUserId: last.data.id)

@@ -58,7 +58,7 @@ public struct RecommendationLogic {
           ? .empty()
           : .swipe(RecommendationSwipeLogic.State(rows: rows))
         return .none
-        
+
       case .child(.swipe(.swipe(.delegate(.finished)))):
         state.child = .empty()
         return .none

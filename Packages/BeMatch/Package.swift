@@ -303,9 +303,7 @@ let package = Package(
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
     ]),
     .target(name: "ReceivedLikeSwipeFeature", dependencies: [
-      "BeMatchClient",
-      "MatchedFeature",
-      "SwipeCardFeature",
+      "SwipeFeature",
     ]),
     .target(name: "RecommendationEmptyFeature", dependencies: [
       "Constants",
