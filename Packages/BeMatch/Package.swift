@@ -330,16 +330,7 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "RecommendationSwipeFeature", dependencies: [
-      "Styleguide",
-      "BeMatchClient",
-      "SelectControl",
-      "ReportFeature",
-      "AnalyticsKeys",
-      "SwipeCardFeature",
-      .product(name: "TcaHelpers", package: "SDK"),
-      .product(name: "FeedbackGeneratorClient", package: "SDK"),
-      .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      "SwipeFeature",
     ]),
     .target(name: "ReportFeature", dependencies: [
       "Styleguide",

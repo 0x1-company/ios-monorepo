@@ -1,7 +1,6 @@
 import BeMatch
 import BeMatchClient
 import ComposableArchitecture
-import MatchedFeature
 import RecommendationEmptyFeature
 import RecommendationLoadingFeature
 import RecommendationSwipeFeature
@@ -15,7 +14,6 @@ public struct RecommendationLogic {
 
   public struct State: Equatable {
     var child = Child.State.loading()
-    @PresentationState var destination: Destination.State?
     public init() {}
   }
 
@@ -23,7 +21,6 @@ public struct RecommendationLogic {
     case onTask
     case recommendationsResponse(Result<BeMatch.RecommendationsQuery.Data, Error>)
     case child(Child.Action)
-    case destination(PresentationAction<Destination.Action>)
   }
 
   @Dependency(\.bematch.recommendations) var recommendations
@@ -60,27 +57,15 @@ public struct RecommendationLogic {
         state.child = rows.isEmpty
           ? .empty()
           : .swipe(RecommendationSwipeLogic.State(rows: rows))
-
         return .none
-
-      case let .child(.swipe(.delegate(.matched(username)))):
-        state.destination = .matched(MatchedLogic.State(username: username))
-        return .none
-
-      case .child(.swipe(.delegate(.finished))):
+        
+      case .child(.swipe(.swipe(.delegate(.finished)))):
         state.child = .empty()
-        return .none
-
-      case .destination(.presented(.matched(.closeButtonTapped))):
-        state.destination = nil
         return .none
 
       default:
         return .none
       }
-    }
-    .ifLet(\.$destination, action: \.destination) {
-      Destination()
     }
   }
 
@@ -122,21 +107,6 @@ public struct RecommendationLogic {
       }
     }
   }
-
-  @Reducer
-  public struct Destination {
-    public enum State: Equatable {
-      case matched(MatchedLogic.State)
-    }
-
-    public enum Action {
-      case matched(MatchedLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.matched, action: \.matched, child: MatchedLogic.init)
-    }
-  }
 }
 
 public struct RecommendationView: View {
@@ -171,10 +141,6 @@ public struct RecommendationView: View {
     }
     .task { await store.send(.onTask).finish() }
     .navigationBarTitleDisplayMode(.inline)
-    .fullScreenCover(
-      store: store.scope(state: \.$destination.matched, action: \.destination.matched),
-      content: MatchedView.init(store:)
-    )
     .toolbar {
       ToolbarItem(placement: .principal) {
         Image(ImageResource.beMatch)
