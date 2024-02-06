@@ -30,7 +30,6 @@ public struct MatchLogic {
 
   public enum Action {
     case onTask
-    case onAppear
     case scrollViewBottomReached
     case matchesResponse(Result<BeMatch.MatchesQuery.Data, Error>)
     case bannersResponse(Result<BeMatch.BannersQuery.Data, Error>)
@@ -57,6 +56,7 @@ public struct MatchLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
+        analytics.logScreen(screenName: "Match", of: self)
         return .run { send in
           await withTaskGroup(of: Void.self) { group in
             group.addTask {
@@ -75,10 +75,6 @@ public struct MatchLogic {
             }
           }
         }
-
-      case .onAppear:
-        analytics.logScreen(screenName: "Match", of: self)
-        return .none
 
       case .scrollViewBottomReached:
         return .run { [after = state.after] send in
@@ -257,7 +253,6 @@ public struct MatchView: View {
         .padding(.top, 16)
       }
       .task { await store.send(.onTask).finish() }
-      .onAppear { store.send(.onAppear) }
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
         ToolbarItem(placement: .principal) {

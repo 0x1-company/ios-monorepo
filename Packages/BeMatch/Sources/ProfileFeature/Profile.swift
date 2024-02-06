@@ -36,6 +36,7 @@ public struct ProfileLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
+        analytics.logScreen(screenName: "Profile", of: self)
         return .run { send in
           for try await data in currentUser() {
             await send(.currentUserResponse(.success(data)))
@@ -43,10 +44,6 @@ public struct ProfileLogic {
         } catch: { error, send in
           await send(.currentUserResponse(.failure(error)))
         }
-
-      case .onAppear:
-        analytics.logScreen(screenName: "Profile", of: self)
-        return .none
 
       case .closeButtonTapped:
         return .run { _ in
@@ -145,7 +142,6 @@ public struct ProfileView: View {
       .background(Material.ultraThin)
       .presentationBackground(Color.clear)
       .task { await store.send(.onTask).finish() }
-      .onAppear { store.send(.onAppear) }
       .gesture(
         DragGesture()
           .onEnded { _ in

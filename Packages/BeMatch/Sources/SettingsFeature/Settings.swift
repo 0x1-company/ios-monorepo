@@ -44,7 +44,6 @@ public struct SettingsLogic {
 
   public enum Action: BindableAction {
     case onTask
-    case onAppear
     case myProfileButtonTapped
     case editProfileButtonTapped
     case invitationCodeButtonTapped
@@ -70,9 +69,6 @@ public struct SettingsLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
-        return .none
-
-      case .onAppear:
         analytics.logScreen(screenName: "Settings", of: self)
         return .none
 
@@ -366,7 +362,6 @@ public struct SettingsView: View {
       .navigationTitle(String(localized: "Settings", bundle: .module))
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
-      .onAppear { store.send(.onAppear) }
       .sheet(isPresented: viewStore.$isSharePresented) {
         ActivityView(
           activityItems: [viewStore.shareText],

@@ -22,7 +22,7 @@ public struct GenderSettingLogic {
   }
 
   public enum Action {
-    case onAppear
+    case onTask
     case genderButtonTapped(BeMatch.Gender)
     case skipButtonTapped
     case nextButtonTapped
@@ -41,7 +41,7 @@ public struct GenderSettingLogic {
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
       switch action {
-      case .onAppear:
+      case .onTask:
         analytics.logScreen(screenName: "GenderSetting", of: self)
         return .none
 
@@ -172,7 +172,7 @@ public struct GenderSettingView: View {
       .padding(.bottom, 16)
       .multilineTextAlignment(.center)
       .navigationBarTitleDisplayMode(.inline)
-      .onAppear { store.send(.onAppear) }
+      .task { await store.send(.onTask).finish() }
       .toolbar {
         ToolbarItem(placement: .principal) {
           Image(ImageResource.beMatch)

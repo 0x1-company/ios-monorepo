@@ -26,7 +26,7 @@ public struct BeRealCaptureLogic {
   }
 
   public enum Action: BindableAction {
-    case onAppear
+    case onTask
     case onDelete(Int)
     case howToButtonTapped
     case nextButtonTapped
@@ -55,7 +55,7 @@ public struct BeRealCaptureLogic {
     BindingReducer()
     Reduce<State, Action> { state, action in
       switch action {
-      case .onAppear:
+      case .onTask:
         analytics.logScreen(screenName: "BeRealCapture", of: self)
         return .none
 
@@ -298,7 +298,7 @@ public struct BeRealCaptureView: View {
       .padding(.horizontal, 16)
       .multilineTextAlignment(.center)
       .navigationBarTitleDisplayMode(.inline)
-      .onAppear { store.send(.onAppear) }
+      .task { await store.send(.onTask).finish() }
       .toolbar {
         ToolbarItem(placement: .principal) {
           Image(ImageResource.beMatch)

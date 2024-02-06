@@ -18,7 +18,7 @@ public struct InvitationLogic {
   }
 
   public enum Action: BindableAction {
-    case onAppear
+    case onTask
     case nextButtonTapped
     case skipButtonTapped
     case createInvitationResponse(Result<BeMatch.CreateInvitationMutation.Data, Error>)
@@ -41,7 +41,7 @@ public struct InvitationLogic {
     BindingReducer()
     Reduce<State, Action> { state, action in
       switch action {
-      case .onAppear:
+      case .onTask:
         analytics.logScreen(screenName: "Invitation", of: self)
         return .none
 
@@ -129,9 +129,9 @@ public struct InvitationView: View {
       .padding(.horizontal, 16)
       .multilineTextAlignment(.center)
       .navigationBarTitleDisplayMode(.inline)
+      .task { await store.send(.onTask).finish() }
       .onAppear {
         isFocused = true
-        store.send(.onAppear)
       }
       .toolbar {
         ToolbarItem(placement: .principal) {

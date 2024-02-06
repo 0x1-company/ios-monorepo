@@ -18,7 +18,7 @@ public struct MatchedLogic {
   }
 
   public enum Action: Equatable {
-    case onAppear
+    case onTask
     case addBeRealButtonTapped
     case closeButtonTapped
   }
@@ -31,7 +31,7 @@ public struct MatchedLogic {
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
       switch action {
-      case .onAppear:
+      case .onTask:
         analytics.logScreen(screenName: "Matched", of: self)
         return .none
 
@@ -88,8 +88,10 @@ public struct MatchedView: View {
       .padding(.horizontal, 16)
       .ignoresSafeArea()
       .frame(maxWidth: .infinity, maxHeight: .infinity)
-      .task { requestReview() }
-      .onAppear { store.send(.onAppear) }
+      .task {
+        requestReview()
+        await store.send(.onTask).finish()
+      }
       .overlay(alignment: .topLeading) {
         Button {
           store.send(.closeButtonTapped)

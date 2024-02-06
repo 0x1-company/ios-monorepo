@@ -15,7 +15,6 @@ public struct SettingsOtherLogic {
 
   public enum Action {
     case onTask
-    case onAppear
     case clearCacheButtonTapped
     case deleteAccountButtonTapped
     case confirmationDialog(PresentationAction<ConfirmationDialog>)
@@ -32,9 +31,6 @@ public struct SettingsOtherLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
-        return .none
-
-      case .onAppear:
         analytics.logScreen(screenName: "SettingsOther", of: self)
         return .none
 
@@ -108,7 +104,6 @@ public struct SettingsOtherView: View {
       .navigationTitle(String(localized: "Other", bundle: .module))
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
-      .onAppear { store.send(.onAppear) }
       .confirmationDialog(
         store: store.scope(state: \.$confirmationDialog, action: \.confirmationDialog)
       )
