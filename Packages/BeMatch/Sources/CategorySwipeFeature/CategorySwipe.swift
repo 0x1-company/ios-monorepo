@@ -115,6 +115,7 @@ public struct CategorySwipeView: View {
             action: CategorySwipeLogic.Child.Action.swipe,
             then: SwipeView.init(store:)
           )
+          .padding(.horizontal, 16)
         case .empty:
           CaseLet(
             /CategorySwipeLogic.Child.State.empty,
