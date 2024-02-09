@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Looks like he's gone." : {
+
+    },
     "People who Liked you" : {
       "localizations" : {
         "ja" : {
@@ -10,6 +13,9 @@
           }
         }
       }
+    },
+    "Swipe others" : {
+
     }
   },
   "version" : "1.0"
