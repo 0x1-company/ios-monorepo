@@ -15,6 +15,7 @@
       }
     },
     "Consecutive login" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -65,21 +66,60 @@
       }
     },
     "HISTORY" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HISTORY"
+          }
+        }
+      }
     },
     "LOGIN" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LOGIN"
+          }
+        }
+      }
     },
     "MATCH" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MATCH"
+          }
+        }
+      }
     },
     "RATING" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RATING"
+          }
+        }
+      }
     },
     "Share" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シェア"
+          }
+        }
+      }
     },
     "Started December 28, 2023" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -90,13 +130,34 @@
       }
     },
     "SWIPE" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SWIPE"
+          }
+        }
+      }
     },
     "Top" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Top"
+          }
+        }
+      }
     },
     "VISITOR" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VISITOR"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
