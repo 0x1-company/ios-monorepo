@@ -65,19 +65,54 @@
       }
     },
     "HISTORY" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HISTORY"
+          }
+        }
+      }
     },
     "LOGIN" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LOGIN"
+          }
+        }
+      }
     },
     "MATCH" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MATCH"
+          }
+        }
+      }
     },
     "RATING" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RATING"
+          }
+        }
+      }
     },
     "Share" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シェア"
+          }
+        }
+      }
     },
     "Started December 28, 2023" : {
       "localizations" : {
@@ -90,13 +125,34 @@
       }
     },
     "SWIPE" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SWIPE"
+          }
+        }
+      }
     },
     "Top" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Top"
+          }
+        }
+      }
     },
     "VISITOR" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VISITOR"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

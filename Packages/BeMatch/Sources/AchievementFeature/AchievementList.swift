@@ -71,10 +71,10 @@ public struct AchievementListView: View {
           horizontalSpacing: 16,
           verticalSpacing: 16
         ) {
-          GridRow(alignment: .top) {
-            AchievementRatingWidgetView()
-          }
-          .gridCellColumns(2)
+//          GridRow(alignment: .top) {
+//            AchievementRatingWidgetView()
+//          }
+//          .gridCellColumns(2)
 
           GridRow(alignment: .top) {
             AchievementWidgetView(
@@ -100,25 +100,26 @@ public struct AchievementListView: View {
               text: "Count of visitor"
             )
 
-            AchievementWidgetView(
-              systemImage: "flame.fill",
-              titleKey: "LOGIN",
-              displayCount: viewStore.displayConsecutiveLoginDayCount,
-              text: "Consecutive login"
-            )
+//            AchievementWidgetView(
+//              systemImage: "flame.fill",
+//              titleKey: "LOGIN",
+//              displayCount: viewStore.displayConsecutiveLoginDayCount,
+//              text: "Consecutive login"
+//            )
           }
 
-          GridRow(alignment: .top) {
-            AchievementWidgetView(
-              systemImage: "calendar",
-              titleKey: "HISTORY",
-              displayCount: "",
-              text: "Started December 28, 2023"
-            )
-            .gridCellColumns(2)
-          }
+//          GridRow(alignment: .top) {
+//            AchievementWidgetView(
+//              systemImage: "calendar",
+//              titleKey: "HISTORY",
+//              displayCount: "",
+//              text: "Started December 28, 2023"
+//            )
+//            .gridCellColumns(2)
+//          }
         }
-        .padding(.all, 16)
+        .padding(.top, 16)
+        .padding(.horizontal, 16)
         .padding(.bottom, 80)
       }
     }

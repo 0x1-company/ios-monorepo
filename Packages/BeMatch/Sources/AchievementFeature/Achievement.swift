@@ -15,6 +15,7 @@ public struct AchievementLogic {
 
   public enum Action {
     case onTask
+    case closeButtonTapped
     case achievementResponse(Result<BeMatch.AchievementQuery.Data, Error>)
     case list(AchievementListLogic.Action)
   }
@@ -34,6 +35,9 @@ public struct AchievementLogic {
         } catch: { error, send in
           await send(.achievementResponse(.failure(error)))
         }
+        
+      case .closeButtonTapped:
+        return .none
 
       case let .achievementResponse(.success(data)):
         state.list = AchievementListLogic.State(
@@ -74,17 +78,29 @@ public struct AchievementView: View {
     .navigationTitle(String(localized: "Achievement", bundle: .module))
     .navigationBarTitleDisplayMode(.inline)
     .task { await store.send(.onTask).finish() }
-    .overlay(alignment: .bottom) {
-      Button {} label: {
-        Label("Share", systemImage: "square.and.arrow.up")
-          .padding(.vertical, 16)
-          .padding(.horizontal, 24)
-          .foregroundStyle(Color.primary)
-          .font(.system(.subheadline, weight: .semibold))
-          .background(Color(uiColor: UIColor.systemFill))
-          .clipShape(RoundedRectangle(cornerRadius: 16))
+//    .overlay(alignment: .bottom) {
+//      Button {} label: {
+//        Label("Share", systemImage: "square.and.arrow.up")
+//          .padding(.vertical, 16)
+//          .padding(.horizontal, 24)
+//          .foregroundStyle(Color.primary)
+//          .font(.system(.subheadline, weight: .semibold))
+//          .background(Color(uiColor: UIColor.systemFill))
+//          .clipShape(RoundedRectangle(cornerRadius: 16))
+//      }
+//      .padding(.bottom, 16)
+//    }
+    .toolbar {
+      ToolbarItem(placement: .topBarLeading) {
+        Button {
+          store.send(.closeButtonTapped)
+        } label: {
+          Image(systemName: "chevron.down")
+            .bold()
+            .foregroundStyle(Color.white)
+            .frame(width: 44, height: 44)
+        }
       }
-      .padding(.bottom, 16)
     }
   }
 }

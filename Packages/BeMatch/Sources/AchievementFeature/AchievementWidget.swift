@@ -21,6 +21,5 @@ struct AchievementWidgetView: View {
     }
     .frame(maxWidth: .infinity, alignment: .leading)
     .padding(.vertical, 16)
-    .padding(.horizontal, 12)
   }
 }
