@@ -84,6 +84,7 @@ let package = Package(
       "MaintenanceFeature",
       .product(name: "AsyncValue", package: "SDK"),
       .product(name: "AppsFlyerClient", package: "SDK"),
+      .product(name: "ScreenshotClient", package: "SDK"),
       .product(name: "ConfigGlobalClient", package: "SDK"),
       .product(name: "UserSettingsClient", package: "SDK"),
       .product(name: "FirebaseCoreClient", package: "SDK"),
