@@ -52,7 +52,7 @@ public struct CreationDateLogic {
       case .creationDateButtonTapped:
         state.achievement = .init()
         return .none
-        
+
       case .achievement(.presented(.closeButtonTapped)):
         state.achievement = nil
         return .none

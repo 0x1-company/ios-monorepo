@@ -35,7 +35,7 @@ public struct AchievementLogic {
         } catch: { error, send in
           await send(.achievementResponse(.failure(error)))
         }
-        
+
       case .closeButtonTapped:
         return .none
 
