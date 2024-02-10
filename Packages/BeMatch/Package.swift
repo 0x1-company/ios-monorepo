@@ -69,6 +69,7 @@ let package = Package(
   targets: [
     .target(name: "AchievementFeature", dependencies: [
       "AnalyticsKeys",
+      "BeMatchClient",
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "AnalyticsKeys", dependencies: [
@@ -337,9 +338,10 @@ let package = Package(
     .target(name: "SettingsFeature", dependencies: [
       "Constants",
       "AnalyticsKeys",
-      "ProfileEditFeature",
       "ProfileFeature",
       "TutorialFeature",
+      "AchievementFeature",
+      "ProfileEditFeature",
       "DeleteAccountFeature",
       .product(name: "Build", package: "SDK"),
       .product(name: "ActivityView", package: "SDK"),

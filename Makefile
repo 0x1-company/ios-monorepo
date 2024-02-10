@@ -21,7 +21,7 @@ install-template: # Install template
 	./SwiftScripts/XCTemplateInstallerTool/.build/release/XCTemplateInstaller --xctemplate-path XCTemplates/TCA.xctemplate
 
 generate:
-	@cp ../bematch.jp/apps/bematch-server/schema.gql ./Packages/BeMatch/GraphQL/schema.graphqls
+	@cp ../bematch.jp/typescript/apps/bematch-server/schema.gql ./Packages/BeMatch/GraphQL/schema.graphqls
 	@cp ../flycam.jp/apps/flycam-server/schema.gql ./Packages/FlyCam/GraphQL/schema.graphqls
 	@cd SwiftScripts/ApolloTool && swift run Codegen --target BeMatch FlyCam
 	$(MAKE) format

@@ -3,6 +3,7 @@ import SwiftUI
 struct AchievementWidgetView: View {
   let systemImage: String
   let titleKey: LocalizedStringKey
+  let displayCount: String
   let text: LocalizedStringKey
 
   var body: some View {
@@ -11,7 +12,7 @@ struct AchievementWidgetView: View {
         .foregroundStyle(Color.secondary)
         .font(.system(.headline, weight: .semibold))
 
-      Text("999")
+      Text(displayCount)
         .font(.system(size: 64, weight: .semibold))
 
       Text(text, bundle: .module)

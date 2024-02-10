@@ -44,6 +44,7 @@ public extension BeMatch {
       case "PushNotificationBadge": return BeMatch.Objects.PushNotificationBadge
       case "InvitationCode": return BeMatch.Objects.InvitationCode
       case "ReceivedLike": return BeMatch.Objects.ReceivedLike
+      case "Achievement": return BeMatch.Objects.Achievement
       case "MatchConnection": return BeMatch.Objects.MatchConnection
       case "PageInfo": return BeMatch.Objects.PageInfo
       case "MatchEdge": return BeMatch.Objects.MatchEdge
