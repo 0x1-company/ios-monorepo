@@ -34,7 +34,7 @@ public struct AchievementLogic {
         } catch: { error, send in
           await send(.achievementResponse(.failure(error)))
         }
-        
+
       case let .achievementResponse(.success(data)):
         state.list = AchievementListLogic.State(
           achievement: data.achievement
@@ -64,8 +64,11 @@ public struct AchievementView: View {
       store.scope(state: \.list, action: \.list),
       then: AchievementListView.init(store:),
       else: {
-        ProgressView()
-          .tint(Color.white)
+        Color.black
+          .overlay {
+            ProgressView()
+              .tint(Color.white)
+          }
       }
     )
     .navigationTitle(String(localized: "Achievement", bundle: .module))

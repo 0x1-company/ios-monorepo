@@ -338,9 +338,10 @@ let package = Package(
     .target(name: "SettingsFeature", dependencies: [
       "Constants",
       "AnalyticsKeys",
-      "ProfileEditFeature",
       "ProfileFeature",
       "TutorialFeature",
+      "AchievementFeature",
+      "ProfileEditFeature",
       "DeleteAccountFeature",
       .product(name: "Build", package: "SDK"),
       .product(name: "ActivityView", package: "SDK"),

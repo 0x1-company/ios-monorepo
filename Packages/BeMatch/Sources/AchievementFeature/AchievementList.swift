@@ -7,15 +7,15 @@ func formatNumber(_ number: Int, locale: Locale) -> String {
   numberFormatter.locale = locale
   numberFormatter.numberStyle = .decimal
   numberFormatter.maximumFractionDigits = 1
-  
+
   let number = Double(number)
-  let thousand = number / 1_000
+  let thousand = number / 1000
   let million = number / 1_000_000
   let billion = number / 1_000_000_000
-  
+
   var formattedString = ""
-  
-  if number < 1_000 {
+
+  if number < 1000 {
     formattedString = numberFormatter.string(from: NSNumber(value: number)) ?? "\(number)"
   } else if number < 1_000_000 {
     formattedString = numberFormatter.string(from: NSNumber(value: thousand)) ?? "\(thousand)"
@@ -39,7 +39,7 @@ public struct AchievementListLogic {
     let displayVisitCount: String
     let displayFeedbackCount: String
     let displayConsecutiveLoginDayCount: String
-    
+
     public init(achievement: BeMatch.AchievementQuery.Data.Achievement) {
       @Dependency(\.locale) var locale
 
@@ -50,8 +50,7 @@ public struct AchievementListLogic {
     }
   }
 
-  public enum Action {
-  }
+  public enum Action {}
 
   public var body: some Reducer<State, Action> {
     EmptyReducer()
@@ -72,12 +71,12 @@ public struct AchievementListView: View {
           horizontalSpacing: 16,
           verticalSpacing: 16
         ) {
-          GridRow {
+          GridRow(alignment: .top) {
             AchievementRatingWidgetView()
           }
           .gridCellColumns(2)
 
-          GridRow {
+          GridRow(alignment: .top) {
             AchievementWidgetView(
               systemImage: "heart.fill",
               titleKey: "SWIPE",
@@ -93,7 +92,7 @@ public struct AchievementListView: View {
             )
           }
 
-          GridRow {
+          GridRow(alignment: .top) {
             AchievementWidgetView(
               systemImage: "airplane",
               titleKey: "VISITOR",
@@ -109,7 +108,7 @@ public struct AchievementListView: View {
             )
           }
 
-          GridRow {
+          GridRow(alignment: .top) {
             AchievementWidgetView(
               systemImage: "calendar",
               titleKey: "HISTORY",
