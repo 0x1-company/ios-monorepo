@@ -1,6 +1,6 @@
+import AnalyticsClient
 import ComposableArchitecture
 import ScreenshotClient
-import AnalyticsClient
 
 @Reducer
 public struct ScreenshotLogic {
@@ -18,7 +18,7 @@ public struct ScreenshotLogic {
           await send(.userDidTakeScreenshotNotification)
         }
       }
-      
+
     case .userDidTakeScreenshotNotification:
       analytics.logEvent(name: "screenshots", parameters: [:])
       return .none
