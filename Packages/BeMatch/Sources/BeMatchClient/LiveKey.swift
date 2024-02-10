@@ -109,6 +109,10 @@ public extension BeMatchClient {
       userCategories: {
         let query = BeMatch.UserCategoriesQuery()
         return apolloClient.watch(query: query)
+      },
+      achievement: {
+        let query = BeMatch.AchievementQuery()
+        return apolloClient.watch(query: query)
       }
     )
   }

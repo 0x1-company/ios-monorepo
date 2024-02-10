@@ -2,6 +2,15 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Achievement {
+  consecutiveLoginDayCount: Int!
+  feedbackCount: Int!
+  id: ID!
+  matchCount: Int!
+  userId: String!
+  visitCount: Int!
+}
+
 enum AppleSubscriptionEnvironment {
   PRODUCTION
   SANDBOX
@@ -180,9 +189,6 @@ type Message {
   """When the message is read by a target user"""
   readAt: Date
 
-  """target user id"""
-  targetUserId: ID!
-
   """message content"""
   text: String!
 
@@ -198,6 +204,11 @@ type MessageConnection {
 type MessageEdge {
   cursor: String!
   node: Message!
+}
+
+type MessageRoom {
+  """Room ID"""
+  id: ID!
 }
 
 type Mutation {
@@ -240,8 +251,8 @@ type Mutation {
   """Matchを既読にする"""
   readMatch(matchId: String!): Match!
 
-  """この mutation を呼ぶ前に作成されたメッセージすべてを既読にする"""
-  readMessages(input: ReadMessageInput!): Int!
+  """作成されたメッセージすべてを既読にする"""
+  readMessages(input: ReadMessagesByChatRoomIdInput!): Boolean!
 
   """BeRealのユーザー名を更新する"""
   updateBeReal(input: UpdateBeRealInput!): User!
@@ -274,6 +285,8 @@ type PushNotificationBadge {
 }
 
 type Query {
+  achievement: Achievement!
+
   """招待キャンペーンを取得"""
   activeInvitationCampaign: InvitationCampaign
 
@@ -293,17 +306,14 @@ type Query {
   """マッチ一覧"""
   matches(after: String, first: Int!): MatchConnection!
 
-  """特定のユーザーとのダイレクトメッセージ一覧"""
-  messagesWith(
-    after: String
-    first: Int!
-
-    """メッセージ相手のユーザーID"""
+  """DMするためのRoomを取得、1度もメッセージを送受信したことがなければ null"""
+  messageRoom(
+    """DM したい相手の ID"""
     targetUserId: ID!
+  ): MessageRoom
 
-    """自身のユーザーID"""
-    userId: ID!
-  ): MessageConnection!
+  """特定のユーザーとのメッセージ一覧"""
+  messages(after: String, first: Int!, messageRoomId: ID!): MessageConnection!
   pushNotificationBadge: PushNotificationBadge!
 
   """自分の受け取ったLikeを取得する"""
@@ -320,9 +330,8 @@ type Query {
   usersByRecentShortComments: [User!]!
 }
 
-input ReadMessageInput {
-  """既読にするメッセージの送信ユーザーID"""
-  targetUserId: String!
+input ReadMessagesByChatRoomIdInput {
+  messageRoomId: ID!
 }
 
 type ReceivedLike {
