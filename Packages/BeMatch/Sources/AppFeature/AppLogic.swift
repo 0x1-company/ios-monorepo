@@ -51,6 +51,7 @@ public struct AppLogic {
     case createUserResponse(Result<BeMatch.CreateUserMutation.Data, Error>)
     case trackingAuthorization(ATTrackingManager.AuthorizationStatus)
     case transaction(Result<StoreKit.Transaction, Error>)
+    case userDidTakeScreenshotNotification
   }
 
   @Dependency(\.appsFlyer) var appsFlyer
@@ -124,6 +125,7 @@ public struct AppLogic {
     ConfigGlobalLogic()
     QuickActionLogic()
     UserSettingsLogic()
+    ScreenshotLogic()
     StoreLogic()
   }
 
