@@ -193,7 +193,7 @@ public struct ProfileEditView: View {
                 LabeledContent {
                   Image(systemName: "chevron.right")
                 } label: {
-                  Text("Username", bundle: .module)
+                  Text("Username on BeReal.", bundle: .module)
                     .foregroundStyle(Color.primary)
                 }
               }
