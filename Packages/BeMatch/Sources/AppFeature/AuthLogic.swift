@@ -3,11 +3,11 @@ import AnalyticsKeys
 import Apollo
 import AppsFlyerClient
 import ATTrackingManagerClient
+import BannedFeature
 import BeMatch
 import BeMatchClient
 import ComposableArchitecture
 import FirebaseAuthClient
-import BannedFeature
 
 @Reducer
 public struct AuthLogic {
