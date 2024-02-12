@@ -3,6 +3,7 @@ import AnalyticsKeys
 import Apollo
 import AppsFlyerClient
 import ATTrackingManagerClient
+import BannedFeature
 import BeMatch
 import BeMatchClient
 import ComposableArchitecture
@@ -48,6 +49,7 @@ public struct AuthLogic {
       }
 
     case .signInAnonymouslyResponse(.failure):
+      state.child = .banned(BannedLogic.State(userId: "undefined"))
       return .none
 
     case let .createUserResponse(.success(data)):
@@ -70,11 +72,11 @@ public struct AuthLogic {
       }
 
     case let .createUserResponse(.failure(error as ResponseCodeInterceptor.ResponseCodeError)):
-      print(error.localizedDescription)
+      state.child = .banned(BannedLogic.State(userId: "undefined"))
       return .none
 
     case .createUserResponse(.failure):
-      print("account banned")
+      state.child = .banned(BannedLogic.State(userId: "undefined"))
       return .none
 
     default:
