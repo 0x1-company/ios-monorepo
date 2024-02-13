@@ -37,6 +37,7 @@ let package = Package(
     .library(name: "MatchFeature", targets: ["MatchFeature"]),
     .library(name: "MatchNavigationFeature", targets: ["MatchNavigationFeature"]),
     .library(name: "MembershipFeature", targets: ["MembershipFeature"]),
+    .library(name: "MessageListFeature", targets: ["MessageListFeature"]),
     .library(name: "NavigationFeature", targets: ["NavigationFeature"]),
     .library(name: "NotificationsReEnableFeature", targets: ["NotificationsReEnableFeature"]),
     .library(name: "OnboardFeature", targets: ["OnboardFeature"]),
@@ -249,6 +250,11 @@ let package = Package(
       .product(name: "StoreKitClient", package: "SDK"),
       .product(name: "StoreKitHelpers", package: "SDK"),
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
+    .target(name: "MessageListFeature", dependencies: [
+      "AnalyticsKeys",
+      "DirectMessageFeature",
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "NavigationFeature", dependencies: [
