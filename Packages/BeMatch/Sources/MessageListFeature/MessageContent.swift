@@ -14,7 +14,7 @@ public struct MessageContentLogic {
   }
 
   public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { state, action in
+    Reduce<State, Action> { _, action in
       switch action {
       case .onTask:
         return .none
@@ -31,17 +31,17 @@ public struct MessageContentView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithViewStore(store, observe: { $0 }) { _ in
       ScrollView(.vertical) {
         LazyVStack(alignment: .leading, spacing: 32) {
           VStack(alignment: .leading, spacing: 8) {
             Text("Recent match", bundle: .module)
               .font(.system(.callout, weight: .semibold))
               .padding(.horizontal, 16)
-            
+
             ScrollView(.horizontal) {
               LazyHStack(spacing: 12) {
-                ForEach(0..<10) { _ in
+                ForEach(0 ..< 10) { _ in
                   VStack(spacing: 12) {
                     Color.red
                       .frame(width: 90, height: 120)
@@ -60,20 +60,20 @@ public struct MessageContentView: View {
           LazyVStack(alignment: .leading, spacing: 8) {
             Text("Message", bundle: .module)
               .font(.system(.callout, weight: .semibold))
-            
-            ForEach(0..<10) { _ in
+
+            ForEach(0 ..< 10) { _ in
               HStack(spacing: 8) {
                 Color.blue
                   .frame(width: 72, height: 72)
                   .clipShape(Circle())
                   .padding(.vertical, 8)
-                
+
                 VStack(alignment: .leading, spacing: 0) {
                   HStack(spacing: 0) {
                     Text("yuka13")
                       .font(.system(.subheadline, weight: .semibold))
                       .frame(maxWidth: .infinity, alignment: .leading)
-                    
+
                     Text("Let's Reply.")
                       .font(.caption2)
                       .foregroundStyle(Color.black)
@@ -82,7 +82,7 @@ public struct MessageContentView: View {
                       .background(Color.white)
                       .clipShape(RoundedRectangle(cornerRadius: 4))
                   }
-                  
+
                   Text("Hello")
                     .font(.body)
                     .foregroundStyle(Color.secondary)
