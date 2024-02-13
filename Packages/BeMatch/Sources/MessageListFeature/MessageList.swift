@@ -1,5 +1,6 @@
 import AnalyticsClient
 import ComposableArchitecture
+import DirectMessageFeature
 import SwiftUI
 
 @Reducer
@@ -8,12 +9,14 @@ public struct MessageListLogic {
 
   public struct State: Equatable {
     var child: Child.State?
+    @PresentationState var destination: Destination.State?
     public init() {}
   }
 
   public enum Action {
     case onTask
     case child(Child.Action)
+    case destination(PresentationAction<Destination.Action>)
   }
 
   @Dependency(\.analytics) var analytics
@@ -32,9 +35,11 @@ public struct MessageListLogic {
     .ifLet(\.child, action: \.child) {
       Child()
     }
+    .ifLet(\.$destination, action: \.destination) {
+      Destination()
+    }
   }
   
-
   @Reducer
   public struct Child {
     public enum State: Equatable {
@@ -46,6 +51,21 @@ public struct MessageListLogic {
     public var body: some Reducer<State, Action> {
       Scope(state: \.content, action: \.content) {
         MessageContentLogic()
+      }
+    }
+  }
+  
+  @Reducer
+  public struct Destination {
+    public enum State: Equatable {
+      case message(DirectMessageLogic.State)
+    }
+    public enum Action {
+      case message(DirectMessageLogic.Action)
+    }
+    public var body: some Reducer<State, Action> {
+      Scope(state: \.message, action: \.message) {
+        DirectMessageLogic()
       }
     }
   }
@@ -77,14 +97,12 @@ public struct MessageListView: View {
     .navigationTitle(String(localized: "MessageList", bundle: .module))
     .navigationBarTitleDisplayMode(.inline)
     .task { await store.send(.onTask).finish() }
-  }
-}
-
-#Preview {
-  MessageListView(
-    store: .init(
-      initialState: MessageListLogic.State(),
-      reducer: { MessageListLogic() }
+    .navigationDestination(
+      store: store.scope(
+        state: \.$destination.message,
+        action: \.destination.message
+      ),
+      destination: DirectMessageView.init(store:)
     )
-  )
+  }
 }

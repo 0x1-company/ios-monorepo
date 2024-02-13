@@ -254,6 +254,7 @@ let package = Package(
     ]),
     .target(name: "MessageListFeature", dependencies: [
       "AnalyticsKeys",
+      "DirectMessageFeature",
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "NavigationFeature", dependencies: [
