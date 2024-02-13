@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AppsFlyerSDK/AppsFlyerFramework-Dynamic",
       "state" : {
-        "revision" : "1f40fcadca6bb82d5cc85b52e23b3458e0728992",
-        "version" : "6.12.3"
+        "revision" : "5546c8b0a7a29d458726e30e25a2661cf0d5fada",
+        "version" : "6.13.0"
       }
     },
     {
@@ -185,8 +185,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-composable-architecture",
       "state" : {
-        "revision" : "f815e76b520aacfad4ff35c7e1f036f8add6f4b4",
-        "version" : "1.7.3"
+        "revision" : "cf967a28a8605629559533320d604168d733fc9c",
+        "version" : "1.8.0"
       }
     },
     {
