@@ -34,7 +34,6 @@ public struct ReceivedLikeSwipeLogic {
 
   @Dependency(\.analytics) var analytics
   @Dependency(\.bematch.usersByLiker) var usersByLiker
-  @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   enum Cancel: Hashable {
     case usersByLiker
@@ -55,10 +54,10 @@ public struct ReceivedLikeSwipeLogic {
 
       case .closeButtonTapped:
         return .send(.delegate(.dismiss))
+
       case .emptyButtonTapped:
-        return .run { _ in
-          await feedbackGenerator.impactOccurred()
-        }
+        return .send(.delegate(.dismiss))
+
       case let .usersByLikerResponse(.success(data)):
         let rows = data.usersByLiker
           .map(\.fragments.swipeCard)
@@ -70,9 +69,11 @@ public struct ReceivedLikeSwipeLogic {
 
       case .usersByLikerResponse(.failure):
         return .send(.delegate(.dismiss))
+
       case .swipe(.delegate(.finished)):
         state.isSwipeFinished = true
         return .none
+
       default:
         return .none
       }
@@ -107,7 +108,7 @@ public struct ReceivedLikeSwipeView: View {
         }
       }
     }
-    .navigationTitle(String(localized: "People who Liked you", bundle: .module))
+    .navigationTitle(String(localized: "See who likes you", bundle: .module))
     .navigationBarTitleDisplayMode(.inline)
     .task { await store.send(.onTask).finish() }
     .toolbar {
