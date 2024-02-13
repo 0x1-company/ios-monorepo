@@ -3,6 +3,7 @@ import BeMatch
 import BeMatchClient
 import ComposableArchitecture
 import MatchedFeature
+import Styleguide
 import SwiftUI
 import SwipeCardFeature
 import SwipeFeature
@@ -13,6 +14,7 @@ public struct ReceivedLikeSwipeLogic {
 
   public struct State: Equatable {
     var swipe: SwipeLogic.State?
+    var isSwipeFinished: Bool?
 
     public init() {}
   }
@@ -20,6 +22,7 @@ public struct ReceivedLikeSwipeLogic {
   public enum Action {
     case onTask
     case closeButtonTapped
+    case emptyButtonTapped
     case usersByLikerResponse(Result<BeMatch.UsersByLikerQuery.Data, Error>)
     case swipe(SwipeLogic.Action)
     case delegate(Delegate)
@@ -52,16 +55,24 @@ public struct ReceivedLikeSwipeLogic {
       case .closeButtonTapped:
         return .send(.delegate(.dismiss))
 
+      case .emptyButtonTapped:
+        return .send(.delegate(.dismiss))
+
       case let .usersByLikerResponse(.success(data)):
         let rows = data.usersByLiker
           .map(\.fragments.swipeCard)
           .filter { !$0.images.isEmpty }
 
         state.swipe = SwipeLogic.State(rows: rows)
+        state.isSwipeFinished = false
         return .none
 
       case .usersByLikerResponse(.failure):
         return .send(.delegate(.dismiss))
+
+      case .swipe(.delegate(.finished)):
+        state.isSwipeFinished = true
+        return .none
 
       default:
         return .none
@@ -81,17 +92,23 @@ public struct ReceivedLikeSwipeView: View {
   }
 
   public var body: some View {
-    IfLetStore(
-      store.scope(state: \.swipe, action: \.swipe),
-      then: SwipeView.init(store:)
-    ) {
-      Color.black
-        .overlay {
-          ProgressView()
-            .tint(Color.white)
+    WithViewStore(store, observe: { $0 }) { viewStore in
+      if viewStore.isSwipeFinished == true {
+        emptyView
+      } else {
+        IfLetStore(
+          store.scope(state: \.swipe, action: \.swipe),
+          then: SwipeView.init(store:)
+        ) {
+          Color.black
+            .overlay {
+              ProgressView()
+                .tint(Color.white)
+            }
         }
+      }
     }
-    .navigationTitle(String(localized: "People who Liked you", bundle: .module))
+    .navigationTitle(String(localized: "See who likes you", bundle: .module))
     .navigationBarTitleDisplayMode(.inline)
     .task { await store.send(.onTask).finish() }
     .toolbar {
@@ -106,6 +123,26 @@ public struct ReceivedLikeSwipeView: View {
         }
       }
     }
+  }
+
+  private var emptyView: some View {
+    VStack(spacing: 24) {
+      Image(ImageResource.empty)
+        .resizable()
+        .aspectRatio(contentMode: .fit)
+        .frame(width: 120)
+
+      Text("Looks like he's gone.", bundle: .module)
+        .font(.system(.title3, weight: .semibold))
+
+      PrimaryButton(
+        String(localized: "Swipe others", bundle: .module)
+      ) {
+        store.send(.emptyButtonTapped)
+      }
+    }
+    .padding(.horizontal, 16)
+    .multilineTextAlignment(.center)
   }
 }
 

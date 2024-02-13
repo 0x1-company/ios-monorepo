@@ -1,12 +1,32 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "People who Liked you" : {
+    "Looks like he's gone." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "もういないみたい..."
+          }
+        }
+      }
+    },
+    "See who likes you" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "あなたをLikeした人"
+          }
+        }
+      }
+    },
+    "Swipe others" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "他の人をスワイプする"
           }
         }
       }
