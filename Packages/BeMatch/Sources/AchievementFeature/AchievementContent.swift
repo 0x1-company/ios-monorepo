@@ -31,7 +31,7 @@ func formatNumber(_ number: Int, locale: Locale) -> String {
 }
 
 @Reducer
-public struct AchievementListLogic {
+public struct AchievementContentLogic {
   public init() {}
 
   public struct State: Equatable {
@@ -57,10 +57,10 @@ public struct AchievementListLogic {
   }
 }
 
-public struct AchievementListView: View {
-  let store: StoreOf<AchievementListLogic>
+public struct AchievementContentView: View {
+  let store: StoreOf<AchievementContentLogic>
 
-  public init(store: StoreOf<AchievementListLogic>) {
+  public init(store: StoreOf<AchievementContentLogic>) {
     self.store = store
   }
 
