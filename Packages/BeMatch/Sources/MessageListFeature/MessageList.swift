@@ -98,9 +98,13 @@ public struct MessageListView: View {
       ProgressView()
         .tint(Color.white)
     }
-    .navigationTitle(String(localized: "MessageList", bundle: .module))
     .navigationBarTitleDisplayMode(.inline)
     .task { await store.send(.onTask).finish() }
+    .toolbar {
+      ToolbarItem(placement: .principal) {
+        Image(ImageResource.beMatch)
+      }
+    }
     .navigationDestination(
       store: store.scope(
         state: \.$destination.message,
