@@ -259,6 +259,7 @@ let package = Package(
     ]),
     .target(name: "NavigationFeature", dependencies: [
       "CategoryFeature",
+      "MessageListFeature",
       "RecommendationFeature",
       "MatchNavigationFeature",
     ]),
