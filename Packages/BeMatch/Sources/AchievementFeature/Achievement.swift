@@ -9,7 +9,7 @@ public struct AchievementLogic {
   public init() {}
 
   public struct State: Equatable {
-    var list: AchievementListLogic.State?
+    var content: AchievementContentLogic.State?
     public init() {}
   }
 
@@ -17,7 +17,7 @@ public struct AchievementLogic {
     case onTask
     case closeButtonTapped
     case achievementResponse(Result<BeMatch.AchievementQuery.Data, Error>)
-    case list(AchievementListLogic.Action)
+    case content(AchievementContentLogic.Action)
   }
 
   @Dependency(\.bematch) var bematch
@@ -40,18 +40,18 @@ public struct AchievementLogic {
         return .none
 
       case let .achievementResponse(.success(data)):
-        state.list = AchievementListLogic.State(
+        state.content = AchievementContentLogic.State(
           achievement: data.achievement
         )
         return .none
 
       case .achievementResponse(.failure):
-        state.list = nil
+        state.content = nil
         return .none
       }
     }
-    .ifLet(\.list, action: \.list) {
-      AchievementListLogic()
+    .ifLet(\.content, action: \.content) {
+      AchievementContentLogic()
     }
   }
 }
@@ -65,8 +65,8 @@ public struct AchievementView: View {
 
   public var body: some View {
     IfLetStore(
-      store.scope(state: \.list, action: \.list),
-      then: AchievementListView.init(store:),
+      store.scope(state: \.content, action: \.content),
+      then: AchievementContentView.init(store:),
       else: {
         Color.black
           .overlay {
@@ -78,24 +78,12 @@ public struct AchievementView: View {
     .navigationTitle(String(localized: "Achievement", bundle: .module))
     .navigationBarTitleDisplayMode(.inline)
     .task { await store.send(.onTask).finish() }
-//    .overlay(alignment: .bottom) {
-//      Button {} label: {
-//        Label("Share", systemImage: "square.and.arrow.up")
-//          .padding(.vertical, 16)
-//          .padding(.horizontal, 24)
-//          .foregroundStyle(Color.primary)
-//          .font(.system(.subheadline, weight: .semibold))
-//          .background(Color(uiColor: UIColor.systemFill))
-//          .clipShape(RoundedRectangle(cornerRadius: 16))
-//      }
-//      .padding(.bottom, 16)
-//    }
     .toolbar {
       ToolbarItem(placement: .topBarLeading) {
         Button {
           store.send(.closeButtonTapped)
         } label: {
-          Image(systemName: "chevron.down")
+          Image(systemName: "xmark")
             .bold()
             .foregroundStyle(Color.white)
             .frame(width: 44, height: 44)
