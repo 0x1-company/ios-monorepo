@@ -22,12 +22,12 @@ public struct MessageListLogic {
   @Dependency(\.analytics) var analytics
 
   public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { state, action in
+    Reduce<State, Action> { _, action in
       switch action {
       case .onTask:
         analytics.logScreen(screenName: "MessageList", of: self)
         return .none
-        
+
       default:
         return .none
       }
@@ -39,30 +39,34 @@ public struct MessageListLogic {
       Destination()
     }
   }
-  
+
   @Reducer
   public struct Child {
     public enum State: Equatable {
       case content(MessageContentLogic.State)
     }
+
     public enum Action {
       case content(MessageContentLogic.Action)
     }
+
     public var body: some Reducer<State, Action> {
       Scope(state: \.content, action: \.content) {
         MessageContentLogic()
       }
     }
   }
-  
+
   @Reducer
   public struct Destination {
     public enum State: Equatable {
       case message(DirectMessageLogic.State)
     }
+
     public enum Action {
       case message(DirectMessageLogic.Action)
     }
+
     public var body: some Reducer<State, Action> {
       Scope(state: \.message, action: \.message) {
         DirectMessageLogic()
@@ -85,8 +89,8 @@ public struct MessageListView: View {
         case .content:
           CaseLet(
             /MessageListLogic.Child.State.content,
-             action: MessageListLogic.Child.Action.content,
-             then: MessageContentView.init(store:)
+            action: MessageListLogic.Child.Action.content,
+            then: MessageContentView.init(store:)
           )
         }
       }
