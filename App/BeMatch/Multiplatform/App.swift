@@ -110,7 +110,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
 }
 
 @main
-struct GodApp: App {
+struct BeMatchApp: App {
   @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
 
   var body: some Scene {
