@@ -12,7 +12,6 @@ public struct ___VARIABLE_productName: identifier___Logic {
 
   public enum Action {
     case onTask
-    case onAppear
   }
 
   @Dependency(\.analytics) var analytics
@@ -21,9 +20,6 @@ public struct ___VARIABLE_productName: identifier___Logic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
-        return .none
-
-      case .onAppear:
         analytics.logScreen(screenName: "___VARIABLE_productName:identifier___", of: self)
         return .none
       }
@@ -46,16 +42,18 @@ public struct ___VARIABLE_productName:identifier___View: View {
       .navigationTitle(String(localized: "___VARIABLE_productName:identifier___", bundle: .module))
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
-      .onAppear { store.send(.onAppear) }
     }
   }
 }
 
 #Preview {
-  ___VARIABLE_productName: identifier___View(
-    store: .init(
-      initialState: ___VARIABLE_productName: identifier___Logic.State(),
-      reducer: { ___VARIABLE_productName: identifier___Logic() }
+  NavigationStack {
+    ___VARIABLE_productName: identifier___View(
+      store: .init(
+        initialState: ___VARIABLE_productName: identifier___Logic.State(),
+        reducer: { ___VARIABLE_productName: identifier___Logic() }
+      )
     )
-  )
+  }
+  .environment(\.colorSceheme, .dark)
 }
