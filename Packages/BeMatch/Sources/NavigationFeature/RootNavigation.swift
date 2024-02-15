@@ -2,9 +2,9 @@ import BeMatch
 import BeMatchClient
 import CategoryFeature
 import ComposableArchitecture
+import DirectMessageListFeature
 import FeedbackGeneratorClient
 import MatchNavigationFeature
-import DirectMessageListFeature
 import RecommendationFeature
 import SwiftUI
 import UserNotificationClient
