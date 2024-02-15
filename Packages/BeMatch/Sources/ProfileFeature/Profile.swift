@@ -84,14 +84,14 @@ public struct ProfileLogic {
       case .destination(.presented(.confirmationDialog(.editUsername))):
         guard let username = state.currentUser?.berealUsername
         else { return .none }
-        
+
         state.destination = .editUsername(UsernameSettingLogic.State(username: username))
         return .none
-        
+
       case .destination(.presented(.editUsername(.delegate(.nextScreen)))):
         state.destination = nil
         return .none
-        
+
       case .editUsernameCloseButtonTapped:
         state.destination = nil
         return .none
