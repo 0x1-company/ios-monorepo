@@ -14,6 +14,7 @@ public struct ProfileLogic {
     var currentUser: BeMatch.UserInternal?
 
     var pictureSlider: PictureSliderLogic.State?
+    @PresentationState var confirmationDialog: ConfirmationDialogState<Action.ConfirmationDialog>?
     public init() {}
   }
 
@@ -24,6 +25,12 @@ public struct ProfileLogic {
     case jumpBeRealButtonTapped
     case currentUserResponse(Result<BeMatch.CurrentUserQuery.Data, Error>)
     case pictureSlider(PictureSliderLogic.Action)
+    case confirmationDialog(PresentationAction<ConfirmationDialog>)
+    
+    public enum ConfirmationDialog: Equatable {
+      case jumpToBeReal
+      case editUsername
+    }
   }
 
   @Dependency(\.openURL) var openURL
@@ -52,15 +59,32 @@ public struct ProfileLogic {
         }
 
       case .jumpBeRealButtonTapped:
+        state.confirmationDialog = ConfirmationDialogState(titleVisibility: .hidden) {
+          TextState("Select BeReal", bundle: .module)
+        } actions: {
+          ButtonState(action: .jumpToBeReal) {
+            TextState("Jump to BeReal", bundle: .module)
+          }
+          
+          ButtonState(action: .jumpToBeReal) {
+            TextState("Edit username on BeReal", bundle: .module)
+          }
+        }
+        return .none
+        
+      case .confirmationDialog(.presented(.jumpToBeReal)):
         guard let username = state.currentUser?.berealUsername
         else { return .none }
         guard let url = URL(string: "https://bere.al/\(username)")
         else { return .none }
-
+        
         return .run { _ in
           await feedbackGenerator.impactOccurred()
           await openURL(url)
         }
+        
+      case .confirmationDialog(.presented(.editUsername)):
+        return .none
 
       case let .currentUserResponse(.success(data)):
         let currentUser = data.currentUser.fragments.userInternal
@@ -75,6 +99,7 @@ public struct ProfileLogic {
     .ifLet(\.pictureSlider, action: \.pictureSlider) {
       PictureSliderLogic()
     }
+    .ifLet(\.$confirmationDialog, action: \.confirmationDialog)
   }
 }
 
@@ -164,6 +189,7 @@ public struct ProfileView: View {
             }
           }
       )
+      .confirmationDialog(store: store.scope(state: \.$confirmationDialog, action: \.confirmationDialog))
     }
   }
 }
