@@ -21,34 +21,12 @@
         }
       }
     },
-    "New Match" : {
+    "NEW MATCH" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "新しいマッチ"
-          }
-        }
-      }
-    },
-    "OK" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK"
-          }
-        }
-      }
-    },
-    "Swipe more to match!" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "もっとスワイプしてマッチしよう！"
           }
         }
       }
