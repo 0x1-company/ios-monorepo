@@ -4,14 +4,35 @@
     "🔗 BeRe.al/%@" : {
 
     },
-    "Edit username on BeReal" : {
-
+    "Edit username" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ユーザーネームを変更"
+          }
+        }
+      }
     },
     "Jump to BeReal" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeRealに飛ぶ"
+          }
+        }
+      }
     },
     "Select BeReal" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select BeReal"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
