@@ -26,6 +26,7 @@ let package = Package(
     .library(name: "Constants", targets: ["Constants"]),
     .library(name: "DeleteAccountFeature", targets: ["DeleteAccountFeature"]),
     .library(name: "DirectMessageFeature", targets: ["DirectMessageFeature"]),
+    .library(name: "DirectMessageTabFeature", targets: ["DirectMessageTabFeature"]),
     .library(name: "ForceUpdateFeature", targets: ["ForceUpdateFeature"]),
     .library(name: "GenderSettingFeature", targets: ["GenderSettingFeature"]),
     .library(name: "InvitationCodeFeature", targets: ["InvitationCodeFeature"]),
@@ -37,7 +38,6 @@ let package = Package(
     .library(name: "MatchFeature", targets: ["MatchFeature"]),
     .library(name: "MatchNavigationFeature", targets: ["MatchNavigationFeature"]),
     .library(name: "MembershipFeature", targets: ["MembershipFeature"]),
-    .library(name: "DirectMessageListFeature", targets: ["DirectMessageListFeature"]),
     .library(name: "NavigationFeature", targets: ["NavigationFeature"]),
     .library(name: "NotificationsReEnableFeature", targets: ["NotificationsReEnableFeature"]),
     .library(name: "OnboardFeature", targets: ["OnboardFeature"]),
@@ -172,6 +172,11 @@ let package = Package(
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
+    .target(name: "DirectMessageTabFeature", dependencies: [
+      "AnalyticsKeys",
+      "DirectMessageFeature",
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
     .target(name: "ForceUpdateFeature", dependencies: [
       "Styleguide",
       "Constants",
@@ -252,14 +257,9 @@ let package = Package(
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
-    .target(name: "DirectMessageListFeature", dependencies: [
-      "AnalyticsKeys",
-      "DirectMessageFeature",
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-    ]),
     .target(name: "NavigationFeature", dependencies: [
       "CategoryFeature",
-      "DirectMessageListFeature",
+      "DirectMessageTabFeature",
       "RecommendationFeature",
       "MatchNavigationFeature",
     ]),
