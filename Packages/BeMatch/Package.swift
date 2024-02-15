@@ -28,6 +28,7 @@ let package = Package(
     .library(name: "DirectMessageFeature", targets: ["DirectMessageFeature"]),
     .library(name: "DirectMessageTabFeature", targets: ["DirectMessageTabFeature"]),
     .library(name: "ForceUpdateFeature", targets: ["ForceUpdateFeature"]),
+    .library(name: "FreezedFeature", targets: ["FreezedFeature"]),
     .library(name: "GenderSettingFeature", targets: ["GenderSettingFeature"]),
     .library(name: "InvitationCodeFeature", targets: ["InvitationCodeFeature"]),
     .library(name: "InvitationFeature", targets: ["InvitationFeature"]),
@@ -178,6 +179,13 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "ForceUpdateFeature", dependencies: [
+      "Styleguide",
+      "Constants",
+      "AnalyticsKeys",
+      .product(name: "FeedbackGeneratorClient", package: "SDK"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
+    .target(name: "FreezedFeature", dependencies: [
       "Styleguide",
       "Constants",
       "AnalyticsKeys",
