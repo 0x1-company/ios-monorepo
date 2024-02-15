@@ -31,7 +31,7 @@ public struct ProfileExternalLogic {
 
     public init(match: BeMatch.MatchGrid) {
       self.match = match
-      selection = match.targetUser.images[0]
+      selection = match.targetUser.images.first!
       pictureSlider = PictureSliderLogic.State(data: match.targetUser.fragments.pictureSlider)
     }
   }
