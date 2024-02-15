@@ -22,10 +22,11 @@ public struct DirectMessageListLogic {
   @Dependency(\.analytics) var analytics
 
   public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { _, action in
+    Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
         analytics.logScreen(screenName: "DirectMessageList", of: self)
+        state.child = .content(MessageContentLogic.State())
         return .none
 
       default:
