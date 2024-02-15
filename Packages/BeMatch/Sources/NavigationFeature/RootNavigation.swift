@@ -2,7 +2,7 @@ import BeMatch
 import BeMatchClient
 import CategoryFeature
 import ComposableArchitecture
-import DirectMessageListFeature
+import DirectMessageTabFeature
 import FeedbackGeneratorClient
 import MatchNavigationFeature
 import RecommendationFeature
@@ -25,7 +25,7 @@ public struct RootNavigationLogic {
     var recommendation = RecommendationLogic.State()
     var category = CategoryLogic.State()
     var match = MatchNavigationLogic.State()
-    var message = DirectMessageListLogic.State()
+    var message = DirectMessageTabLogic.State()
 
     @BindingState var tab = Tab.recommendation
 
@@ -37,7 +37,7 @@ public struct RootNavigationLogic {
     case recommendation(RecommendationLogic.Action)
     case category(CategoryLogic.Action)
     case match(MatchNavigationLogic.Action)
-    case message(DirectMessageListLogic.Action)
+    case message(DirectMessageTabLogic.Action)
     case binding(BindingAction<State>)
     case pushNotificationBadgeResponse(Result<BeMatch.PushNotificationBadgeQuery.Data, Error>)
   }
@@ -63,7 +63,7 @@ public struct RootNavigationLogic {
       MatchNavigationLogic()
     }
     Scope(state: \.message, action: \.message) {
-      DirectMessageListLogic()
+      DirectMessageTabLogic()
     }
     Reduce<State, Action> { state, action in
       switch action {
@@ -161,7 +161,7 @@ public struct RootNavigationView: View {
           }
 
 //        NavigationStack {
-//          DirectMessageListView(store: store.scope(state: \.message, action: \.message))
+//          DirectMessageTabView(store: store.scope(state: \.message, action: \.message))
 //        }
 //        .tag(RootNavigationLogic.Tab.message)
 //        .tabItem {
