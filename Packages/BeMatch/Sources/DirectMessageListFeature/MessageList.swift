@@ -4,7 +4,7 @@ import DirectMessageFeature
 import SwiftUI
 
 @Reducer
-public struct MessageListLogic {
+public struct DirectMessageListLogic {
   public init() {}
 
   public struct State: Equatable {
@@ -25,7 +25,7 @@ public struct MessageListLogic {
     Reduce<State, Action> { _, action in
       switch action {
       case .onTask:
-        analytics.logScreen(screenName: "MessageList", of: self)
+        analytics.logScreen(screenName: "DirectMessageList", of: self)
         return .none
 
       default:
@@ -75,10 +75,10 @@ public struct MessageListLogic {
   }
 }
 
-public struct MessageListView: View {
-  let store: StoreOf<MessageListLogic>
+public struct DirectMessageListView: View {
+  let store: StoreOf<DirectMessageListLogic>
 
-  public init(store: StoreOf<MessageListLogic>) {
+  public init(store: StoreOf<DirectMessageListLogic>) {
     self.store = store
   }
 
@@ -88,8 +88,8 @@ public struct MessageListView: View {
         switch initialState {
         case .content:
           CaseLet(
-            /MessageListLogic.Child.State.content,
-            action: MessageListLogic.Child.Action.content,
+            /DirectMessageListLogic.Child.State.content,
+            action: DirectMessageListLogic.Child.Action.content,
             then: MessageContentView.init(store:)
           )
         }

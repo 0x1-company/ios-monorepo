@@ -4,7 +4,7 @@ import CategoryFeature
 import ComposableArchitecture
 import FeedbackGeneratorClient
 import MatchNavigationFeature
-import MessageListFeature
+import DirectMessageListFeature
 import RecommendationFeature
 import SwiftUI
 import UserNotificationClient
@@ -25,7 +25,7 @@ public struct RootNavigationLogic {
     var recommendation = RecommendationLogic.State()
     var category = CategoryLogic.State()
     var match = MatchNavigationLogic.State()
-    var message = MessageListLogic.State()
+    var message = DirectMessageListLogic.State()
 
     @BindingState var tab = Tab.recommendation
 
@@ -37,7 +37,7 @@ public struct RootNavigationLogic {
     case recommendation(RecommendationLogic.Action)
     case category(CategoryLogic.Action)
     case match(MatchNavigationLogic.Action)
-    case message(MessageListLogic.Action)
+    case message(DirectMessageListLogic.Action)
     case binding(BindingAction<State>)
     case pushNotificationBadgeResponse(Result<BeMatch.PushNotificationBadgeQuery.Data, Error>)
   }
@@ -63,7 +63,7 @@ public struct RootNavigationLogic {
       MatchNavigationLogic()
     }
     Scope(state: \.message, action: \.message) {
-      MessageListLogic()
+      DirectMessageListLogic()
     }
     Reduce<State, Action> { state, action in
       switch action {
@@ -161,7 +161,7 @@ public struct RootNavigationView: View {
           }
 
 //        NavigationStack {
-//          MessageListView(store: store.scope(state: \.message, action: \.message))
+//          DirectMessageListView(store: store.scope(state: \.message, action: \.message))
 //        }
 //        .tag(RootNavigationLogic.Tab.message)
 //        .tabItem {
