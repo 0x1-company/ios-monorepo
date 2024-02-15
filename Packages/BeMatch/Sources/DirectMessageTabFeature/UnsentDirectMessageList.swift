@@ -15,7 +15,7 @@ public struct UnsentDirectMessageListLogic {
     case delayCompleted
     case child(Child.Action)
   }
-  
+
   @Dependency(\.mainQueue) var mainQueue
 
   public var body: some Reducer<State, Action> {
@@ -26,7 +26,7 @@ public struct UnsentDirectMessageListLogic {
           try await mainQueue.sleep(for: .seconds(4))
           await send(.delayCompleted)
         }
-        
+
       case .delayCompleted:
         state.child = .content(UnsentDirectMessageListContentLogic.State())
         return .none

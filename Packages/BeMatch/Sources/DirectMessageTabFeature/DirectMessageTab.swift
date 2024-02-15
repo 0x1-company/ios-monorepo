@@ -54,7 +54,7 @@ public struct DirectMessageTabView: View {
           store.scope(state: \.unsent, action: \.unsent),
           then: UnsentDirectMessageListView.init(store:)
         )
-        
+
         IfLetStore(
           store.scope(state: \.messages, action: \.messages),
           then: DirectMessageListView.init(store:)
