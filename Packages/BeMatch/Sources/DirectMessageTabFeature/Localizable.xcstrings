@@ -5,7 +5,14 @@
 
     },
     "Let's Reply." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "返信しよう"
+          }
+        }
+      }
     },
     "MESSAGE" : {
       "localizations" : {

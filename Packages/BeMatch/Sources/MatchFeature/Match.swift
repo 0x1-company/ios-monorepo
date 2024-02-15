@@ -220,7 +220,7 @@ public struct MatchView: View {
             then: MatchEmptyView.init(store:)
           ) {
             VStack(spacing: 8) {
-              Text("New Match", bundle: .module)
+              Text("NEW MATCH", bundle: .module)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .font(.system(.callout, weight: .semibold))
                 .foregroundStyle(Color.white)

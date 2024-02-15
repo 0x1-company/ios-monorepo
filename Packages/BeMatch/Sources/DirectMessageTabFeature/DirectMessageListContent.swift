@@ -44,8 +44,8 @@ public struct DirectMessageListContentView: View {
               .font(.system(.subheadline, weight: .semibold))
               .frame(maxWidth: .infinity, alignment: .leading)
 
-            Text("Let's Reply.")
-              .font(.caption2)
+            Text("Let's Reply.", bundle: .module)
+              .font(.system(.caption2, weight: .medium))
               .foregroundStyle(Color.black)
               .padding(.vertical, 3)
               .padding(.horizontal, 6)
@@ -54,6 +54,7 @@ public struct DirectMessageListContentView: View {
           }
 
           Text("Hello")
+            .lineLimit(1)
             .font(.body)
             .foregroundStyle(Color.secondary)
         }
