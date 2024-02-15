@@ -219,27 +219,29 @@ public struct MatchView: View {
             store.scope(state: \.empty, action: \.empty),
             then: MatchEmptyView.init(store:)
           ) {
-            Text("New Match", bundle: .module)
-              .frame(maxWidth: .infinity, alignment: .leading)
-              .font(.system(.callout, weight: .semibold))
-              .foregroundStyle(Color.white)
+            VStack(spacing: 8) {
+              Text("New Match", bundle: .module)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .font(.system(.callout, weight: .semibold))
+                .foregroundStyle(Color.white)
 
-            LazyVGrid(
-              columns: Array(
-                repeating: GridItem(spacing: 8),
-                count: 2
-              ),
-              spacing: 16
-            ) {
-              IfLetStore(
-                store.scope(state: \.receivedLike, action: \.receivedLike),
-                then: ReceivedLikeGridView.init(store:)
-              )
+              LazyVGrid(
+                columns: Array(
+                  repeating: GridItem(spacing: 8),
+                  count: 2
+                ),
+                spacing: 16
+              ) {
+                IfLetStore(
+                  store.scope(state: \.receivedLike, action: \.receivedLike),
+                  then: ReceivedLikeGridView.init(store:)
+                )
 
-              ForEachStore(
-                store.scope(state: \.rows, action: \.rows),
-                content: MatchGridView.init(store:)
-              )
+                ForEachStore(
+                  store.scope(state: \.rows, action: \.rows),
+                  content: MatchGridView.init(store:)
+                )
+              }
             }
 
             if viewStore.hasNextPage {
