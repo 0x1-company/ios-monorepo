@@ -5,6 +5,7 @@ import ComposableArchitecture
 import FeedbackGeneratorClient
 import ProfileSharedFeature
 import SwiftUI
+import UsernameSettingFeature
 
 @Reducer
 public struct ProfileLogic {
@@ -14,6 +15,7 @@ public struct ProfileLogic {
     var currentUser: BeMatch.UserInternal?
 
     var pictureSlider: PictureSliderLogic.State?
+    @PresentationState var destination: Destination.State?
     public init() {}
   }
 
@@ -22,8 +24,10 @@ public struct ProfileLogic {
     case onAppear
     case closeButtonTapped
     case jumpBeRealButtonTapped
+    case editUsernameCloseButtonTapped
     case currentUserResponse(Result<BeMatch.CurrentUserQuery.Data, Error>)
     case pictureSlider(PictureSliderLogic.Action)
+    case destination(PresentationAction<Destination.Action>)
   }
 
   @Dependency(\.openURL) var openURL
@@ -52,6 +56,21 @@ public struct ProfileLogic {
         }
 
       case .jumpBeRealButtonTapped:
+        state.destination = .confirmationDialog(
+          ConfirmationDialogState(titleVisibility: .hidden) {
+            TextState("Select BeReal", bundle: .module)
+          } actions: {
+            ButtonState(action: .jumpToBeReal) {
+              TextState("Jump to BeReal", bundle: .module)
+            }
+            ButtonState(action: .editUsername) {
+              TextState("Edit username", bundle: .module)
+            }
+          }
+        )
+        return .none
+
+      case .destination(.presented(.confirmationDialog(.jumpToBeReal))):
         guard let username = state.currentUser?.berealUsername
         else { return .none }
         guard let url = URL(string: "https://bere.al/\(username)")
@@ -61,6 +80,21 @@ public struct ProfileLogic {
           await feedbackGenerator.impactOccurred()
           await openURL(url)
         }
+
+      case .destination(.presented(.confirmationDialog(.editUsername))):
+        guard let username = state.currentUser?.berealUsername
+        else { return .none }
+        
+        state.destination = .editUsername(UsernameSettingLogic.State(username: username))
+        return .none
+        
+      case .destination(.presented(.editUsername(.delegate(.nextScreen)))):
+        state.destination = nil
+        return .none
+        
+      case .editUsernameCloseButtonTapped:
+        state.destination = nil
+        return .none
 
       case let .currentUserResponse(.success(data)):
         let currentUser = data.currentUser.fragments.userInternal
@@ -74,6 +108,32 @@ public struct ProfileLogic {
     }
     .ifLet(\.pictureSlider, action: \.pictureSlider) {
       PictureSliderLogic()
+    }
+    .ifLet(\.$destination, action: \.destination) {
+      Destination()
+    }
+  }
+
+  @Reducer
+  public struct Destination {
+    public enum State: Equatable {
+      case editUsername(UsernameSettingLogic.State)
+      case confirmationDialog(ConfirmationDialogState<Action.ConfirmationDialog>)
+    }
+
+    public enum Action {
+      case editUsername(UsernameSettingLogic.Action)
+      case confirmationDialog(ConfirmationDialog)
+
+      public enum ConfirmationDialog: Equatable {
+        case jumpToBeReal
+        case editUsername
+      }
+    }
+
+    public var body: some Reducer<State, Action> {
+      Scope(state: \.editUsername, action: \.editUsername, child: UsernameSettingLogic.init)
+      Scope(state: \.confirmationDialog, action: \.confirmationDialog, child: EmptyReducer.init)
     }
   }
 }
@@ -164,6 +224,31 @@ public struct ProfileView: View {
             }
           }
       )
+      .confirmationDialog(
+        store: store.scope(
+          state: \.$destination.confirmationDialog,
+          action: \.destination.confirmationDialog
+        )
+      )
+      .fullScreenCover(
+        store: store.scope(state: \.$destination.editUsername, action: \.destination.editUsername)
+      ) { childStore in
+        NavigationStack {
+          UsernameSettingView(store: childStore, nextButtonStyle: .save)
+            .toolbar {
+              ToolbarItem(placement: .topBarLeading) {
+                Button {
+                  store.send(.editUsernameCloseButtonTapped)
+                } label: {
+                  Image(systemName: "xmark")
+                    .bold()
+                    .foregroundStyle(Color.white)
+                    .frame(width: 44, height: 44)
+                }
+              }
+            }
+        }
+      }
     }
   }
 }

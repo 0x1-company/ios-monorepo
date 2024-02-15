@@ -296,6 +296,7 @@ let package = Package(
     ]),
     .target(name: "ProfileFeature", dependencies: [
       "ProfileSharedFeature",
+      "UsernameSettingFeature",
     ]),
     .target(name: "ProfileSharedFeature", dependencies: [
       "Constants",
