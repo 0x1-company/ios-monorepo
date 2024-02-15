@@ -165,8 +165,8 @@ public struct RootNavigationView: View {
           .tabItem {
             Image(
               viewStore.tab.is(\.message)
-              ? ImageResource.messageActive
-              : ImageResource.messageDeactive
+                ? ImageResource.messageActive
+                : ImageResource.messageDeactive
             )
             .resizable()
             .aspectRatio(contentMode: .fit)
