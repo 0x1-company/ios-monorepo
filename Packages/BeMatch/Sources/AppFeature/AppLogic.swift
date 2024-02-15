@@ -1,5 +1,4 @@
 import AnalyticsKeys
-import AppsFlyerClient
 import AppTrackingTransparency
 import AsyncValue
 import BannedFeature
@@ -9,6 +8,7 @@ import ConfigGlobalClient
 import FirebaseAuth
 import FirebaseAuthClient
 import ForceUpdateFeature
+import FreezedFeature
 import LaunchFeature
 import MaintenanceFeature
 import NavigationFeature
@@ -54,7 +54,6 @@ public struct AppLogic {
     case userDidTakeScreenshotNotification
   }
 
-  @Dependency(\.appsFlyer) var appsFlyer
   @Dependency(\.analytics) var analytics
   @Dependency(\.userDefaults) var userDefaults
 
@@ -138,6 +137,7 @@ public struct AppLogic {
       case forceUpdate(ForceUpdateLogic.State = .init())
       case maintenance(MaintenanceLogic.State = .init())
       case banned(BannedLogic.State)
+      case freezed(FreezedLogic.State = .init())
     }
 
     public enum Action {
@@ -147,6 +147,7 @@ public struct AppLogic {
       case forceUpdate(ForceUpdateLogic.Action)
       case maintenance(MaintenanceLogic.Action)
       case banned(BannedLogic.Action)
+      case freezed(FreezedLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
@@ -156,6 +157,7 @@ public struct AppLogic {
       Scope(state: \.forceUpdate, action: \.forceUpdate, child: ForceUpdateLogic.init)
       Scope(state: \.maintenance, action: \.maintenance, child: MaintenanceLogic.init)
       Scope(state: \.banned, action: \.banned, child: BannedLogic.init)
+      Scope(state: \.freezed, action: \.freezed, child: FreezedLogic.init)
     }
   }
 }
@@ -205,6 +207,12 @@ public struct AppView: View {
           /AppLogic.Child.State.banned,
           action: AppLogic.Child.Action.banned,
           then: BannedView.init(store:)
+        )
+      case .freezed:
+        CaseLet(
+          /AppLogic.Child.State.freezed,
+          action: AppLogic.Child.Action.freezed,
+          then: FreezedView.init(store:)
         )
       }
     }

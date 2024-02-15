@@ -81,6 +81,7 @@ let package = Package(
       "LaunchFeature",
       "BannedFeature",
       "OnboardFeature",
+      "FreezedFeature",
       "NavigationFeature",
       "ForceUpdateFeature",
       "MaintenanceFeature",

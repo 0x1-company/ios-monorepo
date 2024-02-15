@@ -1,7 +1,7 @@
 import AnalyticsClient
 import ComposableArchitecture
-import SwiftUI
 import Styleguide
+import SwiftUI
 
 @Reducer
 public struct FreezedLogic {
@@ -18,7 +18,7 @@ public struct FreezedLogic {
   @Dependency(\.analytics) var analytics
 
   public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { state, action in
+    Reduce<State, Action> { _, action in
       switch action {
       case .onTask:
         analytics.logScreen(screenName: "Freezed", of: self)
@@ -41,14 +41,14 @@ public struct FreezedView: View {
         .resizable()
         .aspectRatio(contentMode: .fit)
         .frame(width: 120)
-      
+
       Text("Currently unable to re-register", bundle: .module)
         .font(.system(.title3, weight: .semibold))
-      
+
       Text("Once you have deleted your BeMatch account, you will not be able to register again for a certain period of time after the deletion.", bundle: .module)
-      
+
       Text("Please answer our simple questionnaire to help us improve our service.", bundle: .module)
-      
+
       PrimaryButton(
         String(localized: "Answer", bundle: .module)
       ) {
