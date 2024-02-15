@@ -73,6 +73,8 @@ public struct DirectMessageListView: View {
       } else: {
         ProgressView()
           .tint(Color.white)
+          .frame(height: 300)
+          .frame(maxWidth: .infinity)
       }
     }
     .padding(.horizontal, 16)
