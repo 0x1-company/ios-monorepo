@@ -85,7 +85,10 @@ public struct MatchLogic {
         state.after = data.matches.pageInfo.endCursor
         state.hasNextPage = data.matches.pageInfo.hasNextPage
 
-        let matches = data.matches.edges.map(\.node.fragments.matchGrid)
+        let matches = data.matches.edges
+          .map(\.node.fragments.matchGrid)
+          .filter { !$0.targetUser.images.isEmpty }
+
         for element in matches {
           state.rows.updateOrAppend(MatchGridLogic.State(match: element))
         }
