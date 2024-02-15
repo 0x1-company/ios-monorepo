@@ -1,5 +1,4 @@
 import ComposableArchitecture
-import DirectMessageFeature
 import SwiftUI
 
 @Reducer

@@ -160,20 +160,18 @@ public struct RootNavigationView: View {
             .frame(width: 30, height: 30)
           }
 
-//        NavigationStack {
-//          DirectMessageTabView(store: store.scope(state: \.message, action: \.message))
-//        }
-//        .tag(RootNavigationLogic.Tab.message)
-//        .tabItem {
-//          Image(
-//            viewStore.tab.is(\.message)
-//              ? ImageResource.messageActive
-//              : ImageResource.messageDeactive
-//          )
-//          .resizable()
-//          .aspectRatio(contentMode: .fit)
-//          .frame(width: 30, height: 30)
-//        }
+        DirectMessageTabView(store: store.scope(state: \.message, action: \.message))
+          .tag(RootNavigationLogic.Tab.message)
+          .tabItem {
+            Image(
+              viewStore.tab.is(\.message)
+                ? ImageResource.messageActive
+                : ImageResource.messageDeactive
+            )
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 30, height: 30)
+          }
       }
       .task { await store.send(.onTask).finish() }
     }
