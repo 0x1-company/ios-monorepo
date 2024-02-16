@@ -15,7 +15,7 @@ public struct PictureSliderLogic {
 
     public init(data: BeMatch.PictureSlider) {
       self.data = data
-      selection = data.images[0]
+      selection = data.images.first!
     }
   }
 
