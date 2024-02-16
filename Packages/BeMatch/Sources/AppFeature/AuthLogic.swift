@@ -49,7 +49,7 @@ public struct AuthLogic {
       }
 
     case .signInAnonymouslyResponse(.failure):
-      state.child = .banned(BannedLogic.State(userId: "undefined"))
+      state.child = .maintenance()
       return .none
 
     case let .createUserResponse(.success(data)):
@@ -71,12 +71,8 @@ public struct AuthLogic {
         ))
       }
 
-    case let .createUserResponse(.failure(error as ResponseCodeInterceptor.ResponseCodeError)):
-      state.child = .banned(BannedLogic.State(userId: "undefined"))
-      return .none
-
     case .createUserResponse(.failure):
-      state.child = .banned(BannedLogic.State(userId: "undefined"))
+      state.child = .maintenance()
       return .none
 
     default:
