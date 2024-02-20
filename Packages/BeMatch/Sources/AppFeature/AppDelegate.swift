@@ -6,6 +6,7 @@ import Build
 import ComposableArchitecture
 import FirebaseAuthClient
 import FirebaseCoreClient
+import FirebaseCrashlyticsClient
 import FirebaseMessagingClient
 import NotificationCenterClient
 import UIApplicationClient
@@ -45,6 +46,7 @@ public struct AppDelegateLogic {
   @Dependency(\.build) var build
   @Dependency(\.appsFlyer) var appsFlyer
   @Dependency(\.analytics) var analytics
+  @Dependency(\.crashlytics) var crashlytics
   @Dependency(\.userDefaults) var userDefaults
   @Dependency(\.firebaseCore) var firebaseCore
   @Dependency(\.firebaseAuth) var firebaseAuth
@@ -135,7 +137,7 @@ public struct AppDelegateLogic {
         try await createFirebaseRegistrationToken(input)
       }))
     } catch {
-      print("createFirebaseRegistrationTokenRequest: \(error)")
+      crashlytics.record(error: error)
     }
   }
 }
