@@ -26,6 +26,7 @@ var package = Package(
     .library(name: "FeedbackGeneratorClient", targets: ["FeedbackGeneratorClient"]),
     .library(name: "FirebaseAuthClient", targets: ["FirebaseAuthClient"]),
     .library(name: "FirebaseCoreClient", targets: ["FirebaseCoreClient"]),
+    .library(name: "FirebaseCrashlyticsClient", targets: ["FirebaseCrashlyticsClient"]),
     .library(name: "FirebaseDynamicLinkClient", targets: ["FirebaseDynamicLinkClient"]),
     .library(name: "FirebaseMessagingClient", targets: ["FirebaseMessagingClient"]),
     .library(name: "FirebaseStorageClient", targets: ["FirebaseStorageClient"]),
@@ -117,6 +118,11 @@ var package = Package(
       .product(name: "Dependencies", package: "swift-dependencies"),
       .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
       .product(name: "DependenciesMacros", package: "swift-dependencies"),
+    ]),
+    .target(name: "FirebaseCrashlyticsClient", dependencies: [
+      .product(name: "Dependencies", package: "swift-dependencies"),
+      .product(name: "DependenciesMacros", package: "swift-dependencies"),
+      .product(name: "FirebaseCrashlytics", package: "firebase-ios-sdk"),
     ]),
     .target(name: "FirebaseDynamicLinkClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
