@@ -1,6 +1,6 @@
-import FirebaseCrashlytics
 import Dependencies
 import DependenciesMacros
+import FirebaseCrashlytics
 
 @DependencyClient
 public struct FirebaseCrashlyticsClient: Sendable {
