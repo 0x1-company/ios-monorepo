@@ -28,10 +28,16 @@ By standardizing and reusing these feature specifications and designs, our devel
 
 # Apps
 
-## BeMatch
+## BeMatch.
+
+BeMatch is an app that lets you exchange BeReal with people worldwide.<br>
+You can swipe to send a Like to friends you want to connect with on BeReal.<br>
+When you both Like each other and match, you can send messages to each other within the app.
 
 - https://bematch.jp
 - https://apps.apple.com/app/apple-store/id6473888485
+
+![](https://github.com/0x1-company/ios-app/assets/28350464/1582c53d-857c-4a8b-9f3a-0b889ca9158f)
 
 ## FlyCam
 
