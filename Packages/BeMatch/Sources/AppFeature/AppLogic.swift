@@ -55,6 +55,7 @@ public struct AppLogic {
   }
 
   @Dependency(\.analytics) var analytics
+  @Dependency(\.firebaseAuth) var firebaseAuth
   @Dependency(\.userDefaults) var userDefaults
 
   public var body: some Reducer<State, Action> {
@@ -81,19 +82,29 @@ public struct AppLogic {
           case let .success(user) = account.user
         else { return .none }
 
-        guard case .active = user.status else {
+        switch user.status {
+        case .case(.active) where user.images.count < 3,
+             .case(.active) where user.berealUsername.isEmpty:
+          analytics.setUserProperty(key: \.onboardCompleted, value: "false")
+          state.child = .onboard(OnboardLogic.State(user: user))
+
+        case .case(.active):
+          state.child = .navigation()
+
+        case .case(.banned):
           state.child = .banned(
             BannedLogic.State(userId: user.id)
           )
-          return .none
-        }
 
-        if user.berealUsername.isEmpty {
-          state.child = .onboard(OnboardLogic.State(user: user))
-        } else if user.images.count < 3 {
-          state.child = .onboard(OnboardLogic.State(user: user))
-        } else {
-          state.child = .navigation(RootNavigationLogic.State())
+        case .case(.closed):
+          return .run { send in
+            try firebaseAuth.signOut()
+            await send(.configFetched)
+          }
+
+        case let .unknown(unknown):
+          print("failed to user.status: \(unknown)")
+          state.child = .maintenance()
         }
         return .none
       }
@@ -102,7 +113,7 @@ public struct AppLogic {
       case .child(.onboard(.delegate(.finish))):
         analytics.setUserProperty(key: \.onboardCompleted, value: "true")
         state.tutorial = .init()
-        state.child = .navigation(RootNavigationLogic.State())
+        state.child = .navigation()
         return .none
 
       case .tutorial(.delegate(.finish)):
@@ -133,7 +144,7 @@ public struct AppLogic {
     public enum State: Equatable {
       case launch(LaunchLogic.State = .init())
       case onboard(OnboardLogic.State)
-      case navigation(RootNavigationLogic.State)
+      case navigation(RootNavigationLogic.State = .init())
       case forceUpdate(ForceUpdateLogic.State = .init())
       case maintenance(MaintenanceLogic.State = .init())
       case banned(BannedLogic.State)
