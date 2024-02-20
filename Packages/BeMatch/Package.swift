@@ -95,6 +95,7 @@ let package = Package(
       .product(name: "FirebaseMessagingClient", package: "SDK"),
       .product(name: "ATTrackingManagerClient", package: "SDK"),
       .product(name: "NotificationCenterClient", package: "SDK"),
+      .product(name: "FirebaseCrashlyticsClient", package: "SDK"),
     ]),
     .target(name: "BannedFeature", dependencies: [
       "Styleguide",

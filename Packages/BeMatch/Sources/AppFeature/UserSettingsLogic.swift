@@ -1,11 +1,13 @@
 import ATTrackingManagerClient
 import ComposableArchitecture
 import FirebaseAuthClient
+import FirebaseCrashlyticsClient
 import UserNotificationClient
 import UserSettingsClient
 
 @Reducer
 public struct UserSettingsLogic {
+  @Dependency(\.crashlytics) var crashlytics
   @Dependency(\.userSettings) var userSettings
   @Dependency(\.firebaseAuth) var firebaseAuth
   @Dependency(\.trackingManager) var trackingManager
@@ -33,7 +35,7 @@ public struct UserSettingsLogic {
         )
         try await userSettings.update(param)
       } catch: { error, _ in
-        print(error)
+        crashlytics.record(error: error)
       }
     default:
       return .none

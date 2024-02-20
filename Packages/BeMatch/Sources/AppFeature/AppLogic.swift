@@ -7,6 +7,7 @@ import ComposableArchitecture
 import ConfigGlobalClient
 import FirebaseAuth
 import FirebaseAuthClient
+import FirebaseCrashlyticsClient
 import ForceUpdateFeature
 import FreezedFeature
 import LaunchFeature
@@ -55,6 +56,7 @@ public struct AppLogic {
   }
 
   @Dependency(\.analytics) var analytics
+  @Dependency(\.crashlytics) var crashlytics
   @Dependency(\.firebaseAuth) var firebaseAuth
   @Dependency(\.userDefaults) var userDefaults
 
@@ -103,7 +105,7 @@ public struct AppLogic {
           }
 
         case let .unknown(unknown):
-          print("failed to user.status: \(unknown)")
+          crashlytics.log(message: "failed to user.status: \(unknown)")
           state.child = .maintenance()
         }
         return .none
