@@ -107,7 +107,7 @@ public struct ProfileExternalLogic {
         let targetUser = state.match.targetUser
         state.destination = .directMessage(
           DirectMessageLogic.State(
-            username: username,
+            username: targetUser.berealUsername,
             targetUserId: targetUser.id
           )
         )

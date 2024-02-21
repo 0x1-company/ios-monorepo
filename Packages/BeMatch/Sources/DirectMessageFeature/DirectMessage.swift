@@ -65,9 +65,16 @@ public struct DirectMessageLogic {
 
       case .sendButtonTapped:
         state.isDisabled = true
+        let input = BeMatch.CreateMessageInput(
+          targetUserId: state.targetUserId,
+          text: state.message
+        )
         state.message.removeAll()
-        return .run { _ in
+        return .run { send in
           await feedbackGenerator.impactOccurred()
+          await send(.createMessageResponse(Result {
+            try await bematch.createMessage(input)
+          }))
         }
 
       case .binding:
@@ -87,10 +94,6 @@ public struct DirectMessageLogic {
         return .run { send in
           await messagesRequest(send: send, targetUserId: targetUserId, after: nil)
         }
-        
-      case let .directMessageResponse(.success(data)):
-        let userId = data.currentUser.id
-        return .none
 
       default:
         return .none
