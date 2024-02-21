@@ -185,6 +185,7 @@ type Message {
 
   """direct message id"""
   id: ID!
+  isAuthor: Boolean!
 
   """When the message is read by a target user"""
   readAt: Date

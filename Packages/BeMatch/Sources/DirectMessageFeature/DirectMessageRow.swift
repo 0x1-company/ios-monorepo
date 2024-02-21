@@ -7,16 +7,14 @@ public struct DirectMessageRowLogic {
   public init() {}
 
   public struct State: Equatable, Identifiable {
-    let isAuthor: Bool
     let message: BeMatch.MessageRow
 
     public var id: String {
       message.id
     }
 
-    public init(currentUserId: String, message: BeMatch.MessageRow) {
+    public init(message: BeMatch.MessageRow) {
       self.message = message
-      isAuthor = message.userId == currentUserId
     }
   }
 
@@ -36,7 +34,7 @@ public struct DirectMessageRowView: View {
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
-      if viewStore.isAuthor {
+      if viewStore.message.isAuthor {
         HStack(spacing: 0) {
           Text(viewStore.message.text)
             .padding(.vertical, 8)
