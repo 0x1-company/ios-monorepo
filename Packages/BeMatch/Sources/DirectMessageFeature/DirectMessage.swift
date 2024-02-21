@@ -18,7 +18,7 @@ public struct DirectMessageLogic {
     var displayRows: IdentifiedArrayOf<DirectMessageRowLogic.State> {
       return IdentifiedArrayOf(
         uniqueElements: rows
-          .sorted(by: { $0.message.createdAt > $1.message.createdAt })
+          .sorted(by: { $0.message.createdAt < $1.message.createdAt })
       )
     }
 
