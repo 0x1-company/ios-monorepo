@@ -4,32 +4,28 @@
 @_exported import ApolloAPI
 
 public extension BeMatch {
-  class MessagesQuery: GraphQLQuery {
-    public static let operationName: String = "Messages"
+  class DirectMessageQuery: GraphQLQuery {
+    public static let operationName: String = "DirectMessage"
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"query Messages($targetUserId: ID!, $first: Int!, $after: String) { messages(targetUserId: $targetUserId, first: $first, after: $after) { __typename pageInfo { __typename hasNextPage endCursor } edges { __typename node { __typename ...MessageRow } } } }"#,
+        #"query DirectMessage($targetUserId: ID!, $first: Int!) { currentUser { __typename id berealUsername } messages(targetUserId: $targetUserId, first: $first) { __typename pageInfo { __typename hasNextPage endCursor } edges { __typename node { __typename ...MessageRow } } } }"#,
         fragments: [MessageRow.self]
       ))
 
     public var targetUserId: ID
     public var first: Int
-    public var after: GraphQLNullable<String>
 
     public init(
       targetUserId: ID,
-      first: Int,
-      after: GraphQLNullable<String>
+      first: Int
     ) {
       self.targetUserId = targetUserId
       self.first = first
-      self.after = after
     }
 
     public var __variables: Variables? { [
       "targetUserId": targetUserId,
       "first": first,
-      "after": after,
     ] }
 
     public struct Data: BeMatch.SelectionSet {
@@ -38,15 +34,37 @@ public extension BeMatch {
 
       public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.Query }
       public static var __selections: [ApolloAPI.Selection] { [
+        .field("currentUser", CurrentUser.self),
         .field("messages", Messages.self, arguments: [
           "targetUserId": .variable("targetUserId"),
           "first": .variable("first"),
-          "after": .variable("after"),
         ]),
       ] }
 
+      /// ログイン中ユーザーを取得
+      public var currentUser: CurrentUser { __data["currentUser"] }
       /// 特定のユーザーとのメッセージ一覧
       public var messages: Messages { __data["messages"] }
+
+      /// CurrentUser
+      ///
+      /// Parent Type: `User`
+      public struct CurrentUser: BeMatch.SelectionSet {
+        public let __data: DataDict
+        public init(_dataDict: DataDict) { __data = _dataDict }
+
+        public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.User }
+        public static var __selections: [ApolloAPI.Selection] { [
+          .field("__typename", String.self),
+          .field("id", BeMatch.ID.self),
+          .field("berealUsername", String.self),
+        ] }
+
+        /// user id
+        public var id: BeMatch.ID { __data["id"] }
+        /// BeRealのusername
+        public var berealUsername: String { __data["berealUsername"] }
+      }
 
       /// Messages
       ///

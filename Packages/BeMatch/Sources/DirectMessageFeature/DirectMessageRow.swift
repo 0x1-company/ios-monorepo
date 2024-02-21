@@ -1,3 +1,4 @@
+import BeMatch
 import ComposableArchitecture
 import SwiftUI
 
@@ -5,15 +6,17 @@ import SwiftUI
 public struct DirectMessageRowLogic {
   public init() {}
 
-  public struct State: Equatable, Identifiable, Codable {
-    let text: String
+  public struct State: Equatable, Identifiable {
+    let isAuthor: Bool
+    let message: BeMatch.MessageRow
 
     public var id: String {
-      text
+      message.id
     }
 
-    public init(text: String) {
-      self.text = text
+    public init(currentUserId: String, message: BeMatch.MessageRow) {
+      self.message = message
+      isAuthor = message.userId == currentUserId
     }
   }
 
@@ -33,30 +36,33 @@ public struct DirectMessageRowView: View {
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
-      HStack(spacing: 0) {
-        Text(viewStore.text)
-          .padding(.vertical, 8)
-          .padding(.horizontal, 12)
-          .foregroundStyle(Color.black)
-          .background(Color.white)
-          .clipShape(RoundedRectangle(cornerRadius: 12))
-          .padding(.leading, 100)
-          .frame(maxWidth: .infinity, alignment: .trailing)
+      if viewStore.isAuthor {
+        HStack(spacing: 0) {
+          Text(viewStore.message.text)
+            .padding(.vertical, 8)
+            .padding(.horizontal, 12)
+            .foregroundStyle(Color.black)
+            .background(Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .padding(.leading, 100)
+            .frame(maxWidth: .infinity, alignment: .trailing)
+        }
+        .padding(.horizontal, 16)
+        .listRowSeparator(.hidden)
+      } else {
+        HStack(spacing: 0) {
+          Text(viewStore.message.text)
+            .padding(.vertical, 8)
+            .padding(.horizontal, 12)
+            .foregroundStyle(Color.primary)
+            .background(Color(uiColor: UIColor.secondarySystemBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .padding(.trailing, 100)
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .padding(.horizontal, 16)
+        .listRowSeparator(.hidden)
       }
-      .padding(.horizontal, 16)
-      .listRowSeparator(.hidden)
     }
   }
-}
-
-#Preview {
-  DirectMessageRowView(
-    store: .init(
-      initialState: DirectMessageRowLogic.State(
-        text: "I live in San Francisco, where is Satoya?"
-      ),
-      reducer: { DirectMessageRowLogic() }
-    )
-  )
-  .environment(\.colorScheme, .dark)
 }

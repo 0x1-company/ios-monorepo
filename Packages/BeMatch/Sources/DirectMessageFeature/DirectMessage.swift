@@ -1,4 +1,6 @@
 import AnalyticsClient
+import BeMatch
+import BeMatchClient
 import ComposableArchitecture
 import FeedbackGeneratorClient
 import SwiftUI
@@ -9,19 +11,23 @@ public struct DirectMessageLogic {
 
   public struct State: Equatable {
     let username: String
+    let targetUserId: String
+    var currentUserId = ""
 
     var rows: IdentifiedArrayOf<DirectMessageRowLogic.State> = []
+    var displayRows: IdentifiedArrayOf<DirectMessageRowLogic.State> {
+      return IdentifiedArrayOf(
+        uniqueElements: rows
+          .sorted(by: { $0.message.createdAt > $1.message.createdAt })
+      )
+    }
+
     @BindingState var message = String()
     var isDisabled = true
 
-    public init(username: String) {
+    public init(username: String, targetUserId: String) {
       self.username = username
-      let decoder = JSONDecoder()
-      if let data = UserDefaults.standard.data(forKey: "messages-\(username)") {
-        if let rows = try? decoder.decode([DirectMessageRowLogic.State].self, from: data) {
-          self.rows = .init(uniqueElements: rows)
-        }
-      }
+      self.targetUserId = targetUserId
     }
   }
 
@@ -31,9 +37,13 @@ public struct DirectMessageLogic {
     case sendButtonTapped
     case rows(IdentifiedActionOf<DirectMessageRowLogic>)
     case binding(BindingAction<State>)
+    case messagesResponse(Result<BeMatch.MessagesQuery.Data, Error>)
+    case createMessageResponse(Result<BeMatch.CreateMessageMutation.Data, Error>)
+    case directMessageResponse(Result<BeMatch.DirectMessageQuery.Data, Error>)
   }
 
   @Dependency(\.dismiss) var dismiss
+  @Dependency(\.bematch) var bematch
   @Dependency(\.analytics) var analytics
   @Dependency(\.feedbackGenerator) var feedbackGenerator
 
@@ -43,7 +53,13 @@ public struct DirectMessageLogic {
       switch action {
       case .onTask:
         analytics.logScreen(screenName: "DirectMessage", of: self)
-        return .none
+        return .run { [targetUserId = state.targetUserId] send in
+          for try await data in bematch.directMessage(targetUserId: targetUserId) {
+            await send(.directMessageResponse(.success(data)))
+          }
+        } catch: { error, send in
+          await send(.directMessageResponse(.failure(error)))
+        }
 
       case .closeButtonTapped:
         return .run { _ in
@@ -52,22 +68,53 @@ public struct DirectMessageLogic {
         }
 
       case .sendButtonTapped:
-        let encoder = JSONEncoder()
-        state.rows.append(
-          DirectMessageRowLogic.State(text: state.message)
-        )
-        if let data = try? encoder.encode(state.rows.elements) {
-          UserDefaults.standard.set(data, forKey: "messages-\(state.username)")
-        }
-        analytics.logEvent(name: "send_message", parameters: [
-          "text": state.message,
-        ])
-        state.message.removeAll()
         state.isDisabled = true
-        return .none
+        let input = BeMatch.CreateMessageInput(
+          targetUserId: state.targetUserId,
+          text: state.message
+        )
+        state.message.removeAll()
+        return .run { send in
+          await feedbackGenerator.impactOccurred()
+          await send(.createMessageResponse(Result {
+            try await bematch.createMessage(input)
+          }))
+        }
 
       case .binding:
         state.isDisabled = state.message.isEmpty
+        return .none
+
+      case let .messagesResponse(.success(data)):
+        state.rows = IdentifiedArrayOf(
+          uniqueElements: data.messages.edges
+            .map(\.node.fragments.messageRow)
+            .map { message in
+              DirectMessageRowLogic.State(
+                currentUserId: state.currentUserId,
+                message: message
+              )
+            }
+        )
+        return .none
+
+      case .createMessageResponse(.success):
+        return .run { [targetUserId = state.targetUserId] send in
+          await messagesRequest(send: send, targetUserId: targetUserId, after: nil)
+        }
+
+      case let .directMessageResponse(.success(data)):
+        state.currentUserId = data.currentUser.id
+        state.rows = IdentifiedArrayOf(
+          uniqueElements: data.messages.edges
+            .map(\.node.fragments.messageRow)
+            .map { message in
+              DirectMessageRowLogic.State(
+                currentUserId: data.currentUser.id,
+                message: message
+              )
+            }
+        )
         return .none
 
       default:
@@ -76,6 +123,16 @@ public struct DirectMessageLogic {
     }
     .forEach(\.rows, action: \.rows) {
       DirectMessageRowLogic()
+    }
+  }
+
+  private func messagesRequest(send: Send<Action>, targetUserId: String, after: String?) async {
+    do {
+      for try await data in bematch.messages(targetUserId: targetUserId, after: after) {
+        await send(.messagesResponse(.success(data)))
+      }
+    } catch {
+      await send(.messagesResponse(.failure(error)))
     }
   }
 }
@@ -92,7 +149,7 @@ public struct DirectMessageView: View {
       VStack(spacing: 0) {
         List {
           ForEachStore(
-            store.scope(state: \.rows, action: \.rows),
+            store.scope(state: \.displayRows, action: \.rows),
             content: DirectMessageRowView.init(store:)
           )
         }
@@ -151,7 +208,8 @@ public struct DirectMessageView: View {
     DirectMessageView(
       store: .init(
         initialState: DirectMessageLogic.State(
-          username: "tomokisun"
+          username: "tomokisun",
+          targetUserId: "uuid"
         ),
         reducer: { DirectMessageLogic() }
       )
