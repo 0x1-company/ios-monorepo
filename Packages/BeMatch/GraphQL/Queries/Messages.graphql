@@ -1,0 +1,16 @@
+query Messages($targetUserId: ID!, $first: Int!, $after: String) {
+  messages(targetUserId: $targetUserId, first: $first, after: $after) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    edges {
+      node {
+        id
+        text
+        userId
+        createdAt
+      }
+    }
+  }
+}
