@@ -104,9 +104,12 @@ public struct ProfileExternalLogic {
         }
 
       case .addBeRealButtonTapped:
-        let username = state.match.targetUser.berealUsername
+        let targetUser = state.match.targetUser
         state.destination = .directMessage(
-          DirectMessageLogic.State(username: username)
+          DirectMessageLogic.State(
+            username: username,
+            targetUserId: targetUser.id
+          )
         )
         return .run { _ in
           await feedbackGenerator.impactOccurred()

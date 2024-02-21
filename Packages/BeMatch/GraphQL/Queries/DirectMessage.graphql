@@ -1,7 +1,12 @@
 # import MessageRow from '../fragments/MessageRow.graphql'
 
-query Messages($targetUserId: ID!, $first: Int!, $after: String) {
-  messages(targetUserId: $targetUserId, first: $first, after: $after) {
+query DirectMessage($targetUserId: ID!, $first: Int!) {
+  currentUser {
+    id
+    berealUsername
+  }
+
+  messages(targetUserId: $targetUserId, first: $first) {
     pageInfo {
       hasNextPage
       endCursor

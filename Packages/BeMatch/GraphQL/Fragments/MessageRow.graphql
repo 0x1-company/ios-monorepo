@@ -1,0 +1,5 @@
+fragment MessageRow on Message {
+  id
+  text
+  createdAt
+}

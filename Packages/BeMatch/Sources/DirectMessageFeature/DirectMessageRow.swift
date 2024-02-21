@@ -1,3 +1,4 @@
+import BeMatch
 import ComposableArchitecture
 import SwiftUI
 
@@ -5,15 +6,15 @@ import SwiftUI
 public struct DirectMessageRowLogic {
   public init() {}
 
-  public struct State: Equatable, Identifiable, Codable {
-    let text: String
+  public struct State: Equatable, Identifiable {
+    let data: BeMatch.MessageRow
 
     public var id: String {
-      text
+      data.id
     }
 
-    public init(text: String) {
-      self.text = text
+    public init(data: BeMatch.MessageRow) {
+      self.data = data
     }
   }
 
@@ -34,7 +35,7 @@ public struct DirectMessageRowView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       HStack(spacing: 0) {
-        Text(viewStore.text)
+        Text(viewStore.data.text)
           .padding(.vertical, 8)
           .padding(.horizontal, 12)
           .foregroundStyle(Color.black)
@@ -47,16 +48,4 @@ public struct DirectMessageRowView: View {
       .listRowSeparator(.hidden)
     }
   }
-}
-
-#Preview {
-  DirectMessageRowView(
-    store: .init(
-      initialState: DirectMessageRowLogic.State(
-        text: "I live in San Francisco, where is Satoya?"
-      ),
-      reducer: { DirectMessageRowLogic() }
-    )
-  )
-  .environment(\.colorScheme, .dark)
 }

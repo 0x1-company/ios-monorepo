@@ -172,6 +172,7 @@ let package = Package(
     ]),
     .target(name: "DirectMessageFeature", dependencies: [
       "AnalyticsKeys",
+      "BeMatchClient",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
