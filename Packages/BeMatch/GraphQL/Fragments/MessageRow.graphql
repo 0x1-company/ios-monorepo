@@ -2,5 +2,6 @@ fragment MessageRow on Message {
   id
   text
   userId
+  isAuthor
   createdAt
 }

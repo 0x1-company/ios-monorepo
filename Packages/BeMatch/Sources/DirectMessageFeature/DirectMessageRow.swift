@@ -7,16 +7,14 @@ public struct DirectMessageRowLogic {
   public init() {}
 
   public struct State: Equatable, Identifiable {
-    let isAuthor: Bool
     let message: BeMatch.MessageRow
 
     public var id: String {
       message.id
     }
 
-    public init(currentUserId: String, message: BeMatch.MessageRow) {
+    public init(message: BeMatch.MessageRow) {
       self.message = message
-      isAuthor = message.userId == currentUserId
     }
   }
 
@@ -36,31 +34,18 @@ public struct DirectMessageRowView: View {
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
-      if viewStore.isAuthor {
-        HStack(spacing: 0) {
-          Text(viewStore.message.text)
-            .padding(.vertical, 8)
-            .padding(.horizontal, 12)
-            .foregroundStyle(Color.black)
-            .background(Color.white)
-            .clipShape(RoundedRectangle(cornerRadius: 12))
-            .padding(.leading, 100)
-            .frame(maxWidth: .infinity, alignment: .trailing)
-        }
-        .listRowSeparator(.hidden)
-      } else {
-        HStack(spacing: 0) {
-          Text(viewStore.message.text)
-            .padding(.vertical, 8)
-            .padding(.horizontal, 12)
-            .foregroundStyle(Color.primary)
-            .background(Color(uiColor: UIColor.secondarySystemBackground))
-            .clipShape(RoundedRectangle(cornerRadius: 12))
-            .padding(.trailing, 100)
-            .frame(maxWidth: .infinity, alignment: .leading)
-        }
-        .listRowSeparator(.hidden)
+      let isAuthor = viewStore.message.isAuthor
+      HStack(spacing: 0) {
+        Text(viewStore.message.text)
+          .padding(.vertical, 8)
+          .padding(.horizontal, 12)
+          .foregroundStyle(isAuthor ? Color.black : Color.primary)
+          .background(isAuthor ? Color.white : Color(uiColor: UIColor.secondarySystemBackground))
+          .clipShape(RoundedRectangle(cornerRadius: 12))
+          .padding(isAuthor ? Edge.Set.leading : Edge.Set.trailing, 100)
+          .frame(maxWidth: .infinity, alignment: isAuthor ? Alignment.trailing : Alignment.leading)
       }
+      .listRowSeparator(.hidden)
     }
   }
 }

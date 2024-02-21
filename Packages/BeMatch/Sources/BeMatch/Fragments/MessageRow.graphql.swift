@@ -6,7 +6,7 @@
 public extension BeMatch {
   struct MessageRow: BeMatch.SelectionSet, Fragment {
     public static var fragmentDefinition: StaticString {
-      #"fragment MessageRow on Message { __typename id text userId createdAt }"#
+      #"fragment MessageRow on Message { __typename id text userId isAuthor createdAt }"#
     }
 
     public let __data: DataDict
@@ -18,6 +18,7 @@ public extension BeMatch {
       .field("id", BeMatch.ID.self),
       .field("text", String.self),
       .field("userId", BeMatch.ID.self),
+      .field("isAuthor", Bool.self),
       .field("createdAt", BeMatch.Date.self),
     ] }
 
@@ -27,6 +28,7 @@ public extension BeMatch {
     public var text: String { __data["text"] }
     /// user id
     public var userId: BeMatch.ID { __data["userId"] }
+    public var isAuthor: Bool { __data["isAuthor"] }
     /// When the message is created
     public var createdAt: BeMatch.Date { __data["createdAt"] }
   }
