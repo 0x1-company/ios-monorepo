@@ -118,7 +118,7 @@ public extension BeMatchClient {
         let mutation = BeMatch.CreateMessageMutation(input: input)
         return try await apolloClient.perform(mutation: mutation)
       },
-      directMessage: { targetUserId, _ in
+      directMessage: { targetUserId in
         let query = BeMatch.DirectMessageQuery(targetUserId: targetUserId, first: 50)
         return apolloClient.watch(query: query)
       },

@@ -12,12 +12,13 @@ public struct DirectMessageLogic {
   public struct State: Equatable {
     let username: String
     let targetUserId: String
+    var currentUserId = ""
 
     var rows: IdentifiedArrayOf<DirectMessageRowLogic.State> = []
     var displayRows: IdentifiedArrayOf<DirectMessageRowLogic.State> {
       return IdentifiedArrayOf(
         uniqueElements: rows
-          .sorted(by: { $0.data.createdAt > $1.data.createdAt })
+          .sorted(by: { $0.message.createdAt > $1.message.createdAt })
       )
     }
 
@@ -52,9 +53,12 @@ public struct DirectMessageLogic {
       switch action {
       case .onTask:
         analytics.logScreen(screenName: "DirectMessage", of: self)
-        let targetUserId = state.targetUserId
-        return .run { send in
-          await messagesRequest(send: send, targetUserId: targetUserId, after: nil)
+        return .run { [targetUserId = state.targetUserId] send in
+          for try await data in bematch.directMessage(targetUserId: targetUserId) {
+            await send(.directMessageResponse(.success(data)))
+          }
+        } catch: { error, send in
+          await send(.directMessageResponse(.failure(error)))
         }
 
       case .closeButtonTapped:
@@ -85,15 +89,33 @@ public struct DirectMessageLogic {
         state.rows = IdentifiedArrayOf(
           uniqueElements: data.messages.edges
             .map(\.node.fragments.messageRow)
-            .map(DirectMessageRowLogic.State.init(data:))
+            .map { message in
+              DirectMessageRowLogic.State(
+                currentUserId: state.currentUserId,
+                message: message
+              )
+            }
         )
         return .none
 
-      case let .createMessageResponse(.success(data)):
-        let targetUserId = state.targetUserId
-        return .run { send in
+      case .createMessageResponse(.success):
+        return .run { [targetUserId = state.targetUserId] send in
           await messagesRequest(send: send, targetUserId: targetUserId, after: nil)
         }
+
+      case let .directMessageResponse(.success(data)):
+        state.currentUserId = data.currentUser.id
+        state.rows = IdentifiedArrayOf(
+          uniqueElements: data.messages.edges
+            .map(\.node.fragments.messageRow)
+            .map { message in
+              DirectMessageRowLogic.State(
+                currentUserId: data.currentUser.id,
+                message: message
+              )
+            }
+        )
+        return .none
 
       default:
         return .none

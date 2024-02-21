@@ -135,6 +135,8 @@ public extension BeMatch {
             public var id: BeMatch.ID { __data["id"] }
             /// message content
             public var text: String { __data["text"] }
+            /// user id
+            public var userId: BeMatch.ID { __data["userId"] }
             /// When the message is created
             public var createdAt: BeMatch.Date { __data["createdAt"] }
 

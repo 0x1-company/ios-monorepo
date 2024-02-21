@@ -41,6 +41,6 @@ public struct BeMatchClient: Sendable {
   public var achievement: @Sendable () -> AsyncThrowingStream<BeMatch.AchievementQuery.Data, Error> = { .finished() }
 
   public var createMessage: @Sendable (BeMatch.CreateMessageInput) async throws -> BeMatch.CreateMessageMutation.Data
-  public var directMessage: @Sendable (_ targetUserId: String, _ after: String?) async throws -> AsyncThrowingStream<BeMatch.DirectMessageQuery.Data, Error> = { _, _ in .finished() }
+  public var directMessage: @Sendable (_ targetUserId: String) -> AsyncThrowingStream<BeMatch.DirectMessageQuery.Data, Error> = { _ in .finished() }
   public var messages: @Sendable (_ targetUserId: String, _ after: String?) -> AsyncThrowingStream<BeMatch.MessagesQuery.Data, Error> = { _, _ in .finished() }
 }
