@@ -47,7 +47,6 @@ public struct DirectMessageRowView: View {
             .padding(.leading, 100)
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
-        .padding(.horizontal, 16)
         .listRowSeparator(.hidden)
       } else {
         HStack(spacing: 0) {
@@ -60,7 +59,6 @@ public struct DirectMessageRowView: View {
             .padding(.trailing, 100)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .padding(.horizontal, 16)
         .listRowSeparator(.hidden)
       }
     }
