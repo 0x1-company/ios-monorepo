@@ -118,10 +118,6 @@ public extension BeMatchClient {
         let mutation = BeMatch.CreateMessageMutation(input: input)
         return try await apolloClient.perform(mutation: mutation)
       },
-      directMessage: { targetUserId in
-        let query = BeMatch.DirectMessageQuery(targetUserId: targetUserId, first: 50)
-        return apolloClient.watch(query: query)
-      },
       messages: { targetUserId, after in
         let query = BeMatch.MessagesQuery(targetUserId: targetUserId, first: 50, after: after ?? .null)
         return apolloClient.watch(query: query)
