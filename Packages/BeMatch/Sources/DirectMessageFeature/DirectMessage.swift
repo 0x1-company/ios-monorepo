@@ -122,13 +122,15 @@ public struct DirectMessageView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 0) {
-        List {
-          ForEachStore(
-            store.scope(state: \.displayRows, action: \.rows),
-            content: DirectMessageRowView.init(store:)
-          )
+        ScrollView {
+          LazyVStack(spacing: 8) {
+            ForEachStore(
+              store.scope(state: \.displayRows, action: \.rows),
+              content: DirectMessageRowView.init(store:)
+            )
+          }
+          .padding(.horizontal, 16)
         }
-        .listStyle(PlainListStyle())
 
         HStack(spacing: 8) {
           TextField(
