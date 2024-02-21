@@ -38,15 +38,18 @@ public extension BeMatch {
       case "CreateLikeResponse": return BeMatch.Objects.CreateLikeResponse
       case "Match": return BeMatch.Objects.Match
       case "Feedback": return BeMatch.Objects.Feedback
+      case "Message": return BeMatch.Objects.Message
       case "UserImage": return BeMatch.Objects.UserImage
       case "Query": return BeMatch.Objects.Query
+      case "MessageConnection": return BeMatch.Objects.MessageConnection
+      case "PageInfo": return BeMatch.Objects.PageInfo
+      case "MessageEdge": return BeMatch.Objects.MessageEdge
       case "UserCategory": return BeMatch.Objects.UserCategory
       case "PushNotificationBadge": return BeMatch.Objects.PushNotificationBadge
       case "InvitationCode": return BeMatch.Objects.InvitationCode
       case "ReceivedLike": return BeMatch.Objects.ReceivedLike
       case "Achievement": return BeMatch.Objects.Achievement
       case "MatchConnection": return BeMatch.Objects.MatchConnection
-      case "PageInfo": return BeMatch.Objects.PageInfo
       case "MatchEdge": return BeMatch.Objects.MatchEdge
       case "InvitationCampaign": return BeMatch.Objects.InvitationCampaign
       case "Banner": return BeMatch.Objects.Banner

@@ -206,11 +206,6 @@ type MessageEdge {
   node: Message!
 }
 
-type MessageRoom {
-  """Room ID"""
-  id: ID!
-}
-
 type Mutation {
   """アカウントを閉じる"""
   closeUser: Boolean!
@@ -306,14 +301,8 @@ type Query {
   """マッチ一覧"""
   matches(after: String, first: Int!): MatchConnection!
 
-  """DMするためのRoomを取得、1度もメッセージを送受信したことがなければ null"""
-  messageRoom(
-    """DM したい相手の ID"""
-    targetUserId: ID!
-  ): MessageRoom
-
   """特定のユーザーとのメッセージ一覧"""
-  messages(after: String, first: Int!, messageRoomId: ID!): MessageConnection!
+  messages(after: String, first: Int!, targetUserId: ID!): MessageConnection!
   pushNotificationBadge: PushNotificationBadge!
 
   """自分の受け取ったLikeを取得する"""
@@ -325,9 +314,6 @@ type Query {
 
   """LIKEしてくれたユーザー一覧"""
   usersByLiker: [User!]!
-
-  """最近一言コメントを更新したユーザー一覧"""
-  usersByRecentShortComments: [User!]!
 }
 
 input ReadMessagesByChatRoomIdInput {

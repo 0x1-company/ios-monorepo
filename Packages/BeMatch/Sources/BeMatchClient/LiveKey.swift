@@ -113,6 +113,14 @@ public extension BeMatchClient {
       achievement: {
         let query = BeMatch.AchievementQuery()
         return apolloClient.watch(query: query)
+      },
+      createMessage: { input in
+        let mutation = BeMatch.CreateMessageMutation(input: input)
+        return try await apolloClient.perform(mutation: mutation)
+      },
+      messages: { targetUserId, after in
+        let query = BeMatch.MessagesQuery(targetUserId: targetUserId, first: 50, after: after ?? .null)
+        return apolloClient.watch(query: query)
       }
     )
   }
