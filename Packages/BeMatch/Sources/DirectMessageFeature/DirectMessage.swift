@@ -21,8 +21,10 @@ public struct DirectMessageLogic {
       )
     }
 
-    @BindingState var message = String()
-    var isDisabled = true
+    @BindingState var text = String()
+    var isDisabled: Bool {
+      text.isEmpty
+    }
 
     public init(username: String, targetUserId: String) {
       self.username = username
@@ -61,23 +63,18 @@ public struct DirectMessageLogic {
           await dismiss()
         }
 
-      case .sendButtonTapped:
-        state.isDisabled = true
+      case .sendButtonTapped where !state.isDisabled:
         let input = BeMatch.CreateMessageInput(
           targetUserId: state.targetUserId,
-          text: state.message
+          text: state.text
         )
-        state.message.removeAll()
+        state.text.removeAll()
         return .run { send in
           await feedbackGenerator.impactOccurred()
           await send(.createMessageResponse(Result {
             try await bematch.createMessage(input)
           }))
         }
-
-      case .binding:
-        state.isDisabled = state.message.isEmpty
-        return .none
 
       case let .messagesResponse(.success(data)):
         state.rows = IdentifiedArrayOf(
@@ -104,7 +101,7 @@ public struct DirectMessageLogic {
   private func messagesRequest(send: Send<Action>, targetUserId: String, after: String?) async {
     do {
       for try await data in bematch.messages(targetUserId: targetUserId, after: after) {
-        await send(.messagesResponse(.success(data)))
+        await send(.messagesResponse(.success(data)), animation: .default)
       }
     } catch {
       await send(.messagesResponse(.failure(error)))
@@ -134,7 +131,7 @@ public struct DirectMessageView: View {
 
         HStack(spacing: 8) {
           TextField(
-            text: viewStore.$message,
+            text: viewStore.$text,
             axis: .vertical
           ) {
             Text("Message", bundle: .module)
@@ -147,7 +144,7 @@ public struct DirectMessageView: View {
           .clipShape(RoundedRectangle(cornerRadius: 26))
 
           Button {
-            store.send(.sendButtonTapped)
+            store.send(.sendButtonTapped, animation: .default)
           } label: {
             Image(systemName: "paperplane.fill")
               .foregroundStyle(Color.primary)
