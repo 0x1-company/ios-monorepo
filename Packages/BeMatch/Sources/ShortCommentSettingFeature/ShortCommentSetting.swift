@@ -15,13 +15,10 @@ public struct ShortCommentSettingLogic {
     @BindingState var focus: Focus?
     @PresentationState var alert: AlertState<Action.Alert>?
 
-    var isDisabled: Bool
     var isActivityIndicatorVisible = false
 
     public init(shortComment: String?) {
-      let shortComment = shortComment ?? ""
-      self.shortComment = shortComment
-      isDisabled = shortComment.isEmpty
+      self.shortComment = shortComment ?? ""
     }
 
     enum Focus: Hashable {
@@ -87,10 +84,6 @@ public struct ShortCommentSettingLogic {
         }
         return .none
 
-      case .binding:
-        state.isDisabled = state.shortComment.isEmpty
-        return .none
-
       case .alert(.presented(.confirmOkay)):
         state.alert = nil
         return .none
@@ -113,52 +106,38 @@ public struct ShortCommentSettingView: View {
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
-      VStack(spacing: 32) {
-        Text("Write a short comment.\nLet's appeal!", bundle: .module)
-          .frame(minHeight: 50)
-          .font(.system(.title3, weight: .semibold))
-          .multilineTextAlignment(.center)
+      VStack(spacing: 24) {
+        Text("Do not write vour BeReal or other social media username.Your profile will not be visible to others.", bundle: .module)
+          .font(.subheadline)
+          .foregroundStyle(Color.secondary)
 
-        VStack(spacing: 8) {
-          TextEditor(text: viewStore.$shortComment)
-            .frame(height: 100)
-            .lineLimit(1 ... 3)
-            .focused($focus, equals: .shortComment)
-            .padding()
-            .overlay(
-              RoundedRectangle(cornerRadius: 12)
-                .stroke(Color.primary, lineWidth: 1.0)
-            )
-
-          Text("Do not write your BeReal username or other social networking IDs. Your profile will not be visible to others.", bundle: .module)
-            .font(.caption)
-            .frame(minHeight: 50)
-            .foregroundStyle(Color.secondary)
+        TextEditor(text: viewStore.$shortComment)
+          .frame(height: 100)
+          .lineLimit(1 ... 3)
+          .focused($focus, equals: .shortComment)
+          .padding()
+          .overlay(
+            RoundedRectangle(cornerRadius: 12)
+              .stroke(Color.primary, lineWidth: 1.0)
+          )
+        
+        PrimaryButton(
+          String(localized: "Save", bundle: .module),
+          isLoading: viewStore.isActivityIndicatorVisible,
+          isDisabled: viewStore.isActivityIndicatorVisible
+        ) {
+          store.send(.saveButtonTapped)
         }
-
-        VStack(spacing: 0) {
-          Spacer()
-
-          PrimaryButton(
-            String(localized: "Save", bundle: .module),
-            isLoading: viewStore.isActivityIndicatorVisible,
-            isDisabled: viewStore.isDisabled
-          ) {
-            store.send(.saveButtonTapped)
-          }
-        }
+        .frame(maxHeight: .infinity, alignment: .bottom)
       }
       .padding(.top, 24)
       .padding(.horizontal, 16)
       .padding(.bottom, 16)
+      .navigationTitle(String(localized: "Comment", bundle: .module))
+      .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
       .bind(viewStore.$focus, to: $focus)
       .alert(store: store.scope(state: \.$alert, action: \.alert))
-      .toolbar {
-        ToolbarItem(placement: .principal) {
-          Image(ImageResource.beMatch)
-        }
-      }
     }
   }
 }
