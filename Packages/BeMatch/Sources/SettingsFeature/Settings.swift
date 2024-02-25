@@ -1,5 +1,5 @@
-import ActivityView
 import AchievementFeature
+import ActivityView
 import AnalyticsClient
 import AnalyticsKeys
 import BeMatch
@@ -81,7 +81,7 @@ public struct SettingsLogic {
       case .editProfileButtonTapped:
         state.destination = .profileEdit()
         return .none
-        
+
       case .achievementButtonTapped:
         return .none
 
