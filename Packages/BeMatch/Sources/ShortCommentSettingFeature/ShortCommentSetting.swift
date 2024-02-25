@@ -83,7 +83,7 @@ public struct ShortCommentSettingLogic {
           TextState(error.message)
         }
         return .none
-        
+
       case .updateShortCommentResponse(.failure):
         state.isActivityIndicatorVisible = false
         return .none
