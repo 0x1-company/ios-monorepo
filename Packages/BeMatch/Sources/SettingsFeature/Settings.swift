@@ -1,4 +1,5 @@
 import ActivityView
+import AchievementFeature
 import AnalyticsClient
 import AnalyticsKeys
 import BeMatch
@@ -47,6 +48,7 @@ public struct SettingsLogic {
     case myProfileButtonTapped
     case editProfileButtonTapped
     case invitationCodeButtonTapped
+    case achievementButtonTapped
     case bematchProButtonTapped
     case howItWorksButtonTapped
     case otherButtonTapped
@@ -78,6 +80,9 @@ public struct SettingsLogic {
 
       case .editProfileButtonTapped:
         state.destination = .profileEdit()
+        return .none
+        
+      case .achievementButtonTapped:
         return .none
 
       case .howItWorksButtonTapped:
@@ -123,6 +128,10 @@ public struct SettingsLogic {
         state.destination = nil
         return .none
 
+      case .destination(.presented(.achievement(.closeButtonTapped))):
+        state.destination = nil
+        return .none
+
       case .destination(.dismiss):
         state.destination = nil
         return .none
@@ -145,12 +154,14 @@ public struct SettingsLogic {
       case profileEdit(ProfileEditLogic.State = .init())
       case profile(ProfileLogic.State = .init())
       case tutorial(TutorialLogic.State = .init())
+      case achievement(AchievementLogic.State = .init())
     }
 
     public enum Action {
       case profileEdit(ProfileEditLogic.Action)
       case profile(ProfileLogic.Action)
       case tutorial(TutorialLogic.Action)
+      case achievement(AchievementLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
@@ -162,6 +173,9 @@ public struct SettingsLogic {
       }
       Scope(state: \.tutorial, action: \.tutorial) {
         TutorialLogic()
+      }
+      Scope(state: \.achievement, action: \.achievement) {
+        AchievementLogic()
       }
     }
   }
@@ -200,16 +214,16 @@ public struct SettingsView: View {
             }
           }
 
-//          Button {
-//            store.send(.invitationCodeButtonTapped)
-//          } label: {
-//            LabeledContent {
-//              Image(systemName: "chevron.right")
-//            } label: {
-//              Text("Invitation Code", bundle: .module)
-//                .foregroundStyle(Color.primary)
-//            }
-//          }
+          Button {
+            store.send(.achievementButtonTapped)
+          } label: {
+            LabeledContent {
+              Image(systemName: "chevron.right")
+            } label: {
+              Text("Achievement", bundle: .module)
+                .foregroundStyle(Color.primary)
+            }
+          }
 
           Button {
             store.send(.bematchProButtonTapped)
@@ -390,13 +404,17 @@ public struct SettingsView: View {
         }
       }
       .fullScreenCover(
-        store: store.scope(
-          state: \.$destination.profileEdit,
-          action: \.destination.profileEdit
-        )
+        store: store.scope(state: \.$destination.profileEdit, action: \.destination.profileEdit)
       ) { store in
         NavigationStack {
           ProfileEditView(store: store)
+        }
+      }
+      .fullScreenCover(
+        store: store.scope(state: \.$destination.achievement, action: \.destination.achievement)
+      ) { store in
+        NavigationStack {
+          AchievementView(store: store)
         }
       }
     }
