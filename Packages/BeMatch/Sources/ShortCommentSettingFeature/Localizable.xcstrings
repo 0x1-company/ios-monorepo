@@ -1,7 +1,17 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Do not write your BeReal username or other social networking IDs. Your profile will not be visible to others." : {
+    "Comment" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ひとこと"
+          }
+        }
+      }
+    },
+    "Do not write vour BeReal or other social media username.Your profile will not be visible to others." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -37,16 +47,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "保存する"
-          }
-        }
-      }
-    },
-    "Write a short comment.\nLet's appeal!" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ひとことを書いて\nアピールしよう"
           }
         }
       }
