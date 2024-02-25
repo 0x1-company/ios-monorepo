@@ -11,6 +11,16 @@
         }
       }
     },
+    "Achievement" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アチーブメント"
+          }
+        }
+      }
+    },
     "BeMatch PRO" : {
       "localizations" : {
         "ja" : {
@@ -127,17 +137,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Instagram"
-          }
-        }
-      }
-    },
-    "Invitation Code" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "招待コード"
           }
         }
       }

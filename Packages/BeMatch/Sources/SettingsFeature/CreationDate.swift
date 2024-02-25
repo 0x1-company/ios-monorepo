@@ -1,4 +1,3 @@
-import AchievementFeature
 import ComposableArchitecture
 import SwiftUI
 
@@ -10,8 +9,6 @@ public struct CreationDateLogic {
     let creationDate: Date
     var creationDateString = ""
 
-    @PresentationState var achievement: AchievementLogic.State?
-
     public init(creationDate: Date) {
       self.creationDate = creationDate
     }
@@ -19,8 +16,6 @@ public struct CreationDateLogic {
 
   public enum Action {
     case onTask
-    case creationDateButtonTapped
-    case achievement(PresentationAction<AchievementLogic.Action>)
   }
 
   @Dependency(\.date.now) var now
@@ -48,21 +43,7 @@ public struct CreationDateLogic {
           bundle: .module
         )
         return .none
-
-      case .creationDateButtonTapped:
-        state.achievement = .init()
-        return .none
-
-      case .achievement(.presented(.closeButtonTapped)):
-        state.achievement = nil
-        return .none
-
-      default:
-        return .none
       }
-    }
-    .ifLet(\.$achievement, action: \.achievement) {
-      AchievementLogic()
     }
   }
 }
@@ -78,14 +59,6 @@ public struct CreationDateView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       Text(viewStore.creationDateString)
         .task { await store.send(.onTask).finish() }
-        .onTapGesture {
-          store.send(.creationDateButtonTapped)
-        }
-        .fullScreenCover(store: store.scope(state: \.$achievement, action: \.achievement)) { store in
-          NavigationStack {
-            AchievementView(store: store)
-          }
-        }
     }
   }
 }
