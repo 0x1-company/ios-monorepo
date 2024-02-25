@@ -120,7 +120,7 @@ public struct ShortCommentSettingView: View {
             RoundedRectangle(cornerRadius: 12)
               .stroke(Color.primary, lineWidth: 1.0)
           )
-        
+
         PrimaryButton(
           String(localized: "Save", bundle: .module),
           isLoading: viewStore.isActivityIndicatorVisible,
