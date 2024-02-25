@@ -33,6 +33,7 @@ public struct DeleteAccountLogic {
     case deleteButtonTapped
     case notNowButtonTapped
     case closeUserResponse(Result<BeMatch.CloseUserMutation.Data, Error>)
+    case signOutFailure(Error)
     case binding(BindingAction<State>)
     case destination(PresentationAction<Destination.Action>)
     case delegate(Delegate)
@@ -94,11 +95,15 @@ public struct DeleteAccountLogic {
         let reasons = state.selectedReasons + [state.otherReason].filter { !$0.isEmpty }
         let reason = reasons.joined(separator: ",")
 
+        analytics.buttonClick(name: \.delete, parameters: ["reason": reason])
+
         return .run { send in
-          analytics.buttonClick(name: \.delete, parameters: ["reason": reason])
+          try firebaseAuth.signOut()
           await send(.closeUserResponse(Result {
             try await closeUser()
           }))
+        } catch: { error, send in
+          await send(.signOutFailure(error))
         }
 
       case .closeUserResponse(.success):
@@ -111,10 +116,7 @@ public struct DeleteAccountLogic {
             }
           }
         )
-        return .run { send in
-          try? firebaseAuth.signOut()
-          await send(.delegate(.accountDeletionCompleted))
-        }
+        return .send(.delegate(.accountDeletionCompleted), animation: .default)
 
       case let .closeUserResponse(.failure(error as ServerError)):
         state.destination = .alert(
@@ -126,6 +128,20 @@ public struct DeleteAccountLogic {
             }
           } message: {
             TextState(error.message)
+          }
+        )
+        return .none
+
+      case let .signOutFailure(error):
+        state.destination = .alert(
+          AlertState {
+            TextState("Account deletion failed.", bundle: .module)
+          } actions: {
+            ButtonState(action: .confirmOkay) {
+              TextState("OK", bundle: .module)
+            }
+          } message: {
+            TextState(error.localizedDescription)
           }
         )
         return .none
