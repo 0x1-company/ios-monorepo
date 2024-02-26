@@ -25,6 +25,7 @@ public enum Constants {
   public static let tiktokURL = URL(string: "https://tiktok.com/@\(Self.bematchjp)")!
 
   public static let docsURL = URL(string: "https://docs.bematch.jp")!
+  public static let faqURL = URL(string: "\(Self.docsURL)/faq")!
   public static let privacyPolicyURL = URL(string: "\(Self.docsURL)/privacy-policy")!
   public static let termsOfUseURL = URL(string: "\(Self.docsURL)/terms-of-use")!
   public static let contactUsURL = URL(string: "https://ig.me/m/\(Self.bematchjp)")!

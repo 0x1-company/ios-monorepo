@@ -91,6 +91,16 @@
         }
       }
     },
+    "FAQ" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "よくある質問"
+          }
+        }
+      }
+    },
     "FOLLOW ME" : {
       "localizations" : {
         "ja" : {
