@@ -122,6 +122,10 @@ public extension BeMatchClient {
         let query = BeMatch.MessagesQuery(targetUserId: targetUserId, first: 50, after: after ?? .null)
         return apolloClient.watch(query: query)
       },
+      readMessages: { input in
+        let mutation = BeMatch.ReadMessagesMutation(input: input)
+        return try await apolloClient.perform(mutation: mutation)
+      },
       messageRooms: { after in
         let query = BeMatch.MessageRoomsQuery(first: 50, after: after ?? .null)
         return apolloClient.watch(query: query)
