@@ -13,8 +13,7 @@ public struct ReceivedLikeSwipeLogic {
   public init() {}
 
   public struct State: Equatable {
-    var swipe: SwipeLogic.State?
-    var isSwipeFinished: Bool?
+    var child = Child.State.loading
 
     public init() {}
   }
@@ -24,7 +23,7 @@ public struct ReceivedLikeSwipeLogic {
     case closeButtonTapped
     case emptyButtonTapped
     case usersByLikerResponse(Result<BeMatch.UsersByLikerQuery.Data, Error>)
-    case swipe(SwipeLogic.Action)
+    case child(Child.Action)
     case delegate(Delegate)
 
     public enum Delegate: Equatable {
@@ -40,6 +39,7 @@ public struct ReceivedLikeSwipeLogic {
   }
 
   public var body: some Reducer<State, Action> {
+    Scope(state: \.child, action: \.child, child: Child.init)
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
@@ -63,23 +63,38 @@ public struct ReceivedLikeSwipeLogic {
           .map(\.fragments.swipeCard)
           .filter { !$0.images.isEmpty }
 
-        state.swipe = SwipeLogic.State(rows: rows)
-        state.isSwipeFinished = false
+        state.child = .content(SwipeLogic.State(rows: rows))
         return .none
 
       case .usersByLikerResponse(.failure):
         return .send(.delegate(.dismiss))
 
-      case .swipe(.delegate(.finished)):
-        state.isSwipeFinished = true
+      case .child(.content(.delegate(.finished))):
+        state.child = .empty
         return .none
 
       default:
         return .none
       }
     }
-    .ifLet(\.swipe, action: \.swipe) {
-      SwipeLogic()
+  }
+
+  @Reducer
+  public struct Child {
+    public enum State: Equatable {
+      case loading
+      case empty
+      case content(SwipeLogic.State)
+    }
+
+    public enum Action {
+      case loading
+      case empty
+      case content(SwipeLogic.Action)
+    }
+
+    public var body: some Reducer<State, Action> {
+      Scope(state: \.content, action: \.content, child: SwipeLogic.init)
     }
   }
 }
@@ -92,20 +107,24 @@ public struct ReceivedLikeSwipeView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
-      if viewStore.isSwipeFinished == true {
+    SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
+      switch initialState {
+      case .loading:
+        Color.black
+          .overlay {
+            ProgressView()
+              .tint(Color.white)
+          }
+
+      case .empty:
         emptyView
-      } else {
-        IfLetStore(
-          store.scope(state: \.swipe, action: \.swipe),
+
+      case .content:
+        CaseLet(
+          /ReceivedLikeSwipeLogic.Child.State.content,
+          action: ReceivedLikeSwipeLogic.Child.Action.content,
           then: SwipeView.init(store:)
-        ) {
-          Color.black
-            .overlay {
-              ProgressView()
-                .tint(Color.white)
-            }
-        }
+        )
       }
     }
     .navigationTitle(String(localized: "See who likes you", bundle: .module))
