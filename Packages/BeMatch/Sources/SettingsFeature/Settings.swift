@@ -83,6 +83,7 @@ public struct SettingsLogic {
         return .none
 
       case .achievementButtonTapped:
+        state.destination = .achievement()
         return .none
 
       case .howItWorksButtonTapped:
