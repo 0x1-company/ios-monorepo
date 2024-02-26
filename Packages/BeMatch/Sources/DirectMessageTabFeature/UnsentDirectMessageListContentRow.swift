@@ -15,7 +15,7 @@ public struct UnsentDirectMessageListContentRowLogic {
     let imageUrl: String
 
     init(match: BeMatch.UnsentDirectMessageListContentRow) {
-      id = match.id
+      id = match.targetUser.id
       isRead = match.isRead
       username = match.targetUser.berealUsername
       imageUrl = match.targetUser.images.first!.imageUrl
