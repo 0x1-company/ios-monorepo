@@ -94,6 +94,7 @@ public struct UnsentDirectMessageListView: View {
         .frame(height: 150)
       }
     }
+    .padding(.top, 16)
     .task { await store.send(.onTask).finish() }
   }
 }
