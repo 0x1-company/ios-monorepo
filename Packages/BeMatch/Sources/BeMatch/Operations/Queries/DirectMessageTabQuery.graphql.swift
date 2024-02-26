@@ -8,8 +8,8 @@ public extension BeMatch {
     public static let operationName: String = "DirectMessageTab"
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"query DirectMessageTab($first: Int!) { receivedLike { __typename id displayCount latestUser { __typename id images { __typename id imageUrl } } } matches(first: $first) { __typename pageInfo { __typename hasNextPage endCursor } edges { __typename node { __typename ...UnsentDirectMessageListContentRow } } } messageRooms(first: $first) { __typename pageInfo { __typename hasNextPage endCursor } edges { __typename node { __typename id updatedAt } } } }"#,
-        fragments: [UnsentDirectMessageListContentRow.self]
+        #"query DirectMessageTab($first: Int!) { receivedLike { __typename id displayCount latestUser { __typename id images { __typename id imageUrl } } } matches(first: $first) { __typename pageInfo { __typename hasNextPage endCursor } edges { __typename node { __typename ...UnsentDirectMessageListContentRow } } } messageRooms(first: $first) { __typename pageInfo { __typename hasNextPage endCursor } edges { __typename node { __typename ...DirectMessageListContentRow } } } }"#,
+        fragments: [DirectMessageListContentRow.self, UnsentDirectMessageListContentRow.self]
       ))
 
     public var first: Int
@@ -243,12 +243,24 @@ public extension BeMatch {
             public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.MessageRoom }
             public static var __selections: [ApolloAPI.Selection] { [
               .field("__typename", String.self),
-              .field("id", BeMatch.ID.self),
-              .field("updatedAt", BeMatch.Date.self),
+              .fragment(DirectMessageListContentRow.self),
             ] }
 
             public var id: BeMatch.ID { __data["id"] }
             public var updatedAt: BeMatch.Date { __data["updatedAt"] }
+            public var targetUser: TargetUser { __data["targetUser"] }
+            public var latestMessage: LatestMessage { __data["latestMessage"] }
+
+            public struct Fragments: FragmentContainer {
+              public let __data: DataDict
+              public init(_dataDict: DataDict) { __data = _dataDict }
+
+              public var directMessageListContentRow: DirectMessageListContentRow { _toFragment() }
+            }
+
+            public typealias TargetUser = DirectMessageListContentRow.TargetUser
+
+            public typealias LatestMessage = DirectMessageListContentRow.LatestMessage
           }
         }
       }

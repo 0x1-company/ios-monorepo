@@ -1,10 +1,7 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Hello" : {
-
-    },
-    "Let's Reply." : {
+    "Let's Reply" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
