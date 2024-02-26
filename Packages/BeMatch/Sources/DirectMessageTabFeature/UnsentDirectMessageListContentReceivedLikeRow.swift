@@ -5,20 +5,16 @@ import Styleguide
 import SwiftUI
 
 @Reducer
-public struct UnsentDirectMessageListContentRowLogic {
+public struct UnsentDirectMessageListContentReceivedLikeRowLogic {
   public init() {}
 
-  public struct State: Equatable, Identifiable {
-    public let id: String
-    let isRead: Bool
-    let username: String
+  public struct State: Equatable {
     let imageUrl: String
+    let displayCount: String
 
-    init(match: BeMatch.UnsentDirectMessageListContentRow) {
-      id = match.id
-      isRead = match.isRead
-      username = match.targetUser.berealUsername
-      imageUrl = match.targetUser.images.first!.imageUrl
+    init(receivedLike: BeMatch.DirectMessageTabQuery.Data.ReceivedLike) {
+      imageUrl = receivedLike.latestUser?.images.first?.imageUrl ?? ""
+      displayCount = receivedLike.displayCount
     }
   }
 
@@ -36,12 +32,23 @@ public struct UnsentDirectMessageListContentRowLogic {
   }
 }
 
-public struct UnsentDirectMessageListContentRowView: View {
+public struct UnsentDirectMessageListContentReceivedLikeRowView: View {
   @Environment(\.displayScale) var displayScale
-  let store: StoreOf<UnsentDirectMessageListContentRowLogic>
+  let store: StoreOf<UnsentDirectMessageListContentReceivedLikeRowLogic>
 
-  public init(store: StoreOf<UnsentDirectMessageListContentRowLogic>) {
+  public init(store: StoreOf<UnsentDirectMessageListContentReceivedLikeRowLogic>) {
     self.store = store
+  }
+
+  var goldGradient: LinearGradient {
+    LinearGradient(
+      colors: [
+        Color(0xFFE8_B423),
+        Color(0xFFF5_D068),
+      ],
+      startPoint: .leading,
+      endPoint: .trailing
+    )
   }
 
   public var body: some View {
@@ -58,6 +65,7 @@ public struct UnsentDirectMessageListContentRowView: View {
               image
                 .resizable()
                 .frame(width: 90, height: 120)
+                .blur(radius: 18)
             },
             placeholder: {
               Color.black
@@ -70,25 +78,28 @@ public struct UnsentDirectMessageListContentRowView: View {
             }
           )
           .clipShape(RoundedRectangle(cornerRadius: 6))
+          .overlay {
+            RoundedRectangle(cornerRadius: 6)
+              .stroke(goldGradient, lineWidth: 3)
+          }
+          .overlay {
+            Text(viewStore.displayCount)
+              .font(.system(.body, weight: .semibold))
+              .frame(width: 40, height: 40)
+              .foregroundStyle(Color.white)
+              .background(goldGradient)
+              .clipShape(Circle())
+          }
           .overlay(alignment: .bottom) {
-            if !viewStore.isRead {
-              Color.pink
-                .frame(width: 16, height: 16)
-                .clipShape(Circle())
-                .overlay {
-                  RoundedRectangle(cornerRadius: 16 / 2)
-                    .stroke(Color.white, lineWidth: 2)
-                }
-                .offset(y: 10)
-            }
+            Image(ImageResource.receivedLike)
+              .offset(y: 17)
           }
 
-          Text(viewStore.username)
+          Text("Like", bundle: .module)
             .font(.system(.subheadline, weight: .semibold))
             .foregroundStyle(Color.primary)
         }
       }
-      .buttonStyle(HoldDownButtonStyle())
     }
   }
 }

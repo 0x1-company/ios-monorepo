@@ -52,7 +52,10 @@ public struct DirectMessageTabLogic {
           uniqueElements: data.matches.edges
             .map(\.node.fragments.unsentDirectMessageListContentRow)
             .filter { !$0.targetUser.images.isEmpty }
-            .map(UnsentDirectMessageListContentRowLogic.State.init(match:))
+            .map(UnsentDirectMessageListContentRowLogic.State.init(match:)),
+          receivedLike: data.receivedLike.latestUser?.images.first?.imageUrl == nil
+          ? nil
+          : UnsentDirectMessageListContentReceivedLikeRowLogic.State(receivedLike: data.receivedLike)
         )
         return .none
 
