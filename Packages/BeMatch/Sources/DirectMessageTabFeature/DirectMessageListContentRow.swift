@@ -19,7 +19,7 @@ public struct DirectMessageListContentRowLogic {
   public enum Action {
     case rowButtonTapped
     case delegate(Delegate)
-    
+
     public enum Delegate: Equatable {
       case showDirectMessage(_ username: String, _ targetUserId: String)
     }
@@ -32,7 +32,7 @@ public struct DirectMessageListContentRowLogic {
         let username = state.username
         let targetUserId = state.id
         return .send(.delegate(.showDirectMessage(username, targetUserId)))
-        
+
       default:
         return .none
       }
