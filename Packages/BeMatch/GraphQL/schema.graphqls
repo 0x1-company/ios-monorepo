@@ -177,23 +177,13 @@ type MatchEdge {
 }
 
 type Message {
-  """When the message is created"""
   createdAt: Date!
-
-  """When the message is deleted by a user"""
   deletedAt: Date
-
-  """direct message id"""
   id: ID!
   isAuthor: Boolean!
-
-  """When the message is read by a target user"""
+  isRead: Boolean!
   readAt: Date
-
-  """message content"""
   text: String!
-
-  """user id"""
   userId: ID!
 }
 

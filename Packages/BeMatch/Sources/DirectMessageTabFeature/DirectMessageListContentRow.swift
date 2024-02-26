@@ -14,6 +14,7 @@ public struct DirectMessageListContentRowLogic {
     let imageUrl: String
     let text: String
     let isAuthor: Bool
+    let textForegroundColor: Color
 
     public init(messageRoom: BeMatch.DirectMessageListContentRow) {
       id = messageRoom.targetUser.id
@@ -21,6 +22,8 @@ public struct DirectMessageListContentRowLogic {
       imageUrl = messageRoom.targetUser.images.first!.imageUrl
       text = messageRoom.latestMessage.text
       isAuthor = messageRoom.latestMessage.isAuthor
+      let isRead = messageRoom.latestMessage.isRead
+      textForegroundColor = !isAuthor && !isRead ? Color.primary : Color.secondary
     }
   }
 
@@ -104,7 +107,7 @@ public struct DirectMessageListContentRowView: View {
             Text(viewStore.text)
               .lineLimit(1)
               .font(.body)
-              .foregroundStyle(Color.secondary)
+              .foregroundStyle(viewStore.textForegroundColor)
           }
         }
         .padding(.vertical, 8)

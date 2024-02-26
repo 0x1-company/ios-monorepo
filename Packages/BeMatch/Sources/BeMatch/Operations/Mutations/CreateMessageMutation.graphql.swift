@@ -45,9 +45,7 @@ public extension BeMatch {
           .field("text", String.self),
         ] }
 
-        /// direct message id
         public var id: BeMatch.ID { __data["id"] }
-        /// message content
         public var text: String { __data["text"] }
       }
     }
