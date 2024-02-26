@@ -126,7 +126,7 @@ public struct DirectMessageView: View {
               content: DirectMessageRowView.init(store:)
             )
           }
-          .padding(.horizontal, 16)
+          .padding(.all, 16)
         }
 
         HStack(spacing: 8) {
