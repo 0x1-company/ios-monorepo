@@ -121,6 +121,14 @@ public extension BeMatchClient {
       messages: { targetUserId, after in
         let query = BeMatch.MessagesQuery(targetUserId: targetUserId, first: 50, after: after ?? .null)
         return apolloClient.watch(query: query)
+      },
+      messageRooms: { after in
+        let query = BeMatch.MessageRoomsQuery(first: 50, after: after ?? .null)
+        return apolloClient.watch(query: query)
+      },
+      directMessageTab: {
+        let query = BeMatch.DirectMessageTabQuery(first: 50)
+        return apolloClient.watch(query: query)
       }
     )
   }

@@ -1,4 +1,6 @@
 import AnalyticsClient
+import BeMatch
+import BeMatchClient
 import ComposableArchitecture
 import DirectMessageFeature
 import SwiftUI
@@ -9,25 +11,54 @@ public struct DirectMessageTabLogic {
 
   public struct State: Equatable {
     var path = StackState<Path.State>()
-    var unsent: UnsentDirectMessageListLogic.State? = .init()
-    var messages: DirectMessageListLogic.State? = .init()
+    var unsent: UnsentDirectMessageListLogic.State? = .loading
+    var messages: DirectMessageListLogic.State?
     public init() {}
   }
 
   public enum Action {
     case onTask
+    case directMessageTabResponse(Result<BeMatch.DirectMessageTabQuery.Data, Error>)
     case path(StackAction<Path.State, Path.Action>)
     case unsent(UnsentDirectMessageListLogic.Action)
     case messages(DirectMessageListLogic.Action)
   }
 
+  @Dependency(\.bematch) var bematch
   @Dependency(\.analytics) var analytics
 
   public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { _, action in
+    Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
         analytics.logScreen(screenName: "DirectMessageTab", of: self)
+        return .run { send in
+          for try await data in bematch.directMessageTab() {
+            await send(.directMessageTabResponse(.success(data)))
+          }
+        } catch: { error, send in
+          await send(.directMessageTabResponse(.failure(error)))
+        }
+
+      case let .directMessageTabResponse(.success(data)):
+        state.messages = DirectMessageListLogic.State(
+          uniqueElements: data.messageRooms.edges
+            .map(\.node)
+            .map {
+              DirectMessageListContentRowLogic.State(id: $0.id, username: $0.id)
+            }
+        )
+        state.unsent = UnsentDirectMessageListLogic.State(
+          uniqueElements: data.matches.edges
+            .map(\.node.fragments.unsentDirectMessageListContentRow)
+            .filter { !$0.targetUser.images.isEmpty }
+            .map(UnsentDirectMessageListContentRowLogic.State.init(match:))
+        )
+        return .none
+
+      case .directMessageTabResponse(.failure):
+        state.unsent = nil
+        state.messages = nil
         return .none
 
       default:
@@ -71,7 +102,7 @@ public struct DirectMessageTabView: View {
   public var body: some View {
     NavigationStackStore(store.scope(state: \.path, action: \.path)) {
       ScrollView(.vertical) {
-        VStack(alignment: .leading, spacing: 32) {
+        LazyVStack(alignment: .leading, spacing: 32) {
           IfLetStore(
             store.scope(state: \.unsent, action: \.unsent),
             then: UnsentDirectMessageListView.init(store:)

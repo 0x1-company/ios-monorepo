@@ -6,19 +6,26 @@ public struct DirectMessageListContentLogic {
   public init() {}
 
   public struct State: Equatable {
-    public init() {}
+    var rows: IdentifiedArrayOf<DirectMessageListContentRowLogic.State> = []
+
+    public init(uniqueElements: [DirectMessageListContentRowLogic.State]) {
+      rows = IdentifiedArrayOf(uniqueElements: uniqueElements)
+    }
   }
 
   public enum Action {
-    case onTask
+    case rows(IdentifiedActionOf<DirectMessageListContentRowLogic>)
   }
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { _, action in
       switch action {
-      case .onTask:
+      default:
         return .none
       }
+    }
+    .forEach(\.rows, action: \.rows) {
+      DirectMessageListContentRowLogic()
     }
   }
 }
@@ -31,47 +38,9 @@ public struct DirectMessageListContentView: View {
   }
 
   public var body: some View {
-    ForEach(0 ..< 10) { _ in
-      HStack(spacing: 8) {
-        Color.blue
-          .frame(width: 72, height: 72)
-          .clipShape(Circle())
-          .padding(.vertical, 8)
-
-        VStack(alignment: .leading, spacing: 0) {
-          HStack(spacing: 0) {
-            Text("yuka13")
-              .font(.system(.subheadline, weight: .semibold))
-              .frame(maxWidth: .infinity, alignment: .leading)
-
-            Text("Let's Reply.", bundle: .module)
-              .font(.system(.caption2, weight: .medium))
-              .foregroundStyle(Color.black)
-              .padding(.vertical, 3)
-              .padding(.horizontal, 6)
-              .background(Color.white)
-              .clipShape(RoundedRectangle(cornerRadius: 4))
-          }
-
-          Text("Hello")
-            .lineLimit(1)
-            .font(.body)
-            .foregroundStyle(Color.secondary)
-        }
-      }
-    }
-    .task { await store.send(.onTask).finish() }
-  }
-}
-
-#Preview {
-  NavigationStack {
-    DirectMessageListContentView(
-      store: .init(
-        initialState: DirectMessageListContentLogic.State(),
-        reducer: { DirectMessageListContentLogic() }
-      )
+    ForEachStore(
+      store.scope(state: \.rows, action: \.rows),
+      content: DirectMessageListContentRowView.init(store:)
     )
   }
-  .environment(\.colorScheme, .dark)
 }

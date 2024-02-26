@@ -45,6 +45,9 @@ public extension BeMatch {
       case "PageInfo": return BeMatch.Objects.PageInfo
       case "MessageEdge": return BeMatch.Objects.MessageEdge
       case "UserCategory": return BeMatch.Objects.UserCategory
+      case "MessageRoomConnection": return BeMatch.Objects.MessageRoomConnection
+      case "MessageRoomEdge": return BeMatch.Objects.MessageRoomEdge
+      case "MessageRoom": return BeMatch.Objects.MessageRoom
       case "PushNotificationBadge": return BeMatch.Objects.PushNotificationBadge
       case "InvitationCode": return BeMatch.Objects.InvitationCode
       case "ReceivedLike": return BeMatch.Objects.ReceivedLike

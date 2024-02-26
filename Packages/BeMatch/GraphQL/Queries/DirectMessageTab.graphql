@@ -1,0 +1,28 @@
+# import UnsentDirectMessageListContentRow from '../fragments/UnsentDirectMessageListContentRow.graphql'
+
+query DirectMessageTab($first: Int!) {
+  matches(first:$first) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    edges {
+      node {
+        ...UnsentDirectMessageListContentRow
+      }
+    }
+  }
+
+  messageRooms(first: $first) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    edges {
+      node {
+        id
+        updatedAt
+      }
+    }
+  }
+}

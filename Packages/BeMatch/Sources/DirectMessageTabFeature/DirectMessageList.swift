@@ -7,7 +7,10 @@ public struct DirectMessageListLogic {
 
   public struct State: Equatable {
     var child: Child.State?
-    public init() {}
+
+    public init(uniqueElements: [DirectMessageListContentRowLogic.State]) {
+      child = .content(DirectMessageListContentLogic.State(uniqueElements: uniqueElements))
+    }
   }
 
   public enum Action {
@@ -16,10 +19,9 @@ public struct DirectMessageListLogic {
   }
 
   public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { state, action in
+    Reduce<State, Action> { _, action in
       switch action {
       case .onTask:
-        state.child = .content(DirectMessageListContentLogic.State())
         return .none
 
       default:

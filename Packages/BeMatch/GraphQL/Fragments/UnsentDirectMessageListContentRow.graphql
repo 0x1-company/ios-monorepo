@@ -1,0 +1,13 @@
+fragment UnsentDirectMessageListContentRow on Match {
+  id
+  isRead
+  createdAt
+  targetUser {
+    id
+    berealUsername
+    images {
+      id
+      imageUrl
+    }
+  }
+}
