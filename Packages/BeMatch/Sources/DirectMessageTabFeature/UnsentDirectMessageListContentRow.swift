@@ -86,7 +86,6 @@ public struct UnsentDirectMessageListContentRowView: View {
             .font(.system(.subheadline, weight: .semibold))
         }
       }
-      .task { await store.send(.onTask).finish() }
     }
   }
 }
