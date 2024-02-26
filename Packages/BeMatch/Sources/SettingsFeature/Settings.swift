@@ -251,6 +251,15 @@ public struct SettingsView: View {
                 .foregroundStyle(Color.primary)
             }
           }
+          
+          Link(destination: Constants.faqURL) {
+            LabeledContent {
+              Image(systemName: "chevron.right")
+            } label: {
+              Text("FAQ", bundle: .module)
+                .foregroundStyle(Color.primary)
+            }
+          }
 
           Link(destination: Constants.contactUsURL) {
             LabeledContent {
