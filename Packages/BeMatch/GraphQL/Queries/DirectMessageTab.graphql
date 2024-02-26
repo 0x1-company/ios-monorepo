@@ -1,3 +1,4 @@
+# import DirectMessageListContentRow from '../fragments/DirectMessageListContentRow.graphql'
 # import UnsentDirectMessageListContentRow from '../fragments/UnsentDirectMessageListContentRow.graphql'
 
 query DirectMessageTab($first: Int!) {
@@ -32,8 +33,7 @@ query DirectMessageTab($first: Int!) {
     }
     edges {
       node {
-        id
-        updatedAt
+        ...DirectMessageListContentRow
       }
     }
   }

@@ -1,3 +1,5 @@
+import BeMatch
+import CachedAsyncImage
 import ComposableArchitecture
 import Styleguide
 import SwiftUI
@@ -9,10 +11,16 @@ public struct DirectMessageListContentRowLogic {
   public struct State: Equatable, Identifiable {
     public let id: String
     let username: String
+    let imageUrl: String
+    let text: String
+    let isAuthor: Bool
 
-    public init(id: String, username: String) {
-      self.id = id
-      self.username = username
+    public init(messageRoom: BeMatch.DirectMessageListContentRow) {
+      id = messageRoom.targetUser.id
+      username = messageRoom.targetUser.berealUsername
+      imageUrl = messageRoom.targetUser.images.first!.imageUrl
+      text = messageRoom.latestMessage.text
+      isAuthor = messageRoom.latestMessage.isAuthor
     }
   }
 
@@ -41,6 +49,7 @@ public struct DirectMessageListContentRowLogic {
 }
 
 public struct DirectMessageListContentRowView: View {
+  @Environment(\.displayScale) var displayScale
   let store: StoreOf<DirectMessageListContentRowLogic>
 
   public init(store: StoreOf<DirectMessageListContentRowLogic>) {
@@ -53,32 +62,54 @@ public struct DirectMessageListContentRowView: View {
         store.send(.rowButtonTapped)
       } label: {
         HStack(spacing: 8) {
-          Color.blue
-            .frame(width: 72, height: 72)
-            .clipShape(Circle())
-            .padding(.vertical, 8)
+          CachedAsyncImage(
+            url: URL(string: viewStore.imageUrl),
+            urlCache: .shared,
+            scale: displayScale,
+            content: { image in
+              image
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 72, height: 72)
+            },
+            placeholder: {
+              Color.black
+                .frame(width: 72, height: 72)
+                .overlay {
+                  ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .tint(Color.white)
+                }
+            }
+          )
+          .clipShape(Circle())
 
-          VStack(alignment: .leading, spacing: 0) {
+          VStack(alignment: .leading, spacing: 6) {
             HStack(spacing: 0) {
               Text(viewStore.username)
                 .font(.system(.subheadline, weight: .semibold))
                 .frame(maxWidth: .infinity, alignment: .leading)
 
-              Text("Let's Reply.", bundle: .module)
-                .font(.system(.caption2, weight: .medium))
-                .foregroundStyle(Color.black)
-                .padding(.vertical, 3)
-                .padding(.horizontal, 6)
-                .background(Color.white)
-                .clipShape(RoundedRectangle(cornerRadius: 4))
+              if !viewStore.isAuthor {
+                Text("Let's Reply", bundle: .module)
+                  .font(.system(.caption2, weight: .medium))
+                  .foregroundStyle(Color.black)
+                  .padding(.vertical, 3)
+                  .padding(.horizontal, 6)
+                  .background(Color.white)
+                  .clipShape(RoundedRectangle(cornerRadius: 4))
+              }
             }
 
-            Text("Hello")
+            Text(viewStore.text)
               .lineLimit(1)
               .font(.body)
               .foregroundStyle(Color.secondary)
           }
         }
+        .padding(.vertical, 8)
+        .background()
+        .compositingGroup()
       }
       .buttonStyle(HoldDownButtonStyle())
     }
