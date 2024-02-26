@@ -12,7 +12,7 @@ public struct UnsentDirectMessageListContentRowLogic {
     let isRead: Bool
     let username: String
     let imageUrl: String
-    
+
     init(match: BeMatch.UnsentDirectMessageListContentRow) {
       id = match.id
       isRead = match.isRead
