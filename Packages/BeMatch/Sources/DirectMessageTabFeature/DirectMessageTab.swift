@@ -3,6 +3,7 @@ import BeMatch
 import BeMatchClient
 import ComposableArchitecture
 import DirectMessageFeature
+import FeedbackGeneratorClient
 import SwiftUI
 
 @Reducer
@@ -26,6 +27,7 @@ public struct DirectMessageTabLogic {
 
   @Dependency(\.bematch) var bematch
   @Dependency(\.analytics) var analytics
+  @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
@@ -67,11 +69,15 @@ public struct DirectMessageTabLogic {
 
       case let .unsent(.child(.content(.rows(.element(_, .delegate(.showDirectMessage(username, targetUserId))))))):
         state.destination = .directMessage(DirectMessageLogic.State(username: username, targetUserId: targetUserId))
-        return .none
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
 
       case let .messages(.child(.content(.rows(.element(_, .delegate(.showDirectMessage(username, targetUserId))))))):
         state.destination = .directMessage(DirectMessageLogic.State(username: username, targetUserId: targetUserId))
-        return .none
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
 
       default:
         return .none
