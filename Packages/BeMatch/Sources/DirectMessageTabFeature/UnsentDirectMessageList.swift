@@ -7,28 +7,27 @@ public struct UnsentDirectMessageListLogic {
 
   public struct State: Equatable {
     var child: Child.State?
-    public init() {}
+
+    static let loading = State()
+
+    init() {}
+
+    init(uniqueElements: [UnsentDirectMessageListContentRowLogic.State]) {
+      let rows = IdentifiedArrayOf(uniqueElements: uniqueElements)
+      let state = UnsentDirectMessageListContentLogic.State(rows: rows)
+      child = .content(state)
+    }
   }
 
   public enum Action {
     case onTask
-    case delayCompleted
     case child(Child.Action)
   }
 
-  @Dependency(\.mainQueue) var mainQueue
-
   public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { state, action in
+    Reduce<State, Action> { _, action in
       switch action {
       case .onTask:
-        return .run { send in
-          try await mainQueue.sleep(for: .seconds(4))
-          await send(.delayCompleted)
-        }
-
-      case .delayCompleted:
-        state.child = .content(UnsentDirectMessageListContentLogic.State())
         return .none
 
       default:

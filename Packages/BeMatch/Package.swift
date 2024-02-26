@@ -177,9 +177,8 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "DirectMessageTabFeature", dependencies: [
-      "AnalyticsKeys",
       "DirectMessageFeature",
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
     ]),
     .target(name: "ForceUpdateFeature", dependencies: [
       "Styleguide",

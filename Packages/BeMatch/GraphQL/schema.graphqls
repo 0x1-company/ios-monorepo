@@ -207,6 +207,25 @@ type MessageEdge {
   node: Message!
 }
 
+type MessageRoom {
+  createdAt: Date!
+  id: ID!
+  latestMessage: Message!
+  targetUser: User!
+  updatedAt: Date!
+  user: User!
+}
+
+type MessageRoomConnection {
+  edges: [MessageRoomEdge!]!
+  pageInfo: PageInfo!
+}
+
+type MessageRoomEdge {
+  cursor: String!
+  node: MessageRoom!
+}
+
 type Mutation {
   """アカウントを閉じる"""
   closeUser: Boolean!
@@ -301,6 +320,7 @@ type Query {
 
   """マッチ一覧"""
   matches(after: String, first: Int!): MatchConnection!
+  messageRooms(after: String, first: Int!): MessageRoomConnection!
 
   """特定のユーザーとのメッセージ一覧"""
   messages(after: String, first: Int!, targetUserId: ID!): MessageConnection!

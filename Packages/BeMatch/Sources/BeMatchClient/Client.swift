@@ -42,4 +42,6 @@ public struct BeMatchClient: Sendable {
 
   public var createMessage: @Sendable (BeMatch.CreateMessageInput) async throws -> BeMatch.CreateMessageMutation.Data
   public var messages: @Sendable (_ targetUserId: String, _ after: String?) -> AsyncThrowingStream<BeMatch.MessagesQuery.Data, Error> = { _, _ in .finished() }
+  public var messageRooms: @Sendable (_ after: String?) -> AsyncThrowingStream<BeMatch.MessageRoomsQuery.Data, Error> = { _ in .finished() }
+  public var directMessageTab: @Sendable () -> AsyncThrowingStream<BeMatch.DirectMessageTabQuery.Data, Error> = { .finished() }
 }
