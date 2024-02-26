@@ -10,7 +10,7 @@ public struct DirectMessageTabLogic {
   public init() {}
 
   public struct State: Equatable {
-    var path = StackState<Path.State>()
+    @PresentationState var destination: Destination.State?
     var unsent: UnsentDirectMessageListLogic.State? = .loading
     var messages: DirectMessageListLogic.State?
     public init() {}
@@ -19,7 +19,7 @@ public struct DirectMessageTabLogic {
   public enum Action {
     case onTask
     case directMessageTabResponse(Result<BeMatch.DirectMessageTabQuery.Data, Error>)
-    case path(StackAction<Path.State, Path.Action>)
+    case destination(PresentationAction<Destination.Action>)
     case unsent(UnsentDirectMessageListLogic.Action)
     case messages(DirectMessageListLogic.Action)
   }
@@ -64,12 +64,20 @@ public struct DirectMessageTabLogic {
         state.messages = nil
         return .none
 
+      case let .unsent(.child(.content(.rows(.element(_, .delegate(.showDirectMessage(username, targetUserId))))))):
+        state.destination = .directMessage(DirectMessageLogic.State(username: username, targetUserId: targetUserId))
+        return .none
+
+      case let .messages(.child(.content(.rows(.element(_, .delegate(.showDirectMessage(username, targetUserId))))))):
+        state.destination = .directMessage(DirectMessageLogic.State(username: username, targetUserId: targetUserId))
+        return .none
+
       default:
         return .none
       }
     }
-    .forEach(\.path, action: \.path) {
-      Path()
+    .ifLet(\.$destination, action: \.destination) {
+      Destination()
     }
     .ifLet(\.unsent, action: \.unsent) {
       UnsentDirectMessageListLogic()
@@ -80,7 +88,7 @@ public struct DirectMessageTabLogic {
   }
 
   @Reducer
-  public struct Path {
+  public struct Destination {
     public enum State: Equatable {
       case directMessage(DirectMessageLogic.State)
     }
@@ -103,7 +111,7 @@ public struct DirectMessageTabView: View {
   }
 
   public var body: some View {
-    NavigationStackStore(store.scope(state: \.path, action: \.path)) {
+    NavigationStack {
       ScrollView(.vertical) {
         LazyVStack(alignment: .leading, spacing: 32) {
           IfLetStore(
@@ -118,24 +126,20 @@ public struct DirectMessageTabView: View {
         }
       }
       .navigationBarTitleDisplayMode(.inline)
+      .task { await store.send(.onTask).finish() }
       .toolbar {
         ToolbarItem(placement: .principal) {
           Image(ImageResource.beMatch)
         }
       }
-    } destination: { store in
-      SwitchStore(store) { initialState in
-        switch initialState {
-        case .directMessage:
-          CaseLet(
-            /DirectMessageTabLogic.Path.State.directMessage,
-            action: DirectMessageTabLogic.Path.Action.directMessage,
-            then: DirectMessageView.init(store:)
-          )
+      .sheet(
+        store: store.scope(state: \.$destination.directMessage, action: \.destination.directMessage)
+      ) { store in
+        NavigationStack {
+          DirectMessageView(store: store)
         }
       }
     }
-    .task { await store.send(.onTask).finish() }
   }
 }
 
