@@ -344,6 +344,7 @@ input ReadMessagesByChatRoomIdInput {
 type ReceivedLike {
   """受け取ったLike数"""
   count: Int!
+  displayCount: String!
   id: ID!
 
   """Likeを送った最新ユーザー"""

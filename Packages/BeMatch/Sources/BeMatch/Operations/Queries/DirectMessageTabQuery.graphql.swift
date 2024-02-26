@@ -8,7 +8,7 @@ public extension BeMatch {
     public static let operationName: String = "DirectMessageTab"
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"query DirectMessageTab($first: Int!) { matches(first: $first) { __typename pageInfo { __typename hasNextPage endCursor } edges { __typename node { __typename ...UnsentDirectMessageListContentRow } } } messageRooms(first: $first) { __typename pageInfo { __typename hasNextPage endCursor } edges { __typename node { __typename id updatedAt } } } }"#,
+        #"query DirectMessageTab($first: Int!) { receivedLike { __typename id displayCount latestUser { __typename id images { __typename id imageUrl } } } matches(first: $first) { __typename pageInfo { __typename hasNextPage endCursor } edges { __typename node { __typename ...UnsentDirectMessageListContentRow } } } messageRooms(first: $first) { __typename pageInfo { __typename hasNextPage endCursor } edges { __typename node { __typename id updatedAt } } } }"#,
         fragments: [UnsentDirectMessageListContentRow.self]
       ))
 
@@ -26,13 +26,75 @@ public extension BeMatch {
 
       public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.Query }
       public static var __selections: [ApolloAPI.Selection] { [
+        .field("receivedLike", ReceivedLike.self),
         .field("matches", Matches.self, arguments: ["first": .variable("first")]),
         .field("messageRooms", MessageRooms.self, arguments: ["first": .variable("first")]),
       ] }
 
+      /// 自分の受け取ったLikeを取得する
+      public var receivedLike: ReceivedLike { __data["receivedLike"] }
       /// マッチ一覧
       public var matches: Matches { __data["matches"] }
       public var messageRooms: MessageRooms { __data["messageRooms"] }
+
+      /// ReceivedLike
+      ///
+      /// Parent Type: `ReceivedLike`
+      public struct ReceivedLike: BeMatch.SelectionSet {
+        public let __data: DataDict
+        public init(_dataDict: DataDict) { __data = _dataDict }
+
+        public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.ReceivedLike }
+        public static var __selections: [ApolloAPI.Selection] { [
+          .field("__typename", String.self),
+          .field("id", BeMatch.ID.self),
+          .field("displayCount", String.self),
+          .field("latestUser", LatestUser?.self),
+        ] }
+
+        public var id: BeMatch.ID { __data["id"] }
+        public var displayCount: String { __data["displayCount"] }
+        /// Likeを送った最新ユーザー
+        public var latestUser: LatestUser? { __data["latestUser"] }
+
+        /// ReceivedLike.LatestUser
+        ///
+        /// Parent Type: `User`
+        public struct LatestUser: BeMatch.SelectionSet {
+          public let __data: DataDict
+          public init(_dataDict: DataDict) { __data = _dataDict }
+
+          public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.User }
+          public static var __selections: [ApolloAPI.Selection] { [
+            .field("__typename", String.self),
+            .field("id", BeMatch.ID.self),
+            .field("images", [Image].self),
+          ] }
+
+          /// user id
+          public var id: BeMatch.ID { __data["id"] }
+          /// ユーザーの画像一覧
+          public var images: [Image] { __data["images"] }
+
+          /// ReceivedLike.LatestUser.Image
+          ///
+          /// Parent Type: `UserImage`
+          public struct Image: BeMatch.SelectionSet {
+            public let __data: DataDict
+            public init(_dataDict: DataDict) { __data = _dataDict }
+
+            public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.UserImage }
+            public static var __selections: [ApolloAPI.Selection] { [
+              .field("__typename", String.self),
+              .field("id", BeMatch.ID.self),
+              .field("imageUrl", String.self),
+            ] }
+
+            public var id: BeMatch.ID { __data["id"] }
+            public var imageUrl: String { __data["imageUrl"] }
+          }
+        }
+      }
 
       /// Matches
       ///

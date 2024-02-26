@@ -1,6 +1,18 @@
 # import UnsentDirectMessageListContentRow from '../fragments/UnsentDirectMessageListContentRow.graphql'
 
 query DirectMessageTab($first: Int!) {
+  receivedLike {
+    id
+    displayCount
+    latestUser {
+      id
+      images {
+        id
+        imageUrl
+      }
+    }
+  }
+
   matches(first:$first) {
     pageInfo {
       hasNextPage
