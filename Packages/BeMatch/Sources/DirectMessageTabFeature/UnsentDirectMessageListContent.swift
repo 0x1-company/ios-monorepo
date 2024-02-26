@@ -46,7 +46,7 @@ public struct UnsentDirectMessageListContentView: View {
             store.scope(state: \.receivedLike, action: \.receivedLike),
             then: UnsentDirectMessageListContentReceivedLikeRowView.init(store:)
           )
-          
+
           ForEachStore(
             store.scope(state: \.rows, action: \.rows),
             content: UnsentDirectMessageListContentRowView.init(store:)

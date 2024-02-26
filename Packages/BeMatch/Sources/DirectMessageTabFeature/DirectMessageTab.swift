@@ -54,8 +54,8 @@ public struct DirectMessageTabLogic {
             .filter { !$0.targetUser.images.isEmpty }
             .map(UnsentDirectMessageListContentRowLogic.State.init(match:)),
           receivedLike: data.receivedLike.latestUser?.images.first?.imageUrl == nil
-          ? nil
-          : UnsentDirectMessageListContentReceivedLikeRowLogic.State(receivedLike: data.receivedLike)
+            ? nil
+            : UnsentDirectMessageListContentReceivedLikeRowLogic.State(receivedLike: data.receivedLike)
         )
         return .none
 
