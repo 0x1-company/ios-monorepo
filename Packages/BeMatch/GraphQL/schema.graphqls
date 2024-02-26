@@ -267,7 +267,7 @@ type Mutation {
   readMatch(matchId: String!): Match!
 
   """作成されたメッセージすべてを既読にする"""
-  readMessages(input: ReadMessagesByChatRoomIdInput!): Boolean!
+  readMessages(input: ReadMessagesInput!): Boolean!
 
   """BeRealのユーザー名を更新する"""
   updateBeReal(input: UpdateBeRealInput!): User!
@@ -337,8 +337,8 @@ type Query {
   usersByLiker: [User!]!
 }
 
-input ReadMessagesByChatRoomIdInput {
-  messageRoomId: ID!
+input ReadMessagesInput {
+  targetUserId: ID!
 }
 
 type ReceivedLike {

@@ -40,6 +40,7 @@ public struct DirectMessageLogic {
     case binding(BindingAction<State>)
     case messagesResponse(Result<BeMatch.MessagesQuery.Data, Error>)
     case createMessageResponse(Result<BeMatch.CreateMessageMutation.Data, Error>)
+    case readMessagesResponse(Result<BeMatch.ReadMessagesMutation.Data, Error>)
   }
 
   @Dependency(\.dismiss) var dismiss
@@ -54,7 +55,16 @@ public struct DirectMessageLogic {
       case .onTask:
         analytics.logScreen(screenName: "DirectMessage", of: self)
         return .run { [targetUserId = state.targetUserId] send in
-          await messagesRequest(send: send, targetUserId: targetUserId, after: nil)
+          await withTaskGroup(of: Void.self) { group in
+            group.addTask {
+              await messagesRequest(send: send, targetUserId: targetUserId, after: nil)
+            }
+            group.addTask {
+              await send(.readMessagesResponse(Result {
+                try await bematch.readMessages(BeMatch.ReadMessagesInput(targetUserId: targetUserId))
+              }))
+            }
+          }
         }
 
       case .closeButtonTapped:
