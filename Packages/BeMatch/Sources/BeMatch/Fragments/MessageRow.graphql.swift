@@ -22,14 +22,10 @@ public extension BeMatch {
       .field("createdAt", BeMatch.Date.self),
     ] }
 
-    /// direct message id
     public var id: BeMatch.ID { __data["id"] }
-    /// message content
     public var text: String { __data["text"] }
-    /// user id
     public var userId: BeMatch.ID { __data["userId"] }
     public var isAuthor: Bool { __data["isAuthor"] }
-    /// When the message is created
     public var createdAt: BeMatch.Date { __data["createdAt"] }
   }
 }

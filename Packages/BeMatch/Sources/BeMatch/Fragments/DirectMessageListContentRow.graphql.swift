@@ -6,7 +6,7 @@
 public extension BeMatch {
   struct DirectMessageListContentRow: BeMatch.SelectionSet, Fragment {
     public static var fragmentDefinition: StaticString {
-      #"fragment DirectMessageListContentRow on MessageRoom { __typename id updatedAt targetUser { __typename id berealUsername images { __typename id imageUrl } } latestMessage { __typename id text isAuthor } }"#
+      #"fragment DirectMessageListContentRow on MessageRoom { __typename id updatedAt targetUser { __typename id berealUsername images { __typename id imageUrl } } latestMessage { __typename id text isAuthor isRead } }"#
     }
 
     public let __data: DataDict
@@ -80,13 +80,13 @@ public extension BeMatch {
         .field("id", BeMatch.ID.self),
         .field("text", String.self),
         .field("isAuthor", Bool.self),
+        .field("isRead", Bool.self),
       ] }
 
-      /// direct message id
       public var id: BeMatch.ID { __data["id"] }
-      /// message content
       public var text: String { __data["text"] }
       public var isAuthor: Bool { __data["isAuthor"] }
+      public var isRead: Bool { __data["isRead"] }
     }
   }
 }

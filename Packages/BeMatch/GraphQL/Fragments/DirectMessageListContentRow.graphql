@@ -13,5 +13,6 @@ fragment DirectMessageListContentRow on MessageRoom {
     id
     text
     isAuthor
+    isRead
   }
 }
