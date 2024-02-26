@@ -251,7 +251,7 @@ public struct SettingsView: View {
                 .foregroundStyle(Color.primary)
             }
           }
-          
+
           Link(destination: Constants.faqURL) {
             LabeledContent {
               Image(systemName: "chevron.right")
