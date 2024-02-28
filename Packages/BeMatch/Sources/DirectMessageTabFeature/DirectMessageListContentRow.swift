@@ -28,7 +28,7 @@ public struct DirectMessageListContentRowLogic {
       isAuthor = messageRoom.latestMessage.isAuthor
       isRead = messageRoom.latestMessage.isRead
     }
-    
+
     mutating func read() {
       isRead = true
     }
