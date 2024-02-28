@@ -18,8 +18,14 @@ public struct DirectMessageListContentLogic {
   }
 
   public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { _, action in
+    Reduce<State, Action> { state, action in
       switch action {
+      case let .rows(.element(id, .rowButtonTapped)):
+        guard var row = state.rows[id: id] else { return .none }
+        row.read()
+        state.rows.updateOrAppend(row)
+        return .none
+
       default:
         return .none
       }
