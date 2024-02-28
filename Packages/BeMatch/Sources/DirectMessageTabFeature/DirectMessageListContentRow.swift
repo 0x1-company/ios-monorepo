@@ -14,7 +14,11 @@ public struct DirectMessageListContentRowLogic {
     let imageUrl: String
     let text: String
     let isAuthor: Bool
-    let textForegroundColor: Color
+    var isRead: Bool
+
+    var textForegroundColor: Color {
+      !isAuthor && !isRead ? Color.primary : Color.secondary
+    }
 
     public init(messageRoom: BeMatch.DirectMessageListContentRow) {
       id = messageRoom.targetUser.id
@@ -22,8 +26,11 @@ public struct DirectMessageListContentRowLogic {
       imageUrl = messageRoom.targetUser.images.first!.imageUrl
       text = messageRoom.latestMessage.text
       isAuthor = messageRoom.latestMessage.isAuthor
-      let isRead = messageRoom.latestMessage.isRead
-      textForegroundColor = !isAuthor && !isRead ? Color.primary : Color.secondary
+      isRead = messageRoom.latestMessage.isRead
+    }
+
+    mutating func read() {
+      isRead = true
     }
   }
 
