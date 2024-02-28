@@ -80,6 +80,7 @@ public struct DirectMessageTabLogic {
 
       case .unsent(.child(.content(.receivedLike(.rowButtonTapped)))):
         return .run { send in
+          await feedbackGenerator.impactOccurred()
           for try await data in bematch.hasPremiumMembership() {
             await send(.hasPremiumMembershipResponse(.success(data)))
           }
