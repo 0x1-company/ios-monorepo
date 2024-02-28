@@ -69,7 +69,7 @@ public struct DirectMessageTabLogic {
         state.unsent = nil
         state.messages = nil
         return .none
-        
+
       case let .hasPremiumMembershipResponse(.success(data)):
         if data.hasPremiumMembership {
           state.destination = .receivedLikeSwipe()
@@ -98,11 +98,11 @@ public struct DirectMessageTabLogic {
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
-        
+
       case .destination(.presented(.membership(.delegate(.dismiss)))):
         state.destination = nil
         return .none
-        
+
       case .destination(.presented(.receivedLikeSwipe(.delegate(.dismiss)))):
         state.destination = nil
         return .none
