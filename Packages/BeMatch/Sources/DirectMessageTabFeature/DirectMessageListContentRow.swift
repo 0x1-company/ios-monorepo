@@ -10,6 +10,7 @@ public struct DirectMessageListContentRowLogic {
 
   public struct State: Equatable, Identifiable {
     public let id: String
+    let updatedAt: BeMatch.Date
     let username: String
     let imageUrl: String
     let text: String
@@ -22,6 +23,7 @@ public struct DirectMessageListContentRowLogic {
 
     public init(messageRoom: BeMatch.DirectMessageListContentRow) {
       id = messageRoom.targetUser.id
+      updatedAt = messageRoom.updatedAt
       username = messageRoom.targetUser.berealUsername
       imageUrl = messageRoom.targetUser.images.first!.imageUrl
       text = messageRoom.latestMessage.text

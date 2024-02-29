@@ -41,19 +41,19 @@ public extension BeMatch {
       case "Message": return BeMatch.Objects.Message
       case "UserImage": return BeMatch.Objects.UserImage
       case "Query": return BeMatch.Objects.Query
-      case "MessageConnection": return BeMatch.Objects.MessageConnection
+      case "MatchConnection": return BeMatch.Objects.MatchConnection
       case "PageInfo": return BeMatch.Objects.PageInfo
+      case "MatchEdge": return BeMatch.Objects.MatchEdge
+      case "MessageConnection": return BeMatch.Objects.MessageConnection
       case "MessageEdge": return BeMatch.Objects.MessageEdge
       case "UserCategory": return BeMatch.Objects.UserCategory
+      case "PushNotificationBadge": return BeMatch.Objects.PushNotificationBadge
       case "MessageRoomConnection": return BeMatch.Objects.MessageRoomConnection
       case "MessageRoomEdge": return BeMatch.Objects.MessageRoomEdge
       case "MessageRoom": return BeMatch.Objects.MessageRoom
-      case "PushNotificationBadge": return BeMatch.Objects.PushNotificationBadge
       case "InvitationCode": return BeMatch.Objects.InvitationCode
       case "ReceivedLike": return BeMatch.Objects.ReceivedLike
       case "Achievement": return BeMatch.Objects.Achievement
-      case "MatchConnection": return BeMatch.Objects.MatchConnection
-      case "MatchEdge": return BeMatch.Objects.MatchEdge
       case "InvitationCampaign": return BeMatch.Objects.InvitationCampaign
       case "Banner": return BeMatch.Objects.Banner
       default: return nil

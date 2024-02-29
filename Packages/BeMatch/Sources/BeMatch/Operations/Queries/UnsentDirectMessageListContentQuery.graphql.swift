@@ -4,11 +4,12 @@
 @_exported import ApolloAPI
 
 public extension BeMatch {
-  class MessageRoomsQuery: GraphQLQuery {
-    public static let operationName: String = "MessageRooms"
+  class UnsentDirectMessageListContentQuery: GraphQLQuery {
+    public static let operationName: String = "UnsentDirectMessageListContent"
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"query MessageRooms($first: Int!, $after: String) { messageRooms(first: $first, after: $after) { __typename pageInfo { __typename hasNextPage endCursor } edges { __typename node { __typename id updatedAt } } } }"#
+        #"query UnsentDirectMessageListContent($first: Int!, $after: String) { matches(first: $first, after: $after) { __typename pageInfo { __typename hasNextPage endCursor } edges { __typename node { __typename ...UnsentDirectMessageListContentRow } } } }"#,
+        fragments: [UnsentDirectMessageListContentRow.self]
       ))
 
     public var first: Int
@@ -33,22 +34,23 @@ public extension BeMatch {
 
       public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.Query }
       public static var __selections: [ApolloAPI.Selection] { [
-        .field("messageRooms", MessageRooms.self, arguments: [
+        .field("matches", Matches.self, arguments: [
           "first": .variable("first"),
           "after": .variable("after"),
         ]),
       ] }
 
-      public var messageRooms: MessageRooms { __data["messageRooms"] }
+      /// マッチ一覧
+      public var matches: Matches { __data["matches"] }
 
-      /// MessageRooms
+      /// Matches
       ///
-      /// Parent Type: `MessageRoomConnection`
-      public struct MessageRooms: BeMatch.SelectionSet {
+      /// Parent Type: `MatchConnection`
+      public struct Matches: BeMatch.SelectionSet {
         public let __data: DataDict
         public init(_dataDict: DataDict) { __data = _dataDict }
 
-        public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.MessageRoomConnection }
+        public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.MatchConnection }
         public static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
           .field("pageInfo", PageInfo.self),
@@ -58,7 +60,7 @@ public extension BeMatch {
         public var pageInfo: PageInfo { __data["pageInfo"] }
         public var edges: [Edge] { __data["edges"] }
 
-        /// MessageRooms.PageInfo
+        /// Matches.PageInfo
         ///
         /// Parent Type: `PageInfo`
         public struct PageInfo: BeMatch.SelectionSet {
@@ -78,14 +80,14 @@ public extension BeMatch {
           public var endCursor: String? { __data["endCursor"] }
         }
 
-        /// MessageRooms.Edge
+        /// Matches.Edge
         ///
-        /// Parent Type: `MessageRoomEdge`
+        /// Parent Type: `MatchEdge`
         public struct Edge: BeMatch.SelectionSet {
           public let __data: DataDict
           public init(_dataDict: DataDict) { __data = _dataDict }
 
-          public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.MessageRoomEdge }
+          public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.MatchEdge }
           public static var __selections: [ApolloAPI.Selection] { [
             .field("__typename", String.self),
             .field("node", Node.self),
@@ -93,22 +95,35 @@ public extension BeMatch {
 
           public var node: Node { __data["node"] }
 
-          /// MessageRooms.Edge.Node
+          /// Matches.Edge.Node
           ///
-          /// Parent Type: `MessageRoom`
+          /// Parent Type: `Match`
           public struct Node: BeMatch.SelectionSet {
             public let __data: DataDict
             public init(_dataDict: DataDict) { __data = _dataDict }
 
-            public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.MessageRoom }
+            public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.Match }
             public static var __selections: [ApolloAPI.Selection] { [
               .field("__typename", String.self),
-              .field("id", BeMatch.ID.self),
-              .field("updatedAt", BeMatch.Date.self),
+              .fragment(UnsentDirectMessageListContentRow.self),
             ] }
 
+            /// match id
             public var id: BeMatch.ID { __data["id"] }
-            public var updatedAt: BeMatch.Date { __data["updatedAt"] }
+            /// 既読かどうか
+            public var isRead: Bool { __data["isRead"] }
+            public var createdAt: BeMatch.Date { __data["createdAt"] }
+            /// マッチした相手
+            public var targetUser: TargetUser { __data["targetUser"] }
+
+            public struct Fragments: FragmentContainer {
+              public let __data: DataDict
+              public init(_dataDict: DataDict) { __data = _dataDict }
+
+              public var unsentDirectMessageListContentRow: UnsentDirectMessageListContentRow { _toFragment() }
+            }
+
+            public typealias TargetUser = UnsentDirectMessageListContentRow.TargetUser
           }
         }
       }

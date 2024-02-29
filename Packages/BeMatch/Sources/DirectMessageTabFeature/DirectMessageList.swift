@@ -12,8 +12,17 @@ public struct DirectMessageListLogic {
 
     init() {}
 
-    public init(uniqueElements: [DirectMessageListContentRowLogic.State]) {
-      child = .content(DirectMessageListContentLogic.State(uniqueElements: uniqueElements))
+    public init(
+      after: String?,
+      hasNextPage: Bool,
+      uniqueElements: [DirectMessageListContentRowLogic.State]
+    ) {
+      let contentState = DirectMessageListContentLogic.State(
+        after: after,
+        hasNextPage: hasNextPage,
+        uniqueElements: uniqueElements
+      )
+      child = .content(contentState)
     }
   }
 
