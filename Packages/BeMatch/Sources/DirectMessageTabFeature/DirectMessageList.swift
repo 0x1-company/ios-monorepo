@@ -9,6 +9,8 @@ public struct DirectMessageListLogic {
     var child: Child.State?
 
     static let loading = State()
+    
+    init() {}
 
     public init(uniqueElements: [DirectMessageListContentRowLogic.State]) {
       child = .content(DirectMessageListContentLogic.State(uniqueElements: uniqueElements))

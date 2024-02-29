@@ -71,11 +71,7 @@ public struct DirectMessageTabLogic {
         return .none
 
       case let .hasPremiumMembershipResponse(.success(data)):
-        if data.hasPremiumMembership {
-          state.destination = .receivedLikeSwipe()
-        } else {
-          state.destination = .membership()
-        }
+        state.destination = data.hasPremiumMembership ? .receivedLikeSwipe() : .membership()
         return .none
 
       case .unsent(.child(.content(.receivedLike(.rowButtonTapped)))):
