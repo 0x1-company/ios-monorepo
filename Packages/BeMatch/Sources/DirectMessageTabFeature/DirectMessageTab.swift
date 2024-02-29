@@ -97,7 +97,7 @@ public struct DirectMessageTabLogic {
         }
 
       case .destination(.presented(.membership(.delegate(.dismiss)))),
-          .destination(.presented(.receivedLike(.delegate(.dismiss)))):
+           .destination(.presented(.receivedLike(.delegate(.dismiss)))):
         state.destination = nil
         return .none
 
