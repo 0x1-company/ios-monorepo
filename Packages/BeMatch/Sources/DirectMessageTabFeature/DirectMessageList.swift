@@ -9,7 +9,7 @@ public struct DirectMessageListLogic {
     var child: Child.State?
 
     static let loading = State()
-    
+
     init() {}
 
     public init(uniqueElements: [DirectMessageListContentRowLogic.State]) {
