@@ -15,7 +15,7 @@ public struct DirectMessageTabLogic {
   public struct State: Equatable {
     @PresentationState var destination: Destination.State?
     var unsent: UnsentDirectMessageListLogic.State? = .loading
-    var messages: DirectMessageListLogic.State?
+    var messages: DirectMessageListLogic.State? = .loading
     public init() {}
   }
 
