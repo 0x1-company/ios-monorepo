@@ -32,9 +32,9 @@ public struct DirectMessageListContentLogic {
     case directMessageListContentResponse(Result<BeMatch.DirectMessageListContentQuery.Data, Error>)
     case rows(IdentifiedActionOf<DirectMessageListContentRowLogic>)
   }
-  
+
   @Dependency(\.bematch) var bematch
-  
+
   enum Cancel {
     case directMessageListContent
   }
@@ -55,7 +55,7 @@ public struct DirectMessageListContentLogic {
       case let .directMessageListContentResponse(.success(data)):
         state.after = data.messageRooms.pageInfo.endCursor
         state.hasNextPage = data.messageRooms.pageInfo.hasNextPage
-        
+
         let newRows = data.messageRooms.edges
           .map(\.node.fragments.directMessageListContentRow)
           .filter { !$0.targetUser.images.isEmpty }
