@@ -47,10 +47,11 @@ public struct DirectMessageTabLogic {
 
       case let .directMessageTabResponse(.success(data)):
         state.messages = DirectMessageListLogic.State(
+          after: data.messageRooms.pageInfo.endCursor,
+          hasNextPage: data.messageRooms.pageInfo.hasNextPage,
           uniqueElements: data.messageRooms.edges
             .map(\.node.fragments.directMessageListContentRow)
             .filter { !$0.targetUser.images.isEmpty }
-            .sorted(by: { $0.updatedAt > $1.updatedAt })
             .map(DirectMessageListContentRowLogic.State.init(messageRoom:))
         )
         state.unsent = UnsentDirectMessageListLogic.State(
@@ -97,7 +98,7 @@ public struct DirectMessageTabLogic {
         }
 
       case .destination(.presented(.membership(.delegate(.dismiss)))),
-          .destination(.presented(.receivedLike(.delegate(.dismiss)))):
+           .destination(.presented(.receivedLike(.delegate(.dismiss)))):
         state.destination = nil
         return .none
 
