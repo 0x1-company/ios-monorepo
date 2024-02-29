@@ -127,59 +127,61 @@ public struct DirectMessageView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
-      VStack(spacing: 0) {
-        ScrollView {
-          LazyVStack(spacing: 8) {
-            ForEachStore(
-              store.scope(state: \.displayRows, action: \.rows),
-              content: DirectMessageRowView.init(store:)
-            )
+    NavigationStack {
+      WithViewStore(store, observe: { $0 }) { viewStore in
+        VStack(spacing: 0) {
+          ScrollView {
+            LazyVStack(spacing: 8) {
+              ForEachStore(
+                store.scope(state: \.displayRows, action: \.rows),
+                content: DirectMessageRowView.init(store:)
+              )
+            }
+            .padding(.all, 16)
           }
-          .padding(.all, 16)
-        }
 
-        HStack(spacing: 8) {
-          TextField(
-            text: viewStore.$text,
-            axis: .vertical
-          ) {
-            Text("Message", bundle: .module)
+          HStack(spacing: 8) {
+            TextField(
+              text: viewStore.$text,
+              axis: .vertical
+            ) {
+              Text("Message", bundle: .module)
+            }
+            .lineLimit(1 ... 10)
+            .padding(.vertical, 8)
+            .padding(.horizontal, 16)
+            .tint(Color.white)
+            .background(Color(uiColor: UIColor.tertiarySystemBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 26))
+
+            Button {
+              store.send(.sendButtonTapped, animation: .default)
+            } label: {
+              Image(systemName: "paperplane.fill")
+                .foregroundStyle(Color.primary)
+            }
+            .disabled(viewStore.isDisabled)
           }
-          .lineLimit(1 ... 10)
           .padding(.vertical, 8)
           .padding(.horizontal, 16)
-          .tint(Color.white)
-          .background(Color(uiColor: UIColor.tertiarySystemBackground))
-          .clipShape(RoundedRectangle(cornerRadius: 26))
-
-          Button {
-            store.send(.sendButtonTapped, animation: .default)
-          } label: {
-            Image(systemName: "paperplane.fill")
-              .foregroundStyle(Color.primary)
+          .background(Color(uiColor: UIColor.secondarySystemBackground))
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .task { await store.send(.onTask).finish() }
+        .toolbar {
+          ToolbarItem(placement: .principal) {
+            Text(viewStore.username)
+              .font(.system(.callout, weight: .semibold))
           }
-          .disabled(viewStore.isDisabled)
-        }
-        .padding(.vertical, 8)
-        .padding(.horizontal, 16)
-        .background(Color(uiColor: UIColor.secondarySystemBackground))
-      }
-      .navigationBarTitleDisplayMode(.inline)
-      .task { await store.send(.onTask).finish() }
-      .toolbar {
-        ToolbarItem(placement: .principal) {
-          Text(viewStore.username)
-            .font(.system(.callout, weight: .semibold))
-        }
 
-        ToolbarItem(placement: .topBarLeading) {
-          Button {
-            store.send(.closeButtonTapped)
-          } label: {
-            Image(systemName: "chevron.down")
-              .foregroundStyle(Color.white)
-              .font(.system(.headline, weight: .semibold))
+          ToolbarItem(placement: .topBarLeading) {
+            Button {
+              store.send(.closeButtonTapped)
+            } label: {
+              Image(systemName: "chevron.down")
+                .foregroundStyle(Color.white)
+                .font(.system(.headline, weight: .semibold))
+            }
           }
         }
       }

@@ -71,7 +71,7 @@ public struct DirectMessageTabLogic {
         return .none
 
       case let .hasPremiumMembershipResponse(.success(data)):
-        state.destination = data.hasPremiumMembership ? .receivedLikeSwipe() : .membership()
+        state.destination = data.hasPremiumMembership ? .receivedLike() : .membership()
         return .none
 
       case .unsent(.child(.content(.receivedLike(.rowButtonTapped)))):
@@ -96,11 +96,8 @@ public struct DirectMessageTabLogic {
           await feedbackGenerator.impactOccurred()
         }
 
-      case .destination(.presented(.membership(.delegate(.dismiss)))):
-        state.destination = nil
-        return .none
-
-      case .destination(.presented(.receivedLikeSwipe(.delegate(.dismiss)))):
+      case .destination(.presented(.membership(.delegate(.dismiss)))),
+          .destination(.presented(.receivedLike(.delegate(.dismiss)))):
         state.destination = nil
         return .none
 
@@ -124,13 +121,13 @@ public struct DirectMessageTabLogic {
     public enum State: Equatable {
       case directMessage(DirectMessageLogic.State)
       case membership(MembershipLogic.State = .init())
-      case receivedLikeSwipe(ReceivedLikeSwipeLogic.State = .init())
+      case receivedLike(ReceivedLikeSwipeLogic.State = .init())
     }
 
     public enum Action {
       case directMessage(DirectMessageLogic.Action)
       case membership(MembershipLogic.Action)
-      case receivedLikeSwipe(ReceivedLikeSwipeLogic.Action)
+      case receivedLike(ReceivedLikeSwipeLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
@@ -140,7 +137,7 @@ public struct DirectMessageTabLogic {
       Scope(state: \.membership, action: \.membership) {
         MembershipLogic()
       }
-      Scope(state: \.receivedLikeSwipe, action: \.receivedLikeSwipe) {
+      Scope(state: \.receivedLike, action: \.receivedLike) {
         ReceivedLikeSwipeLogic()
       }
     }
@@ -177,26 +174,17 @@ public struct DirectMessageTabView: View {
         }
       }
       .sheet(
-        store: store.scope(state: \.$destination.directMessage, action: \.destination.directMessage)
-      ) { store in
-        NavigationStack {
-          DirectMessageView(store: store)
-        }
-      }
+        store: store.scope(state: \.$destination.directMessage, action: \.destination.directMessage),
+        content: DirectMessageView.init(store:)
+      )
       .fullScreenCover(
-        store: store.scope(state: \.$destination.membership, action: \.destination.membership)
-      ) { store in
-        NavigationStack {
-          MembershipView(store: store)
-        }
-      }
+        store: store.scope(state: \.$destination.membership, action: \.destination.membership),
+        content: MembershipView.init(store:)
+      )
       .fullScreenCover(
-        store: store.scope(state: \.$destination.receivedLikeSwipe, action: \.destination.receivedLikeSwipe)
-      ) { store in
-        NavigationStack {
-          ReceivedLikeSwipeView(store: store)
-        }
-      }
+        store: store.scope(state: \.$destination.receivedLike, action: \.destination.receivedLike),
+        content: ReceivedLikeSwipeView.init(store:)
+      )
     }
   }
 }

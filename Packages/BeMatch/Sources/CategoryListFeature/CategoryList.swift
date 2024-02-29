@@ -138,11 +138,8 @@ public struct CategoryListView: View {
       }
     }
     .fullScreenCover(
-      store: store.scope(state: \.$destination.membership, action: \.destination.membership)
-    ) { store in
-      NavigationStack {
-        MembershipView(store: store)
-      }
-    }
+      store: store.scope(state: \.$destination.membership, action: \.destination.membership),
+      content: MembershipView.init(store:)
+    )
   }
 }

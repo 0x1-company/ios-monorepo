@@ -90,7 +90,7 @@ public struct MatchNavigationLogic {
           await feedbackGenerator.impactOccurred()
         }
 
-      case .destination(.presented(.receivedLikeSwipe(.delegate(.dismiss)))):
+      case .destination(.presented(.receivedLike(.delegate(.dismiss)))):
         state.destination = nil
         return .run { _ in
           await feedbackGenerator.impactOccurred()
@@ -101,11 +101,7 @@ public struct MatchNavigationLogic {
         return .none
 
       case let .hasPremiumMembershipResponse(.success(data)):
-        if data.hasPremiumMembership {
-          state.destination = .receivedLikeSwipe()
-        } else {
-          state.destination = .membership()
-        }
+        state.destination = data.hasPremiumMembership ? .receivedLike() : .membership()
         return .none
 
       default:
@@ -159,14 +155,14 @@ public struct MatchNavigationLogic {
       case alert(AlertState<Action.Alert>)
       case membership(MembershipLogic.State = .init())
       case profileExternal(ProfileExternalLogic.State)
-      case receivedLikeSwipe(ReceivedLikeSwipeLogic.State = .init())
+      case receivedLike(ReceivedLikeSwipeLogic.State = .init())
     }
 
     public enum Action {
       case alert(Alert)
       case membership(MembershipLogic.Action)
       case profileExternal(ProfileExternalLogic.Action)
-      case receivedLikeSwipe(ReceivedLikeSwipeLogic.Action)
+      case receivedLike(ReceivedLikeSwipeLogic.Action)
 
       public enum Alert: Equatable {
         case confirmOkay
@@ -181,7 +177,7 @@ public struct MatchNavigationLogic {
       Scope(state: \.profileExternal, action: \.profileExternal) {
         ProfileExternalLogic()
       }
-      Scope(state: \.receivedLikeSwipe, action: \.receivedLikeSwipe) {
+      Scope(state: \.receivedLike, action: \.receivedLike) {
         ReceivedLikeSwipeLogic()
       }
     }
@@ -237,19 +233,13 @@ public struct MatchNavigationView: View {
     .tint(Color.primary)
     .alert(store: store.scope(state: \.$destination.alert, action: \.destination.alert))
     .fullScreenCover(
-      store: store.scope(state: \.$destination.membership, action: \.destination.membership)
-    ) { store in
-      NavigationStack {
-        MembershipView(store: store)
-      }
-    }
+      store: store.scope(state: \.$destination.membership, action: \.destination.membership),
+      content: MembershipView.init(store:)
+    )
     .fullScreenCover(
-      store: store.scope(state: \.$destination.receivedLikeSwipe, action: \.destination.receivedLikeSwipe)
-    ) { store in
-      NavigationStack {
-        ReceivedLikeSwipeView(store: store)
-      }
-    }
+      store: store.scope(state: \.$destination.receivedLike, action: \.destination.receivedLike),
+      content: ReceivedLikeSwipeView.init(store:)
+    )
     .fullScreenCover(
       store: store.scope(state: \.$destination.profileExternal, action: \.destination.profileExternal),
       content: ProfileExternalView.init(store:)

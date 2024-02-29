@@ -311,12 +311,9 @@ public struct ProfileExternalView: View {
           .presentationDetents([.medium, .large])
       }
       .sheet(
-        store: store.scope(state: \.$destination.directMessage, action: \.destination.directMessage)
-      ) { store in
-        NavigationStack {
-          DirectMessageView(store: store)
-        }
-      }
+        store: store.scope(state: \.$destination.directMessage, action: \.destination.directMessage),
+        content: DirectMessageView.init(store:)
+      )
       .gesture(
         DragGesture()
           .onEnded { _ in
