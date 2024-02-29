@@ -305,81 +305,81 @@ public struct MembershipView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
-      IfLetStore(store.scope(state: \.child, action: \.child)) { store in
-        SwitchStore(store) { initialState in
-          switch initialState {
-          case .campaign:
-            CaseLet(
-              /MembershipLogic.Child.State.campaign,
-              action: MembershipLogic.Child.Action.campaign,
-              then: MembershipCampaignView.init(store:)
-            )
-          case .purchase:
-            CaseLet(
-              /MembershipLogic.Child.State.purchase,
-              action: MembershipLogic.Child.Action.purchase,
-              then: MembershipPurchaseView.init(store:)
-            )
+    NavigationStack {
+      WithViewStore(store, observe: { $0 }) { viewStore in
+        IfLetStore(store.scope(state: \.child, action: \.child)) { store in
+          SwitchStore(store) { initialState in
+            switch initialState {
+            case .campaign:
+              CaseLet(
+                /MembershipLogic.Child.State.campaign,
+                action: MembershipLogic.Child.Action.campaign,
+                then: MembershipCampaignView.init(store:)
+              )
+            case .purchase:
+              CaseLet(
+                /MembershipLogic.Child.State.purchase,
+                action: MembershipLogic.Child.Action.purchase,
+                then: MembershipPurchaseView.init(store:)
+              )
+            }
           }
+        } else: {
+          ProgressView()
+            .tint(Color.primary)
         }
-      } else: {
-        ProgressView()
-          .tint(Color.primary)
-      }
-      .ignoresSafeArea()
-      .task { await store.send(.onTask).finish() }
-      .alert(store: store.scope(state: \.$destination.alert, action: \.destination.alert))
-      .toolbar {
-        if !viewStore.isActivityIndicatorVisible {
-          ToolbarItem(placement: .topBarLeading) {
-            Button {
-              store.send(.closeButtonTapped)
-            } label: {
-              Image(systemName: "xmark")
-                .foregroundStyle(Color.primary)
+        .ignoresSafeArea()
+        .task { await store.send(.onTask).finish() }
+        .alert(store: store.scope(state: \.$destination.alert, action: \.destination.alert))
+        .toolbar {
+          if !viewStore.isActivityIndicatorVisible {
+            ToolbarItem(placement: .topBarLeading) {
+              Button {
+                store.send(.closeButtonTapped)
+              } label: {
+                Image(systemName: "xmark")
+                  .foregroundStyle(Color.primary)
+              }
             }
           }
         }
-      }
-      .overlay {
-        if viewStore.isActivityIndicatorVisible {
-          ProgressView()
-            .tint(Color.white)
-            .progressViewStyle(CircularProgressViewStyle())
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.black.opacity(0.6))
+        .overlay {
+          if viewStore.isActivityIndicatorVisible {
+            ProgressView()
+              .tint(Color.white)
+              .progressViewStyle(CircularProgressViewStyle())
+              .frame(maxWidth: .infinity, maxHeight: .infinity)
+              .background(Color.black.opacity(0.6))
+          }
         }
-      }
-      .sheet(isPresented: viewStore.$isPresented) {
-        ActivityView(
-          activityItems: [viewStore.shareText],
-          applicationActivities: nil
-        ) { activityType, result, _, _ in
-          store.send(
-            .onCompletion(
-              MembershipLogic.CompletionWithItems(
-                activityType: activityType,
-                result: result
+        .sheet(isPresented: viewStore.$isPresented) {
+          ActivityView(
+            activityItems: [viewStore.shareText],
+            applicationActivities: nil
+          ) { activityType, result, _, _ in
+            store.send(
+              .onCompletion(
+                MembershipLogic.CompletionWithItems(
+                  activityType: activityType,
+                  result: result
+                )
               )
             )
-          )
+          }
+          .presentationDetents([.medium, .large])
         }
-        .presentationDetents([.medium, .large])
       }
     }
   }
 }
 
 #Preview {
-  NavigationStack {
-    MembershipView(
-      store: .init(
-        initialState: MembershipLogic.State(),
-        reducer: { MembershipLogic() }
-      )
+  MembershipView(
+    store: .init(
+      initialState: MembershipLogic.State(),
+      reducer: { MembershipLogic() }
     )
-  }
+  )
   .environment(\.colorScheme, .dark)
   .environment(\.locale, Locale(identifier: "ja-JP"))
 }

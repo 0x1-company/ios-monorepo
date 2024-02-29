@@ -107,38 +107,40 @@ public struct ReceivedLikeSwipeView: View {
   }
 
   public var body: some View {
-    SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
-      switch initialState {
-      case .loading:
-        Color.black
-          .overlay {
-            ProgressView()
-              .tint(Color.white)
-          }
+    NavigationStack {
+      SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
+        switch initialState {
+        case .loading:
+          Color.black
+            .overlay {
+              ProgressView()
+                .tint(Color.white)
+            }
 
-      case .empty:
-        emptyView
+        case .empty:
+          emptyView
 
-      case .content:
-        CaseLet(
-          /ReceivedLikeSwipeLogic.Child.State.content,
-          action: ReceivedLikeSwipeLogic.Child.Action.content,
-          then: SwipeView.init(store:)
-        )
+        case .content:
+          CaseLet(
+            /ReceivedLikeSwipeLogic.Child.State.content,
+            action: ReceivedLikeSwipeLogic.Child.Action.content,
+            then: SwipeView.init(store:)
+          )
+        }
       }
-    }
-    .navigationTitle(String(localized: "See who likes you", bundle: .module))
-    .navigationBarTitleDisplayMode(.inline)
-    .task { await store.send(.onTask).finish() }
-    .toolbar {
-      ToolbarItem(placement: .topBarLeading) {
-        Button {
-          store.send(.closeButtonTapped)
-        } label: {
-          Image(systemName: "chevron.down")
-            .bold()
-            .foregroundStyle(Color.white)
-            .frame(width: 44, height: 44)
+      .navigationTitle(String(localized: "See who likes you", bundle: .module))
+      .navigationBarTitleDisplayMode(.inline)
+      .task { await store.send(.onTask).finish() }
+      .toolbar {
+        ToolbarItem(placement: .topBarLeading) {
+          Button {
+            store.send(.closeButtonTapped)
+          } label: {
+            Image(systemName: "chevron.down")
+              .bold()
+              .foregroundStyle(Color.white)
+              .frame(width: 44, height: 44)
+          }
         }
       }
     }
