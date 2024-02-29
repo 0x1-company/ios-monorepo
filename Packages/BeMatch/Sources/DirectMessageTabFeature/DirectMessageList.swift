@@ -7,7 +7,7 @@ public struct DirectMessageListLogic {
 
   public struct State: Equatable {
     var child: Child.State?
-    
+
     static let loading = State()
 
     public init(uniqueElements: [DirectMessageListContentRowLogic.State]) {
