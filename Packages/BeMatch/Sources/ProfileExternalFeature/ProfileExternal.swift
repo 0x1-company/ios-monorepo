@@ -295,7 +295,6 @@ public struct ProfileExternalView: View {
         .ignoresSafeArea()
       }
       .background(Material.ultraThin)
-      .presentationBackground(Color.clear)
       .task { await store.send(.onTask).finish() }
       .confirmationDialog(
         store: store.scope(
