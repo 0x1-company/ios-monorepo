@@ -13,13 +13,17 @@ public struct UnsentDirectMessageListLogic {
     init() {}
 
     init(
+      after: String?,
+      hasNextPage: Bool,
       uniqueElements: [UnsentDirectMessageListContentRowLogic.State],
       receivedLike: UnsentDirectMessageListContentReceivedLikeRowLogic.State?
     ) {
       let rows = IdentifiedArrayOf(uniqueElements: uniqueElements)
       let state = UnsentDirectMessageListContentLogic.State(
-        rows: rows,
-        receivedLike: receivedLike
+        after: after,
+        hasNextPage: hasNextPage,
+        receivedLike: receivedLike,
+        rows: rows
       )
       child = .content(state)
     }
