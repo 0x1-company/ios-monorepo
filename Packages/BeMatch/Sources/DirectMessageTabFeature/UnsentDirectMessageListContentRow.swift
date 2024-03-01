@@ -11,6 +11,7 @@ public struct UnsentDirectMessageListContentRowLogic {
   public struct State: Equatable, Identifiable {
     public let id: String
     let createdAt: BeMatch.Date
+    let matchId: String
     var isRead: Bool
     let username: String
     let imageUrl: String
@@ -18,6 +19,7 @@ public struct UnsentDirectMessageListContentRowLogic {
     init(match: BeMatch.UnsentDirectMessageListContentRow) {
       id = match.targetUser.id
       createdAt = match.createdAt
+      matchId = match.id
       isRead = match.isRead
       username = match.targetUser.berealUsername
       imageUrl = match.targetUser.images.first!.imageUrl

@@ -58,6 +58,9 @@ public struct DirectMessageTabLogic {
             ? nil
             : UnsentDirectMessageListContentReceivedLikeRowLogic.State(receivedLike: data.receivedLike)
         )
+        if data.matches.edges.isEmpty && data.receivedLike.latestUser == nil {
+          state.unsent = nil
+        }
 
         state.messages = DirectMessageListLogic.State(
           after: data.messageRooms.pageInfo.endCursor,
@@ -67,6 +70,9 @@ public struct DirectMessageTabLogic {
             .filter { !$0.targetUser.images.isEmpty }
             .map(DirectMessageListContentRowLogic.State.init(messageRoom:))
         )
+        if data.messageRooms.edges.isEmpty {
+          state.messages = nil
+        }
         return .none
 
       case .directMessageTabResponse(.failure):
