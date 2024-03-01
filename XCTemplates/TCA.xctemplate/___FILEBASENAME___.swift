@@ -55,5 +55,5 @@ public struct ___VARIABLE_productName:identifier___View: View {
       )
     )
   }
-  .environment(\.colorSceheme, .dark)
+  .environment(\.colorScheme, .dark)
 }
