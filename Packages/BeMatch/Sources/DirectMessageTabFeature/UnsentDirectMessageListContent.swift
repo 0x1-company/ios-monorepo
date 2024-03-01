@@ -23,14 +23,16 @@ public struct UnsentDirectMessageListContentLogic {
   public enum Action {
     case scrollViewBottomReached
     case unsentDirectMessageListContentResponse(Result<BeMatch.UnsentDirectMessageListContentQuery.Data, Error>)
+    case readMatchResponse(Result<BeMatch.ReadMatchMutation.Data, Error>)
     case rows(IdentifiedActionOf<UnsentDirectMessageListContentRowLogic>)
     case receivedLike(UnsentDirectMessageListContentReceivedLikeRowLogic.Action)
   }
 
   @Dependency(\.bematch) var bematch
 
-  enum Cancel {
+  enum Cancel: Hashable {
     case unsentDirectMessageListContent
+    case readMatch(String)
   }
 
   public var body: some Reducer<State, Action> {
@@ -59,9 +61,16 @@ public struct UnsentDirectMessageListContentLogic {
 
       case let .rows(.element(id, .rowButtonTapped)):
         guard var row = state.rows[id: id] else { return .none }
+        guard !row.isRead else { return .none }
         row.read()
         state.rows.updateOrAppend(row)
-        return .none
+        let matchId = row.matchId
+        return .run { send in
+          await send(.readMatchResponse(Result {
+            try await bematch.readMatch(matchId)
+          }))
+        }
+        .cancellable(id: Cancel.readMatch(matchId), cancelInFlight: true)
 
       default:
         return .none
