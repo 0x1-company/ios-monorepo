@@ -46,15 +46,9 @@ public struct DirectMessageTabLogic {
         }
 
       case let .directMessageTabResponse(.success(data)):
-        state.messages = DirectMessageListLogic.State(
-          after: data.messageRooms.pageInfo.endCursor,
-          hasNextPage: data.messageRooms.pageInfo.hasNextPage,
-          uniqueElements: data.messageRooms.edges
-            .map(\.node.fragments.directMessageListContentRow)
-            .filter { !$0.targetUser.images.isEmpty }
-            .map(DirectMessageListContentRowLogic.State.init(messageRoom:))
-        )
         state.unsent = UnsentDirectMessageListLogic.State(
+          after: data.matches.pageInfo.endCursor,
+          hasNextPage: data.matches.pageInfo.hasNextPage,
           uniqueElements: data.matches.edges
             .map(\.node.fragments.unsentDirectMessageListContentRow)
             .filter { !$0.targetUser.images.isEmpty }
@@ -63,6 +57,15 @@ public struct DirectMessageTabLogic {
           receivedLike: data.receivedLike.latestUser?.images.first?.imageUrl == nil
             ? nil
             : UnsentDirectMessageListContentReceivedLikeRowLogic.State(receivedLike: data.receivedLike)
+        )
+
+        state.messages = DirectMessageListLogic.State(
+          after: data.messageRooms.pageInfo.endCursor,
+          hasNextPage: data.messageRooms.pageInfo.hasNextPage,
+          uniqueElements: data.messageRooms.edges
+            .map(\.node.fragments.directMessageListContentRow)
+            .filter { !$0.targetUser.images.isEmpty }
+            .map(DirectMessageListContentRowLogic.State.init(messageRoom:))
         )
         return .none
 

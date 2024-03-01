@@ -10,15 +10,21 @@ public struct UnsentDirectMessageListContentRowLogic {
 
   public struct State: Equatable, Identifiable {
     public let id: String
-    let isRead: Bool
+    let createdAt: BeMatch.Date
+    var isRead: Bool
     let username: String
     let imageUrl: String
 
     init(match: BeMatch.UnsentDirectMessageListContentRow) {
       id = match.targetUser.id
+      createdAt = match.createdAt
       isRead = match.isRead
       username = match.targetUser.berealUsername
       imageUrl = match.targetUser.images.first!.imageUrl
+    }
+    
+    mutating func read() {
+      isRead = true
     }
   }
 
