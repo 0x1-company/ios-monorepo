@@ -76,24 +76,34 @@ public struct SettingsLogic {
 
       case .myProfileButtonTapped:
         state.destination = .profile()
-        return .none
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
 
       case .editProfileButtonTapped:
         state.destination = .profileEdit()
-        return .none
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
 
       case .achievementButtonTapped:
         state.destination = .achievement()
-        return .none
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
 
       case .howItWorksButtonTapped:
         state.destination = .tutorial()
-        return .none
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
 
       case .shareButtonTapped:
         state.isSharePresented = true
         analytics.buttonClick(name: \.share)
-        return .none
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
 
       case .rateButtonTapped:
         analytics.buttonClick(name: \.storeRate)
