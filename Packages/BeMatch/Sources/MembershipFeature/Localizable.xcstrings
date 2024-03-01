@@ -61,26 +61,6 @@
         }
       }
     },
-    "benefits to each other!" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "の特典がお互いにもらえる！"
-          }
-        }
-      }
-    },
-    "Both those who invited and those who were invited." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "招待した人も、された人も"
-          }
-        }
-      }
-    },
     "How to Receive Benefits" : {
       "localizations" : {
         "ja" : {
@@ -117,7 +97,17 @@
         }
       }
     },
-    "Limited to the first %lld Users" : {
+    "Invite a friend and both receive" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "招待した人も、された人も"
+          }
+        }
+      }
+    },
+    "Limited to first %lld Users" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -177,16 +167,6 @@
         }
       }
     },
-    "When a friend enters your invitation code\nyou will receive a" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "友達があなたの招待コードを\n入力すると、お互いに"
-          }
-        }
-      }
-    },
     "When they enter the Invitation Code and register, you will both receive BeMatch.PRO for sure!" : {
       "localizations" : {
         "ja" : {
@@ -197,8 +177,35 @@
         }
       }
     },
-    "が%@" : {
-
+    "when they use your invitation code you get" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "友達があなたの招待コードを\n入力すると、お互いに"
+          }
+        }
+      }
+    },
+    "worth benefits" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "の特典がお互いにもらえる！"
+          }
+        }
+      }
+    },
+    "yen" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "円"
+          }
+        }
+      }
     },
     "円" : {
 
