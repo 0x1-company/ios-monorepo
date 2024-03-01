@@ -22,7 +22,7 @@ public struct UnsentDirectMessageListContentRowLogic {
       username = match.targetUser.berealUsername
       imageUrl = match.targetUser.images.first!.imageUrl
     }
-    
+
     mutating func read() {
       isRead = true
     }

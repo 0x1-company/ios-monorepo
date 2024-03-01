@@ -26,9 +26,9 @@ public struct UnsentDirectMessageListContentLogic {
     case rows(IdentifiedActionOf<UnsentDirectMessageListContentRowLogic>)
     case receivedLike(UnsentDirectMessageListContentReceivedLikeRowLogic.Action)
   }
-  
+
   @Dependency(\.bematch) var bematch
-  
+
   enum Cancel {
     case unsentDirectMessageListContent
   }
@@ -45,24 +45,24 @@ public struct UnsentDirectMessageListContentLogic {
           await send(.unsentDirectMessageListContentResponse(.failure(error)))
         }
         .cancellable(id: Cancel.unsentDirectMessageListContent, cancelInFlight: true)
-        
+
       case let .unsentDirectMessageListContentResponse(.success(data)):
         state.after = data.matches.pageInfo.endCursor
         state.hasNextPage = data.matches.pageInfo.hasNextPage
-        
+
         let newRows = data.matches.edges
           .map(\.node.fragments.unsentDirectMessageListContentRow)
           .filter { !$0.targetUser.images.isEmpty }
           .map(UnsentDirectMessageListContentRowLogic.State.init(match:))
         state.rows = IdentifiedArrayOf(uniqueElements: state.rows + newRows)
         return .none
-        
+
       case let .rows(.element(id, .rowButtonTapped)):
         guard var row = state.rows[id: id] else { return .none }
         row.read()
         state.rows.updateOrAppend(row)
         return .none
-        
+
       default:
         return .none
       }
@@ -96,7 +96,7 @@ public struct UnsentDirectMessageListContentView: View {
             store.scope(state: \.sortedRows, action: \.rows),
             content: UnsentDirectMessageListContentRowView.init(store:)
           )
-          
+
           if viewStore.hasNextPage {
             ProgressView()
               .tint(Color.white)
