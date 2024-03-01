@@ -45,7 +45,7 @@ public struct DirectMessageListContentLogic {
       case .scrollViewBottomReached:
         return .run { [after = state.after] send in
           for try await data in bematch.directMessageListContent(after: after) {
-            await send(.directMessageListContentResponse(.success(data)))
+            await send(.directMessageListContentResponse(.success(data)), animation: .default)
           }
         } catch: { error, send in
           await send(.directMessageListContentResponse(.failure(error)))

@@ -41,7 +41,7 @@ public struct UnsentDirectMessageListContentLogic {
       case .scrollViewBottomReached:
         return .run { [after = state.after] send in
           for try await data in bematch.unsentDirectMessageListContent(after: after) {
-            await send(.unsentDirectMessageListContentResponse(.success(data)))
+            await send(.unsentDirectMessageListContentResponse(.success(data)), animation: .default)
           }
         } catch: { error, send in
           await send(.unsentDirectMessageListContentResponse(.failure(error)))

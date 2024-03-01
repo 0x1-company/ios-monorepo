@@ -39,7 +39,7 @@ public struct DirectMessageTabLogic {
         analytics.logScreen(screenName: "DirectMessageTab", of: self)
         return .run { send in
           for try await data in bematch.directMessageTab() {
-            await send(.directMessageTabResponse(.success(data)))
+            await send(.directMessageTabResponse(.success(data)), animation: .default)
           }
         } catch: { error, send in
           await send(.directMessageTabResponse(.failure(error)))
