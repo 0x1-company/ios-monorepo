@@ -45,6 +45,7 @@ public struct DirectMessageRowView: View {
           .padding(isAuthor ? Edge.Set.leading : Edge.Set.trailing, 100)
           .frame(maxWidth: .infinity, alignment: isAuthor ? Alignment.trailing : Alignment.leading)
       }
+      .id(viewStore.id)
       .listRowSeparator(.hidden)
     }
   }
