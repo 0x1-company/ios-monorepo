@@ -98,12 +98,9 @@ public struct DeleteAccountLogic {
         analytics.buttonClick(name: \.delete, parameters: ["reason": reason])
 
         return .run { send in
-          try firebaseAuth.signOut()
           await send(.closeUserResponse(Result {
             try await closeUser()
           }))
-        } catch: { error, send in
-          await send(.signOutFailure(error))
         }
 
       case .closeUserResponse(.success):
@@ -116,7 +113,12 @@ public struct DeleteAccountLogic {
             }
           }
         )
-        return .send(.delegate(.accountDeletionCompleted), animation: .default)
+        return .run { send in
+          try firebaseAuth.signOut()
+          await send(.delegate(.accountDeletionCompleted), animation: .default)
+        } catch: { error, send in
+          await send(.signOutFailure(error))
+        }
 
       case let .closeUserResponse(.failure(error as ServerError)):
         state.destination = .alert(
