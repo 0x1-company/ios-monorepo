@@ -103,6 +103,10 @@ public struct DirectMessageLogic {
 
         return .none
 
+      case .messagesResponse(.failure):
+        state.child = .empty
+        return .none
+
       default:
         return .none
       }

@@ -46,6 +46,8 @@ public struct DirectMessageContentLogic {
         .cancellable(id: Cancel.messages, cancelInFlight: true)
 
       case let .messagesResponse(.success(data)):
+        state.after = data.messages.pageInfo.endCursor
+        state.hasNextPage = data.messages.pageInfo.hasNextPage
         let newRows = data.messages.edges
           .map(\.node.fragments.messageRow)
           .map(DirectMessageRowLogic.State.init(message:))
