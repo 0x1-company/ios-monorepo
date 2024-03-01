@@ -72,7 +72,7 @@ public struct InvitationCampaignView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 12) {
-        Text("Limited to the first \(viewStore.quantity) Users", bundle: .module)
+        Text("Limited to first \(viewStore.quantity) Users", bundle: .module)
           .font(.system(.headline, weight: .semibold))
           .padding(.vertical, 6)
           .padding(.horizontal, 8)
@@ -82,7 +82,7 @@ public struct InvitationCampaignView: View {
           )
 
         VStack(spacing: 0) {
-          Text("Both those who invited and those who were invited.", bundle: .module)
+          Text("Invite a friend and both receive", bundle: .module)
 
           VStack(spacing: 8) {
             HStack(spacing: 8) {
@@ -96,7 +96,7 @@ public struct InvitationCampaignView: View {
             }
             .foregroundStyle(textGradient)
 
-            Text("benefits to each other!", bundle: .module)
+            Text("worth benefits", bundle: .module)
           }
         }
         .font(.system(.title2, weight: .bold))
