@@ -15,8 +15,12 @@ public struct DirectMessageContentLogic {
     var rows: IdentifiedArrayOf<DirectMessageRowLogic.State> = []
     var sortedRows: IdentifiedArrayOf<DirectMessageRowLogic.State> {
       let uniqueElements = rows
-        .sorted(by: { $0.message.createdAt > $1.message.createdAt })
+        .sorted(by: { $0.message.createdAt < $1.message.createdAt })
       return IdentifiedArrayOf(uniqueElements: uniqueElements)
+    }
+
+    var lastId: String? {
+      sortedRows.last?.id
     }
   }
 
@@ -74,25 +78,29 @@ public struct DirectMessageContentView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       ScrollView {
-        LazyVStack(spacing: 8) {
-          ForEachStore(
-            store.scope(state: \.sortedRows, action: \.rows),
-            content: DirectMessageRowView.init(store:)
-          )
-          .rotation3DEffect(.degrees(180), axis: (x: 1, y: 0, z: 0))
+        ScrollViewReader { proxy in
+          LazyVStack(spacing: 8) {
+            if viewStore.hasNextPage {
+              ProgressView()
+                .tint(Color.white)
+                .frame(height: 44)
+                .frame(maxWidth: .infinity)
+                .rotation3DEffect(.degrees(180), axis: (x: 1, y: 0, z: 0))
+                .task { await store.send(.scrollViewBottomReached).finish() }
+            }
 
-          if viewStore.hasNextPage {
-            ProgressView()
-              .tint(Color.white)
-              .frame(height: 44)
-              .frame(maxWidth: .infinity)
-              .rotation3DEffect(.degrees(180), axis: (x: 1, y: 0, z: 0))
-              .task { await store.send(.scrollViewBottomReached).finish() }
+            ForEachStore(
+              store.scope(state: \.sortedRows, action: \.rows),
+              content: DirectMessageRowView.init(store:)
+            )
+          }
+          .padding(.all, 16)
+          .onAppear {
+            guard let id = viewStore.lastId else { return }
+            proxy.scrollTo(id)
           }
         }
-        .padding(.all, 16)
       }
-      .rotation3DEffect(.degrees(180), axis: (x: 1, y: 0, z: 0))
     }
   }
 }

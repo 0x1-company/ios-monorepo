@@ -209,7 +209,7 @@ public struct DirectMessageView: View {
             Button {
               store.send(.closeButtonTapped)
             } label: {
-              Image(systemName: "xmark")
+              Image(systemName: "chevron.down")
                 .foregroundStyle(Color.white)
                 .font(.system(.headline, weight: .semibold))
             }
@@ -217,7 +217,6 @@ public struct DirectMessageView: View {
         }
       }
     }
-    .interactiveDismissDisabled()
   }
 }
 
