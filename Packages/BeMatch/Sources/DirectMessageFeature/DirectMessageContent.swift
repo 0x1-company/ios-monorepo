@@ -38,7 +38,7 @@ public struct DirectMessageContentLogic {
       case .scrollViewBottomReached:
         return .run { [targetUserId = state.targetUserId, after = state.after] send in
           for try await data in bematch.messages(targetUserId: targetUserId, after: after) {
-            await send(.messagesResponse(.success(data)))
+            await send(.messagesResponse(.success(data)), animation: .default)
           }
         } catch: { error, send in
           await send(.messagesResponse(.failure(error)))
