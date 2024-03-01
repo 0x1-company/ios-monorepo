@@ -14,11 +14,10 @@ public struct DirectMessageLogic {
     let targetUserId: String
 
     var rows: IdentifiedArrayOf<DirectMessageRowLogic.State> = []
-    var displayRows: IdentifiedArrayOf<DirectMessageRowLogic.State> {
-      return IdentifiedArrayOf(
-        uniqueElements: rows
-          .sorted(by: { $0.message.createdAt < $1.message.createdAt })
-      )
+    var sortedRows: IdentifiedArrayOf<DirectMessageRowLogic.State> {
+      let uniqueElements = rows
+        .sorted(by: { $0.message.createdAt < $1.message.createdAt })
+      return IdentifiedArrayOf(uniqueElements: uniqueElements)
     }
 
     @BindingState var text = String()
@@ -133,7 +132,7 @@ public struct DirectMessageView: View {
           ScrollView {
             LazyVStack(spacing: 8) {
               ForEachStore(
-                store.scope(state: \.displayRows, action: \.rows),
+                store.scope(state: \.sortedRows, action: \.rows),
                 content: DirectMessageRowView.init(store:)
               )
             }
