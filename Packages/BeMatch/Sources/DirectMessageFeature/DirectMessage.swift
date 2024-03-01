@@ -13,13 +13,7 @@ public struct DirectMessageLogic {
     let username: String
     let targetUserId: String
 
-    var rows: IdentifiedArrayOf<DirectMessageRowLogic.State> = []
-    var displayRows: IdentifiedArrayOf<DirectMessageRowLogic.State> {
-      return IdentifiedArrayOf(
-        uniqueElements: rows
-          .sorted(by: { $0.message.createdAt < $1.message.createdAt })
-      )
-    }
+    var child = Child.State.loading
 
     @BindingState var text = String()
     var isDisabled: Bool {
@@ -36,7 +30,7 @@ public struct DirectMessageLogic {
     case onTask
     case closeButtonTapped
     case sendButtonTapped
-    case rows(IdentifiedActionOf<DirectMessageRowLogic>)
+    case child(Child.Action)
     case binding(BindingAction<State>)
     case messagesResponse(Result<BeMatch.MessagesQuery.Data, Error>)
     case createMessageResponse(Result<BeMatch.CreateMessageMutation.Data, Error>)
@@ -50,6 +44,7 @@ public struct DirectMessageLogic {
 
   public var body: some Reducer<State, Action> {
     BindingReducer()
+    Scope(state: \.child, action: \.child, child: Child.init)
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
@@ -86,25 +81,31 @@ public struct DirectMessageLogic {
           }))
         }
 
-      case let .messagesResponse(.success(data)):
-        state.rows = IdentifiedArrayOf(
-          uniqueElements: data.messages.edges
-            .map(\.node.fragments.messageRow)
-            .map(DirectMessageRowLogic.State.init(message:))
-        )
-        return .none
-
       case .createMessageResponse(.success):
         return .run { [targetUserId = state.targetUserId] send in
           await messagesRequest(send: send, targetUserId: targetUserId, after: nil)
         }
 
+      case let .messagesResponse(.success(data)):
+        let rows = IdentifiedArrayOf(
+          uniqueElements: data.messages.edges
+            .map(\.node.fragments.messageRow)
+            .map(DirectMessageRowLogic.State.init(message:))
+        )
+        let contentState = DirectMessageContentLogic.State(
+          targetUserId: state.targetUserId,
+          after: data.messages.pageInfo.endCursor,
+          hasNextPage: data.messages.pageInfo.hasNextPage,
+          rows: rows
+        )
+
+        state.child = rows.isEmpty ? .empty : .content(contentState)
+
+        return .none
+
       default:
         return .none
       }
-    }
-    .forEach(\.rows, action: \.rows) {
-      DirectMessageRowLogic()
     }
   }
 
@@ -115,6 +116,25 @@ public struct DirectMessageLogic {
       }
     } catch {
       await send(.messagesResponse(.failure(error)))
+    }
+  }
+
+  @Reducer
+  public struct Child {
+    public enum State: Equatable {
+      case loading
+      case empty
+      case content(DirectMessageContentLogic.State)
+    }
+
+    public enum Action {
+      case loading
+      case empty
+      case content(DirectMessageContentLogic.Action)
+    }
+
+    public var body: some Reducer<State, Action> {
+      Scope(state: \.content, action: \.content, child: DirectMessageContentLogic.init)
     }
   }
 }
@@ -130,14 +150,21 @@ public struct DirectMessageView: View {
     NavigationStack {
       WithViewStore(store, observe: { $0 }) { viewStore in
         VStack(spacing: 0) {
-          ScrollView {
-            LazyVStack(spacing: 8) {
-              ForEachStore(
-                store.scope(state: \.displayRows, action: \.rows),
-                content: DirectMessageRowView.init(store:)
+          SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
+            switch initialState {
+            case .empty:
+              Spacer()
+            case .loading:
+              ProgressView()
+                .tint(Color.white)
+                .frame(maxHeight: .infinity)
+            case .content:
+              CaseLet(
+                /DirectMessageLogic.Child.State.content,
+                action: DirectMessageLogic.Child.Action.content,
+                then: DirectMessageContentView.init(store:)
               )
             }
-            .padding(.all, 16)
           }
 
           HStack(spacing: 8) {
@@ -178,7 +205,7 @@ public struct DirectMessageView: View {
             Button {
               store.send(.closeButtonTapped)
             } label: {
-              Image(systemName: "chevron.down")
+              Image(systemName: "xmark")
                 .foregroundStyle(Color.white)
                 .font(.system(.headline, weight: .semibold))
             }
@@ -186,6 +213,7 @@ public struct DirectMessageView: View {
         }
       }
     }
+    .interactiveDismissDisabled()
   }
 }
 
