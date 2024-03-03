@@ -20,7 +20,7 @@ public struct AchievementLogic {
     case achievementResponse(Result<BeMatch.AchievementQuery.Data, Error>)
     case child(Child.Action)
     case delegate(Delegate)
-    
+
     public enum Delegate: Equatable {
       case dismiss
     }
@@ -63,25 +63,25 @@ public struct AchievementLogic {
       case .achievementResponse(.failure):
         state.child = .loading
         return .none
-        
+
       default:
         return .none
       }
     }
   }
-  
+
   @Reducer
   public struct Child {
     public enum State: Equatable {
       case loading
       case content(AchievementContentLogic.State)
     }
-    
+
     public enum Action {
       case loading
       case content(AchievementContentLogic.Action)
     }
-    
+
     public var body: some Reducer<State, Action> {
       Scope(state: \.content, action: \.content, child: AchievementContentLogic.init)
     }
@@ -101,12 +101,12 @@ public struct AchievementView: View {
       case .loading:
         ProgressView()
           .tint(Color.white)
-        
+
       case .content:
         CaseLet(
           /AchievementLogic.Child.State.content,
-           action: AchievementLogic.Child.Action.content,
-           then: AchievementContentView.init(store:)
+          action: AchievementLogic.Child.Action.content,
+          then: AchievementContentView.init(store:)
         )
       }
     }
