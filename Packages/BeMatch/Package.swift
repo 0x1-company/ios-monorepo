@@ -72,6 +72,7 @@ let package = Package(
     .target(name: "AchievementFeature", dependencies: [
       "AnalyticsKeys",
       "BeMatchClient",
+      .product(name: "FirebaseAuthClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "AnalyticsKeys", dependencies: [

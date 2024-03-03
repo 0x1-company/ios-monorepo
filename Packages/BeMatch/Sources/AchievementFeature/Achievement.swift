@@ -2,6 +2,7 @@ import AnalyticsClient
 import BeMatch
 import BeMatchClient
 import ComposableArchitecture
+import FirebaseAuthClient
 import SwiftUI
 
 @Reducer
@@ -27,6 +28,7 @@ public struct AchievementLogic {
 
   @Dependency(\.bematch) var bematch
   @Dependency(\.analytics) var analytics
+  @Dependency(\.firebaseAuth) var firebaseAuth
 
   public var body: some Reducer<State, Action> {
     Scope(state: \.child, action: \.child, child: Child.init)
@@ -46,9 +48,14 @@ public struct AchievementLogic {
         return .send(.delegate(.dismiss))
 
       case let .achievementResponse(.success(data)):
+        let user = firebaseAuth.currentUser()
+        guard let creationDate = user?.metadata.creationDate
+        else { return .none }
+
         state.child = .content(
           AchievementContentLogic.State(
-            achievement: data.achievement
+            achievement: data.achievement,
+            creationDate: creationDate
           )
         )
         return .none
