@@ -162,7 +162,7 @@ public struct MembershipLogic {
           )
         }
         return .none
-        
+
       case let .response(.success(products), .failure):
         guard let product = products.first(where: { $0.id == state.bematchProOneWeekId })
         else { return .none }
