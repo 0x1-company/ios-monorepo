@@ -1,6 +1,17 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%lld days." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld days."
+          }
+        }
+      }
+    },
     "0.1%" : {
 
     },
@@ -10,17 +21,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "アチーブメント"
-          }
-        }
-      }
-    },
-    "Consecutive login" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "連続ログイン"
           }
         }
       }
@@ -65,24 +65,15 @@
         }
       }
     },
+    "days." : {
+
+    },
     "HISTORY" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "HISTORY"
-          }
-        }
-      }
-    },
-    "LOGIN" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "LOGIN"
           }
         }
       }
@@ -107,34 +98,23 @@
         }
       }
     },
-    "Share" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "シェア"
-          }
-        }
-      }
-    },
-    "Started December 28, 2023" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "2023年12月28日開始"
-          }
-        }
-      }
-    },
     "SWIPE" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "SWIPE"
+          }
+        }
+      }
+    },
+    "today" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今日"
           }
         }
       }

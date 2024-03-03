@@ -39,21 +39,41 @@ public struct AchievementContentLogic {
     let displayVisitCount: String
     let displayFeedbackCount: String
     let displayConsecutiveLoginDayCount: String
+    
+    var history: AchievementHistoryWidgetLogic.State?
 
-    public init(achievement: BeMatch.AchievementQuery.Data.Achievement) {
+    public init(
+      achievement: BeMatch.AchievementQuery.Data.Achievement,
+      creationDate: Date
+    ) {
       @Dependency(\.locale) var locale
 
       displayMatchCount = formatNumber(achievement.matchCount, locale: locale)
       displayVisitCount = formatNumber(achievement.visitCount, locale: locale)
       displayFeedbackCount = formatNumber(achievement.feedbackCount, locale: locale)
       displayConsecutiveLoginDayCount = formatNumber(achievement.consecutiveLoginDayCount, locale: locale)
+
+      @Dependency(\.date.now) var now
+      @Dependency(\.calendar) var calendar
+      let components = calendar.dateComponents(
+        [.day],
+        from: creationDate,
+        to: now
+      )
+      let daysAgo = components.day ?? 0
+      history = daysAgo == 0 ? nil : AchievementHistoryWidgetLogic.State(creationDate: creationDate)
     }
   }
 
-  public enum Action {}
+  public enum Action {
+    case history(AchievementHistoryWidgetLogic.Action)
+  }
 
   public var body: some Reducer<State, Action> {
     EmptyReducer()
+      .ifLet(\.history, action: \.history) {
+        AchievementHistoryWidgetLogic()
+      }
   }
 }
 
@@ -81,14 +101,14 @@ public struct AchievementContentView: View {
               systemImage: "heart.fill",
               titleKey: "SWIPE",
               displayCount: viewStore.displayFeedbackCount,
-              text: "Count of swipes"
+              text: String(localized: "Count of swipes", bundle: .module)
             )
 
             AchievementWidgetView(
               systemImage: "star.fill",
               titleKey: "MATCH",
               displayCount: viewStore.displayMatchCount,
-              text: "Count of match"
+              text: String(localized: "Count of match", bundle: .module)
             )
           }
 
@@ -97,7 +117,7 @@ public struct AchievementContentView: View {
               systemImage: "airplane",
               titleKey: "VISITOR",
               displayCount: viewStore.displayVisitCount,
-              text: "Count of visitor"
+              text: String(localized: "Count of visitor", bundle: .module)
             )
 
 //            AchievementWidgetView(
@@ -108,15 +128,12 @@ public struct AchievementContentView: View {
 //            )
           }
 
-//          GridRow(alignment: .top) {
-//            AchievementWidgetView(
-//              systemImage: "calendar",
-//              titleKey: "HISTORY",
-//              displayCount: "",
-//              text: "Started December 28, 2023"
-//            )
-//            .gridCellColumns(2)
-//          }
+          GridRow(alignment: .top) {
+            IfLetStore(
+              store.scope(state: \.history, action: \.history),
+              then: AchievementHistoryWidgetView.init(store:)
+            )
+          }
         }
         .padding(.top, 16)
         .padding(.horizontal, 16)

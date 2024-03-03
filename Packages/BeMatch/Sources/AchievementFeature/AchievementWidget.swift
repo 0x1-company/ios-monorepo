@@ -4,7 +4,7 @@ struct AchievementWidgetView: View {
   let systemImage: String
   let titleKey: LocalizedStringKey
   let displayCount: String
-  let text: LocalizedStringKey
+  let text: String
 
   var body: some View {
     VStack(alignment: .leading, spacing: 0) {
@@ -15,7 +15,7 @@ struct AchievementWidgetView: View {
       Text(displayCount)
         .font(.system(size: 64, weight: .semibold))
 
-      Text(text, bundle: .module)
+      Text(text)
         .foregroundStyle(Color.secondary)
         .font(.system(.headline, weight: .semibold))
     }
