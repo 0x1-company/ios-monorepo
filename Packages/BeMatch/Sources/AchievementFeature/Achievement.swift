@@ -9,7 +9,7 @@ public struct AchievementLogic {
   public init() {}
 
   public struct State: Equatable {
-    var content: AchievementContentLogic.State?
+    var child = Child.State.loading
     public init() {}
   }
 
@@ -17,41 +17,66 @@ public struct AchievementLogic {
     case onTask
     case closeButtonTapped
     case achievementResponse(Result<BeMatch.AchievementQuery.Data, Error>)
-    case content(AchievementContentLogic.Action)
+    case child(Child.Action)
+    case delegate(Delegate)
+    
+    public enum Delegate: Equatable {
+      case dismiss
+    }
   }
 
   @Dependency(\.bematch) var bematch
   @Dependency(\.analytics) var analytics
 
   public var body: some Reducer<State, Action> {
+    Scope(state: \.child, action: \.child, child: Child.init)
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
         analytics.logScreen(screenName: "Achievement", of: self)
         return .run { send in
           for try await data in bematch.achievement() {
-            await send(.achievementResponse(.success(data)))
+            await send(.achievementResponse(.success(data)), animation: .default)
           }
         } catch: { error, send in
           await send(.achievementResponse(.failure(error)))
         }
 
       case .closeButtonTapped:
-        return .none
+        return .send(.delegate(.dismiss))
 
       case let .achievementResponse(.success(data)):
-        state.content = AchievementContentLogic.State(
-          achievement: data.achievement
+        state.child = .content(
+          AchievementContentLogic.State(
+            achievement: data.achievement
+          )
         )
         return .none
 
       case .achievementResponse(.failure):
-        state.content = nil
+        state.child = .loading
+        return .none
+        
+      default:
         return .none
       }
     }
-    .ifLet(\.content, action: \.content) {
-      AchievementContentLogic()
+  }
+  
+  @Reducer
+  public struct Child {
+    public enum State: Equatable {
+      case loading
+      case content(AchievementContentLogic.State)
+    }
+    
+    public enum Action {
+      case loading
+      case content(AchievementContentLogic.Action)
+    }
+    
+    public var body: some Reducer<State, Action> {
+      Scope(state: \.content, action: \.content, child: AchievementContentLogic.init)
     }
   }
 }
@@ -64,17 +89,20 @@ public struct AchievementView: View {
   }
 
   public var body: some View {
-    IfLetStore(
-      store.scope(state: \.content, action: \.content),
-      then: AchievementContentView.init(store:),
-      else: {
-        Color.black
-          .overlay {
-            ProgressView()
-              .tint(Color.white)
-          }
+    SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
+      switch initialState {
+      case .loading:
+        ProgressView()
+          .tint(Color.white)
+        
+      case .content:
+        CaseLet(
+          /AchievementLogic.Child.State.content,
+           action: AchievementLogic.Child.Action.content,
+           then: AchievementContentView.init(store:)
+        )
       }
-    )
+    }
     .navigationTitle(String(localized: "Achievement", bundle: .module))
     .navigationBarTitleDisplayMode(.inline)
     .task { await store.send(.onTask).finish() }
