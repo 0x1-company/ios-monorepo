@@ -85,10 +85,10 @@ public struct CategoryLogic {
     await withTaskCancellation(id: Cancel.userCategories, cancelInFlight: true) {
       do {
         for try await data in bematch.userCategories() {
-          await send(.userCategoriesResponse(.success(data)))
+          await send(.userCategoriesResponse(.success(data)), animation: .default)
         }
       } catch {
-        await send(.userCategoriesResponse(.failure(error)))
+        await send(.userCategoriesResponse(.failure(error)), animation: .default)
       }
     }
   }
