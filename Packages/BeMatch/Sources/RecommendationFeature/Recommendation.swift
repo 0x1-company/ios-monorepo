@@ -73,10 +73,10 @@ public struct RecommendationLogic {
     await withTaskCancellation(id: Cancel.recommendations, cancelInFlight: true) {
       do {
         for try await data in recommendations() {
-          await send(.recommendationsResponse(.success(data)))
+          await send(.recommendationsResponse(.success(data)), animation: .default)
         }
       } catch {
-        await send(.recommendationsResponse(.failure(error)))
+        await send(.recommendationsResponse(.failure(error)), animation: .default)
       }
     }
   }
