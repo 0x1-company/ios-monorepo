@@ -165,7 +165,7 @@ public struct MatchLogic {
     await withTaskCancellation(id: Cancel.matches, cancelInFlight: true) {
       do {
         for try await data in matches(50, after) {
-          await send(.matchesResponse(.success(data)))
+          await send(.matchesResponse(.success(data)), animation: .default)
         }
       } catch {
         await send(.matchesResponse(.failure(error)))
@@ -176,7 +176,7 @@ public struct MatchLogic {
   func receivedLikeRequest(send: Send<Action>) async {
     do {
       for try await data in receivedLike() {
-        await send(.receivedLikeResponse(.success(data)))
+        await send(.receivedLikeResponse(.success(data)), animation: .default)
       }
     } catch {
       await send(.receivedLikeResponse(.failure(error)))
@@ -186,7 +186,7 @@ public struct MatchLogic {
   func bannersRequest(send: Send<Action>) async {
     do {
       for try await data in banners() {
-        await send(.bannersResponse(.success(data)))
+        await send(.bannersResponse(.success(data)), animation: .default)
       }
     } catch {
       await send(.bannersResponse(.failure(error)))
