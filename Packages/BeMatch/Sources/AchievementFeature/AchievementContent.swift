@@ -39,7 +39,7 @@ public struct AchievementContentLogic {
     let displayVisitCount: String
     let displayFeedbackCount: String
     let displayConsecutiveLoginDayCount: String
-    
+
     var history: AchievementHistoryWidgetLogic.State?
 
     public init(

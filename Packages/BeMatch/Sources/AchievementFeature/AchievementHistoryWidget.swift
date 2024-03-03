@@ -16,7 +16,7 @@ public struct AchievementHistoryWidgetLogic {
       dateFormatter.locale = locale
       dateFormatter.dateStyle = .long
       displayCreationDate = dateFormatter.string(from: creationDate)
-      
+
       @Dependency(\.date.now) var now
       @Dependency(\.calendar) var calendar
       let components = calendar.dateComponents(
@@ -52,7 +52,7 @@ public struct AchievementHistoryWidgetView: View {
         HStack(alignment: .bottom, spacing: 8) {
           Text(viewStore.displayDaysAgo)
             .font(.system(size: 64, weight: .semibold))
-          
+
           Text("days.", bundle: .module)
             .font(.system(size: 32, weight: .semibold))
             .padding(.bottom, 8)
