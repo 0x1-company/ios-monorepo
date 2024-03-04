@@ -98,6 +98,14 @@ input DeleteMessageInput {
   messageId: String!
 }
 
+type Explorer {
+  colors: [String!]!
+  id: ID!
+  order: Int!
+  title: String!
+  users: [User!]!
+}
+
 type Feedback {
   """feedback type"""
   feedbackType: FeedbackType!
@@ -300,6 +308,7 @@ type Query {
 
   """ログイン中ユーザーを取得"""
   currentUser: User!
+  explorers: [Explorer!]!
 
   """メンバーシップが有効かどうか"""
   hasPremiumMembership: Boolean!
