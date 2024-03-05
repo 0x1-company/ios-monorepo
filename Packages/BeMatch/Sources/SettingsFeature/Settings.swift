@@ -225,16 +225,16 @@ public struct SettingsView: View {
             }
           }
 
-          Button {
-            store.send(.achievementButtonTapped)
-          } label: {
-            LabeledContent {
-              Image(systemName: "chevron.right")
-            } label: {
-              Text("Achievement", bundle: .module)
-                .foregroundStyle(Color.primary)
-            }
-          }
+//          Button {
+//            store.send(.achievementButtonTapped)
+//          } label: {
+//            LabeledContent {
+//              Image(systemName: "chevron.right")
+//            } label: {
+//              Text("Achievement", bundle: .module)
+//                .foregroundStyle(Color.primary)
+//            }
+//          }
 
           Button {
             store.send(.bematchProButtonTapped)
