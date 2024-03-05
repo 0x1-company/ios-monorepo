@@ -172,6 +172,7 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "DirectMessageFeature", dependencies: [
+      "ReportFeature",
       "AnalyticsKeys",
       "BeMatchClient",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
@@ -303,7 +304,6 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "ProfileExternalFeature", dependencies: [
-      "ReportFeature",
       "DirectMessageFeature",
       "ProfileSharedFeature",
     ]),
