@@ -3,6 +3,7 @@ import BeMatch
 import BeMatchClient
 import ComposableArchitecture
 import FeedbackGeneratorClient
+import ReportFeature
 import SwiftUI
 
 @Reducer
@@ -14,6 +15,7 @@ public struct DirectMessageLogic {
     let targetUserId: String
 
     var child = Child.State.loading
+    @PresentationState var destination: Destination.State?
 
     @BindingState var text = String()
     var isDisabled: Bool {
@@ -29,12 +31,14 @@ public struct DirectMessageLogic {
   public enum Action: BindableAction {
     case onTask
     case closeButtonTapped
+    case reportButtonTapped
     case sendButtonTapped
-    case child(Child.Action)
-    case binding(BindingAction<State>)
     case messagesResponse(Result<BeMatch.MessagesQuery.Data, Error>)
     case createMessageResponse(Result<BeMatch.CreateMessageMutation.Data, Error>)
     case readMessagesResponse(Result<BeMatch.ReadMessagesMutation.Data, Error>)
+    case child(Child.Action)
+    case destination(PresentationAction<Destination.Action>)
+    case binding(BindingAction<State>)
   }
 
   @Dependency(\.dismiss) var dismiss
@@ -67,6 +71,12 @@ public struct DirectMessageLogic {
           await feedbackGenerator.impactOccurred()
           await dismiss()
         }
+
+      case .reportButtonTapped:
+        state.destination = .report(
+          ReportLogic.State(targetUserId: state.targetUserId)
+        )
+        return .none
 
       case .sendButtonTapped where !state.isDisabled:
         let input = BeMatch.CreateMessageInput(
@@ -111,6 +121,9 @@ public struct DirectMessageLogic {
         return .none
       }
     }
+    .ifLet(\.$destination, action: \.destination) {
+      Destination()
+    }
   }
 
   private func messagesRequest(send: Send<Action>, targetUserId: String, after: String?) async {
@@ -139,6 +152,21 @@ public struct DirectMessageLogic {
 
     public var body: some Reducer<State, Action> {
       Scope(state: \.content, action: \.content, child: DirectMessageContentLogic.init)
+    }
+  }
+
+  @Reducer
+  public struct Destination {
+    public enum State: Equatable {
+      case report(ReportLogic.State)
+    }
+
+    public enum Action {
+      case report(ReportLogic.Action)
+    }
+
+    public var body: some Reducer<State, Action> {
+      Scope(state: \.report, action: \.report, child: ReportLogic.init)
     }
   }
 }
@@ -213,6 +241,32 @@ public struct DirectMessageView: View {
                 .foregroundStyle(Color.white)
                 .font(.system(.headline, weight: .semibold))
             }
+          }
+
+          ToolbarItem(placement: .topBarTrailing) {
+            Menu {
+              Button {
+                store.send(.reportButtonTapped)
+              } label: {
+                Label {
+                  Text("Report", bundle: .module)
+                } icon: {
+                  Image(systemName: "exclamationmark.triangle")
+                }
+              }
+            } label: {
+              Image(systemName: "ellipsis")
+                .bold()
+                .foregroundStyle(Color.white)
+                .frame(width: 44, height: 44)
+            }
+          }
+        }
+        .sheet(
+          store: store.scope(state: \.$destination.report, action: \.destination.report)
+        ) { store in
+          NavigationStack {
+            ReportView(store: store)
           }
         }
       }

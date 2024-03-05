@@ -1,5 +1,6 @@
 import AnalyticsClient
 import ComposableArchitecture
+import FeedbackGeneratorClient
 import Styleguide
 import SwiftUI
 
@@ -20,11 +21,13 @@ public struct ReportLogic {
   public enum Action {
     case onTask
     case titleButtonTapped(String)
+    case closeButtonTapped
     case path(StackAction<Path.State, Path.Action>)
   }
 
   @Dependency(\.dismiss) var dismiss
   @Dependency(\.analytics) var analytics
+  @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
@@ -40,9 +43,16 @@ public struct ReportLogic {
         )))
         return .none
 
+      case .closeButtonTapped:
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+          await dismiss()
+        }
+
       case .path(.element(_, .reason(.delegate(.dismiss)))):
         state.path.removeAll()
         return .run { _ in
+          await feedbackGenerator.impactOccurred()
           await dismiss()
         }
 
@@ -106,6 +116,18 @@ public struct ReportView: View {
       }
       .navigationTitle(String(localized: "Report a BeMatch.", bundle: .module))
       .navigationBarTitleDisplayMode(.inline)
+      .toolbar {
+        ToolbarItem(placement: .topBarLeading) {
+          Button {
+            store.send(.closeButtonTapped)
+          } label: {
+            Image(systemName: "chevron.down")
+              .bold()
+              .foregroundStyle(Color.white)
+              .frame(width: 44, height: 44)
+          }
+        }
+      }
     } destination: { store in
       SwitchStore(store) { initialState in
         switch initialState {
