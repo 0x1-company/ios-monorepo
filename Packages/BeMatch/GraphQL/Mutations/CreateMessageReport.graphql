@@ -1,0 +1,3 @@
+mutation CreateMessageReport($input: CreateMessageReportInput!) {
+  createMessageReport(input: $input)
+}

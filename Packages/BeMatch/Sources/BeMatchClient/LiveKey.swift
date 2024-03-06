@@ -82,6 +82,10 @@ public extension BeMatchClient {
         let mutation = BeMatch.CreateReportMutation(input: input)
         return try await apolloClient.perform(mutation: mutation)
       },
+      createMessageReport: { input in
+        let mutation = BeMatch.CreateMessageReportMutation(input: input)
+        return try await apolloClient.perform(mutation: mutation)
+      },
       createInvitation: { input in
         let mutation = BeMatch.CreateInvitationMutation(input: input)
         return try await apolloClient.perform(mutation: mutation)
