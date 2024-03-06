@@ -9,10 +9,15 @@ import SwiftUI
 @Reducer
 public struct ReportReasonLogic {
   public init() {}
+  
+  public enum ReportType: Hashable {
+    case user(targetUserId: String)
+    case message(messageId: String)
+  }
 
   public struct State: Equatable {
     let title: String
-    let targetUserId: String
+    let reportType: ReportType
 
     var isDisabled = true
     var isActivityIndicatorVisible = false
@@ -21,11 +26,19 @@ public struct ReportReasonLogic {
     @PresentationState var alert: AlertState<Action.Alert>?
 
     public init(
-      targetUserId: String,
-      title: String
+      title: String,
+      targetUserId: String
     ) {
       self.title = title
-      self.targetUserId = targetUserId
+      self.reportType = .user(targetUserId: targetUserId)
+    }
+    
+    public init(
+      title: String,
+      messageId: String
+    ) {
+      self.title = title
+      self.reportType = .message(messageId: messageId)
     }
 
     enum Field: Hashable {
@@ -40,6 +53,7 @@ public struct ReportReasonLogic {
     case alert(PresentationAction<Alert>)
     case delegate(Delegate)
     case createReportResponse(Result<BeMatch.CreateReportMutation.Data, Error>)
+    case createMessageReportResponse(Result<BeMatch.CreateMessageReportMutation.Data, Error>)
 
     public enum Alert: Equatable {
       case confirmOkay
@@ -50,8 +64,8 @@ public struct ReportReasonLogic {
     }
   }
 
+  @Dependency(\.bematch) var bematch
   @Dependency(\.analytics) var analytics
-  @Dependency(\.bematch.createReport) var createReport
   @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   public var body: some Reducer<State, Action> {
@@ -63,22 +77,32 @@ public struct ReportReasonLogic {
         return .none
 
       case .sendButtonTapped:
-        let input = BeMatch.CreateReportInput(
-          targetUserId: state.targetUserId,
-          text: state.text,
-          title: state.title
-        )
         state.isActivityIndicatorVisible = true
-        return .run { send in
-          await withTaskGroup(of: Void.self) { group in
-            group.addTask {
-              await feedbackGenerator.impactOccurred()
-            }
-            group.addTask {
-              await send(.createReportResponse(Result {
-                try await createReport(input)
-              }))
-            }
+        switch state.reportType {
+        case let .user(targetUserId):
+          let input = BeMatch.CreateReportInput(
+            targetUserId: targetUserId,
+            text: state.text,
+            title: state.title
+          )
+          return .run { send in
+            await feedbackGenerator.impactOccurred()
+            await send(.createReportResponse(Result {
+              try await bematch.createReport(input)
+            }))
+          }
+
+        case let .message(messageId):
+          let input = BeMatch.CreateMessageReportInput(
+            messageId: messageId,
+            text: state.text,
+            title: state.title
+          )
+          return .run { send in
+            await feedbackGenerator.impactOccurred()
+            await send(.createMessageReportResponse(Result {
+              try await bematch.createMessageReport(input)
+            }))
           }
         }
 
@@ -172,8 +196,8 @@ public struct ReportReasonView: View {
     ReportReasonView(
       store: .init(
         initialState: ReportReasonLogic.State(
-          targetUserId: String(),
-          title: String(localized: "Spam", bundle: .module)
+          title: String(localized: "Spam", bundle: .module),
+          targetUserId: String()
         ),
         reducer: { ReportReasonLogic() }
       )

@@ -38,8 +38,8 @@ public struct ReportLogic {
 
       case let .titleButtonTapped(title):
         state.path.append(.reason(ReportReasonLogic.State(
-          targetUserId: state.targetUserId,
-          title: title
+          title: title,
+          targetUserId: state.targetUserId
         )))
         return .none
 
