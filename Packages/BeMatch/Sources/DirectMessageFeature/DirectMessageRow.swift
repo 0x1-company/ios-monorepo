@@ -18,10 +18,17 @@ public struct DirectMessageRowLogic {
     }
   }
 
-  public enum Action {}
+  public enum Action {
+    case reportButtonTapped
+  }
 
   public var body: some Reducer<State, Action> {
-    EmptyReducer()
+    Reduce { _, action in
+      switch action {
+      case .reportButtonTapped:
+        return .none
+      }
+    }
   }
 }
 
@@ -47,6 +54,17 @@ public struct DirectMessageRowView: View {
       }
       .id(viewStore.id)
       .listRowSeparator(.hidden)
+      .contextMenu {
+        Button {
+          store.send(.reportButtonTapped)
+        } label: {
+          Label {
+            Text("Report", bundle: .module)
+          } icon: {
+            Image(systemName: "exclamationmark.triangle")
+          }
+        }
+      }
     }
   }
 }

@@ -12,6 +12,7 @@
       }
     },
     "Achievement" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
