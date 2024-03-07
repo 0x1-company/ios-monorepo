@@ -7,7 +7,7 @@ import SwiftUI
 @Reducer
 public struct ReportLogic {
   public init() {}
-  
+
   public enum Kind: Hashable {
     case user(targetUserId: String)
     case message(messageId: String)
@@ -19,11 +19,11 @@ public struct ReportLogic {
     var path = StackState<Path.State>()
 
     public init(targetUserId: String) {
-      self.kind = Kind.user(targetUserId: targetUserId)
+      kind = Kind.user(targetUserId: targetUserId)
     }
-    
+
     public init(messageId: String) {
-      self.kind = Kind.message(messageId: messageId)
+      kind = Kind.message(messageId: messageId)
     }
   }
 
