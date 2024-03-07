@@ -343,6 +343,9 @@ type Query {
 
   """ユーザー一覧"""
   recommendations: [User!]!
+
+  """マッチしたユーザーを取得"""
+  userByMatched(targetUserId: String!): User!
   userCategories: [UserCategory!]!
 
   """LIKEしてくれたユーザー一覧"""

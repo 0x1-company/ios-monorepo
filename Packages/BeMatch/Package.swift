@@ -43,6 +43,7 @@ let package = Package(
     .library(name: "NotificationsReEnableFeature", targets: ["NotificationsReEnableFeature"]),
     .library(name: "OnboardFeature", targets: ["OnboardFeature"]),
     .library(name: "ProfileEditFeature", targets: ["ProfileEditFeature"]),
+    .library(name: "ProfileExplorerFeature", targets: ["ProfileExplorerFeature"]),
     .library(name: "ProfileExternalFeature", targets: ["ProfileExternalFeature"]),
     .library(name: "ProfileFeature", targets: ["ProfileFeature"]),
     .library(name: "ProfileSharedFeature", targets: ["ProfileSharedFeature"]),
@@ -181,6 +182,7 @@ let package = Package(
     .target(name: "DirectMessageTabFeature", dependencies: [
       "MembershipFeature",
       "DirectMessageFeature",
+      "ProfileExplorerFeature",
       "ReceivedLikeSwipeFeature",
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
     ]),
@@ -302,6 +304,10 @@ let package = Package(
       "UsernameSettingFeature",
       "ShortCommentSettingFeature",
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
+    .target(name: "ProfileExplorerFeature", dependencies: [
+      "DirectMessageFeature",
+      "ProfileSharedFeature",
     ]),
     .target(name: "ProfileExternalFeature", dependencies: [
       "DirectMessageFeature",

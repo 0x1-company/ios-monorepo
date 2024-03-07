@@ -11,19 +11,16 @@ public struct DirectMessageLogic {
   public init() {}
 
   public struct State: Equatable {
-    let username: String
     let targetUserId: String
 
     var child = Child.State.loading
-    @PresentationState var destination: Destination.State?
 
     @BindingState var text = String()
     var isDisabled: Bool {
       text.isEmpty
     }
 
-    public init(username: String, targetUserId: String) {
-      self.username = username
+    public init(targetUserId: String) {
       self.targetUserId = targetUserId
     }
   }
@@ -31,13 +28,11 @@ public struct DirectMessageLogic {
   public enum Action: BindableAction {
     case onTask
     case closeButtonTapped
-    case reportButtonTapped
     case sendButtonTapped
     case messagesResponse(Result<BeMatch.MessagesQuery.Data, Error>)
     case createMessageResponse(Result<BeMatch.CreateMessageMutation.Data, Error>)
     case readMessagesResponse(Result<BeMatch.ReadMessagesMutation.Data, Error>)
     case child(Child.Action)
-    case destination(PresentationAction<Destination.Action>)
     case binding(BindingAction<State>)
   }
 
@@ -72,12 +67,6 @@ public struct DirectMessageLogic {
           await dismiss()
         }
 
-      case .reportButtonTapped:
-        state.destination = .report(
-          ReportLogic.State(targetUserId: state.targetUserId)
-        )
-        return .none
-
       case .sendButtonTapped where !state.isDisabled:
         let input = BeMatch.CreateMessageInput(
           targetUserId: state.targetUserId,
@@ -90,10 +79,6 @@ public struct DirectMessageLogic {
             try await bematch.createMessage(input)
           }))
         }
-
-      case let .child(.content(.rows(.element(id, .reportButtonTapped)))):
-        state.destination = .report(ReportLogic.State(messageId: id))
-        return .none
 
       case .createMessageResponse(.success):
         return .run { [targetUserId = state.targetUserId] send in
@@ -125,9 +110,6 @@ public struct DirectMessageLogic {
         return .none
       }
     }
-    .ifLet(\.$destination, action: \.destination) {
-      Destination()
-    }
   }
 
   private func messagesRequest(send: Send<Action>, targetUserId: String, after: String?) async {
@@ -158,21 +140,6 @@ public struct DirectMessageLogic {
       Scope(state: \.content, action: \.content, child: DirectMessageContentLogic.init)
     }
   }
-
-  @Reducer
-  public struct Destination {
-    public enum State: Equatable {
-      case report(ReportLogic.State)
-    }
-
-    public enum Action {
-      case report(ReportLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.report, action: \.report, child: ReportLogic.init)
-    }
-  }
 }
 
 public struct DirectMessageView: View {
@@ -183,97 +150,51 @@ public struct DirectMessageView: View {
   }
 
   public var body: some View {
-    NavigationStack {
-      WithViewStore(store, observe: { $0 }) { viewStore in
-        VStack(spacing: 0) {
-          SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
-            switch initialState {
-            case .empty:
-              Spacer()
-            case .loading:
-              ProgressView()
-                .tint(Color.white)
-                .frame(maxHeight: .infinity)
-            case .content:
-              CaseLet(
-                /DirectMessageLogic.Child.State.content,
-                action: DirectMessageLogic.Child.Action.content,
-                then: DirectMessageContentView.init(store:)
-              )
-            }
+    WithViewStore(store, observe: { $0 }) { viewStore in
+      VStack(spacing: 0) {
+        SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
+          switch initialState {
+          case .empty:
+            Spacer()
+          case .loading:
+            ProgressView()
+              .tint(Color.white)
+              .frame(maxHeight: .infinity)
+          case .content:
+            CaseLet(
+              /DirectMessageLogic.Child.State.content,
+              action: DirectMessageLogic.Child.Action.content,
+              then: DirectMessageContentView.init(store:)
+            )
           }
+        }
 
-          HStack(spacing: 8) {
-            TextField(
-              text: viewStore.$text,
-              axis: .vertical
-            ) {
-              Text("Message", bundle: .module)
-            }
-            .lineLimit(1 ... 10)
-            .padding(.vertical, 8)
-            .padding(.horizontal, 16)
-            .tint(Color.white)
-            .background(Color(uiColor: UIColor.tertiarySystemBackground))
-            .clipShape(RoundedRectangle(cornerRadius: 26))
-
-            Button {
-              store.send(.sendButtonTapped, animation: .default)
-            } label: {
-              Image(systemName: "paperplane.fill")
-                .foregroundStyle(Color.primary)
-            }
-            .disabled(viewStore.isDisabled)
+        HStack(spacing: 8) {
+          TextField(
+            text: viewStore.$text,
+            axis: .vertical
+          ) {
+            Text("Message", bundle: .module)
           }
+          .lineLimit(1 ... 10)
           .padding(.vertical, 8)
           .padding(.horizontal, 16)
-          .background(Color(uiColor: UIColor.secondarySystemBackground))
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        .task { await store.send(.onTask).finish() }
-        .toolbar {
-          ToolbarItem(placement: .principal) {
-            Text(viewStore.username)
-              .font(.system(.callout, weight: .semibold))
-          }
+          .tint(Color.white)
+          .background(Color(uiColor: UIColor.tertiarySystemBackground))
+          .clipShape(RoundedRectangle(cornerRadius: 26))
 
-          ToolbarItem(placement: .topBarLeading) {
-            Button {
-              store.send(.closeButtonTapped)
-            } label: {
-              Image(systemName: "chevron.down")
-                .foregroundStyle(Color.white)
-                .font(.system(.headline, weight: .semibold))
-            }
+          Button {
+            store.send(.sendButtonTapped, animation: .default)
+          } label: {
+            Image(systemName: "paperplane.fill")
+              .foregroundStyle(Color.primary)
           }
-
-          ToolbarItem(placement: .topBarTrailing) {
-            Menu {
-              Button {
-                store.send(.reportButtonTapped)
-              } label: {
-                Label {
-                  Text("Report", bundle: .module)
-                } icon: {
-                  Image(systemName: "exclamationmark.triangle")
-                }
-              }
-            } label: {
-              Image(systemName: "ellipsis")
-                .bold()
-                .foregroundStyle(Color.white)
-                .frame(width: 44, height: 44)
-            }
-          }
+          .disabled(viewStore.isDisabled)
         }
-        .sheet(
-          store: store.scope(state: \.$destination.report, action: \.destination.report)
-        ) { store in
-          NavigationStack {
-            ReportView(store: store)
-          }
-        }
+        .padding(.vertical, 8)
+        .padding(.horizontal, 16)
       }
+      .task { await store.send(.onTask).finish() }
     }
   }
 }
@@ -283,7 +204,6 @@ public struct DirectMessageView: View {
     DirectMessageView(
       store: .init(
         initialState: DirectMessageLogic.State(
-          username: "tomokisun",
           targetUserId: "uuid"
         ),
         reducer: { DirectMessageLogic() }
