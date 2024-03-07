@@ -10,14 +10,9 @@ import SwiftUI
 public struct ReportReasonLogic {
   public init() {}
   
-  public enum ReportType: Hashable {
-    case user(targetUserId: String)
-    case message(messageId: String)
-  }
-
   public struct State: Equatable {
     let title: String
-    let reportType: ReportType
+    let kind: ReportLogic.Kind
 
     var isDisabled = true
     var isActivityIndicatorVisible = false
@@ -25,20 +20,9 @@ public struct ReportReasonLogic {
     @BindingState var focus: Field?
     @PresentationState var alert: AlertState<Action.Alert>?
 
-    public init(
-      title: String,
-      targetUserId: String
-    ) {
+    public init(title: String, kind: ReportLogic.Kind) {
       self.title = title
-      self.reportType = .user(targetUserId: targetUserId)
-    }
-    
-    public init(
-      title: String,
-      messageId: String
-    ) {
-      self.title = title
-      self.reportType = .message(messageId: messageId)
+      self.kind = kind
     }
 
     enum Field: Hashable {
@@ -77,8 +61,9 @@ public struct ReportReasonLogic {
         return .none
 
       case .sendButtonTapped:
+        state.focus = nil
         state.isActivityIndicatorVisible = true
-        switch state.reportType {
+        switch state.kind {
         case let .user(targetUserId):
           let input = BeMatch.CreateReportInput(
             targetUserId: targetUserId,
@@ -114,8 +99,8 @@ public struct ReportReasonLogic {
         state.alert = nil
         return .send(.delegate(.dismiss), animation: .default)
 
-      case .createReportResponse:
-        state.focus = nil
+      case .createReportResponse,
+          .createMessageReportResponse:
         state.isActivityIndicatorVisible = false
         state.alert = AlertState {
           TextState("Reported.", bundle: .module)
@@ -197,7 +182,7 @@ public struct ReportReasonView: View {
       store: .init(
         initialState: ReportReasonLogic.State(
           title: String(localized: "Spam", bundle: .module),
-          targetUserId: String()
+          kind: .user(targetUserId: "")
         ),
         reducer: { ReportReasonLogic() }
       )
