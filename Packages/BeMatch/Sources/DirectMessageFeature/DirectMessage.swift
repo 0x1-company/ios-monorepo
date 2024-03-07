@@ -92,7 +92,7 @@ public struct DirectMessageLogic {
         }
 
       case let .child(.content(.rows(.element(id, .reportButtonTapped)))):
-        /// message report
+        state.destination = .report(ReportLogic.State(messageId: id))
         return .none
 
       case .createMessageResponse(.success):
