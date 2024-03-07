@@ -9,7 +9,7 @@ import SwiftUI
 @Reducer
 public struct ReportReasonLogic {
   public init() {}
-  
+
   public struct State: Equatable {
     let title: String
     let kind: ReportLogic.Kind
@@ -100,7 +100,7 @@ public struct ReportReasonLogic {
         return .send(.delegate(.dismiss), animation: .default)
 
       case .createReportResponse,
-          .createMessageReportResponse:
+           .createMessageReportResponse:
         state.isActivityIndicatorVisible = false
         state.alert = AlertState {
           TextState("Reported.", bundle: .module)
