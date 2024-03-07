@@ -7,14 +7,23 @@ import SwiftUI
 @Reducer
 public struct ReportLogic {
   public init() {}
+  
+  public enum Kind: Hashable {
+    case user(targetUserId: String)
+    case message(messageId: String)
+  }
 
   public struct State: Equatable {
-    let targetUserId: String
+    let kind: Kind
 
     var path = StackState<Path.State>()
 
     public init(targetUserId: String) {
-      self.targetUserId = targetUserId
+      self.kind = Kind.user(targetUserId: targetUserId)
+    }
+    
+    public init(messageId: String) {
+      self.kind = Kind.message(messageId: messageId)
     }
   }
 
@@ -38,8 +47,8 @@ public struct ReportLogic {
 
       case let .titleButtonTapped(title):
         state.path.append(.reason(ReportReasonLogic.State(
-          targetUserId: state.targetUserId,
-          title: title
+          title: title,
+          kind: state.kind
         )))
         return .none
 

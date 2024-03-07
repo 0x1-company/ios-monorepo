@@ -65,6 +65,16 @@ input CreateMessageInput {
   text: String!
 }
 
+input CreateMessageReportInput {
+  messageId: String!
+
+  """通報理由"""
+  text: String!
+
+  """通報理由のタイトル"""
+  title: String!
+}
+
 input CreateNopeInput {
   """NOPEを送信する相手のID"""
   targetUserId: String!
@@ -96,6 +106,14 @@ input DeleteMatchInput {
 input DeleteMessageInput {
   """削除するメッセージのID"""
   messageId: String!
+}
+
+type Explorer {
+  colors: [String!]!
+  id: ID!
+  order: Int!
+  title: String!
+  users: [User!]!
 }
 
 type Feedback {
@@ -235,6 +253,9 @@ type Mutation {
   """メッセージの作成"""
   createMessage(input: CreateMessageInput!): Message!
 
+  """メッセージを通報する"""
+  createMessageReport(input: CreateMessageReportInput!): Boolean!
+
   """NOPEを作成する"""
   createNope(input: CreateNopeInput!): Feedback!
 
@@ -300,6 +321,7 @@ type Query {
 
   """ログイン中ユーザーを取得"""
   currentUser: User!
+  explorers: [Explorer!]!
 
   """メンバーシップが有効かどうか"""
   hasPremiumMembership: Boolean!

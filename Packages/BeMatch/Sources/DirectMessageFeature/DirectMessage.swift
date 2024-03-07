@@ -91,6 +91,10 @@ public struct DirectMessageLogic {
           }))
         }
 
+      case let .child(.content(.rows(.element(id, .reportButtonTapped)))):
+        state.destination = .report(ReportLogic.State(messageId: id))
+        return .none
+
       case .createMessageResponse(.success):
         return .run { [targetUserId = state.targetUserId] send in
           await messagesRequest(send: send, targetUserId: targetUserId, after: nil)

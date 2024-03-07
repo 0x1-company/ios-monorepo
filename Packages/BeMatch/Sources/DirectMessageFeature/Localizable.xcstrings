@@ -15,7 +15,14 @@
       }
     },
     "Report" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通報"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
