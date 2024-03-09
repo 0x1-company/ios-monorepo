@@ -1,4 +1,5 @@
 import AnalyticsClient
+import ReportFeature
 import BeMatch
 import BeMatchClient
 import ComposableArchitecture
@@ -19,11 +20,12 @@ public struct ProfileExplorerLogic {
     let username: String
     let targetUserId: String
 
-    var directMessage: DirectMessageLogic.State
-    var preview: ProfileExplorerPreviewLogic.State
-
     @BindingState var currentTab = Tab.message
     @BindingState var text = ""
+    
+    var directMessage: DirectMessageLogic.State
+    var preview: ProfileExplorerPreviewLogic.State
+    @PresentationState var destination: Destination.State?
 
     var isDisabled: Bool {
       return text.isEmpty
@@ -49,6 +51,7 @@ public struct ProfileExplorerLogic {
     case binding(BindingAction<State>)
     case directMessage(DirectMessageLogic.Action)
     case preview(ProfileExplorerPreviewLogic.Action)
+    case destination(PresentationAction<Destination.Action>)
     case createMessageResponse(Result<BeMatch.CreateMessageMutation.Data, Error>)
   }
 
@@ -85,6 +88,14 @@ public struct ProfileExplorerLogic {
             try await bematch.createMessage(input)
           }))
         }
+        
+      case .reportButtonTapped:
+        state.destination = .report(ReportLogic.State(targetUserId: state.targetUserId))
+        return .none
+        
+      case let .directMessage(.child(.content(.rows(.element(id, .reportButtonTapped))))):
+        state.destination = .report(ReportLogic.State(messageId: id))
+        return .none
 
       case .createMessageResponse(.success):
         return DirectMessageLogic()
@@ -94,6 +105,24 @@ public struct ProfileExplorerLogic {
       default:
         return .none
       }
+    }
+    .ifLet(\.$destination, action: \.destination) {
+      Destination()
+    }
+  }
+  
+  @Reducer
+  public struct Destination {
+    public enum State: Equatable {
+      case report(ReportLogic.State)
+    }
+    
+    public enum Action {
+      case report(ReportLogic.Action)
+    }
+    
+    public var body: some Reducer<State, Action> {
+      Scope(state: \.report, action: \.report, child: ReportLogic.init)
     }
   }
 }
@@ -175,6 +204,10 @@ public struct ProfileExplorerView: View {
           }
         }
       }
+      .sheet(
+        store: store.scope(state: \.$destination.report, action: \.destination.report),
+        content: ReportView.init(store:)
+      )
     }
   }
 }
