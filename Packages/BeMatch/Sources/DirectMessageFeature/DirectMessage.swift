@@ -15,25 +15,18 @@ public struct DirectMessageLogic {
 
     var child = Child.State.loading
 
-    @BindingState var text = String()
-    var isDisabled: Bool {
-      text.isEmpty
-    }
-
     public init(targetUserId: String) {
       self.targetUserId = targetUserId
     }
   }
 
-  public enum Action: BindableAction {
+  public enum Action {
     case onTask
     case closeButtonTapped
     case sendButtonTapped
     case messagesResponse(Result<BeMatch.MessagesQuery.Data, Error>)
-    case createMessageResponse(Result<BeMatch.CreateMessageMutation.Data, Error>)
     case readMessagesResponse(Result<BeMatch.ReadMessagesMutation.Data, Error>)
     case child(Child.Action)
-    case binding(BindingAction<State>)
   }
 
   @Dependency(\.dismiss) var dismiss
@@ -42,7 +35,6 @@ public struct DirectMessageLogic {
   @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   public var body: some Reducer<State, Action> {
-    BindingReducer()
     Scope(state: \.child, action: \.child, child: Child.init)
     Reduce<State, Action> { state, action in
       switch action {
@@ -65,24 +57,6 @@ public struct DirectMessageLogic {
         return .run { _ in
           await feedbackGenerator.impactOccurred()
           await dismiss()
-        }
-
-      case .sendButtonTapped where !state.isDisabled:
-        let input = BeMatch.CreateMessageInput(
-          targetUserId: state.targetUserId,
-          text: state.text
-        )
-        state.text.removeAll()
-        return .run { send in
-          await feedbackGenerator.impactOccurred()
-          await send(.createMessageResponse(Result {
-            try await bematch.createMessage(input)
-          }))
-        }
-
-      case .createMessageResponse(.success):
-        return .run { [targetUserId = state.targetUserId] send in
-          await messagesRequest(send: send, targetUserId: targetUserId, after: nil)
         }
 
       case let .messagesResponse(.success(data)):
@@ -150,52 +124,23 @@ public struct DirectMessageView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
-      VStack(spacing: 0) {
-        SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
-          switch initialState {
-          case .empty:
-            Spacer()
-          case .loading:
-            ProgressView()
-              .tint(Color.white)
-              .frame(maxHeight: .infinity)
-          case .content:
-            CaseLet(
-              /DirectMessageLogic.Child.State.content,
-              action: DirectMessageLogic.Child.Action.content,
-              then: DirectMessageContentView.init(store:)
-            )
-          }
-        }
-
-        HStack(spacing: 8) {
-          TextField(
-            text: viewStore.$text,
-            axis: .vertical
-          ) {
-            Text("Message", bundle: .module)
-          }
-          .lineLimit(1 ... 10)
-          .padding(.vertical, 8)
-          .padding(.horizontal, 16)
+    SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
+      switch initialState {
+      case .empty:
+        Spacer()
+      case .loading:
+        ProgressView()
           .tint(Color.white)
-          .background(Color(uiColor: UIColor.tertiarySystemBackground))
-          .clipShape(RoundedRectangle(cornerRadius: 26))
-
-          Button {
-            store.send(.sendButtonTapped, animation: .default)
-          } label: {
-            Image(systemName: "paperplane.fill")
-              .foregroundStyle(Color.primary)
-          }
-          .disabled(viewStore.isDisabled)
-        }
-        .padding(.vertical, 8)
-        .padding(.horizontal, 16)
+          .frame(maxHeight: .infinity)
+      case .content:
+        CaseLet(
+          /DirectMessageLogic.Child.State.content,
+          action: DirectMessageLogic.Child.Action.content,
+          then: DirectMessageContentView.init(store:)
+        )
       }
-      .task { await store.send(.onTask).finish() }
     }
+    .task { await store.send(.onTask).finish() }
   }
 }
 

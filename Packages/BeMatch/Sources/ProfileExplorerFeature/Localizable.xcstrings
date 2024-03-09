@@ -11,6 +11,16 @@
         }
       }
     },
+    "Message" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メッセージ"
+          }
+        }
+      }
+    },
     "Report" : {
       "localizations" : {
         "ja" : {
