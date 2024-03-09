@@ -11,22 +11,12 @@
         }
       }
     },
-    "Are you sure you want to unmatch?" : {
+    "Message" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "本当にマッチ解除しますか？"
-          }
-        }
-      }
-    },
-    "Confirm" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "マッチを解除する"
+            "value" : "メッセージ"
           }
         }
       }
@@ -36,17 +26,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "通報する"
-          }
-        }
-      }
-    },
-    "Unmatch" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "マッチを解除"
+            "value" : "通報"
           }
         }
       }

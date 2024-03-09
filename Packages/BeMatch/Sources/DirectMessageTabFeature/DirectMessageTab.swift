@@ -5,6 +5,7 @@ import ComposableArchitecture
 import DirectMessageFeature
 import FeedbackGeneratorClient
 import MembershipFeature
+import ProfileExplorerFeature
 import ReceivedLikeSwipeFeature
 import SwiftUI
 
@@ -95,13 +96,29 @@ public struct DirectMessageTabLogic {
         }
 
       case let .unsent(.child(.content(.rows(.element(_, .delegate(.showDirectMessage(username, targetUserId))))))):
-        state.destination = .directMessage(DirectMessageLogic.State(username: username, targetUserId: targetUserId))
+        let explorerState = ProfileExplorerLogic.State(
+          username: username,
+          targetUserId: targetUserId,
+          tab: ProfileExplorerLogic.Tab.profile
+        )
+        state.destination = Destination.State.explorer(explorerState)
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
+
+      case let .messages(.child(.content(.rows(.element(_, .delegate(.showProfile(username, targetUserId))))))):
+        let explorerState = ProfileExplorerLogic.State(
+          username: username,
+          targetUserId: targetUserId,
+          tab: ProfileExplorerLogic.Tab.profile
+        )
+        state.destination = Destination.State.explorer(explorerState)
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
 
       case let .messages(.child(.content(.rows(.element(_, .delegate(.showDirectMessage(username, targetUserId))))))):
-        state.destination = .directMessage(DirectMessageLogic.State(username: username, targetUserId: targetUserId))
+        state.destination = .explorer(ProfileExplorerLogic.State(username: username, targetUserId: targetUserId))
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
@@ -131,12 +148,14 @@ public struct DirectMessageTabLogic {
     public enum State: Equatable {
       case directMessage(DirectMessageLogic.State)
       case membership(MembershipLogic.State = .init())
+      case explorer(ProfileExplorerLogic.State)
       case receivedLike(ReceivedLikeSwipeLogic.State = .init())
     }
 
     public enum Action {
       case directMessage(DirectMessageLogic.Action)
       case membership(MembershipLogic.Action)
+      case explorer(ProfileExplorerLogic.Action)
       case receivedLike(ReceivedLikeSwipeLogic.Action)
     }
 
@@ -146,6 +165,9 @@ public struct DirectMessageTabLogic {
       }
       Scope(state: \.membership, action: \.membership) {
         MembershipLogic()
+      }
+      Scope(state: \.explorer, action: \.explorer) {
+        ProfileExplorerLogic()
       }
       Scope(state: \.receivedLike, action: \.receivedLike) {
         ReceivedLikeSwipeLogic()
@@ -176,6 +198,7 @@ public struct DirectMessageTabView: View {
           )
         }
       }
+      .toolbar(.visible, for: .tabBar)
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
       .toolbar {
@@ -195,7 +218,12 @@ public struct DirectMessageTabView: View {
         store: store.scope(state: \.$destination.receivedLike, action: \.destination.receivedLike),
         content: ReceivedLikeSwipeView.init(store:)
       )
+      .navigationDestination(
+        store: store.scope(state: \.$destination.explorer, action: \.destination.explorer),
+        destination: ProfileExplorerView.init(store:)
+      )
     }
+    .tint(Color.primary)
   }
 }
 

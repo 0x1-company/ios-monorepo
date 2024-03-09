@@ -5,6 +5,7 @@
 
     },
     "Message" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {

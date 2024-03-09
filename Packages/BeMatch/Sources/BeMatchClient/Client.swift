@@ -47,4 +47,5 @@ public struct BeMatchClient: Sendable {
   public var directMessageTab: @Sendable () -> AsyncThrowingStream<BeMatch.DirectMessageTabQuery.Data, Error> = { .finished() }
   public var directMessageListContent: @Sendable (_ after: String?) -> AsyncThrowingStream<BeMatch.DirectMessageListContentQuery.Data, Error> = { _ in .finished() }
   public var unsentDirectMessageListContent: @Sendable (_ after: String?) -> AsyncThrowingStream<BeMatch.UnsentDirectMessageListContentQuery.Data, Error> = { _ in .finished() }
+  public var profileExplorerPreview: @Sendable (_ targetUserId: String) -> AsyncThrowingStream<BeMatch.ProfileExplorerPreviewQuery.Data, Error> = { _ in .finished() }
 }

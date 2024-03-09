@@ -141,6 +141,10 @@ public extension BeMatchClient {
       unsentDirectMessageListContent: { after in
         let query = BeMatch.UnsentDirectMessageListContentQuery(first: 50, after: after ?? .null)
         return apolloClient.watch(query: query)
+      },
+      profileExplorerPreview: { targetUserId in
+        let query = BeMatch.ProfileExplorerPreviewQuery(targetUserId: targetUserId)
+        return apolloClient.watch(query: query)
       }
     )
   }
