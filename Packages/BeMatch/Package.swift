@@ -310,7 +310,6 @@ let package = Package(
       "ProfileSharedFeature",
     ]),
     .target(name: "ProfileExternalFeature", dependencies: [
-      "DirectMessageFeature",
       "ProfileSharedFeature",
     ]),
     .target(name: "ProfileFeature", dependencies: [

@@ -5,7 +5,6 @@ import BeMatchClient
 import CachedAsyncImage
 import ComposableArchitecture
 import Constants
-import DirectMessageFeature
 import FeedbackGeneratorClient
 import ProfileSharedFeature
 import ReportFeature
@@ -43,7 +42,6 @@ public struct ProfileExternalLogic {
     case unmatchButtonTapped
     case reportButtonTapped
     case addBeRealButtonTapped
-    case jumpBeRealButtonTapped
     case deleteMatchResponse(Result<BeMatch.DeleteMatchMutation.Data, Error>)
     case readMatchResponse(Result<BeMatch.ReadMatchMutation.Data, Error>)
     case destination(PresentationAction<Destination.Action>)
@@ -104,17 +102,6 @@ public struct ProfileExternalLogic {
         }
 
       case .addBeRealButtonTapped:
-        let targetUser = state.match.targetUser
-        state.destination = .directMessage(
-          DirectMessageLogic.State(
-            targetUserId: targetUser.id
-          )
-        )
-        return .run { _ in
-          await feedbackGenerator.impactOccurred()
-        }
-
-      case .jumpBeRealButtonTapped:
         let username = state.match.targetUser.berealUsername
         guard let url = URL(string: "https://bere.al/\(username)")
         else { return .none }
@@ -173,13 +160,12 @@ public struct ProfileExternalLogic {
   public struct Destination {
     public enum State: Equatable {
       case report(ReportLogic.State)
-      case directMessage(DirectMessageLogic.State)
       case confirmationDialog(ConfirmationDialogState<Action.ConfirmationDialog>)
     }
 
     public enum Action {
       case report(ReportLogic.Action)
-      case directMessage(DirectMessageLogic.Action)
+
       case confirmationDialog(ConfirmationDialog)
 
       public enum ConfirmationDialog: Equatable {
@@ -189,7 +175,6 @@ public struct ProfileExternalLogic {
 
     public var body: some Reducer<State, Action> {
       Scope(state: \.report, action: \.report, child: ReportLogic.init)
-      Scope(state: \.directMessage, action: \.directMessage, child: DirectMessageLogic.init)
       Scope(state: \.confirmationDialog, action: \.confirmationDialog) {}
     }
   }
@@ -271,19 +256,11 @@ public struct ProfileExternalView: View {
 
           VStack(spacing: 12) {
             PrimaryButton(
-              String(localized: "Send Message", bundle: .module)
+              String(localized: "Add BeReal", bundle: .module)
             ) {
               store.send(.addBeRealButtonTapped)
             }
             .padding(.horizontal, 16)
-
-            Button {
-              store.send(.jumpBeRealButtonTapped)
-            } label: {
-              Text("🔗 BeRe.al/\(viewStore.match.targetUser.berealUsername)")
-                .font(.system(.caption))
-                .foregroundStyle(Color.primary)
-            }
           }
 
           Spacer()
@@ -302,15 +279,8 @@ public struct ProfileExternalView: View {
         )
       )
       .sheet(
-        store: store.scope(state: \.$destination.report, action: \.destination.report)
-      ) { store in
-        ReportView(store: store)
-          .presentationDragIndicator(.visible)
-          .presentationDetents([.medium, .large])
-      }
-      .sheet(
-        store: store.scope(state: \.$destination.directMessage, action: \.destination.directMessage),
-        content: DirectMessageView.init(store:)
+        store: store.scope(state: \.$destination.report, action: \.destination.report),
+        content: ReportView.init(store:)
       )
       .gesture(
         DragGesture()

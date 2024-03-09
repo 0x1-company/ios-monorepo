@@ -1,12 +1,12 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "🔗 BeRe.al/%@" : {
+    "Add BeReal" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "🔗 BeRe.al/%@"
+            "value" : "BeRealを追加する"
           }
         }
       }
@@ -37,16 +37,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "通報する"
-          }
-        }
-      }
-    },
-    "Send Message" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "メッセージ"
           }
         }
       }
