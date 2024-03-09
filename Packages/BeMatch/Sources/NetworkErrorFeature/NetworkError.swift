@@ -14,7 +14,7 @@ public struct NetworkErrorLogic {
     case onTask
   }
 
-  @Dependency(\.analytics) var analytics
+  @Dependency(\.analytics) var analyticsgi
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { _, action in

@@ -88,6 +88,7 @@ let package = Package(
       "NavigationFeature",
       "ForceUpdateFeature",
       "MaintenanceFeature",
+      "NetworkErrorFeature",
       .product(name: "AsyncValue", package: "SDK"),
       .product(name: "AppsFlyerClient", package: "SDK"),
       .product(name: "ScreenshotClient", package: "SDK"),
