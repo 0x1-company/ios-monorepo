@@ -96,7 +96,23 @@ public struct DirectMessageTabLogic {
         }
 
       case let .unsent(.child(.content(.rows(.element(_, .delegate(.showDirectMessage(username, targetUserId))))))):
-        state.destination = .explorer(ProfileExplorerLogic.State(username: username, targetUserId: targetUserId))
+        let explorerState = ProfileExplorerLogic.State(
+          username: username,
+          targetUserId: targetUserId,
+          tab: ProfileExplorerLogic.Tab.profile
+        )
+        state.destination = Destination.State.explorer(explorerState)
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
+
+      case let .messages(.child(.content(.rows(.element(_, .delegate(.showProfile(username, targetUserId))))))):
+        let explorerState = ProfileExplorerLogic.State(
+          username: username,
+          targetUserId: targetUserId,
+          tab: ProfileExplorerLogic.Tab.profile
+        )
+        state.destination = Destination.State.explorer(explorerState)
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }

@@ -1,10 +1,10 @@
 import AnalyticsClient
-import ReportFeature
 import BeMatch
 import BeMatchClient
 import ComposableArchitecture
 import DirectMessageFeature
 import FeedbackGeneratorClient
+import ReportFeature
 import SwiftUI
 
 @Reducer
@@ -20,9 +20,9 @@ public struct ProfileExplorerLogic {
     let username: String
     let targetUserId: String
 
-    @BindingState var currentTab = Tab.message
+    @BindingState var currentTab: Tab
     @BindingState var text = ""
-    
+
     var directMessage: DirectMessageLogic.State
     var preview: ProfileExplorerPreviewLogic.State
     @PresentationState var destination: Destination.State?
@@ -31,7 +31,12 @@ public struct ProfileExplorerLogic {
       return text.isEmpty
     }
 
-    public init(username: String, targetUserId: String) {
+    public init(
+      username: String,
+      targetUserId: String,
+      tab: Tab = Tab.message
+    ) {
+      currentTab = tab
       self.username = username
       self.targetUserId = targetUserId
       directMessage = DirectMessageLogic.State(
@@ -88,11 +93,11 @@ public struct ProfileExplorerLogic {
             try await bematch.createMessage(input)
           }))
         }
-        
+
       case .reportButtonTapped:
         state.destination = .report(ReportLogic.State(targetUserId: state.targetUserId))
         return .none
-        
+
       case let .directMessage(.child(.content(.rows(.element(id, .reportButtonTapped))))):
         state.destination = .report(ReportLogic.State(messageId: id))
         return .none
@@ -110,17 +115,17 @@ public struct ProfileExplorerLogic {
       Destination()
     }
   }
-  
+
   @Reducer
   public struct Destination {
     public enum State: Equatable {
       case report(ReportLogic.State)
     }
-    
+
     public enum Action {
       case report(ReportLogic.Action)
     }
-    
+
     public var body: some Reducer<State, Action> {
       Scope(state: \.report, action: \.report, child: ReportLogic.init)
     }

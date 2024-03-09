@@ -37,10 +37,12 @@ public struct DirectMessageListContentRowLogic {
   }
 
   public enum Action {
+    case iconButtonTapped
     case rowButtonTapped
     case delegate(Delegate)
 
     public enum Delegate: Equatable {
+      case showProfile(_ username: String, _ targetUserId: String)
       case showDirectMessage(_ username: String, _ targetUserId: String)
     }
   }
@@ -48,6 +50,11 @@ public struct DirectMessageListContentRowLogic {
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
       switch action {
+      case .iconButtonTapped:
+        let username = state.username
+        let targetUserId = state.id
+        return .send(.delegate(.showProfile(username, targetUserId)))
+
       case .rowButtonTapped:
         let username = state.username
         let targetUserId = state.id
@@ -74,27 +81,31 @@ public struct DirectMessageListContentRowView: View {
         store.send(.rowButtonTapped)
       } label: {
         HStack(spacing: 8) {
-          CachedAsyncImage(
-            url: URL(string: viewStore.imageUrl),
-            urlCache: .shared,
-            scale: displayScale,
-            content: { image in
-              image
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 72, height: 72)
-            },
-            placeholder: {
-              Color.black
-                .frame(width: 72, height: 72)
-                .overlay {
-                  ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle())
-                    .tint(Color.white)
-                }
-            }
-          )
-          .clipShape(Circle())
+          Button {
+            store.send(.iconButtonTapped)
+          } label: {
+            CachedAsyncImage(
+              url: URL(string: viewStore.imageUrl),
+              urlCache: .shared,
+              scale: displayScale,
+              content: { image in
+                image
+                  .resizable()
+                  .aspectRatio(contentMode: .fill)
+                  .frame(width: 72, height: 72)
+              },
+              placeholder: {
+                Color.black
+                  .frame(width: 72, height: 72)
+                  .overlay {
+                    ProgressView()
+                      .progressViewStyle(CircularProgressViewStyle())
+                      .tint(Color.white)
+                  }
+              }
+            )
+            .clipShape(Circle())
+          }
 
           VStack(alignment: .leading, spacing: 6) {
             HStack(spacing: 0) {
