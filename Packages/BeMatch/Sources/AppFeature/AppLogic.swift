@@ -13,6 +13,7 @@ import FreezedFeature
 import LaunchFeature
 import MaintenanceFeature
 import NavigationFeature
+import NetworkErrorFeature
 import OnboardFeature
 import StoreKit
 import SwiftUI
@@ -151,6 +152,7 @@ public struct AppLogic {
       case maintenance(MaintenanceLogic.State = .init())
       case banned(BannedLogic.State)
       case freezed(FreezedLogic.State = .init())
+      case networkError(NetworkErrorLogic.State = .init())
     }
 
     public enum Action {
@@ -161,6 +163,7 @@ public struct AppLogic {
       case maintenance(MaintenanceLogic.Action)
       case banned(BannedLogic.Action)
       case freezed(FreezedLogic.Action)
+      case networkError(NetworkErrorLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
@@ -171,6 +174,7 @@ public struct AppLogic {
       Scope(state: \.maintenance, action: \.maintenance, child: MaintenanceLogic.init)
       Scope(state: \.banned, action: \.banned, child: BannedLogic.init)
       Scope(state: \.freezed, action: \.freezed, child: FreezedLogic.init)
+      Scope(state: \.networkError, action: \.networkError, child: NetworkErrorLogic.init)
     }
   }
 }

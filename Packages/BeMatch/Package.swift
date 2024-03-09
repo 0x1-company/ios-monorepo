@@ -40,6 +40,7 @@ let package = Package(
     .library(name: "MatchNavigationFeature", targets: ["MatchNavigationFeature"]),
     .library(name: "MembershipFeature", targets: ["MembershipFeature"]),
     .library(name: "NavigationFeature", targets: ["NavigationFeature"]),
+    .library(name: "NetworkErrorFeature", targets: ["NetworkErrorFeature"]),
     .library(name: "NotificationsReEnableFeature", targets: ["NotificationsReEnableFeature"]),
     .library(name: "OnboardFeature", targets: ["OnboardFeature"]),
     .library(name: "ProfileEditFeature", targets: ["ProfileEditFeature"]),
@@ -87,6 +88,7 @@ let package = Package(
       "NavigationFeature",
       "ForceUpdateFeature",
       "MaintenanceFeature",
+      "NetworkErrorFeature",
       .product(name: "AsyncValue", package: "SDK"),
       .product(name: "AppsFlyerClient", package: "SDK"),
       .product(name: "ScreenshotClient", package: "SDK"),
@@ -278,6 +280,10 @@ let package = Package(
       "DirectMessageTabFeature",
       "RecommendationFeature",
       "MatchNavigationFeature",
+    ]),
+    .target(name: "NetworkErrorFeature", dependencies: [
+      .product(name: "AnalyticsClient", package: "SDK"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "NotificationsReEnableFeature", dependencies: [
       .product(name: "UIApplicationClient", package: "SDK"),

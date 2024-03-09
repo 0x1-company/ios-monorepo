@@ -49,7 +49,7 @@ public struct AuthLogic {
       }
 
     case .signInAnonymouslyResponse(.failure):
-      state.child = .maintenance()
+      state.child = .networkError()
       return .none
 
     case let .createUserResponse(.success(data)):
@@ -72,7 +72,7 @@ public struct AuthLogic {
       }
 
     case .createUserResponse(.failure):
-      state.child = .maintenance()
+      state.child = .networkError()
       return .none
 
     default:
