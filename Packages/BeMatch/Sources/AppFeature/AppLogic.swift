@@ -231,6 +231,12 @@ public struct AppView: View {
           action: AppLogic.Child.Action.freezed,
           then: FreezedView.init(store:)
         )
+      case .networkError:
+        CaseLet(
+          /AppLogic.Child.State.networkError,
+          action: AppLogic.Child.Action.networkError,
+          then: NetworkErrorView.init(store:)
+        )
       }
     }
     .overlay {
