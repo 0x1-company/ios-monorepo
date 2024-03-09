@@ -1,5 +1,8 @@
+import AnalyticsClient
+import AnalyticsKeys
 import BeMatch
 import ComposableArchitecture
+import FeedbackGeneratorClient
 import ProfileSharedFeature
 import Styleguide
 import SwiftUI
@@ -30,12 +33,30 @@ public struct ProfileExplorerPreviewContentLogic {
     }
   }
 
+  @Dependency(\.openURL) var openURL
+  @Dependency(\.analytics) var analytics
+  @Dependency(\.feedbackGenerator) var feedbackGenerator
+
   public var body: some Reducer<State, Action> {
     Scope(state: \.pictureSlider, action: \.pictureSlider) {
       PictureSliderLogic()
     }
-    Reduce<State, Action> { _, action in
+    Reduce<State, Action> { state, action in
       switch action {
+      case .addBeRealButtonTapped:
+        let username = state.user.berealUsername
+        guard let url = URL(string: "https://bere.al/\(username)")
+        else { return .none }
+
+        analytics.buttonClick(name: \.addBeReal, parameters: [
+          "url": url.absoluteString,
+        ])
+
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+          await openURL(url)
+        }
+
       default:
         return .none
       }
