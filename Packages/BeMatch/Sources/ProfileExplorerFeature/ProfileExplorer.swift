@@ -58,6 +58,7 @@ public struct ProfileExplorerLogic {
     case preview(ProfileExplorerPreviewLogic.Action)
     case destination(PresentationAction<Destination.Action>)
     case createMessageResponse(Result<BeMatch.CreateMessageMutation.Data, Error>)
+    case readMatchResponse(Result<BeMatch.ReadMatchByTargetUserIdMutation.Data, Error>)
   }
 
   @Dependency(\.bematch) var bematch
@@ -75,7 +76,11 @@ public struct ProfileExplorerLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
-        return .none
+        return .run { [targetUserId = state.targetUserId] send in
+          await send(.readMatchResponse(Result {
+            try await bematch.readMatchByTargetUserId(targetUserId)
+          }))
+        }
 
       case .principalButtonTapped:
         state.currentTab = Tab.profile
