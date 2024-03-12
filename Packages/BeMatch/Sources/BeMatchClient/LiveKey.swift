@@ -58,6 +58,10 @@ public extension BeMatchClient {
         let mutation = BeMatch.ReadMatchMutation(matchId: id)
         return try await apolloClient.perform(mutation: mutation)
       },
+      readMatchByTargetUserId: { targetUserId in
+        let mutation = BeMatch.ReadMatchByTargetUserIdMutation(targetUserId: targetUserId)
+        return try await apolloClient.perform(mutation: mutation)
+      },
       receivedLike: {
         let query = BeMatch.ReceivedLikeQuery()
         return apolloClient.watch(query: query)

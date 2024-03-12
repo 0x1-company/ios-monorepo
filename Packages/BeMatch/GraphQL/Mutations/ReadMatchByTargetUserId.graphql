@@ -1,0 +1,6 @@
+mutation ReadMatchByTargetUserId($targetUserId: String!) {
+  readMatchByTargetUserId(targetUserId: $targetUserId) {
+    id
+    isRead
+  }
+}

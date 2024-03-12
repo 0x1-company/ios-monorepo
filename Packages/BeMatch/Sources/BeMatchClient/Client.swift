@@ -19,6 +19,7 @@ public struct BeMatchClient: Sendable {
   public var matches: @Sendable (_ first: Int, _ after: String?) -> AsyncThrowingStream<BeMatch.MatchesQuery.Data, Error> = { _, _ in .finished() }
   public var deleteMatch: @Sendable (BeMatch.DeleteMatchInput) async throws -> BeMatch.DeleteMatchMutation.Data
   public var readMatch: @Sendable (String) async throws -> BeMatch.ReadMatchMutation.Data
+  public var readMatchByTargetUserId: @Sendable (_ targetUserId: String) async throws -> BeMatch.ReadMatchByTargetUserIdMutation.Data
   public var receivedLike: @Sendable () -> AsyncThrowingStream<BeMatch.ReceivedLikeQuery.Data, Error> = { .finished() }
   public var usersByLiker: @Sendable () -> AsyncThrowingStream<BeMatch.UsersByLikerQuery.Data, Error> = { .finished() }
 

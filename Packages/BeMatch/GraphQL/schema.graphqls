@@ -277,6 +277,9 @@ type Mutation {
   """Matchを既読にする"""
   readMatch(matchId: String!): Match!
 
+  """Matchを既読する"""
+  readMatchByTargetUserId(targetUserId: String!): Match!
+
   """作成されたメッセージすべてを既読にする"""
   readMessages(input: ReadMessagesInput!): Boolean!
 
