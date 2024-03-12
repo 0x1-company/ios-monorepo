@@ -101,11 +101,15 @@ public struct ProfileExplorerLogic {
 
       case .reportButtonTapped:
         state.destination = .report(ReportLogic.State(targetUserId: state.targetUserId))
-        return .none
+        return .run { send in
+          await feedbackGenerator.impactOccurred()
+        }
 
       case let .directMessage(.child(.content(.rows(.element(id, .reportButtonTapped))))):
         state.destination = .report(ReportLogic.State(messageId: id))
-        return .none
+        return .run { send in
+          await feedbackGenerator.impactOccurred()
+        }
 
       case .createMessageResponse(.success):
         return DirectMessageLogic()
