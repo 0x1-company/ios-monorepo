@@ -75,6 +75,7 @@ public struct ProfileExplorerLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
+        analytics.logScreen(screenName: "ProfileExplorer", of: self)
         return .none
 
       case .principalButtonTapped:
