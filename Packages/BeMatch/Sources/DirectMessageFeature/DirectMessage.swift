@@ -1,4 +1,3 @@
-import AnalyticsClient
 import BeMatch
 import BeMatchClient
 import ComposableArchitecture
@@ -31,7 +30,6 @@ public struct DirectMessageLogic {
 
   @Dependency(\.dismiss) var dismiss
   @Dependency(\.bematch) var bematch
-  @Dependency(\.analytics) var analytics
   @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   public var body: some Reducer<State, Action> {
@@ -39,7 +37,6 @@ public struct DirectMessageLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
-        analytics.logScreen(screenName: "DirectMessage", of: self)
         return .run { [targetUserId = state.targetUserId] send in
           await withTaskGroup(of: Void.self) { group in
             group.addTask {
