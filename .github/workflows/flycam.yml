@@ -32,8 +32,6 @@ jobs:
     runs-on: macos-13
     steps:
       - uses: actions/checkout@v4
-      - run: ls /Applications
-      - run: sudo xcode-select -s /Applications/Xcode_15.0.1.app
       - uses: irgaly/xcode-cache@v1
         with:
           key: flycam-xcode-cache-deriveddata-${{ github.workflow }}-${{ github.sha }}
