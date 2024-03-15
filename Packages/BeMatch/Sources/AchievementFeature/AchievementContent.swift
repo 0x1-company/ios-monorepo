@@ -129,7 +129,7 @@ public struct AchievementContentView: View {
 //            )
           }
 
-          GridRow(alignment: .top) {            
+          GridRow(alignment: .top) {
             if let childStore = store.scope(state: \.history, action: \.history) {
               AchievementHistoryWidgetView(store: childStore)
             }

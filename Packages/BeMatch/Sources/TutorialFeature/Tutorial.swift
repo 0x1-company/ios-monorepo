@@ -15,15 +15,15 @@ public struct TutorialLogic {
   @ObservableState
   public struct State: Equatable {
     var currentStep = Step.first
-    
+
     var isSkipButtonHidden: Bool {
       [TutorialLogic.Step.first, .third].contains(currentStep)
     }
-    
+
     var isOnTapGestureDisabled: Bool {
       currentStep == .third
     }
-    
+
     var isNextButtonHidden: Bool {
       currentStep != .first
     }
@@ -31,7 +31,7 @@ public struct TutorialLogic {
     var isFinishButtonHidden: Bool {
       currentStep != .third
     }
-    
+
     public init() {}
   }
 
