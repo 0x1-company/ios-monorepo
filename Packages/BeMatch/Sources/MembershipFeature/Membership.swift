@@ -337,7 +337,7 @@ public struct MembershipView: View {
         }
         .ignoresSafeArea()
         .task { await store.send(.onTask).finish() }
-        .alert(item: $store.scope(state: \.destination?.alert, action: \.destination.alert))
+        .alert($store.scope(state: \.destination?.alert, action: \.destination.alert))
         .toolbar {
           if !store.isActivityIndicatorVisible {
             ToolbarItem(placement: .topBarLeading) {

@@ -305,18 +305,8 @@ public struct BeRealCaptureView: View {
           Image(ImageResource.beMatch)
         }
       }
-      .alert(
-        item: $store.scope(
-          state: \.destination?.alert,
-          action: \.destination.alert
-        )
-      )
-      .confirmationDialog(
-        item: $store.scope(
-          state: \.destination?.confirmationDialog,
-          action: \.destination.confirmationDialog
-        )
-      )
+      .alert($store.scope(state: \.destination?.alert, action: \.destination.alert))
+      .confirmationDialog($store.scope(state: \.destination?.confirmationDialog, action: \.destination.confirmationDialog))
     }
   }
 }

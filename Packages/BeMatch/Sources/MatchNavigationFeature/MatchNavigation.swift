@@ -232,7 +232,7 @@ public struct MatchNavigationView: View {
       }
     }
     .tint(Color.primary)
-    .alert(item: $store.scope(state: \.destination?.alert, action: \.destination.alert))
+    .alert($store.scope(state: \.destination?.alert, action: \.destination.alert))
     .fullScreenCover(
       item: $store.scope(state: \.destination?.membership, action: \.destination.membership),
       content: MembershipView.init(store:)

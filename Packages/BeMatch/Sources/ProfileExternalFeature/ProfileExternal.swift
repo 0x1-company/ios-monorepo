@@ -274,7 +274,7 @@ public struct ProfileExternalView: View {
       .background(Material.ultraThin)
       .task { await store.send(.onTask).finish() }
       .confirmationDialog(
-        item: $store.scope(
+        $store.scope(
           state: \.destination?.confirmationDialog,
           action: \.destination.confirmationDialog
         )
