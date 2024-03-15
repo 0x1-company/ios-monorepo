@@ -267,14 +267,14 @@ public struct ProfileEditView: View {
           BeRealSampleView(store: store)
         }
       }
-//      .navigationDestination(
-//        store: store.scope(
-//          state: \.$destination.genderSetting,
-//          action: \.destination.genderSetting
-//        )
-//      ) { store in
-//        GenderSettingView(store: store, nextButtonStyle: .save, canSkip: false)
-//      }
+      .navigationDestination(
+        store: store.scope(
+          state: \.$destination.genderSetting,
+          action: \.destination.genderSetting
+        )
+      ) { store in
+        GenderSettingView(store: store, nextButtonStyle: .save, canSkip: false)
+      }
 //      .navigationDestination(
 //        store: store.scope(
 //          state: \.$destination.usernameSetting,
