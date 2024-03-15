@@ -13,15 +13,16 @@ import SwiftUI
 public struct BeRealCaptureLogic {
   public init() {}
 
-  public struct State: Equatable {
-    @BindingState var photoPickerItems: [PhotosPickerItem] = []
+  @ObservableState
+  public struct State {
+    var photoPickerItems: [PhotosPickerItem] = []
     var images: [PhotoGrid.State] = Array(repeating: .empty, count: 9)
     var isActivityIndicatorVisible = false
     var isWarningTextVisible: Bool {
       !images.filter(\.isWarning).isEmpty
     }
 
-    @PresentationState var destination: Destination.State?
+    @Presents var destination: Destination.State?
     public init() {}
   }
 
@@ -66,7 +67,7 @@ public struct BeRealCaptureLogic {
       case .howToButtonTapped:
         return .send(.delegate(.howTo))
 
-      case .binding(\.$photoPickerItems):
+      case .binding(\.photoPickerItems):
         guard !state.photoPickerItems.isEmpty
         else { return .none }
 
@@ -189,7 +190,7 @@ public struct BeRealCaptureLogic {
 
   @Reducer
   public struct Destination {
-    public enum State: Equatable {
+    public enum State {
       case alert(AlertState<Action.Alert>)
       case confirmationDialog(ConfirmationDialogState<Action.ConfirmationDialog>)
     }
@@ -220,7 +221,7 @@ public struct BeRealCaptureView: View {
     case save
   }
 
-  let store: StoreOf<BeRealCaptureLogic>
+  @Perception.Bindable var store: StoreOf<BeRealCaptureLogic>
   private let nextButtonStyle: NextButtonStyle
 
   public init(
@@ -232,7 +233,7 @@ public struct BeRealCaptureView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithPerceptionTracking {
       VStack(spacing: 8) {
         ScrollView {
           VStack(spacing: 36) {
@@ -243,7 +244,7 @@ public struct BeRealCaptureView: View {
                 .layoutPriority(1)
                 .font(.system(.title3, weight: .semibold))
 
-              if viewStore.isWarningTextVisible {
+              if store.isWarningTextVisible {
                 Button {
                   store.send(.howToButtonTapped)
                 } label: {
@@ -268,12 +269,12 @@ public struct BeRealCaptureView: View {
               spacing: 16
             ) {
               ForEach(
-                Array(viewStore.images.enumerated()),
+                Array(store.images.enumerated()),
                 id: \.offset
               ) { offset, state in
                 PhotoGrid(
                   state: state,
-                  selection: viewStore.$photoPickerItems,
+                  selection: $store.photoPickerItems,
                   onDelete: {
                     store.send(.onDelete(offset))
                   }
@@ -289,7 +290,7 @@ public struct BeRealCaptureView: View {
           nextButtonStyle == .save
             ? String(localized: "Save", bundle: .module)
             : String(localized: "Next", bundle: .module),
-          isLoading: viewStore.isActivityIndicatorVisible
+          isLoading: store.isActivityIndicatorVisible
         ) {
           store.send(.nextButtonTapped)
         }

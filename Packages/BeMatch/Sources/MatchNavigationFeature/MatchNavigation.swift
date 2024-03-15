@@ -14,11 +14,12 @@ import SwiftUI
 public struct MatchNavigationLogic {
   public init() {}
 
-  public struct State: Equatable {
+  @ObservableState
+  public struct State {
     var match = MatchLogic.State()
 
     var path = StackState<Path.State>()
-    @PresentationState var destination: Destination.State?
+    @Presents var destination: Destination.State?
 
     public init() {}
   }
@@ -130,7 +131,7 @@ public struct MatchNavigationLogic {
 
   @Reducer
   public struct Path {
-    public enum State: Equatable {
+    public enum State {
       case settings(SettingsLogic.State)
       case other(SettingsOtherLogic.State = .init())
       case invitationCode(InvitationCodeLogic.State = .init())
@@ -151,7 +152,7 @@ public struct MatchNavigationLogic {
 
   @Reducer
   public struct Destination {
-    public enum State: Equatable {
+    public enum State {
       case alert(AlertState<Action.Alert>)
       case membership(MembershipLogic.State = .init())
       case profileExternal(ProfileExternalLogic.State)
@@ -185,7 +186,7 @@ public struct MatchNavigationLogic {
 }
 
 public struct MatchNavigationView: View {
-  let store: StoreOf<MatchNavigationLogic>
+  @Perception.Bindable var store: StoreOf<MatchNavigationLogic>
 
   public init(store: StoreOf<MatchNavigationLogic>) {
     self.store = store

@@ -9,10 +9,11 @@ import SwiftUI
 public struct InvitationLogic {
   public init() {}
 
-  public struct State: Equatable {
+  @ObservableState
+  public struct State {
     var isDisabled = true
     var isActivityIndicatorVisible = false
-    @BindingState var code = String()
+    var code = String()
 
     public init() {}
   }
@@ -80,20 +81,20 @@ public struct InvitationLogic {
 
 public struct InvitationView: View {
   @FocusState var isFocused: Bool
-  let store: StoreOf<InvitationLogic>
+  @Perception.Bindable var store: StoreOf<InvitationLogic>
 
   public init(store: StoreOf<InvitationLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithPerceptionTracking {
       VStack(spacing: 32) {
         Text("If you have an invitation code.\nPlease let us know.", bundle: .module)
           .frame(height: 50)
           .font(.system(.title3, weight: .semibold))
 
-        TextField(text: viewStore.$code) {
+        TextField(text: $store.code) {
           Text("Invitation Code", bundle: .module)
         }
         .foregroundStyle(Color.white)
@@ -108,8 +109,8 @@ public struct InvitationView: View {
         VStack(spacing: 0) {
           PrimaryButton(
             String(localized: "Next", bundle: .module),
-            isLoading: viewStore.isActivityIndicatorVisible,
-            isDisabled: viewStore.isDisabled
+            isLoading: store.isActivityIndicatorVisible,
+            isDisabled: store.isDisabled
           ) {
             store.send(.nextButtonTapped)
           }

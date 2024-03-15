@@ -11,11 +11,12 @@ import UsernameSettingFeature
 public struct ProfileLogic {
   public init() {}
 
-  public struct State: Equatable {
+  @ObservableState
+  public struct State {
     var currentUser: BeMatch.UserInternal?
 
     var pictureSlider: PictureSliderLogic.State?
-    @PresentationState var destination: Destination.State?
+    @Presents var destination: Destination.State?
     public init() {}
   }
 
@@ -116,7 +117,7 @@ public struct ProfileLogic {
 
   @Reducer
   public struct Destination {
-    public enum State: Equatable {
+    public enum State {
       case editUsername(UsernameSettingLogic.State)
       case confirmationDialog(ConfirmationDialogState<Action.ConfirmationDialog>)
     }
@@ -141,14 +142,14 @@ public struct ProfileLogic {
 public struct ProfileView: View {
   @State var translation: CGSize = .zero
   @State var scaleEffect: Double = 1.0
-  let store: StoreOf<ProfileLogic>
+  @Perception.Bindable var store: StoreOf<ProfileLogic>
 
   public init(store: StoreOf<ProfileLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithPerceptionTracking {
       VStack {
         VStack(spacing: 24) {
           HStack(spacing: 0) {
@@ -161,7 +162,7 @@ public struct ProfileView: View {
                 .frame(width: 44, height: 44)
             }
             Spacer()
-            if let username = viewStore.currentUser?.berealUsername {
+            if let username = store.currentUser?.berealUsername {
               Text(username)
                 .foregroundStyle(Color.white)
                 .font(.system(.callout, weight: .semibold))
@@ -183,7 +184,7 @@ public struct ProfileView: View {
             }
           )
 
-          if let username = viewStore.currentUser?.berealUsername {
+          if let username = store.currentUser?.berealUsername {
             Button {
               store.send(.jumpBeRealButtonTapped)
             } label: {

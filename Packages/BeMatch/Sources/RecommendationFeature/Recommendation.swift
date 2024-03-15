@@ -12,7 +12,8 @@ import UserNotificationClient
 public struct RecommendationLogic {
   public init() {}
 
-  public struct State: Equatable {
+  @ObservableState
+  public struct State {
     var child = Child.State.loading()
     public init() {}
   }
@@ -83,7 +84,7 @@ public struct RecommendationLogic {
 
   @Reducer
   public struct Child {
-    public enum State: Equatable {
+    public enum State {
       case loading(RecommendationLoadingLogic.State = .init())
       case swipe(RecommendationSwipeLogic.State)
       case empty(RecommendationEmptyLogic.State = .init())
@@ -110,7 +111,7 @@ public struct RecommendationLogic {
 }
 
 public struct RecommendationView: View {
-  let store: StoreOf<RecommendationLogic>
+  @Perception.Bindable var store: StoreOf<RecommendationLogic>
 
   public init(store: StoreOf<RecommendationLogic>) {
     self.store = store

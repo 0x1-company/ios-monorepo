@@ -7,7 +7,8 @@ import SwiftUI
 public struct DirectMessageListContentLogic {
   public init() {}
 
-  public struct State: Equatable {
+  @ObservableState
+  public struct State {
     var after: String?
     var hasNextPage = false
     var rows: IdentifiedArrayOf<DirectMessageListContentRowLogic.State> = []
@@ -80,21 +81,21 @@ public struct DirectMessageListContentLogic {
 }
 
 public struct DirectMessageListContentView: View {
-  let store: StoreOf<DirectMessageListContentLogic>
+  @Perception.Bindable var store: StoreOf<DirectMessageListContentLogic>
 
   public init(store: StoreOf<DirectMessageListContentLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithPerceptionTracking {
       LazyVStack(alignment: .leading, spacing: 8) {
         ForEachStore(
           store.scope(state: \.sortedRows, action: \.rows),
           content: DirectMessageListContentRowView.init(store:)
         )
 
-        if viewStore.hasNextPage {
+        if store.hasNextPage {
           ProgressView()
             .tint(Color.white)
             .frame(height: 44)

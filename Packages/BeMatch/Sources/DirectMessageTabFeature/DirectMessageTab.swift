@@ -13,8 +13,9 @@ import SwiftUI
 public struct DirectMessageTabLogic {
   public init() {}
 
-  public struct State: Equatable {
-    @PresentationState var destination: Destination.State?
+  @ObservableState
+  public struct State {
+    @Presents var destination: Destination.State?
     var unsent: UnsentDirectMessageListLogic.State? = .loading
     var messages: DirectMessageListLogic.State? = .loading
     public init() {}
@@ -145,7 +146,7 @@ public struct DirectMessageTabLogic {
 
   @Reducer
   public struct Destination {
-    public enum State: Equatable {
+    public enum State {
       case directMessage(DirectMessageLogic.State)
       case membership(MembershipLogic.State = .init())
       case explorer(ProfileExplorerLogic.State)
@@ -177,7 +178,7 @@ public struct DirectMessageTabLogic {
 }
 
 public struct DirectMessageTabView: View {
-  let store: StoreOf<DirectMessageTabLogic>
+  @Perception.Bindable var store: StoreOf<DirectMessageTabLogic>
 
   public init(store: StoreOf<DirectMessageTabLogic>) {
     self.store = store

@@ -11,9 +11,10 @@ import SwiftUI
 public struct CategoryListLogic {
   public init() {}
 
-  public struct State: Equatable {
+  @ObservableState
+  public struct State {
     var rows: IdentifiedArrayOf<CategorySectionLogic.State> = []
-    @PresentationState var destination: Destination.State?
+    @Presents var destination: Destination.State?
 
     public init(uniqueElements: [CategorySectionLogic.State]) {
       rows = IdentifiedArrayOf(uniqueElements: uniqueElements)
@@ -95,7 +96,7 @@ public struct CategoryListLogic {
 
   @Reducer
   public struct Destination {
-    public enum State: Equatable {
+    public enum State {
       case swipe(CategorySwipeLogic.State)
       case membership(MembershipLogic.State = .init())
     }
@@ -113,7 +114,7 @@ public struct CategoryListLogic {
 }
 
 public struct CategoryListView: View {
-  let store: StoreOf<CategoryListLogic>
+  @Perception.Bindable var store: StoreOf<CategoryListLogic>
 
   public init(store: StoreOf<CategoryListLogic>) {
     self.store = store

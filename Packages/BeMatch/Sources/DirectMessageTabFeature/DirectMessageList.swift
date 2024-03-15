@@ -5,7 +5,8 @@ import SwiftUI
 public struct DirectMessageListLogic {
   public init() {}
 
-  public struct State: Equatable {
+  @ObservableState
+  public struct State {
     var child: Child.State?
 
     static let loading = State()
@@ -48,7 +49,7 @@ public struct DirectMessageListLogic {
 
   @Reducer
   public struct Child {
-    public enum State: Equatable {
+    public enum State {
       case content(DirectMessageListContentLogic.State)
     }
 
@@ -63,7 +64,7 @@ public struct DirectMessageListLogic {
 }
 
 public struct DirectMessageListView: View {
-  let store: StoreOf<DirectMessageListLogic>
+  @Perception.Bindable var store: StoreOf<DirectMessageListLogic>
 
   public init(store: StoreOf<DirectMessageListLogic>) {
     self.store = store

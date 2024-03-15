@@ -9,6 +9,7 @@ import SwiftUI
 public struct BannerLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable, Identifiable {
     let banner: BeMatch.BannerCard
 
@@ -51,19 +52,19 @@ public struct BannerLogic {
 }
 
 public struct BannerView: View {
-  let store: StoreOf<BannerLogic>
+  @Perception.Bindable var store: StoreOf<BannerLogic>
 
   public init(store: StoreOf<BannerLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithPerceptionTracking {
       VStack(spacing: 8) {
-        Text(viewStore.banner.title)
+        Text(store.banner.title)
           .font(.system(.footnote, weight: .semibold))
 
-        if let description = viewStore.banner.description {
+        if let description = store.banner.description {
           Text(description)
             .font(.system(.caption))
         }
@@ -71,7 +72,7 @@ public struct BannerView: View {
         Button {
           store.send(.bannerButtonTapped)
         } label: {
-          Text(viewStore.banner.buttonTitle)
+          Text(store.banner.buttonTitle)
             .font(.system(.caption2, weight: .semibold))
             .foregroundStyle(Color.black)
             .frame(height: 38)

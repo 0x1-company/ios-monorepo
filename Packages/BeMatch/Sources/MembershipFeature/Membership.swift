@@ -19,7 +19,8 @@ public struct MembershipLogic {
     public let result: Bool
   }
 
-  public struct State: Equatable {
+  @ObservableState
+  public struct State {
     var child: Child.State?
     var isActivityIndicatorVisible = false
 
@@ -29,8 +30,8 @@ public struct MembershipLogic {
 
     var invitationCode = ""
 
-    @BindingState var isPresented = false
-    @PresentationState var destination: Destination.State?
+    var isPresented = false
+    @Presents var destination: Destination.State?
 
     var shareText = ""
 
@@ -263,7 +264,7 @@ public struct MembershipLogic {
 
   @Reducer
   public struct Child {
-    public enum State: Equatable {
+    public enum State {
       case campaign(MembershipCampaignLogic.State)
       case purchase(MembershipPurchaseLogic.State)
     }
@@ -285,7 +286,7 @@ public struct MembershipLogic {
 
   @Reducer
   public struct Destination {
-    public enum State: Equatable {
+    public enum State {
       case alert(AlertState<Action.Alert>)
     }
 
@@ -304,7 +305,7 @@ public struct MembershipLogic {
 }
 
 public struct MembershipView: View {
-  let store: StoreOf<MembershipLogic>
+  @Perception.Bindable var store: StoreOf<MembershipLogic>
 
   public init(store: StoreOf<MembershipLogic>) {
     self.store = store
@@ -312,7 +313,7 @@ public struct MembershipView: View {
 
   public var body: some View {
     NavigationStack {
-      WithViewStore(store, observe: { $0 }) { viewStore in
+      WithPerceptionTracking {
         IfLetStore(store.scope(state: \.child, action: \.child)) { store in
           SwitchStore(store) { initialState in
             switch initialState {
@@ -338,7 +339,7 @@ public struct MembershipView: View {
         .task { await store.send(.onTask).finish() }
         .alert(store: store.scope(state: \.$destination.alert, action: \.destination.alert))
         .toolbar {
-          if !viewStore.isActivityIndicatorVisible {
+          if !store.isActivityIndicatorVisible {
             ToolbarItem(placement: .topBarLeading) {
               Button {
                 store.send(.closeButtonTapped)
@@ -350,7 +351,7 @@ public struct MembershipView: View {
           }
         }
         .overlay {
-          if viewStore.isActivityIndicatorVisible {
+          if store.isActivityIndicatorVisible {
             ProgressView()
               .tint(Color.white)
               .progressViewStyle(CircularProgressViewStyle())
@@ -358,9 +359,9 @@ public struct MembershipView: View {
               .background(Color.black.opacity(0.6))
           }
         }
-        .sheet(isPresented: viewStore.$isPresented) {
+        .sheet(isPresented: $store.isPresented) {
           ActivityView(
-            activityItems: [viewStore.shareText],
+            activityItems: [store.shareText],
             applicationActivities: nil
           ) { activityType, result, _, _ in
             store.send(

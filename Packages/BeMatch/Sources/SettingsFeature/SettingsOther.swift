@@ -7,9 +7,10 @@ import SwiftUI
 public struct SettingsOtherLogic {
   public init() {}
 
-  public struct State: Equatable {
-    @PresentationState var confirmationDialog: ConfirmationDialogState<Action.ConfirmationDialog>?
-    @PresentationState var deleteAccount: DeleteAccountLogic.State?
+  @ObservableState
+  public struct State {
+    @Presents var confirmationDialog: ConfirmationDialogState<Action.ConfirmationDialog>?
+    @Presents var deleteAccount: DeleteAccountLogic.State?
     public init() {}
   }
 
@@ -70,14 +71,14 @@ public struct SettingsOtherLogic {
 }
 
 public struct SettingsOtherView: View {
-  let store: StoreOf<SettingsOtherLogic>
+  @Perception.Bindable var store: StoreOf<SettingsOtherLogic>
 
   public init(store: StoreOf<SettingsOtherLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { _ in
+    WithPerceptionTracking {
       List {
         Section {
           Button {

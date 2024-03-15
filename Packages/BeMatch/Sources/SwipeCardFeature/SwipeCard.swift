@@ -9,9 +9,10 @@ import SwiftUI
 public struct SwipeCardLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable, Identifiable {
     public let data: BeMatch.SwipeCard
-    @BindingState var selection: BeMatch.SwipeCard.Image
+    var selection: BeMatch.SwipeCard.Image
 
     public var id: String {
       data.id
@@ -81,7 +82,7 @@ public struct SwipeCardLogic {
 
 public struct SwipeCardView: View {
   @Environment(\.displayScale) var displayScale
-  let store: StoreOf<SwipeCardLogic>
+  @Perception.Bindable var store: StoreOf<SwipeCardLogic>
   @State var translation: CGSize = .zero
 
   public init(store: StoreOf<SwipeCardLogic>) {
@@ -89,10 +90,10 @@ public struct SwipeCardView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithPerceptionTracking {
       GeometryReader { proxy in
-        ForEach(viewStore.data.images, id: \.id) { image in
-          if image == viewStore.selection {
+        ForEach(store.data.images, id: \.id) { image in
+          if image == store.selection {
             CachedAsyncImage(
               url: URL(string: image.imageUrl),
               urlCache: .shared,
@@ -114,8 +115,8 @@ public struct SwipeCardView: View {
             .cornerRadius(16)
             .overlay(alignment: .top) {
               SelectControl(
-                current: viewStore.selection,
-                items: viewStore.data.images
+                current: store.selection,
+                items: store.data.images
               )
               .padding(.top, 3)
               .padding(.horizontal, 16)
@@ -160,7 +161,7 @@ public struct SwipeCardView: View {
           }
         }
         .overlay(alignment: .bottom) {
-          if let shortComment = viewStore.data.shortComment?.body {
+          if let shortComment = store.data.shortComment?.body {
             ZStack(alignment: .bottom) {
               LinearGradient(
                 colors: [

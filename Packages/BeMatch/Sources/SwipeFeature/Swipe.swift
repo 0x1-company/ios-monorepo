@@ -14,8 +14,9 @@ import TcaHelpers
 public struct SwipeLogic {
   public init() {}
 
-  public struct State: Equatable {
-    @PresentationState var destination: Destination.State?
+  @ObservableState
+  public struct State {
+    @Presents var destination: Destination.State?
 
     var rows: IdentifiedArrayOf<SwipeCardLogic.State> = []
 
@@ -136,7 +137,7 @@ public struct SwipeLogic {
 
   @Reducer
   public struct Destination {
-    public enum State: Equatable {
+    public enum State {
       case report(ReportLogic.State)
       case matched(MatchedLogic.State)
     }
@@ -154,7 +155,7 @@ public struct SwipeLogic {
 }
 
 public struct SwipeView: View {
-  let store: StoreOf<SwipeLogic>
+  @Perception.Bindable var store: StoreOf<SwipeLogic>
 
   public init(store: StoreOf<SwipeLogic>) {
     self.store = store

@@ -13,7 +13,8 @@ public struct ReportLogic {
     case message(messageId: String)
   }
 
-  public struct State: Equatable {
+  @ObservableState
+  public struct State {
     let kind: Kind
 
     var path = StackState<Path.State>()
@@ -69,29 +70,17 @@ public struct ReportLogic {
         return .none
       }
     }
-    .forEach(\.path, action: \.path) {
-      Path()
-    }
+    .forEach(\.path, action: \.path)
   }
 
   @Reducer
-  public struct Path {
-    public enum State: Equatable {
-      case reason(ReportReasonLogic.State)
-    }
-
-    public enum Action {
-      case reason(ReportReasonLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.reason, action: \.reason, child: ReportReasonLogic.init)
-    }
+  public enum Path {
+    case reason(ReportReasonLogic)
   }
 }
 
 public struct ReportView: View {
-  let store: StoreOf<ReportLogic>
+  @Perception.Bindable var store: StoreOf<ReportLogic>
 
   public init(store: StoreOf<ReportLogic>) {
     self.store = store

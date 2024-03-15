@@ -7,7 +7,7 @@ public struct PhotoGrid: View {
   @Binding var selection: [PhotosPickerItem]
   let onDelete: () -> Void
 
-  public enum State: Equatable {
+  public enum State {
     case active(UIImage)
     case warning(UIImage)
     case empty

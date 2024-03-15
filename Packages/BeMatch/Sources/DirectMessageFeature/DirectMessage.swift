@@ -9,7 +9,8 @@ import SwiftUI
 public struct DirectMessageLogic {
   public init() {}
 
-  public struct State: Equatable {
+  @ObservableState
+  public struct State {
     let targetUserId: String
 
     var child = Child.State.loading
@@ -95,7 +96,7 @@ public struct DirectMessageLogic {
 
   @Reducer
   public struct Child {
-    public enum State: Equatable {
+    public enum State {
       case loading
       case empty
       case content(DirectMessageContentLogic.State)
@@ -114,7 +115,7 @@ public struct DirectMessageLogic {
 }
 
 public struct DirectMessageView: View {
-  let store: StoreOf<DirectMessageLogic>
+  @Perception.Bindable var store: StoreOf<DirectMessageLogic>
 
   public init(store: StoreOf<DirectMessageLogic>) {
     self.store = store

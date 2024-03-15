@@ -14,12 +14,13 @@ import UsernameSettingFeature
 public struct OnboardLogic {
   public init() {}
 
-  public struct State: Equatable {
+  @ObservableState
+  public struct State {
     let user: BeMatch.UserInternal?
     var username: UsernameSettingLogic.State
     var path = StackState<Path.State>()
     var hasInvitationCampaign = false
-    @PresentationState var destination: Destination.State?
+    @Presents var destination: Destination.State?
 
     public init(user: BeMatch.UserInternal?) {
       self.user = user
@@ -112,7 +113,7 @@ public struct OnboardLogic {
 
   @Reducer
   public struct Path {
-    public enum State: Equatable {
+    public enum State {
       case gender(GenderSettingLogic.State)
       case sample(BeRealSampleLogic.State = .init())
       case capture(BeRealCaptureLogic.State = .init())
@@ -136,7 +137,7 @@ public struct OnboardLogic {
 
   @Reducer
   public struct Destination {
-    public enum State: Equatable {
+    public enum State {
       case sample(BeRealSampleLogic.State = .init())
     }
 
@@ -151,7 +152,7 @@ public struct OnboardLogic {
 }
 
 public struct OnboardView: View {
-  let store: StoreOf<OnboardLogic>
+  @Perception.Bindable var store: StoreOf<OnboardLogic>
 
   public init(store: StoreOf<OnboardLogic>) {
     self.store = store

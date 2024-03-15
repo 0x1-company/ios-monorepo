@@ -5,7 +5,8 @@ import SwiftUI
 public struct AchievementHistoryWidgetLogic {
   public init() {}
 
-  public struct State: Equatable {
+  @ObservableState
+  public struct State {
     let displayDaysAgo: String
     let displayCreationDate: String
 
@@ -36,21 +37,21 @@ public struct AchievementHistoryWidgetLogic {
 }
 
 public struct AchievementHistoryWidgetView: View {
-  let store: StoreOf<AchievementHistoryWidgetLogic>
+  @Perception.Bindable var store: StoreOf<AchievementHistoryWidgetLogic>
 
   public init(store: StoreOf<AchievementHistoryWidgetLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithPerceptionTracking {
       VStack(alignment: .leading, spacing: 0) {
         Label("HISTORY", systemImage: "calendar")
           .foregroundStyle(Color.secondary)
           .font(.system(.headline, weight: .semibold))
 
         HStack(alignment: .bottom, spacing: 8) {
-          Text(viewStore.displayDaysAgo)
+          Text(store.displayDaysAgo)
             .font(.system(size: 64, weight: .semibold))
 
           Text("days.", bundle: .module)
@@ -58,7 +59,7 @@ public struct AchievementHistoryWidgetView: View {
             .padding(.bottom, 8)
         }
 
-        Text(viewStore.displayCreationDate)
+        Text(store.displayCreationDate)
           .foregroundStyle(Color.secondary)
           .font(.system(.headline, weight: .semibold))
       }

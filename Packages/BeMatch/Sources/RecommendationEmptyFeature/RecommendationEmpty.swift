@@ -17,7 +17,8 @@ public struct RecommendationEmptyLogic {
     public let result: Bool
   }
 
-  public struct State: Equatable {
+  @ObservableState
+  public struct State {
     var shareURL = Constants.appStoreForEmptyURL
     var shareText: String {
       return String(
@@ -26,7 +27,7 @@ public struct RecommendationEmptyLogic {
       )
     }
 
-    @BindingState var isPresented = false
+    var isPresented = false
     public init() {}
   }
 
@@ -87,14 +88,14 @@ public struct RecommendationEmptyLogic {
 }
 
 public struct RecommendationEmptyView: View {
-  let store: StoreOf<RecommendationEmptyLogic>
+  @Perception.Bindable var store: StoreOf<RecommendationEmptyLogic>
 
   public init(store: StoreOf<RecommendationEmptyLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithPerceptionTracking {
       VStack(spacing: 40) {
         Image(ImageResource.highAlert)
           .resizable()
@@ -124,9 +125,9 @@ public struct RecommendationEmptyView: View {
       .padding(.horizontal, 16)
       .background(Color.black)
       .task { await store.send(.onTask).finish() }
-      .sheet(isPresented: viewStore.$isPresented) {
+      .sheet(isPresented: $store.isPresented) {
         ActivityView(
-          activityItems: [viewStore.shareText],
+          activityItems: [store.shareText],
           applicationActivities: nil
         ) { activityType, result, _, _ in
           store.send(

@@ -3,7 +3,8 @@ import UIKit
 
 @Reducer
 public struct SceneDelegateLogic {
-  public struct State: Equatable {}
+  @ObservableState
+  public struct State {}
   public enum Action {
     case shortcutItem(UIApplicationShortcutItem)
   }

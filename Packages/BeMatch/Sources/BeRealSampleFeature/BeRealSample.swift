@@ -10,7 +10,8 @@ import SwiftUI
 public struct BeRealSampleLogic {
   public init() {}
 
-  public struct State: Equatable {
+  @ObservableState
+  public struct State {
     let player = AVPlayer(url: Constants.howToVideoURL)
     public init() {}
   }
@@ -50,19 +51,19 @@ public struct BeRealSampleLogic {
 }
 
 public struct BeRealSampleView: View {
-  let store: StoreOf<BeRealSampleLogic>
+  @Perception.Bindable var store: StoreOf<BeRealSampleLogic>
 
   public init(store: StoreOf<BeRealSampleLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithPerceptionTracking {
       VStack(spacing: 36) {
         Text(#"Press "Add to Photo" in memory and save it 📸."#, bundle: .module)
           .font(.system(.title3, weight: .semibold))
 
-        VideoPlayer(player: viewStore.player)
+        VideoPlayer(player: store.player)
 
         Spacer()
 

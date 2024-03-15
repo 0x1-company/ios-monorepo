@@ -7,7 +7,8 @@ import SwiftUI
 public struct FreezedLogic {
   public init() {}
 
-  public struct State: Equatable {
+  @ObservableState
+  public struct State {
     public init() {}
   }
 
@@ -29,7 +30,7 @@ public struct FreezedLogic {
 }
 
 public struct FreezedView: View {
-  let store: StoreOf<FreezedLogic>
+  @Perception.Bindable var store: StoreOf<FreezedLogic>
 
   public init(store: StoreOf<FreezedLogic>) {
     self.store = store

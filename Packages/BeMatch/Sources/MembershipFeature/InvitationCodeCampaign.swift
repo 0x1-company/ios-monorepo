@@ -7,7 +7,8 @@ import SwiftUI
 public struct InvitationCodeCampaignLogic {
   public init() {}
 
-  public struct State: Equatable {
+  @ObservableState
+  public struct State {
     let code: String
 
     public init(code: String) {
@@ -39,20 +40,20 @@ public struct InvitationCodeCampaignLogic {
 }
 
 public struct InvitationCodeCampaignView: View {
-  let store: StoreOf<InvitationCodeCampaignLogic>
+  @Perception.Bindable var store: StoreOf<InvitationCodeCampaignLogic>
 
   public init(store: StoreOf<InvitationCodeCampaignLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithPerceptionTracking {
       VStack(spacing: 16) {
         Image(ImageResource.inviteTicket)
           .resizable()
           .aspectRatio(contentMode: .fit)
           .overlay(alignment: .center) {
-            Text(viewStore.code)
+            Text(store.code)
               .foregroundStyle(Color(0xFFFF_CC00))
               .font(.system(.largeTitle, design: .rounded, weight: .bold))
               .offset(x: -35, y: 8)

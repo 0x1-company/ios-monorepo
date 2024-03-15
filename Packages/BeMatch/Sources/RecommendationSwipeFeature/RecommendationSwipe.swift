@@ -8,7 +8,8 @@ import SwipeFeature
 public struct RecommendationSwipeLogic {
   public init() {}
 
-  public struct State: Equatable {
+  @ObservableState
+  public struct State {
     var swipe: SwipeLogic.State
 
     public init(rows: [BeMatch.SwipeCard]) {
@@ -38,7 +39,7 @@ public struct RecommendationSwipeLogic {
 }
 
 public struct RecommendationSwipeView: View {
-  let store: StoreOf<RecommendationSwipeLogic>
+  @Perception.Bindable var store: StoreOf<RecommendationSwipeLogic>
 
   public init(store: StoreOf<RecommendationSwipeLogic>) {
     self.store = store

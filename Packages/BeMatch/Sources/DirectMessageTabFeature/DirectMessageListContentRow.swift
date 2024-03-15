@@ -8,6 +8,7 @@ import SwiftUI
 public struct DirectMessageListContentRowLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable, Identifiable {
     public let id: String
     let updatedAt: BeMatch.Date
@@ -69,14 +70,14 @@ public struct DirectMessageListContentRowLogic {
 
 public struct DirectMessageListContentRowView: View {
   @Environment(\.displayScale) var displayScale
-  let store: StoreOf<DirectMessageListContentRowLogic>
+  @Perception.Bindable var store: StoreOf<DirectMessageListContentRowLogic>
 
   public init(store: StoreOf<DirectMessageListContentRowLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithPerceptionTracking {
       Button {
         store.send(.rowButtonTapped)
       } label: {
@@ -85,7 +86,7 @@ public struct DirectMessageListContentRowView: View {
             store.send(.iconButtonTapped)
           } label: {
             CachedAsyncImage(
-              url: URL(string: viewStore.imageUrl),
+              url: URL(string: store.imageUrl),
               urlCache: .shared,
               scale: displayScale,
               content: { image in
@@ -109,11 +110,11 @@ public struct DirectMessageListContentRowView: View {
 
           VStack(alignment: .leading, spacing: 6) {
             HStack(spacing: 0) {
-              Text(viewStore.username)
+              Text(store.username)
                 .font(.system(.subheadline, weight: .semibold))
                 .frame(maxWidth: .infinity, alignment: .leading)
 
-              if !viewStore.isAuthor {
+              if !store.isAuthor {
                 Text("Let's Reply", bundle: .module)
                   .font(.system(.caption2, weight: .medium))
                   .foregroundStyle(Color.black)
@@ -124,10 +125,10 @@ public struct DirectMessageListContentRowView: View {
               }
             }
 
-            Text(viewStore.text)
+            Text(store.text)
               .lineLimit(1)
               .font(.body)
-              .foregroundStyle(viewStore.textForegroundColor)
+              .foregroundStyle(store.textForegroundColor)
           }
         }
         .padding(.vertical, 8)

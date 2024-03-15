@@ -16,7 +16,8 @@ import UserNotificationClient
 
 @Reducer
 public struct AppDelegateLogic {
-  public struct State: Equatable {}
+  @ObservableState
+  public struct State {}
   public enum Action {
     case didFinishLaunching(UIApplication, [UIApplication.LaunchOptionsKey: Any]?)
     case open(UIApplication, URL, [UIApplication.OpenURLOptionsKey: Any])

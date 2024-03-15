@@ -13,8 +13,9 @@ import UsernameSettingFeature
 public struct ProfileEditLogic {
   public init() {}
 
-  public struct State: Equatable {
-    @PresentationState var destination: Destination.State?
+  @ObservableState
+  public struct State {
+    @Presents var destination: Destination.State?
     var user: BeMatch.UserInternal?
 
     public init() {}
@@ -138,7 +139,7 @@ public struct ProfileEditLogic {
 
   @Reducer
   public struct Destination {
-    public enum State: Equatable {
+    public enum State {
       case beRealSample(BeRealSampleLogic.State = .init())
       case beRealCapture(BeRealCaptureLogic.State = .init())
       case genderSetting(GenderSettingLogic.State)
@@ -175,16 +176,16 @@ public struct ProfileEditLogic {
 }
 
 public struct ProfileEditView: View {
-  let store: StoreOf<ProfileEditLogic>
+  @Perception.Bindable var store: StoreOf<ProfileEditLogic>
 
   public init(store: StoreOf<ProfileEditLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithPerceptionTracking {
       Group {
-        if let user = viewStore.user {
+        if let user = store.user {
           List {
             Section {
               Button {
