@@ -13,7 +13,7 @@ public struct RecommendationLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     var child = Child.State.loading()
     public init() {}
   }
@@ -84,7 +84,7 @@ public struct RecommendationLogic {
 
   @Reducer
   public struct Child {
-    public enum State {
+    public enum State: Equatable {
       case loading(RecommendationLoadingLogic.State = .init())
       case swipe(RecommendationSwipeLogic.State)
       case empty(RecommendationEmptyLogic.State = .init())

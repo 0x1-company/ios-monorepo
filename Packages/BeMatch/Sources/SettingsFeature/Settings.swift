@@ -23,7 +23,7 @@ public struct SettingsLogic {
   }
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     @Presents var destination: Destination.State?
     var isSharePresented = false
 
@@ -162,7 +162,7 @@ public struct SettingsLogic {
 
   @Reducer
   public struct Destination {
-    public enum State {
+    public enum State: Equatable {
       case profileEdit(ProfileEditLogic.State = .init())
       case profile(ProfileLogic.State = .init())
       case tutorial(TutorialLogic.State = .init())
@@ -414,25 +414,25 @@ public struct SettingsView: View {
         .presentationDetents([.medium, .large])
       }
       .fullScreenCover(
-        store: store.scope(state: \.$destination.tutorial, action: \.destination.tutorial),
+        item: $store.scope(state: \.destination?.tutorial, action: \.destination.tutorial),
         content: TutorialView.init(store:)
       )
       .fullScreenCover(
-        store: store.scope(state: \.$destination.profile, action: \.destination.profile)
+        item: $store.scope(state: \.destination?.profile, action: \.destination.profile)
       ) { store in
         NavigationStack {
           ProfileView(store: store)
         }
       }
       .fullScreenCover(
-        store: store.scope(state: \.$destination.profileEdit, action: \.destination.profileEdit)
+        item: $store.scope(state: \.destination?.profileEdit, action: \.destination.profileEdit)
       ) { store in
         NavigationStack {
           ProfileEditView(store: store)
         }
       }
       .fullScreenCover(
-        store: store.scope(state: \.$destination.achievement, action: \.destination.achievement)
+        item: $store.scope(state: \.destination?.achievement, action: \.destination.achievement)
       ) { store in
         NavigationStack {
           AchievementView(store: store)

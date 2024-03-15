@@ -10,7 +10,7 @@ public struct DirectMessageLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     let targetUserId: String
 
     var child = Child.State.loading
@@ -96,7 +96,7 @@ public struct DirectMessageLogic {
 
   @Reducer
   public struct Child {
-    public enum State {
+    public enum State: Equatable {
       case loading
       case empty
       case content(DirectMessageContentLogic.State)

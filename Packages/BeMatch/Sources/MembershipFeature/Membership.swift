@@ -20,7 +20,7 @@ public struct MembershipLogic {
   }
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     var child: Child.State?
     var isActivityIndicatorVisible = false
 
@@ -264,7 +264,7 @@ public struct MembershipLogic {
 
   @Reducer
   public struct Child {
-    public enum State {
+    public enum State: Equatable {
       case campaign(MembershipCampaignLogic.State)
       case purchase(MembershipPurchaseLogic.State)
     }
@@ -286,7 +286,7 @@ public struct MembershipLogic {
 
   @Reducer
   public struct Destination {
-    public enum State {
+    public enum State: Equatable {
       case alert(AlertState<Action.Alert>)
     }
 
@@ -337,7 +337,7 @@ public struct MembershipView: View {
         }
         .ignoresSafeArea()
         .task { await store.send(.onTask).finish() }
-        .alert(store: store.scope(state: \.$destination.alert, action: \.destination.alert))
+        .alert(item: $store.scope(state: \.destination?.alert, action: \.destination.alert))
         .toolbar {
           if !store.isActivityIndicatorVisible {
             ToolbarItem(placement: .topBarLeading) {

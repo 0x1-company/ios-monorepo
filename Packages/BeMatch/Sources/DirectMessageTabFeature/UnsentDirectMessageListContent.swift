@@ -8,7 +8,7 @@ public struct UnsentDirectMessageListContentLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     var after: String?
     var hasNextPage = false
 

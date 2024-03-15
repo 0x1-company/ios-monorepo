@@ -14,7 +14,7 @@ public struct ProfileEditLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     @Presents var destination: Destination.State?
     var user: BeMatch.UserInternal?
 
@@ -139,7 +139,7 @@ public struct ProfileEditLogic {
 
   @Reducer
   public struct Destination {
-    public enum State {
+    public enum State: Equatable {
       case beRealSample(BeRealSampleLogic.State = .init())
       case beRealCapture(BeRealCaptureLogic.State = .init())
       case genderSetting(GenderSettingLogic.State)

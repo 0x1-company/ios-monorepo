@@ -16,7 +16,7 @@ public struct ProfileExternalLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     let match: BeMatch.MatchGrid
     var selection: BeMatch.MatchGrid.TargetUser.Image
     @Presents var destination: Destination.State?
@@ -159,7 +159,7 @@ public struct ProfileExternalLogic {
 
   @Reducer
   public struct Destination {
-    public enum State {
+    public enum State: Equatable {
       case report(ReportLogic.State)
       case confirmationDialog(ConfirmationDialogState<Action.ConfirmationDialog>)
     }
@@ -274,13 +274,13 @@ public struct ProfileExternalView: View {
       .background(Material.ultraThin)
       .task { await store.send(.onTask).finish() }
       .confirmationDialog(
-        store: store.scope(
-          state: \.$destination.confirmationDialog,
+        item: $store.scope(
+          state: \.destination?.confirmationDialog,
           action: \.destination.confirmationDialog
         )
       )
       .sheet(
-        store: store.scope(state: \.$destination.report, action: \.destination.report),
+        item: $store.scope(state: \.destination?.report, action: \.destination.report),
         content: ReportView.init(store:)
       )
       .gesture(

@@ -13,7 +13,7 @@ public struct TutorialLogic {
   }
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     var currentStep = Step.first
     
     var isSkipButtonHidden: Bool {

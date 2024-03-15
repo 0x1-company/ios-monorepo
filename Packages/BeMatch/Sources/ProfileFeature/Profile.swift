@@ -12,7 +12,7 @@ public struct ProfileLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     var currentUser: BeMatch.UserInternal?
 
     var pictureSlider: PictureSliderLogic.State?
@@ -117,7 +117,7 @@ public struct ProfileLogic {
 
   @Reducer
   public struct Destination {
-    public enum State {
+    public enum State: Equatable {
       case editUsername(UsernameSettingLogic.State)
       case confirmationDialog(ConfirmationDialogState<Action.ConfirmationDialog>)
     }
@@ -226,13 +226,13 @@ public struct ProfileView: View {
           }
       )
       .confirmationDialog(
-        store: store.scope(
-          state: \.$destination.confirmationDialog,
+        item: $store.scope(
+          state: \.destination?.confirmationDialog,
           action: \.destination.confirmationDialog
         )
       )
       .fullScreenCover(
-        store: store.scope(state: \.$destination.editUsername, action: \.destination.editUsername)
+        item: $store.scope(state: \.destination?.editUsername, action: \.destination.editUsername)
       ) { childStore in
         NavigationStack {
           UsernameSettingView(store: childStore, nextButtonStyle: .save)

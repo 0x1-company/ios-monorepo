@@ -8,7 +8,7 @@ public struct MembershipPurchaseLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     let displayPrice: String
 
     public init(displayPrice: String) {

@@ -15,7 +15,7 @@ public struct MatchNavigationLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     var match = MatchLogic.State()
 
     var path = StackState<Path.State>()
@@ -131,7 +131,7 @@ public struct MatchNavigationLogic {
 
   @Reducer
   public struct Path {
-    public enum State {
+    public enum State: Equatable {
       case settings(SettingsLogic.State)
       case other(SettingsOtherLogic.State = .init())
       case invitationCode(InvitationCodeLogic.State = .init())
@@ -152,7 +152,7 @@ public struct MatchNavigationLogic {
 
   @Reducer
   public struct Destination {
-    public enum State {
+    public enum State: Equatable {
       case alert(AlertState<Action.Alert>)
       case membership(MembershipLogic.State = .init())
       case profileExternal(ProfileExternalLogic.State)
@@ -232,17 +232,17 @@ public struct MatchNavigationView: View {
       }
     }
     .tint(Color.primary)
-    .alert(store: store.scope(state: \.$destination.alert, action: \.destination.alert))
+    .alert(item: $store.scope(state: \.destination?.alert, action: \.destination.alert))
     .fullScreenCover(
-      store: store.scope(state: \.$destination.membership, action: \.destination.membership),
+      item: $store.scope(state: \.destination?.membership, action: \.destination.membership),
       content: MembershipView.init(store:)
     )
     .fullScreenCover(
-      store: store.scope(state: \.$destination.receivedLike, action: \.destination.receivedLike),
+      item: $store.scope(state: \.destination?.receivedLike, action: \.destination.receivedLike),
       content: ReceivedLikeSwipeView.init(store:)
     )
     .fullScreenCover(
-      store: store.scope(state: \.$destination.profileExternal, action: \.destination.profileExternal),
+      item: $store.scope(state: \.destination?.profileExternal, action: \.destination.profileExternal),
       content: ProfileExternalView.init(store:)
     )
   }

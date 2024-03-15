@@ -8,7 +8,7 @@ public struct DirectMessageContentLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     let targetUserId: String
     var after: String?
     var hasNextPage = false

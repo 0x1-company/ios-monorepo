@@ -14,7 +14,7 @@ public struct DeleteAccountLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     @Presents var destination: Destination.State?
     var otherReason = ""
     var selectedReasons: [String] = []
@@ -164,7 +164,7 @@ public struct DeleteAccountLogic {
 
   @Reducer
   public struct Destination {
-    public enum State {
+    public enum State: Equatable {
       case alert(AlertState<Action.Alert>)
       case confirmationDialog(ConfirmationDialogState<Action.ConfirmationDialog>)
     }
@@ -271,12 +271,10 @@ public struct DeleteAccountView: View {
           .buttonStyle(HoldDownButtonStyle())
         }
       }
-      .alert(
-        store: store.scope(state: \.$destination.alert, action: \.destination.alert)
-      )
+      .alert($store.scope(state: \.destination?.alert, action: \.destination.alert))
       .confirmationDialog(
-        store: store.scope(
-          state: \.$destination.confirmationDialog,
+        $store.scope(
+          state: \.destination?.confirmationDialog,
           action: \.destination.confirmationDialog
         )
       )

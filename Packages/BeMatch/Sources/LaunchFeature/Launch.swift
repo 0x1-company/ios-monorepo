@@ -6,7 +6,7 @@ public struct LaunchLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     var isActivityIndicatorVisible = false
 
     public init() {}

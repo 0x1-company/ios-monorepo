@@ -35,7 +35,7 @@ public struct AchievementContentLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     let displayMatchCount: String
     let displayVisitCount: String
     let displayFeedbackCount: String

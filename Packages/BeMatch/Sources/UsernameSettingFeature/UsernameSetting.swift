@@ -12,7 +12,7 @@ public struct UsernameSettingLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     var isActivityIndicatorVisible = false
     var username: String
     @Presents var alert: AlertState<Action.Alert>?
@@ -165,7 +165,7 @@ public struct UsernameSettingView: View {
           Image(ImageResource.beMatch)
         }
       }
-      .alert(store: store.scope(state: \.$alert, action: \.alert))
+      .alert($store.scope(state: \.alert, action: \.alert))
     }
   }
 }

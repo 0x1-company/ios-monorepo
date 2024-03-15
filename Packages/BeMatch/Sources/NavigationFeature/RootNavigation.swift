@@ -22,7 +22,7 @@ public struct RootNavigationLogic {
   }
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     var recommendation = RecommendationLogic.State()
     var category = CategoryLogic.State()
     var match = MatchNavigationLogic.State()

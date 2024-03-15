@@ -8,7 +8,7 @@ public struct SettingsOtherLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     @Presents var confirmationDialog: ConfirmationDialogState<Action.ConfirmationDialog>?
     @Presents var deleteAccount: DeleteAccountLogic.State?
     public init() {}
@@ -106,13 +106,10 @@ public struct SettingsOtherView: View {
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
       .confirmationDialog(
-        store: store.scope(state: \.$confirmationDialog, action: \.confirmationDialog)
+        $store.scope(state: \.confirmationDialog, action: \.confirmationDialog)
       )
       .fullScreenCover(
-        store: store.scope(
-          state: \.$deleteAccount,
-          action: \.deleteAccount
-        )
+        item: $store.scope(state: \.deleteAccount, action: \.deleteAccount)
       ) { store in
         NavigationStack {
           DeleteAccountView(store: store)

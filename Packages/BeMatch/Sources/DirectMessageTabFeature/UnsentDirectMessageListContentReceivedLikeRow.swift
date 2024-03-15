@@ -9,7 +9,7 @@ public struct UnsentDirectMessageListContentReceivedLikeRowLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     let imageUrl: String
     let displayCount: String
 

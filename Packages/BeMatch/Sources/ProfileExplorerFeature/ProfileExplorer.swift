@@ -17,7 +17,7 @@ public struct ProfileExplorerLogic {
   }
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     let username: String
     let targetUserId: String
 
@@ -120,7 +120,7 @@ public struct ProfileExplorerLogic {
 
   @Reducer
   public struct Destination {
-    public enum State {
+    public enum State: Equatable {
       case report(ReportLogic.State)
     }
 
@@ -212,7 +212,7 @@ public struct ProfileExplorerView: View {
         }
       }
       .sheet(
-        store: store.scope(state: \.$destination.report, action: \.destination.report),
+        item: $store.scope(state: \.destination?.report, action: \.destination.report),
         content: ReportView.init(store:)
       )
     }

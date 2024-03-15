@@ -12,7 +12,7 @@ public struct ProfileExplorerPreviewContentLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     let user: BeMatch.ProfileExplorerPreviewQuery.Data.UserByMatched
 
     @Presents var confirmationDialog: ConfirmationDialogState<Action.ConfirmationDialog>?
@@ -86,6 +86,6 @@ public struct ProfileExplorerPreviewContentView: View {
 
       Spacer()
     }
-    .confirmationDialog(store: store.scope(state: \.$confirmationDialog, action: \.confirmationDialog))
+    .confirmationDialog($store.scope(state: \.confirmationDialog, action: \.confirmationDialog))
   }
 }

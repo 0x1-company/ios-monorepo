@@ -11,7 +11,7 @@ public struct ShortCommentSettingLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     var shortComment: String
     var focus: Focus?
     @Presents var alert: AlertState<Action.Alert>?
@@ -142,7 +142,7 @@ public struct ShortCommentSettingView: View {
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
       .bind($store.focus, to: $focus)
-      .alert(store: store.scope(state: \.$alert, action: \.alert))
+      .alert($store.scope(state: \.alert, action: \.alert))
     }
   }
 }

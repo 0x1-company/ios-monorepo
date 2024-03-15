@@ -6,7 +6,7 @@ public struct InvitationCampaignPriceLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     var displayDuration: String
 
     public init(displayDuration: String) {

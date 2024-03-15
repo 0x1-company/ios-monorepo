@@ -12,7 +12,7 @@ public struct GenderSettingLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     var selection: BeMatch.Gender?
     var genders = BeMatch.Gender.allCases
     var isActivityIndicatorVisible = false

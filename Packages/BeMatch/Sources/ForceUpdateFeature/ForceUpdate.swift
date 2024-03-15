@@ -11,7 +11,7 @@ public struct ForceUpdateLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     public init() {}
   }
 

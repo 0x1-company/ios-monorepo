@@ -14,7 +14,7 @@ public struct BeRealCaptureLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     var photoPickerItems: [PhotosPickerItem] = []
     var images: [PhotoGrid.State] = Array(repeating: .empty, count: 9)
     var isActivityIndicatorVisible = false
@@ -190,7 +190,7 @@ public struct BeRealCaptureLogic {
 
   @Reducer
   public struct Destination {
-    public enum State {
+    public enum State: Equatable {
       case alert(AlertState<Action.Alert>)
       case confirmationDialog(ConfirmationDialogState<Action.ConfirmationDialog>)
     }
@@ -306,14 +306,14 @@ public struct BeRealCaptureView: View {
         }
       }
       .alert(
-        store: store.scope(
-          state: \.$destination.alert,
+        item: $store.scope(
+          state: \.destination?.alert,
           action: \.destination.alert
         )
       )
       .confirmationDialog(
-        store: store.scope(
-          state: \.$destination.confirmationDialog,
+        item: $store.scope(
+          state: \.destination?.confirmationDialog,
           action: \.destination.confirmationDialog
         )
       )

@@ -15,7 +15,7 @@ public struct SwipeLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     @Presents var destination: Destination.State?
 
     var rows: IdentifiedArrayOf<SwipeCardLogic.State> = []
@@ -137,7 +137,7 @@ public struct SwipeLogic {
 
   @Reducer
   public struct Destination {
-    public enum State {
+    public enum State: Equatable {
       case report(ReportLogic.State)
       case matched(MatchedLogic.State)
     }
@@ -195,10 +195,10 @@ public struct SwipeView: View {
     }
     .padding(.top, 16)
     .fullScreenCover(
-      store: store.scope(state: \.$destination.matched, action: \.destination.matched),
+      item: $store.scope(state: \.destination?.matched, action: \.destination.matched),
       content: MatchedView.init(store:)
     )
-    .sheet(store: store.scope(state: \.$destination.report, action: \.destination.report)) { store in
+    .sheet(item: $store.scope(state: \.destination?.report, action: \.destination.report)) { store in
       NavigationStack {
         ReportView(store: store)
       }

@@ -8,7 +8,7 @@ public struct InvitationCodeCampaignLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     let code: String
 
     public init(code: String) {

@@ -18,7 +18,7 @@ public struct RecommendationEmptyLogic {
   }
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     var shareURL = Constants.appStoreForEmptyURL
     var shareText: String {
       return String(

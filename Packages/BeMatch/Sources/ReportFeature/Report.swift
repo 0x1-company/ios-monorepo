@@ -8,13 +8,13 @@ import SwiftUI
 public struct ReportLogic {
   public init() {}
 
-  public enum Kind: Hashable {
+  public enum Kind: Hashable, Equatable {
     case user(targetUserId: String)
     case message(messageId: String)
   }
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     let kind: Kind
 
     var path = StackState<Path.State>()
@@ -73,7 +73,7 @@ public struct ReportLogic {
     .forEach(\.path, action: \.path)
   }
 
-  @Reducer
+  @Reducer(state: .equatable)
   public enum Path {
     case reason(ReportReasonLogic)
   }
@@ -87,9 +87,7 @@ public struct ReportView: View {
   }
 
   public var body: some View {
-    NavigationStackStore(
-      store.scope(state: \.path, action: \.path)
-    ) {
+    NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
       List(
         [
           String(localized: "Spam", bundle: .module),
@@ -127,14 +125,10 @@ public struct ReportView: View {
         }
       }
     } destination: { store in
-      SwitchStore(store) { initialState in
-        switch initialState {
-        case .reason:
-          CaseLet(
-            /ReportLogic.Path.State.reason,
-            action: ReportLogic.Path.Action.reason,
-            then: ReportReasonView.init(store:)
-          )
+      switch store.state {
+      case .reason:
+        if let store = store.scope(state: \.reason, action: \.reason) {
+          ReportReasonView(store: store)
         }
       }
     }

@@ -15,7 +15,7 @@ public struct OnboardLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     let user: BeMatch.UserInternal?
     var username: UsernameSettingLogic.State
     var path = StackState<Path.State>()
@@ -113,7 +113,7 @@ public struct OnboardLogic {
 
   @Reducer
   public struct Path {
-    public enum State {
+    public enum State: Equatable {
       case gender(GenderSettingLogic.State)
       case sample(BeRealSampleLogic.State = .init())
       case capture(BeRealCaptureLogic.State = .init())
@@ -137,7 +137,7 @@ public struct OnboardLogic {
 
   @Reducer
   public struct Destination {
-    public enum State {
+    public enum State: Equatable {
       case sample(BeRealSampleLogic.State = .init())
     }
 
@@ -199,7 +199,7 @@ public struct OnboardView: View {
     .tint(Color.white)
     .task { await store.send(.onTask).finish() }
     .sheet(
-      store: store.scope(state: \.$destination.sample, action: \.destination.sample)
+      item: $store.scope(state: \.destination?.sample, action: \.destination.sample)
     ) { store in
       NavigationStack {
         BeRealSampleView(store: store)

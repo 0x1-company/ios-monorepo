@@ -10,7 +10,7 @@ public struct AchievementLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     var child = Child.State.loading
     public init() {}
   }
@@ -73,7 +73,7 @@ public struct AchievementLogic {
 
   @Reducer
   public struct Child {
-    public enum State {
+    public enum State: Equatable {
       case loading
       case content(AchievementContentLogic.State)
     }

@@ -10,7 +10,7 @@ public struct InvitationLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     var isDisabled = true
     var isActivityIndicatorVisible = false
     var code = String()

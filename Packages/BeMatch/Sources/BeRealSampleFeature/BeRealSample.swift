@@ -11,7 +11,7 @@ public struct BeRealSampleLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     let player = AVPlayer(url: Constants.howToVideoURL)
     public init() {}
   }

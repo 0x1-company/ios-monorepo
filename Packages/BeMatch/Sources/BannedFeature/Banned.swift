@@ -7,7 +7,7 @@ public struct BannedLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     var userId: String
     public init(userId: String) {
       self.userId = userId

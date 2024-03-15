@@ -6,7 +6,7 @@ public struct CreationDateLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     let creationDate: Date
     var creationDateString = ""
 

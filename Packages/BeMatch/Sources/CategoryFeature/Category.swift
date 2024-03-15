@@ -12,7 +12,7 @@ public struct CategoryLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     var child = Child.State.loading
     @Presents var alert: AlertState<Action.Alert>?
     public init() {}
@@ -97,7 +97,7 @@ public struct CategoryLogic {
   @Reducer
   public struct Child {
     @ObservableState
-    public enum State {
+    public enum State: Equatable {
       case loading
       case empty(CategoryEmptyLogic.State = .init())
       case list(CategoryListLogic.State)
@@ -146,7 +146,7 @@ public struct CategoryView: View {
       }
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
-      .alert(store: store.scope(state: \.$alert, action: \.alert))
+      .alert($store.scope(state: \.alert, action: \.alert))
       .toolbar {
         ToolbarItem(placement: .principal) {
           Image(ImageResource.beMatch)

@@ -11,7 +11,7 @@ public struct MatchedLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     let username: String
     public init(username: String) {
       self.username = username

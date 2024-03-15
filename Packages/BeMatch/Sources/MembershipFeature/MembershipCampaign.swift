@@ -8,7 +8,7 @@ public struct MembershipCampaignLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     let campaign: BeMatch.MembershipQuery.Data.ActiveInvitationCampaign
     let displayPrice: String
     let displayDuration: String

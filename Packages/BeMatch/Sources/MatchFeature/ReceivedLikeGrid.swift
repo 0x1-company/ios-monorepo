@@ -9,7 +9,7 @@ public struct ReceivedLikeGridLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     let imageUrl: String
     let count: Int
     var receivedCount: String {

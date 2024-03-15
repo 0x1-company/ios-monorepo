@@ -26,7 +26,7 @@ public struct AppLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     var account = Account()
 
     var appDelegate = AppDelegateLogic.State()
@@ -145,7 +145,7 @@ public struct AppLogic {
 
   @Reducer
   public struct Child {
-    public enum State {
+    public enum State: Equatable {
       case launch(LaunchLogic.State = .init())
       case onboard(OnboardLogic.State)
       case navigation(RootNavigationLogic.State = .init())

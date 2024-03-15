@@ -11,7 +11,7 @@ public struct ReportReasonLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     let title: String
     let kind: ReportLogic.Kind
 
@@ -172,7 +172,7 @@ public struct ReportReasonView: View {
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
       .bind($store.focus, to: $focus)
-      .alert(store: store.scope(state: \.$alert, action: \.alert))
+      .alert($store.scope(state: \.alert, action: \.alert))
     }
   }
 }

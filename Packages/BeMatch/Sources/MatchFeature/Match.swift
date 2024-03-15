@@ -15,7 +15,7 @@ public struct MatchLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     public var rows: IdentifiedArrayOf<MatchGridLogic.State> = []
     var banners: IdentifiedArrayOf<BannerLogic.State> = []
 

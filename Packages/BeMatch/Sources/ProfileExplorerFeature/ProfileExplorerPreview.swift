@@ -8,7 +8,7 @@ public struct ProfileExplorerPreviewLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     let targetUserId: String
 
     var child = Child.State.loading
@@ -55,7 +55,7 @@ public struct ProfileExplorerPreviewLogic {
 
   @Reducer
   public struct Child {
-    public enum State {
+    public enum State: Equatable {
       case loading
       case content(ProfileExplorerPreviewContentLogic.State)
     }

@@ -10,7 +10,7 @@ public struct PictureSliderLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     let data: BeMatch.PictureSlider
     var selection: BeMatch.PictureSlider.Image
 

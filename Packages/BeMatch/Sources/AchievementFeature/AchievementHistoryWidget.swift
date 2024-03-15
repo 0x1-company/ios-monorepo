@@ -6,7 +6,7 @@ public struct AchievementHistoryWidgetLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     let displayDaysAgo: String
     let displayCreationDate: String
 

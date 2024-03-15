@@ -12,7 +12,7 @@ public struct CategoryListLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     var rows: IdentifiedArrayOf<CategorySectionLogic.State> = []
     @Presents var destination: Destination.State?
 
@@ -96,7 +96,7 @@ public struct CategoryListLogic {
 
   @Reducer
   public struct Destination {
-    public enum State {
+    public enum State: Equatable {
       case swipe(CategorySwipeLogic.State)
       case membership(MembershipLogic.State = .init())
     }
@@ -132,14 +132,14 @@ public struct CategoryListView: View {
       .padding(.bottom, 48)
     }
     .fullScreenCover(
-      store: store.scope(state: \.$destination.swipe, action: \.destination.swipe)
+      item: $store.scope(state: \.destination?.swipe, action: \.destination.swipe)
     ) { store in
       NavigationStack {
         CategorySwipeView(store: store)
       }
     }
     .fullScreenCover(
-      store: store.scope(state: \.$destination.membership, action: \.destination.membership),
+      item: $store.scope(state: \.destination?.membership, action: \.destination.membership),
       content: MembershipView.init(store:)
     )
   }

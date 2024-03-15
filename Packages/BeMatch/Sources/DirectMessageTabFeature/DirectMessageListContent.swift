@@ -8,7 +8,7 @@ public struct DirectMessageListContentLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     var after: String?
     var hasNextPage = false
     var rows: IdentifiedArrayOf<DirectMessageListContentRowLogic.State> = []

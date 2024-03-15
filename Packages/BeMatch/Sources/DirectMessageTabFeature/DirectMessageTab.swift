@@ -14,7 +14,7 @@ public struct DirectMessageTabLogic {
   public init() {}
 
   @ObservableState
-  public struct State {
+  public struct State: Equatable {
     @Presents var destination: Destination.State?
     var unsent: UnsentDirectMessageListLogic.State? = .loading
     var messages: DirectMessageListLogic.State? = .loading
@@ -146,7 +146,7 @@ public struct DirectMessageTabLogic {
 
   @Reducer
   public struct Destination {
-    public enum State {
+    public enum State: Equatable {
       case directMessage(DirectMessageLogic.State)
       case membership(MembershipLogic.State = .init())
       case explorer(ProfileExplorerLogic.State)
@@ -208,15 +208,15 @@ public struct DirectMessageTabView: View {
         }
       }
       .sheet(
-        store: store.scope(state: \.$destination.directMessage, action: \.destination.directMessage),
+        item: $store.scope(state: \.destination?.directMessage, action: \.destination.directMessage),
         content: DirectMessageView.init(store:)
       )
       .fullScreenCover(
-        store: store.scope(state: \.$destination.membership, action: \.destination.membership),
+        item: $store.scope(state: \.destination?.membership, action: \.destination.membership),
         content: MembershipView.init(store:)
       )
       .fullScreenCover(
-        store: store.scope(state: \.$destination.receivedLike, action: \.destination.receivedLike),
+        item: $store.scope(state: \.destination?.receivedLike, action: \.destination.receivedLike),
         content: ReceivedLikeSwipeView.init(store:)
       )
       .navigationDestination(
