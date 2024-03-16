@@ -59,7 +59,7 @@ public struct ProfileEditLogic {
         return .send(.delegate(.dismiss))
 
       case .beRealCaptureButtonTapped:
-        state.destination = .beRealCapture()
+        state.destination = .beRealCapture(BeRealCaptureLogic.State())
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
@@ -114,7 +114,7 @@ public struct ProfileEditLogic {
         return .send(.delegate(.profileUpdated))
 
       case .destination(.presented(.beRealCapture(.delegate(.howTo)))):
-        state.destination = .beRealSample()
+        state.destination = .beRealSample(BeRealSampleLogic.State())
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
@@ -132,46 +132,16 @@ public struct ProfileEditLogic {
         return .none
       }
     }
-    .ifLet(\.$destination, action: \.destination) {
-      Destination()
-    }
+    .ifLet(\.$destination, action: \.destination)
   }
 
-  @Reducer
-  public struct Destination {
-    public enum State: Equatable {
-      case beRealSample(BeRealSampleLogic.State = .init())
-      case beRealCapture(BeRealCaptureLogic.State = .init())
-      case genderSetting(GenderSettingLogic.State)
-      case usernameSetting(UsernameSettingLogic.State)
-      case shortComment(ShortCommentSettingLogic.State)
-    }
-
-    public enum Action {
-      case beRealSample(BeRealSampleLogic.Action)
-      case beRealCapture(BeRealCaptureLogic.Action)
-      case genderSetting(GenderSettingLogic.Action)
-      case usernameSetting(UsernameSettingLogic.Action)
-      case shortComment(ShortCommentSettingLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.beRealSample, action: \.beRealSample) {
-        BeRealSampleLogic()
-      }
-      Scope(state: \.beRealCapture, action: \.beRealCapture) {
-        BeRealCaptureLogic()
-      }
-      Scope(state: \.genderSetting, action: \.genderSetting) {
-        GenderSettingLogic()
-      }
-      Scope(state: \.usernameSetting, action: \.usernameSetting) {
-        UsernameSettingLogic()
-      }
-      Scope(state: \.shortComment, action: \.shortComment) {
-        ShortCommentSettingLogic()
-      }
-    }
+  @Reducer(state: .equatable)
+  public enum Destination {
+    case beRealSample(BeRealSampleLogic)
+    case beRealCapture(BeRealCaptureLogic)
+    case genderSetting(GenderSettingLogic)
+    case usernameSetting(UsernameSettingLogic)
+    case shortComment(ShortCommentSettingLogic)
   }
 }
 
@@ -258,10 +228,7 @@ public struct ProfileEditView: View {
         }
       }
       .sheet(
-        store: store.scope(
-          state: \.$destination.beRealSample,
-          action: \.destination.beRealSample
-        )
+        item: $store.scope(state: \.destination?.beRealSample, action: \.destination.beRealSample)
       ) { store in
         NavigationStack {
           BeRealSampleView(store: store)
