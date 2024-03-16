@@ -259,10 +259,7 @@ public struct ProfileEditView: View {
         BeRealCaptureView(store: store, nextButtonStyle: .save)
       }
       .navigationDestination(
-        store: store.scope(
-          state: \.$destination.shortComment,
-          action: \.destination.shortComment
-        ),
+        store: store.scope(state: \.$destination.shortComment, action: \.destination.shortComment),
         destination: ShortCommentSettingView.init(store:)
       )
     }
