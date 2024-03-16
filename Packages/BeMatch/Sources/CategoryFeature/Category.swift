@@ -11,9 +11,10 @@ import SwiftUI
 public struct CategoryLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
-    var child: Child.State?
-    @PresentationState var alert: AlertState<Action.Alert>?
+    var child = Child.State.loading
+    @Presents var alert: AlertState<Action.Alert>?
     public init() {}
   }
 
@@ -36,6 +37,9 @@ public struct CategoryLogic {
   }
 
   public var body: some Reducer<State, Action> {
+    Scope(state: \.child, action: \.child) {
+      Child()
+    }
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
@@ -76,9 +80,6 @@ public struct CategoryLogic {
       }
     }
     .ifLet(\.$alert, action: \.alert)
-    .ifLet(\.child, action: \.child) {
-      Child()
-    }
   }
 
   private func userCategoriesRequest(send: Send<Action>) async {
@@ -95,12 +96,15 @@ public struct CategoryLogic {
 
   @Reducer
   public struct Child {
+    @ObservableState
     public enum State: Equatable {
+      case loading
       case empty(CategoryEmptyLogic.State = .init())
       case list(CategoryListLogic.State)
     }
 
     public enum Action {
+      case loading
       case empty(CategoryEmptyLogic.Action)
       case list(CategoryListLogic.Action)
     }
@@ -113,7 +117,7 @@ public struct CategoryLogic {
 }
 
 public struct CategoryView: View {
-  let store: StoreOf<CategoryLogic>
+  @Perception.Bindable var store: StoreOf<CategoryLogic>
 
   public init(store: StoreOf<CategoryLogic>) {
     self.store = store
@@ -121,30 +125,28 @@ public struct CategoryView: View {
 
   public var body: some View {
     NavigationStack {
-      IfLetStore(store.scope(state: \.child, action: \.child)) { store in
-        SwitchStore(store) { initialState in
-          switch initialState {
-          case .empty:
-            CaseLet(
-              /CategoryLogic.Child.State.empty,
-              action: CategoryLogic.Child.Action.empty,
-              then: CategoryEmptyView.init(store:)
-            )
-          case .list:
-            CaseLet(
-              /CategoryLogic.Child.State.list,
-              action: CategoryLogic.Child.Action.list,
-              then: CategoryListView.init(store:)
-            )
-          }
+      SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
+        switch initialState {
+        case .loading:
+          ProgressView()
+            .tint(Color.white)
+        case .empty:
+          CaseLet(
+            /CategoryLogic.Child.State.empty,
+            action: CategoryLogic.Child.Action.empty,
+            then: CategoryEmptyView.init(store:)
+          )
+        case .list:
+          CaseLet(
+            /CategoryLogic.Child.State.list,
+            action: CategoryLogic.Child.Action.list,
+            then: CategoryListView.init(store:)
+          )
         }
-      } else: {
-        ProgressView()
-          .tint(Color.white)
       }
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
-      .alert(store: store.scope(state: \.$alert, action: \.alert))
+      .alert($store.scope(state: \.alert, action: \.alert))
       .toolbar {
         ToolbarItem(placement: .principal) {
           Image(ImageResource.beMatch)

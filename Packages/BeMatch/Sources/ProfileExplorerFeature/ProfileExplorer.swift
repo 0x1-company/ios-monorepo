@@ -16,16 +16,17 @@ public struct ProfileExplorerLogic {
     case profile
   }
 
+  @ObservableState
   public struct State: Equatable {
     let username: String
     let targetUserId: String
 
-    @BindingState var currentTab: Tab
-    @BindingState var text = ""
+    var currentTab: Tab
+    var text = ""
 
     var directMessage: DirectMessageLogic.State
     var preview: ProfileExplorerPreviewLogic.State
-    @PresentationState var destination: Destination.State?
+    @Presents var destination: Destination.State?
 
     var isDisabled: Bool {
       return text.isEmpty
@@ -134,16 +135,16 @@ public struct ProfileExplorerLogic {
 }
 
 public struct ProfileExplorerView: View {
-  let store: StoreOf<ProfileExplorerLogic>
+  @Perception.Bindable var store: StoreOf<ProfileExplorerLogic>
 
   public init(store: StoreOf<ProfileExplorerLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithPerceptionTracking {
       VStack(spacing: 0) {
-        TabView(selection: viewStore.$currentTab) {
+        TabView(selection: $store.currentTab) {
           DirectMessageView(store: store.scope(state: \.directMessage, action: \.directMessage))
             .tag(ProfileExplorerLogic.Tab.message)
 
@@ -153,7 +154,7 @@ public struct ProfileExplorerView: View {
 
         HStack(spacing: 8) {
           TextField(
-            text: viewStore.$text,
+            text: $store.text,
             axis: .vertical
           ) {
             Text("Message", bundle: .module)
@@ -171,7 +172,7 @@ public struct ProfileExplorerView: View {
             Image(systemName: "paperplane.fill")
               .foregroundStyle(Color.primary)
           }
-          .disabled(viewStore.isDisabled)
+          .disabled(store.isDisabled)
         }
         .padding(.vertical, 8)
         .padding(.horizontal, 16)
@@ -185,7 +186,7 @@ public struct ProfileExplorerView: View {
           Button {
             store.send(.principalButtonTapped, animation: .default)
           } label: {
-            Text(viewStore.username)
+            Text(store.username)
               .foregroundStyle(Color.primary)
               .font(.system(.callout, weight: .semibold))
           }
@@ -211,7 +212,7 @@ public struct ProfileExplorerView: View {
         }
       }
       .sheet(
-        store: store.scope(state: \.$destination.report, action: \.destination.report),
+        item: $store.scope(state: \.destination?.report, action: \.destination.report),
         content: ReportView.init(store:)
       )
     }

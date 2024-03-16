@@ -14,12 +14,13 @@ import UsernameSettingFeature
 public struct OnboardLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     let user: BeMatch.UserInternal?
     var username: UsernameSettingLogic.State
     var path = StackState<Path.State>()
     var hasInvitationCampaign = false
-    @PresentationState var destination: Destination.State?
+    @Presents var destination: Destination.State?
 
     public init(user: BeMatch.UserInternal?) {
       self.user = user
@@ -151,7 +152,7 @@ public struct OnboardLogic {
 }
 
 public struct OnboardView: View {
-  let store: StoreOf<OnboardLogic>
+  @Perception.Bindable var store: StoreOf<OnboardLogic>
 
   public init(store: StoreOf<OnboardLogic>) {
     self.store = store
@@ -198,7 +199,7 @@ public struct OnboardView: View {
     .tint(Color.white)
     .task { await store.send(.onTask).finish() }
     .sheet(
-      store: store.scope(state: \.$destination.sample, action: \.destination.sample)
+      item: $store.scope(state: \.destination?.sample, action: \.destination.sample)
     ) { store in
       NavigationStack {
         BeRealSampleView(store: store)

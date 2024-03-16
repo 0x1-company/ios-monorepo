@@ -9,6 +9,7 @@ import SwiftUI
 public struct DirectMessageLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     let targetUserId: String
 
@@ -114,7 +115,7 @@ public struct DirectMessageLogic {
 }
 
 public struct DirectMessageView: View {
-  let store: StoreOf<DirectMessageLogic>
+  @Perception.Bindable var store: StoreOf<DirectMessageLogic>
 
   public init(store: StoreOf<DirectMessageLogic>) {
     self.store = store

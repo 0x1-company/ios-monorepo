@@ -13,9 +13,10 @@ import SwiftUI
 public struct DeleteAccountLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
-    @PresentationState var destination: Destination.State?
-    @BindingState var otherReason = ""
+    @Presents var destination: Destination.State?
+    var otherReason = ""
     var selectedReasons: [String] = []
     let reasons = [
       String(localized: "Safety or privacy conerns", bundle: .module),
@@ -189,14 +190,14 @@ public struct DeleteAccountLogic {
 }
 
 public struct DeleteAccountView: View {
-  let store: StoreOf<DeleteAccountLogic>
+  @Perception.Bindable var store: StoreOf<DeleteAccountLogic>
 
   public init(store: StoreOf<DeleteAccountLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithPerceptionTracking {
       VStack(spacing: 8) {
         Text("Are you sure you want to delete your account?", bundle: .module)
           .font(.system(.body, weight: .semibold))
@@ -204,12 +205,12 @@ public struct DeleteAccountView: View {
         Text("This **cannot** be undone or recovered.", bundle: .module)
 
         List {
-          ForEach(viewStore.reasons, id: \.self) { reason in
+          ForEach(store.reasons, id: \.self) { reason in
             Button {
               store.send(.reasonButtonTapped(reason))
             } label: {
               LabeledContent {
-                if viewStore.selectedReasons.contains(reason) {
+                if store.selectedReasons.contains(reason) {
                   Image(systemName: "checkmark.circle")
                 }
               } label: {
@@ -224,7 +225,7 @@ public struct DeleteAccountView: View {
 
           TextField(
             String(localized: "Other Reason", bundle: .module),
-            text: viewStore.$otherReason,
+            text: $store.otherReason,
             axis: .vertical
           )
           .lineLimit(1 ... 10)
@@ -270,12 +271,10 @@ public struct DeleteAccountView: View {
           .buttonStyle(HoldDownButtonStyle())
         }
       }
-      .alert(
-        store: store.scope(state: \.$destination.alert, action: \.destination.alert)
-      )
+      .alert($store.scope(state: \.destination?.alert, action: \.destination.alert))
       .confirmationDialog(
-        store: store.scope(
-          state: \.$destination.confirmationDialog,
+        $store.scope(
+          state: \.destination?.confirmationDialog,
           action: \.destination.confirmationDialog
         )
       )

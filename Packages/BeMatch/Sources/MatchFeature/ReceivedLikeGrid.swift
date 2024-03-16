@@ -8,6 +8,7 @@ import SwiftUI
 public struct ReceivedLikeGridLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     let imageUrl: String
     let count: Int
@@ -37,7 +38,7 @@ public struct ReceivedLikeGridLogic {
 
 public struct ReceivedLikeGridView: View {
   @Environment(\.displayScale) var displayScale
-  let store: StoreOf<ReceivedLikeGridLogic>
+  @Perception.Bindable var store: StoreOf<ReceivedLikeGridLogic>
 
   public init(store: StoreOf<ReceivedLikeGridLogic>) {
     self.store = store
@@ -55,13 +56,13 @@ public struct ReceivedLikeGridView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithPerceptionTracking {
       Button {
         store.send(.gridButtonTapped)
       } label: {
         VStack(spacing: 0) {
           CachedAsyncImage(
-            url: URL(string: viewStore.imageUrl),
+            url: URL(string: store.imageUrl),
             urlCache: .shared,
             scale: displayScale,
             content: { image in
@@ -86,7 +87,7 @@ public struct ReceivedLikeGridView: View {
               .stroke(goldGradient, lineWidth: 3)
           }
           .overlay {
-            Text(viewStore.receivedCount)
+            Text(store.receivedCount)
               .font(.system(.body, weight: .semibold))
               .frame(width: 40, height: 40)
               .foregroundStyle(Color.white)
@@ -98,7 +99,7 @@ public struct ReceivedLikeGridView: View {
               .offset(y: 17)
           }
 
-          Text("Liked by \(viewStore.receivedCount) people", bundle: .module)
+          Text("Liked by \(store.receivedCount) people", bundle: .module)
             .foregroundStyle(Color.primary)
             .font(.system(.subheadline, weight: .semibold))
             .frame(maxWidth: .infinity, minHeight: 54, maxHeight: .infinity, alignment: .leading)

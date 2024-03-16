@@ -13,8 +13,9 @@ import SwiftUI
 public struct DirectMessageTabLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
-    @PresentationState var destination: Destination.State?
+    @Presents var destination: Destination.State?
     var unsent: UnsentDirectMessageListLogic.State? = .loading
     var messages: DirectMessageListLogic.State? = .loading
     public init() {}
@@ -177,7 +178,7 @@ public struct DirectMessageTabLogic {
 }
 
 public struct DirectMessageTabView: View {
-  let store: StoreOf<DirectMessageTabLogic>
+  @Perception.Bindable var store: StoreOf<DirectMessageTabLogic>
 
   public init(store: StoreOf<DirectMessageTabLogic>) {
     self.store = store
@@ -207,15 +208,15 @@ public struct DirectMessageTabView: View {
         }
       }
       .sheet(
-        store: store.scope(state: \.$destination.directMessage, action: \.destination.directMessage),
+        item: $store.scope(state: \.destination?.directMessage, action: \.destination.directMessage),
         content: DirectMessageView.init(store:)
       )
       .fullScreenCover(
-        store: store.scope(state: \.$destination.membership, action: \.destination.membership),
+        item: $store.scope(state: \.destination?.membership, action: \.destination.membership),
         content: MembershipView.init(store:)
       )
       .fullScreenCover(
-        store: store.scope(state: \.$destination.receivedLike, action: \.destination.receivedLike),
+        item: $store.scope(state: \.destination?.receivedLike, action: \.destination.receivedLike),
         content: ReceivedLikeSwipeView.init(store:)
       )
       .navigationDestination(

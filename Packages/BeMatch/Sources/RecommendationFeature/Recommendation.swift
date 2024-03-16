@@ -12,6 +12,7 @@ import UserNotificationClient
 public struct RecommendationLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     var child = Child.State.loading()
     public init() {}
@@ -110,7 +111,7 @@ public struct RecommendationLogic {
 }
 
 public struct RecommendationView: View {
-  let store: StoreOf<RecommendationLogic>
+  @Perception.Bindable var store: StoreOf<RecommendationLogic>
 
   public init(store: StoreOf<RecommendationLogic>) {
     self.store = store

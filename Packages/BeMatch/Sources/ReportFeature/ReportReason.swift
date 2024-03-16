@@ -10,15 +10,16 @@ import SwiftUI
 public struct ReportReasonLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     let title: String
     let kind: ReportLogic.Kind
 
     var isDisabled = true
     var isActivityIndicatorVisible = false
-    @BindingState var text = String()
-    @BindingState var focus: Field?
-    @PresentationState var alert: AlertState<Action.Alert>?
+    var text = String()
+    var focus: Field?
+    @Presents var alert: AlertState<Action.Alert>?
 
     public init(title: String, kind: ReportLogic.Kind) {
       self.title = title
@@ -121,14 +122,14 @@ public struct ReportReasonLogic {
 
 public struct ReportReasonView: View {
   @FocusState var focus: ReportReasonLogic.State.Field?
-  let store: StoreOf<ReportReasonLogic>
+  @Perception.Bindable var store: StoreOf<ReportReasonLogic>
 
   public init(store: StoreOf<ReportReasonLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithPerceptionTracking {
       VStack(alignment: .leading, spacing: 16) {
         VStack(alignment: .leading, spacing: 0) {
           Text("Your report is confidential.", bundle: .module)
@@ -140,7 +141,7 @@ public struct ReportReasonView: View {
         .font(.system(.footnote))
 
         VStack(alignment: .leading, spacing: 8) {
-          TextEditor(text: viewStore.$text)
+          TextEditor(text: $store.text)
             .frame(height: 140)
             .lineLimit(1 ... 10)
             .focused($focus, equals: .text)
@@ -158,8 +159,8 @@ public struct ReportReasonView: View {
 
         PrimaryButton(
           String(localized: "Send", bundle: .module),
-          isLoading: viewStore.isActivityIndicatorVisible,
-          isDisabled: viewStore.isDisabled
+          isLoading: store.isActivityIndicatorVisible,
+          isDisabled: store.isDisabled
         ) {
           store.send(.sendButtonTapped)
         }
@@ -170,8 +171,8 @@ public struct ReportReasonView: View {
       .navigationTitle(Text("Report a BeMatch.", bundle: .module))
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
-      .bind(viewStore.$focus, to: $focus)
-      .alert(store: store.scope(state: \.$alert, action: \.alert))
+      .bind($store.focus, to: $focus)
+      .alert($store.scope(state: \.alert, action: \.alert))
     }
   }
 }

@@ -14,6 +14,7 @@ import SwipeFeature
 public struct CategorySwipeLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     let id: String
     let title: String
@@ -99,14 +100,14 @@ public struct CategorySwipeLogic {
 }
 
 public struct CategorySwipeView: View {
-  let store: StoreOf<CategorySwipeLogic>
+  @Perception.Bindable var store: StoreOf<CategorySwipeLogic>
 
   public init(store: StoreOf<CategorySwipeLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithPerceptionTracking {
       SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
         switch initialState {
         case .swipe:
@@ -127,12 +128,12 @@ public struct CategorySwipeView: View {
       .frame(maxWidth: .infinity, maxHeight: .infinity)
       .background(
         LinearGradient(
-          colors: viewStore.colors,
+          colors: store.colors,
           startPoint: UnitPoint.top,
           endPoint: UnitPoint.bottom
         )
       )
-      .navigationTitle(viewStore.title)
+      .navigationTitle(store.title)
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
       .toolbar {

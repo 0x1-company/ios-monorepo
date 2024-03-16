@@ -10,6 +10,7 @@ import SwiftUI
 public struct MatchedLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     let username: String
     public init(username: String) {
@@ -60,14 +61,14 @@ public struct MatchedLogic {
 
 public struct MatchedView: View {
   @Environment(\.requestReview) var requestReview
-  let store: StoreOf<MatchedLogic>
+  @Perception.Bindable var store: StoreOf<MatchedLogic>
 
   public init(store: StoreOf<MatchedLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithPerceptionTracking {
       VStack(spacing: 40) {
         Image(ImageResource.matched)
           .resizable()
@@ -81,7 +82,7 @@ public struct MatchedView: View {
             store.send(.addBeRealButtonTapped)
           }
 
-          Text("🔗 BeRe.al/\(viewStore.username)", bundle: .module)
+          Text("🔗 BeRe.al/\(store.username)", bundle: .module)
             .font(.system(.caption, weight: .semibold))
         }
       }

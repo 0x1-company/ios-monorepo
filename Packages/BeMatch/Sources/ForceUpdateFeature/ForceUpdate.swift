@@ -10,6 +10,7 @@ import SwiftUI
 public struct ForceUpdateLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public init() {}
   }
@@ -42,14 +43,14 @@ public struct ForceUpdateLogic {
 }
 
 public struct ForceUpdateView: View {
-  let store: StoreOf<ForceUpdateLogic>
+  @Perception.Bindable var store: StoreOf<ForceUpdateLogic>
 
   public init(store: StoreOf<ForceUpdateLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { _ in
+    WithPerceptionTracking {
       VStack(spacing: 24) {
         Text("Notice", bundle: .module)
           .font(.system(.title, weight: .semibold))

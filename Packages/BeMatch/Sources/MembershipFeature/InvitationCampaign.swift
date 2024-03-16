@@ -7,6 +7,7 @@ import SwiftUI
 public struct InvitationCampaignLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     let quantity: Int
     let durationWeeks: Int
@@ -41,7 +42,7 @@ public struct InvitationCampaignLogic {
 }
 
 public struct InvitationCampaignView: View {
-  let store: StoreOf<InvitationCampaignLogic>
+  @Perception.Bindable var store: StoreOf<InvitationCampaignLogic>
 
   var backgroundGradient: LinearGradient {
     LinearGradient(
@@ -70,9 +71,9 @@ public struct InvitationCampaignView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithPerceptionTracking {
       VStack(spacing: 12) {
-        Text("Limited to first \(viewStore.quantity) Users", bundle: .module)
+        Text("Limited to first \(store.quantity) Users", bundle: .module)
           .font(.system(.headline, weight: .semibold))
           .padding(.vertical, 6)
           .padding(.horizontal, 8)
@@ -86,7 +87,7 @@ public struct InvitationCampaignView: View {
 
           VStack(spacing: 8) {
             HStack(spacing: 8) {
-              Text(viewStore.totalBenefit.description)
+              Text(store.totalBenefit.description)
                 .font(.system(size: 72, weight: .heavy))
               VStack(spacing: 0) {
                 Text("円")

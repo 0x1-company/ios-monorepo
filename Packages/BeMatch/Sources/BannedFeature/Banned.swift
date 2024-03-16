@@ -6,6 +6,7 @@ import SwiftUI
 public struct BannedLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     var userId: String
     public init(userId: String) {
@@ -31,14 +32,14 @@ public struct BannedLogic {
 }
 
 public struct BannedView: View {
-  let store: StoreOf<BannedLogic>
+  @Perception.Bindable var store: StoreOf<BannedLogic>
 
   public init(store: StoreOf<BannedLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithPerceptionTracking {
       VStack(spacing: 24) {
         Text("Your account has been banned from BeMatch.", bundle: .module)
           .font(.system(.headline, weight: .semibold))
@@ -51,7 +52,7 @@ public struct BannedView: View {
           .font(.system(.body, weight: .semibold))
           .foregroundStyle(Color.secondary)
 
-        Text("id: \(viewStore.userId)")
+        Text("id: \(store.userId)")
           .font(.system(.body, weight: .semibold))
           .foregroundStyle(Color.secondary)
       }

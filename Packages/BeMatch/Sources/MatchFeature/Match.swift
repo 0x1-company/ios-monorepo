@@ -14,6 +14,7 @@ import UserNotificationClient
 public struct MatchLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public var rows: IdentifiedArrayOf<MatchGridLogic.State> = []
     var banners: IdentifiedArrayOf<BannerLogic.State> = []
@@ -195,14 +196,14 @@ public struct MatchLogic {
 }
 
 public struct MatchView: View {
-  let store: StoreOf<MatchLogic>
+  @Perception.Bindable var store: StoreOf<MatchLogic>
 
   public init(store: StoreOf<MatchLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithPerceptionTracking {
       ScrollView(.vertical) {
         LazyVStack(spacing: 16) {
           IfLetStore(
@@ -244,7 +245,7 @@ public struct MatchView: View {
               }
             }
 
-            if viewStore.hasNextPage {
+            if store.hasNextPage {
               ProgressView()
                 .tint(Color.white)
                 .frame(height: 44)

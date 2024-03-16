@@ -15,10 +15,11 @@ import SwiftUI
 public struct ProfileExternalLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     let match: BeMatch.MatchGrid
-    @BindingState var selection: BeMatch.MatchGrid.TargetUser.Image
-    @PresentationState var destination: Destination.State?
+    var selection: BeMatch.MatchGrid.TargetUser.Image
+    @Presents var destination: Destination.State?
 
     var pictureSlider: PictureSliderLogic.State?
 
@@ -184,14 +185,14 @@ public struct ProfileExternalView: View {
   @Environment(\.displayScale) var displayScale
   @State var translation: CGSize = .zero
   @State var scaleEffect: Double = 1.0
-  let store: StoreOf<ProfileExternalLogic>
+  @Perception.Bindable var store: StoreOf<ProfileExternalLogic>
 
   public init(store: StoreOf<ProfileExternalLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithPerceptionTracking {
       VStack {
         VStack(spacing: 24) {
           HStack(spacing: 0) {
@@ -205,11 +206,11 @@ public struct ProfileExternalView: View {
             }
             Spacer()
             VStack(spacing: 0) {
-              Text(viewStore.match.targetUser.berealUsername)
+              Text(store.match.targetUser.berealUsername)
                 .foregroundStyle(Color.white)
                 .font(.system(.callout, weight: .semibold))
 
-              Text(viewStore.createdAt, format: Date.FormatStyle(date: .numeric))
+              Text(store.createdAt, format: Date.FormatStyle(date: .numeric))
                 .foregroundStyle(Color.gray)
                 .font(.system(.caption2, weight: .semibold))
             }
@@ -273,13 +274,13 @@ public struct ProfileExternalView: View {
       .background(Material.ultraThin)
       .task { await store.send(.onTask).finish() }
       .confirmationDialog(
-        store: store.scope(
-          state: \.$destination.confirmationDialog,
+        $store.scope(
+          state: \.destination?.confirmationDialog,
           action: \.destination.confirmationDialog
         )
       )
       .sheet(
-        store: store.scope(state: \.$destination.report, action: \.destination.report),
+        item: $store.scope(state: \.destination?.report, action: \.destination.report),
         content: ReportView.init(store:)
       )
       .gesture(

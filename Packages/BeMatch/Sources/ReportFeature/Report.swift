@@ -8,11 +8,12 @@ import SwiftUI
 public struct ReportLogic {
   public init() {}
 
-  public enum Kind: Hashable {
+  public enum Kind: Hashable, Equatable {
     case user(targetUserId: String)
     case message(messageId: String)
   }
 
+  @ObservableState
   public struct State: Equatable {
     let kind: Kind
 
@@ -69,38 +70,24 @@ public struct ReportLogic {
         return .none
       }
     }
-    .forEach(\.path, action: \.path) {
-      Path()
-    }
+    .forEach(\.path, action: \.path)
   }
 
-  @Reducer
-  public struct Path {
-    public enum State: Equatable {
-      case reason(ReportReasonLogic.State)
-    }
-
-    public enum Action {
-      case reason(ReportReasonLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.reason, action: \.reason, child: ReportReasonLogic.init)
-    }
+  @Reducer(state: .equatable)
+  public enum Path {
+    case reason(ReportReasonLogic)
   }
 }
 
 public struct ReportView: View {
-  let store: StoreOf<ReportLogic>
+  @Perception.Bindable var store: StoreOf<ReportLogic>
 
   public init(store: StoreOf<ReportLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    NavigationStackStore(
-      store.scope(state: \.path, action: \.path)
-    ) {
+    NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
       List(
         [
           String(localized: "Spam", bundle: .module),
@@ -138,14 +125,10 @@ public struct ReportView: View {
         }
       }
     } destination: { store in
-      SwitchStore(store) { initialState in
-        switch initialState {
-        case .reason:
-          CaseLet(
-            /ReportLogic.Path.State.reason,
-            action: ReportLogic.Path.Action.reason,
-            then: ReportReasonView.init(store:)
-          )
+      switch store.state {
+      case .reason:
+        if let store = store.scope(state: \.reason, action: \.reason) {
+          ReportReasonView(store: store)
         }
       }
     }
