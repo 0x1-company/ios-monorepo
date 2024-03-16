@@ -242,14 +242,14 @@ public struct ProfileEditView: View {
       ) { store in
         GenderSettingView(store: store, nextButtonStyle: .save, canSkip: false)
       }
-//      .navigationDestination(
-//        store: store.scope(
-//          state: \.$destination.usernameSetting,
-//          action: \.destination.usernameSetting
-//        )
-//      ) { store in
-//        UsernameSettingView(store: store, nextButtonStyle: .save)
-//      }
+      .navigationDestination(
+        store: store.scope(
+          state: \.$destination.usernameSetting,
+          action: \.destination.usernameSetting
+        )
+      ) { store in
+        UsernameSettingView(store: store, nextButtonStyle: .save)
+      }
       .navigationDestination(
         store: store.scope(
           state: \.$destination.beRealCapture,
