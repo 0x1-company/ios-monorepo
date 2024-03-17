@@ -11,11 +11,10 @@ import SwiftUI
 public struct ProfileExplorerPreviewContentLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     let user: BeMatch.ProfileExplorerPreviewQuery.Data.UserByMatched
 
-    @Presents var confirmationDialog: ConfirmationDialogState<Action.ConfirmationDialog>?
+    @PresentationState var confirmationDialog: ConfirmationDialogState<Action.ConfirmationDialog>?
     var pictureSlider: PictureSliderLogic.State
 
     public init(user: BeMatch.ProfileExplorerPreviewQuery.Data.UserByMatched) {
@@ -67,7 +66,7 @@ public struct ProfileExplorerPreviewContentLogic {
 }
 
 public struct ProfileExplorerPreviewContentView: View {
-  @Perception.Bindable var store: StoreOf<ProfileExplorerPreviewContentLogic>
+  let store: StoreOf<ProfileExplorerPreviewContentLogic>
 
   public init(store: StoreOf<ProfileExplorerPreviewContentLogic>) {
     self.store = store
@@ -86,6 +85,6 @@ public struct ProfileExplorerPreviewContentView: View {
 
       Spacer()
     }
-    .confirmationDialog($store.scope(state: \.confirmationDialog, action: \.confirmationDialog))
+    .confirmationDialog(store: store.scope(state: \.$confirmationDialog, action: \.confirmationDialog))
   }
 }

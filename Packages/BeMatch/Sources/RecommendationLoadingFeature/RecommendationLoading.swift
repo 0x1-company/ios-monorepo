@@ -6,7 +6,6 @@ import SwiftUI
 public struct RecommendationLoadingLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     public init() {}
   }
@@ -19,7 +18,7 @@ public struct RecommendationLoadingLogic {
 }
 
 public struct RecommendationLoadingView: View {
-  @Perception.Bindable var store: StoreOf<RecommendationLoadingLogic>
+  let store: StoreOf<RecommendationLoadingLogic>
 
   public init(store: StoreOf<RecommendationLoadingLogic>) {
     self.store = store

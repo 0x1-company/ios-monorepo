@@ -22,10 +22,9 @@ public struct SettingsLogic {
     public let result: Bool
   }
 
-  @ObservableState
   public struct State: Equatable {
-    @Presents var destination: Destination.State?
-    var isSharePresented = false
+    @PresentationState var destination: Destination.State?
+    @BindingState var isSharePresented = false
 
     var bundleShortVersion: String
     var creationDate: CreationDateLogic.State?
@@ -194,14 +193,14 @@ public struct SettingsLogic {
 }
 
 public struct SettingsView: View {
-  @Perception.Bindable var store: StoreOf<SettingsLogic>
+  let store: StoreOf<SettingsLogic>
 
   public init(store: StoreOf<SettingsLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithPerceptionTracking {
+    WithViewStore(store, observe: { $0 }) { viewStore in
       List {
         Section {
           Button {
@@ -376,7 +375,7 @@ public struct SettingsView: View {
             store.send(.versionButtonTapped, animation: .default)
           } label: {
             LabeledContent {
-              Text(store.bundleShortVersion)
+              Text(viewStore.bundleShortVersion)
             } label: {
               Text("Version", bundle: .module)
                 .foregroundStyle(Color.primary)
@@ -397,9 +396,9 @@ public struct SettingsView: View {
       .navigationTitle(String(localized: "Settings", bundle: .module))
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
-      .sheet(isPresented: $store.isSharePresented) {
+      .sheet(isPresented: viewStore.$isSharePresented) {
         ActivityView(
-          activityItems: [store.shareText],
+          activityItems: [viewStore.shareText],
           applicationActivities: nil
         ) { activityType, result, _, _ in
           store.send(
@@ -414,25 +413,25 @@ public struct SettingsView: View {
         .presentationDetents([.medium, .large])
       }
       .fullScreenCover(
-        item: $store.scope(state: \.destination?.tutorial, action: \.destination.tutorial),
+        store: store.scope(state: \.$destination.tutorial, action: \.destination.tutorial),
         content: TutorialView.init(store:)
       )
       .fullScreenCover(
-        item: $store.scope(state: \.destination?.profile, action: \.destination.profile)
+        store: store.scope(state: \.$destination.profile, action: \.destination.profile)
       ) { store in
         NavigationStack {
           ProfileView(store: store)
         }
       }
       .fullScreenCover(
-        item: $store.scope(state: \.destination?.profileEdit, action: \.destination.profileEdit)
+        store: store.scope(state: \.$destination.profileEdit, action: \.destination.profileEdit)
       ) { store in
         NavigationStack {
           ProfileEditView(store: store)
         }
       }
       .fullScreenCover(
-        item: $store.scope(state: \.destination?.achievement, action: \.destination.achievement)
+        store: store.scope(state: \.$destination.achievement, action: \.destination.achievement)
       ) { store in
         NavigationStack {
           AchievementView(store: store)

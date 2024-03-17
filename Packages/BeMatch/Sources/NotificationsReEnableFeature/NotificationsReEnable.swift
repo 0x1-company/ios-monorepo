@@ -7,7 +7,6 @@ import UIApplicationClient
 public struct NotificationsReEnableLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     public init() {}
   }
@@ -36,7 +35,7 @@ public struct NotificationsReEnableLogic {
 }
 
 public struct NotificationsReEnableView: View {
-  @Perception.Bindable var store: StoreOf<NotificationsReEnableLogic>
+  let store: StoreOf<NotificationsReEnableLogic>
 
   public init(store: StoreOf<NotificationsReEnableLogic>) {
     self.store = store

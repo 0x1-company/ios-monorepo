@@ -13,9 +13,8 @@ import UsernameSettingFeature
 public struct ProfileEditLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
-    @Presents var destination: Destination.State?
+    @PresentationState var destination: Destination.State?
     var user: BeMatch.UserInternal?
 
     public init() {}
@@ -59,7 +58,7 @@ public struct ProfileEditLogic {
         return .send(.delegate(.dismiss))
 
       case .beRealCaptureButtonTapped:
-        state.destination = .beRealCapture(BeRealCaptureLogic.State())
+        state.destination = .beRealCapture()
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
@@ -114,7 +113,7 @@ public struct ProfileEditLogic {
         return .send(.delegate(.profileUpdated))
 
       case .destination(.presented(.beRealCapture(.delegate(.howTo)))):
-        state.destination = .beRealSample(BeRealSampleLogic.State())
+        state.destination = .beRealSample()
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
@@ -132,30 +131,60 @@ public struct ProfileEditLogic {
         return .none
       }
     }
-    .ifLet(\.$destination, action: \.destination)
+    .ifLet(\.$destination, action: \.destination) {
+      Destination()
+    }
   }
 
-  @Reducer(state: .equatable)
-  public enum Destination {
-    case beRealSample(BeRealSampleLogic)
-    case beRealCapture(BeRealCaptureLogic)
-    case genderSetting(GenderSettingLogic)
-    case usernameSetting(UsernameSettingLogic)
-    case shortComment(ShortCommentSettingLogic)
+  @Reducer
+  public struct Destination {
+    public enum State: Equatable {
+      case beRealSample(BeRealSampleLogic.State = .init())
+      case beRealCapture(BeRealCaptureLogic.State = .init())
+      case genderSetting(GenderSettingLogic.State)
+      case usernameSetting(UsernameSettingLogic.State)
+      case shortComment(ShortCommentSettingLogic.State)
+    }
+
+    public enum Action {
+      case beRealSample(BeRealSampleLogic.Action)
+      case beRealCapture(BeRealCaptureLogic.Action)
+      case genderSetting(GenderSettingLogic.Action)
+      case usernameSetting(UsernameSettingLogic.Action)
+      case shortComment(ShortCommentSettingLogic.Action)
+    }
+
+    public var body: some Reducer<State, Action> {
+      Scope(state: \.beRealSample, action: \.beRealSample) {
+        BeRealSampleLogic()
+      }
+      Scope(state: \.beRealCapture, action: \.beRealCapture) {
+        BeRealCaptureLogic()
+      }
+      Scope(state: \.genderSetting, action: \.genderSetting) {
+        GenderSettingLogic()
+      }
+      Scope(state: \.usernameSetting, action: \.usernameSetting) {
+        UsernameSettingLogic()
+      }
+      Scope(state: \.shortComment, action: \.shortComment) {
+        ShortCommentSettingLogic()
+      }
+    }
   }
 }
 
 public struct ProfileEditView: View {
-  @Perception.Bindable var store: StoreOf<ProfileEditLogic>
+  let store: StoreOf<ProfileEditLogic>
 
   public init(store: StoreOf<ProfileEditLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithPerceptionTracking {
+    WithViewStore(store, observe: { $0 }) { viewStore in
       Group {
-        if let user = store.user {
+        if let user = viewStore.user {
           List {
             Section {
               Button {
@@ -228,7 +257,10 @@ public struct ProfileEditView: View {
         }
       }
       .sheet(
-        item: $store.scope(state: \.destination?.beRealSample, action: \.destination.beRealSample)
+        store: store.scope(
+          state: \.$destination.beRealSample,
+          action: \.destination.beRealSample
+        )
       ) { store in
         NavigationStack {
           BeRealSampleView(store: store)
@@ -259,7 +291,10 @@ public struct ProfileEditView: View {
         BeRealCaptureView(store: store, nextButtonStyle: .save)
       }
       .navigationDestination(
-        store: store.scope(state: \.$destination.shortComment, action: \.destination.shortComment),
+        store: store.scope(
+          state: \.$destination.shortComment,
+          action: \.destination.shortComment
+        ),
         destination: ShortCommentSettingView.init(store:)
       )
     }

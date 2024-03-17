@@ -7,7 +7,6 @@ import SwiftUI
 public struct UnsentDirectMessageListContentLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     var after: String?
     var hasNextPage = false
@@ -87,14 +86,14 @@ public struct UnsentDirectMessageListContentLogic {
 }
 
 public struct UnsentDirectMessageListContentView: View {
-  @Perception.Bindable var store: StoreOf<UnsentDirectMessageListContentLogic>
+  let store: StoreOf<UnsentDirectMessageListContentLogic>
 
   public init(store: StoreOf<UnsentDirectMessageListContentLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithPerceptionTracking {
+    WithViewStore(store, observe: { $0 }) { viewStore in
       ScrollView(.horizontal) {
         LazyHStack(spacing: 12) {
           IfLetStore(
@@ -107,7 +106,7 @@ public struct UnsentDirectMessageListContentView: View {
             content: UnsentDirectMessageListContentRowView.init(store:)
           )
 
-          if store.hasNextPage {
+          if viewStore.hasNextPage {
             ProgressView()
               .tint(Color.white)
               .frame(width: 90, height: 120)

@@ -5,7 +5,6 @@ import SwiftUI
 public struct UnsentDirectMessageListLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     var child: Child.State?
 
@@ -67,7 +66,7 @@ public struct UnsentDirectMessageListLogic {
 }
 
 public struct UnsentDirectMessageListView: View {
-  @Perception.Bindable var store: StoreOf<UnsentDirectMessageListLogic>
+  let store: StoreOf<UnsentDirectMessageListLogic>
 
   public init(store: StoreOf<UnsentDirectMessageListLogic>) {
     self.store = store

@@ -7,7 +7,6 @@ import SwiftUI
 public struct MatchEmptyLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     public init() {}
   }
@@ -40,7 +39,7 @@ public struct MatchEmptyLogic {
 }
 
 public struct MatchEmptyView: View {
-  @Perception.Bindable var store: StoreOf<MatchEmptyLogic>
+  let store: StoreOf<MatchEmptyLogic>
 
   public init(store: StoreOf<MatchEmptyLogic>) {
     self.store = store

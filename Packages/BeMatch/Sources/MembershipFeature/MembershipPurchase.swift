@@ -7,7 +7,6 @@ import SwiftUI
 public struct MembershipPurchaseLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     let displayPrice: String
 
@@ -46,7 +45,7 @@ public struct MembershipPurchaseLogic {
 }
 
 public struct MembershipPurchaseView: View {
-  @Perception.Bindable var store: StoreOf<MembershipPurchaseLogic>
+  let store: StoreOf<MembershipPurchaseLogic>
 
   public init(store: StoreOf<MembershipPurchaseLogic>) {
     self.store = store
@@ -64,7 +63,7 @@ public struct MembershipPurchaseView: View {
   }
 
   public var body: some View {
-    WithPerceptionTracking {
+    WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 16) {
         ScrollView {
           VStack(spacing: 24) {
@@ -75,7 +74,7 @@ public struct MembershipPurchaseView: View {
               Button {
                 store.send(.upgradeButtonTapped)
               } label: {
-                Text("Upgrade for \(store.displayPrice)/week", bundle: .module)
+                Text("Upgrade for \(viewStore.displayPrice)/week", bundle: .module)
               }
               .buttonStyle(ConversionPrimaryButtonStyle())
 
@@ -95,7 +94,7 @@ public struct MembershipPurchaseView: View {
         Button {
           store.send(.upgradeButtonTapped)
         } label: {
-          Text("Upgrade for \(store.displayPrice)/week", bundle: .module)
+          Text("Upgrade for \(viewStore.displayPrice)/week", bundle: .module)
         }
         .buttonStyle(ConversionPrimaryButtonStyle())
         .padding(.horizontal, 16)

@@ -6,7 +6,6 @@ import SwiftUI
 public struct ___VARIABLE_productName: identifier___Logic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     public init() {}
   }
@@ -29,14 +28,14 @@ public struct ___VARIABLE_productName: identifier___Logic {
 }
 
 public struct ___VARIABLE_productName:identifier___View: View {
-  @Perception.Bindable var store: StoreOf<___VARIABLE_productName: identifier___Logic>
+  let store: StoreOf<___VARIABLE_productName: identifier___Logic>
 
   public init(store: StoreOf<___VARIABLE_productName: identifier___Logic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithPerceptionTracking {
+    WithViewStore(store, observe: { $0 }) { viewStore in
       List {
         Text("___VARIABLE_productName:identifier___", bundle: .module)
       }

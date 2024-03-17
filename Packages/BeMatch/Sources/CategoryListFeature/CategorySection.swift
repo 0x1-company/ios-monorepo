@@ -7,7 +7,6 @@ import SwiftUI
 public struct CategorySectionLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable, Identifiable {
     let userCategory: BeMatch.UserCategoriesQuery.Data.UserCategory
     public var id: String {
@@ -45,16 +44,16 @@ public struct CategorySectionLogic {
 }
 
 public struct CategorySectionView: View {
-  @Perception.Bindable var store: StoreOf<CategorySectionLogic>
+  let store: StoreOf<CategorySectionLogic>
 
   public init(store: StoreOf<CategorySectionLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithPerceptionTracking {
+    WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(alignment: .leading, spacing: 8) {
-        Text(store.userCategory.title)
+        Text(viewStore.userCategory.title)
           .font(.system(.callout, weight: .semibold))
           .padding(.horizontal, 16)
 

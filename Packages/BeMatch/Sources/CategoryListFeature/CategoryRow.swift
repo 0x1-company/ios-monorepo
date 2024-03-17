@@ -10,7 +10,6 @@ import SwiftUI
 public struct CategoryRowLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable, Identifiable {
     let user: BeMatch.SwipeCard
     let isBlur: Bool
@@ -46,7 +45,7 @@ public struct CategoryRowLogic {
 
 public struct CategoryRowView: View {
   @Environment(\.displayScale) var displayScale
-  @Perception.Bindable var store: StoreOf<CategoryRowLogic>
+  let store: StoreOf<CategoryRowLogic>
 
   public init(store: StoreOf<CategoryRowLogic>) {
     self.store = store
@@ -64,12 +63,12 @@ public struct CategoryRowView: View {
   }
 
   public var body: some View {
-    WithPerceptionTracking {
+    WithViewStore(store, observe: { $0 }) { viewStore in
       Button {
         store.send(.rowButtonTapped)
       } label: {
         CachedAsyncImage(
-          url: URL(string: store.user.images[0].imageUrl),
+          url: URL(string: viewStore.user.images[0].imageUrl),
           urlCache: URLCache.shared,
           scale: displayScale
         ) { image in
@@ -85,10 +84,10 @@ public struct CategoryRowView: View {
                 .tint(Color.white)
             }
         }
-        .blur(radius: store.isBlur ? 18 : 0)
+        .blur(radius: viewStore.isBlur ? 18 : 0)
         .clipShape(RoundedRectangle(cornerRadius: 8))
         .overlay(alignment: .bottom) {
-          if !store.isBlur {
+          if !viewStore.isBlur {
             LinearGradient(
               colors: [
                 Color.black.opacity(0.0),
@@ -102,7 +101,7 @@ public struct CategoryRowView: View {
           }
         }
         .overlay {
-          if store.isBlur {
+          if viewStore.isBlur {
             RoundedRectangle(cornerRadius: 8)
               .stroke(goldGradient, lineWidth: 3)
           }

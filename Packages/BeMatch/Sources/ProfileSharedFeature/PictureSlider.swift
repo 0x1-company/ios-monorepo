@@ -9,10 +9,9 @@ import SwiftUI
 public struct PictureSliderLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     let data: BeMatch.PictureSlider
-    var selection: BeMatch.PictureSlider.Image
+    @BindingState var selection: BeMatch.PictureSlider.Image
 
     public init(data: BeMatch.PictureSlider) {
       self.data = data
@@ -56,24 +55,24 @@ public struct PictureSliderLogic {
 
 public struct PictureSliderView: View {
   @Environment(\.displayScale) var displayScale
-  @Perception.Bindable var store: StoreOf<PictureSliderLogic>
+  let store: StoreOf<PictureSliderLogic>
 
   public init(store: StoreOf<PictureSliderLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithPerceptionTracking {
+    WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 24) {
         SelectControl(
-          current: store.selection,
-          items: store.data.images
+          current: viewStore.selection,
+          items: viewStore.data.images
         )
         .padding(.top, 3)
         .padding(.horizontal, 16)
 
-        ForEach(store.data.images, id: \.id) { picture in
-          if picture == store.selection {
+        ForEach(viewStore.data.images, id: \.id) { picture in
+          if picture == viewStore.selection {
             CachedAsyncImage(
               url: URL(string: picture.imageUrl),
               urlCache: .shared,
@@ -97,7 +96,7 @@ public struct PictureSliderView: View {
           }
         }
         .overlay(alignment: .bottom) {
-          if let shortComment = store.data.shortComment?.body {
+          if let shortComment = viewStore.data.shortComment?.body {
             ZStack(alignment: .bottom) {
               LinearGradient(
                 colors: [

@@ -9,7 +9,6 @@ import SwiftUI
 public struct AchievementLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     var child = Child.State.loading
     public init() {}
@@ -90,7 +89,7 @@ public struct AchievementLogic {
 }
 
 public struct AchievementView: View {
-  @Perception.Bindable var store: StoreOf<AchievementLogic>
+  let store: StoreOf<AchievementLogic>
 
   public init(store: StoreOf<AchievementLogic>) {
     self.store = store

@@ -5,7 +5,6 @@ import SwiftUI
 public struct InvitationCampaignPriceLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     var displayDuration: String
 
@@ -22,14 +21,14 @@ public struct InvitationCampaignPriceLogic {
 }
 
 public struct InvitationCampaignPriceView: View {
-  @Perception.Bindable var store: StoreOf<InvitationCampaignPriceLogic>
+  let store: StoreOf<InvitationCampaignPriceLogic>
 
   public init(store: StoreOf<InvitationCampaignPriceLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithPerceptionTracking {
+    WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 0) {
         Text("when they use your invitation code you get", bundle: .module)
           .padding(.top, 24)
@@ -41,7 +40,7 @@ public struct InvitationCampaignPriceView: View {
           .padding(.top, 16)
 
         HStack(alignment: .bottom, spacing: 4) {
-          Text(store.displayDuration)
+          Text(viewStore.displayDuration)
           Text("0")
             .font(.system(size: 72, weight: .heavy))
             .offset(y: 16)

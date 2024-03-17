@@ -5,7 +5,6 @@ import SwiftUI
 public struct LaunchLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     var isActivityIndicatorVisible = false
 
@@ -45,20 +44,20 @@ public struct LaunchLogic {
 }
 
 public struct LaunchView: View {
-  @Perception.Bindable var store: StoreOf<LaunchLogic>
+  let store: StoreOf<LaunchLogic>
 
   public init(store: StoreOf<LaunchLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithPerceptionTracking {
+    WithViewStore(store, observe: { $0 }) { viewStore in
       Image(ImageResource.cover)
         .resizable()
         .ignoresSafeArea()
         .task { await store.send(.onTask).finish() }
         .overlay {
-          if store.isActivityIndicatorVisible {
+          if viewStore.isActivityIndicatorVisible {
             ProgressView()
               .tint(Color.white)
               .offset(y: 40)

@@ -12,7 +12,6 @@ import SwipeFeature
 public struct ReceivedLikeSwipeLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     var child = Child.State.loading
 
@@ -101,7 +100,7 @@ public struct ReceivedLikeSwipeLogic {
 }
 
 public struct ReceivedLikeSwipeView: View {
-  @Perception.Bindable var store: StoreOf<ReceivedLikeSwipeLogic>
+  let store: StoreOf<ReceivedLikeSwipeLogic>
 
   public init(store: StoreOf<ReceivedLikeSwipeLogic>) {
     self.store = store

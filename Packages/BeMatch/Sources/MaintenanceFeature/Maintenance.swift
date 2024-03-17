@@ -7,7 +7,6 @@ import SwiftUI
 public struct MaintenanceLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     public init() {}
   }
@@ -20,14 +19,14 @@ public struct MaintenanceLogic {
 }
 
 public struct MaintenanceView: View {
-  @Perception.Bindable var store: StoreOf<MaintenanceLogic>
+  let store: StoreOf<MaintenanceLogic>
 
   public init(store: StoreOf<MaintenanceLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithPerceptionTracking {
+    WithViewStore(store, observe: { $0 }) { _ in
       VStack(spacing: 80) {
         VStack(spacing: 24) {
           Text("Under Maintenance", bundle: .module)

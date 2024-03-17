@@ -11,10 +11,9 @@ import SwiftUI
 public struct CategoryListLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     var rows: IdentifiedArrayOf<CategorySectionLogic.State> = []
-    @Presents var destination: Destination.State?
+    @PresentationState var destination: Destination.State?
 
     public init(uniqueElements: [CategorySectionLogic.State]) {
       rows = IdentifiedArrayOf(uniqueElements: uniqueElements)
@@ -114,7 +113,7 @@ public struct CategoryListLogic {
 }
 
 public struct CategoryListView: View {
-  @Perception.Bindable var store: StoreOf<CategoryListLogic>
+  let store: StoreOf<CategoryListLogic>
 
   public init(store: StoreOf<CategoryListLogic>) {
     self.store = store
@@ -132,14 +131,14 @@ public struct CategoryListView: View {
       .padding(.bottom, 48)
     }
     .fullScreenCover(
-      item: $store.scope(state: \.destination?.swipe, action: \.destination.swipe)
+      store: store.scope(state: \.$destination.swipe, action: \.destination.swipe)
     ) { store in
       NavigationStack {
         CategorySwipeView(store: store)
       }
     }
     .fullScreenCover(
-      item: $store.scope(state: \.destination?.membership, action: \.destination.membership),
+      store: store.scope(state: \.$destination.membership, action: \.destination.membership),
       content: MembershipView.init(store:)
     )
   }

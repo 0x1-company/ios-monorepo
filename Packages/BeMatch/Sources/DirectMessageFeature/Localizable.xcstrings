@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "DirectMessage" : {
+
+    },
     "Message" : {
       "extractionState" : "stale",
       "localizations" : {

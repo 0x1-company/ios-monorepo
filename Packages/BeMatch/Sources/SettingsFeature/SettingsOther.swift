@@ -7,10 +7,9 @@ import SwiftUI
 public struct SettingsOtherLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
-    @Presents var confirmationDialog: ConfirmationDialogState<Action.ConfirmationDialog>?
-    @Presents var deleteAccount: DeleteAccountLogic.State?
+    @PresentationState var confirmationDialog: ConfirmationDialogState<Action.ConfirmationDialog>?
+    @PresentationState var deleteAccount: DeleteAccountLogic.State?
     public init() {}
   }
 
@@ -71,14 +70,14 @@ public struct SettingsOtherLogic {
 }
 
 public struct SettingsOtherView: View {
-  @Perception.Bindable var store: StoreOf<SettingsOtherLogic>
+  let store: StoreOf<SettingsOtherLogic>
 
   public init(store: StoreOf<SettingsOtherLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithPerceptionTracking {
+    WithViewStore(store, observe: { $0 }) { _ in
       List {
         Section {
           Button {
@@ -106,10 +105,13 @@ public struct SettingsOtherView: View {
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
       .confirmationDialog(
-        $store.scope(state: \.confirmationDialog, action: \.confirmationDialog)
+        store: store.scope(state: \.$confirmationDialog, action: \.confirmationDialog)
       )
       .fullScreenCover(
-        item: $store.scope(state: \.deleteAccount, action: \.deleteAccount)
+        store: store.scope(
+          state: \.$deleteAccount,
+          action: \.deleteAccount
+        )
       ) { store in
         NavigationStack {
           DeleteAccountView(store: store)

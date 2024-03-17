@@ -7,7 +7,6 @@ import SwiftUI
 public struct ProfileExplorerPreviewLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     let targetUserId: String
 
@@ -74,7 +73,7 @@ public struct ProfileExplorerPreviewLogic {
 }
 
 public struct ProfileExplorerPreviewView: View {
-  @Perception.Bindable var store: StoreOf<ProfileExplorerPreviewLogic>
+  let store: StoreOf<ProfileExplorerPreviewLogic>
 
   public init(store: StoreOf<ProfileExplorerPreviewLogic>) {
     self.store = store
