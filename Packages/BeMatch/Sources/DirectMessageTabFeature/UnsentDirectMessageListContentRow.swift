@@ -8,7 +8,6 @@ import SwiftUI
 public struct UnsentDirectMessageListContentRowLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable, Identifiable {
     public let id: String
     let createdAt: BeMatch.Date
@@ -57,20 +56,20 @@ public struct UnsentDirectMessageListContentRowLogic {
 
 public struct UnsentDirectMessageListContentRowView: View {
   @Environment(\.displayScale) var displayScale
-  @Perception.Bindable var store: StoreOf<UnsentDirectMessageListContentRowLogic>
+  let store: StoreOf<UnsentDirectMessageListContentRowLogic>
 
   public init(store: StoreOf<UnsentDirectMessageListContentRowLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithPerceptionTracking {
+    WithViewStore(store, observe: { $0 }) { viewStore in
       Button {
         store.send(.rowButtonTapped)
       } label: {
         VStack(spacing: 12) {
           CachedAsyncImage(
-            url: URL(string: store.imageUrl),
+            url: URL(string: viewStore.imageUrl),
             urlCache: .shared,
             scale: displayScale,
             content: { image in
@@ -90,7 +89,7 @@ public struct UnsentDirectMessageListContentRowView: View {
           )
           .clipShape(RoundedRectangle(cornerRadius: 6))
           .overlay(alignment: .bottom) {
-            if !store.isRead {
+            if !viewStore.isRead {
               Color.pink
                 .frame(width: 16, height: 16)
                 .clipShape(Circle())
@@ -102,7 +101,7 @@ public struct UnsentDirectMessageListContentRowView: View {
             }
           }
 
-          Text(store.username)
+          Text(viewStore.username)
             .font(.system(.subheadline, weight: .semibold))
             .foregroundStyle(Color.primary)
         }

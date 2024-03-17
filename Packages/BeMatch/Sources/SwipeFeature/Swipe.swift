@@ -14,9 +14,8 @@ import TcaHelpers
 public struct SwipeLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
-    @Presents var destination: Destination.State?
+    @PresentationState var destination: Destination.State?
 
     var rows: IdentifiedArrayOf<SwipeCardLogic.State> = []
 
@@ -155,7 +154,7 @@ public struct SwipeLogic {
 }
 
 public struct SwipeView: View {
-  @Perception.Bindable var store: StoreOf<SwipeLogic>
+  let store: StoreOf<SwipeLogic>
 
   public init(store: StoreOf<SwipeLogic>) {
     self.store = store
@@ -195,10 +194,10 @@ public struct SwipeView: View {
     }
     .padding(.top, 16)
     .fullScreenCover(
-      item: $store.scope(state: \.destination?.matched, action: \.destination.matched),
+      store: store.scope(state: \.$destination.matched, action: \.destination.matched),
       content: MatchedView.init(store:)
     )
-    .sheet(item: $store.scope(state: \.destination?.report, action: \.destination.report)) { store in
+    .sheet(store: store.scope(state: \.$destination.report, action: \.destination.report)) { store in
       NavigationStack {
         ReportView(store: store)
       }

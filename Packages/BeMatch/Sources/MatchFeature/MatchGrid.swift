@@ -9,7 +9,6 @@ import SwiftUI
 public struct MatchGridLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable, Identifiable {
     public var id: String {
       match.id
@@ -46,20 +45,20 @@ public struct MatchGridLogic {
 
 public struct MatchGridView: View {
   @Environment(\.displayScale) var displayScale
-  @Perception.Bindable var store: StoreOf<MatchGridLogic>
+  let store: StoreOf<MatchGridLogic>
 
   public init(store: StoreOf<MatchGridLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithPerceptionTracking {
+    WithViewStore(store, observe: { $0 }) { viewStore in
       Button {
         store.send(.matchButtonTapped)
       } label: {
         VStack(spacing: 20) {
           CachedAsyncImage(
-            url: URL(string: store.match.targetUser.images.first?.imageUrl ?? ""),
+            url: URL(string: viewStore.match.targetUser.images.first?.imageUrl ?? ""),
             urlCache: .shared,
             scale: displayScale,
             content: { image in
@@ -79,7 +78,7 @@ public struct MatchGridView: View {
           )
           .clipShape(RoundedRectangle(cornerRadius: 6))
           .overlay(alignment: .bottom) {
-            if !store.match.isRead {
+            if !viewStore.match.isRead {
               Color.pink
                 .frame(width: 16, height: 16)
                 .clipShape(Circle())
@@ -92,11 +91,11 @@ public struct MatchGridView: View {
           }
 
           VStack(spacing: 8) {
-            Text(store.match.targetUser.berealUsername)
+            Text(viewStore.match.targetUser.berealUsername)
               .font(.system(.subheadline, weight: .semibold))
               .frame(maxWidth: .infinity, alignment: .leading)
 
-            Text(store.createdAt, format: Date.FormatStyle(date: .numeric))
+            Text(viewStore.createdAt, format: Date.FormatStyle(date: .numeric))
               .foregroundStyle(Color.gray)
               .font(.system(.caption2, weight: .semibold))
               .frame(maxWidth: .infinity, alignment: .leading)

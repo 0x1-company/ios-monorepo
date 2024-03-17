@@ -7,7 +7,6 @@ import SwiftUI
 public struct CategoryEmptyLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     public init() {}
   }
@@ -31,14 +30,14 @@ public struct CategoryEmptyLogic {
 }
 
 public struct CategoryEmptyView: View {
-  @Perception.Bindable var store: StoreOf<CategoryEmptyLogic>
+  let store: StoreOf<CategoryEmptyLogic>
 
   public init(store: StoreOf<CategoryEmptyLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithPerceptionTracking {
+    WithViewStore(store, observe: { $0 }) { _ in
       VStack(spacing: 24) {
         Image(ImageResource.empty)
           .resizable()

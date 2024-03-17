@@ -6,7 +6,6 @@ import SwiftUI
 public struct DirectMessageRowLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable, Identifiable {
     let message: BeMatch.MessageRow
 
@@ -34,17 +33,17 @@ public struct DirectMessageRowLogic {
 }
 
 public struct DirectMessageRowView: View {
-  @Perception.Bindable var store: StoreOf<DirectMessageRowLogic>
+  let store: StoreOf<DirectMessageRowLogic>
 
   public init(store: StoreOf<DirectMessageRowLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithPerceptionTracking {
-      let isAuthor = store.message.isAuthor
+    WithViewStore(store, observe: { $0 }) { viewStore in
+      let isAuthor = viewStore.message.isAuthor
       HStack(spacing: 0) {
-        Text(store.message.text)
+        Text(viewStore.message.text)
           .padding(.vertical, 8)
           .padding(.horizontal, 12)
           .foregroundStyle(isAuthor ? Color.black : Color.primary)
@@ -53,7 +52,7 @@ public struct DirectMessageRowView: View {
           .padding(isAuthor ? Edge.Set.leading : Edge.Set.trailing, 100)
           .frame(maxWidth: .infinity, alignment: isAuthor ? Alignment.trailing : Alignment.leading)
       }
-      .id(store.id)
+      .id(viewStore.id)
       .listRowSeparator(.hidden)
       .contextMenu {
         Button {

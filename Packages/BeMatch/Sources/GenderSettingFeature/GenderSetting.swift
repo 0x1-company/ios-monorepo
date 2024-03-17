@@ -11,7 +11,6 @@ import SwiftUI
 public struct GenderSettingLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     var selection: BeMatch.Gender?
     var genders = BeMatch.Gender.allCases
@@ -94,7 +93,7 @@ public struct GenderSettingView: View {
     case save
   }
 
-  @Perception.Bindable var store: StoreOf<GenderSettingLogic>
+  let store: StoreOf<GenderSettingLogic>
   private let nextButtonStyle: NextButtonStyle
   private let canSkip: Bool
 
@@ -120,17 +119,17 @@ public struct GenderSettingView: View {
   }
 
   public var body: some View {
-    WithPerceptionTracking {
+    WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 0) {
         Text("What's your gender?", bundle: .module)
           .font(.system(.title3, weight: .semibold))
 
-        List(store.genders, id: \.self) { gender in
+        List(viewStore.genders, id: \.self) { gender in
           Button {
             store.send(.genderButtonTapped(gender))
           } label: {
             LabeledContent {
-              if store.selection == gender {
+              if viewStore.selection == gender {
                 Image(systemName: "checkmark.circle")
               }
             } label: {
@@ -150,8 +149,8 @@ public struct GenderSettingView: View {
             nextButtonStyle == .save
               ? String(localized: "Save", bundle: .module)
               : String(localized: "Next", bundle: .module),
-            isLoading: store.isActivityIndicatorVisible,
-            isDisabled: store.selection == nil
+            isLoading: viewStore.isActivityIndicatorVisible,
+            isDisabled: viewStore.selection == nil
           ) {
             store.send(.nextButtonTapped)
           }

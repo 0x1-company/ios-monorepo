@@ -21,14 +21,13 @@ public struct RootNavigationLogic {
     case message
   }
 
-  @ObservableState
   public struct State: Equatable {
     var recommendation = RecommendationLogic.State()
     var category = CategoryLogic.State()
     var match = MatchNavigationLogic.State()
     var message = DirectMessageTabLogic.State()
 
-    var tab = Tab.recommendation
+    @BindingState var tab = Tab.recommendation
 
     public init() {}
   }
@@ -81,7 +80,7 @@ public struct RootNavigationLogic {
         state.tab = .recommendation
         return .none
 
-      case .binding(\.tab):
+      case .binding(\.$tab):
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
@@ -111,22 +110,22 @@ public struct RootNavigationLogic {
 }
 
 public struct RootNavigationView: View {
-  @Perception.Bindable var store: StoreOf<RootNavigationLogic>
+  let store: StoreOf<RootNavigationLogic>
 
   public init(store: StoreOf<RootNavigationLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithPerceptionTracking {
-      TabView(selection: $store.tab) {
+    WithViewStore(store, observe: { $0 }) { viewStore in
+      TabView(selection: viewStore.$tab) {
         NavigationStack {
           RecommendationView(store: store.scope(state: \.recommendation, action: \.recommendation))
         }
         .tag(RootNavigationLogic.Tab.recommendation)
         .tabItem {
           Image(
-            store.tab.is(\.recommendation)
+            viewStore.tab.is(\.recommendation)
               ? ImageResource.searchActive
               : ImageResource.searchDeactive
           )
@@ -139,7 +138,7 @@ public struct RootNavigationView: View {
           .tag(RootNavigationLogic.Tab.category)
           .tabItem {
             Image(
-              store.tab.is(\.category)
+              viewStore.tab.is(\.category)
                 ? ImageResource.categoryActive
                 : ImageResource.categoryDeactive
             )
@@ -152,7 +151,7 @@ public struct RootNavigationView: View {
           .tag(RootNavigationLogic.Tab.match)
           .tabItem {
             Image(
-              store.tab.is(\.match)
+              viewStore.tab.is(\.match)
                 ? ImageResource.starActive
                 : ImageResource.starDeactive
             )
@@ -165,7 +164,7 @@ public struct RootNavigationView: View {
           .tag(RootNavigationLogic.Tab.message)
           .tabItem {
             Image(
-              store.tab.is(\.message)
+              viewStore.tab.is(\.message)
                 ? ImageResource.messageActive
                 : ImageResource.messageDeactive
             )

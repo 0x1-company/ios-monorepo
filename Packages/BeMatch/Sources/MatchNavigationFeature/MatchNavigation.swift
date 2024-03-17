@@ -14,12 +14,11 @@ import SwiftUI
 public struct MatchNavigationLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     var match = MatchLogic.State()
 
     var path = StackState<Path.State>()
-    @Presents var destination: Destination.State?
+    @PresentationState var destination: Destination.State?
 
     public init() {}
   }
@@ -186,7 +185,7 @@ public struct MatchNavigationLogic {
 }
 
 public struct MatchNavigationView: View {
-  @Perception.Bindable var store: StoreOf<MatchNavigationLogic>
+  let store: StoreOf<MatchNavigationLogic>
 
   public init(store: StoreOf<MatchNavigationLogic>) {
     self.store = store
@@ -232,17 +231,17 @@ public struct MatchNavigationView: View {
       }
     }
     .tint(Color.primary)
-    .alert($store.scope(state: \.destination?.alert, action: \.destination.alert))
+    .alert(store: store.scope(state: \.$destination.alert, action: \.destination.alert))
     .fullScreenCover(
-      item: $store.scope(state: \.destination?.membership, action: \.destination.membership),
+      store: store.scope(state: \.$destination.membership, action: \.destination.membership),
       content: MembershipView.init(store:)
     )
     .fullScreenCover(
-      item: $store.scope(state: \.destination?.receivedLike, action: \.destination.receivedLike),
+      store: store.scope(state: \.$destination.receivedLike, action: \.destination.receivedLike),
       content: ReceivedLikeSwipeView.init(store:)
     )
     .fullScreenCover(
-      item: $store.scope(state: \.destination?.profileExternal, action: \.destination.profileExternal),
+      store: store.scope(state: \.$destination.profileExternal, action: \.destination.profileExternal),
       content: ProfileExternalView.init(store:)
     )
   }

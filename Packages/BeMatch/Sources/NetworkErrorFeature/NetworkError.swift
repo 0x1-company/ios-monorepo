@@ -6,7 +6,6 @@ import SwiftUI
 public struct NetworkErrorLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     public init() {}
   }
@@ -29,14 +28,14 @@ public struct NetworkErrorLogic {
 }
 
 public struct NetworkErrorView: View {
-  @Perception.Bindable var store: StoreOf<NetworkErrorLogic>
+  let store: StoreOf<NetworkErrorLogic>
 
   public init(store: StoreOf<NetworkErrorLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithPerceptionTracking {
+    WithViewStore(store, observe: { $0 }) { _ in
       VStack(spacing: 24) {
         Text("NETWORK ERROR", bundle: .module)
           .font(.system(.headline, weight: .semibold))

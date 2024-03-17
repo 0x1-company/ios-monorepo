@@ -11,11 +11,10 @@ import SwiftUI
 public struct UsernameSettingLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     var isActivityIndicatorVisible = false
-    var username: String
-    @Presents var alert: AlertState<Action.Alert>?
+    @BindingState var username: String
+    @PresentationState var alert: AlertState<Action.Alert>?
 
     public init(username: String) {
       self.username = username
@@ -104,7 +103,7 @@ public struct UsernameSettingView: View {
   }
 
   @FocusState var isFocused: Bool
-  @Perception.Bindable var store: StoreOf<UsernameSettingLogic>
+  let store: StoreOf<UsernameSettingLogic>
   private let nextButtonStyle: NextButtonStyle
 
   public init(
@@ -116,7 +115,7 @@ public struct UsernameSettingView: View {
   }
 
   public var body: some View {
-    WithPerceptionTracking {
+    WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 32) {
         Text("What's your username on BeReal?", bundle: .module)
           .frame(height: 50)
@@ -127,7 +126,7 @@ public struct UsernameSettingView: View {
             .foregroundStyle(Color.gray)
             .hidden()
 
-          TextField("", text: $store.username)
+          TextField("", text: viewStore.$username)
             .foregroundStyle(Color.white)
             .keyboardType(.alphabet)
             .textInputAutocapitalization(.never)
@@ -146,7 +145,7 @@ public struct UsernameSettingView: View {
           nextButtonStyle == .save
             ? String(localized: "Save", bundle: .module)
             : String(localized: "Next", bundle: .module),
-          isLoading: store.isActivityIndicatorVisible
+          isLoading: viewStore.isActivityIndicatorVisible
         ) {
           store.send(.nextButtonTapped)
         }
@@ -165,7 +164,7 @@ public struct UsernameSettingView: View {
           Image(ImageResource.beMatch)
         }
       }
-      .alert($store.scope(state: \.alert, action: \.alert))
+      .alert(store: store.scope(state: \.$alert, action: \.alert))
     }
   }
 }

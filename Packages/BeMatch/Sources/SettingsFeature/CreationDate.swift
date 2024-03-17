@@ -5,7 +5,6 @@ import SwiftUI
 public struct CreationDateLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     let creationDate: Date
     var creationDateString = ""
@@ -50,15 +49,15 @@ public struct CreationDateLogic {
 }
 
 public struct CreationDateView: View {
-  @Perception.Bindable var store: StoreOf<CreationDateLogic>
+  let store: StoreOf<CreationDateLogic>
 
   public init(store: StoreOf<CreationDateLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithPerceptionTracking {
-      Text(store.creationDateString)
+    WithViewStore(store, observe: { $0 }) { viewStore in
+      Text(viewStore.creationDateString)
         .task { await store.send(.onTask).finish() }
     }
   }

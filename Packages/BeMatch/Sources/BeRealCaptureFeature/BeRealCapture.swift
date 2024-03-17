@@ -13,16 +13,15 @@ import SwiftUI
 public struct BeRealCaptureLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
-    var photoPickerItems: [PhotosPickerItem] = []
+    @BindingState var photoPickerItems: [PhotosPickerItem] = []
     var images: [PhotoGrid.State] = Array(repeating: .empty, count: 9)
     var isActivityIndicatorVisible = false
     var isWarningTextVisible: Bool {
       !images.filter(\.isWarning).isEmpty
     }
 
-    @Presents var destination: Destination.State?
+    @PresentationState var destination: Destination.State?
     public init() {}
   }
 
@@ -67,7 +66,7 @@ public struct BeRealCaptureLogic {
       case .howToButtonTapped:
         return .send(.delegate(.howTo))
 
-      case .binding(\.photoPickerItems):
+      case .binding(\.$photoPickerItems):
         guard !state.photoPickerItems.isEmpty
         else { return .none }
 
@@ -221,7 +220,7 @@ public struct BeRealCaptureView: View {
     case save
   }
 
-  @Perception.Bindable var store: StoreOf<BeRealCaptureLogic>
+  let store: StoreOf<BeRealCaptureLogic>
   private let nextButtonStyle: NextButtonStyle
 
   public init(
@@ -233,7 +232,7 @@ public struct BeRealCaptureView: View {
   }
 
   public var body: some View {
-    WithPerceptionTracking {
+    WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 8) {
         ScrollView {
           VStack(spacing: 36) {
@@ -244,7 +243,7 @@ public struct BeRealCaptureView: View {
                 .layoutPriority(1)
                 .font(.system(.title3, weight: .semibold))
 
-              if store.isWarningTextVisible {
+              if viewStore.isWarningTextVisible {
                 Button {
                   store.send(.howToButtonTapped)
                 } label: {
@@ -269,12 +268,12 @@ public struct BeRealCaptureView: View {
               spacing: 16
             ) {
               ForEach(
-                Array(store.images.enumerated()),
+                Array(viewStore.images.enumerated()),
                 id: \.offset
               ) { offset, state in
                 PhotoGrid(
                   state: state,
-                  selection: $store.photoPickerItems,
+                  selection: viewStore.$photoPickerItems,
                   onDelete: {
                     store.send(.onDelete(offset))
                   }
@@ -290,7 +289,7 @@ public struct BeRealCaptureView: View {
           nextButtonStyle == .save
             ? String(localized: "Save", bundle: .module)
             : String(localized: "Next", bundle: .module),
-          isLoading: store.isActivityIndicatorVisible
+          isLoading: viewStore.isActivityIndicatorVisible
         ) {
           store.send(.nextButtonTapped)
         }
@@ -305,8 +304,18 @@ public struct BeRealCaptureView: View {
           Image(ImageResource.beMatch)
         }
       }
-      .alert($store.scope(state: \.destination?.alert, action: \.destination.alert))
-      .confirmationDialog($store.scope(state: \.destination?.confirmationDialog, action: \.destination.confirmationDialog))
+      .alert(
+        store: store.scope(
+          state: \.$destination.alert,
+          action: \.destination.alert
+        )
+      )
+      .confirmationDialog(
+        store: store.scope(
+          state: \.$destination.confirmationDialog,
+          action: \.destination.confirmationDialog
+        )
+      )
     }
   }
 }

@@ -11,12 +11,11 @@ import UsernameSettingFeature
 public struct ProfileLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     var currentUser: BeMatch.UserInternal?
 
     var pictureSlider: PictureSliderLogic.State?
-    @Presents var destination: Destination.State?
+    @PresentationState var destination: Destination.State?
     public init() {}
   }
 
@@ -142,14 +141,14 @@ public struct ProfileLogic {
 public struct ProfileView: View {
   @State var translation: CGSize = .zero
   @State var scaleEffect: Double = 1.0
-  @Perception.Bindable var store: StoreOf<ProfileLogic>
+  let store: StoreOf<ProfileLogic>
 
   public init(store: StoreOf<ProfileLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithPerceptionTracking {
+    WithViewStore(store, observe: { $0 }) { viewStore in
       VStack {
         VStack(spacing: 24) {
           HStack(spacing: 0) {
@@ -162,7 +161,7 @@ public struct ProfileView: View {
                 .frame(width: 44, height: 44)
             }
             Spacer()
-            if let username = store.currentUser?.berealUsername {
+            if let username = viewStore.currentUser?.berealUsername {
               Text(username)
                 .foregroundStyle(Color.white)
                 .font(.system(.callout, weight: .semibold))
@@ -184,7 +183,7 @@ public struct ProfileView: View {
             }
           )
 
-          if let username = store.currentUser?.berealUsername {
+          if let username = viewStore.currentUser?.berealUsername {
             Button {
               store.send(.jumpBeRealButtonTapped)
             } label: {
@@ -226,13 +225,13 @@ public struct ProfileView: View {
           }
       )
       .confirmationDialog(
-        $store.scope(
-          state: \.destination?.confirmationDialog,
+        store: store.scope(
+          state: \.$destination.confirmationDialog,
           action: \.destination.confirmationDialog
         )
       )
       .fullScreenCover(
-        item: $store.scope(state: \.destination?.editUsername, action: \.destination.editUsername)
+        store: store.scope(state: \.$destination.editUsername, action: \.destination.editUsername)
       ) { childStore in
         NavigationStack {
           UsernameSettingView(store: childStore, nextButtonStyle: .save)

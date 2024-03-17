@@ -7,7 +7,6 @@ import SwiftUI
 public struct MembershipCampaignLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     let campaign: BeMatch.MembershipQuery.Data.ActiveInvitationCampaign
     let displayPrice: String
@@ -84,14 +83,14 @@ public struct MembershipCampaignLogic {
 }
 
 public struct MembershipCampaignView: View {
-  @Perception.Bindable var store: StoreOf<MembershipCampaignLogic>
+  let store: StoreOf<MembershipCampaignLogic>
 
   public init(store: StoreOf<MembershipCampaignLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithPerceptionTracking {
+    WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 16) {
         ScrollView {
           VStack(spacing: 0) {
@@ -122,7 +121,7 @@ public struct MembershipCampaignView: View {
                 .aspectRatio(contentMode: .fill)
 
               HowToReceiveBenefitView(
-                displayDuration: store.displayDuration
+                displayDuration: viewStore.displayDuration
               )
 
               PurchaseAboutView()
@@ -143,7 +142,7 @@ public struct MembershipCampaignView: View {
           Button {
             store.send(.upgradeButtonTapped)
           } label: {
-            Text("Upgrade for \(store.displayPrice)/week", bundle: .module)
+            Text("Upgrade for \(viewStore.displayPrice)/week", bundle: .module)
           }
           .buttonStyle(ConversionSecondaryButtonStyle())
         }

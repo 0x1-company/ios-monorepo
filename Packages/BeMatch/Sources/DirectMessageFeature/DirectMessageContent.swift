@@ -7,7 +7,6 @@ import SwiftUI
 public struct DirectMessageContentLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     let targetUserId: String
     var after: String?
@@ -70,18 +69,18 @@ public struct DirectMessageContentLogic {
 }
 
 public struct DirectMessageContentView: View {
-  @Perception.Bindable var store: StoreOf<DirectMessageContentLogic>
+  let store: StoreOf<DirectMessageContentLogic>
 
   public init(store: StoreOf<DirectMessageContentLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithPerceptionTracking {
+    WithViewStore(store, observe: { $0 }) { viewStore in
       ScrollView {
         ScrollViewReader { proxy in
           LazyVStack(spacing: 8) {
-            if store.hasNextPage {
+            if viewStore.hasNextPage {
               ProgressView()
                 .tint(Color.white)
                 .frame(height: 44)
@@ -97,7 +96,7 @@ public struct DirectMessageContentView: View {
           }
           .padding(.all, 16)
           .onAppear {
-            guard let id = store.lastId else { return }
+            guard let id = viewStore.lastId else { return }
             proxy.scrollTo(id)
           }
         }

@@ -12,26 +12,8 @@ public struct TutorialLogic {
     case first, second, third
   }
 
-  @ObservableState
   public struct State: Equatable {
     var currentStep = Step.first
-
-    var isSkipButtonHidden: Bool {
-      [TutorialLogic.Step.first, .third].contains(currentStep)
-    }
-
-    var isOnTapGestureDisabled: Bool {
-      currentStep == .third
-    }
-
-    var isNextButtonHidden: Bool {
-      currentStep != .first
-    }
-
-    var isFinishButtonHidden: Bool {
-      currentStep != .third
-    }
-
     public init() {}
   }
 
@@ -85,18 +67,34 @@ public struct TutorialLogic {
 }
 
 public struct TutorialView: View {
-  @Perception.Bindable var store: StoreOf<TutorialLogic>
+  let store: StoreOf<TutorialLogic>
 
   public init(store: StoreOf<TutorialLogic>) {
     self.store = store
   }
 
+  struct ViewState: Equatable {
+    let currentStep: TutorialLogic.Step
+    let isSkipButtonHidden: Bool
+    let isOnTapGestureDisabled: Bool
+    let isNextButtonHidden: Bool
+    let isFinishButtonHidden: Bool
+
+    init(state: TutorialLogic.State) {
+      currentStep = state.currentStep
+      isSkipButtonHidden = [TutorialLogic.Step.first, .third].contains(state.currentStep)
+      isOnTapGestureDisabled = state.currentStep == .third
+      isNextButtonHidden = state.currentStep != .first
+      isFinishButtonHidden = state.currentStep != .third
+    }
+  }
+
   public var body: some View {
-    WithPerceptionTracking {
+    WithViewStore(store, observe: ViewState.init) { viewStore in
       VStack(spacing: 53) {
         Spacer()
 
-        switch store.currentStep {
+        switch viewStore.currentStep {
         case .first:
           Step1View()
         case .second:
@@ -105,7 +103,7 @@ public struct TutorialView: View {
           Step3View()
         }
 
-        if !store.isNextButtonHidden {
+        if !viewStore.isNextButtonHidden {
           VStack(spacing: 24) {
             PrimaryButton(
               String(localized: "Next", bundle: .module)
@@ -131,12 +129,12 @@ public struct TutorialView: View {
       .background(Color.black.opacity(0.9))
       .task { await store.send(.onTask).finish() }
       .onTapGesture {
-        if !store.isOnTapGestureDisabled {
+        if !viewStore.isOnTapGestureDisabled {
           store.send(.nextButtonTapped, animation: .default)
         }
       }
       .overlay(alignment: .topTrailing) {
-        if !store.isSkipButtonHidden {
+        if !viewStore.isSkipButtonHidden {
           Button {
             store.send(.skipButtonTapped)
           } label: {
@@ -148,7 +146,7 @@ public struct TutorialView: View {
         }
       }
       .overlay(alignment: .bottom) {
-        if !store.isFinishButtonHidden {
+        if !viewStore.isFinishButtonHidden {
           PrimaryButton(
             String(localized: "Get started", bundle: .module)
           ) {

@@ -25,7 +25,6 @@ import UserDefaultsClient
 public struct AppLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     var account = Account()
 
@@ -181,7 +180,7 @@ public struct AppLogic {
 }
 
 public struct AppView: View {
-  @Perception.Bindable var store: StoreOf<AppLogic>
+  let store: StoreOf<AppLogic>
 
   public init(store: StoreOf<AppLogic>) {
     self.store = store
@@ -241,9 +240,10 @@ public struct AppView: View {
       }
     }
     .overlay {
-      if let childStore = store.scope(state: \.tutorial, action: \.tutorial) {
-        TutorialView(store: childStore)
-      }
+      IfLetStore(
+        store.scope(state: \.tutorial, action: \.tutorial),
+        then: TutorialView.init(store:)
+      )
     }
   }
 }

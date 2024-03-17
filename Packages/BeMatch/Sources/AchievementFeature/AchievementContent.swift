@@ -34,7 +34,6 @@ func formatNumber(_ number: Int, locale: Locale) -> String {
 public struct AchievementContentLogic {
   public init() {}
 
-  @ObservableState
   public struct State: Equatable {
     let displayMatchCount: String
     let displayVisitCount: String
@@ -79,14 +78,14 @@ public struct AchievementContentLogic {
 }
 
 public struct AchievementContentView: View {
-  @Perception.Bindable var store: StoreOf<AchievementContentLogic>
+  let store: StoreOf<AchievementContentLogic>
 
   public init(store: StoreOf<AchievementContentLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithPerceptionTracking {
+    WithViewStore(store, observe: { $0 }) { viewStore in
       ScrollView {
         Grid(
           horizontalSpacing: 16,
@@ -101,14 +100,14 @@ public struct AchievementContentView: View {
             AchievementWidgetView(
               systemImage: "heart.fill",
               titleKey: "SWIPE",
-              displayCount: store.displayFeedbackCount,
+              displayCount: viewStore.displayFeedbackCount,
               text: String(localized: "Count of swipes", bundle: .module)
             )
 
             AchievementWidgetView(
               systemImage: "star.fill",
               titleKey: "MATCH",
-              displayCount: store.displayMatchCount,
+              displayCount: viewStore.displayMatchCount,
               text: String(localized: "Count of match", bundle: .module)
             )
           }
@@ -117,22 +116,23 @@ public struct AchievementContentView: View {
             AchievementWidgetView(
               systemImage: "airplane",
               titleKey: "VISITOR",
-              displayCount: store.displayVisitCount,
+              displayCount: viewStore.displayVisitCount,
               text: String(localized: "Count of visitor", bundle: .module)
             )
 
 //            AchievementWidgetView(
 //              systemImage: "flame.fill",
 //              titleKey: "LOGIN",
-//              displayCount: store.displayConsecutiveLoginDayCount,
+//              displayCount: viewStore.displayConsecutiveLoginDayCount,
 //              text: "Consecutive login"
 //            )
           }
 
           GridRow(alignment: .top) {
-            if let childStore = store.scope(state: \.history, action: \.history) {
-              AchievementHistoryWidgetView(store: childStore)
-            }
+            IfLetStore(
+              store.scope(state: \.history, action: \.history),
+              then: AchievementHistoryWidgetView.init(store:)
+            )
           }
         }
         .padding(.top, 16)
