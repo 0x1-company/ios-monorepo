@@ -11,6 +11,38 @@
         }
       }
     },
+    "Cancel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "キャンセル"
+          }
+        }
+      }
+    },
+    "I confirmed transmission" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "確認して送信"
+          }
+        }
+      }
+    },
+    "Inappropriate content may result in account suspension." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不適切な内容の場合はアカウントが停止される恐れがあります。"
+          }
+        }
+      }
+    },
     "Message" : {
       "localizations" : {
         "ja" : {
@@ -27,6 +59,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "通報"
+          }
+        }
+      }
+    },
+    "Send" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "送信"
           }
         }
       }
