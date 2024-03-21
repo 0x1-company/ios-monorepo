@@ -22,7 +22,6 @@ public struct DirectMessageLogic {
   public enum Action {
     case onTask
     case closeButtonTapped
-    case sendButtonTapped
     case messagesResponse(Result<BeMatch.MessagesQuery.Data, Error>)
     case readMessagesResponse(Result<BeMatch.ReadMessagesMutation.Data, Error>)
     case child(Child.Action)
