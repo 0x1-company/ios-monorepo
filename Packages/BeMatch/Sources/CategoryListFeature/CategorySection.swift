@@ -20,6 +20,7 @@ public struct CategorySectionLogic {
       rows = IdentifiedArrayOf(
         uniqueElements: userCategory.users
           .map(\.fragments.swipeCard)
+          .filter { !$0.images.isEmpty }
           .map { CategoryRowLogic.State(user: $0, isBlur: userCategory.id == "RECEIVED_LIKE") }
           .reversed()
       )
