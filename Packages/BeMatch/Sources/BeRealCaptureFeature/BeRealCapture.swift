@@ -104,6 +104,7 @@ public struct BeRealCaptureLogic {
 
       case .loadTransferableFinished:
         state.isActivityIndicatorVisible = false
+        state.photoPickerItems.removeAll()
         return .none
 
       case .nextButtonTapped:
@@ -170,7 +171,6 @@ public struct BeRealCaptureLogic {
 
       case let .destination(.presented(.confirmationDialog(.distory(offset)))):
         state.images[offset] = .empty
-        state.photoPickerItems.remove(at: offset)
         state.destination = nil
         return .none
 
