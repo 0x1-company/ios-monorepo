@@ -33,13 +33,12 @@
         }
       }
     },
-    "Inappropriate content deserve BAN" : {
-      "extractionState" : "manual",
+    "Inappropriate content may result in account suspension." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "不適切な内容の場合BANされます"
+            "value" : "不適切な内容の場合はアカウントが停止される恐れがあります。"
           }
         }
       }
@@ -60,6 +59,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "通報"
+          }
+        }
+      }
+    },
+    "Send" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "送信"
           }
         }
       }

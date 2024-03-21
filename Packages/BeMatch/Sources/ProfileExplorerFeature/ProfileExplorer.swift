@@ -53,11 +53,11 @@ public struct ProfileExplorerLogic {
     case principalButtonTapped
     case reportButtonTapped
     case sendButtonTapped
+    case sendMessage
     case binding(BindingAction<State>)
     case directMessage(DirectMessageLogic.Action)
     case preview(ProfileExplorerPreviewLogic.Action)
     case destination(PresentationAction<Destination.Action>)
-    case sendMessage
     case createMessageResponse(Result<BeMatch.CreateMessageMutation.Data, Error>)
   }
 
@@ -158,17 +158,18 @@ public struct ProfileExplorerLogic {
 
 private extension AlertState where Action == ProfileExplorerLogic.Destination.Action.Alert {
   static func alertInitialMessage(content: String) -> Self {
-    .init(
-      title: TextState("Inappropriate content deserve BAN", bundle: .module),
-      message: TextState(content),
-      primaryButton: ButtonState(action: .confirmAndSend) {
-        TextState("I confirmed transmission", bundle: .module)
-          .bold()
-      },
-      secondaryButton: ButtonState(action: .cancel) {
+    Self {
+      TextState("Inappropriate content may result in account suspension.", bundle: .module)
+    } actions: {
+      ButtonState(role: .cancel) {
         TextState("Cancel", bundle: .module)
       }
-    )
+      ButtonState(action: .confirmAndSend) {
+        TextState("Send", bundle: .module)
+      }
+    } message: {
+      TextState(content)
+    }
   }
 }
 
