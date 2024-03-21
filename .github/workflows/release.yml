@@ -37,7 +37,7 @@ jobs:
           commit-message: "Bump BeMatch from ${{ steps.current-version.outputs.CURRENT_VERSION }} to ${{ github.event.inputs.version }}"
           title: "Bump BeMatch from ${{ steps.current-version.outputs.CURRENT_VERSION }} to ${{ github.event.inputs.version }}"
       - continue-on-error: true
-        run: gh pr merge --auto --merge "$PR_URL"
+        run: gh pr merge --auto --squash "$PR_URL"
         env:
           PR_URL: ${{ steps.create-pr.outputs.pull-request-url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -69,7 +69,7 @@ jobs:
           commit-message: "Bump FlyCam from ${{ steps.current-version.outputs.CURRENT_VERSION }} to ${{ github.event.inputs.version }}"
           title: "Bump FlyCam from ${{ steps.current-version.outputs.CURRENT_VERSION }} to ${{ github.event.inputs.version }}"
       - continue-on-error: true
-        run: gh pr merge --auto --merge "$PR_URL"
+        run: gh pr merge --auto --squash "$PR_URL"
         env:
           PR_URL: ${{ steps.create-pr.outputs.pull-request-url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
