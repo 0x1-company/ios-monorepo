@@ -12,6 +12,13 @@ public struct DirectMessageLogic {
   public struct State: Equatable {
     let targetUserId: String
 
+    public var hasAuthoredMessage: Bool {
+      if case let .content(state) = child {
+        return state.rows.contains(where: { $0.message.isAuthor })
+      }
+      return false
+    }
+
     var child = Child.State.loading
 
     public init(targetUserId: String) {

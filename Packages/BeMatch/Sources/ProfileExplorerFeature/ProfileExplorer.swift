@@ -57,6 +57,7 @@ public struct ProfileExplorerLogic {
     case directMessage(DirectMessageLogic.Action)
     case preview(ProfileExplorerPreviewLogic.Action)
     case destination(PresentationAction<Destination.Action>)
+    case sendMessage
     case createMessageResponse(Result<BeMatch.CreateMessageMutation.Data, Error>)
   }
 
@@ -83,6 +84,13 @@ public struct ProfileExplorerLogic {
         return .none
 
       case .sendButtonTapped where !state.isDisabled:
+        if state.directMessage.hasAuthoredMessage {
+          return .send(.sendMessage)
+        }
+        state.destination = .alert(.alertInitialMessage(content: state.text))
+        return .none
+
+      case .sendMessage:
         let input = BeMatch.CreateMessageInput(
           targetUserId: state.targetUserId,
           text: state.text
@@ -94,6 +102,13 @@ public struct ProfileExplorerLogic {
             try await bematch.createMessage(input)
           }))
         }
+
+      case .destination(.presented(.alert(.confirmAndSend))):
+        return .send(.sendMessage)
+
+      case .destination(.presented(.alert(.cancel))):
+        state.destination = nil
+        return .none
 
       case .reportButtonTapped:
         state.destination = .report(ReportLogic.State(targetUserId: state.targetUserId))
@@ -120,16 +135,40 @@ public struct ProfileExplorerLogic {
   @Reducer
   public struct Destination {
     public enum State: Equatable {
+      case alert(AlertState<Action.Alert>)
       case report(ReportLogic.State)
     }
 
     public enum Action {
+      case alert(Alert)
       case report(ReportLogic.Action)
+
+      public enum Alert: Equatable {
+        case confirmAndSend
+        case cancel
+      }
     }
 
     public var body: some Reducer<State, Action> {
+      Scope(state: \.alert, action: \.alert) {}
       Scope(state: \.report, action: \.report, child: ReportLogic.init)
     }
+  }
+}
+
+private extension AlertState where Action == ProfileExplorerLogic.Destination.Action.Alert {
+  static func alertInitialMessage(content: String) -> Self {
+    .init(
+      title: TextState("Inappropriate content deserve BAN", bundle: .module),
+      message: TextState(content),
+      primaryButton: ButtonState(action: .confirmAndSend) {
+        TextState("I confirmed transmission", bundle: .module)
+          .bold()
+      },
+      secondaryButton: ButtonState(action: .cancel) {
+        TextState("Cancel", bundle: .module)
+      }
+    )
   }
 }
 
@@ -213,6 +252,12 @@ public struct ProfileExplorerView: View {
       .sheet(
         store: store.scope(state: \.$destination.report, action: \.destination.report),
         content: ReportView.init(store:)
+      )
+      .alert(
+        store: store.scope(
+          state: \.$destination.alert,
+          action: \.destination.alert
+        )
       )
     }
   }
