@@ -6,7 +6,7 @@
 public extension BeMatch {
   struct UnsentDirectMessageListContentRow: BeMatch.SelectionSet, Fragment {
     public static var fragmentDefinition: StaticString {
-      #"fragment UnsentDirectMessageListContentRow on Match { __typename id isRead createdAt targetUser { __typename id berealUsername images { __typename id imageUrl } } }"#
+      #"fragment UnsentDirectMessageListContentRow on Match { __typename id isRead createdAt targetUser { __typename id status berealUsername images { __typename id imageUrl } } }"#
     }
 
     public let __data: DataDict
@@ -40,12 +40,14 @@ public extension BeMatch {
       public static var __selections: [ApolloAPI.Selection] { [
         .field("__typename", String.self),
         .field("id", BeMatch.ID.self),
+        .field("status", GraphQLEnum<BeMatch.UserStatus>.self),
         .field("berealUsername", String.self),
         .field("images", [Image].self),
       ] }
 
       /// user id
       public var id: BeMatch.ID { __data["id"] }
+      public var status: GraphQLEnum<BeMatch.UserStatus> { __data["status"] }
       /// BeRealのusername
       public var berealUsername: String { __data["berealUsername"] }
       /// ユーザーの画像一覧

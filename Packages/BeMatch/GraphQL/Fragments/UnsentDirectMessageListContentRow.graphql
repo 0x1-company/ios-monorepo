@@ -4,6 +4,7 @@ fragment UnsentDirectMessageListContentRow on Match {
   createdAt
   targetUser {
     id
+    status
     berealUsername
     images {
       id
