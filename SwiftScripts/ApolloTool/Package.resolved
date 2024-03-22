@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apollographql/apollo-ios-codegen",
       "state" : {
-        "revision" : "3417542da2e7abb22490077a932690340a53ffe8",
-        "version" : "1.9.1"
+        "revision" : "fd7573984058b0f16dd8289ef016732732100439",
+        "version" : "1.9.3"
       }
     },
     {
