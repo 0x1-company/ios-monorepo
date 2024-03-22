@@ -124,7 +124,9 @@ public struct MembershipCampaignView: View {
                 displayDuration: viewStore.displayDuration
               )
 
-              PurchaseAboutView()
+              PurchaseAboutView(
+                displayPrice: viewStore.displayPrice
+              )
             }
             .padding(.horizontal, 16)
           }
