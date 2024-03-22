@@ -82,7 +82,9 @@ public struct MembershipPurchaseView: View {
                 Image(ImageResource.membershipBenefit)
                   .resizable()
 
-                PurchaseAboutView()
+                PurchaseAboutView(
+                  displayPrice: viewStore.displayPrice
+                )
               }
             }
           }
