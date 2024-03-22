@@ -25,7 +25,7 @@ public struct DirectMessageListContentRowLogic {
       id = messageRoom.targetUser.id
       updatedAt = messageRoom.updatedAt
       username = messageRoom.targetUser.berealUsername
-      imageUrl = messageRoom.targetUser.images.first!.imageUrl
+      imageUrl = messageRoom.targetUser.images.first?.imageUrl ?? ""
       text = messageRoom.latestMessage.text
       isAuthor = messageRoom.latestMessage.isAuthor
       isRead = messageRoom.latestMessage.isRead
