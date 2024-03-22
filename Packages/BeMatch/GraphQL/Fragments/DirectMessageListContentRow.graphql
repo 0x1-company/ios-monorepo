@@ -3,6 +3,7 @@ fragment DirectMessageListContentRow on MessageRoom {
   updatedAt
   targetUser {
     id
+    status
     berealUsername
     images {
       id

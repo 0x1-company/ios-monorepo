@@ -53,6 +53,7 @@ public struct DirectMessageTabLogic {
           uniqueElements: data.matches.edges
             .map(\.node.fragments.unsentDirectMessageListContentRow)
             .filter { !$0.targetUser.images.isEmpty }
+            .filter { $0.targetUser.status == .active }
             .sorted(by: { $0.createdAt > $1.createdAt })
             .map(UnsentDirectMessageListContentRowLogic.State.init(match:)),
           receivedLike: data.receivedLike.latestUser?.images.first?.imageUrl == nil
@@ -69,6 +70,7 @@ public struct DirectMessageTabLogic {
           uniqueElements: data.messageRooms.edges
             .map(\.node.fragments.directMessageListContentRow)
             .filter { !$0.targetUser.images.isEmpty }
+            .filter { $0.targetUser.status == .active }
             .map(DirectMessageListContentRowLogic.State.init(messageRoom:))
         )
         if data.messageRooms.edges.isEmpty {
