@@ -48,6 +48,7 @@ let package = Package(
     .library(name: "ProfileExternalFeature", targets: ["ProfileExternalFeature"]),
     .library(name: "ProfileFeature", targets: ["ProfileFeature"]),
     .library(name: "ProfileSharedFeature", targets: ["ProfileSharedFeature"]),
+    .library(name: "ReceivedLikeRouterFeature", targets: ["ReceivedLikeRouterFeature"]),
     .library(name: "ReceivedLikeSwipeFeature", targets: ["ReceivedLikeSwipeFeature"]),
     .library(name: "RecommendationEmptyFeature", targets: ["RecommendationEmptyFeature"]),
     .library(name: "RecommendationFeature", targets: ["RecommendationFeature"]),
@@ -182,10 +183,9 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "DirectMessageTabFeature", dependencies: [
-      "MembershipFeature",
       "DirectMessageFeature",
       "ProfileExplorerFeature",
-      "ReceivedLikeSwipeFeature",
+      "ReceivedLikeRouterFeature",
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
     ]),
     .target(name: "ForceUpdateFeature", dependencies: [
@@ -330,6 +330,10 @@ let package = Package(
       "ReportFeature",
       "DirectMessageFeature",
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
+    ]),
+    .target(name: "ReceivedLikeRouterFeature", dependencies: [
+      "MembershipFeature",
+      "ReceivedLikeSwipeFeature",
     ]),
     .target(name: "ReceivedLikeSwipeFeature", dependencies: [
       "SwipeFeature",

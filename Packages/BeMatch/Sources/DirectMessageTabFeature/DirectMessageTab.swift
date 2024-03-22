@@ -4,9 +4,8 @@ import BeMatchClient
 import ComposableArchitecture
 import DirectMessageFeature
 import FeedbackGeneratorClient
-import MembershipFeature
 import ProfileExplorerFeature
-import ReceivedLikeSwipeFeature
+import ReceivedLikeRouterFeature
 import SwiftUI
 
 @Reducer
@@ -23,7 +22,6 @@ public struct DirectMessageTabLogic {
   public enum Action {
     case onTask
     case directMessageTabResponse(Result<BeMatch.DirectMessageTabQuery.Data, Error>)
-    case hasPremiumMembershipResponse(Result<BeMatch.HasPremiumMembershipQuery.Data, Error>)
     case destination(PresentationAction<Destination.Action>)
     case unsent(UnsentDirectMessageListLogic.Action)
     case messages(DirectMessageListLogic.Action)
@@ -83,18 +81,10 @@ public struct DirectMessageTabLogic {
         state.messages = nil
         return .none
 
-      case let .hasPremiumMembershipResponse(.success(data)):
-        state.destination = data.hasPremiumMembership ? .receivedLike() : .membership()
-        return .none
-
       case .unsent(.child(.content(.receivedLike(.rowButtonTapped)))):
-        return .run { send in
+        state.destination = .receivedLike()
+        return .run { _ in
           await feedbackGenerator.impactOccurred()
-          for try await data in bematch.hasPremiumMembership() {
-            await send(.hasPremiumMembershipResponse(.success(data)))
-          }
-        } catch: { error, send in
-          await send(.hasPremiumMembershipResponse(.failure(error)))
         }
 
       case let .unsent(.child(.content(.rows(.element(_, .delegate(.showDirectMessage(username, targetUserId))))))):
@@ -125,8 +115,8 @@ public struct DirectMessageTabLogic {
           await feedbackGenerator.impactOccurred()
         }
 
-      case .destination(.presented(.membership(.delegate(.dismiss)))),
-           .destination(.presented(.receivedLike(.delegate(.dismiss)))):
+      case .destination(.presented(.receivedLike(.swipe(.delegate(.dismiss))))),
+           .destination(.presented(.receivedLike(.membership(.delegate(.dismiss))))):
         state.destination = nil
         return .none
 
@@ -149,30 +139,25 @@ public struct DirectMessageTabLogic {
   public struct Destination {
     public enum State: Equatable {
       case directMessage(DirectMessageLogic.State)
-      case membership(MembershipLogic.State = .init())
       case explorer(ProfileExplorerLogic.State)
-      case receivedLike(ReceivedLikeSwipeLogic.State = .init())
+      case receivedLike(ReceivedLikeRouterLogic.State = .loading)
     }
 
     public enum Action {
       case directMessage(DirectMessageLogic.Action)
-      case membership(MembershipLogic.Action)
       case explorer(ProfileExplorerLogic.Action)
-      case receivedLike(ReceivedLikeSwipeLogic.Action)
+      case receivedLike(ReceivedLikeRouterLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
       Scope(state: \.directMessage, action: \.directMessage) {
         DirectMessageLogic()
       }
-      Scope(state: \.membership, action: \.membership) {
-        MembershipLogic()
-      }
       Scope(state: \.explorer, action: \.explorer) {
         ProfileExplorerLogic()
       }
       Scope(state: \.receivedLike, action: \.receivedLike) {
-        ReceivedLikeSwipeLogic()
+        ReceivedLikeRouterLogic()
       }
     }
   }
@@ -213,12 +198,8 @@ public struct DirectMessageTabView: View {
         content: DirectMessageView.init(store:)
       )
       .fullScreenCover(
-        store: store.scope(state: \.$destination.membership, action: \.destination.membership),
-        content: MembershipView.init(store:)
-      )
-      .fullScreenCover(
         store: store.scope(state: \.$destination.receivedLike, action: \.destination.receivedLike),
-        content: ReceivedLikeSwipeView.init(store:)
+        content: ReceivedLikeRouterView.init(store:)
       )
       .navigationDestination(
         store: store.scope(state: \.$destination.explorer, action: \.destination.explorer),
