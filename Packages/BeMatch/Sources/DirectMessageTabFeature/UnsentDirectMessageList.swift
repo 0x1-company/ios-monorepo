@@ -6,7 +6,7 @@ public struct UnsentDirectMessageListLogic {
   public init() {}
 
   public struct State: Equatable {
-    var child: Child.State?
+    var child = Child.State.loading
 
     static let loading = State()
 
@@ -35,23 +35,13 @@ public struct UnsentDirectMessageListLogic {
   }
 
   public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { _, action in
-      switch action {
-      case .onTask:
-        return .none
-
-      default:
-        return .none
-      }
-    }
-    .ifLet(\.child, action: \.child) {
-      Child()
-    }
+    Scope(state: \.child, action: \.child, child: Child.init)
   }
 
   @Reducer
   public struct Child {
     public enum State: Equatable {
+      case loading
       case content(UnsentDirectMessageListContentLogic.State)
     }
 
@@ -78,24 +68,22 @@ public struct UnsentDirectMessageListView: View {
         .font(.system(.callout, weight: .semibold))
         .padding(.horizontal, 16)
 
-      IfLetStore(store.scope(state: \.child, action: \.child)) { store in
-        SwitchStore(store) { initialState in
-          switch initialState {
-          case .content:
-            CaseLet(
-              /UnsentDirectMessageListLogic.Child.State.content,
-              action: UnsentDirectMessageListLogic.Child.Action.content,
-              then: UnsentDirectMessageListContentView.init(store:)
-            )
+      SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
+        switch initialState {
+        case .loading:
+          VStack(spacing: 0) {
+            ProgressView()
+              .tint(Color.white)
+              .frame(maxWidth: .infinity, alignment: .center)
           }
+          .frame(height: 150)
+        case .content:
+          CaseLet(
+            /UnsentDirectMessageListLogic.Child.State.content,
+            action: UnsentDirectMessageListLogic.Child.Action.content,
+            then: UnsentDirectMessageListContentView.init(store:)
+          )
         }
-      } else: {
-        VStack(spacing: 0) {
-          ProgressView()
-            .tint(Color.white)
-            .frame(maxWidth: .infinity, alignment: .center)
-        }
-        .frame(height: 150)
       }
     }
     .padding(.top, 16)

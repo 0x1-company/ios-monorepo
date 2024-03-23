@@ -12,7 +12,7 @@ public struct CategoryLogic {
   public init() {}
 
   public struct State: Equatable {
-    var child: Child.State?
+    var child = Child.State.loading
     @PresentationState var alert: AlertState<Action.Alert>?
     public init() {}
   }
@@ -36,6 +36,7 @@ public struct CategoryLogic {
   }
 
   public var body: some Reducer<State, Action> {
+    Scope(state: \.child, action: \.child, child: Child.init)
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
@@ -76,9 +77,6 @@ public struct CategoryLogic {
       }
     }
     .ifLet(\.$alert, action: \.alert)
-    .ifLet(\.child, action: \.child) {
-      Child()
-    }
   }
 
   private func userCategoriesRequest(send: Send<Action>) async {
@@ -96,6 +94,7 @@ public struct CategoryLogic {
   @Reducer
   public struct Child {
     public enum State: Equatable {
+      case loading
       case empty(CategoryEmptyLogic.State = .init())
       case list(CategoryListLogic.State)
     }
@@ -121,26 +120,24 @@ public struct CategoryView: View {
 
   public var body: some View {
     NavigationStack {
-      IfLetStore(store.scope(state: \.child, action: \.child)) { store in
-        SwitchStore(store) { initialState in
-          switch initialState {
-          case .empty:
-            CaseLet(
-              /CategoryLogic.Child.State.empty,
-              action: CategoryLogic.Child.Action.empty,
-              then: CategoryEmptyView.init(store:)
-            )
-          case .list:
-            CaseLet(
-              /CategoryLogic.Child.State.list,
-              action: CategoryLogic.Child.Action.list,
-              then: CategoryListView.init(store:)
-            )
-          }
+      SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
+        switch initialState {
+        case .loading:
+          ProgressView()
+            .tint(Color.white)
+        case .empty:
+          CaseLet(
+            /CategoryLogic.Child.State.empty,
+            action: CategoryLogic.Child.Action.empty,
+            then: CategoryEmptyView.init(store:)
+          )
+        case .list:
+          CaseLet(
+            /CategoryLogic.Child.State.list,
+            action: CategoryLogic.Child.Action.list,
+            then: CategoryListView.init(store:)
+          )
         }
-      } else: {
-        ProgressView()
-          .tint(Color.white)
       }
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
