@@ -6,7 +6,7 @@ public struct DirectMessageListLogic {
   public init() {}
 
   public struct State: Equatable {
-    var child: Child.State?
+    var child = Child.State.loading
 
     static let loading = State()
 
@@ -32,6 +32,7 @@ public struct DirectMessageListLogic {
   }
 
   public var body: some Reducer<State, Action> {
+    Scope(state: \.child, action: \.child, child: Child.init)
     Reduce<State, Action> { _, action in
       switch action {
       case .onTask:
@@ -41,14 +42,12 @@ public struct DirectMessageListLogic {
         return .none
       }
     }
-    .ifLet(\.child, action: \.child) {
-      Child()
-    }
   }
 
   @Reducer
   public struct Child {
     public enum State: Equatable {
+      case loading
       case content(DirectMessageListContentLogic.State)
     }
 
@@ -74,22 +73,20 @@ public struct DirectMessageListView: View {
       Text("MESSAGE", bundle: .module)
         .font(.system(.callout, weight: .semibold))
 
-      IfLetStore(store.scope(state: \.child, action: \.child)) { store in
-        SwitchStore(store) { initialState in
-          switch initialState {
-          case .content:
-            CaseLet(
-              /DirectMessageListLogic.Child.State.content,
-              action: DirectMessageListLogic.Child.Action.content,
-              then: DirectMessageListContentView.init(store:)
-            )
-          }
+      SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
+        switch initialState {
+        case .loading:
+          ProgressView()
+            .tint(Color.white)
+            .frame(height: 300)
+            .frame(maxWidth: .infinity)
+        case .content:
+          CaseLet(
+            /DirectMessageListLogic.Child.State.content,
+            action: DirectMessageListLogic.Child.Action.content,
+            then: DirectMessageListContentView.init(store:)
+          )
         }
-      } else: {
-        ProgressView()
-          .tint(Color.white)
-          .frame(height: 300)
-          .frame(maxWidth: .infinity)
       }
     }
     .padding(.horizontal, 16)

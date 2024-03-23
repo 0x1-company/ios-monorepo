@@ -20,7 +20,7 @@ public struct MembershipLogic {
   }
 
   public struct State: Equatable {
-    var child: Child.State?
+    var child = Child.State.loading
     var isActivityIndicatorVisible = false
 
     let bematchProOneWeekId: String
@@ -70,6 +70,7 @@ public struct MembershipLogic {
 
   public var body: some Reducer<State, Action> {
     BindingReducer()
+    Scope(state: \.child, action: \.child, child: Child.init)
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
@@ -228,9 +229,6 @@ public struct MembershipLogic {
         return .none
       }
     }
-    .ifLet(\.child, action: \.child) {
-      Child()
-    }
     .ifLet(\.$destination, action: \.destination) {
       Destination()
     }
@@ -264,6 +262,7 @@ public struct MembershipLogic {
   @Reducer
   public struct Child {
     public enum State: Equatable {
+      case loading
       case campaign(MembershipCampaignLogic.State)
       case purchase(MembershipPurchaseLogic.State)
     }
@@ -313,26 +312,24 @@ public struct MembershipView: View {
   public var body: some View {
     NavigationStack {
       WithViewStore(store, observe: { $0 }) { viewStore in
-        IfLetStore(store.scope(state: \.child, action: \.child)) { store in
-          SwitchStore(store) { initialState in
-            switch initialState {
-            case .campaign:
-              CaseLet(
-                /MembershipLogic.Child.State.campaign,
-                action: MembershipLogic.Child.Action.campaign,
-                then: MembershipCampaignView.init(store:)
-              )
-            case .purchase:
-              CaseLet(
-                /MembershipLogic.Child.State.purchase,
-                action: MembershipLogic.Child.Action.purchase,
-                then: MembershipPurchaseView.init(store:)
-              )
-            }
+        SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
+          switch initialState {
+          case .loading:
+            ProgressView()
+              .tint(Color.white)
+          case .campaign:
+            CaseLet(
+              /MembershipLogic.Child.State.campaign,
+              action: MembershipLogic.Child.Action.campaign,
+              then: MembershipCampaignView.init(store:)
+            )
+          case .purchase:
+            CaseLet(
+              /MembershipLogic.Child.State.purchase,
+              action: MembershipLogic.Child.Action.purchase,
+              then: MembershipPurchaseView.init(store:)
+            )
           }
-        } else: {
-          ProgressView()
-            .tint(Color.primary)
         }
         .ignoresSafeArea()
         .task { await store.send(.onTask).finish() }
