@@ -30,12 +30,6 @@
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSCameraUsageDescription</key>
-	<string>Your camera are used to take profile picture.</string>
-	<key>NSContactsUsageDescription</key>
-	<string>Your contacts are used to find friends and uploaded to a server.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Your Photo Library are used to select profile picture.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
