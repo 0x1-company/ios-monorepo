@@ -10,6 +10,7 @@ public struct DirectMessageListContentRowLogic {
 
   public struct State: Equatable, Identifiable {
     public let id: String
+    public let targetUserId: String
     let updatedAt: BeMatch.Date
     let username: String
     let imageUrl: String
@@ -22,7 +23,8 @@ public struct DirectMessageListContentRowLogic {
     }
 
     public init(messageRoom: BeMatch.DirectMessageListContentRow) {
-      id = messageRoom.targetUser.id
+      id = messageRoom.id
+      targetUserId = messageRoom.targetUser.id
       updatedAt = messageRoom.updatedAt
       username = messageRoom.targetUser.berealUsername
       imageUrl = messageRoom.targetUser.images.first?.imageUrl ?? ""
@@ -52,12 +54,12 @@ public struct DirectMessageListContentRowLogic {
       switch action {
       case .iconButtonTapped:
         let username = state.username
-        let targetUserId = state.id
+        let targetUserId = state.targetUserId
         return .send(.delegate(.showProfile(username, targetUserId)))
 
       case .rowButtonTapped:
         let username = state.username
-        let targetUserId = state.id
+        let targetUserId = state.targetUserId
         return .send(.delegate(.showDirectMessage(username, targetUserId)))
 
       default:
