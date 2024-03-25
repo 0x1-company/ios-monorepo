@@ -1,4 +1,5 @@
 import AnalyticsClient
+import BannerFeature
 import BeMatch
 import BeMatchClient
 import ComposableArchitecture
@@ -14,6 +15,7 @@ public struct DirectMessageTabLogic {
 
   public struct State: Equatable {
     @PresentationState var destination: Destination.State?
+    var banners: IdentifiedArrayOf<BannerLogic.State> = []
     var unsent: UnsentDirectMessageListLogic.State? = .loading
     var messages: DirectMessageListLogic.State? = .loading
     public init() {}
@@ -23,6 +25,7 @@ public struct DirectMessageTabLogic {
     case onTask
     case directMessageTabResponse(Result<BeMatch.DirectMessageTabQuery.Data, Error>)
     case destination(PresentationAction<Destination.Action>)
+    case banners(IdentifiedActionOf<BannerLogic>)
     case unsent(UnsentDirectMessageListLogic.Action)
     case messages(DirectMessageListLogic.Action)
   }
@@ -45,6 +48,12 @@ public struct DirectMessageTabLogic {
         }
 
       case let .directMessageTabResponse(.success(data)):
+        state.banners = IdentifiedArray(
+          uniqueElements: data.banners
+            .map(\.fragments.bannerCard)
+            .map(BannerLogic.State.init(banner:))
+        )
+
         state.unsent = UnsentDirectMessageListLogic.State(
           after: data.matches.pageInfo.endCursor,
           hasNextPage: data.matches.pageInfo.hasNextPage,
@@ -124,6 +133,9 @@ public struct DirectMessageTabLogic {
         return .none
       }
     }
+    .forEach(\.banners, action: \.banners) {
+      BannerLogic()
+    }
     .ifLet(\.$destination, action: \.destination) {
       Destination()
     }
@@ -173,6 +185,12 @@ public struct DirectMessageTabView: View {
   public var body: some View {
     NavigationStack {
       ScrollView(.vertical) {
+        ForEachStore(
+          store.scope(state: \.banners, action: \.banners),
+          content: BannerView.init(store:)
+        )
+        .padding(.horizontal, 16)
+
         LazyVStack(alignment: .leading, spacing: 32) {
           IfLetStore(
             store.scope(state: \.unsent, action: \.unsent),

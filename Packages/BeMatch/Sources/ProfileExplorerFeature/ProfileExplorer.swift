@@ -242,9 +242,8 @@ public struct ProfileExplorerView: View {
                 Image(systemName: "exclamationmark.triangle")
               }
             }
-            
-            Button {
-            } label: {
+
+            Button {} label: {
               Text("Block", bundle: .module)
             }
           } label: {

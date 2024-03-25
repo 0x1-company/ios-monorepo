@@ -230,7 +230,7 @@ public struct ProfileExternalView: View {
               } label: {
                 Text("Report", bundle: .module)
               }
-              
+
               Button {
                 store.send(.unmatchButtonTapped)
               } label: {
