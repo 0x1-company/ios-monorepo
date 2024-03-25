@@ -54,8 +54,8 @@ public extension BeMatch {
       case "InvitationCode": return BeMatch.Objects.InvitationCode
       case "ReceivedLike": return BeMatch.Objects.ReceivedLike
       case "Achievement": return BeMatch.Objects.Achievement
-      case "InvitationCampaign": return BeMatch.Objects.InvitationCampaign
       case "Banner": return BeMatch.Objects.Banner
+      case "InvitationCampaign": return BeMatch.Objects.InvitationCampaign
       default: return nil
       }
     }

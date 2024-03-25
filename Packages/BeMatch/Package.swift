@@ -183,6 +183,7 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "DirectMessageTabFeature", dependencies: [
+      "BannerFeature",
       "DirectMessageFeature",
       "ProfileExplorerFeature",
       "ReceivedLikeRouterFeature",
