@@ -53,22 +53,6 @@ public struct DirectMessageTabLogic {
             .map(\.fragments.bannerCard)
             .map(BannerLogic.State.init(banner:))
         )
-        state.banners = IdentifiedArray(
-          uniqueElements: [
-            BannerLogic.State(banner: .init(_dataDict: DataDict(
-              data: [
-                "id": "id",
-                "title": "BeMatch.の社長と話そう",
-                "description": "アプリの改善策や不具合などあれば教えてください。",
-                "buttonTitle": "開く",
-                "url": "https://bematch.jp",
-                "startAt": 10,
-                "endAt": 10,
-              ],
-              fulfilledFragments: []
-            ))),
-          ]
-        )
 
         state.unsent = UnsentDirectMessageListLogic.State(
           after: data.matches.pageInfo.endCursor,
