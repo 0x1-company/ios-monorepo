@@ -228,11 +228,13 @@ public struct ProfileExternalView: View {
               Button {
                 store.send(.reportButtonTapped)
               } label: {
-                Label {
-                  Text("Report", bundle: .module)
-                } icon: {
-                  Image(systemName: "exclamationmark.triangle")
-                }
+                Text("Report", bundle: .module)
+              }
+              
+              Button {
+                store.send(.unmatchButtonTapped)
+              } label: {
+                Text("Block", bundle: .module)
               }
             } label: {
               Image(systemName: "ellipsis")
