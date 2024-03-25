@@ -145,11 +145,13 @@ public struct SwipeCardView: View {
             Button {
               store.send(.reportButtonTapped)
             } label: {
-              Label {
-                Text("Report", bundle: .module)
-              } icon: {
-                Image(systemName: "exclamationmark.triangle")
-              }
+              Text("Report", bundle: .module)
+            }
+
+            Button {
+              store.send(.swipeToNope)
+            } label: {
+              Text("Block", bundle: .module)
             }
           } label: {
             Image(systemName: "ellipsis")
