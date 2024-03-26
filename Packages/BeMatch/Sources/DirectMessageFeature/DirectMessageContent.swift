@@ -77,27 +77,37 @@ public struct DirectMessageContentView: View {
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
-      ScrollView {
-        ScrollViewReader { proxy in
-          LazyVStack(spacing: 8) {
-            if viewStore.hasNextPage {
-              ProgressView()
-                .tint(Color.white)
-                .frame(height: 44)
-                .frame(maxWidth: .infinity)
-                .rotation3DEffect(.degrees(180), axis: (x: 1, y: 0, z: 0))
-                .task { await store.send(.scrollViewBottomReached).finish() }
-            }
+      if viewStore.rows.isEmpty {
+        VStack(spacing: 0) {
+          Spacer()
 
-            ForEachStore(
-              store.scope(state: \.sortedRows, action: \.rows),
-              content: DirectMessageRowView.init(store:)
-            )
-          }
-          .padding(.all, 16)
-          .onAppear {
-            guard let id = viewStore.lastId else { return }
-            proxy.scrollTo(id)
+          Text("The operator may check and delete the contents of messages for the purpose of operating a sound service. In addition, the account may be suspended if inappropriate use is confirmed.", bundle: .module)
+            .font(.caption)
+            .foregroundStyle(Color.secondary)
+        }
+        .padding(.all, 16)
+      } else {
+        ScrollView {
+          ScrollViewReader { proxy in
+            LazyVStack(spacing: 8) {
+              if viewStore.hasNextPage {
+                ProgressView()
+                  .tint(Color.white)
+                  .frame(height: 44)
+                  .frame(maxWidth: .infinity)
+                  .task { await store.send(.scrollViewBottomReached).finish() }
+              }
+
+              ForEachStore(
+                store.scope(state: \.sortedRows, action: \.rows),
+                content: DirectMessageRowView.init(store:)
+              )
+            }
+            .padding(.all, 16)
+            .onAppear {
+              guard let id = viewStore.lastId else { return }
+              proxy.scrollTo(id)
+            }
           }
         }
       }
