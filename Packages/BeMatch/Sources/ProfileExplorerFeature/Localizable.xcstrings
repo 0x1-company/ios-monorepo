@@ -44,6 +44,7 @@
       }
     },
     "Inappropriate content may result in account suspension." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -74,6 +75,7 @@
       }
     },
     "Send" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
