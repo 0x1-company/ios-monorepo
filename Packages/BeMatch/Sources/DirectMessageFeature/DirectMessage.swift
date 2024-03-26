@@ -134,7 +134,7 @@ public struct DirectMessageView: View {
             .font(.caption)
             .foregroundStyle(Color.secondary)
         }
-        .padding(.all, 16)
+        .padding(.horizontal, 16)
 
       case .loading:
         ProgressView()
