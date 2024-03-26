@@ -128,22 +128,14 @@ public struct ProfileExplorerLogic {
   @Reducer
   public struct Destination {
     public enum State: Equatable {
-      case alert(AlertState<Action.Alert>)
       case report(ReportLogic.State)
     }
 
     public enum Action {
-      case alert(Alert)
       case report(ReportLogic.Action)
-
-      public enum Alert: Equatable {
-        case confirmAndSend
-        case cancel
-      }
     }
 
     public var body: some Reducer<State, Action> {
-      Scope(state: \.alert, action: \.alert) {}
       Scope(state: \.report, action: \.report, child: ReportLogic.init)
     }
   }
