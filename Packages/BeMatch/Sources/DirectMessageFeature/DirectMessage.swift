@@ -46,11 +46,18 @@ public struct DirectMessageLogic {
         return .run { [targetUserId = state.targetUserId] send in
           await withTaskGroup(of: Void.self) { group in
             group.addTask {
-              await messagesRequest(send: send, targetUserId: targetUserId, after: nil)
+              do {
+                for try await data in bematch.messages(targetUserId: targetUserId, after: nil) {
+                  await send(.messagesResponse(.success(data)), animation: .default)
+                }
+              } catch {
+                await send(.messagesResponse(.failure(error)))
+              }
             }
             group.addTask {
+              let input = BeMatch.ReadMessagesInput(targetUserId: targetUserId)
               await send(.readMessagesResponse(Result {
-                try await bematch.readMessages(BeMatch.ReadMessagesInput(targetUserId: targetUserId))
+                try await bematch.readMessages(input)
               }))
             }
           }
@@ -89,16 +96,6 @@ public struct DirectMessageLogic {
     }
   }
 
-  private func messagesRequest(send: Send<Action>, targetUserId: String, after: String?) async {
-    do {
-      for try await data in bematch.messages(targetUserId: targetUserId, after: after) {
-        await send(.messagesResponse(.success(data)), animation: .default)
-      }
-    } catch {
-      await send(.messagesResponse(.failure(error)))
-    }
-  }
-
   @Reducer
   public struct Child {
     public enum State: Equatable {
@@ -130,11 +127,20 @@ public struct DirectMessageView: View {
     SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
       switch initialState {
       case .empty:
-        Spacer()
+        VStack(spacing: 0) {
+          Spacer()
+
+          Text("The operator may check and delete the contents of messages for the purpose of operating a sound service. In addition, the account may be suspended if inappropriate use is confirmed.", bundle: .module)
+            .font(.caption)
+            .foregroundStyle(Color.secondary)
+        }
+        .padding(.all, 16)
+
       case .loading:
         ProgressView()
           .tint(Color.white)
           .frame(maxHeight: .infinity)
+
       case .content:
         CaseLet(
           /DirectMessageLogic.Child.State.content,
