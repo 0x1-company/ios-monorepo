@@ -84,13 +84,6 @@ public struct ProfileExplorerLogic {
         return .none
 
       case .sendButtonTapped where !state.isDisabled:
-        if state.directMessage.hasAuthoredMessage {
-          return .send(.sendMessage)
-        }
-        state.destination = .alert(.alertInitialMessage(content: state.text))
-        return .none
-
-      case .sendMessage:
         let input = BeMatch.CreateMessageInput(
           targetUserId: state.targetUserId,
           text: state.text
@@ -135,40 +128,15 @@ public struct ProfileExplorerLogic {
   @Reducer
   public struct Destination {
     public enum State: Equatable {
-      case alert(AlertState<Action.Alert>)
       case report(ReportLogic.State)
     }
 
     public enum Action {
-      case alert(Alert)
       case report(ReportLogic.Action)
-
-      public enum Alert: Equatable {
-        case confirmAndSend
-        case cancel
-      }
     }
 
     public var body: some Reducer<State, Action> {
-      Scope(state: \.alert, action: \.alert) {}
       Scope(state: \.report, action: \.report, child: ReportLogic.init)
-    }
-  }
-}
-
-private extension AlertState where Action == ProfileExplorerLogic.Destination.Action.Alert {
-  static func alertInitialMessage(content: String) -> Self {
-    Self {
-      TextState("Inappropriate content may result in account suspension.", bundle: .module)
-    } actions: {
-      ButtonState(role: .cancel) {
-        TextState("Cancel", bundle: .module)
-      }
-      ButtonState(action: .confirmAndSend) {
-        TextState("Send", bundle: .module)
-      }
-    } message: {
-      TextState(content)
     }
   }
 }
@@ -257,12 +225,6 @@ public struct ProfileExplorerView: View {
       .sheet(
         store: store.scope(state: \.$destination.report, action: \.destination.report),
         content: ReportView.init(store:)
-      )
-      .alert(
-        store: store.scope(
-          state: \.$destination.alert,
-          action: \.destination.alert
-        )
       )
     }
   }
