@@ -72,7 +72,8 @@ public struct DirectMessageLogic {
           targetUserId: state.targetUserId,
           after: data.messages.pageInfo.endCursor,
           hasNextPage: data.messages.pageInfo.hasNextPage,
-          rows: rows
+//          rows: rows
+          rows: []
         )
 
         state.child = rows.isEmpty ? .empty : .content(contentState)
