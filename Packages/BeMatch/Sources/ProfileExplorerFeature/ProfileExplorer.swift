@@ -134,6 +134,7 @@ public struct ProfileExplorerLogic {
 }
 
 public struct ProfileExplorerView: View {
+  @FocusState var focus: Bool
   let store: StoreOf<ProfileExplorerLogic>
 
   public init(store: StoreOf<ProfileExplorerLogic>) {
@@ -150,6 +151,9 @@ public struct ProfileExplorerView: View {
           ProfileExplorerPreviewView(store: store.scope(state: \.preview, action: \.preview))
             .tag(ProfileExplorerLogic.Tab.profile)
         }
+        .onTapGesture {
+          focus = false
+        }
 
         HStack(spacing: 8) {
           TextField(
@@ -158,6 +162,7 @@ public struct ProfileExplorerView: View {
           ) {
             Text("Message", bundle: .module)
           }
+          .focused($focus)
           .lineLimit(1 ... 10)
           .padding(.vertical, 8)
           .padding(.horizontal, 16)
