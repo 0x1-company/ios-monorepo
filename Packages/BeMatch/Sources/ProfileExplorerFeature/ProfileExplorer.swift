@@ -53,7 +53,6 @@ public struct ProfileExplorerLogic {
     case principalButtonTapped
     case reportButtonTapped
     case sendButtonTapped
-    case sendMessage
     case binding(BindingAction<State>)
     case directMessage(DirectMessageLogic.Action)
     case preview(ProfileExplorerPreviewLogic.Action)
@@ -95,13 +94,6 @@ public struct ProfileExplorerLogic {
             try await bematch.createMessage(input)
           }))
         }
-
-      case .destination(.presented(.alert(.confirmAndSend))):
-        return .send(.sendMessage)
-
-      case .destination(.presented(.alert(.cancel))):
-        state.destination = nil
-        return .none
 
       case .reportButtonTapped:
         state.destination = .report(ReportLogic.State(targetUserId: state.targetUserId))
