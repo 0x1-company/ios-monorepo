@@ -28,6 +28,7 @@ public struct CategorySwipeLogic {
         .map { Color($0, opacity: 1.0) }
 
       let rows = userCategory.users
+        .filter { !$0.images.isEmpty }
         .map(\.fragments.swipeCard)
       child = .swipe(SwipeLogic.State(rows: rows))
     }
