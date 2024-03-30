@@ -136,7 +136,7 @@ public struct DeleteAccountLogic {
           }
         )
         return .none
-        
+
       case .closeUserResponse(.failure):
         state.isActivityIndicatorVisible = false
         return .none
