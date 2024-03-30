@@ -14,6 +14,7 @@ public struct DeleteAccountLogic {
   public init() {}
 
   public struct State: Equatable {
+    var isActivityIndicatorVisible = false
     @PresentationState var destination: Destination.State?
     @BindingState var otherReason = ""
     var selectedReasons: [String] = []
@@ -96,6 +97,7 @@ public struct DeleteAccountLogic {
         let reason = reasons.joined(separator: ",")
 
         analytics.buttonClick(name: \.delete, parameters: ["reason": reason])
+        state.isActivityIndicatorVisible = true
 
         return .run { send in
           await send(.closeUserResponse(Result {
@@ -121,6 +123,7 @@ public struct DeleteAccountLogic {
         }
 
       case let .closeUserResponse(.failure(error as ServerError)):
+        state.isActivityIndicatorVisible = false
         state.destination = .alert(
           AlertState {
             TextState("Account deletion failed.", bundle: .module)
@@ -133,8 +136,13 @@ public struct DeleteAccountLogic {
           }
         )
         return .none
+        
+      case .closeUserResponse(.failure):
+        state.isActivityIndicatorVisible = false
+        return .none
 
       case let .signOutFailure(error):
+        state.isActivityIndicatorVisible = false
         state.destination = .alert(
           AlertState {
             TextState("Account deletion failed.", bundle: .module)
@@ -236,7 +244,9 @@ public struct DeleteAccountView: View {
         .scrollDisabled(true)
 
         PrimaryButton(
-          String(localized: "Proceed with Deletion", bundle: .module)
+          String(localized: "Proceed with Deletion", bundle: .module),
+          isLoading: viewStore.isActivityIndicatorVisible,
+          isDisabled: viewStore.isActivityIndicatorVisible
         ) {
           store.send(.deleteButtonTapped)
         }
