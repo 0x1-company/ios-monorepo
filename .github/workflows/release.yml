@@ -101,7 +101,7 @@ jobs:
             echo "init count"
             pre_release_count=0
           fi
-          echo "::set-output name=release_tag::BeMatch-${{ github.event.inputs.version }}"
+          echo "::set-output name=release_tag::BeMatch/${{ github.event.inputs.version }}"
 
       - name: Generate release note
         id: release_note
@@ -137,7 +137,7 @@ jobs:
             echo "init count"
             pre_release_count=0
           fi
-          echo "::set-output name=release_tag::FlyCam-${{ github.event.inputs.version }}"
+          echo "::set-output name=release_tag::FlyCam/${{ github.event.inputs.version }}"
 
       - name: Generate release note
         id: release_note
