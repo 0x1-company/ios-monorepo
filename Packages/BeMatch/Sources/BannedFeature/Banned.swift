@@ -40,10 +40,12 @@ public struct BannedView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 24) {
+        Spacer()
+
         Text("Your account has been banned from BeMatch.", bundle: .module)
           .font(.system(.headline, weight: .semibold))
 
-        Text("It's important to us that BeMatch is a welcoming and safe space for everyone.\nUnfortunately, we found that you violated our Terms of Use and so we've made the decision to remove you from the BeMatch Platform.", bundle: .module)
+        Text("It's important to us that BeMatch is a welcoming and safe space for everyone.\nUnfortunately, we found that you violated our [Terms of Use](https://docs.bematch.jp/terms-of-use) and so we've made the decision to remove you from the BeMatch Platform.", bundle: .module)
           .font(.system(.body, weight: .semibold))
           .foregroundStyle(Color.secondary)
 
@@ -53,6 +55,12 @@ public struct BannedView: View {
 
         Text("id: \(viewStore.userId)")
           .font(.system(.body, weight: .semibold))
+          .foregroundStyle(Color.secondary)
+
+        Spacer()
+
+        Text("Please note that if you are subscribed to any premium services through the App Store, you will need to cancel your subscription with the appropriate provider.", bundle: .module)
+          .font(.system(.caption, weight: .semibold))
           .foregroundStyle(Color.secondary)
       }
       .padding(.horizontal, 16)

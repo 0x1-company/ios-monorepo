@@ -2,14 +2,31 @@
   "sourceLanguage" : "en",
   "strings" : {
     "id: %@" : {
-
-    },
-    "It's important to us that BeMatch is a welcoming and safe space for everyone.\nUnfortunately, we found that you violated our Terms of Use and so we've made the decision to remove you from the BeMatch Platform." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeMatchでは、すべての人にとって安心で安全な場所であることを重視しています。残念ながらあなたの行為が利用規約に違反したことが判明したため、当社はあなたをBeMatchのプラットフォームから削除することを決定しました。"
+            "value" : "id: %@"
+          }
+        }
+      }
+    },
+    "It's important to us that BeMatch is a welcoming and safe space for everyone.\nUnfortunately, we found that you violated our [Terms of Use](https://docs.bematch.jp/terms-of-use) and so we've made the decision to remove you from the BeMatch Platform." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeMatchでは、すべての人にとって安心で安全な場所であることを重視しています。残念ながらあなたの行為が[利用規約](https://docs.bematch.jp/terms-of-use)に違反したことが判明したため、当社はあなたをBeMatchのプラットフォームから削除することを決定しました。"
+          }
+        }
+      }
+    },
+    "Please note that if you are subscribed to any premium services through the App Store, you will need to cancel your subscription with the appropriate provider." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Storeを通じて購読している場合は、App Storeで解約する必要がありますのでご注意ください。"
           }
         }
       }
