@@ -94,7 +94,9 @@ public struct DeleteAccountLogic {
 
       case .destination(.presented(.confirmationDialog(.confirm))):
         let reasons = state.selectedReasons + [state.otherReason].filter { !$0.isEmpty }
-        let reason = reasons.joined(separator: ",")
+        let reason = reasons
+          .sorted()
+          .joined(separator: ",")
 
         analytics.buttonClick(name: \.delete, parameters: ["reason": reason])
         state.isActivityIndicatorVisible = true
