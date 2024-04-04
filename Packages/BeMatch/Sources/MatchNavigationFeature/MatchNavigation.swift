@@ -5,11 +5,11 @@ import FeedbackGeneratorClient
 import InvitationCodeFeature
 import MatchFeature
 import MembershipFeature
+import MembershipStatusFeature
 import ProfileExternalFeature
 import ReceivedLikeSwipeFeature
 import SettingsFeature
 import SwiftUI
-import MembershipStatusFeature
 
 @Reducer
 public struct MatchNavigationLogic {
@@ -58,7 +58,7 @@ public struct MatchNavigationLogic {
       case .path(.element(_, .settings(.invitationCodeButtonTapped))):
         state.path.append(.invitationCode())
         return .none
-        
+
       case .path(.element(_, .settings(.membershipStatusButtonTapped))):
         state.path.append(.membershipStatus())
         return .none
@@ -235,7 +235,7 @@ public struct MatchNavigationView: View {
             action: MatchNavigationLogic.Path.Action.invitationCode,
             then: InvitationCodeView.init(store:)
           )
-          
+
         case .membershipStatus:
           CaseLet(
             /MatchNavigationLogic.Path.State.membershipStatus,

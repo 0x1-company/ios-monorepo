@@ -236,10 +236,10 @@ public struct SettingsView: View {
 //                .foregroundStyle(Color.primary)
 //            }
 //          }
-          
+
           Button {
             store.send(.membershipStatusButtonTapped)
-          } label : {
+          } label: {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
