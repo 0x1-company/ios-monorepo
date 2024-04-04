@@ -53,6 +53,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
   ) -> Bool {
+      UNUserNotificationCenter.current().delegate = self
     store.send(.appDelegate(.didFinishLaunching(application, launchOptions)))
     return true
   }
@@ -107,6 +108,17 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
     config.delegateClass = SceneDelegate.self
     return config
   }
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
+        return
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification) async -> UNNotificationPresentationOptions {
+        
+        return [.badge, .banner, .list, .sound]
+    }
 }
 
 @main
