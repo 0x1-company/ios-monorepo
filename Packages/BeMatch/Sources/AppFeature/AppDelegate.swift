@@ -68,11 +68,13 @@ public struct AppDelegateLogic {
 
       let appsFlyerDevKey = build.infoDictionary("apps-flyer-dev-key", for: String.self) ?? ""
       appsFlyer.appsFlyerDevKey(appsFlyerDevKey)
+      
+      let userNotificationsEventStream = self.userNotifications.delegate()
 
-      return .run { @MainActor send in
+      return .run { send in
         await withThrowingTaskGroup(of: Void.self) { group in
           group.addTask {
-            for await event in userNotifications.delegate() {
+            for await event in userNotificationsEventStream {
               await send(.userNotifications(event))
             }
           }
@@ -108,14 +110,14 @@ public struct AppDelegateLogic {
       }
 
     case let .userNotifications(.willPresentNotification(notification, completionHandler)):
+      _ = firebaseMessaging.appDidReceiveMessage(notification.request)
       return .run { _ in
-        _ = firebaseMessaging.appDidReceiveMessage(notification.request)
         completionHandler([.list, .sound, .badge, .banner])
       }
 
     case let .userNotifications(.didReceiveResponse(response, completionHandler)):
+      _ = firebaseMessaging.appDidReceiveMessage(response.notification.request)
       return .run { _ in
-        _ = firebaseMessaging.appDidReceiveMessage(response.notification.request)
         completionHandler()
       }
 
