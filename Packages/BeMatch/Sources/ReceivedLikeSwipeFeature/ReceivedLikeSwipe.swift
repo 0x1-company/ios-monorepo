@@ -59,6 +59,10 @@ public struct ReceivedLikeSwipeLogic {
         return .send(.delegate(.dismiss))
 
       case let .usersByLikerResponse(.success(data)):
+        if data.usersByLiker.isEmpty {
+          state.child = .empty
+          return .none
+        }
         let rows = data.usersByLiker
           .map(\.fragments.swipeCard)
           .filter { !$0.images.isEmpty }

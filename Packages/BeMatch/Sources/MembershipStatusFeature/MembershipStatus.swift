@@ -37,10 +37,10 @@ public struct MembershipStatusLogic {
         analytics.logScreen(screenName: "MembershipStatus", of: self)
         return .run { send in
           for try await data in bematch.premiumMembership() {
-            await send(.premiumMembershipResponse(.success(data)))
+            await send(.premiumMembershipResponse(.success(data)), animation: .default)
           }
         } catch: { error, send in
-          await send(.premiumMembershipResponse(.failure(error)))
+          await send(.premiumMembershipResponse(.failure(error)), animation: .default)
         }
         .cancellable(id: Cancel.premiumMembership, cancelInFlight: true)
 
