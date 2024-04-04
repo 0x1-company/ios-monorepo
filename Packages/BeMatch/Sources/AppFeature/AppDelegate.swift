@@ -117,7 +117,7 @@ public struct AppDelegateLogic {
 
     case let .userNotifications(.didReceiveResponse(response, completionHandler)):
       _ = firebaseMessaging.appDidReceiveMessage(response.notification.request)
-      return .run { _ in
+      return .run { @MainActor _ in
         completionHandler()
       }
 
