@@ -68,11 +68,13 @@ public struct AppDelegateLogic {
 
       let appsFlyerDevKey = build.infoDictionary("apps-flyer-dev-key", for: String.self) ?? ""
       appsFlyer.appsFlyerDevKey(appsFlyerDevKey)
+      
+      let userNotificationsEventStream = self.userNotifications.delegate()
 
       return .run { @MainActor send in
         await withThrowingTaskGroup(of: Void.self) { group in
           group.addTask {
-            for await event in userNotifications.delegate() {
+            for await event in userNotificationsEventStream {
               await send(.userNotifications(event))
             }
           }
