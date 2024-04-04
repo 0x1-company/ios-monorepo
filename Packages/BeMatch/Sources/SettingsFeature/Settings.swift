@@ -49,6 +49,7 @@ public struct SettingsLogic {
     case editProfileButtonTapped
     case invitationCodeButtonTapped
     case achievementButtonTapped
+    case membershipStatusButtonTapped
     case bematchProButtonTapped
     case howItWorksButtonTapped
     case otherButtonTapped
@@ -235,6 +236,17 @@ public struct SettingsView: View {
 //                .foregroundStyle(Color.primary)
 //            }
 //          }
+          
+          Button {
+            store.send(.membershipStatusButtonTapped)
+          } label : {
+            LabeledContent {
+              Image(systemName: "chevron.right")
+            } label: {
+              Text("Membership Status", bundle: .module)
+                .foregroundStyle(Color.primary)
+            }
+          }
 
           Button {
             store.send(.bematchProButtonTapped)

@@ -304,6 +304,18 @@ type PageInfo {
   startCursor: String
 }
 
+type PremiumMembership {
+  appleSubscriptionId: String
+  expireAt: Date!
+  id: ID!
+  invitationCampaignUseId: String
+  premiumKind: PremiumType!
+}
+
+enum PremiumType {
+  PRO
+}
+
 type PushNotificationBadge {
   """バッジ数"""
   count: Int!
@@ -336,6 +348,9 @@ type Query {
 
   """特定のユーザーとのメッセージ一覧"""
   messages(after: String, first: Int!, targetUserId: ID!): MessageConnection!
+
+  """プレミアムメンバーシップ情報"""
+  premiumMembership: PremiumMembership
   pushNotificationBadge: PushNotificationBadge!
 
   """自分の受け取ったLikeを取得する"""

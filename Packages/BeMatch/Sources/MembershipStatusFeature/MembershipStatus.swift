@@ -1,4 +1,6 @@
 import AnalyticsClient
+import BeMatch
+import BeMatchClient
 import ComposableArchitecture
 import SwiftUI
 
@@ -18,15 +20,45 @@ public struct MembershipStatusLogic {
     case free(MembershipStatusFreeContentLogic.Action)
     case paid(MembershipStatusPaidContentLogic.Action)
     case campaign(MembershipStatusCampaignContentLogic.Action)
+    case premiumMembershipResponse(Result<BeMatch.PremiumMembershipQuery.Data, Error>)
   }
 
+  @Dependency(\.bematch) var bematch
   @Dependency(\.analytics) var analytics
 
+  enum Cancel {
+    case premiumMembership
+  }
+
   public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { _, action in
+    Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
         analytics.logScreen(screenName: "MembershipStatus", of: self)
+        return .run { send in
+          for try await data in bematch.premiumMembership() {
+            await send(.premiumMembershipResponse(.success(data)))
+          }
+        } catch: { error, send in
+          await send(.premiumMembershipResponse(.failure(error)))
+        }
+        .cancellable(id: Cancel.premiumMembership, cancelInFlight: true)
+
+      case let .premiumMembershipResponse(.success(data)):
+        guard
+          let premiumMembership = data.premiumMembership,
+          let timeInterval = TimeInterval(premiumMembership.expireAt)
+        else {
+          state = .free(MembershipStatusFreeContentLogic.State())
+          return .none
+        }
+        let expireAt = Date(timeIntervalSince1970: timeInterval / 1000.0)
+
+        if premiumMembership.appleSubscriptionId != nil {
+          state = .paid(MembershipStatusPaidContentLogic.State(expireAt: expireAt))
+        } else {
+          state = .campaign(MembershipStatusCampaignContentLogic.State(expireAt: expireAt))
+        }
         return .none
 
       default:

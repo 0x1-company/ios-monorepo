@@ -261,6 +261,7 @@ let package = Package(
       "MembershipFeature",
       "InvitationCodeFeature",
       "ProfileExternalFeature",
+      "MembershipStatusFeature",
       "ReceivedLikeSwipeFeature",
     ]),
     .target(name: "MembershipFeature", dependencies: [

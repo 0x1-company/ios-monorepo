@@ -9,10 +9,6 @@ public struct MembershipStatusPaidContentLogic {
 
   public struct State: Equatable {
     let expireAt: Date
-    public init() {
-      @Dependency(\.date.now) var now
-      expireAt = now
-    }
   }
 
   public enum Action {
@@ -89,7 +85,9 @@ public struct MembershipStatusPaidContentView: View {
   NavigationStack {
     MembershipStatusPaidContentView(
       store: .init(
-        initialState: MembershipStatusPaidContentLogic.State(),
+        initialState: MembershipStatusPaidContentLogic.State(
+          expireAt: .now
+        ),
         reducer: { MembershipStatusPaidContentLogic() }
       )
     )

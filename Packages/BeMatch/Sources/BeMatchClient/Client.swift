@@ -37,6 +37,7 @@ public struct BeMatchClient: Sendable {
 
   public var hasPremiumMembership: @Sendable () -> AsyncThrowingStream<BeMatch.HasPremiumMembershipQuery.Data, Error> = { .finished() }
   public var createAppleSubscription: @Sendable (BeMatch.CreateAppleSubscriptionInput) async throws -> BeMatch.CreateAppleSubscriptionMutation.Data
+  public var premiumMembership: @Sendable () -> AsyncThrowingStream<BeMatch.PremiumMembershipQuery.Data, Error> = { .finished() }
 
   public var userCategories: @Sendable () -> AsyncThrowingStream<BeMatch.UserCategoriesQuery.Data, Error> = { .finished() }
   public var achievement: @Sendable () -> AsyncThrowingStream<BeMatch.AchievementQuery.Data, Error> = { .finished() }
