@@ -53,15 +53,21 @@ public struct MatchNavigationLogic {
 
       case .path(.element(_, .settings(.otherButtonTapped))):
         state.path.append(.other())
-        return .none
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
 
       case .path(.element(_, .settings(.invitationCodeButtonTapped))):
         state.path.append(.invitationCode())
-        return .none
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
 
       case .path(.element(_, .settings(.membershipStatusButtonTapped))):
         state.path.append(.membershipStatus())
-        return .none
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
 
       case let .match(.rows(.element(id, .matchButtonTapped))):
         guard let row = state.match.rows[id: id] else { return .none }
