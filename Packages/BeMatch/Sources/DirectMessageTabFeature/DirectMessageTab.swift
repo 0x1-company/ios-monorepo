@@ -100,7 +100,7 @@ public struct DirectMessageTabLogic {
         let explorerState = ProfileExplorerLogic.State(
           username: username,
           targetUserId: targetUserId,
-          tab: ProfileExplorerLogic.Tab.profile
+          tab: ProfileExplorerLogic.Tab.message
         )
         state.destination = Destination.State.explorer(explorerState)
         return .run { _ in
