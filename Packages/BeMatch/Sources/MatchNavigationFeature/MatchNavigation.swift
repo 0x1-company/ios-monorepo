@@ -5,6 +5,7 @@ import FeedbackGeneratorClient
 import InvitationCodeFeature
 import MatchFeature
 import MembershipFeature
+import MembershipStatusFeature
 import ProfileExternalFeature
 import ReceivedLikeSwipeFeature
 import SettingsFeature
@@ -56,6 +57,10 @@ public struct MatchNavigationLogic {
 
       case .path(.element(_, .settings(.invitationCodeButtonTapped))):
         state.path.append(.invitationCode())
+        return .none
+
+      case .path(.element(_, .settings(.membershipStatusButtonTapped))):
+        state.path.append(.membershipStatus())
         return .none
 
       case let .match(.rows(.element(id, .matchButtonTapped))):
@@ -134,18 +139,21 @@ public struct MatchNavigationLogic {
       case settings(SettingsLogic.State)
       case other(SettingsOtherLogic.State = .init())
       case invitationCode(InvitationCodeLogic.State = .init())
+      case membershipStatus(MembershipStatusLogic.State = .loading)
     }
 
     public enum Action {
       case settings(SettingsLogic.Action)
       case other(SettingsOtherLogic.Action)
       case invitationCode(InvitationCodeLogic.Action)
+      case membershipStatus(MembershipStatusLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
       Scope(state: \.settings, action: \.settings, child: SettingsLogic.init)
       Scope(state: \.other, action: \.other, child: SettingsOtherLogic.init)
       Scope(state: \.invitationCode, action: \.invitationCode, child: InvitationCodeLogic.init)
+      Scope(state: \.membershipStatus, action: \.membershipStatus, child: MembershipStatusLogic.init)
     }
   }
 
@@ -226,6 +234,13 @@ public struct MatchNavigationView: View {
             /MatchNavigationLogic.Path.State.invitationCode,
             action: MatchNavigationLogic.Path.Action.invitationCode,
             then: InvitationCodeView.init(store:)
+          )
+
+        case .membershipStatus:
+          CaseLet(
+            /MatchNavigationLogic.Path.State.membershipStatus,
+            action: MatchNavigationLogic.Path.Action.membershipStatus,
+            then: MembershipStatusView.init(store:)
           )
         }
       }

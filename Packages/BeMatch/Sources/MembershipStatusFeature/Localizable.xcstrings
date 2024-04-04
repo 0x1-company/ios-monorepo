@@ -1,0 +1,106 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "App Store" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store"
+          }
+        }
+      }
+    },
+    "BeMatch PRO" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeMatch PRO"
+          }
+        }
+      }
+    },
+    "Cancellation" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有料会員の解約"
+          }
+        }
+      }
+    },
+    "Expiration date" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有効期限"
+          }
+        }
+      }
+    },
+    "FREE" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無料会員"
+          }
+        }
+      }
+    },
+    "Invitation Campaigns" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "招待キャンペーン"
+          }
+        }
+      }
+    },
+    "Membership Status" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "会員ステータス"
+          }
+        }
+      }
+    },
+    "Payment Method" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "支払い方法"
+          }
+        }
+      }
+    },
+    "Status" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ステータス"
+          }
+        }
+      }
+    },
+    "The subscription will be automatically cancelled upon expiration." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有効期限を迎えると自動的に解約されます。"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

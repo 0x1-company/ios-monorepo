@@ -39,6 +39,7 @@ let package = Package(
     .library(name: "MatchFeature", targets: ["MatchFeature"]),
     .library(name: "MatchNavigationFeature", targets: ["MatchNavigationFeature"]),
     .library(name: "MembershipFeature", targets: ["MembershipFeature"]),
+    .library(name: "MembershipStatusFeature", targets: ["MembershipStatusFeature"]),
     .library(name: "NavigationFeature", targets: ["NavigationFeature"]),
     .library(name: "NetworkErrorFeature", targets: ["NetworkErrorFeature"]),
     .library(name: "NotificationsReEnableFeature", targets: ["NotificationsReEnableFeature"]),
@@ -260,6 +261,7 @@ let package = Package(
       "MembershipFeature",
       "InvitationCodeFeature",
       "ProfileExternalFeature",
+      "MembershipStatusFeature",
       "ReceivedLikeSwipeFeature",
     ]),
     .target(name: "MembershipFeature", dependencies: [
@@ -272,6 +274,12 @@ let package = Package(
       .product(name: "ActivityView", package: "SDK"),
       .product(name: "StoreKitClient", package: "SDK"),
       .product(name: "StoreKitHelpers", package: "SDK"),
+      .product(name: "FeedbackGeneratorClient", package: "SDK"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
+    .target(name: "MembershipStatusFeature", dependencies: [
+      "AnalyticsKeys",
+      "BeMatchClient",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),

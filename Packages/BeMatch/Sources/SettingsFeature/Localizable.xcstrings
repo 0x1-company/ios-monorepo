@@ -152,6 +152,16 @@
         }
       }
     },
+    "Membership Status" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "会員ステータス"
+          }
+        }
+      }
+    },
     "My Profile" : {
       "localizations" : {
         "ja" : {

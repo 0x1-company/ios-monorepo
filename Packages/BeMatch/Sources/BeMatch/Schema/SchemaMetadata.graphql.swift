@@ -51,6 +51,7 @@ public extension BeMatch {
       case "MessageRoomConnection": return BeMatch.Objects.MessageRoomConnection
       case "MessageRoomEdge": return BeMatch.Objects.MessageRoomEdge
       case "MessageRoom": return BeMatch.Objects.MessageRoom
+      case "PremiumMembership": return BeMatch.Objects.PremiumMembership
       case "InvitationCode": return BeMatch.Objects.InvitationCode
       case "ReceivedLike": return BeMatch.Objects.ReceivedLike
       case "Achievement": return BeMatch.Objects.Achievement
