@@ -90,11 +90,17 @@ public struct AppDelegateLogic {
       }
 
     case let .didReceiveRemoteNotification(userInfo):
-      guard let badge = userInfo["badge"] as? String else { return .none }
-      guard let badgeCount = Int(badge) else { return .none }
-      return .run { _ in
-        try? await userNotifications.setBadgeCount(badgeCount)
+      guard
+        let badge = userInfo["badge"] as? String,
+        let badgeCount = Int(badge)
+      else { return .none }
+
+      return .run { send in
+        try await userNotifications.setBadgeCount(badgeCount)
+      } catch: { error, send in
+        crashlytics.record(error: error)
       }
+
     case .didRegisterForRemoteNotifications(.failure):
       return .none
 
