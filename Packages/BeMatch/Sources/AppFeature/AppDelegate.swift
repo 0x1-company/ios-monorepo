@@ -95,9 +95,9 @@ public struct AppDelegateLogic {
         let badgeCount = Int(badge)
       else { return .none }
 
-      return .run { send in
+      return .run { _ in
         try await userNotifications.setBadgeCount(badgeCount)
-      } catch: { error, send in
+      } catch: { error, _ in
         crashlytics.record(error: error)
       }
 

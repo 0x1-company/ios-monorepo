@@ -9,16 +9,16 @@ import SwiftUI
 public struct AchievementLogic {
   public init() {}
 
-  public struct State: Equatable {
-    var child = Child.State.loading
-    public init() {}
+  public enum State: Equatable {
+    case loading
+    case content(AchievementContentLogic.State)
   }
 
   public enum Action {
     case onTask
     case closeButtonTapped
     case achievementResponse(Result<BeMatch.AchievementQuery.Data, Error>)
-    case child(Child.Action)
+    case content(AchievementContentLogic.Action)
     case delegate(Delegate)
 
     public enum Delegate: Equatable {
@@ -31,7 +31,6 @@ public struct AchievementLogic {
   @Dependency(\.firebaseAuth) var firebaseAuth
 
   public var body: some Reducer<State, Action> {
-    Scope(state: \.child, action: \.child, child: Child.init)
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
@@ -52,7 +51,7 @@ public struct AchievementLogic {
         guard let creationDate = user?.metadata.creationDate
         else { return .none }
 
-        state.child = .content(
+        state = .content(
           AchievementContentLogic.State(
             achievement: data.achievement,
             creationDate: creationDate
@@ -61,29 +60,15 @@ public struct AchievementLogic {
         return .none
 
       case .achievementResponse(.failure):
-        state.child = .loading
+        state = .loading
         return .none
 
       default:
         return .none
       }
     }
-  }
-
-  @Reducer
-  public struct Child {
-    public enum State: Equatable {
-      case loading
-      case content(AchievementContentLogic.State)
-    }
-
-    public enum Action {
-      case loading
-      case content(AchievementContentLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.content, action: \.content, child: AchievementContentLogic.init)
+    .ifCaseLet(\.content, action: \.content) {
+      AchievementContentLogic()
     }
   }
 }
@@ -96,7 +81,7 @@ public struct AchievementView: View {
   }
 
   public var body: some View {
-    SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
+    SwitchStore(store) { initialState in
       switch initialState {
       case .loading:
         ProgressView()
@@ -104,8 +89,8 @@ public struct AchievementView: View {
 
       case .content:
         CaseLet(
-          /AchievementLogic.Child.State.content,
-          action: AchievementLogic.Child.Action.content,
+          /AchievementLogic.State.content,
+          action: AchievementLogic.Action.content,
           then: AchievementContentView.init(store:)
         )
       }
@@ -132,7 +117,7 @@ public struct AchievementView: View {
   NavigationStack {
     AchievementView(
       store: .init(
-        initialState: AchievementLogic.State(),
+        initialState: AchievementLogic.State.loading,
         reducer: { AchievementLogic() }
       )
     )

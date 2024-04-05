@@ -166,7 +166,7 @@ public struct SettingsLogic {
       case profileEdit(ProfileEditLogic.State = .init())
       case profile(ProfileLogic.State = .init())
       case tutorial(TutorialLogic.State = .init())
-      case achievement(AchievementLogic.State = .init())
+      case achievement(AchievementLogic.State = .loading)
     }
 
     public enum Action {
