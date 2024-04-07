@@ -106,15 +106,6 @@ public struct DeleteAccountLogic {
         }
 
       case .closeUserResponse(.success):
-        state.destination = .alert(
-          AlertState {
-            TextState("Delete Account Completed", bundle: .module)
-          } actions: {
-            ButtonState(action: .confirmOkay) {
-              TextState("OK", bundle: .module)
-            }
-          }
-        )
         return .run { send in
           try firebaseAuth.signOut()
           await send(.delegate(.accountDeletionCompleted), animation: .default)
