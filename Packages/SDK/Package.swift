@@ -22,6 +22,7 @@ var package = Package(
     .library(name: "ColorHex", targets: ["ColorHex"]),
     .library(name: "ConfigGlobalClient", targets: ["ConfigGlobalClient"]),
     .library(name: "ContactsClient", targets: ["ContactsClient"]),
+    .library(name: "DeviceCheckClient", targets: ["DeviceCheckClient"]),
     .library(name: "FacebookClient", targets: ["FacebookClient"]),
     .library(name: "FeedbackGeneratorClient", targets: ["FeedbackGeneratorClient"]),
     .library(name: "FirebaseAuthClient", targets: ["FirebaseAuthClient"]),
@@ -98,6 +99,10 @@ var package = Package(
       .product(name: "FirebaseFirestoreSwift", package: "firebase-ios-sdk"),
     ]),
     .target(name: "ContactsClient", dependencies: [
+      .product(name: "Dependencies", package: "swift-dependencies"),
+      .product(name: "DependenciesMacros", package: "swift-dependencies"),
+    ]),
+    .target(name: "DeviceCheckClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
       .product(name: "DependenciesMacros", package: "swift-dependencies"),
     ]),
