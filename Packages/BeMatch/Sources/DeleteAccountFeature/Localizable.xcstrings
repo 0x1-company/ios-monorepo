@@ -42,6 +42,7 @@
       }
     },
     "Delete Account Completed" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
