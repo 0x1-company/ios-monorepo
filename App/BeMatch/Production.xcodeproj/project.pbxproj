@@ -32,6 +32,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B7670CFE2BC40A1A00AADE86 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B7670CFF2BC40A1A00AADE86 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B7703D702AB32A26006BF41F /* InfoPlist.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		B7765AF52B46C825001B5C13 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		B7765AF72B46C82A001B5C13 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
@@ -88,6 +90,7 @@
 				B7703D702AB32A26006BF41F /* InfoPlist.xcstrings */,
 				B783E16F2A121FCD002E782F /* Info.plist */,
 				B7CCF99F2A7AF46D00B64CFE /* GoogleService-Info.plist */,
+				B7670D002BC40A1A00AADE86 /* Localizable.strings */,
 				B783E0E92A11FFBE002E782F /* Preview Content */,
 			);
 			path = Multiplatform;
@@ -196,6 +199,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B7670D002BC40A1A00AADE86 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B7670CFE2BC40A1A00AADE86 /* en */,
+				B7670CFF2BC40A1A00AADE86 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		B783E0D82A11FF88002E782F /* Debug */ = {
