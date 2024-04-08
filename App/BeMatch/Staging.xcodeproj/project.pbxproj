@@ -89,9 +89,9 @@
 				B783E1752A137F3E002E782F /* App.entitlements */,
 				B783E0F92A11FFD0002E782F /* Assets.xcassets */,
 				B7703D6E2AB319E0006BF41F /* InfoPlist.xcstrings */,
-				B7670CF22BC4046500AADE86 /* Localizable.strings */,
 				B783E16E2A121FC6002E782F /* Info.plist */,
 				B7CCF9A12A7AF47600B64CFE /* GoogleService-Info.plist */,
+				B7670CF22BC4046500AADE86 /* Localizable.strings */,
 				B783E0FB2A11FFD0002E782F /* Preview Content */,
 			);
 			path = Multiplatform;
