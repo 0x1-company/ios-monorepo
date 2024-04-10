@@ -19,7 +19,7 @@ query DirectMessageTab($first: Int!) {
     }
   }
 
-  matches(first:$first) {
+  messageRoomCandidateMatches(first:$first) {
     pageInfo {
       hasNextPage
       endCursor

@@ -55,9 +55,9 @@ public struct DirectMessageTabLogic {
         )
 
         state.unsent = UnsentDirectMessageListLogic.State(
-          after: data.matches.pageInfo.endCursor,
-          hasNextPage: data.matches.pageInfo.hasNextPage,
-          uniqueElements: data.matches.edges
+          after: data.messageRoomCandidateMatches.pageInfo.endCursor,
+          hasNextPage: data.messageRoomCandidateMatches.pageInfo.hasNextPage,
+          uniqueElements: data.messageRoomCandidateMatches.edges
             .map(\.node.fragments.unsentDirectMessageListContentRow)
             .filter { !$0.targetUser.images.isEmpty }
             .filter { $0.targetUser.status == .active }
@@ -67,7 +67,7 @@ public struct DirectMessageTabLogic {
             ? nil
             : UnsentDirectMessageListContentReceivedLikeRowLogic.State(receivedLike: data.receivedLike)
         )
-        if data.matches.edges.isEmpty && data.receivedLike.latestUser == nil {
+        if data.messageRoomCandidateMatches.edges.isEmpty && data.receivedLike.latestUser == nil {
           state.unsent = nil
         }
 

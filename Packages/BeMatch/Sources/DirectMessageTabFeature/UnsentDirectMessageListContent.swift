@@ -49,10 +49,11 @@ public struct UnsentDirectMessageListContentLogic {
         .cancellable(id: Cancel.unsentDirectMessageListContent, cancelInFlight: true)
 
       case let .unsentDirectMessageListContentResponse(.success(data)):
-        state.after = data.matches.pageInfo.endCursor
-        state.hasNextPage = data.matches.pageInfo.hasNextPage
+        let pageInfo = data.messageRoomCandidateMatches.pageInfo
+        state.after = pageInfo.endCursor
+        state.hasNextPage = pageInfo.hasNextPage
 
-        let newRows = data.matches.edges
+        let newRows = data.messageRoomCandidateMatches.edges
           .map(\.node.fragments.unsentDirectMessageListContentRow)
           .filter { !$0.targetUser.images.isEmpty }
           .map(UnsentDirectMessageListContentRowLogic.State.init(match:))

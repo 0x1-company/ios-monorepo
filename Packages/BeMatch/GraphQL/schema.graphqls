@@ -344,6 +344,9 @@ type Query {
 
   """マッチ一覧"""
   matches(after: String, first: Int!): MatchConnection!
+
+  """メッセージ前のマッチ一覧"""
+  messageRoomCandidateMatches(after: String, first: Int!): MatchConnection!
   messageRooms(after: String, first: Int!): MessageRoomConnection!
 
   """特定のユーザーとのメッセージ一覧"""
