@@ -8,7 +8,7 @@ public extension BeMatch {
     public static let operationName: String = "DirectMessageTab"
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"query DirectMessageTab($first: Int!) { banners { __typename ...BannerCard } receivedLike { __typename id displayCount latestUser { __typename id images { __typename id imageUrl } } } matches(first: $first) { __typename pageInfo { __typename hasNextPage endCursor } edges { __typename node { __typename ...UnsentDirectMessageListContentRow } } } messageRooms(first: $first) { __typename pageInfo { __typename hasNextPage endCursor } edges { __typename node { __typename ...DirectMessageListContentRow } } } }"#,
+        #"query DirectMessageTab($first: Int!) { banners { __typename ...BannerCard } receivedLike { __typename id displayCount latestUser { __typename id images { __typename id imageUrl } } } messageRoomCandidateMatches(first: $first) { __typename pageInfo { __typename hasNextPage endCursor } edges { __typename node { __typename ...UnsentDirectMessageListContentRow } } } messageRooms(first: $first) { __typename pageInfo { __typename hasNextPage endCursor } edges { __typename node { __typename ...DirectMessageListContentRow } } } }"#,
         fragments: [BannerCard.self, DirectMessageListContentRow.self, UnsentDirectMessageListContentRow.self]
       ))
 
@@ -28,7 +28,7 @@ public extension BeMatch {
       public static var __selections: [ApolloAPI.Selection] { [
         .field("banners", [Banner].self),
         .field("receivedLike", ReceivedLike.self),
-        .field("matches", Matches.self, arguments: ["first": .variable("first")]),
+        .field("messageRoomCandidateMatches", MessageRoomCandidateMatches.self, arguments: ["first": .variable("first")]),
         .field("messageRooms", MessageRooms.self, arguments: ["first": .variable("first")]),
       ] }
 
@@ -36,8 +36,8 @@ public extension BeMatch {
       public var banners: [Banner] { __data["banners"] }
       /// 自分の受け取ったLikeを取得する
       public var receivedLike: ReceivedLike { __data["receivedLike"] }
-      /// マッチ一覧
-      public var matches: Matches { __data["matches"] }
+      /// メッセージ前のマッチ一覧
+      public var messageRoomCandidateMatches: MessageRoomCandidateMatches { __data["messageRoomCandidateMatches"] }
       public var messageRooms: MessageRooms { __data["messageRooms"] }
 
       /// Banner
@@ -130,10 +130,10 @@ public extension BeMatch {
         }
       }
 
-      /// Matches
+      /// MessageRoomCandidateMatches
       ///
       /// Parent Type: `MatchConnection`
-      public struct Matches: BeMatch.SelectionSet {
+      public struct MessageRoomCandidateMatches: BeMatch.SelectionSet {
         public let __data: DataDict
         public init(_dataDict: DataDict) { __data = _dataDict }
 
@@ -147,7 +147,7 @@ public extension BeMatch {
         public var pageInfo: PageInfo { __data["pageInfo"] }
         public var edges: [Edge] { __data["edges"] }
 
-        /// Matches.PageInfo
+        /// MessageRoomCandidateMatches.PageInfo
         ///
         /// Parent Type: `PageInfo`
         public struct PageInfo: BeMatch.SelectionSet {
@@ -167,7 +167,7 @@ public extension BeMatch {
           public var endCursor: String? { __data["endCursor"] }
         }
 
-        /// Matches.Edge
+        /// MessageRoomCandidateMatches.Edge
         ///
         /// Parent Type: `MatchEdge`
         public struct Edge: BeMatch.SelectionSet {
@@ -182,7 +182,7 @@ public extension BeMatch {
 
           public var node: Node { __data["node"] }
 
-          /// Matches.Edge.Node
+          /// MessageRoomCandidateMatches.Edge.Node
           ///
           /// Parent Type: `Match`
           public struct Node: BeMatch.SelectionSet {

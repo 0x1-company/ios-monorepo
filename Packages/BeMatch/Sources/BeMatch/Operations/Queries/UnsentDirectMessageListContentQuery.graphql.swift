@@ -8,7 +8,7 @@ public extension BeMatch {
     public static let operationName: String = "UnsentDirectMessageListContent"
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"query UnsentDirectMessageListContent($first: Int!, $after: String) { matches(first: $first, after: $after) { __typename pageInfo { __typename hasNextPage endCursor } edges { __typename node { __typename ...UnsentDirectMessageListContentRow } } } }"#,
+        #"query UnsentDirectMessageListContent($first: Int!, $after: String) { messageRoomCandidateMatches(first: $first, after: $after) { __typename pageInfo { __typename hasNextPage endCursor } edges { __typename node { __typename ...UnsentDirectMessageListContentRow } } } }"#,
         fragments: [UnsentDirectMessageListContentRow.self]
       ))
 
@@ -34,19 +34,19 @@ public extension BeMatch {
 
       public static var __parentType: ApolloAPI.ParentType { BeMatch.Objects.Query }
       public static var __selections: [ApolloAPI.Selection] { [
-        .field("matches", Matches.self, arguments: [
+        .field("messageRoomCandidateMatches", MessageRoomCandidateMatches.self, arguments: [
           "first": .variable("first"),
           "after": .variable("after"),
         ]),
       ] }
 
-      /// マッチ一覧
-      public var matches: Matches { __data["matches"] }
+      /// メッセージ前のマッチ一覧
+      public var messageRoomCandidateMatches: MessageRoomCandidateMatches { __data["messageRoomCandidateMatches"] }
 
-      /// Matches
+      /// MessageRoomCandidateMatches
       ///
       /// Parent Type: `MatchConnection`
-      public struct Matches: BeMatch.SelectionSet {
+      public struct MessageRoomCandidateMatches: BeMatch.SelectionSet {
         public let __data: DataDict
         public init(_dataDict: DataDict) { __data = _dataDict }
 
@@ -60,7 +60,7 @@ public extension BeMatch {
         public var pageInfo: PageInfo { __data["pageInfo"] }
         public var edges: [Edge] { __data["edges"] }
 
-        /// Matches.PageInfo
+        /// MessageRoomCandidateMatches.PageInfo
         ///
         /// Parent Type: `PageInfo`
         public struct PageInfo: BeMatch.SelectionSet {
@@ -80,7 +80,7 @@ public extension BeMatch {
           public var endCursor: String? { __data["endCursor"] }
         }
 
-        /// Matches.Edge
+        /// MessageRoomCandidateMatches.Edge
         ///
         /// Parent Type: `MatchEdge`
         public struct Edge: BeMatch.SelectionSet {
@@ -95,7 +95,7 @@ public extension BeMatch {
 
           public var node: Node { __data["node"] }
 
-          /// Matches.Edge.Node
+          /// MessageRoomCandidateMatches.Edge.Node
           ///
           /// Parent Type: `Match`
           public struct Node: BeMatch.SelectionSet {
