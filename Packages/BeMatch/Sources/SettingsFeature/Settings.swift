@@ -329,15 +329,6 @@ public struct SettingsView: View {
                 .foregroundStyle(Color.primary)
             }
           }
-
-          Link(destination: Constants.xURL) {
-            LabeledContent {
-              Image(systemName: "chevron.right")
-            } label: {
-              Text("X", bundle: .module)
-                .foregroundStyle(Color.primary)
-            }
-          }
         } header: {
           Text("FOLLOW ME", bundle: .module)
         }
