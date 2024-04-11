@@ -61,6 +61,16 @@
         }
       }
     },
+    "Find someone you care about!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "で気になる人を見つけよう！"
+          }
+        }
+      }
+    },
     "How to Receive Benefits" : {
       "localizations" : {
         "ja" : {
@@ -123,6 +133,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
+          }
+        }
+      }
+    },
+    "Premium Plan" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10倍楽しめるプレミアムプラン"
           }
         }
       }

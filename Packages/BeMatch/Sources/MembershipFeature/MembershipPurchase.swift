@@ -67,8 +67,21 @@ public struct MembershipPurchaseView: View {
       VStack(spacing: 16) {
         ScrollView {
           VStack(spacing: 24) {
-            Image(ImageResource.purchaseHeader)
-              .resizable()
+            VStack(spacing: 16) {
+              Text("Premium Plan", bundle: .module)
+                .font(.footnote)
+                .padding(.vertical, 6)
+                .padding(.horizontal, 8)
+                .overlay(
+                  RoundedRectangle(cornerRadius: 4)
+                    .stroke(Color.white, lineWidth: 1)
+                )
+
+              Image(ImageResource.bematchPro)
+              
+              Text("Find someone you care about!", bundle: .module)
+                .font(.title2)
+            }
 
             VStack(spacing: 40) {
               Button {
