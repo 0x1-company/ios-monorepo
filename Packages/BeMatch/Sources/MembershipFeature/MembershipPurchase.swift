@@ -70,6 +70,7 @@ public struct MembershipPurchaseView: View {
             VStack(spacing: 16) {
               Text("Premium Plan", bundle: .module)
                 .font(.footnote)
+                .fontWeight(.semibold)
                 .padding(.vertical, 6)
                 .padding(.horizontal, 8)
                 .overlay(
@@ -81,6 +82,7 @@ public struct MembershipPurchaseView: View {
               
               Text("Find someone you care about!", bundle: .module)
                 .font(.title2)
+                .bold()
             }
 
             VStack(spacing: 40) {

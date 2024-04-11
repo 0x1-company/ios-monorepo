@@ -157,6 +157,16 @@
         }
       }
     },
+    "See who sent it!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自分をLikeした人を見れる！"
+          }
+        }
+      }
+    },
     "Send an invitation code to a friend who hasn't used BeMatch." : {
       "localizations" : {
         "ja" : {
@@ -173,6 +183,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "招待コードを送る"
+          }
+        }
+      }
+    },
+    "Special offer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "嬉しい特典"
           }
         }
       }
