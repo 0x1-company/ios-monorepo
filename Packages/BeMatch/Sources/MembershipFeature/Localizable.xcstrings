@@ -107,6 +107,16 @@
         }
       }
     },
+    "image-see-who-sent-it" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "see-who-sent-it-ja"
+          }
+        }
+      }
+    },
     "Invite a friend and both receive" : {
       "localizations" : {
         "ja" : {

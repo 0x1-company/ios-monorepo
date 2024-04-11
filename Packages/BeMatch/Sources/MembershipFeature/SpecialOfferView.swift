@@ -12,7 +12,7 @@ public struct SpecialOfferView: View {
         .frame(maxWidth: .infinity)
         .padding(.top, 44)
 
-      Image(ImageResource.seeWhoSentIt)
+      Image(String(localized: "image-see-who-sent-it", bundle: .module), bundle: .module)
         .resizable()
         .aspectRatio(contentMode: .fit)
     }
@@ -48,5 +48,5 @@ public struct SpecialOfferView: View {
     SpecialOfferView()
   }
   .environment(\.colorScheme, .dark)
-  .environment(\.locale, Locale(identifier: "ja-JP"))
+//  .environment(\.locale, Locale(identifier: "ja-JP"))
 }

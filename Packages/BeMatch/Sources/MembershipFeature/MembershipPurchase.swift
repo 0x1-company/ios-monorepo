@@ -94,8 +94,7 @@ public struct MembershipPurchaseView: View {
               .buttonStyle(ConversionPrimaryButtonStyle())
 
               VStack(spacing: 60) {
-                Image(ImageResource.membershipBenefit)
-                  .resizable()
+                SpecialOfferView()
 
                 PurchaseAboutView(
                   displayPrice: viewStore.displayPrice
