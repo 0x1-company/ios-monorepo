@@ -133,27 +133,33 @@ public struct MembershipLogic {
         state.product = product
 
         if let campaign, let product {
+          let productPrice = product.price
+          let specialOfferPrice = productPrice * Decimal(campaign.durationWeeks)
+          let currencyCode = product.priceFormatStyle.currencyCode
+          let specialOfferDisplayPrice = currencyCode + specialOfferPrice.description
+          
           state.child = .campaign(
             MembershipCampaignLogic.State(
               campaign: campaign,
               code: data.invitationCode.code,
               displayPrice: product.displayPrice,
-              displayDuration: formatDuration(campaign.durationWeeks)
+              displayDuration: formatDuration(campaign.durationWeeks),
+              specialOfferDisplayPrice: specialOfferDisplayPrice
             )
           )
 
-          let price = campaign.durationWeeks * 500
+          state.shareText = String(
+            localized: """
+            I gave you an invitation code [\(data.invitationCode.code)] for free BeMatch PRO worth \(specialOfferDisplayPrice)! 🎁.
 
-          let localizationValue: String.LocalizationValue = """
-          I gave you an invitation code [\(data.invitationCode.code)] for free BeMatch PRO worth \(price) yen! 🎁.
+            When you become a BeMatch PRO...
+            ■ See who you are Liked by.
 
-          When you become a BeMatch PRO...
-          ■ See who you are Liked by.
-
-          BeReal exchange app "BeMatch." Download it! 🤞🏻
-          https://bematch.onelink.me/nob4/mhxumci1
-          """
-          state.shareText = String(localized: localizationValue, bundle: .module)
+            BeReal exchange app "BeMatch." Download it! 🤞🏻
+            https://bematch.onelink.me/nob4/mhxumci1
+            """,
+            bundle: .module
+          )
 
         } else if let product {
           state.child = .purchase(
@@ -167,6 +173,7 @@ public struct MembershipLogic {
       case let .response(.success(products), .failure):
         guard let product = products.first(where: { $0.id == state.bematchProOneWeekId })
         else { return .none }
+        
         state.child = .purchase(MembershipPurchaseLogic.State(displayPrice: product.displayPrice))
         return .none
 
