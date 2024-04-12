@@ -137,13 +137,14 @@ public struct MembershipLogic {
           let specialOfferPrice = productPrice * Decimal(campaign.durationWeeks)
           let currencyCode = product.priceFormatStyle.currencyCode
           let specialOfferDisplayPrice = currencyCode + specialOfferPrice.description
-          
+
           state.child = .campaign(
             MembershipCampaignLogic.State(
               campaign: campaign,
               code: data.invitationCode.code,
               displayPrice: product.displayPrice,
               displayDuration: formatDuration(campaign.durationWeeks),
+              currencyCode: currencyCode,
               specialOfferDisplayPrice: specialOfferDisplayPrice
             )
           )
@@ -173,7 +174,7 @@ public struct MembershipLogic {
       case let .response(.success(products), .failure):
         guard let product = products.first(where: { $0.id == state.bematchProOneWeekId })
         else { return .none }
-        
+
         state.child = .purchase(MembershipPurchaseLogic.State(displayPrice: product.displayPrice))
         return .none
 

@@ -21,6 +21,7 @@ public struct MembershipCampaignLogic {
       code: String,
       displayPrice: String,
       displayDuration: String,
+      currencyCode: String,
       specialOfferDisplayPrice: String
     ) {
       self.campaign = campaign
@@ -32,7 +33,8 @@ public struct MembershipCampaignLogic {
         specialOfferDisplayPrice: specialOfferDisplayPrice
       )
       invitationCampaignPrice = InvitationCampaignPriceLogic.State(
-        displayDuration: displayDuration
+        displayDuration: displayDuration,
+        currencyCode: currencyCode
       )
       invitationCodeCampaign = InvitationCodeCampaignLogic.State(code: code)
     }
@@ -176,6 +178,7 @@ public struct MembershipCampaignView: View {
         code: "ABCDEF",
         displayPrice: "¥500",
         displayDuration: "1 week",
+        currencyCode: "$",
         specialOfferDisplayPrice: "$100"
       ),
       reducer: { MembershipCampaignLogic() }
@@ -183,4 +186,5 @@ public struct MembershipCampaignView: View {
   )
   .ignoresSafeArea()
   .environment(\.colorScheme, .dark)
+//  .environment(\.locale, Locale(identifier: "ja-JP"))
 }

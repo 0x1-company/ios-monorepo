@@ -1,6 +1,22 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@0 for %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@0 for %2$@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "が%2$@%1$@0"
+          }
+        }
+      }
+    },
     "%lld month" : {
       "localizations" : {
         "ja" : {
@@ -27,16 +43,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld年間"
-          }
-        }
-      }
-    },
-    "0" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "0"
           }
         }
       }
@@ -253,16 +259,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "の特典がお互いにもらえる！"
-          }
-        }
-      }
-    },
-    "yen" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "円"
           }
         }
       }
