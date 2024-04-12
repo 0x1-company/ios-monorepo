@@ -11,17 +11,6 @@
         }
       }
     },
-    "Achievement" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アチーブメント"
-          }
-        }
-      }
-    },
     "BeMatch PRO" : {
       "localizations" : {
         "ja" : {
@@ -258,16 +247,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "バージョン"
-          }
-        }
-      }
-    },
-    "X" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "X"
           }
         }
       }
