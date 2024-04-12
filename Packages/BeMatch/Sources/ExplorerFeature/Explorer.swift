@@ -21,7 +21,7 @@ public struct ExplorerLogic {
   public var body: some Reducer<State, Action> {
     Scope(state: \.child, action: \.child, child: Child.init)
   }
-  
+
   @Reducer
   public struct Child {
     public enum State: Equatable {
@@ -29,13 +29,13 @@ public struct ExplorerLogic {
       case empty(ExplorerEmptyLogic.State = .init())
       case content(ExplorerContentLogic.State)
     }
-    
+
     public enum Action {
       case loading
       case empty(ExplorerEmptyLogic.Action)
       case content(ExplorerContentLogic.Action)
     }
-    
+
     public var body: some Reducer<State, Action> {
       Scope(state: \.empty, action: \.empty, child: ExplorerEmptyLogic.init)
       Scope(state: \.content, action: \.content, child: ExplorerContentLogic.init)
@@ -59,14 +59,14 @@ public struct ExplorerView: View {
       case .empty:
         CaseLet(
           /ExplorerLogic.Child.State.empty,
-           action: ExplorerLogic.Child.Action.empty,
-           then: ExplorerEmptyView.init(store:)
+          action: ExplorerLogic.Child.Action.empty,
+          then: ExplorerEmptyView.init(store:)
         )
       case .content:
         CaseLet(
           /ExplorerLogic.Child.State.content,
-           action: ExplorerLogic.Child.Action.content,
-           then: ExplorerContentView.init(store:)
+          action: ExplorerLogic.Child.Action.content,
+          then: ExplorerContentView.init(store:)
         )
       }
     }
