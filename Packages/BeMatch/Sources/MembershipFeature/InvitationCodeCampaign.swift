@@ -48,7 +48,7 @@ public struct InvitationCodeCampaignView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 16) {
-        Image(ImageResource.inviteTicket)
+        Image(String(localized: "invite-ticket", bundle: .module), bundle: .module)
           .resizable()
           .aspectRatio(contentMode: .fit)
           .overlay(alignment: .center) {

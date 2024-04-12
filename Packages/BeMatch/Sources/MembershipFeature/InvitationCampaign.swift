@@ -10,15 +10,18 @@ public struct InvitationCampaignLogic {
   public struct State: Equatable {
     let quantity: Int
     let durationWeeks: Int
+    let specialOfferDisplayPrice: String
 
     var totalBenefit = 0
 
     public init(
       quantity: Int,
-      durationWeeks: Int
+      durationWeeks: Int,
+      specialOfferDisplayPrice: String
     ) {
       self.quantity = quantity
       self.durationWeeks = durationWeeks
+      self.specialOfferDisplayPrice = specialOfferDisplayPrice
     }
   }
 
@@ -85,16 +88,9 @@ public struct InvitationCampaignView: View {
           Text("Invite a friend and both receive", bundle: .module)
 
           VStack(spacing: 8) {
-            HStack(spacing: 8) {
-              Text(viewStore.totalBenefit.description)
-                .font(.system(size: 72, weight: .heavy))
-              VStack(spacing: 0) {
-                Text("円")
-                Text("分")
-              }
-              .font(.system(size: 22, weight: .bold))
-            }
-            .foregroundStyle(textGradient)
+            Text(viewStore.specialOfferDisplayPrice)
+              .font(.system(size: 72, weight: .heavy))
+              .foregroundStyle(textGradient)
 
             Text("worth benefits", bundle: .module)
           }
@@ -116,7 +112,8 @@ public struct InvitationCampaignView: View {
     store: .init(
       initialState: InvitationCampaignLogic.State(
         quantity: 2000,
-        durationWeeks: 48
+        durationWeeks: 48,
+        specialOfferDisplayPrice: "$100"
       ),
       reducer: { InvitationCampaignLogic() }
     )
