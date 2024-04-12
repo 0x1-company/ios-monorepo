@@ -1,0 +1,13 @@
+# import SwipeCard from '../fragments/SwipeCard.graphql'
+
+query Explorers {
+  explorers {
+    id
+    title
+    order
+    colors
+    users {
+      ...SwipeCard
+    }
+  }
+}
