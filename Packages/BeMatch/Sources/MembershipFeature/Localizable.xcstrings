@@ -61,6 +61,16 @@
         }
       }
     },
+    "Find someone you care about!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "で気になる人を見つけよう！"
+          }
+        }
+      }
+    },
     "How to Receive Benefits" : {
       "localizations" : {
         "ja" : {
@@ -97,6 +107,16 @@
         }
       }
     },
+    "image-see-who-sent-it" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "see-who-sent-it-ja"
+          }
+        }
+      }
+    },
     "Invite a friend and both receive" : {
       "localizations" : {
         "ja" : {
@@ -127,12 +147,32 @@
         }
       }
     },
+    "Premium Plan" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10倍楽しめるプレミアムプラン"
+          }
+        }
+      }
+    },
     "Recurring billing. You can cancel at any time. Payment will be charged to your iTunes account and your subscription will auto-renew at %@/week until you cancel in iTunes Store settings. By tapping Unlock, you agree to the Terms of Service and auto-renewal." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "定期課金。いつでもキャンセルできます。お支払いはiTunesアカウントに請求され、iTunes Storeの設定でキャンセルするまで、購読は%@/週で自動更新されます。ロック解除をタップすると、利用規約と自動更新に同意したことになります。"
+          }
+        }
+      }
+    },
+    "See who sent it!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自分をLikeした人を見れる！"
           }
         }
       }
@@ -153,6 +193,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "招待コードを送る"
+          }
+        }
+      }
+    },
+    "Special offer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "嬉しい特典"
           }
         }
       }
