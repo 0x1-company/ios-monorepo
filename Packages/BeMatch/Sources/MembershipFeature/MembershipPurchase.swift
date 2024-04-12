@@ -79,7 +79,7 @@ public struct MembershipPurchaseView: View {
                 )
 
               Image(ImageResource.bematchPro)
-              
+
               Text("Find someone you care about!", bundle: .module)
                 .font(.title2)
                 .bold()

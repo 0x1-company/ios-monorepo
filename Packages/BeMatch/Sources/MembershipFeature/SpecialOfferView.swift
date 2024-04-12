@@ -1,5 +1,5 @@
-import SwiftUI
 import Styleguide
+import SwiftUI
 
 public struct SpecialOfferView: View {
   @Environment(\.locale) var locale
@@ -30,8 +30,8 @@ public struct SpecialOfferView: View {
         .background(
           LinearGradient(
             colors: [
-              Color(0xFFFD2D76),
-              Color(0xFFFE7056)
+              Color(0xFFFD_2D76),
+              Color(0xFFFE_7056),
             ],
             startPoint: .bottomLeading,
             endPoint: .topTrailing
