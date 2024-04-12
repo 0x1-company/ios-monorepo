@@ -6,9 +6,7 @@ import SwiftUI
 public struct ExplorerContentLogic {
   public init() {}
 
-  public struct State: Equatable {
-    
-  }
+  public struct State: Equatable {}
 
   public enum Action {
     case onTask
@@ -17,7 +15,7 @@ public struct ExplorerContentLogic {
   @Dependency(\.analytics) var analytics
 
   public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { state, action in
+    Reduce<State, Action> { _, action in
       switch action {
       case .onTask:
         analytics.logScreen(screenName: "ExplorerContent", of: self)
@@ -35,7 +33,7 @@ public struct ExplorerContentView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithViewStore(store, observe: { $0 }) { _ in
       List {
         Text("ExplorerContent", bundle: .module)
       }
