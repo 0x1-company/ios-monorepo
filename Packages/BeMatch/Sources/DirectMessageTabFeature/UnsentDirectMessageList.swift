@@ -27,6 +27,13 @@ public struct UnsentDirectMessageListLogic {
       )
       child = .content(state)
     }
+      
+      mutating func removeRowIfNeeded(targetUserId: String) {
+          if case var .content(content) = child {
+              content.rows.removeAll { $0.id == targetUserId }
+              child = .content(content)
+          }
+      }
   }
 
   public enum Action {
