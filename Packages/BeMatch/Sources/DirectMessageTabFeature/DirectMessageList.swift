@@ -24,14 +24,14 @@ public struct DirectMessageListLogic {
       )
       child = .content(contentState)
     }
-      
-      mutating func removeRowIfNeeded(targetUserId: String) {
-          if case var .content(content) = child {
-              content.rows.removeAll { $0.targetUserId == targetUserId }
-              child = .content(content)
-          }
+
+    mutating func removeRowIfNeeded(targetUserId: String) {
+      if case var .content(content) = child {
+        content.rows.removeAll { $0.targetUserId == targetUserId }
+        child = .content(content)
       }
-}
+    }
+  }
 
   public enum Action {
     case onTask

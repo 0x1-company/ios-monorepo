@@ -60,18 +60,18 @@ public struct ProfileExplorerLogic {
     case preview(ProfileExplorerPreviewLogic.Action)
     case destination(PresentationAction<Destination.Action>)
     case createMessageResponse(Result<BeMatch.CreateMessageMutation.Data, Error>)
-      case deleteMatchResponse(Result<BeMatch.DeleteMatchMutation.Data, Error>)
+    case deleteMatchResponse(Result<BeMatch.DeleteMatchMutation.Data, Error>)
     case delegate(Delegate)
-      public enum Delegate: Equatable {
-        case unmatch(String)
-      }
+    public enum Delegate: Equatable {
+      case unmatch(String)
+    }
   }
 
   @Dependency(\.bematch) var bematch
   @Dependency(\.analytics) var analytics
   @Dependency(\.feedbackGenerator) var feedbackGenerator
-    @Dependency(\.bematch.deleteMatch) var deleteMatch
-    @Dependency(\.dismiss) var dismiss
+  @Dependency(\.bematch.deleteMatch) var deleteMatch
+  @Dependency(\.dismiss) var dismiss
 
   public var body: some Reducer<State, Action> {
     BindingReducer()
@@ -103,20 +103,20 @@ public struct ProfileExplorerLogic {
             try await bematch.createMessage(input)
           }))
         }
-      
+
       case .unmatchButtonTapped, .blockButtonTapped:
-          state.destination = .confirmationDialog(
-            ConfirmationDialogState {
-              TextState("Unmatch", bundle: .module)
-            } actions: {
-              ButtonState(role: .destructive, action: .confirm) {
-                TextState("Confirm", bundle: .module)
-              }
-            } message: {
-              TextState("Are you sure you want to unmatch?", bundle: .module)
+        state.destination = .confirmationDialog(
+          ConfirmationDialogState {
+            TextState("Unmatch", bundle: .module)
+          } actions: {
+            ButtonState(role: .destructive, action: .confirm) {
+              TextState("Confirm", bundle: .module)
             }
-          )
-          return .none
+          } message: {
+            TextState("Are you sure you want to unmatch?", bundle: .module)
+          }
+        )
+        return .none
 
       case .reportButtonTapped:
         state.destination = .report(ReportLogic.State(targetUserId: state.targetUserId))
@@ -132,12 +132,12 @@ public struct ProfileExplorerLogic {
           .map(Action.directMessage)
 
       case .deleteMatchResponse:
-          let targetUserId = state.targetUserId
+        let targetUserId = state.targetUserId
         return .run { send in
           await send(.delegate(.unmatch(targetUserId)))
           await dismiss()
         }
-          
+
       case .destination(.presented(.confirmationDialog(.confirm))):
         state.destination = nil
         let input = BeMatch.DeleteMatchInput(targetUserId: state.targetUserId)
@@ -170,15 +170,15 @@ public struct ProfileExplorerLogic {
 
     public enum Action {
       case report(ReportLogic.Action)
-        case confirmationDialog(ConfirmationDialog)
-        public enum ConfirmationDialog: Equatable {
-          case confirm
-        }
+      case confirmationDialog(ConfirmationDialog)
+      public enum ConfirmationDialog: Equatable {
+        case confirm
+      }
     }
 
     public var body: some Reducer<State, Action> {
       Scope(state: \.report, action: \.report, child: ReportLogic.init)
-        Scope(state: \.confirmationDialog, action: \.confirmationDialog) {}
+      Scope(state: \.confirmationDialog, action: \.confirmationDialog) {}
     }
   }
 }
@@ -248,15 +248,15 @@ public struct ProfileExplorerView: View {
 
         ToolbarItem(placement: .topBarTrailing) {
           Menu {
-              Button(role: .destructive) {
-                store.send(.unmatchButtonTapped)
-              } label: {
-                Label {
-                  Text("Unmatch", bundle: .module)
-                } icon: {
-                  Image(systemName: "trash")
-                }
+            Button(role: .destructive) {
+              store.send(.unmatchButtonTapped)
+            } label: {
+              Label {
+                Text("Unmatch", bundle: .module)
+              } icon: {
+                Image(systemName: "trash")
               }
+            }
 
             Button {
               store.send(.reportButtonTapped)
@@ -269,7 +269,7 @@ public struct ProfileExplorerView: View {
             }
 
             Button {
-                store.send(.blockButtonTapped)
+              store.send(.blockButtonTapped)
             } label: {
               Text("Block", bundle: .module)
             }
