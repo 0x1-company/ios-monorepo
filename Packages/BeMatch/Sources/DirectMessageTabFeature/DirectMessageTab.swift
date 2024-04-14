@@ -129,6 +129,11 @@ public struct DirectMessageTabLogic {
         state.destination = nil
         return .none
 
+      case let .destination(.presented(.explorer(.delegate(.unmatch(targetUserId))))):
+        state.messages?.removeRowIfNeeded(targetUserId: targetUserId)
+        state.unsent?.removeRowIfNeeded(targetUserId: targetUserId)
+        return .none
+
       default:
         return .none
       }
