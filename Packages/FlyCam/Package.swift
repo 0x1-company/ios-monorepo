@@ -34,7 +34,7 @@ let package = Package(
   ],
   dependencies: [
     .package(path: "../SDK"),
-    .package(url: "https://github.com/apollographql/apollo-ios", from: "1.9.3"),
+    .package(url: "https://github.com/apollographql/apollo-ios", from: "1.10.0"),
     .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.2.2"),
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.9.2"),
   ],
