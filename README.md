@@ -26,6 +26,13 @@ Features such as:
 
 By standardizing and reusing these feature specifications and designs, our developers can concentrate their efforts on the unique core concepts of each app.
 
+We respect Nikita Bier, who has won US AppStore #1 with Gas(acq by discord) and tbh(acq by facebook).
+
+<img width="541" alt="image" src="https://github.com/0x1-company/ios-monorepo/assets/28350464/5be23030-67ac-4d16-a315-142473933b42">
+
+https://twitter.com/nikitabier/status/1661733445163417601
+
+
 # Apps
 
 ## BeMatch.
