@@ -1,16 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Add BeReal" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeRealを追加する"
-          }
-        }
-      }
-    },
     "Are you sure you want to unmatch?" : {
       "localizations" : {
         "ja" : {
@@ -21,32 +11,12 @@
         }
       }
     },
-    "Block" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ブロックする"
-          }
-        }
-      }
-    },
     "Confirm" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "マッチを解除する"
-          }
-        }
-      }
-    },
-    "Report" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "通報する"
           }
         }
       }

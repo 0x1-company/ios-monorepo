@@ -105,16 +105,6 @@
           }
         }
       }
-    },
-    "Username on BeReal." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeRealのユーザーネーム"
-          }
-        }
-      }
     }
   },
   "version" : "1.0"

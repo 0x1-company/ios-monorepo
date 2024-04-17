@@ -21,16 +21,6 @@
         }
       }
     },
-    "Next" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "つぎへ"
-          }
-        }
-      }
-    },
     "OK" : {
       "localizations" : {
         "ja" : {
@@ -68,16 +58,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "BeRealで保存した写真を選択してください"
-          }
-        }
-      }
-    },
-    "Set your saved photo to your profile (it will be public 🌏)" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "保存した写真を3枚プロフィールに設定しよう（公開されるよ 🌏）"
           }
         }
       }

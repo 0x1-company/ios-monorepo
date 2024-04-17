@@ -41,17 +41,6 @@
         }
       }
     },
-    "Delete Account Completed" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アカウント削除が完了しました"
-          }
-        }
-      }
-    },
     "I don't know how to use it" : {
       "localizations" : {
         "ja" : {
@@ -63,14 +52,7 @@
       }
     },
     "I don't use BeMatch anymore" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "もうBeMatchを使わない"
-          }
-        }
-      }
+
     },
     "I want to create a new account" : {
       "localizations" : {
@@ -78,16 +60,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "新しいアカウントを作成したい"
-          }
-        }
-      }
-    },
-    "Not Now" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "今はしない"
           }
         }
       }
@@ -102,42 +74,12 @@
         }
       }
     },
-    "Other Reason" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "その他の理由"
-          }
-        }
-      }
-    },
-    "Proceed with Deletion" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "削除する"
-          }
-        }
-      }
-    },
     "Safety or privacy conerns" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "安全性やプライバシーに関する懸念"
-          }
-        }
-      }
-    },
-    "This **cannot** be undone or recovered." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "これを元に戻したり、回復したりすることは**出来ません**。"
           }
         }
       }

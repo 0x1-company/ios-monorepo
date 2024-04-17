@@ -39,7 +39,7 @@ public struct CreationDateLogic {
         let formattedCreationDate = dateFormatter.string(from: state.creationDate)
 
         state.creationDateString = String(
-          localized: "You joined API \(daysAgo) days ago on \(formattedCreationDate)",
+          localized: "You joined BeMatch \(daysAgo) days ago on \(formattedCreationDate)",
           bundle: .module
         )
         return .none

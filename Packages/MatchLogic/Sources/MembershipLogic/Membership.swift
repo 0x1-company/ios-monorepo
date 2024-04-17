@@ -151,13 +151,13 @@ public struct MembershipLogic {
 
           state.shareText = String(
             localized: """
-            I gave you an invitation code [\(data.invitationCode.code)] for free API PRO worth \(specialOfferDisplayPrice)! 🎁.
+            I gave you an invitation code [\(data.invitationCode.code)] for free BeMatch PRO worth \(specialOfferDisplayPrice)! 🎁.
 
-            When you become a API PRO...
+            When you become a BeMatch PRO...
             ■ See who you are Liked by.
 
-            BeReal exchange app "API." Download it! 🤞🏻
-            https://api.onelink.me/nob4/mhxumci1
+            BeReal exchange app "BeMatch." Download it! 🤞🏻
+            https://bematch.onelink.me/nob4/mhxumci1
             """,
             bundle: .module
           )
@@ -218,7 +218,7 @@ public struct MembershipLogic {
       case let .transactionFinish(transaction):
         state.destination = .alert(
           AlertState {
-            TextState("I joined API PRO", bundle: .module)
+            TextState("I joined BeMatch PRO", bundle: .module)
           } actions: {
             ButtonState(action: .confirmOkay) {
               TextState("OK", bundle: .module)
