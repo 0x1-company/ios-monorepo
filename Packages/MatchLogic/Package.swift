@@ -24,6 +24,7 @@ let package = Package(
     .library(name: "CategoryListLogic", targets: ["CategoryListLogic"]),
     .library(name: "CategorySwipeLogic", targets: ["CategorySwipeLogic"]),
     .library(name: "Constants", targets: ["Constants"]),
+    .library(name: "ConstantsClient", targets: ["ConstantsClient"]),
     .library(name: "DeleteAccountLogic", targets: ["DeleteAccountLogic"]),
     .library(name: "DirectMessageLogic", targets: ["DirectMessageLogic"]),
     .library(name: "DirectMessageTabLogic", targets: ["DirectMessageTabLogic"]),
@@ -166,6 +167,10 @@ let package = Package(
       "CategoryEmptyLogic",
     ]),
     .target(name: "Constants"),
+    .target(name: "ConstantsClient", dependencies: [
+      .product(name: "Dependencies", package: "swift-dependencies"),
+      .product(name: "DependenciesMacros", package: "swift-dependencies"),
+    ]),
     .target(name: "DeleteAccountLogic", dependencies: [
       "Styleguide",
       "APIClient",
