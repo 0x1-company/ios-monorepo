@@ -1,8 +1,8 @@
-import BeRealCaptureFeature
 import BeRealSampleFeature
 import ComposableArchitecture
 import GenderSettingFeature
 import ProfileEditLogic
+import ProfilePictureSettingFeature
 import ShortCommentSettingFeature
 import SwiftUI
 import UsernameSettingFeature
@@ -43,7 +43,7 @@ public struct ProfileEditView: View {
               }
 
               Button {
-                store.send(.beRealCaptureButtonTapped)
+                store.send(.pictureSettingButtonTapped)
               } label: {
                 LabeledContent {
                   Image(systemName: "chevron.right")
@@ -117,11 +117,11 @@ public struct ProfileEditView: View {
       }
       .navigationDestination(
         store: store.scope(
-          state: \.$destination.beRealCapture,
-          action: \.destination.beRealCapture
+          state: \.$destination.pictureSetting,
+          action: \.destination.pictureSetting
         )
       ) { store in
-        BeRealCaptureView(store: store, nextButtonStyle: .save)
+        ProfilePictureSettingView(store: store, nextButtonStyle: .save)
       }
       .navigationDestination(
         store: store.scope(

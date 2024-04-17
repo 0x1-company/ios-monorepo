@@ -136,7 +136,7 @@ public struct ProfilePictureSettingLogic {
       case .nextButtonTapped:
         let notBeRealIamges = state.images.filter(\.isWarning)
         guard notBeRealIamges.isEmpty else {
-          state.destination = .alert(.selectPhotoWithBeReal())
+          state.destination = .alert(.validateError())
           return .none
         }
 
@@ -250,10 +250,8 @@ extension AlertState where Action == ProfilePictureSettingLogic.Destination.Acti
       }
     }
   }
-}
 
-extension AlertState where Action == ProfilePictureSettingLogic.Destination.Action.Alert {
-  static func selectPhotoWithBeReal() -> Self {
+  static func validateError() -> Self {
     Self {
       TextState("Select a photo saved with BeReal.", bundle: .module)
     } actions: {

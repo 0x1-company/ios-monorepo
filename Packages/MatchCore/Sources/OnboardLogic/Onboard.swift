@@ -1,11 +1,11 @@
 import API
 import APIClient
-import BeRealCaptureLogic
 import BeRealSampleLogic
 import ComposableArchitecture
 import FirebaseAuth
 import GenderSettingLogic
 import InvitationLogic
+import ProfilePictureSettingLogic
 import SwiftUI
 import UserDefaultsClient
 import UsernameSettingLogic
@@ -115,21 +115,21 @@ public struct OnboardLogic {
     public enum State: Equatable {
       case gender(GenderSettingLogic.State)
       case sample(BeRealSampleLogic.State = .init())
-      case capture(BeRealCaptureLogic.State = .init())
+      case capture(ProfilePictureSettingLogic.State = .init())
       case invitation(InvitationLogic.State = .init())
     }
 
     public enum Action {
       case gender(GenderSettingLogic.Action)
       case sample(BeRealSampleLogic.Action)
-      case capture(BeRealCaptureLogic.Action)
+      case capture(ProfilePictureSettingLogic.Action)
       case invitation(InvitationLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
       Scope(state: \.gender, action: \.gender, child: GenderSettingLogic.init)
       Scope(state: \.sample, action: \.sample, child: BeRealSampleLogic.init)
-      Scope(state: \.capture, action: \.capture, child: BeRealCaptureLogic.init)
+      Scope(state: \.capture, action: \.capture, child: ProfilePictureSettingLogic.init)
       Scope(state: \.invitation, action: \.invitation, child: InvitationLogic.init)
     }
   }

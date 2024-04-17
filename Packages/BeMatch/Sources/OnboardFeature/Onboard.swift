@@ -1,9 +1,9 @@
-import BeRealCaptureFeature
 import BeRealSampleFeature
 import ComposableArchitecture
 import GenderSettingFeature
 import InvitationFeature
 import OnboardLogic
+import ProfilePictureSettingFeature
 import SwiftUI
 import UsernameSettingFeature
 
@@ -41,7 +41,7 @@ public struct OnboardView: View {
           /OnboardLogic.Path.State.capture,
           action: OnboardLogic.Path.Action.capture,
           then: { store in
-            BeRealCaptureView(store: store, nextButtonStyle: .next)
+            ProfilePictureSettingView(store: store, nextButtonStyle: .next)
           }
         )
       case .invitation:

@@ -17,7 +17,6 @@ let package = Package(
     .library(name: "BannerLogic", targets: ["BannerLogic"]),
     .library(name: "API", targets: ["API"]),
     .library(name: "APIClient", targets: ["APIClient"]),
-    .library(name: "BeRealCaptureLogic", targets: ["BeRealCaptureLogic"]),
     .library(name: "BeRealSampleLogic", targets: ["BeRealSampleLogic"]),
     .library(name: "CategoryEmptyLogic", targets: ["CategoryEmptyLogic"]),
     .library(name: "CategoryLogic", targets: ["CategoryLogic"]),
@@ -49,6 +48,7 @@ let package = Package(
     .library(name: "ProfileExplorerLogic", targets: ["ProfileExplorerLogic"]),
     .library(name: "ProfileExternalLogic", targets: ["ProfileExternalLogic"]),
     .library(name: "ProfileLogic", targets: ["ProfileLogic"]),
+    .library(name: "ProfilePictureSettingLogic", targets: ["ProfilePictureSettingLogic"]),
     .library(name: "ProfileSharedLogic", targets: ["ProfileSharedLogic"]),
     .library(name: "ReceivedLikeRouterLogic", targets: ["ReceivedLikeRouterLogic"]),
     .library(name: "ReceivedLikeSwipeLogic", targets: ["ReceivedLikeSwipeLogic"]),
@@ -119,15 +119,6 @@ let package = Package(
       .product(name: "ApolloConcurrency", package: "SDK"),
       .product(name: "Dependencies", package: "swift-dependencies"),
       .product(name: "DependenciesMacros", package: "swift-dependencies"),
-    ]),
-    .target(name: "BeRealCaptureLogic", dependencies: [
-      "APIClient",
-      "AnalyticsKeys",
-      .product(name: "TcaHelpers", package: "SDK"),
-      .product(name: "FirebaseAuthClient", package: "SDK"),
-      .product(name: "FirebaseStorageClient", package: "SDK"),
-      .product(name: "FeedbackGeneratorClient", package: "SDK"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "BeRealSampleLogic", dependencies: [
       "AnalyticsKeys",
@@ -290,10 +281,10 @@ let package = Package(
     ]),
     .target(name: "OnboardLogic", dependencies: [
       "InvitationLogic",
-      "BeRealCaptureLogic",
       "BeRealSampleLogic",
       "GenderSettingLogic",
       "UsernameSettingLogic",
+      "ProfilePictureSettingLogic",
       .product(name: "PhotosClient", package: "SDK"),
       .product(name: "UserDefaultsClient", package: "SDK"),
       .product(name: "UIApplicationClient", package: "SDK"),
@@ -303,10 +294,10 @@ let package = Package(
     ]),
     .target(name: "ProfileEditLogic", dependencies: [
       "BeRealSampleLogic",
-      "BeRealCaptureLogic",
       "GenderSettingLogic",
       "UsernameSettingLogic",
       "ShortCommentSettingLogic",
+      "ProfilePictureSettingLogic",
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "ProfileExplorerLogic", dependencies: [
@@ -319,6 +310,15 @@ let package = Package(
     .target(name: "ProfileLogic", dependencies: [
       "ProfileSharedLogic",
       "UsernameSettingLogic",
+    ]),
+    .target(name: "ProfilePictureSettingLogic", dependencies: [
+      "APIClient",
+      "AnalyticsKeys",
+      .product(name: "TcaHelpers", package: "SDK"),
+      .product(name: "FirebaseAuthClient", package: "SDK"),
+      .product(name: "FirebaseStorageClient", package: "SDK"),
+      .product(name: "FeedbackGeneratorClient", package: "SDK"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "ProfileSharedLogic", dependencies: [
       "APIClient",

@@ -14,7 +14,6 @@ let package = Package(
     .library(name: "AppFeature", targets: ["AppFeature"]),
     .library(name: "BannedFeature", targets: ["BannedFeature"]),
     .library(name: "BannerFeature", targets: ["BannerFeature"]),
-    .library(name: "BeRealCaptureFeature", targets: ["BeRealCaptureFeature"]),
     .library(name: "BeRealSampleFeature", targets: ["BeRealSampleFeature"]),
     .library(name: "CategoryEmptyFeature", targets: ["CategoryEmptyFeature"]),
     .library(name: "CategoryFeature", targets: ["CategoryFeature"]),
@@ -44,6 +43,7 @@ let package = Package(
     .library(name: "ProfileExplorerFeature", targets: ["ProfileExplorerFeature"]),
     .library(name: "ProfileExternalFeature", targets: ["ProfileExternalFeature"]),
     .library(name: "ProfileFeature", targets: ["ProfileFeature"]),
+    .library(name: "ProfilePictureSettingFeature", targets: ["ProfilePictureSettingFeature"]),
     .library(name: "ProfileSharedFeature", targets: ["ProfileSharedFeature"]),
     .library(name: "ReceivedLikeRouterFeature", targets: ["ReceivedLikeRouterFeature"]),
     .library(name: "ReceivedLikeSwipeFeature", targets: ["ReceivedLikeSwipeFeature"]),
@@ -102,16 +102,6 @@ let package = Package(
     .target(name: "BannerFeature", dependencies: [
       .product(name: "BannerLogic", package: "MatchCore"),
       "Styleguide",
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-    ]),
-    .target(name: "BeRealCaptureFeature", dependencies: [
-      .product(name: "BeRealCaptureLogic", package: "MatchCore"),
-      "Styleguide",
-      .product(name: "TcaHelpers", package: "SDK"),
-      .product(name: "FirebaseAuthClient", package: "SDK"),
-      .product(name: "FirebaseStorageClient", package: "SDK"),
-      .product(name: "FeedbackGeneratorClient", package: "SDK"),
-      .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "BeRealSampleFeature", dependencies: [
@@ -274,10 +264,10 @@ let package = Package(
     .target(name: "OnboardFeature", dependencies: [
       .product(name: "OnboardLogic", package: "MatchCore"),
       "InvitationFeature",
-      "BeRealCaptureFeature",
       "BeRealSampleFeature",
       "GenderSettingFeature",
       "UsernameSettingFeature",
+      "ProfilePictureSettingFeature",
       .product(name: "PhotosClient", package: "SDK"),
       .product(name: "UserDefaultsClient", package: "SDK"),
       .product(name: "UIApplicationClient", package: "SDK"),
@@ -288,10 +278,10 @@ let package = Package(
     .target(name: "ProfileEditFeature", dependencies: [
       .product(name: "ProfileEditLogic", package: "MatchCore"),
       "BeRealSampleFeature",
-      "BeRealCaptureFeature",
       "GenderSettingFeature",
       "UsernameSettingFeature",
       "ShortCommentSettingFeature",
+      "ProfilePictureSettingFeature",
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "ProfileExplorerFeature", dependencies: [
@@ -307,6 +297,16 @@ let package = Package(
       .product(name: "ProfileLogic", package: "MatchCore"),
       "ProfileSharedFeature",
       "UsernameSettingFeature",
+    ]),
+    .target(name: "ProfilePictureSettingFeature", dependencies: [
+      "Styleguide",
+      .product(name: "TcaHelpers", package: "SDK"),
+      .product(name: "FirebaseAuthClient", package: "SDK"),
+      .product(name: "FirebaseStorageClient", package: "SDK"),
+      .product(name: "FeedbackGeneratorClient", package: "SDK"),
+      .product(name: "ProfilePictureSettingLogic", package: "MatchCore"),
+      .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "ProfileSharedFeature", dependencies: [
       "Styleguide",
