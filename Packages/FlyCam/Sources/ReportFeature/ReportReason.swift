@@ -66,7 +66,7 @@ public struct ReportReasonLogic {
         return .none
 
       case .sendButtonTapped:
-        let input =API.CreateReportInput(
+        let input = API.CreateReportInput(
           targetUserId: state.targetUserId,
           text: state.text,
           title: state.title
