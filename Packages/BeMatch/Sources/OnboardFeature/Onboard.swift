@@ -1,6 +1,6 @@
-import BeRealSampleFeature
 import ComposableArchitecture
 import GenderSettingFeature
+import HowToMovieFeature
 import InvitationFeature
 import OnboardLogic
 import ProfilePictureSettingFeature
@@ -30,11 +30,11 @@ public struct OnboardView: View {
             GenderSettingView(store: store, nextButtonStyle: .next, canSkip: true)
           }
         )
-      case .sample:
+      case .howToMovie:
         CaseLet(
-          /OnboardLogic.Path.State.sample,
-          action: OnboardLogic.Path.Action.sample,
-          then: BeRealSampleView.init(store:)
+          /OnboardLogic.Path.State.howToMovie,
+          action: OnboardLogic.Path.Action.howToMovie,
+          then: HowToMovieView.init(store:)
         )
       case .capture:
         CaseLet(
@@ -55,10 +55,10 @@ public struct OnboardView: View {
     .tint(Color.white)
     .task { await store.send(.onTask).finish() }
     .sheet(
-      store: store.scope(state: \.$destination.sample, action: \.destination.sample)
+      store: store.scope(state: \.$destination.howToMovie, action: \.destination.howToMovie)
     ) { store in
       NavigationStack {
-        BeRealSampleView(store: store)
+        HowToMovieView(store: store)
       }
     }
   }

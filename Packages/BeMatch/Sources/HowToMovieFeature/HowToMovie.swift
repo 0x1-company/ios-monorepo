@@ -1,13 +1,13 @@
 import AVKit
-import BeRealSampleLogic
 import ComposableArchitecture
+import HowToMovieLogic
 import Styleguide
 import SwiftUI
 
-public struct BeRealSampleView: View {
-  let store: StoreOf<BeRealSampleLogic>
+public struct HowToMovieView: View {
+  let store: StoreOf<HowToMovieLogic>
 
-  public init(store: StoreOf<BeRealSampleLogic>) {
+  public init(store: StoreOf<HowToMovieLogic>) {
     self.store = store
   }
 
@@ -46,12 +46,11 @@ public struct BeRealSampleView: View {
 
 #Preview {
   NavigationStack {
-    BeRealSampleView(
+    HowToMovieView(
       store: .init(
-        initialState: BeRealSampleLogic.State(),
-        reducer: { BeRealSampleLogic() }
+        initialState: HowToMovieLogic.State(),
+        reducer: { HowToMovieLogic() }
       )
     )
   }
-  .environment(\.locale, Locale(identifier: "ja-JP"))
 }

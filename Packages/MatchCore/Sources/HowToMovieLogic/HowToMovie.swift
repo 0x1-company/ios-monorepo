@@ -4,10 +4,8 @@ import ComposableArchitecture
 import ConstantsClient
 import FeedbackGeneratorClient
 
-import SwiftUI
-
 @Reducer
-public struct BeRealSampleLogic {
+public struct HowToMovieLogic {
   public init() {}
 
   public struct State: Equatable {
@@ -38,7 +36,7 @@ public struct BeRealSampleLogic {
       switch action {
       case .onTask:
         state.player.play()
-        analytics.logScreen(screenName: "BeRealSample", of: self)
+        analytics.logScreen(screenName: "HowToMovie", of: self)
         return .none
 
       case .nextButtonTapped:

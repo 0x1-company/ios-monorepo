@@ -17,7 +17,6 @@ let package = Package(
     .library(name: "BannerLogic", targets: ["BannerLogic"]),
     .library(name: "API", targets: ["API"]),
     .library(name: "APIClient", targets: ["APIClient"]),
-    .library(name: "BeRealSampleLogic", targets: ["BeRealSampleLogic"]),
     .library(name: "CategoryEmptyLogic", targets: ["CategoryEmptyLogic"]),
     .library(name: "CategoryLogic", targets: ["CategoryLogic"]),
     .library(name: "CategoryListLogic", targets: ["CategoryListLogic"]),
@@ -30,6 +29,7 @@ let package = Package(
     .library(name: "ForceUpdateLogic", targets: ["ForceUpdateLogic"]),
     .library(name: "FreezedLogic", targets: ["FreezedLogic"]),
     .library(name: "GenderSettingLogic", targets: ["GenderSettingLogic"]),
+    .library(name: "HowToMovieLogic", targets: ["HowToMovieLogic"]),
     .library(name: "InvitationCodeLogic", targets: ["InvitationCodeLogic"]),
     .library(name: "InvitationLogic", targets: ["InvitationLogic"]),
     .library(name: "LaunchLogic", targets: ["LaunchLogic"]),
@@ -120,12 +120,6 @@ let package = Package(
       .product(name: "Dependencies", package: "swift-dependencies"),
       .product(name: "DependenciesMacros", package: "swift-dependencies"),
     ]),
-    .target(name: "BeRealSampleLogic", dependencies: [
-      "AnalyticsKeys",
-      .product(name: "UIApplicationClient", package: "SDK"),
-      .product(name: "FeedbackGeneratorClient", package: "SDK"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-    ]),
     .target(name: "CategoryEmptyLogic", dependencies: [
       "API",
       "AnalyticsKeys",
@@ -196,6 +190,12 @@ let package = Package(
     .target(name: "GenderSettingLogic", dependencies: [
       "APIClient",
       "AnalyticsKeys",
+      .product(name: "FeedbackGeneratorClient", package: "SDK"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
+    .target(name: "HowToMovieLogic", dependencies: [
+      "AnalyticsKeys",
+      .product(name: "UIApplicationClient", package: "SDK"),
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
@@ -281,7 +281,7 @@ let package = Package(
     ]),
     .target(name: "OnboardLogic", dependencies: [
       "InvitationLogic",
-      "BeRealSampleLogic",
+      "HowToMovieLogic",
       "GenderSettingLogic",
       "UsernameSettingLogic",
       "ProfilePictureSettingLogic",
@@ -293,7 +293,7 @@ let package = Package(
       .product(name: "FirebaseStorageClient", package: "SDK"),
     ]),
     .target(name: "ProfileEditLogic", dependencies: [
-      "BeRealSampleLogic",
+      "HowToMovieLogic",
       "GenderSettingLogic",
       "UsernameSettingLogic",
       "ShortCommentSettingLogic",
