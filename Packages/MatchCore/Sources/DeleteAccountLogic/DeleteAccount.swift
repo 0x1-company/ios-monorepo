@@ -17,7 +17,7 @@ public struct DeleteAccountLogic {
     public var isActivityIndicatorVisible = false
     @PresentationState public var destination: Destination.State?
     @BindingState public var otherReason = ""
-    var selectedReasons: [String] = []
+    public var selectedReasons: [String] = []
     public let reasons = [
       String(localized: "Safety or privacy conerns", bundle: .module),
       String(localized: "I want to create a new account", bundle: .module),
