@@ -4,8 +4,11 @@ import Foundation
 
 @DependencyClient
 public struct ConstantsClient {
+  public var appStoreURL: @Sendable () -> URL = { URL.currentDirectory() }
   public var appStoreForEmptyURL: @Sendable () -> URL = { URL.currentDirectory() }
   public var appStoreFemaleForEmptyURL: @Sendable () -> URL = { URL.currentDirectory() }
+  
+  public var appStoreReviewURL: @Sendable () -> URL = { URL.currentDirectory() }
 
   public var founderURL: @Sendable () -> URL = { URL.currentDirectory() }
   public var developerURL: @Sendable () -> URL = { URL.currentDirectory() }

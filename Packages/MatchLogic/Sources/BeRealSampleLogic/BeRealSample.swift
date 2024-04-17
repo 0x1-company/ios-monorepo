@@ -1,7 +1,7 @@
 import AnalyticsClient
 import AVKit
 import ComposableArchitecture
-import Constants
+import ConstantsClient
 import FeedbackGeneratorClient
 import Styleguide
 import SwiftUI
@@ -11,8 +11,13 @@ public struct BeRealSampleLogic {
   public init() {}
 
   public struct State: Equatable {
-    let player = AVPlayer(url: Constants.howToVideoURL)
-    public init() {}
+    let player: AVPlayer
+
+    public init() {
+      @Dependency(\.constants) var constants
+      let url = constants.howToVideoURL()
+      player = AVPlayer(url: url)
+    }
   }
 
   public enum Action {

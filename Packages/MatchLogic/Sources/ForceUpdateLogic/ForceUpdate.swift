@@ -1,7 +1,7 @@
 import AnalyticsClient
 import AnalyticsKeys
 import ComposableArchitecture
-import Constants
+import ConstantsClient
 import FeedbackGeneratorClient
 import Styleguide
 import SwiftUI
@@ -21,6 +21,7 @@ public struct ForceUpdateLogic {
 
   @Dependency(\.openURL) var openURL
   @Dependency(\.analytics) var analytics
+  @Dependency(\.constants) var constants
   @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   public var body: some Reducer<State, Action> {
@@ -32,9 +33,10 @@ public struct ForceUpdateLogic {
 
       case .updateButtonTapped:
         analytics.buttonClick(name: \.forceUpdate)
+        let appStoreURL = constants.appStoreURL()
         return .run { _ in
           await feedbackGenerator.impactOccurred()
-          await openURL(Constants.appStoreURL)
+          await openURL(appStoreURL)
         }
       }
     }

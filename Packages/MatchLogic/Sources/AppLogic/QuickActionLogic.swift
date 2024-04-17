@@ -1,11 +1,12 @@
 import AnalyticsClient
 import ComposableArchitecture
-import Constants
+import ConstantsClient
 
 @Reducer
 public struct QuickActionLogic {
   @Dependency(\.openURL) var openURL
   @Dependency(\.analytics) var analytics
+  @Dependency(\.constants) var constants
 
   public func reduce(
     into state: inout AppLogic.State,
@@ -31,7 +32,8 @@ public struct QuickActionLogic {
 
   private func quickAction(send: Send<AppLogic.Action>, type: String) async {
     analytics.logEvent("quick_action", ["shortcut_item_type": type])
-    guard let url = Constants.quickActionURLs[type] else { return }
+    let urls = constants.quickActionURLs()
+    guard let url = urls[type] else { return }
     await openURL(url)
   }
 }

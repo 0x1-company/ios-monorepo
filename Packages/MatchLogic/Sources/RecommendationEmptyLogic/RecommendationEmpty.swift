@@ -4,7 +4,7 @@ import AnalyticsKeys
 import API
 import APIClient
 import ComposableArchitecture
-import Constants
+import ConstantsClient
 import Styleguide
 import SwiftUI
 
@@ -18,7 +18,7 @@ public struct RecommendationEmptyLogic {
   }
 
   public struct State: Equatable {
-    var shareURL = Constants.appStoreForEmptyURL
+    var shareURL: URL
     var shareText: String {
       return String(
         localized: "I found an app to increase BeReal's friends, try it.\n\(shareURL.absoluteString)",
@@ -27,7 +27,10 @@ public struct RecommendationEmptyLogic {
     }
 
     @BindingState var isPresented = false
-    public init() {}
+    public init() {
+      @Dependency(\.constants) var constants
+      shareURL = constants.appStoreForEmptyURL()
+    }
   }
 
   public enum Action: BindableAction {
@@ -38,6 +41,7 @@ public struct RecommendationEmptyLogic {
     case binding(BindingAction<State>)
   }
 
+  @Dependency(\.constants) var constants
   @Dependency(\.analytics) var analytics
   @Dependency(\.api.currentUser) var currentUser
 
@@ -67,8 +71,8 @@ public struct RecommendationEmptyLogic {
 
       case let .currentUserResponse(.success(data)):
         state.shareURL = data.currentUser.gender == .female
-          ? Constants.appStoreFemaleForEmptyURL
-          : Constants.appStoreForEmptyURL
+          ? constants.appStoreFemaleForEmptyURL()
+          : constants.appStoreForEmptyURL()
         return .none
 
       case let .onCompletion(completion):

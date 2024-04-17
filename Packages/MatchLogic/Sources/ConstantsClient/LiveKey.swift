@@ -4,19 +4,21 @@ import Dependencies
 public extension ConstantsClient {
   static func live(
     username: String,
+    appId: String,
     appStoreForEmptyURL: URL,
     appStoreFemaleForEmptyURL: URL,
+    docsURL: URL,
     howToVideoURL: URL
   ) -> Self {
     let contactUsURL = URL(string: "https://ig.me/m/\(username)")!
     let founderURL = URL(string: "https://instagram.com/satoya__")!
     let developerURL = URL(string: "https://instagram.com/tomokisun")!
     
-    let docsURL = URL(string: "https://docs.bematch.jp")!
-    
     return ConstantsClient(
+      appStoreURL: { URL(string: "https://apps.apple.com/jp/app/id\(appId)")! },
       appStoreForEmptyURL: { appStoreForEmptyURL },
       appStoreFemaleForEmptyURL: { appStoreFemaleForEmptyURL },
+      appStoreReviewURL: { URL(string: "https://itunes.apple.com/us/app/apple-store/id\(appId)?mt=8&action=write-review")! },
       founderURL: { founderURL },
       developerURL: { developerURL },
       quickActionURLs: { [

@@ -5,7 +5,7 @@ import AnalyticsKeys
 import API
 import Build
 import ComposableArchitecture
-import Constants
+import ConstantsClient
 import FeedbackGeneratorClient
 import FirebaseAuthClient
 import ProfileEditLogic
@@ -29,7 +29,7 @@ public struct SettingsLogic {
     var bundleShortVersion: String
     var creationDate: CreationDateLogic.State?
 
-    var shareURL = Constants.appStoreForEmptyURL
+    var shareURL: URL
     var shareText: String {
       return String(
         localized: "I found an app to increase BeReal's friends, try it.\n\(shareURL.absoluteString)",
@@ -40,6 +40,9 @@ public struct SettingsLogic {
     public init() {
       @Dependency(\.build) var build
       bundleShortVersion = build.bundleShortVersion()
+      
+      @Dependency(\.constants) var constants
+      shareURL = constants.appStoreForEmptyURL()
     }
   }
 
@@ -63,6 +66,7 @@ public struct SettingsLogic {
   }
 
   @Dependency(\.openURL) var openURL
+  @Dependency(\.constants) var constants
   @Dependency(\.analytics) var analytics
   @Dependency(\.firebaseAuth) var firebaseAuth
   @Dependency(\.feedbackGenerator) var feedbackGenerator
@@ -110,7 +114,7 @@ public struct SettingsLogic {
         analytics.buttonClick(name: \.storeRate)
         return .run { _ in
           await feedbackGenerator.impactOccurred()
-          await openURL(Constants.appStoreReviewURL)
+          await openURL(constants.appStoreReviewURL())
         }
 
       case .versionButtonTapped where state.creationDate == nil:
