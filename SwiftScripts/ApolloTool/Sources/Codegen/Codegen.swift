@@ -30,16 +30,16 @@ struct Codegen: AsyncParsableCommand {
       let graphQLFolder = moduleURL.childFolderURL(folderName: "GraphQL")
 
       let codegenConfiguration = ApolloCodegenConfiguration(
-        schemaNamespace: targetName,
+        schemaNamespace: "API",
         input: ApolloCodegenConfiguration.FileInput(
           schemaPath: graphQLFolder.appendingPathComponent("schema.graphqls").path,
           operationSearchPaths: [graphQLFolder.appendingPathComponent("**/*.graphql").path]
         ),
         output: ApolloCodegenConfiguration.FileOutput(
           schemaTypes: ApolloCodegenConfiguration.SchemaTypesFileOutput(
-            path: moduleURL.childFolderURL(folderName: "Sources").childFolderURL(folderName: targetName).path,
+            path: moduleURL.childFolderURL(folderName: "Sources").childFolderURL(folderName: "API").path,
             moduleType: ApolloCodegenConfiguration.SchemaTypesFileOutput.ModuleType.embeddedInTarget(
-              name: targetName,
+              name: "API",
               accessModifier: ApolloCodegenConfiguration.AccessModifier.public
             )
           ),
