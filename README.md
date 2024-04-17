@@ -3,7 +3,7 @@
 <div align='left'>
   <img src='https://github.com/0x1-company/ios-app/actions/workflows/bematch.yml/badge.svg'>
   <img src='https://github.com/0x1-company/ios-app/actions/workflows/flycam.yml/badge.svg'>
-  <img src='https://github.com/0x1-company/ios-app/actions/workflows/sdk.yml/badge.svg'>
+  <img src='https://github.com/0x1-company/ios-app/actions/workflows/dependencies.yml/badge.svg'>
   <img src='https://github.com/0x1-company/ios-app/actions/workflows/format.yml/badge.svg'>
 </div>
 
@@ -11,7 +11,7 @@
 
 SwiftUI and the Composable Architecture enable the creation of reusable components, accelerating app release timelines.
 
-App source code, excluding the core concept, can be shared across multiple apps. This reusable code is distributed as an SDK Package, which is then integrated into various apps through swift-dependencies.
+App source code, excluding the core concept, can be shared across multiple apps. This reusable code is distributed as an Dependencies Package, which is then integrated into various apps through swift-dependencies.
 
 We also standardize and reuse the specifications and designs of key features across our app development process. This applies to both iOS and backend systems.
 

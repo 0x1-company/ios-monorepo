@@ -4,7 +4,7 @@
 import PackageDescription
 
 var package = Package(
-  name: "SDK",
+  name: "Dependencies",
   platforms: [
     .iOS(.v16),
   ],

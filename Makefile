@@ -7,7 +7,7 @@ flycam:
 	open FlyCam.xcworkspace
 
 sdk:
-	open SDK.xcworkspace
+	open Dependencies.xcworkspace
 
 clean:
 	rm -rf **/*/.build

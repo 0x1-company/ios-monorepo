@@ -8,14 +8,14 @@ on:
     paths:
       - App/FlyCam/**/*
       - Packages/FlyCam/**/*
-      - Packages/SDK/**/*
+      - Packages/Dependencies/**/*
       - .github/workflows/flycam.yml
       - Makefile
   pull_request:
     paths:
       - App/FlyCam/**/*
       - Packages/FlyCam/**/*
-      - Packages/SDK/**/*
+      - Packages/Dependencies/**/*
       - .github/workflows/flycam.yml
       - Makefile
 
