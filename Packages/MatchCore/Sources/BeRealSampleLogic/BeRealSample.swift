@@ -15,7 +15,7 @@ public struct BeRealSampleLogic {
 
     public init() {
       @Dependency(\.constants) var constants
-      let url = constants.howToVideoURL()
+      let url = constants.howToMovieURL()
       player = AVPlayer(url: url)
     }
   }
