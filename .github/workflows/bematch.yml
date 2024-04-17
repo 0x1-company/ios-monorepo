@@ -9,7 +9,7 @@ on:
       - App/BeMatch/**/*
       - Packages/BeMatch/**/*
       - Packages/MatchCore/**/*
-      - Packages/SDK/**/*
+      - Packages/Dependencies/**/*
       - .github/workflows/bematch.yml
       - Makefile
   pull_request:
@@ -17,7 +17,7 @@ on:
       - App/BeMatch/**/*
       - Packages/BeMatch/**/*
       - Packages/MatchCore/**/*
-      - Packages/SDK/**/*
+      - Packages/Dependencies/**/*
       - .github/workflows/bematch.yml
       - Makefile
 

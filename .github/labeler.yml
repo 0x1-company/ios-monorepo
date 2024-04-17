@@ -23,8 +23,8 @@ MatchCore:
     - Packages/MatchCore/**
     - MatchCore.xcworkspace/**
 
-SDK:
+Dependencies:
 - changed-files:
   - any-glob-to-any-file:
-    - Packages/SDK/**
-    - SDK.xcworkspace/**
+    - Packages/Dependencies/**
+    - Dependencies.xcworkspace/**

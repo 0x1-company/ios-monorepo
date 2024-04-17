@@ -8,7 +8,7 @@
       location = "group:App/FlyCam/Production.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Packages/SDK">
+      location = "group:Packages/Dependencies">
    </FileRef>
    <FileRef
       location = "group:Packages/FlyCam">
