@@ -3,6 +3,7 @@ import Foundation
 
 public extension ConstantsClient {
   static func live(
+    application: Application,
     username: String,
     appId: String,
     appStoreForEmptyURL: URL,
@@ -15,6 +16,7 @@ public extension ConstantsClient {
     let developerURL = URL(string: "https://instagram.com/tomokisun")!
 
     return ConstantsClient(
+      currentApplication: { application },
       appStoreURL: { URL(string: "https://apps.apple.com/jp/app/id\(appId)")! },
       appStoreForEmptyURL: { appStoreForEmptyURL },
       appStoreFemaleForEmptyURL: { appStoreFemaleForEmptyURL },

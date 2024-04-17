@@ -48,6 +48,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
         .transformDependency(\.self) {
           $0.api = .live(apolloClient: ApolloClient(build: $0.build))
           $0.constants = .live(
+            application: ConstantsClient.Application.bematch,
             username: String(localized: "bematch"),
             appId: "6473888485",
             appStoreForEmptyURL: URL(string: "https://bematch.onelink.me/nob4/ta8yroer")!,
