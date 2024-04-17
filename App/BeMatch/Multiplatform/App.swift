@@ -1,5 +1,4 @@
 import AnalyticsClient
-import ConstantsClient
 import APIClient
 import Apollo
 import ApolloAPI
@@ -8,6 +7,7 @@ import AppFeature
 import AppLogic
 import Build
 import ComposableArchitecture
+import ConstantsClient
 import FirebaseAuth
 import FirebaseAuthClient
 import FirebaseMessaging
