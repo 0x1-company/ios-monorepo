@@ -7,7 +7,7 @@ public struct DirectMessageRowLogic {
   public init() {}
 
   public struct State: Equatable, Identifiable {
-    let message: API.MessageRow
+    public let message: API.MessageRow
 
     public var id: String {
       message.id

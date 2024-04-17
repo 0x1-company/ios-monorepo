@@ -5,7 +5,7 @@ import APIClient
 import ComposableArchitecture
 import MatchedLogic
 import ReportLogic
-import Styleguide
+
 import SwiftUI
 import SwipeCardLogic
 import TcaHelpers
@@ -15,9 +15,9 @@ public struct SwipeLogic {
   public init() {}
 
   public struct State: Equatable {
-    @PresentationState var destination: Destination.State?
+    @PresentationState public var destination: Destination.State?
 
-    var rows: IdentifiedArrayOf<SwipeCardLogic.State> = []
+    public var rows: IdentifiedArrayOf<SwipeCardLogic.State> = []
 
     public init(rows: [API.SwipeCard]) {
       self.rows = IdentifiedArrayOf(

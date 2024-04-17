@@ -12,8 +12,8 @@ public struct CategoryLogic {
   public init() {}
 
   public struct State: Equatable {
-    var child = Child.State.loading
-    @PresentationState var alert: AlertState<Action.Alert>?
+    public var child = Child.State.loading
+    @PresentationState public var alert: AlertState<Action.Alert>?
     public init() {}
   }
 

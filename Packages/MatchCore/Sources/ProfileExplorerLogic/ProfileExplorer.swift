@@ -17,17 +17,17 @@ public struct ProfileExplorerLogic {
   }
 
   public struct State: Equatable {
-    let username: String
-    let targetUserId: String
+    public let username: String
+    public let targetUserId: String
 
-    @BindingState var currentTab: Tab
-    @BindingState var text = ""
+    @BindingState public var currentTab: Tab
+    @BindingState public var text = ""
 
-    var directMessage: DirectMessageLogic.State
-    var preview: ProfileExplorerPreviewLogic.State
-    @PresentationState var destination: Destination.State?
+    public var directMessage: DirectMessageLogic.State
+    public var preview: ProfileExplorerPreviewLogic.State
+    @PresentationState public var destination: Destination.State?
 
-    var isDisabled: Bool {
+    public var isDisabled: Bool {
       return text.isEmpty
     }
 

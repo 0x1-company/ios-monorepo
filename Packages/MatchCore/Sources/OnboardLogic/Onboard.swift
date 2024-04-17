@@ -16,10 +16,10 @@ public struct OnboardLogic {
 
   public struct State: Equatable {
     let user: API.UserInternal?
-    var username: UsernameSettingLogic.State
-    var path = StackState<Path.State>()
+    public var username: UsernameSettingLogic.State
+    public var path = StackState<Path.State>()
     var hasInvitationCampaign = false
-    @PresentationState var destination: Destination.State?
+    @PresentationState public var destination: Destination.State?
 
     public init(user: API.UserInternal?) {
       self.user = user

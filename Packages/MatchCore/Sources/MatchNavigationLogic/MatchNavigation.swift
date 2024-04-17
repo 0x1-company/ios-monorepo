@@ -16,10 +16,10 @@ public struct MatchNavigationLogic {
   public init() {}
 
   public struct State: Equatable {
-    var match = MatchLogic.State()
+    public var match = MatchLogic.State()
 
-    var path = StackState<Path.State>()
-    @PresentationState var destination: Destination.State?
+    public var path = StackState<Path.State>()
+    @PresentationState public var destination: Destination.State?
 
     public init() {}
   }

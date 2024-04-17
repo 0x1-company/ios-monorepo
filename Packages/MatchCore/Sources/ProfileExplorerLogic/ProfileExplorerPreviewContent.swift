@@ -4,7 +4,7 @@ import API
 import ComposableArchitecture
 import FeedbackGeneratorClient
 import ProfileSharedLogic
-import Styleguide
+
 import SwiftUI
 
 @Reducer
@@ -12,10 +12,10 @@ public struct ProfileExplorerPreviewContentLogic {
   public init() {}
 
   public struct State: Equatable {
-    let user: API.ProfileExplorerPreviewQuery.Data.UserByMatched
+    public let user: API.ProfileExplorerPreviewQuery.Data.UserByMatched
 
-    @PresentationState var confirmationDialog: ConfirmationDialogState<Action.ConfirmationDialog>?
-    var pictureSlider: PictureSliderLogic.State
+    @PresentationState public var confirmationDialog: ConfirmationDialogState<Action.ConfirmationDialog>?
+    public var pictureSlider: PictureSliderLogic.State
 
     public init(user: API.ProfileExplorerPreviewQuery.Data.UserByMatched) {
       self.user = user

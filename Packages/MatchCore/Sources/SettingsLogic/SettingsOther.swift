@@ -8,8 +8,8 @@ public struct SettingsOtherLogic {
   public init() {}
 
   public struct State: Equatable {
-    @PresentationState var confirmationDialog: ConfirmationDialogState<Action.ConfirmationDialog>?
-    @PresentationState var deleteAccount: DeleteAccountLogic.State?
+    @PresentationState public var confirmationDialog: ConfirmationDialogState<Action.ConfirmationDialog>?
+    @PresentationState public var deleteAccount: DeleteAccountLogic.State?
     public init() {}
   }
 

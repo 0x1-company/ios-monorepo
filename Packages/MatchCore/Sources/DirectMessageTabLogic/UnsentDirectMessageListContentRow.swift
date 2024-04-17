@@ -1,7 +1,7 @@
 import API
 
 import ComposableArchitecture
-import Styleguide
+
 import SwiftUI
 
 @Reducer
@@ -10,11 +10,11 @@ public struct UnsentDirectMessageListContentRowLogic {
 
   public struct State: Equatable, Identifiable {
     public let id: String
-    let createdAt: API.Date
+    public let createdAt: API.Date
     let matchId: String
-    var isRead: Bool
-    let username: String
-    let imageUrl: String
+    public var isRead: Bool
+    public let username: String
+    public let imageUrl: String
 
     init(match: API.UnsentDirectMessageListContentRow) {
       id = match.targetUser.id

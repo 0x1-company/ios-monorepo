@@ -6,8 +6,8 @@ public struct CreationDateLogic {
   public init() {}
 
   public struct State: Equatable {
-    let creationDate: Date
-    var creationDateString = ""
+    public let creationDate: Date
+    public var creationDateString = ""
 
     public init(creationDate: Date) {
       self.creationDate = creationDate

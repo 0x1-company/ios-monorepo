@@ -1,4 +1,0 @@
-fragment NextPagination on PageInfo {
-  hasNextPage
-  endCursor
-}

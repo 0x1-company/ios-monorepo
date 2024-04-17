@@ -20,22 +20,34 @@ public struct SettingsLogic {
   public struct CompletionWithItems: Equatable {
     public let activityType: UIActivity.ActivityType?
     public let result: Bool
+
+    public init(activityType: UIActivity.ActivityType?, result: Bool) {
+      self.activityType = activityType
+      self.result = result
+    }
   }
 
   public struct State: Equatable {
-    @PresentationState var destination: Destination.State?
-    @BindingState var isSharePresented = false
+    @PresentationState public var destination: Destination.State?
+    @BindingState public var isSharePresented = false
 
-    var bundleShortVersion: String
-    var creationDate: CreationDateLogic.State?
+    public var bundleShortVersion: String
+    public var creationDate: CreationDateLogic.State?
 
-    var shareURL: URL
-    var shareText: String {
+    public var shareURL: URL
+    public var shareText: String {
       return String(
         localized: "I found an app to increase BeReal's friends, try it.\n\(shareURL.absoluteString)",
         bundle: .module
       )
     }
+
+    public let faqURL: URL
+    public let contactUsURL: URL
+    public let instagramURL: URL
+    public let tiktokURL: URL
+    public let termsOfUseURL: URL
+    public let privacyPolicyURL: URL
 
     public init() {
       @Dependency(\.build) var build
@@ -43,6 +55,12 @@ public struct SettingsLogic {
 
       @Dependency(\.constants) var constants
       shareURL = constants.appStoreForEmptyURL()
+      faqURL = constants.faqURL()
+      contactUsURL = constants.contactUsURL()
+      instagramURL = constants.instagramURL()
+      tiktokURL = constants.tiktokURL()
+      termsOfUseURL = constants.termsOfUseURL()
+      privacyPolicyURL = constants.privacyPolicyURL()
     }
   }
 

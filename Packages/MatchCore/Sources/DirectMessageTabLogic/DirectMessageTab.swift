@@ -14,10 +14,10 @@ public struct DirectMessageTabLogic {
   public init() {}
 
   public struct State: Equatable {
-    @PresentationState var destination: Destination.State?
-    var banners: IdentifiedArrayOf<BannerLogic.State> = []
-    var unsent: UnsentDirectMessageListLogic.State? = .loading
-    var messages: DirectMessageListLogic.State? = .loading
+    @PresentationState public var destination: Destination.State?
+    public var banners: IdentifiedArrayOf<BannerLogic.State> = []
+    public var unsent: UnsentDirectMessageListLogic.State? = .loading
+    public var messages: DirectMessageListLogic.State? = .loading
     public init() {}
   }
 

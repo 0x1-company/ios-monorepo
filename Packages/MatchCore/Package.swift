@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-  name: "MatchLogic",
+  name: "MatchCore",
   defaultLocalization: "en",
   platforms: [
     .iOS("16.4"),
@@ -60,7 +60,6 @@ let package = Package(
     .library(name: "SelectControl", targets: ["SelectControl"]),
     .library(name: "SettingsLogic", targets: ["SettingsLogic"]),
     .library(name: "ShortCommentSettingLogic", targets: ["ShortCommentSettingLogic"]),
-    .library(name: "Styleguide", targets: ["Styleguide"]),
     .library(name: "SwipeCardLogic", targets: ["SwipeCardLogic"]),
     .library(name: "SwipeLogic", targets: ["SwipeLogic"]),
     .library(name: "TutorialLogic", targets: ["TutorialLogic"]),
@@ -104,13 +103,11 @@ let package = Package(
       .product(name: "FirebaseCrashlyticsClient", package: "SDK"),
     ]),
     .target(name: "BannedLogic", dependencies: [
-      "Styleguide",
       "AnalyticsKeys",
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "BannerLogic", dependencies: [
       "API",
-      "Styleguide",
       "AnalyticsKeys",
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
@@ -124,26 +121,23 @@ let package = Package(
       .product(name: "DependenciesMacros", package: "swift-dependencies"),
     ]),
     .target(name: "BeRealCaptureLogic", dependencies: [
-      "Styleguide",
       "APIClient",
-      .product(name: "TcaHelpers", package: "SDK"),
       "AnalyticsKeys",
+      .product(name: "TcaHelpers", package: "SDK"),
       .product(name: "FirebaseAuthClient", package: "SDK"),
       .product(name: "FirebaseStorageClient", package: "SDK"),
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "BeRealSampleLogic", dependencies: [
-      "Styleguide",
       "AnalyticsKeys",
       .product(name: "UIApplicationClient", package: "SDK"),
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "CategoryEmptyLogic", dependencies: [
-      "AnalyticsKeys",
-      "Styleguide",
       "API",
+      "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
@@ -153,7 +147,6 @@ let package = Package(
     ]),
     .target(name: "CategoryListLogic", dependencies: [
       "API",
-      "Styleguide",
       "AnalyticsKeys",
       "MembershipLogic",
       "CategorySwipeLogic",
@@ -169,7 +162,6 @@ let package = Package(
       .product(name: "DependenciesMacros", package: "swift-dependencies"),
     ]),
     .target(name: "DeleteAccountLogic", dependencies: [
-      "Styleguide",
       "APIClient",
       "AnalyticsKeys",
       .product(name: "FirebaseAuthClient", package: "SDK"),
@@ -188,11 +180,9 @@ let package = Package(
       "DirectMessageLogic",
       "ProfileExplorerLogic",
       "ReceivedLikeRouterLogic",
-
     ]),
     .target(name: "ExplorerLogic", dependencies: [
       "API",
-      "Styleguide",
       "SwipeLogic",
       "AnalyticsKeys",
       "MembershipLogic",
@@ -201,34 +191,29 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "ForceUpdateLogic", dependencies: [
-      "Styleguide",
       "ConstantsClient",
       "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "FreezedLogic", dependencies: [
-      "Styleguide",
       "ConstantsClient",
       "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "GenderSettingLogic", dependencies: [
-      "Styleguide",
       "APIClient",
       "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "InvitationCodeLogic", dependencies: [
-      "Styleguide",
       "APIClient",
       "AnalyticsKeys",
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "InvitationLogic", dependencies: [
-      "Styleguide",
       "APIClient",
       "AnalyticsKeys",
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
@@ -237,21 +222,18 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "MaintenanceLogic", dependencies: [
-      "Styleguide",
       "AnalyticsKeys",
       "ConstantsClient",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "MatchedLogic", dependencies: [
-      "Styleguide",
       "APIClient",
       "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "MatchEmptyLogic", dependencies: [
-      "Styleguide",
       "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
@@ -274,7 +256,6 @@ let package = Package(
       "ReceivedLikeSwipeLogic",
     ]),
     .target(name: "MembershipLogic", dependencies: [
-      "Styleguide",
       "AnalyticsKeys",
       "APIClient",
       .product(name: "Build", package: "SDK"),
@@ -340,11 +321,10 @@ let package = Package(
       "UsernameSettingLogic",
     ]),
     .target(name: "ProfileSharedLogic", dependencies: [
-      "Styleguide",
       "APIClient",
+      "ReportLogic",
       "SelectControl",
       "AnalyticsKeys",
-      "ReportLogic",
       "ConstantsClient",
       "DirectMessageLogic",
     ]),
@@ -356,7 +336,6 @@ let package = Package(
       "SwipeLogic",
     ]),
     .target(name: "RecommendationEmptyLogic", dependencies: [
-      "Styleguide",
       "APIClient",
       "AnalyticsKeys",
       "ConstantsClient",
@@ -373,7 +352,6 @@ let package = Package(
       .product(name: "UserNotificationClient", package: "SDK"),
     ]),
     .target(name: "RecommendationLoadingLogic", dependencies: [
-      "Styleguide",
       "AnalyticsKeys",
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
@@ -381,7 +359,6 @@ let package = Package(
       "SwipeLogic",
     ]),
     .target(name: "ReportLogic", dependencies: [
-      "Styleguide",
       "APIClient",
       "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
@@ -401,35 +378,29 @@ let package = Package(
       .product(name: "FirebaseAuthClient", package: "SDK"),
     ]),
     .target(name: "ShortCommentSettingLogic", dependencies: [
-      "Styleguide",
       "APIClient",
       "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
-    .target(name: "Styleguide"),
     .target(name: "SwipeCardLogic", dependencies: [
       "API",
       "SelectControl",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
-
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "SwipeLogic", dependencies: [
-      "Styleguide",
       "ReportLogic",
       "MatchedLogic",
       "SwipeCardLogic",
       .product(name: "TcaHelpers", package: "SDK"),
     ]),
     .target(name: "TutorialLogic", dependencies: [
-      "Styleguide",
       "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "UsernameSettingLogic", dependencies: [
-      "Styleguide",
       "APIClient",
       "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),

@@ -3,7 +3,7 @@ import API
 import APIClient
 import ApolloConcurrency
 import ComposableArchitecture
-import Styleguide
+
 import SwiftUI
 
 @Reducer
@@ -11,17 +11,17 @@ public struct ShortCommentSettingLogic {
   public init() {}
 
   public struct State: Equatable {
-    @BindingState var shortComment: String
-    @BindingState var focus: Focus?
-    @PresentationState var alert: AlertState<Action.Alert>?
+    @BindingState public var shortComment: String
+    @BindingState public var focus: Focus?
+    @PresentationState public var alert: AlertState<Action.Alert>?
 
-    var isActivityIndicatorVisible = false
+    public var isActivityIndicatorVisible = false
 
     public init(shortComment: String?) {
       self.shortComment = shortComment ?? ""
     }
 
-    enum Focus: Hashable {
+    public enum Focus: Hashable {
       case shortComment
     }
   }

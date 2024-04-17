@@ -35,12 +35,12 @@ public struct AchievementContentLogic {
   public init() {}
 
   public struct State: Equatable {
-    let displayMatchCount: String
-    let displayVisitCount: String
-    let displayFeedbackCount: String
-    let displayConsecutiveLoginDayCount: String
+    public let displayMatchCount: String
+    public let displayVisitCount: String
+    public let displayFeedbackCount: String
+    public let displayConsecutiveLoginDayCount: String
 
-    var history: AchievementHistoryWidgetLogic.State?
+    public var history: AchievementHistoryWidgetLogic.State?
 
     public init(
       achievement: API.AchievementQuery.Data.Achievement,

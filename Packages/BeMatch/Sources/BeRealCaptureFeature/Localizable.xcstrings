@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "Delete a photo" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -12,6 +13,7 @@
       }
     },
     "Edit Profile" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -32,6 +34,7 @@
       }
     },
     "OK" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -42,6 +45,7 @@
       }
     },
     "Please select at least 3 saved photos." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {

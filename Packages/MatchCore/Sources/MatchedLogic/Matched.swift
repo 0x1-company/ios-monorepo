@@ -3,7 +3,7 @@ import AnalyticsKeys
 import ComposableArchitecture
 import FeedbackGeneratorClient
 import StoreKit
-import Styleguide
+
 import SwiftUI
 
 @Reducer
@@ -11,7 +11,7 @@ public struct MatchedLogic {
   public init() {}
 
   public struct State: Equatable {
-    let username: String
+    public let username: String
     public init(username: String) {
       self.username = username
     }

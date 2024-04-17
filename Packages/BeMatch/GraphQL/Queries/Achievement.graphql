@@ -1,9 +1,0 @@
-query Achievement {
-  achievement {
-    id
-    visitCount
-    matchCount
-    feedbackCount
-    consecutiveLoginDayCount
-  }
-}

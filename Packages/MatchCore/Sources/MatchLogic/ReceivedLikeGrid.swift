@@ -1,7 +1,7 @@
 import API
 
 import ComposableArchitecture
-import Styleguide
+
 import SwiftUI
 
 @Reducer
@@ -9,9 +9,9 @@ public struct ReceivedLikeGridLogic {
   public init() {}
 
   public struct State: Equatable {
-    let imageUrl: String
-    let count: Int
-    var receivedCount: String {
+    public let imageUrl: String
+    public let count: Int
+    public var receivedCount: String {
       return count > 99 ? "99+" : count.description
     }
 

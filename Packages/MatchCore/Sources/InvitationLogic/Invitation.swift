@@ -2,7 +2,7 @@ import AnalyticsClient
 import API
 import APIClient
 import ComposableArchitecture
-import Styleguide
+
 import SwiftUI
 
 @Reducer
@@ -10,9 +10,9 @@ public struct InvitationLogic {
   public init() {}
 
   public struct State: Equatable {
-    var isDisabled = true
-    var isActivityIndicatorVisible = false
-    @BindingState var code = String()
+    public var isDisabled = true
+    public var isActivityIndicatorVisible = false
+    @BindingState public var code = String()
 
     public init() {}
   }

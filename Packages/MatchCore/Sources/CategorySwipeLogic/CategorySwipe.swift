@@ -2,10 +2,10 @@ import AnalyticsClient
 import API
 import APIClient
 import CategoryEmptyLogic
+import ColorHex
 import ComposableArchitecture
 import MatchedLogic
 import ReportLogic
-import Styleguide
 import SwiftUI
 import SwipeCardLogic
 import SwipeLogic
@@ -16,9 +16,9 @@ public struct CategorySwipeLogic {
 
   public struct State: Equatable {
     let id: String
-    let title: String
-    let colors: [Color]
-    var child: Child.State
+    public let title: String
+    public let colors: [Color]
+    public var child: Child.State
 
     public init(userCategory: API.UserCategoriesQuery.Data.UserCategory) {
       id = userCategory.id

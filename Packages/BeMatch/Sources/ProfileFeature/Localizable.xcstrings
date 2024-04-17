@@ -5,6 +5,7 @@
 
     },
     "Edit username" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -15,6 +16,7 @@
       }
     },
     "Jump to BeReal" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -25,6 +27,7 @@
       }
     },
     "Select BeReal" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {

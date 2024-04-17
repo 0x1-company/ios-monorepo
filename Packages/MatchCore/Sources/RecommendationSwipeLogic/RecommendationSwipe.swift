@@ -9,7 +9,7 @@ public struct RecommendationSwipeLogic {
   public init() {}
 
   public struct State: Equatable {
-    var swipe: SwipeLogic.State
+    public var swipe: SwipeLogic.State
 
     public init(rows: [API.SwipeCard]) {
       swipe = SwipeLogic.State(rows: rows)

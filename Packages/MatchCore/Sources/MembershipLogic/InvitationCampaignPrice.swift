@@ -6,8 +6,8 @@ public struct InvitationCampaignPriceLogic {
   public init() {}
 
   public struct State: Equatable {
-    let displayDuration: String
-    let currencyCode: String
+    public let displayDuration: String
+    public let currencyCode: String
 
     public init(displayDuration: String, currencyCode: String) {
       self.displayDuration = displayDuration

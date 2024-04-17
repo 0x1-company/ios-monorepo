@@ -1,57 +1,8 @@
-import BeMatch
 import CachedAsyncImage
 import ComposableArchitecture
-import FeedbackGeneratorClient
+import ProfileSharedLogic
 import SelectControl
 import SwiftUI
-
-@Reducer
-public struct PictureSliderLogic {
-  public init() {}
-
-  public struct State: Equatable {
-    let data: BeMatch.PictureSlider
-    @BindingState var selection: BeMatch.PictureSlider.Image
-
-    public init(data: BeMatch.PictureSlider) {
-      self.data = data
-      selection = data.images.first!
-    }
-  }
-
-  public enum Action: BindableAction {
-    case backButtonTapped
-    case forwardButtonTapped
-    case binding(BindingAction<State>)
-  }
-
-  @Dependency(\.feedbackGenerator) var feedbackGenerator
-
-  public var body: some Reducer<State, Action> {
-    BindingReducer()
-    Reduce<State, Action> { state, action in
-      switch action {
-      case .backButtonTapped:
-        if let index = state.data.images.firstIndex(of: state.selection), index > 0 {
-          state.selection = state.data.images[index - 1]
-        }
-        return .run { _ in
-          await feedbackGenerator.impactOccurred()
-        }
-
-      case .forwardButtonTapped:
-        if let index = state.data.images.firstIndex(of: state.selection), index < state.data.images.count - 1 {
-          state.selection = state.data.images[index + 1]
-        }
-        return .run { _ in
-          await feedbackGenerator.impactOccurred()
-        }
-      default:
-        return .none
-      }
-    }
-  }
-}
 
 public struct PictureSliderView: View {
   @Environment(\.displayScale) var displayScale

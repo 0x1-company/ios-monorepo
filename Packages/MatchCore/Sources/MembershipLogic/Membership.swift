@@ -17,22 +17,27 @@ public struct MembershipLogic {
   public struct CompletionWithItems: Equatable {
     public let activityType: UIActivity.ActivityType?
     public let result: Bool
+
+    public init(activityType: UIActivity.ActivityType?, result: Bool) {
+      self.activityType = activityType
+      self.result = result
+    }
   }
 
   public struct State: Equatable {
-    var child = Child.State.loading
-    var isActivityIndicatorVisible = false
+    public var child = Child.State.loading
+    public var isActivityIndicatorVisible = false
 
-    let bematchProOneWeekId: String
+    public let bematchProOneWeekId: String
     var appAccountToken: UUID?
     var product: StoreKit.Product?
 
-    var invitationCode = ""
+    public var invitationCode = ""
 
-    @BindingState var isPresented = false
-    @PresentationState var destination: Destination.State?
+    @BindingState public var isPresented = false
+    @PresentationState public var destination: Destination.State?
 
-    var shareText = ""
+    public var shareText = ""
 
     public init() {
       @Dependency(\.build) var build

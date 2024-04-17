@@ -8,11 +8,11 @@ public struct InvitationCampaignLogic {
   public init() {}
 
   public struct State: Equatable {
-    let quantity: Int
-    let durationWeeks: Int
-    let specialOfferDisplayPrice: String
+    public let quantity: Int
+    public let durationWeeks: Int
+    public let specialOfferDisplayPrice: String
 
-    var totalBenefit = 0
+    public var totalBenefit = 0
 
     public init(
       quantity: Int,

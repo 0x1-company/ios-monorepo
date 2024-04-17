@@ -11,9 +11,6 @@
         }
       }
     },
-    "InvitationCode" : {
-
-    },
     "Share Invitation Code" : {
       "extractionState" : "stale",
       "localizations" : {

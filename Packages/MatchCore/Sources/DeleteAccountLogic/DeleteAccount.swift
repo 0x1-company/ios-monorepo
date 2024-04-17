@@ -6,7 +6,7 @@ import ApolloConcurrency
 import ComposableArchitecture
 import FeedbackGeneratorClient
 import FirebaseAuthClient
-import Styleguide
+
 import SwiftUI
 
 @Reducer
@@ -14,11 +14,11 @@ public struct DeleteAccountLogic {
   public init() {}
 
   public struct State: Equatable {
-    var isActivityIndicatorVisible = false
-    @PresentationState var destination: Destination.State?
-    @BindingState var otherReason = ""
-    var selectedReasons: [String] = []
-    let reasons = [
+    public var isActivityIndicatorVisible = false
+    @PresentationState public var destination: Destination.State?
+    @BindingState public var otherReason = ""
+    public var selectedReasons: [String] = []
+    public let reasons = [
       String(localized: "Safety or privacy conerns", bundle: .module),
       String(localized: "I want to create a new account", bundle: .module),
       String(localized: "I don't use BeMatch anymore", bundle: .module),

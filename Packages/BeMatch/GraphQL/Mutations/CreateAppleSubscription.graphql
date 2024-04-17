@@ -1,3 +1,0 @@
-mutation CreateAppleSubscription($input: CreateAppleSubscriptionInput!) {
-  createAppleSubscription(input: $input)
-}

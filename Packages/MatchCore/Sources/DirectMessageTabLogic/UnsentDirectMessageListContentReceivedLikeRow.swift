@@ -1,7 +1,5 @@
 import API
-
 import ComposableArchitecture
-import Styleguide
 import SwiftUI
 
 @Reducer
@@ -9,8 +7,8 @@ public struct UnsentDirectMessageListContentReceivedLikeRowLogic {
   public init() {}
 
   public struct State: Equatable {
-    let imageUrl: String
-    let displayCount: String
+    public let imageUrl: String
+    public let displayCount: String
 
     init(receivedLike: API.DirectMessageTabQuery.Data.ReceivedLike) {
       imageUrl = receivedLike.latestUser?.images.first?.imageUrl ?? ""

@@ -12,8 +12,8 @@ public struct CategoryListLogic {
   public init() {}
 
   public struct State: Equatable {
-    var rows: IdentifiedArrayOf<CategorySectionLogic.State> = []
-    @PresentationState var destination: Destination.State?
+    public var rows: IdentifiedArrayOf<CategorySectionLogic.State> = []
+    @PresentationState public var destination: Destination.State?
 
     public init(uniqueElements: [CategorySectionLogic.State]) {
       rows = IdentifiedArrayOf(uniqueElements: uniqueElements)

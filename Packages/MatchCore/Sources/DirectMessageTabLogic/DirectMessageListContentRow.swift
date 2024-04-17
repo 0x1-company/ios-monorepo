@@ -1,7 +1,5 @@
 import API
-
 import ComposableArchitecture
-import Styleguide
 import SwiftUI
 
 @Reducer
@@ -12,13 +10,13 @@ public struct DirectMessageListContentRowLogic {
     public let id: String
     public let targetUserId: String
     let updatedAt: API.Date
-    let username: String
-    let imageUrl: String
-    let text: String
-    let isAuthor: Bool
-    var isRead: Bool
+    public let username: String
+    public let imageUrl: String
+    public let text: String
+    public let isAuthor: Bool
+    public var isRead: Bool
 
-    var textForegroundColor: Color {
+    public var textForegroundColor: Color {
       !isAuthor && !isRead ? Color.primary : Color.secondary
     }
 
