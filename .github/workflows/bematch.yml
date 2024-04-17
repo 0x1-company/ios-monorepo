@@ -8,6 +8,7 @@ on:
     paths:
       - App/BeMatch/**/*
       - Packages/BeMatch/**/*
+      - Packages/MatchCore/**/*
       - Packages/SDK/**/*
       - .github/workflows/bematch.yml
       - Makefile
@@ -15,6 +16,7 @@ on:
     paths:
       - App/BeMatch/**/*
       - Packages/BeMatch/**/*
+      - Packages/MatchCore/**/*
       - Packages/SDK/**/*
       - .github/workflows/bematch.yml
       - Makefile

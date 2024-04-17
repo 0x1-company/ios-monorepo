@@ -17,6 +17,12 @@ FlyCam:
     - Packages/FlyCam/**
     - FlyCam.xcworkspace/**
 
+MatchCore:
+- changed-files:
+  - any-glob-to-any-file:
+    - Packages/MatchCore/**
+    - MatchCore.xcworkspace/**
+
 SDK:
 - changed-files:
   - any-glob-to-any-file:
