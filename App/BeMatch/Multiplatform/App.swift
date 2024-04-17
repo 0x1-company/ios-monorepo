@@ -54,7 +54,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
             appStoreForEmptyURL: URL(string: "https://bematch.onelink.me/nob4/ta8yroer")!,
             appStoreFemaleForEmptyURL: URL(string: "https://bematch.onelink.me/nob4/wgr0m0ga")!,
             docsURL: URL(string: "https://docs.bematch.jp")!,
-            howToVideoURL: URL(string: "https://storage.googleapis.com/bematch-production.appspot.com/public/how-to.mov")!
+            howToMovieURL: URL(string: "https://storage.googleapis.com/bematch-production.appspot.com/public/how-to.mov")!
           )
         }
     }

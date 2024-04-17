@@ -9,7 +9,7 @@ public extension ConstantsClient {
     appStoreForEmptyURL: URL,
     appStoreFemaleForEmptyURL: URL,
     docsURL: URL,
-    howToVideoURL: URL
+    howToMovieURL: URL
   ) -> Self {
     let contactUsURL = URL(string: "https://ig.me/m/\(username)")!
     let founderURL = URL(string: "https://instagram.com/satoya__")!
@@ -35,7 +35,7 @@ public extension ConstantsClient {
       privacyPolicyURL: { URL(string: "\(docsURL)/privacy-policy")! },
       termsOfUseURL: { URL(string: "\(docsURL)/terms-of-use")! },
       contactUsURL: { contactUsURL },
-      howToVideoURL: { howToVideoURL }
+      howToMovieURL: { howToMovieURL }
     )
   }
 }

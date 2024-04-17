@@ -26,7 +26,7 @@ public struct ConstantsClient {
   public var termsOfUseURL: @Sendable () -> URL = { URL.currentDirectory() }
   public var contactUsURL: @Sendable () -> URL = { URL.currentDirectory() }
 
-  public var howToVideoURL: @Sendable () -> URL = { URL.currentDirectory() }
+  public var howToMovieURL: @Sendable () -> URL = { URL.currentDirectory() }
 }
 
 public extension ConstantsClient {
