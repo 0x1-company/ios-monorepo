@@ -1,5 +1,5 @@
 import PhotosUI
-import Styleguide
+
 import SwiftUI
 
 public struct PhotoGrid: View {

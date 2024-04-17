@@ -2,7 +2,6 @@ import AnalyticsClient
 import AnalyticsKeys
 import API
 import ComposableArchitecture
-import Styleguide
 import SwiftUI
 
 @Reducer

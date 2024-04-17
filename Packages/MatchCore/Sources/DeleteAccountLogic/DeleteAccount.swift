@@ -6,7 +6,7 @@ import ApolloConcurrency
 import ComposableArchitecture
 import FeedbackGeneratorClient
 import FirebaseAuthClient
-import Styleguide
+
 import SwiftUI
 
 @Reducer

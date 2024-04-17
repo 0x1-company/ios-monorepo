@@ -11,6 +11,9 @@
       location = "group:Packages/SDK">
    </FileRef>
    <FileRef
+      location = "group:Packages/MatchCore">
+   </FileRef>
+   <FileRef
       location = "group:Packages/BeMatch">
    </FileRef>
 </Workspace>
