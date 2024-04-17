@@ -1,8 +1,8 @@
 import AnalyticsClient
+import API
+import APIClient
 import ComposableArchitecture
 import FeedbackGeneratorClient
-import FlyCam
-import FlyCamClient
 import Styleguide
 import SwiftUI
 
@@ -23,11 +23,11 @@ public struct DisplayNameEditLogic {
     case closeButtonTapped
     case saveButtonTapped
     case binding(BindingAction<State>)
-    case currentUserResponse(Result<FlyCam.CurrentUserQuery.Data, Error>)
-    case updateDisplayNameResponse(Result<FlyCam.UpdateDisplayNameMutation.Data, Error>)
+    case currentUserResponse(Result<API.CurrentUserQuery.Data, Error>)
+    case updateDisplayNameResponse(Result<API.UpdateDisplayNameMutation.Data, Error>)
   }
 
-  @Dependency(\.flycam) var flycam
+  @Dependency(\.api) var api
   @Dependency(\.dismiss) var dismiss
   @Dependency(\.analytics) var analytics
   @Dependency(\.feedbackGenerator) var feedbackGenerator
@@ -39,7 +39,7 @@ public struct DisplayNameEditLogic {
       case .onTask:
         analytics.logScreen(screenName: "DisplayNameEdit", of: self)
         return .run { send in
-          for try await data in flycam.currentUser() {
+          for try await data in api.currentUser() {
             await send(.currentUserResponse(.success(data)))
           }
         } catch: { error, send in
@@ -54,11 +54,11 @@ public struct DisplayNameEditLogic {
 
       case .saveButtonTapped:
         state.isActivityIndicatorVisible = true
-        let input = FlyCam.UpdateDisplayNameInput(displayName: state.displayName)
+        let input = API.UpdateDisplayNameInput(displayName: state.displayName)
         return .merge(
           .run(operation: { send in
             await send(.updateDisplayNameResponse(Result {
-              try await flycam.updateDisplayName(input)
+              try await api.updateDisplayName(input)
             }))
           }),
           .run(operation: { _ in

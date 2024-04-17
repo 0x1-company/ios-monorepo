@@ -1,9 +1,9 @@
 import AnalyticsClient
+import API
 import ComposableArchitecture
 import FirebaseAuthClient
 import FirebaseCoreClient
 import FirebaseMessagingClient
-import FlyCam
 import UIApplicationClient
 import UIKit
 import UserNotificationClient
@@ -19,7 +19,7 @@ public struct AppDelegateLogic {
     case configurationForConnecting(UIApplicationShortcutItem?)
     case userNotifications(UserNotificationClient.DelegateEvent)
     case messaging(FirebaseMessagingClient.DelegateAction)
-    case createFirebaseRegistrationTokenResponse(Result<FlyCam.CreateFirebaseRegistrationTokenMutation.Data, Error>)
+    case createFirebaseRegistrationTokenResponse(Result<API.CreateFirebaseRegistrationTokenMutation.Data, Error>)
     case delegate(Delegate)
 
     public enum Delegate: Equatable {
@@ -41,7 +41,7 @@ public struct AppDelegateLogic {
   @Dependency(\.firebaseAuth) var firebaseAuth
   @Dependency(\.userNotifications) var userNotifications
   @Dependency(\.firebaseMessaging) var firebaseMessaging
-  @Dependency(\.flycam.createFirebaseRegistrationToken) var createFirebaseRegistrationToken
+  @Dependency(\.api.createFirebaseRegistrationToken) var createFirebaseRegistrationToken
   @Dependency(\.application.registerForRemoteNotifications) var registerForRemoteNotifications
 
   public func reduce(into state: inout State, action: Action) -> Effect<Action> {
@@ -111,7 +111,7 @@ public struct AppDelegateLogic {
   func createFirebaseRegistrationTokenRequest(send: Send<Action>) async {
     do {
       let token = try await firebaseMessaging.token()
-      let input = FlyCam.CreateFirebaseRegistrationTokenInput(token: token)
+      let input = API.CreateFirebaseRegistrationTokenInput(token: token)
       await send(.createFirebaseRegistrationTokenResponse(Result {
         try await createFirebaseRegistrationToken(input)
       }))

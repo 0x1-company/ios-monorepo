@@ -1,7 +1,7 @@
+import API
 import AVKit
 import AVPlayerNotificationClient
 import ComposableArchitecture
-import FlyCam
 import SwiftUI
 
 @Reducer
@@ -16,7 +16,7 @@ public struct RankingRowLogic {
 
     let player: AVPlayer
 
-    public init(state: EnumeratedSequence<[FlyCam.RankingRow]>.Iterator.Element) {
+    public init(state: EnumeratedSequence<[API.RankingRow]>.Iterator.Element) {
       id = state.element.id
       rank = state.offset + 1
       altitude = state.element.altitude

@@ -1,5 +1,5 @@
+import API
 import ComposableArchitecture
-import FlyCam
 import SwiftUI
 
 @Reducer
@@ -7,13 +7,13 @@ public struct BannerCardLogic {
   public init() {}
 
   public struct State: Equatable, Identifiable {
-    let banner: FlyCam.BannerCard
+    let banner: API.BannerCard
 
     public var id: String {
       banner.id
     }
 
-    public init(banner: FlyCam.BannerCard) {
+    public init(banner: API.BannerCard) {
       self.banner = banner
     }
   }
@@ -68,7 +68,7 @@ public struct BannerCardView: View {
   BannerCardView(
     store: .init(
       initialState: BannerCardLogic.State(
-        banner: FlyCam.BannerCard(
+        banner: API.BannerCard(
           _dataDict: DataDict(
             data: [
               "id": "id",
