@@ -4,6 +4,8 @@ import Foundation
 
 @DependencyClient
 public struct ConstantsClient {
+  public var currentApplication: @Sendable () -> Application = { Application.bematch }
+
   public var appStoreURL: @Sendable () -> URL = { URL.currentDirectory() }
   public var appStoreForEmptyURL: @Sendable () -> URL = { URL.currentDirectory() }
   public var appStoreFemaleForEmptyURL: @Sendable () -> URL = { URL.currentDirectory() }
@@ -25,4 +27,11 @@ public struct ConstantsClient {
   public var contactUsURL: @Sendable () -> URL = { URL.currentDirectory() }
 
   public var howToVideoURL: @Sendable () -> URL = { URL.currentDirectory() }
+}
+
+public extension ConstantsClient {
+  enum Application: Equatable {
+    case bematch
+    case locketmatch
+  }
 }
