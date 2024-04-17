@@ -1,60 +1,7 @@
-import AnalyticsClient
-import BeMatch
-import BeMatchClient
 import ComposableArchitecture
+import InvitationCodeLogic
 import Styleguide
 import SwiftUI
-
-@Reducer
-public struct InvitationCodeLogic {
-  public init() {}
-
-  public struct State: Equatable {
-    var code = ""
-
-    public init() {}
-  }
-
-  public enum Action {
-    case onTask
-    case shareInvitationCodeButtonTapped
-    case invitationCodeResponse(Result<BeMatch.InvitationCodeQuery.Data, Error>)
-  }
-
-  @Dependency(\.bematch) var bematch
-  @Dependency(\.analytics) var analytics
-
-  enum Cancel {
-    case invitationCode
-  }
-
-  public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { state, action in
-      switch action {
-      case .onTask:
-        analytics.logScreen(screenName: "InvitationCode", of: self)
-        return .run { send in
-          for try await data in bematch.invitationCode() {
-            await send(.invitationCodeResponse(.success(data)))
-          }
-        } catch: { error, send in
-          await send(.invitationCodeResponse(.failure(error)))
-        }
-        .cancellable(id: Cancel.invitationCode, cancelInFlight: true)
-
-      case .shareInvitationCodeButtonTapped:
-        return .none
-
-      case let .invitationCodeResponse(.success(data)):
-        state.code = data.invitationCode.code
-        return .none
-
-      default:
-        return .none
-      }
-    }
-  }
-}
 
 public struct InvitationCodeView: View {
   let store: StoreOf<InvitationCodeLogic>

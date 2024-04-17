@@ -1,8 +1,8 @@
-import BeMatch
+import API
 import SwiftUI
 
 struct ShortCommentStatus: View {
-  let status: BeMatch.ShortCommentStatus?
+  let status: API.ShortCommentStatus?
 
   var body: some View {
     switch status {
@@ -28,7 +28,7 @@ struct ShortCommentStatus: View {
   NavigationStack {
     List {
       Section {
-        ForEach([nil] + BeMatch.ShortCommentStatus.allCases, id: \.self) { status in
+        ForEach([nil] + API.ShortCommentStatus.allCases, id: \.self) { status in
           LabeledContent {
             HStack {
               ShortCommentStatus(status: status)
@@ -42,7 +42,7 @@ struct ShortCommentStatus: View {
       }
 
       Section {
-        ForEach([nil] + BeMatch.ShortCommentStatus.allCases, id: \.self) { status in
+        ForEach([nil] + API.ShortCommentStatus.allCases, id: \.self) { status in
           LabeledContent {
             HStack {
               ShortCommentStatus(status: status)

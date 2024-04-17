@@ -9,7 +9,7 @@ public struct BannerLogic {
   public init() {}
 
   public struct State: Equatable, Identifiable {
-    let banner: API.BannerCard
+    public let banner: API.BannerCard
 
     public var id: String {
       banner.id

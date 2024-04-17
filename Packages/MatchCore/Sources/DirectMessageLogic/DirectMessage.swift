@@ -19,7 +19,7 @@ public struct DirectMessageLogic {
       return false
     }
 
-    var child = Child.State.loading
+    public var child = Child.State.loading
 
     public init(targetUserId: String) {
       self.targetUserId = targetUserId

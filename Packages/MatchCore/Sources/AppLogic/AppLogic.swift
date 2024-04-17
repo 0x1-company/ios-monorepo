@@ -30,8 +30,8 @@ public struct AppLogic {
 
     var appDelegate = AppDelegateLogic.State()
     var sceneDelegate = SceneDelegateLogic.State()
-    var child: Child.State = .launch()
-    var tutorial: TutorialLogic.State?
+    public var child: Child.State = .launch()
+    public var tutorial: TutorialLogic.State?
 
     public struct Account: Equatable {
       var user = AsyncValue<API.UserInternal>.none

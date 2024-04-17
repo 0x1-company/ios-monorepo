@@ -1,9 +1,7 @@
 import AnalyticsClient
 import API
-
 import ComposableArchitecture
 import FeedbackGeneratorClient
-
 import SwiftUI
 
 @Reducer
@@ -11,8 +9,8 @@ public struct CategoryRowLogic {
   public init() {}
 
   public struct State: Equatable, Identifiable {
-    let user: API.SwipeCard
-    let isBlur: Bool
+    public let user: API.SwipeCard
+    public let isBlur: Bool
 
     public var id: String {
       return user.id

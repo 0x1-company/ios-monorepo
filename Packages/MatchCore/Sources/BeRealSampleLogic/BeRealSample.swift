@@ -11,7 +11,7 @@ public struct BeRealSampleLogic {
   public init() {}
 
   public struct State: Equatable {
-    let player: AVPlayer
+    public let player: AVPlayer
 
     public init() {
       @Dependency(\.constants) var constants

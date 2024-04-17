@@ -7,7 +7,8 @@ public struct BannedLogic {
   public init() {}
 
   public struct State: Equatable {
-    var userId: String
+    public let userId: String
+
     public init(userId: String) {
       self.userId = userId
     }

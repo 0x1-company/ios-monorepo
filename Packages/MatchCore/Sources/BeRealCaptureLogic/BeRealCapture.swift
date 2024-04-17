@@ -14,14 +14,14 @@ public struct BeRealCaptureLogic {
   public init() {}
 
   public struct State: Equatable {
-    @BindingState var photoPickerItems: [PhotosPickerItem] = []
-    var images: [PhotoGrid.State] = Array(repeating: .empty, count: 9)
-    var isActivityIndicatorVisible = false
-    var isWarningTextVisible: Bool {
+    @BindingState public var photoPickerItems: [PhotosPickerItem] = []
+    public var images: [PhotoGrid.State] = Array(repeating: .empty, count: 9)
+    public var isActivityIndicatorVisible = false
+    public var isWarningTextVisible: Bool {
       !images.filter(\.isWarning).isEmpty
     }
 
-    @PresentationState var destination: Destination.State?
+    @PresentationState public var destination: Destination.State?
     public init() {}
   }
 

@@ -8,12 +8,12 @@ public struct CategorySectionLogic {
   public init() {}
 
   public struct State: Equatable, Identifiable {
-    let userCategory: API.UserCategoriesQuery.Data.UserCategory
+    public let userCategory: API.UserCategoriesQuery.Data.UserCategory
     public var id: String {
       return userCategory.id
     }
 
-    var rows: IdentifiedArrayOf<CategoryRowLogic.State> = []
+    public var rows: IdentifiedArrayOf<CategoryRowLogic.State> = []
 
     public init(userCategory: API.UserCategoriesQuery.Data.UserCategory) {
       self.userCategory = userCategory

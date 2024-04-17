@@ -1,31 +1,6 @@
-import AnalyticsClient
 import ComposableArchitecture
+import NetworkErrorLogic
 import SwiftUI
-
-@Reducer
-public struct NetworkErrorLogic {
-  public init() {}
-
-  public struct State: Equatable {
-    public init() {}
-  }
-
-  public enum Action {
-    case onTask
-  }
-
-  @Dependency(\.analytics) var analytics
-
-  public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { _, action in
-      switch action {
-      case .onTask:
-        analytics.logScreen(screenName: "NetworkError", of: self)
-        return .none
-      }
-    }
-  }
-}
 
 public struct NetworkErrorView: View {
   let store: StoreOf<NetworkErrorLogic>

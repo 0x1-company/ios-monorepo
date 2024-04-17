@@ -6,8 +6,8 @@ public struct AchievementHistoryWidgetLogic {
   public init() {}
 
   public struct State: Equatable {
-    let displayDaysAgo: String
-    let displayCreationDate: String
+    public let displayDaysAgo: String
+    public let displayCreationDate: String
 
     public init(creationDate: Date) {
       @Dependency(\.locale) var locale

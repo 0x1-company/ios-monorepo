@@ -10,16 +10,16 @@ public struct DirectMessageContentLogic {
   public struct State: Equatable {
     let targetUserId: String
     var after: String?
-    var hasNextPage = false
+    public var hasNextPage = false
 
     var rows: IdentifiedArrayOf<DirectMessageRowLogic.State> = []
-    var sortedRows: IdentifiedArrayOf<DirectMessageRowLogic.State> {
+    public var sortedRows: IdentifiedArrayOf<DirectMessageRowLogic.State> {
       let uniqueElements = rows
         .sorted(by: { $0.message.createdAt < $1.message.createdAt })
       return IdentifiedArrayOf(uniqueElements: uniqueElements)
     }
 
-    var lastId: String? {
+    public var lastId: String? {
       sortedRows.last?.id
     }
   }
