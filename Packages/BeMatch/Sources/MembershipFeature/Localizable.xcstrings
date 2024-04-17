@@ -18,6 +18,7 @@
       }
     },
     "%lld month" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -28,6 +29,7 @@
       }
     },
     "%lld week" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -38,6 +40,7 @@
       }
     },
     "%lld year" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -88,6 +91,7 @@
       }
     },
     "I gave you an invitation code [%@] for free BeMatch PRO worth %@! 🎁.\n\nWhen you become a BeMatch PRO...\n■ See who you are Liked by.\n\nBeReal exchange app \"BeMatch.\" Download it! 🤞🏻\nhttps://bematch.onelink.me/nob4/mhxumci1" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -104,6 +108,7 @@
       }
     },
     "I joined BeMatch PRO" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -154,6 +159,7 @@
       }
     },
     "OK" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {

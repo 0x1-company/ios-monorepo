@@ -32,7 +32,7 @@ public struct MembershipLogic {
     @BindingState public var isPresented = false
     @PresentationState public var destination: Destination.State?
 
-    var shareText = ""
+    public var shareText = ""
 
     public init() {
       @Dependency(\.build) var build
