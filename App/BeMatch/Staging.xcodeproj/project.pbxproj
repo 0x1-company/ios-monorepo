@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B7008E6E2A8027F600C36803 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7CCF9A12A7AF47600B64CFE /* GoogleService-Info.plist */; };
-		B73B5D572B37BDA7003623AF /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B73B5D562B37BDA7003623AF /* AppFeature */; };
 		B7670CF42BC4046500AADE86 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B7670CF22BC4046500AADE86 /* Localizable.strings */; };
 		B7703D6F2AB319E0006BF41F /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B7703D6E2AB319E0006BF41F /* InfoPlist.xcstrings */; };
 		B7765AF22B46C80D001B5C13 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7765AF12B46C80D001B5C13 /* AdSupport.framework */; };
@@ -17,6 +16,7 @@
 		B783E0FD2A11FFD0002E782F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B783E0FC2A11FFD0002E782F /* Preview Assets.xcassets */; };
 		B783E1022A120003002E782F /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B783E1012A120003002E782F /* App.swift */; };
 		B7BC78B82B55571400C0B97E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7BC78B72B55571400C0B97E /* StoreKit.framework */; };
+		B7C884252BCFD7540099548C /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B7C884242BCFD7540099548C /* AppFeature */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,9 +56,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7765AF42B46C819001B5C13 /* AppTrackingTransparency.framework in Frameworks */,
-				B73B5D572B37BDA7003623AF /* AppFeature in Frameworks */,
 				B7765AF22B46C80D001B5C13 /* AdSupport.framework in Frameworks */,
 				B7BC78B82B55571400C0B97E /* StoreKit.framework in Frameworks */,
+				B7C884252BCFD7540099548C /* AppFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,7 +135,7 @@
 			);
 			name = App;
 			packageProductDependencies = (
-				B73B5D562B37BDA7003623AF /* AppFeature */,
+				B7C884242BCFD7540099548C /* AppFeature */,
 			);
 			productName = iOS;
 			productReference = B783E0F32A11FFD0002E782F /* App.app */;
@@ -427,7 +427,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B73B5D562B37BDA7003623AF /* AppFeature */ = {
+		B7C884242BCFD7540099548C /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;
 		};
