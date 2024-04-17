@@ -1,3 +1,4 @@
+import API
 import CachedAsyncImage
 import ComposableArchitecture
 import ProfileExternalLogic
@@ -142,7 +143,7 @@ public struct ProfileExternalView: View {
       ProfileExternalView(
         store: .init(
           initialState: ProfileExternalLogic.State(
-            match: BeMatch.MatchGrid(
+            match: API.MatchGrid(
               _dataDict: DataDict(
                 data: [
                   "id": "1",

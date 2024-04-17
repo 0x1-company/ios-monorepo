@@ -12,10 +12,10 @@ public struct ProfileLogic {
   public init() {}
 
   public struct State: Equatable {
-    var currentUser: API.UserInternal?
+    public var currentUser: API.UserInternal?
 
-    var pictureSlider: PictureSliderLogic.State?
-    @PresentationState var destination: Destination.State?
+    public var pictureSlider: PictureSliderLogic.State?
+    @PresentationState public var destination: Destination.State?
     public init() {}
   }
 

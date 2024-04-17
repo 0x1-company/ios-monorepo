@@ -10,7 +10,7 @@ public struct InvitationCodeLogic {
   public init() {}
 
   public struct State: Equatable {
-    var code = ""
+    public var code = ""
 
     public init() {}
   }

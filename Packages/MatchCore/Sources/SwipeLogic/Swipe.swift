@@ -15,9 +15,9 @@ public struct SwipeLogic {
   public init() {}
 
   public struct State: Equatable {
-    @PresentationState var destination: Destination.State?
+    @PresentationState public var destination: Destination.State?
 
-    var rows: IdentifiedArrayOf<SwipeCardLogic.State> = []
+    public var rows: IdentifiedArrayOf<SwipeCardLogic.State> = []
 
     public init(rows: [API.SwipeCard]) {
       self.rows = IdentifiedArrayOf(

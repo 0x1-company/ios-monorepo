@@ -1,3 +1,4 @@
+import API
 import ComposableArchitecture
 import GenderSettingLogic
 import Styleguide
@@ -23,7 +24,7 @@ public struct GenderSettingView: View {
     self.canSkip = canSkip
   }
 
-  func genderText(_ gender: BeMatch.Gender) -> LocalizedStringKey {
+  func genderText(_ gender: API.Gender) -> LocalizedStringKey {
     switch gender {
     case .male:
       return "Male"

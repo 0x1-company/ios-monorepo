@@ -1,3 +1,4 @@
+import API
 import ComposableArchitecture
 import MembershipLogic
 import SwiftUI
@@ -81,7 +82,7 @@ public struct MembershipCampaignView: View {
   MembershipCampaignView(
     store: .init(
       initialState: MembershipCampaignLogic.State(
-        campaign: BeMatch.MembershipQuery.Data.ActiveInvitationCampaign(
+        campaign: API.MembershipQuery.Data.ActiveInvitationCampaign(
           _dataDict: DataDict(
             data: [
               "id": "1",

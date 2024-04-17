@@ -12,9 +12,9 @@ public struct GenderSettingLogic {
   public init() {}
 
   public struct State: Equatable {
-    var selection: API.Gender?
-    var genders = API.Gender.allCases
-    var isActivityIndicatorVisible = false
+    public var selection: API.Gender?
+    public var genders = API.Gender.allCases
+    public var isActivityIndicatorVisible = false
 
     public init(gender: API.Gender?) {
       selection = gender

@@ -14,13 +14,13 @@ public struct ProfileExternalLogic {
   public init() {}
 
   public struct State: Equatable {
-    let match: API.MatchGrid
-    @BindingState var selection: API.MatchGrid.TargetUser.Image
-    @PresentationState var destination: Destination.State?
+    public let match: API.MatchGrid
+    @BindingState public var selection: API.MatchGrid.TargetUser.Image
+    @PresentationState public var destination: Destination.State?
 
-    var pictureSlider: PictureSliderLogic.State?
+    public var pictureSlider: PictureSliderLogic.State?
 
-    var createdAt: Date {
+    public var createdAt: Date {
       guard let timeInterval = TimeInterval(match.createdAt)
       else { return .now }
       return Date(timeIntervalSince1970: timeInterval / 1000.0)

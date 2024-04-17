@@ -1,7 +1,0 @@
-# import BannerCard from '../fragments/BannerCard.graphql'
-
-query Banners {
-  banners {
-    ...BannerCard
-  }
-}

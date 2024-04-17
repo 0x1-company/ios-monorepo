@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-  name: "MatchLogic",
+  name: "MatchCore",
   defaultLocalization: "en",
   platforms: [
     .iOS("16.4"),

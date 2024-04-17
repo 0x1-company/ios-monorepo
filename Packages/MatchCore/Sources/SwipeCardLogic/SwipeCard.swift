@@ -11,7 +11,7 @@ public struct SwipeCardLogic {
 
   public struct State: Equatable, Identifiable {
     public let data: API.SwipeCard
-    @BindingState var selection: API.SwipeCard.Image
+    @BindingState public var selection: API.SwipeCard.Image
 
     public var id: String {
       data.id

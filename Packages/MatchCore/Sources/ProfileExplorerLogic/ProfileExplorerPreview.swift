@@ -10,7 +10,7 @@ public struct ProfileExplorerPreviewLogic {
   public struct State: Equatable {
     let targetUserId: String
 
-    var child = Child.State.loading
+    public var child = Child.State.loading
 
     public init(targetUserId: String) {
       self.targetUserId = targetUserId

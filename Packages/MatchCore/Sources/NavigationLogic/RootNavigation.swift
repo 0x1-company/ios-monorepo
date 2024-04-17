@@ -22,12 +22,12 @@ public struct RootNavigationLogic {
   }
 
   public struct State: Equatable {
-    var recommendation = RecommendationLogic.State()
-    var category = CategoryLogic.State()
-    var match = MatchNavigationLogic.State()
-    var message = DirectMessageTabLogic.State()
+    public var recommendation = RecommendationLogic.State()
+    public var category = CategoryLogic.State()
+    public var match = MatchNavigationLogic.State()
+    public var message = DirectMessageTabLogic.State()
 
-    @BindingState var tab = Tab.recommendation
+    @BindingState public var tab = Tab.recommendation
 
     public init() {}
   }

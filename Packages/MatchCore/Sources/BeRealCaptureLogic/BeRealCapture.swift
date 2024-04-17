@@ -6,8 +6,34 @@ import FeedbackGeneratorClient
 import FirebaseAuthClient
 import FirebaseStorageClient
 import PhotosUI
-
 import SwiftUI
+
+public enum PhotoGridState: Equatable {
+  case active(UIImage)
+  case warning(UIImage)
+  case empty
+
+  var isActive: Bool {
+    guard case .active = self else {
+      return false
+    }
+    return true
+  }
+
+  var isWarning: Bool {
+    guard case .warning = self else {
+      return false
+    }
+    return true
+  }
+
+  var imageData: Data? {
+    guard case let .active(uIImage) = self else {
+      return nil
+    }
+    return uIImage.jpegData(compressionQuality: 1)
+  }
+}
 
 @Reducer
 public struct BeRealCaptureLogic {
@@ -15,7 +41,7 @@ public struct BeRealCaptureLogic {
 
   public struct State: Equatable {
     @BindingState public var photoPickerItems: [PhotosPickerItem] = []
-    public var images: [PhotoGrid.State] = Array(repeating: .empty, count: 9)
+    public var images: [PhotoGridState] = Array(repeating: .empty, count: 9)
     public var isActivityIndicatorVisible = false
     public var isWarningTextVisible: Bool {
       !images.filter(\.isWarning).isEmpty

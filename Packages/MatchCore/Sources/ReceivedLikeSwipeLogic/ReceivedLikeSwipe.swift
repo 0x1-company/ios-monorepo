@@ -13,7 +13,7 @@ public struct ReceivedLikeSwipeLogic {
   public init() {}
 
   public struct State: Equatable {
-    var child = Child.State.loading
+    public var child = Child.State.loading
 
     public init() {}
   }

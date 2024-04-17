@@ -15,18 +15,23 @@ public struct RecommendationEmptyLogic {
   public struct CompletionWithItems: Equatable {
     public let activityType: UIActivity.ActivityType?
     public let result: Bool
+
+    public init(activityType: UIActivity.ActivityType?, result: Bool) {
+      self.activityType = activityType
+      self.result = result
+    }
   }
 
   public struct State: Equatable {
-    var shareURL: URL
-    var shareText: String {
+    public var shareURL: URL
+    public var shareText: String {
       return String(
         localized: "I found an app to increase BeReal's friends, try it.\n\(shareURL.absoluteString)",
         bundle: .module
       )
     }
 
-    @BindingState var isPresented = false
+    @BindingState public var isPresented = false
     public init() {
       @Dependency(\.constants) var constants
       shareURL = constants.appStoreForEmptyURL()

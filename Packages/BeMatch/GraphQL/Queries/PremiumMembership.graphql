@@ -1,8 +1,0 @@
-query PremiumMembership {
-  premiumMembership {
-    id
-    expireAt
-    appleSubscriptionId
-    invitationCampaignUseId
-  }
-}

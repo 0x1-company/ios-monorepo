@@ -11,21 +11,21 @@ public struct ReportReasonLogic {
   public init() {}
 
   public struct State: Equatable {
-    let title: String
+    public let title: String
     let kind: ReportLogic.Kind
 
-    var isDisabled = true
-    var isActivityIndicatorVisible = false
-    @BindingState var text = String()
-    @BindingState var focus: Field?
-    @PresentationState var alert: AlertState<Action.Alert>?
+    public var isDisabled = true
+    public var isActivityIndicatorVisible = false
+    @BindingState public var text = String()
+    @BindingState public var focus: Field?
+    @PresentationState public var alert: AlertState<Action.Alert>?
 
     public init(title: String, kind: ReportLogic.Kind) {
       self.title = title
       self.kind = kind
     }
 
-    enum Field: Hashable {
+    public enum Field: Hashable {
       case text
     }
   }

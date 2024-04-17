@@ -8,7 +8,11 @@ public struct MembershipStatusPaidContentLogic {
   public init() {}
 
   public struct State: Equatable {
-    let expireAt: Date
+    public let expireAt: Date
+
+    public init(expireAt: Date) {
+      self.expireAt = expireAt
+    }
   }
 
   public enum Action {

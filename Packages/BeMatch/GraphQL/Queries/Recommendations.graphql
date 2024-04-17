@@ -1,7 +1,0 @@
-# import SwipeCard from '../fragments/SwipeCard.graphql'
-
-query Recommendations {
-  recommendations {
-    ...SwipeCard
-  }
-}

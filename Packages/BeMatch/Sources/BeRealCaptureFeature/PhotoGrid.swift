@@ -1,38 +1,12 @@
+import BeRealCaptureLogic
 import PhotosUI
 import Styleguide
 import SwiftUI
 
 public struct PhotoGrid: View {
-  let state: State
+  let state: PhotoGridState
   @Binding var selection: [PhotosPickerItem]
   let onDelete: () -> Void
-
-  public enum State: Equatable {
-    case active(UIImage)
-    case warning(UIImage)
-    case empty
-
-    var isActive: Bool {
-      guard case .active = self else {
-        return false
-      }
-      return true
-    }
-
-    var isWarning: Bool {
-      guard case .warning = self else {
-        return false
-      }
-      return true
-    }
-
-    var imageData: Data? {
-      guard case let .active(uIImage) = self else {
-        return nil
-      }
-      return uIImage.jpegData(compressionQuality: 1)
-    }
-  }
 
   public var body: some View {
     switch state {

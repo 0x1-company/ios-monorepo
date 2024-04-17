@@ -13,7 +13,7 @@ public struct TutorialLogic {
   }
 
   public struct State: Equatable {
-    var currentStep = Step.first
+    public var currentStep = Step.first
     public init() {}
   }
 

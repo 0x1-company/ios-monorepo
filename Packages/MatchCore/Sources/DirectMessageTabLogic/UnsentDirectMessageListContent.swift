@@ -9,12 +9,12 @@ public struct UnsentDirectMessageListContentLogic {
 
   public struct State: Equatable {
     var after: String?
-    var hasNextPage = false
+    public var hasNextPage = false
 
-    var receivedLike: UnsentDirectMessageListContentReceivedLikeRowLogic.State?
+    public var receivedLike: UnsentDirectMessageListContentReceivedLikeRowLogic.State?
     var rows: IdentifiedArrayOf<UnsentDirectMessageListContentRowLogic.State> = []
 
-    var sortedRows: IdentifiedArrayOf<UnsentDirectMessageListContentRowLogic.State> {
+    public var sortedRows: IdentifiedArrayOf<UnsentDirectMessageListContentRowLogic.State> {
       let uniqueElements = rows.sorted(by: { $0.createdAt > $1.createdAt })
       return IdentifiedArrayOf(uniqueElements: uniqueElements)
     }

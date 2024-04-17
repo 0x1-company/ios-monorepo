@@ -9,9 +9,9 @@ public struct DirectMessageListContentLogic {
 
   public struct State: Equatable {
     var after: String?
-    var hasNextPage = false
+    public var hasNextPage = false
     var rows: IdentifiedArrayOf<DirectMessageListContentRowLogic.State> = []
-    var sortedRows: IdentifiedArrayOf<DirectMessageListContentRowLogic.State> {
+    public var sortedRows: IdentifiedArrayOf<DirectMessageListContentRowLogic.State> {
       let uniqueElements = rows.sorted(by: { $0.updatedAt > $1.updatedAt })
       return IdentifiedArrayOf(uniqueElements: uniqueElements)
     }

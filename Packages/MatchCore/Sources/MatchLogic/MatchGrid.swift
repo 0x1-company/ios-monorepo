@@ -1,8 +1,6 @@
 import API
-
 import ComposableArchitecture
 import FeedbackGeneratorClient
-
 import SwiftUI
 
 @Reducer
@@ -16,7 +14,7 @@ public struct MatchGridLogic {
 
     public let match: API.MatchGrid
 
-    var createdAt: Date {
+    public var createdAt: Date {
       guard let timeInterval = TimeInterval(match.createdAt)
       else { return .now }
       return Date(timeIntervalSince1970: timeInterval / 1000.0)

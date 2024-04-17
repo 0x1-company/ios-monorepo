@@ -2,10 +2,10 @@ import AnalyticsClient
 import API
 import APIClient
 import CategoryEmptyLogic
+import ColorHex
 import ComposableArchitecture
 import MatchedLogic
 import ReportLogic
-
 import SwiftUI
 import SwipeCardLogic
 import SwipeLogic

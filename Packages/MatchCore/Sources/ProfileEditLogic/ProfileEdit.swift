@@ -14,8 +14,8 @@ public struct ProfileEditLogic {
   public init() {}
 
   public struct State: Equatable {
-    @PresentationState var destination: Destination.State?
-    var user: API.UserInternal?
+    @PresentationState public var destination: Destination.State?
+    public var user: API.UserInternal?
 
     public init() {}
   }

@@ -12,9 +12,9 @@ public struct UsernameSettingLogic {
   public init() {}
 
   public struct State: Equatable {
-    var isActivityIndicatorVisible = false
-    @BindingState var username: String
-    @PresentationState var alert: AlertState<Action.Alert>?
+    public var isActivityIndicatorVisible = false
+    @BindingState public var username: String
+    @PresentationState public var alert: AlertState<Action.Alert>?
 
     public init(username: String) {
       self.username = username

@@ -40,17 +40,6 @@ public struct SettingsView: View {
             }
           }
 
-//          Button {
-//            store.send(.achievementButtonTapped)
-//          } label: {
-//            LabeledContent {
-//              Image(systemName: "chevron.right")
-//            } label: {
-//              Text("Achievement", bundle: .module)
-//                .foregroundStyle(Color.primary)
-//            }
-//          }
-
           Button {
             store.send(.membershipStatusButtonTapped)
           } label: {
@@ -88,7 +77,7 @@ public struct SettingsView: View {
             }
           }
 
-          Link(destination: Constants.faqURL) {
+          Link(destination: viewStore.faqURL) {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
@@ -97,7 +86,7 @@ public struct SettingsView: View {
             }
           }
 
-          Link(destination: Constants.contactUsURL) {
+          Link(destination: viewStore.contactUsURL) {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
@@ -126,7 +115,7 @@ public struct SettingsView: View {
         }
 
         Section {
-          Link(destination: Constants.instagramURL) {
+          Link(destination: viewStore.instagramURL) {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
@@ -135,7 +124,7 @@ public struct SettingsView: View {
             }
           }
 
-          Link(destination: Constants.tiktokURL) {
+          Link(destination: viewStore.tiktokURL) {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
@@ -148,7 +137,7 @@ public struct SettingsView: View {
         }
 
         Section {
-          Link(destination: Constants.termsOfUseURL) {
+          Link(destination: viewStore.termsOfUseURL) {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
@@ -157,7 +146,7 @@ public struct SettingsView: View {
             }
           }
 
-          Link(destination: Constants.privacyPolicyURL) {
+          Link(destination: viewStore.privacyPolicyURL) {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {

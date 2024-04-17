@@ -16,7 +16,7 @@ public struct ReportLogic {
   public struct State: Equatable {
     let kind: Kind
 
-    var path = StackState<Path.State>()
+    public var path = StackState<Path.State>()
 
     public init(targetUserId: String) {
       kind = Kind.user(targetUserId: targetUserId)

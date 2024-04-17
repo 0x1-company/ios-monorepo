@@ -10,8 +10,8 @@ public struct PictureSliderLogic {
   public init() {}
 
   public struct State: Equatable {
-    let data: API.PictureSlider
-    @BindingState var selection: API.PictureSlider.Image
+    public let data: API.PictureSlider
+    @BindingState public var selection: API.PictureSlider.Image
 
     public init(data: API.PictureSlider) {
       self.data = data

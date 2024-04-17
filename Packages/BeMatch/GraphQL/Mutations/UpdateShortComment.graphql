@@ -1,9 +1,0 @@
-mutation UpdateShortComment($input: UpdateShortCommentInput!) {
-  updateShortComment(input:$input) {
-    id
-    shortComment {
-      id
-      body
-    }
-  }
-}

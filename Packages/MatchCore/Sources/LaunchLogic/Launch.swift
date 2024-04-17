@@ -6,7 +6,7 @@ public struct LaunchLogic {
   public init() {}
 
   public struct State: Equatable {
-    var isActivityIndicatorVisible = false
+    public var isActivityIndicatorVisible = false
 
     public init() {}
   }

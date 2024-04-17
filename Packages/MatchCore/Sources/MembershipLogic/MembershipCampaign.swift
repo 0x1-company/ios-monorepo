@@ -8,13 +8,13 @@ public struct MembershipCampaignLogic {
   public init() {}
 
   public struct State: Equatable {
-    let campaign: API.MembershipQuery.Data.ActiveInvitationCampaign
-    let displayPrice: String
-    let displayDuration: String
+    public let campaign: API.MembershipQuery.Data.ActiveInvitationCampaign
+    public let displayPrice: String
+    public let displayDuration: String
 
-    var invitationCampaign: InvitationCampaignLogic.State
-    var invitationCampaignPrice: InvitationCampaignPriceLogic.State
-    var invitationCodeCampaign: InvitationCodeCampaignLogic.State
+    public var invitationCampaign: InvitationCampaignLogic.State
+    public var invitationCampaignPrice: InvitationCampaignPriceLogic.State
+    public var invitationCodeCampaign: InvitationCodeCampaignLogic.State
 
     public init(
       campaign: API.MembershipQuery.Data.ActiveInvitationCampaign,

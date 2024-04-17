@@ -16,14 +16,14 @@ public struct MatchLogic {
 
   public struct State: Equatable {
     public var rows: IdentifiedArrayOf<MatchGridLogic.State> = []
-    var banners: IdentifiedArrayOf<BannerLogic.State> = []
+    public var banners: IdentifiedArrayOf<BannerLogic.State> = []
 
-    var hasNextPage = false
+    public var hasNextPage = false
     var after: String? = nil
 
-    var notificationsReEnable: NotificationsReEnableLogic.State?
-    var receivedLike: ReceivedLikeGridLogic.State?
-    var empty: MatchEmptyLogic.State? = .init()
+    public var notificationsReEnable: NotificationsReEnableLogic.State?
+    public var receivedLike: ReceivedLikeGridLogic.State?
+    public var empty: MatchEmptyLogic.State? = .init()
 
     public init() {}
   }

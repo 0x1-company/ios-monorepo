@@ -1,9 +1,0 @@
-fragment BannerCard on Banner {
-  id
-  title
-  description
-  buttonTitle
-  url
-  startAt
-  endAt
-}
