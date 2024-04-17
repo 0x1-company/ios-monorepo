@@ -49,6 +49,7 @@ let package = Package(
     .library(name: "ProfileExplorerLogic", targets: ["ProfileExplorerLogic"]),
     .library(name: "ProfileExternalLogic", targets: ["ProfileExternalLogic"]),
     .library(name: "ProfileLogic", targets: ["ProfileLogic"]),
+    .library(name: "ProfilePictureSettingLogic", targets: ["ProfilePictureSettingLogic"]),
     .library(name: "ProfileSharedLogic", targets: ["ProfileSharedLogic"]),
     .library(name: "ReceivedLikeRouterLogic", targets: ["ReceivedLikeRouterLogic"]),
     .library(name: "ReceivedLikeSwipeLogic", targets: ["ReceivedLikeSwipeLogic"]),
@@ -319,6 +320,15 @@ let package = Package(
     .target(name: "ProfileLogic", dependencies: [
       "ProfileSharedLogic",
       "UsernameSettingLogic",
+    ]),
+    .target(name: "ProfilePictureSettingLogic", dependencies: [
+      "APIClient",
+      "AnalyticsKeys",
+      .product(name: "TcaHelpers", package: "SDK"),
+      .product(name: "FirebaseAuthClient", package: "SDK"),
+      .product(name: "FirebaseStorageClient", package: "SDK"),
+      .product(name: "FeedbackGeneratorClient", package: "SDK"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "ProfileSharedLogic", dependencies: [
       "APIClient",
