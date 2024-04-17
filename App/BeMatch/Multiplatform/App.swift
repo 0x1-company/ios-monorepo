@@ -1,9 +1,10 @@
 import AnalyticsClient
+import APIClient
 import Apollo
 import ApolloAPI
 import ApolloClientHelpers
 import AppFeature
-import BeMatchClient
+import AppLogic
 import Build
 import ComposableArchitecture
 import FirebaseAuth
@@ -44,7 +45,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
       AppLogic()
         ._printChanges()
         .transformDependency(\.self) {
-          $0.bematch = .live(apolloClient: ApolloClient(build: $0.build))
+          $0.api = .live(apolloClient: ApolloClient(build: $0.build))
         }
     }
   )
