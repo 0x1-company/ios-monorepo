@@ -7,7 +7,7 @@ public struct ConstantsClient {
   public var appStoreURL: @Sendable () -> URL = { URL.currentDirectory() }
   public var appStoreForEmptyURL: @Sendable () -> URL = { URL.currentDirectory() }
   public var appStoreFemaleForEmptyURL: @Sendable () -> URL = { URL.currentDirectory() }
-  
+
   public var appStoreReviewURL: @Sendable () -> URL = { URL.currentDirectory() }
 
   public var founderURL: @Sendable () -> URL = { URL.currentDirectory() }
@@ -25,5 +25,4 @@ public struct ConstantsClient {
   public var contactUsURL: @Sendable () -> URL = { URL.currentDirectory() }
 
   public var howToVideoURL: @Sendable () -> URL = { URL.currentDirectory() }
-
 }

@@ -1,5 +1,5 @@
-import Foundation
 import Dependencies
+import Foundation
 
 public extension ConstantsClient {
   static func live(
@@ -13,7 +13,7 @@ public extension ConstantsClient {
     let contactUsURL = URL(string: "https://ig.me/m/\(username)")!
     let founderURL = URL(string: "https://instagram.com/satoya__")!
     let developerURL = URL(string: "https://instagram.com/tomokisun")!
-    
+
     return ConstantsClient(
       appStoreURL: { URL(string: "https://apps.apple.com/jp/app/id\(appId)")! },
       appStoreForEmptyURL: { appStoreForEmptyURL },

@@ -40,7 +40,7 @@ public struct SettingsLogic {
     public init() {
       @Dependency(\.build) var build
       bundleShortVersion = build.bundleShortVersion()
-      
+
       @Dependency(\.constants) var constants
       shareURL = constants.appStoreForEmptyURL()
     }
