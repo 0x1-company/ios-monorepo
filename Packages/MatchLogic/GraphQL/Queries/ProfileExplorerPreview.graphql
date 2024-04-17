@@ -1,0 +1,9 @@
+# import PictureSlider from './PictureSlider.graphql';
+
+query ProfileExplorerPreview($targetUserId: String!) {
+  userByMatched(targetUserId: $targetUserId) {
+    id
+    berealUsername
+    ...PictureSlider
+  }
+}

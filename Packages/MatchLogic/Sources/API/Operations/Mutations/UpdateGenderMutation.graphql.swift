@@ -1,0 +1,55 @@
+// @generated
+// This file was automatically generated and should not be edited.
+
+@_exported import ApolloAPI
+
+public extension API {
+  class UpdateGenderMutation: GraphQLMutation {
+    public static let operationName: String = "UpdateGender"
+    public static let operationDocument: ApolloAPI.OperationDocument = .init(
+      definition: .init(
+        #"mutation UpdateGender($input: UpdateGenderInput!) { updateGender(input: $input) { __typename id gender } }"#
+      ))
+
+    public var input: UpdateGenderInput
+
+    public init(input: UpdateGenderInput) {
+      self.input = input
+    }
+
+    public var __variables: Variables? { ["input": input] }
+
+    public struct Data: API.SelectionSet {
+      public let __data: DataDict
+      public init(_dataDict: DataDict) { __data = _dataDict }
+
+      public static var __parentType: ApolloAPI.ParentType { API.Objects.Mutation }
+      public static var __selections: [ApolloAPI.Selection] { [
+        .field("updateGender", UpdateGender.self, arguments: ["input": .variable("input")]),
+      ] }
+
+      /// 性別を更新する
+      public var updateGender: UpdateGender { __data["updateGender"] }
+
+      /// UpdateGender
+      ///
+      /// Parent Type: `User`
+      public struct UpdateGender: API.SelectionSet {
+        public let __data: DataDict
+        public init(_dataDict: DataDict) { __data = _dataDict }
+
+        public static var __parentType: ApolloAPI.ParentType { API.Objects.User }
+        public static var __selections: [ApolloAPI.Selection] { [
+          .field("__typename", String.self),
+          .field("id", API.ID.self),
+          .field("gender", GraphQLEnum<API.Gender>.self),
+        ] }
+
+        /// user id
+        public var id: API.ID { __data["id"] }
+        /// gender
+        public var gender: GraphQLEnum<API.Gender> { __data["gender"] }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+fragment DirectMessageListContentRow on MessageRoom {
+  id
+  updatedAt
+  targetUser {
+    id
+    status
+    berealUsername
+    images {
+      id
+      imageUrl
+    }
+  }
+  latestMessage {
+    id
+    text
+    isAuthor
+    isRead
+  }
+}

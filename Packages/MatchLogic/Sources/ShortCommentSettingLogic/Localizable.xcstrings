@@ -1,0 +1,56 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Comment" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ひとこと"
+          }
+        }
+      }
+    },
+    "Do not write vour BeReal or other social media username.Your profile will not be visible to others." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeRealのユーザーネームや他のSNSのIDを書かないでください。あなたのプロフィールが他の人に表示されなくなります。"
+          }
+        }
+      }
+    },
+    "Failed to save short comment." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ひとことの保存に失敗しました。"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "Save" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存する"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

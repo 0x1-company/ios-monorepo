@@ -1,0 +1,5 @@
+query ActiveInvitationCampaign {
+  activeInvitationCampaign {
+    id
+  }
+}

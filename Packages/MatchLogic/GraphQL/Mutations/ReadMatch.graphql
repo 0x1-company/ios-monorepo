@@ -1,0 +1,6 @@
+mutation ReadMatch($matchId: String!) {
+  readMatch(matchId: $matchId) {
+    id
+    isRead
+  }
+}

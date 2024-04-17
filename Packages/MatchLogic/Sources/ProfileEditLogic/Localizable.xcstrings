@@ -1,0 +1,121 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Approved" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "承認済み"
+          }
+        }
+      }
+    },
+    "Edit Profile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロフィール編集"
+          }
+        }
+      }
+    },
+    "Gender" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "性別"
+          }
+        }
+      }
+    },
+    "In Review" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "審査中"
+          }
+        }
+      }
+    },
+    "No Set" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未設定"
+          }
+        }
+      }
+    },
+    "PROFILE" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロフィール"
+          }
+        }
+      }
+    },
+    "Profile Image" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プロフィール画像"
+          }
+        }
+      }
+    },
+    "Rejected" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "却下済み"
+          }
+        }
+      }
+    },
+    "Short Comment" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ひとこと"
+          }
+        }
+      }
+    },
+    "Username" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ユーザーネーム"
+          }
+        }
+      }
+    },
+    "Username on BeReal." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeRealのユーザーネーム"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

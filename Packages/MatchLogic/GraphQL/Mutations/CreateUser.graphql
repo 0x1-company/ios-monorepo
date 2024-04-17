@@ -1,0 +1,7 @@
+# import UserInternal from '../fragments/UserInternal.graphql'
+
+mutation CreateUser($input: CreateUserInput!) {
+  createUserV2(input: $input) {
+    ...UserInternal
+  }
+}
