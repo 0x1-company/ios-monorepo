@@ -36,7 +36,7 @@ public enum PhotoGridState: Equatable {
 }
 
 @Reducer
-public struct BeRealCaptureLogic {
+public struct ProfilePictureSettingLogic {
   public init() {}
 
   public struct State: Equatable {
@@ -82,7 +82,7 @@ public struct BeRealCaptureLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
-        analytics.logScreen(screenName: "BeRealCapture", of: self)
+        analytics.logScreen(screenName: "ProfilePictureSetting", of: self)
         return .none
 
       case let .onDelete(offset):
@@ -240,7 +240,7 @@ public struct BeRealCaptureLogic {
   }
 }
 
-extension AlertState where Action == BeRealCaptureLogic.Destination.Action.Alert {
+extension AlertState where Action == ProfilePictureSettingLogic.Destination.Action.Alert {
   static func pleaseSelectPhotos() -> Self {
     Self {
       TextState("Please select at least 3 saved photos.", bundle: .module)
@@ -252,7 +252,7 @@ extension AlertState where Action == BeRealCaptureLogic.Destination.Action.Alert
   }
 }
 
-extension AlertState where Action == BeRealCaptureLogic.Destination.Action.Alert {
+extension AlertState where Action == ProfilePictureSettingLogic.Destination.Action.Alert {
   static func selectPhotoWithBeReal() -> Self {
     Self {
       TextState("Select a photo saved with BeReal.", bundle: .module)
@@ -264,7 +264,7 @@ extension AlertState where Action == BeRealCaptureLogic.Destination.Action.Alert
   }
 }
 
-extension ConfirmationDialogState where Action == BeRealCaptureLogic.Destination.Action.ConfirmationDialog {
+extension ConfirmationDialogState where Action == ProfilePictureSettingLogic.Destination.Action.ConfirmationDialog {
   static func deletePhoto(_ offset: Int) -> Self {
     Self {
       TextState("Edit Profile", bundle: .module)

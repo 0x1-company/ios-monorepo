@@ -1,20 +1,20 @@
-import BeRealCaptureLogic
 import ComposableArchitecture
 import PhotosUI
+import ProfilePictureSettingLogic
 import Styleguide
 import SwiftUI
 
-public struct BeRealCaptureView: View {
+public struct ProfilePictureSettingView: View {
   public enum NextButtonStyle: Equatable {
     case next
     case save
   }
 
-  let store: StoreOf<BeRealCaptureLogic>
+  let store: StoreOf<ProfilePictureSettingLogic>
   private let nextButtonStyle: NextButtonStyle
 
   public init(
-    store: StoreOf<BeRealCaptureLogic>,
+    store: StoreOf<ProfilePictureSettingLogic>,
     nextButtonStyle: NextButtonStyle = .next
   ) {
     self.store = store
@@ -112,10 +112,10 @@ public struct BeRealCaptureView: View {
 
 #Preview {
   NavigationStack {
-    BeRealCaptureView(
+    ProfilePictureSettingView(
       store: .init(
-        initialState: BeRealCaptureLogic.State(),
-        reducer: { BeRealCaptureLogic() }
+        initialState: ProfilePictureSettingLogic.State(),
+        reducer: { ProfilePictureSettingLogic() }
       ),
       nextButtonStyle: .next
     )

@@ -1,5 +1,5 @@
-import BeRealCaptureLogic
 import PhotosUI
+import ProfilePictureSettingLogic
 import Styleguide
 import SwiftUI
 

@@ -1,10 +1,10 @@
 import AnalyticsKeys
 import API
-import BeRealCaptureLogic
 import BeRealSampleLogic
 import ComposableArchitecture
 import FeedbackGeneratorClient
 import GenderSettingLogic
+import ProfilePictureSettingLogic
 import ShortCommentSettingLogic
 import SwiftUI
 import UsernameSettingLogic
@@ -23,7 +23,7 @@ public struct ProfileEditLogic {
   public enum Action {
     case onTask
     case closeButtonTapped
-    case beRealCaptureButtonTapped
+    case pictureSettingButtonTapped
     case genderSettingButtonTapped
     case usernameSettingButtonTapped
     case shortCommentButtonTapped
@@ -57,8 +57,8 @@ public struct ProfileEditLogic {
       case .closeButtonTapped:
         return .send(.delegate(.dismiss))
 
-      case .beRealCaptureButtonTapped:
-        state.destination = .beRealCapture()
+      case .pictureSettingButtonTapped:
+        state.destination = .pictureSetting()
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
@@ -105,14 +105,14 @@ public struct ProfileEditLogic {
         state.destination = nil
         return .none
 
-      case .destination(.presented(.beRealCapture(.delegate(.nextScreen)))),
+      case .destination(.presented(.pictureSetting(.delegate(.nextScreen)))),
            .destination(.presented(.genderSetting(.delegate(.nextScreen)))),
            .destination(.presented(.usernameSetting(.delegate(.nextScreen)))),
            .destination(.presented(.shortComment(.delegate(.nextScreen)))):
         state.destination = nil
         return .send(.delegate(.profileUpdated))
 
-      case .destination(.presented(.beRealCapture(.delegate(.howTo)))):
+      case .destination(.presented(.pictureSetting(.delegate(.howTo)))):
         state.destination = .beRealSample()
         return .run { _ in
           await feedbackGenerator.impactOccurred()
@@ -140,7 +140,7 @@ public struct ProfileEditLogic {
   public struct Destination {
     public enum State: Equatable {
       case beRealSample(BeRealSampleLogic.State = .init())
-      case beRealCapture(BeRealCaptureLogic.State = .init())
+      case pictureSetting(ProfilePictureSettingLogic.State = .init())
       case genderSetting(GenderSettingLogic.State)
       case usernameSetting(UsernameSettingLogic.State)
       case shortComment(ShortCommentSettingLogic.State)
@@ -148,7 +148,7 @@ public struct ProfileEditLogic {
 
     public enum Action {
       case beRealSample(BeRealSampleLogic.Action)
-      case beRealCapture(BeRealCaptureLogic.Action)
+      case pictureSetting(ProfilePictureSettingLogic.Action)
       case genderSetting(GenderSettingLogic.Action)
       case usernameSetting(UsernameSettingLogic.Action)
       case shortComment(ShortCommentSettingLogic.Action)
@@ -158,8 +158,8 @@ public struct ProfileEditLogic {
       Scope(state: \.beRealSample, action: \.beRealSample) {
         BeRealSampleLogic()
       }
-      Scope(state: \.beRealCapture, action: \.beRealCapture) {
-        BeRealCaptureLogic()
+      Scope(state: \.pictureSetting, action: \.pictureSetting) {
+        ProfilePictureSettingLogic()
       }
       Scope(state: \.genderSetting, action: \.genderSetting) {
         GenderSettingLogic()
