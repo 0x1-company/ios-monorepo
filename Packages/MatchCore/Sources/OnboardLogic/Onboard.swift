@@ -1,9 +1,9 @@
 import API
 import APIClient
-import BeRealSampleLogic
 import ComposableArchitecture
 import FirebaseAuth
 import GenderSettingLogic
+import HowToMovieLogic
 import InvitationLogic
 import ProfilePictureSettingLogic
 import SwiftUI
@@ -73,15 +73,15 @@ public struct OnboardLogic {
         return .none
 
       case .path(.element(_, .gender(.delegate(.nextScreen)))):
-        state.path.append(.sample())
+        state.path.append(.howToMovie())
         return .none
 
-      case .path(.element(_, .sample(.delegate(.nextScreen)))):
+      case .path(.element(_, .howToMovie(.delegate(.nextScreen)))):
         state.path.append(.capture())
         return .none
 
       case .path(.element(_, .capture(.delegate(.howTo)))):
-        state.destination = .sample()
+        state.destination = .howToMovie()
         return .none
 
       case .path(.element(_, .capture(.delegate(.nextScreen)))):
@@ -94,7 +94,7 @@ public struct OnboardLogic {
       case .path(.element(_, .invitation(.delegate(.nextScreen)))):
         return .send(.delegate(.finish))
 
-      case .destination(.presented(.sample(.delegate(.nextScreen)))):
+      case .destination(.presented(.howToMovie(.delegate(.nextScreen)))):
         state.destination = nil
         return .none
 
@@ -114,21 +114,21 @@ public struct OnboardLogic {
   public struct Path {
     public enum State: Equatable {
       case gender(GenderSettingLogic.State)
-      case sample(BeRealSampleLogic.State = .init())
+      case howToMovie(HowToMovieLogic.State = .init())
       case capture(ProfilePictureSettingLogic.State = .init())
       case invitation(InvitationLogic.State = .init())
     }
 
     public enum Action {
       case gender(GenderSettingLogic.Action)
-      case sample(BeRealSampleLogic.Action)
+      case howToMovie(HowToMovieLogic.Action)
       case capture(ProfilePictureSettingLogic.Action)
       case invitation(InvitationLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
       Scope(state: \.gender, action: \.gender, child: GenderSettingLogic.init)
-      Scope(state: \.sample, action: \.sample, child: BeRealSampleLogic.init)
+      Scope(state: \.howToMovie, action: \.howToMovie, child: HowToMovieLogic.init)
       Scope(state: \.capture, action: \.capture, child: ProfilePictureSettingLogic.init)
       Scope(state: \.invitation, action: \.invitation, child: InvitationLogic.init)
     }
@@ -137,15 +137,15 @@ public struct OnboardLogic {
   @Reducer
   public struct Destination {
     public enum State: Equatable {
-      case sample(BeRealSampleLogic.State = .init())
+      case howToMovie(HowToMovieLogic.State = .init())
     }
 
     public enum Action {
-      case sample(BeRealSampleLogic.Action)
+      case howToMovie(HowToMovieLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
-      Scope(state: \.sample, action: \.sample, child: BeRealSampleLogic.init)
+      Scope(state: \.howToMovie, action: \.howToMovie, child: HowToMovieLogic.init)
     }
   }
 }

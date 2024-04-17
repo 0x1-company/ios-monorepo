@@ -1,9 +1,9 @@
 import AnalyticsKeys
 import API
-import BeRealSampleLogic
 import ComposableArchitecture
 import FeedbackGeneratorClient
 import GenderSettingLogic
+import HowToMovieLogic
 import ProfilePictureSettingLogic
 import ShortCommentSettingLogic
 import SwiftUI
@@ -139,7 +139,7 @@ public struct ProfileEditLogic {
   @Reducer
   public struct Destination {
     public enum State: Equatable {
-      case beRealSample(BeRealSampleLogic.State = .init())
+      case beRealSample(HowToMovieLogic.State = .init())
       case pictureSetting(ProfilePictureSettingLogic.State = .init())
       case genderSetting(GenderSettingLogic.State)
       case usernameSetting(UsernameSettingLogic.State)
@@ -147,7 +147,7 @@ public struct ProfileEditLogic {
     }
 
     public enum Action {
-      case beRealSample(BeRealSampleLogic.Action)
+      case beRealSample(HowToMovieLogic.Action)
       case pictureSetting(ProfilePictureSettingLogic.Action)
       case genderSetting(GenderSettingLogic.Action)
       case usernameSetting(UsernameSettingLogic.Action)
@@ -156,7 +156,7 @@ public struct ProfileEditLogic {
 
     public var body: some Reducer<State, Action> {
       Scope(state: \.beRealSample, action: \.beRealSample) {
-        BeRealSampleLogic()
+        HowToMovieLogic()
       }
       Scope(state: \.pictureSetting, action: \.pictureSetting) {
         ProfilePictureSettingLogic()

@@ -14,7 +14,6 @@ let package = Package(
     .library(name: "AppFeature", targets: ["AppFeature"]),
     .library(name: "BannedFeature", targets: ["BannedFeature"]),
     .library(name: "BannerFeature", targets: ["BannerFeature"]),
-    .library(name: "BeRealSampleFeature", targets: ["BeRealSampleFeature"]),
     .library(name: "CategoryEmptyFeature", targets: ["CategoryEmptyFeature"]),
     .library(name: "CategoryFeature", targets: ["CategoryFeature"]),
     .library(name: "CategoryListFeature", targets: ["CategoryListFeature"]),
@@ -25,6 +24,7 @@ let package = Package(
     .library(name: "ForceUpdateFeature", targets: ["ForceUpdateFeature"]),
     .library(name: "FreezedFeature", targets: ["FreezedFeature"]),
     .library(name: "GenderSettingFeature", targets: ["GenderSettingFeature"]),
+    .library(name: "HowToMovieFeature", targets: ["HowToMovieFeature"]),
     .library(name: "InvitationCodeFeature", targets: ["InvitationCodeFeature"]),
     .library(name: "InvitationFeature", targets: ["InvitationFeature"]),
     .library(name: "LaunchFeature", targets: ["LaunchFeature"]),
@@ -104,13 +104,6 @@ let package = Package(
       "Styleguide",
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
-    .target(name: "BeRealSampleFeature", dependencies: [
-      .product(name: "BeRealSampleLogic", package: "MatchCore"),
-      "Styleguide",
-      .product(name: "UIApplicationClient", package: "SDK"),
-      .product(name: "FeedbackGeneratorClient", package: "SDK"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-    ]),
     .target(name: "CategoryEmptyFeature", dependencies: [
       .product(name: "CategoryEmptyLogic", package: "MatchCore"),
       "Styleguide",
@@ -171,6 +164,13 @@ let package = Package(
     .target(name: "GenderSettingFeature", dependencies: [
       .product(name: "GenderSettingLogic", package: "MatchCore"),
       "Styleguide",
+      .product(name: "FeedbackGeneratorClient", package: "SDK"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
+    .target(name: "HowToMovieFeature", dependencies: [
+      "Styleguide",
+      .product(name: "UIApplicationClient", package: "SDK"),
+      .product(name: "HowToMovieLogic", package: "MatchCore"),
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
@@ -264,7 +264,7 @@ let package = Package(
     .target(name: "OnboardFeature", dependencies: [
       .product(name: "OnboardLogic", package: "MatchCore"),
       "InvitationFeature",
-      "BeRealSampleFeature",
+      "HowToMovieFeature",
       "GenderSettingFeature",
       "UsernameSettingFeature",
       "ProfilePictureSettingFeature",
@@ -277,7 +277,7 @@ let package = Package(
     ]),
     .target(name: "ProfileEditFeature", dependencies: [
       .product(name: "ProfileEditLogic", package: "MatchCore"),
-      "BeRealSampleFeature",
+      "HowToMovieFeature",
       "GenderSettingFeature",
       "UsernameSettingFeature",
       "ShortCommentSettingFeature",

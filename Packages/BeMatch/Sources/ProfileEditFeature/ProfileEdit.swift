@@ -1,6 +1,6 @@
-import BeRealSampleFeature
 import ComposableArchitecture
 import GenderSettingFeature
+import HowToMovieFeature
 import ProfileEditLogic
 import ProfilePictureSettingFeature
 import ShortCommentSettingFeature
@@ -96,7 +96,7 @@ public struct ProfileEditView: View {
         )
       ) { store in
         NavigationStack {
-          BeRealSampleView(store: store)
+          HowToMovieView(store: store)
         }
       }
       .navigationDestination(
