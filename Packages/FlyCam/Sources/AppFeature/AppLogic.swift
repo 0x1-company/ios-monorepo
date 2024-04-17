@@ -1,9 +1,9 @@
+import API
 import AsyncValue
 import ComposableArchitecture
 import ConfigGlobalClient
 import FirebaseAuth
 import FirebaseAuthClient
-import FlyCam
 import ForceUpdateFeature
 import LaunchFeature
 import MaintenanceFeature
@@ -27,7 +27,7 @@ public struct AppLogic {
     var userDidTakeScreenshotNotification = false
 
     public struct Account: Equatable {
-      var user = AsyncValue<FlyCam.UserInternal>.none
+      var user = AsyncValue<API.UserInternal>.none
       var isForceUpdate = AsyncValue<Bool>.none
       var isMaintenance = AsyncValue<Bool>.none
     }
@@ -43,7 +43,7 @@ public struct AppLogic {
     case child(Child.Action)
     case configResponse(TaskResult<ConfigGlobalClient.Config>)
     case signInAnonymouslyResponse(Result<AuthDataResult, Error>)
-    case createUserResponse(Result<FlyCam.CreateUserMutation.Data, Error>)
+    case createUserResponse(Result<API.CreateUserMutation.Data, Error>)
   }
 
   @Dependency(\.analytics) var analytics

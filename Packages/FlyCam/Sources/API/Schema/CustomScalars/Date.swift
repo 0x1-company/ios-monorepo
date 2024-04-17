@@ -7,7 +7,7 @@
 
 import ApolloAPI
 
-public extension FlyCam {
+public extension API {
   /// Date custom scalar type
   typealias Date = String
 }

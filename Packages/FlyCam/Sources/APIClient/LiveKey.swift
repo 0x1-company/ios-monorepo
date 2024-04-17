@@ -1,41 +1,41 @@
+import API
 import Apollo
 import ApolloConcurrency
 import Dependencies
-import FlyCam
 
-public extension FlyCamClient {
+public extension APIClient {
   static func live(apolloClient: ApolloClient) -> Self {
     Self(
       currentUser: {
-        let query = FlyCam.CurrentUserQuery()
+        let query = API.CurrentUserQuery()
         return apolloClient.watch(query: query)
       },
       createUser: {
-        let mutation = FlyCam.CreateUserMutation()
+        let mutation = API.CreateUserMutation()
         return try await apolloClient.perform(mutation: mutation)
       },
       closeUser: {
-        let mutation = FlyCam.CloseUserMutation()
+        let mutation = API.CloseUserMutation()
         return try await apolloClient.perform(mutation: mutation)
       },
       updateDisplayName: {
-        let mutation = FlyCam.UpdateDisplayNameMutation(input: $0)
+        let mutation = API.UpdateDisplayNameMutation(input: $0)
         return try await apolloClient.perform(mutation: mutation)
       },
       ranking: {
-        let query = FlyCam.RankingQuery()
+        let query = API.RankingQuery()
         return apolloClient.watch(query: query)
       },
       createPost: {
-        let mutation = FlyCam.CreatePostMutation(input: $0)
+        let mutation = API.CreatePostMutation(input: $0)
         return try await apolloClient.perform(mutation: mutation)
       },
       createFirebaseRegistrationToken: { input in
-        let mutation = FlyCam.CreateFirebaseRegistrationTokenMutation(input: input)
+        let mutation = API.CreateFirebaseRegistrationTokenMutation(input: input)
         return try await apolloClient.perform(mutation: mutation)
       },
       pushNotificationBadge: {
-        let query = FlyCam.PushNotificationBadgeQuery()
+        let query = API.PushNotificationBadgeQuery()
         return apolloClient.watch(query: query)
       }
     )

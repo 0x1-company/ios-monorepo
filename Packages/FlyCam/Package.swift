@@ -4,13 +4,15 @@
 import PackageDescription
 
 let package = Package(
-  name: "FlyCam",
+  name: "API",
   defaultLocalization: "en",
   platforms: [
     .iOS("16.4"),
   ],
   products: [
     .library(name: "AnalyticsKeys", targets: ["AnalyticsKeys"]),
+    .library(name: "API", targets: ["API"]),
+    .library(name: "APIClient", targets: ["APIClient"]),
     .library(name: "AppFeature", targets: ["AppFeature"]),
     .library(name: "BannerFeature", targets: ["BannerFeature"]),
     .library(name: "CameraFeature", targets: ["CameraFeature"]),
@@ -19,8 +21,6 @@ let package = Package(
     .library(name: "Constants", targets: ["Constants"]),
     .library(name: "DeleteAccountFeature", targets: ["DeleteAccountFeature"]),
     .library(name: "DisplayNameEditFeature", targets: ["DisplayNameEditFeature"]),
-    .library(name: "FlyCam", targets: ["FlyCam"]),
-    .library(name: "FlyCamClient", targets: ["FlyCamClient"]),
     .library(name: "ForceUpdateFeature", targets: ["ForceUpdateFeature"]),
     .library(name: "LaunchFeature", targets: ["LaunchFeature"]),
     .library(name: "MaintenanceFeature", targets: ["MaintenanceFeature"]),
@@ -58,6 +58,15 @@ let package = Package(
       .product(name: "UserNotificationClient", package: "SDK"),
       .product(name: "FirebaseMessagingClient", package: "SDK"),
     ]),
+    .target(name: "API", dependencies: [
+      .product(name: "ApolloAPI", package: "apollo-ios"),
+    ]),
+    .target(name: "APIClient", dependencies: [
+      "API",
+      .product(name: "ApolloConcurrency", package: "SDK"),
+      .product(name: "Dependencies", package: "swift-dependencies"),
+      .product(name: "DependenciesMacros", package: "swift-dependencies"),
+    ]),
     .target(name: "BannerFeature", dependencies: [
       "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
@@ -75,7 +84,7 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "CameraResultFeature", dependencies: [
-      "FlyCamClient",
+      "APIClient",
       "AnalyticsKeys",
       .product(name: "FirebaseStorageClient", package: "SDK"),
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
@@ -92,19 +101,10 @@ let package = Package(
     ]),
     .target(name: "DisplayNameEditFeature", dependencies: [
       "Styleguide",
-      "FlyCamClient",
+      "APIClient",
       "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "SDK"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-    ]),
-    .target(name: "FlyCam", dependencies: [
-      .product(name: "ApolloAPI", package: "apollo-ios"),
-    ]),
-    .target(name: "FlyCamClient", dependencies: [
-      "FlyCam",
-      .product(name: "ApolloConcurrency", package: "SDK"),
-      .product(name: "Dependencies", package: "swift-dependencies"),
-      .product(name: "DependenciesMacros", package: "swift-dependencies"),
     ]),
     .target(name: "ForceUpdateFeature", dependencies: [
       "Constants",
@@ -135,7 +135,7 @@ let package = Package(
     ]),
     .target(name: "RankingListFeature", dependencies: [
       "Styleguide",
-      "FlyCamClient",
+      "APIClient",
       "BannerFeature",
       .product(name: "AVPlayerNotificationClient", package: "SDK"),
     ]),
