@@ -1,0 +1,18 @@
+# import PictureSlider from './PictureSlider.graphql'
+
+fragment UserInternal on User {
+  id
+  berealUsername
+  gender
+  status
+  images {
+    id
+    imageUrl
+  }
+  shortComment {
+    id
+    body
+    status
+  }
+  ...PictureSlider
+}

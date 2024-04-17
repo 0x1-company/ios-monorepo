@@ -1,0 +1,10 @@
+# import PictureSlider from './PictureSlider.graphql'
+
+fragment SwipeCard on User {
+  id
+  shortComment {
+    id
+    body
+  }
+  ...PictureSlider
+}

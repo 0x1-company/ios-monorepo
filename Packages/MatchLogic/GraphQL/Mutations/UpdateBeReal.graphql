@@ -1,0 +1,6 @@
+mutation UpdateBeReal($input: UpdateBeRealInput!) {
+  updateBeReal(input:$input) {
+    id
+    berealUsername
+  }
+}

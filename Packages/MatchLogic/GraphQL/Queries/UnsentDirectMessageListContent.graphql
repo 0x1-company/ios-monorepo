@@ -1,0 +1,15 @@
+# import UnsentDirectMessageListContentRow from '../fragments/UnsentDirectMessageListContentRow.graphql'
+
+query UnsentDirectMessageListContent($first: Int!, $after: String) {
+  messageRoomCandidateMatches(first: $first, after: $after) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    edges {
+      node {
+        ...UnsentDirectMessageListContentRow
+      }
+    }
+  }
+}

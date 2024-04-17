@@ -1,0 +1,6 @@
+mutation CreateNope($input: CreateNopeInput!) {
+  createNope(input: $input) {
+    id
+    targetUserId
+  }
+}

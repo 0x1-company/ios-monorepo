@@ -1,0 +1,45 @@
+# import BannerCard from '../fragments/BannerCard.graphql'
+# import DirectMessageListContentRow from '../fragments/DirectMessageListContentRow.graphql'
+# import UnsentDirectMessageListContentRow from '../fragments/UnsentDirectMessageListContentRow.graphql'
+
+query DirectMessageTab($first: Int!) {
+  banners {
+    ...BannerCard
+  }
+
+  receivedLike {
+    id
+    displayCount
+    latestUser {
+      id
+      images {
+        id
+        imageUrl
+      }
+    }
+  }
+
+  messageRoomCandidateMatches(first:$first) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    edges {
+      node {
+        ...UnsentDirectMessageListContentRow
+      }
+    }
+  }
+
+  messageRooms(first: $first) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    edges {
+      node {
+        ...DirectMessageListContentRow
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+mutation CreateLike($input: CreateLikeInput!) {
+  createLike(input: $input) {
+    match {
+      id
+      targetUser {
+        id
+        berealUsername
+      }
+    }
+    feedback {
+      id
+      targetUserId
+    }
+  }
+}

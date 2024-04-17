@@ -1,0 +1,13 @@
+query ReceivedLike {
+  receivedLike {
+    id
+    count
+    latestUser {
+      id
+      images {
+        id
+        imageUrl
+      }
+    }
+  }
+}

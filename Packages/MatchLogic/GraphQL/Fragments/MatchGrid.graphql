@@ -1,0 +1,12 @@
+# import PictureSlider from './PictureSlider.graphql';
+
+fragment MatchGrid on Match {
+  id
+  createdAt
+  isRead
+  targetUser {
+    id
+    berealUsername
+    ...PictureSlider
+  }
+}
