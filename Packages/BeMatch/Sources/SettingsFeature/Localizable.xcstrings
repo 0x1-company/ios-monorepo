@@ -22,6 +22,7 @@
       }
     },
     "Clear BeMatch cache" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -42,6 +43,7 @@
       }
     },
     "Clearing cache can help fix some issues" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -122,6 +124,7 @@
       }
     },
     "I found an app to increase BeReal's friends, try it.\n%@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -252,6 +255,7 @@
       }
     },
     "You joined BeMatch %lld days ago on %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

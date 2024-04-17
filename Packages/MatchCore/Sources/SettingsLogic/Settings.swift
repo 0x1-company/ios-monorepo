@@ -20,6 +20,11 @@ public struct SettingsLogic {
   public struct CompletionWithItems: Equatable {
     public let activityType: UIActivity.ActivityType?
     public let result: Bool
+
+    public init(activityType: UIActivity.ActivityType?, result: Bool) {
+      self.activityType = activityType
+      self.result = result
+    }
   }
 
   public struct State: Equatable {
