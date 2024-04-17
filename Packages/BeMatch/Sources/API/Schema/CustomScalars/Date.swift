@@ -7,7 +7,7 @@
 
 import ApolloAPI
 
-public extension BeMatch {
+public extension API {
   /// Date custom scalar type
   typealias Date = String
 }

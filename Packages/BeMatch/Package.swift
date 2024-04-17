@@ -12,6 +12,8 @@ let package = Package(
   products: [
     .library(name: "AchievementFeature", targets: ["AchievementFeature"]),
     .library(name: "AnalyticsKeys", targets: ["AnalyticsKeys"]),
+    .library(name: "API", targets: ["API"]),
+    .library(name: "APIClient", targets: ["APIClient"]),
     .library(name: "AppFeature", targets: ["AppFeature"]),
     .library(name: "BannedFeature", targets: ["BannedFeature"]),
     .library(name: "BannerFeature", targets: ["BannerFeature"]),
@@ -82,6 +84,15 @@ let package = Package(
     ]),
     .target(name: "AnalyticsKeys", dependencies: [
       .product(name: "AnalyticsClient", package: "SDK"),
+    ]),
+    .target(name: "API", dependencies: [
+      .product(name: "ApolloAPI", package: "apollo-ios"),
+    ]),
+    .target(name: "APIClient", dependencies: [
+      "API",
+      .product(name: "ApolloConcurrency", package: "SDK"),
+      .product(name: "Dependencies", package: "swift-dependencies"),
+      .product(name: "DependenciesMacros", package: "swift-dependencies"),
     ]),
     .target(name: "AppFeature", dependencies: [
       "LaunchFeature",
