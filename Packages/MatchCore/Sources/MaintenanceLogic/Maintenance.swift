@@ -1,5 +1,5 @@
 import ComposableArchitecture
-import ConstantsClient
+import EnvironmentClient
 import SwiftUI
 
 @Reducer
@@ -9,8 +9,8 @@ public struct MaintenanceLogic {
   public struct State: Equatable {
     public let contactUsURL: URL
     public init() {
-      @Dependency(\.constants) var constants
-      contactUsURL = constants.contactUsURL()
+      @Dependency(\.environment) var environment
+      contactUsURL = environment.contactUsURL()
     }
   }
 

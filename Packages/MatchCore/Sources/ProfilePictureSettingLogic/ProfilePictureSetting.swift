@@ -2,7 +2,7 @@ import AnalyticsClient
 import API
 import APIClient
 import ComposableArchitecture
-import ConstantsClient
+import EnvironmentClient
 import FeedbackGeneratorClient
 import FirebaseAuthClient
 import FirebaseStorageClient
@@ -73,7 +73,7 @@ public struct ProfilePictureSettingLogic {
 
   @Dependency(\.uuid) var uuid
   @Dependency(\.analytics) var analytics
-  @Dependency(\.constants) var constants
+  @Dependency(\.environment) var environment
   @Dependency(\.firebaseAuth) var firebaseAuth
   @Dependency(\.firebaseStorage) var firebaseStorage
   @Dependency(\.feedbackGenerator) var feedbackGenerator
@@ -110,7 +110,7 @@ public struct ProfilePictureSettingLogic {
         }
 
       case let .loadTransferableResponse(offset, .success(.some(data))):
-        let requiredSize = switch constants.currentApplication() {
+        let requiredSize = switch environment.currentApplication() {
         case .bematch:
           CGSize(width: 1500, height: 2000)
         case .locketmatch:

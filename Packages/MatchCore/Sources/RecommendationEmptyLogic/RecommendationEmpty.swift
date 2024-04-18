@@ -4,7 +4,7 @@ import AnalyticsKeys
 import API
 import APIClient
 import ComposableArchitecture
-import ConstantsClient
+import EnvironmentClient
 
 import SwiftUI
 
@@ -33,8 +33,8 @@ public struct RecommendationEmptyLogic {
 
     @BindingState public var isPresented = false
     public init() {
-      @Dependency(\.constants) var constants
-      shareURL = constants.appStoreForEmptyURL()
+      @Dependency(\.environment) var environment
+      shareURL = environment.appStoreForEmptyURL()
     }
   }
 
@@ -46,7 +46,7 @@ public struct RecommendationEmptyLogic {
     case binding(BindingAction<State>)
   }
 
-  @Dependency(\.constants) var constants
+  @Dependency(\.environment) var environment
   @Dependency(\.analytics) var analytics
   @Dependency(\.api.currentUser) var currentUser
 
@@ -76,8 +76,8 @@ public struct RecommendationEmptyLogic {
 
       case let .currentUserResponse(.success(data)):
         state.shareURL = data.currentUser.gender == .female
-          ? constants.appStoreFemaleForEmptyURL()
-          : constants.appStoreForEmptyURL()
+          ? environment.appStoreFemaleForEmptyURL()
+          : environment.appStoreForEmptyURL()
         return .none
 
       case let .onCompletion(completion):

@@ -21,10 +21,10 @@ let package = Package(
     .library(name: "CategoryLogic", targets: ["CategoryLogic"]),
     .library(name: "CategoryListLogic", targets: ["CategoryListLogic"]),
     .library(name: "CategorySwipeLogic", targets: ["CategorySwipeLogic"]),
-    .library(name: "ConstantsClient", targets: ["ConstantsClient"]),
     .library(name: "DeleteAccountLogic", targets: ["DeleteAccountLogic"]),
     .library(name: "DirectMessageLogic", targets: ["DirectMessageLogic"]),
     .library(name: "DirectMessageTabLogic", targets: ["DirectMessageTabLogic"]),
+    .library(name: "EnvironmentClient", targets: ["EnvironmentClient"]),
     .library(name: "ExplorerLogic", targets: ["ExplorerLogic"]),
     .library(name: "ForceUpdateLogic", targets: ["ForceUpdateLogic"]),
     .library(name: "FreezedLogic", targets: ["FreezedLogic"]),
@@ -142,10 +142,6 @@ let package = Package(
       "SwipeLogic",
       "CategoryEmptyLogic",
     ]),
-    .target(name: "ConstantsClient", dependencies: [
-      .product(name: "Dependencies", package: "swift-dependencies"),
-      .product(name: "DependenciesMacros", package: "swift-dependencies"),
-    ]),
     .target(name: "DeleteAccountLogic", dependencies: [
       "APIClient",
       "AnalyticsKeys",
@@ -166,6 +162,10 @@ let package = Package(
       "ProfileExplorerLogic",
       "ReceivedLikeRouterLogic",
     ]),
+    .target(name: "EnvironmentClient", dependencies: [
+      .product(name: "Dependencies", package: "swift-dependencies"),
+      .product(name: "DependenciesMacros", package: "swift-dependencies"),
+    ]),
     .target(name: "ExplorerLogic", dependencies: [
       "API",
       "SwipeLogic",
@@ -176,13 +176,13 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "ForceUpdateLogic", dependencies: [
-      "ConstantsClient",
+      "EnvironmentClient",
       "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "FreezedLogic", dependencies: [
-      "ConstantsClient",
+      "EnvironmentClient",
       "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
@@ -214,7 +214,7 @@ let package = Package(
     ]),
     .target(name: "MaintenanceLogic", dependencies: [
       "AnalyticsKeys",
-      "ConstantsClient",
+      "EnvironmentClient",
       .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
@@ -314,7 +314,7 @@ let package = Package(
     .target(name: "ProfilePictureSettingLogic", dependencies: [
       "APIClient",
       "AnalyticsKeys",
-      "ConstantsClient",
+      "EnvironmentClient",
       .product(name: "TcaHelpers", package: "Dependencies"),
       .product(name: "FirebaseAuthClient", package: "Dependencies"),
       .product(name: "FirebaseStorageClient", package: "Dependencies"),
@@ -326,7 +326,7 @@ let package = Package(
       "ReportLogic",
       "SelectControl",
       "AnalyticsKeys",
-      "ConstantsClient",
+      "EnvironmentClient",
       "DirectMessageLogic",
     ]),
     .target(name: "ReceivedLikeRouterLogic", dependencies: [
@@ -339,7 +339,7 @@ let package = Package(
     .target(name: "RecommendationEmptyLogic", dependencies: [
       "APIClient",
       "AnalyticsKeys",
-      "ConstantsClient",
+      "EnvironmentClient",
       .product(name: "ActivityView", package: "Dependencies"),
       .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
@@ -370,7 +370,7 @@ let package = Package(
       "AnalyticsKeys",
       "ProfileLogic",
       "TutorialLogic",
-      "ConstantsClient",
+      "EnvironmentClient",
       "AchievementLogic",
       "ProfileEditLogic",
       "DeleteAccountLogic",
