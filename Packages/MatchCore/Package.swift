@@ -195,6 +195,7 @@ let package = Package(
     ]),
     .target(name: "HowToMovieLogic", dependencies: [
       "AnalyticsKeys",
+      "EnvironmentClient",
       .product(name: "UIApplicationClient", package: "Dependencies"),
       .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
