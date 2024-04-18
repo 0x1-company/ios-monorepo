@@ -3,8 +3,8 @@ import DependenciesMacros
 import Foundation
 
 @DependencyClient
-public struct ConstantsClient {
-  public var currentApplication: @Sendable () -> Application = { Application.bematch }
+public struct EnvironmentClient {
+  public var application: @Sendable () -> Application = { Application.bematch }
 
   public var appStoreURL: @Sendable () -> URL = { URL.currentDirectory() }
   public var appStoreForEmptyURL: @Sendable () -> URL = { URL.currentDirectory() }
@@ -29,7 +29,7 @@ public struct ConstantsClient {
   public var howToMovieURL: @Sendable () -> URL = { URL.currentDirectory() }
 }
 
-public extension ConstantsClient {
+public extension EnvironmentClient {
   enum Application: Equatable {
     case bematch
     case locketmatch

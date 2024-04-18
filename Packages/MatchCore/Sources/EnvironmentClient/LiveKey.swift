@@ -1,7 +1,7 @@
 import Dependencies
 import Foundation
 
-public extension ConstantsClient {
+public extension EnvironmentClient {
   static func live(
     application: Application,
     username: String,
@@ -15,8 +15,8 @@ public extension ConstantsClient {
     let founderURL = URL(string: "https://instagram.com/satoya__")!
     let developerURL = URL(string: "https://instagram.com/tomokisun")!
 
-    return ConstantsClient(
-      currentApplication: { application },
+    return EnvironmentClient(
+      application: { application },
       appStoreURL: { URL(string: "https://apps.apple.com/jp/app/id\(appId)")! },
       appStoreForEmptyURL: { appStoreForEmptyURL },
       appStoreFemaleForEmptyURL: { appStoreFemaleForEmptyURL },

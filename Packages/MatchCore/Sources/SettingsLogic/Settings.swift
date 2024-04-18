@@ -5,7 +5,7 @@ import AnalyticsKeys
 import API
 import Build
 import ComposableArchitecture
-import ConstantsClient
+import EnvironmentClient
 import FeedbackGeneratorClient
 import FirebaseAuthClient
 import ProfileEditLogic
@@ -53,14 +53,14 @@ public struct SettingsLogic {
       @Dependency(\.build) var build
       bundleShortVersion = build.bundleShortVersion()
 
-      @Dependency(\.constants) var constants
-      shareURL = constants.appStoreForEmptyURL()
-      faqURL = constants.faqURL()
-      contactUsURL = constants.contactUsURL()
-      instagramURL = constants.instagramURL()
-      tiktokURL = constants.tiktokURL()
-      termsOfUseURL = constants.termsOfUseURL()
-      privacyPolicyURL = constants.privacyPolicyURL()
+      @Dependency(\.environment) var environment
+      shareURL = environment.appStoreForEmptyURL()
+      faqURL = environment.faqURL()
+      contactUsURL = environment.contactUsURL()
+      instagramURL = environment.instagramURL()
+      tiktokURL = environment.tiktokURL()
+      termsOfUseURL = environment.termsOfUseURL()
+      privacyPolicyURL = environment.privacyPolicyURL()
     }
   }
 
@@ -84,7 +84,7 @@ public struct SettingsLogic {
   }
 
   @Dependency(\.openURL) var openURL
-  @Dependency(\.constants) var constants
+  @Dependency(\.environment) var environment
   @Dependency(\.analytics) var analytics
   @Dependency(\.firebaseAuth) var firebaseAuth
   @Dependency(\.feedbackGenerator) var feedbackGenerator
@@ -132,7 +132,7 @@ public struct SettingsLogic {
         analytics.buttonClick(name: \.storeRate)
         return .run { _ in
           await feedbackGenerator.impactOccurred()
-          await openURL(constants.appStoreReviewURL())
+          await openURL(environment.appStoreReviewURL())
         }
 
       case .versionButtonTapped where state.creationDate == nil:

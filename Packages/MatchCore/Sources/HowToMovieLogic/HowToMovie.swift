@@ -1,7 +1,7 @@
 import AnalyticsClient
 import AVKit
 import ComposableArchitecture
-import ConstantsClient
+import EnvironmentClient
 import FeedbackGeneratorClient
 
 @Reducer
@@ -12,8 +12,8 @@ public struct HowToMovieLogic {
     public let player: AVPlayer
 
     public init() {
-      @Dependency(\.constants) var constants
-      let url = constants.howToMovieURL()
+      @Dependency(\.environment) var environment
+      let url = environment.howToMovieURL()
       player = AVPlayer(url: url)
     }
   }
