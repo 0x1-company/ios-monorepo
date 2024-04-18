@@ -63,7 +63,7 @@ let package = Package(
   dependencies: [
     .package(path: "../Dependencies"),
     .package(path: "../MatchCore"),
-    .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.9.2"),
+    .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.9.3"),
     .package(url: "https://github.com/lorenzofiamingo/swiftui-cached-async-image", from: "2.1.1"),
   ],
   targets: [
