@@ -17,39 +17,6 @@
         }
       }
     },
-    "%lld month" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lldヶ月"
-          }
-        }
-      }
-    },
-    "%lld week" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld週間"
-          }
-        }
-      }
-    },
-    "%lld year" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld年間"
-          }
-        }
-      }
-    },
     "1. Send invitation code" : {
       "localizations" : {
         "ja" : {
@@ -90,39 +57,17 @@
         }
       }
     },
-    "I gave you an invitation code [%@] for free BeMatch PRO worth %@! 🎁.\n\nWhen you become a BeMatch PRO...\n■ See who you are Liked by.\n\nBeReal exchange app \"BeMatch.\" Download it! 🤞🏻\nhttps://bematch.onelink.me/nob4/mhxumci1" : {
-      "extractionState" : "stale",
+    "image-see-who-sent-it" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "I gave you an invitation code [%1$@] for free BeMatch PRO worth %2$@! 🎁.\n\nWhen you become a BeMatch PRO...\n■ See who you are Liked by.\n\nBeReal exchange app \"BeMatch.\" Download it! 🤞🏻\nhttps://bematch.onelink.me/nob4/mhxumci1"
+            "state" : "translated",
+            "value" : "see-who-sent-it"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "%2$lld分のBeMatch PROが無料になる招待コード【%1$@】を贈りました！🎁\r\n\r\nBeMatch PROになると…\r\n■ 誰にLikeされているかを見れる\r\n\r\nBeReal交換アプリ「BeMatch.」ダウンロードしてね！🤞🏻\r\nhttps://bematch.onelink.me/nob4/mhxumci1"
-          }
-        }
-      }
-    },
-    "I joined BeMatch PRO" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeMatch PROの購入が完了しました"
-          }
-        }
-      }
-    },
-    "image-see-who-sent-it" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "see-who-sent-it-ja"
           }
         }
@@ -154,17 +99,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "先着%lld名限定"
-          }
-        }
-      }
-    },
-    "OK" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK"
           }
         }
       }
