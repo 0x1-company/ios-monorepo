@@ -314,6 +314,7 @@ let package = Package(
     .target(name: "ProfilePictureSettingLogic", dependencies: [
       "APIClient",
       "AnalyticsKeys",
+      "ConstantsClient",
       .product(name: "TcaHelpers", package: "Dependencies"),
       .product(name: "FirebaseAuthClient", package: "Dependencies"),
       .product(name: "FirebaseStorageClient", package: "Dependencies"),

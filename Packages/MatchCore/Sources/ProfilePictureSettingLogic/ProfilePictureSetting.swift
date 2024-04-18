@@ -2,6 +2,7 @@ import AnalyticsClient
 import API
 import APIClient
 import ComposableArchitecture
+import ConstantsClient
 import FeedbackGeneratorClient
 import FirebaseAuthClient
 import FirebaseStorageClient
@@ -72,8 +73,9 @@ public struct ProfilePictureSettingLogic {
 
   @Dependency(\.uuid) var uuid
   @Dependency(\.analytics) var analytics
-  @Dependency(\.firebaseStorage) var firebaseStorage
+  @Dependency(\.constants) var constants
   @Dependency(\.firebaseAuth) var firebaseAuth
+  @Dependency(\.firebaseStorage) var firebaseStorage
   @Dependency(\.feedbackGenerator) var feedbackGenerator
   @Dependency(\.api.updateUserImage) var updateUserImage
 
@@ -108,8 +110,14 @@ public struct ProfilePictureSettingLogic {
         }
 
       case let .loadTransferableResponse(offset, .success(.some(data))):
+        let requiredSize = switch constants.currentApplication() {
+        case .bematch:
+          CGSize(width: 1500, height: 2000)
+        case .locketmatch:
+          CGSize(width: 1020, height: 1020)
+        }
         if let image = UIImage(data: data) {
-          if image.size == CGSize(width: 1500, height: 2000) {
+          if image.size == requiredSize {
             state.images[offset] = .active(image)
           } else {
             state.images[offset] = .warning(image)
