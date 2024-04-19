@@ -29,4 +29,4 @@ jobs:
         with:
           key: dependencies-xcode-cache-deriveddata-${{ github.workflow }}-${{ github.sha }}
           restore-keys: dependencies-xcode-cache-deriveddata-${{ github.workflow }}-
-      - run: xcodebuild build -workspace Dependencies.xcworkspace -scheme "AllLibrary" -skipMacroValidation -sdk iphonesimulator | xcpretty
+      - run: xcodebuild build -workspace Dependencies.xcworkspace -scheme "DependenciesLibrary" -skipMacroValidation -sdk iphonesimulator | xcpretty

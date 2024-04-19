@@ -6,7 +6,7 @@ bematch:
 flycam:
 	open FlyCam.xcworkspace
 
-sdk:
+dependencies:
 	open Dependencies.xcworkspace
 
 clean:
