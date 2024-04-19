@@ -31,7 +31,16 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
       AppLogic()
         ._printChanges()
         .transformDependency(\.self) {
-          $0.flycam = FlyCamClient.live(apolloClient: ApolloClient(build: $0.build))
+          guard
+            let appVersion = $0.build.infoDictionary("CFBundleShortVersionString", for: String.self),
+            let endpoint = $0.build.infoDictionary("endpointURL", for: String.self)
+          else { fatalError() }
+
+          let apolloClient = ApolloClient(
+            appVersion: appVersion,
+            endpoint: endpoint
+          )
+          $0.api = APIClient.live(apolloClient: apolloClient)
         }
     }
   )
