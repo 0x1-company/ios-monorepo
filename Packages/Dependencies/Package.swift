@@ -11,15 +11,11 @@ var package = Package(
   products: [
     .library(name: "ActivityView", targets: ["ActivityView"]),
     .library(name: "AnalyticsClient", targets: ["AnalyticsClient"]),
-    .library(name: "ApolloClientHelpers", targets: ["ApolloClientHelpers"]),
-    .library(name: "ApolloConcurrency", targets: ["ApolloConcurrency"]),
     .library(name: "AppsFlyerClient", targets: ["AppsFlyerClient"]),
-    .library(name: "AsyncValue", targets: ["AsyncValue"]),
     .library(name: "ATTrackingManagerClient", targets: ["ATTrackingManagerClient"]),
     .library(name: "AVFoundationClient", targets: ["AVFoundationClient"]),
     .library(name: "AVPlayerNotificationClient", targets: ["AVPlayerNotificationClient"]),
     .library(name: "Build", targets: ["Build"]),
-    .library(name: "ColorHex", targets: ["ColorHex"]),
     .library(name: "ConfigGlobalClient", targets: ["ConfigGlobalClient"]),
     .library(name: "ContactsClient", targets: ["ContactsClient"]),
     .library(name: "DeviceCheckClient", targets: ["DeviceCheckClient"]),
@@ -36,8 +32,6 @@ var package = Package(
     .library(name: "PhotosClient", targets: ["PhotosClient"]),
     .library(name: "ScreenshotClient", targets: ["ScreenshotClient"]),
     .library(name: "StoreKitClient", targets: ["StoreKitClient"]),
-    .library(name: "StoreKitHelpers", targets: ["StoreKitHelpers"]),
-    .library(name: "TcaHelpers", targets: ["TcaHelpers"]),
     .library(name: "UIApplicationClient", targets: ["UIApplicationClient"]),
     .library(name: "UIPasteboardClient", targets: ["UIPasteboardClient"]),
     .library(name: "UserDefaultsClient", targets: ["UserDefaultsClient"]),
@@ -46,12 +40,11 @@ var package = Package(
     .library(name: "WidgetClient", targets: ["WidgetClient"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/AppsFlyerSDK/AppsFlyerFramework-Dynamic", from: "6.14.1"),
     .package(url: "https://github.com/apollographql/apollo-ios", from: "1.10.0"),
     .package(url: "https://github.com/facebook/facebook-ios-sdk", from: "17.0.0"),
     .package(url: "https://github.com/firebase/firebase-ios-sdk", from: "10.24.0"),
     .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.2.2"),
-    .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.9.3"),
+    .package(url: "https://github.com/AppsFlyerSDK/AppsFlyerFramework-Dynamic", from: "6.14.1"),
   ],
   targets: [
     .target(name: "ActivityView"),
@@ -60,21 +53,11 @@ var package = Package(
       .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
       .product(name: "DependenciesMacros", package: "swift-dependencies"),
     ]),
-    .target(name: "ApolloClientHelpers", dependencies: [
-      "Build",
-      .product(name: "Apollo", package: "apollo-ios"),
-      .product(name: "FirebaseAuth", package: "firebase-ios-sdk"),
-    ]),
-    .target(name: "ApolloConcurrency", dependencies: [
-      .product(name: "Apollo", package: "apollo-ios"),
-      .product(name: "ApolloAPI", package: "apollo-ios"),
-    ]),
     .target(name: "AppsFlyerClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
       .product(name: "DependenciesMacros", package: "swift-dependencies"),
       .product(name: "AppsFlyerLib-Dynamic", package: "AppsFlyerFramework-Dynamic"),
     ]),
-    .target(name: "AsyncValue"),
     .target(name: "ATTrackingManagerClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
       .product(name: "DependenciesMacros", package: "swift-dependencies"),
@@ -91,7 +74,6 @@ var package = Package(
       .product(name: "Dependencies", package: "swift-dependencies"),
       .product(name: "DependenciesMacros", package: "swift-dependencies"),
     ]),
-    .target(name: "ColorHex"),
     .target(name: "ConfigGlobalClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
       .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"),
@@ -164,12 +146,6 @@ var package = Package(
       .product(name: "Dependencies", package: "swift-dependencies"),
       .product(name: "DependenciesMacros", package: "swift-dependencies"),
     ]),
-    .target(name: "StoreKitHelpers", dependencies: [
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-    ]),
-    .target(name: "TcaHelpers", dependencies: [
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-    ]),
     .target(name: "UIApplicationClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
       .product(name: "DependenciesMacros", package: "swift-dependencies"),
@@ -200,7 +176,7 @@ var package = Package(
 
 package.products.append(
   Product.library(
-    name: "AllLibrary",
+    name: "DependenciesLibrary",
     targets: package.targets.map(\.name)
   )
 )

@@ -1,14 +1,8 @@
 import Apollo
-import Build
 import Foundation
 
 public extension ApolloClient {
-  convenience init(build: Build) {
-    guard
-      let appVersion = build.infoDictionary("CFBundleShortVersionString", for: String.self),
-      let endpoint = build.infoDictionary("endpointURL", for: String.self)
-    else { fatalError() }
-
+  convenience init(appVersion: String, endpoint: String) {
     let store = ApolloStore()
     let provider = NetworkInterceptorProvider(store: store)
     let requestChainTransport = RequestChainNetworkTransport(
