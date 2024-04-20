@@ -204,11 +204,8 @@ public struct MembershipLogic {
           await send(.createAppleSubscriptionResponse(.failure(error)))
         }
 
-      case .purchaseResponse(.failure):
-        state.isActivityIndicatorVisible = false
-        return .none
-
-      case .createAppleSubscriptionResponse(.failure):
+      case .purchaseResponse(.failure),
+          .createAppleSubscriptionResponse(.failure):
         state.isActivityIndicatorVisible = false
         return .none
 
