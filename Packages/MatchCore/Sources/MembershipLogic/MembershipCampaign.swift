@@ -22,7 +22,7 @@ public struct MembershipCampaignLogic {
       displayPrice: String,
       displayDuration: String,
       currencyCode: String,
-      specialOfferDisplayPrice: String
+      specialOfferDisplayPrice: AttributedString
     ) {
       self.campaign = campaign
       self.displayPrice = displayPrice

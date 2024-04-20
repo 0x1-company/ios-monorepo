@@ -11,6 +11,8 @@ public struct InvitationCampaignPriceView: View {
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
+      let freePrice = Decimal.FormatStyle.Currency(code: viewStore.currencyCode).attributed.format(0)
+
       VStack(spacing: 20) {
         Text("when they use your invitation code you get", bundle: .module)
 
@@ -19,7 +21,7 @@ public struct InvitationCampaignPriceView: View {
           .aspectRatio(contentMode: .fit)
           .frame(height: 32)
 
-        Text("\(viewStore.currencyCode)0 for \(viewStore.displayDuration)", bundle: .module)
+        Text("\(freePrice) for \(viewStore.displayDuration)", bundle: .module)
           .font(.largeTitle)
           .fontWeight(.heavy)
           .foregroundStyle(

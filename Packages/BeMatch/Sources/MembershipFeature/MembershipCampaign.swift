@@ -37,9 +37,7 @@ public struct MembershipCampaignView: View {
             )
 
             VStack(spacing: 60) {
-              Image(ImageResource.membershipBenefit)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
+              SpecialOfferView()
 
               HowToReceiveBenefitView(
                 displayDuration: viewStore.displayDuration

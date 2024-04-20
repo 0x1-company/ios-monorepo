@@ -141,7 +141,7 @@ public struct MembershipLogic {
           let productPrice = product.price
           let specialOfferPrice = productPrice * Decimal(campaign.durationWeeks)
           let currencyCode = product.priceFormatStyle.currencyCode
-          let specialOfferDisplayPrice = currencyCode + specialOfferPrice.description
+          let specialOfferDisplayPrice = product.priceFormatStyle.attributed.format(specialOfferPrice)
 
           state.child = .campaign(
             MembershipCampaignLogic.State(
@@ -205,7 +205,7 @@ public struct MembershipLogic {
         }
 
       case .purchaseResponse(.failure),
-          .createAppleSubscriptionResponse(.failure):
+           .createAppleSubscriptionResponse(.failure):
         state.isActivityIndicatorVisible = false
         return .none
 
