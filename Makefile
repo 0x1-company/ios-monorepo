@@ -18,7 +18,6 @@ clean:
 secrets: # Set secrets
 	echo $(FLYCAM_FILE_FIREBASE_STAGING) | base64 -D > App/FlyCam/Multiplatform/Staging/GoogleService-Info.plist
 	echo $(BEMATCH_FILE_FIREBASE_STAGING) | base64 -D > App/BeMatch/Multiplatform/Staging/GoogleService-Info.plist
-	echo $(LOCKETMATCH_FILE_FIREBASE_STAGING) | base64 -D > App/LocketMatch/Multiplatform/Staging/GoogleService-Info.plist
 
 install-template: # Install template
 	@swift build -c release --package-path ./SwiftScripts/XCTemplateInstallerTool --product XCTemplateInstaller
