@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Packages/Utility">
+   </FileRef>
+   <FileRef
+      location = "group:Packages/Dependencies">
+   </FileRef>
+   <FileRef
+      location = "group:Packages/MatchCore">
+   </FileRef>
+   <FileRef
+      location = "group:Packages/LocketMatch">
+   </FileRef>
+</Workspace>

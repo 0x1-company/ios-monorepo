@@ -1,0 +1,46 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Answer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "回答する"
+          }
+        }
+      }
+    },
+    "Currently unable to re-register" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "現在再登録することができません"
+          }
+        }
+      }
+    },
+    "Once you have deleted your BeMatch account, you will not be able to register again for a certain period of time after the deletion." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一度BeMatchのアカウント削除をされた方は、削除してから一定期間は再登録していただくことができません。"
+          }
+        }
+      }
+    },
+    "Please answer our simple questionnaire to help us improve our service." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サービス改善のためにかんたんなアンケートへのご回答お願いします。"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

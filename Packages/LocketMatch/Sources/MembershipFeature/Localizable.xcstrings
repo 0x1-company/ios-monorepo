@@ -1,0 +1,208 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@ for %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ for %2$@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "が%2$@%1$@"
+          }
+        }
+      }
+    },
+    "1. Send invitation code" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1.招待コードを送る"
+          }
+        }
+      }
+    },
+    "2. %@ free for both parties!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2.お互いに%@無料！"
+          }
+        }
+      }
+    },
+    "Find someone you care about!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "で気になる人を見つけよう！"
+          }
+        }
+      }
+    },
+    "How to Receive Benefits" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "特典の受け取り方"
+          }
+        }
+      }
+    },
+    "image-see-who-sent-it" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "see-who-sent-it"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "see-who-sent-it-ja"
+          }
+        }
+      }
+    },
+    "Invite a friend and both receive" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "招待した人も、された人も"
+          }
+        }
+      }
+    },
+    "invite-ticket" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "invite-ticket-ja"
+          }
+        }
+      }
+    },
+    "Limited to first %lld Users" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "先着%lld名限定"
+          }
+        }
+      }
+    },
+    "Premium Plan" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10倍楽しめるプレミアムプラン"
+          }
+        }
+      }
+    },
+    "Recurring billing. You can cancel at any time. Payment will be charged to your iTunes account and your subscription will auto-renew at %@/week until you cancel in iTunes Store settings. By tapping Unlock, you agree to the Terms of Service and auto-renewal." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "定期課金。いつでもキャンセルできます。お支払いはiTunesアカウントに請求され、iTunes Storeの設定でキャンセルするまで、購読は%@/週で自動更新されます。ロック解除をタップすると、利用規約と自動更新に同意したことになります。"
+          }
+        }
+      }
+    },
+    "See who sent it!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自分をLikeした人を見れる！"
+          }
+        }
+      }
+    },
+    "Send an invitation code to a friend who hasn't used BeMatch." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "まだBeMatch.を使っていない友達に招待コードを贈りましょう！"
+          }
+        }
+      }
+    },
+    "Send Invitation Code" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "招待コードを送る"
+          }
+        }
+      }
+    },
+    "Special offer" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "嬉しい特典"
+          }
+        }
+      }
+    },
+    "Upgrade for %@/week" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "続ける - %@/週"
+          }
+        }
+      }
+    },
+    "When they enter the Invitation Code and register, you will both receive BeMatch.PRO for sure!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "相手が招待コードを入力して登録すると、お互いにBeMatch.PROを必ずプレゼント！"
+          }
+        }
+      }
+    },
+    "when they use your invitation code you get" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "友達があなたの招待コードを\n入力すると、お互いに"
+          }
+        }
+      }
+    },
+    "worth benefits" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "の特典がお互いにもらえる！"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
