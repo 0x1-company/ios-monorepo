@@ -1,0 +1,36 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Liked by %@ people" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@人にLikeされてます"
+          }
+        }
+      }
+    },
+    "Liked by %lld people" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld人にLikeされてます"
+          }
+        }
+      }
+    },
+    "NEW MATCH" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新しいマッチ"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

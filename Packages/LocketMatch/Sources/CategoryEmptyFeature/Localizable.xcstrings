@@ -1,0 +1,26 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Looks like he's gone." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "もういないみたい..."
+          }
+        }
+      }
+    },
+    "Swipe others" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "他の人をスワイプする"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
