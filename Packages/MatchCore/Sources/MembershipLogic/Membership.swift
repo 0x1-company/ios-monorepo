@@ -215,7 +215,7 @@ public struct MembershipLogic {
       case let .onCompletion(completion):
         state.isPresented = false
         analytics.logEvent("invitation_code_completion", [
-          "activity_type": completion.activityType?.rawValue,
+          "activity_type": completion.activityType?.rawValue ?? "",
           "result": completion.result,
         ])
         return .none

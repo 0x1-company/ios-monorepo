@@ -83,7 +83,7 @@ public struct RecommendationEmptyLogic {
       case let .onCompletion(completion):
         state.isPresented = false
         analytics.logEvent("activity_completion", [
-          "activity_type": completion.activityType?.rawValue,
+          "activity_type": completion.activityType?.rawValue ?? "",
           "result": completion.result,
         ])
         return .none
