@@ -56,7 +56,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
             endpoint: endpoint
           )
           $0.api = APIClient.live(apolloClient: apolloClient)
-          $0.constants = .live(
+          $0.environment = .live(
             application: EnvironmentClient.Application.bematch,
             username: String(localized: "bematch"),
             appId: "6473888485",
