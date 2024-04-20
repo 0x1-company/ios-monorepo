@@ -1,18 +1,18 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%@0 for %@" : {
+    "%@ for %@" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "%1$@0 for %2$@"
+            "value" : "%1$@ for %2$@"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "が%2$@%1$@0"
+            "value" : "が%2$@%1$@"
           }
         }
       }

@@ -63,9 +63,9 @@ public struct MembershipLogic {
     }
   }
 
+  @Dependency(\.api) var api
   @Dependency(\.build) var build
   @Dependency(\.store) var store
-  @Dependency(\.api) var api
   @Dependency(\.analytics) var analytics
 
   enum Cancel {
@@ -141,7 +141,7 @@ public struct MembershipLogic {
           let productPrice = product.price
           let specialOfferPrice = productPrice * Decimal(campaign.durationWeeks)
           let currencyCode = product.priceFormatStyle.currencyCode
-          let specialOfferDisplayPrice = currencyCode + specialOfferPrice.description
+          let specialOfferDisplayPrice = product.priceFormatStyle.attributed.format(specialOfferPrice)
 
           state.child = .campaign(
             MembershipCampaignLogic.State(
@@ -204,18 +204,15 @@ public struct MembershipLogic {
           await send(.createAppleSubscriptionResponse(.failure(error)))
         }
 
-      case .purchaseResponse(.failure):
-        state.isActivityIndicatorVisible = false
-        return .none
-
-      case .createAppleSubscriptionResponse(.failure):
+      case .purchaseResponse(.failure),
+           .createAppleSubscriptionResponse(.failure):
         state.isActivityIndicatorVisible = false
         return .none
 
       case let .onCompletion(completion):
         state.isPresented = false
         analytics.logEvent("invitation_code_completion", [
-          "activity_type": completion.activityType?.rawValue,
+          "activity_type": completion.activityType?.rawValue ?? "",
           "result": completion.result,
         ])
         return .none

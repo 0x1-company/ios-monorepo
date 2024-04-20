@@ -10,14 +10,14 @@ public struct InvitationCampaignLogic {
   public struct State: Equatable {
     public let quantity: Int
     public let durationWeeks: Int
-    public let specialOfferDisplayPrice: String
+    public let specialOfferDisplayPrice: AttributedString
 
     public var totalBenefit = 0
 
     public init(
       quantity: Int,
       durationWeeks: Int,
-      specialOfferDisplayPrice: String
+      specialOfferDisplayPrice: AttributedString
     ) {
       self.quantity = quantity
       self.durationWeeks = durationWeeks

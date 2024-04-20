@@ -149,7 +149,7 @@ public struct SettingsLogic {
       case let .onCompletion(completion):
         state.isSharePresented = false
         analytics.logEvent("activity_completion", [
-          "activity_type": completion.activityType?.rawValue,
+          "activity_type": completion.activityType?.rawValue ?? "",
           "result": completion.result,
         ])
         return .none
