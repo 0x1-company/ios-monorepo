@@ -63,9 +63,9 @@ public struct MembershipLogic {
     }
   }
 
+  @Dependency(\.api) var api
   @Dependency(\.build) var build
   @Dependency(\.store) var store
-  @Dependency(\.api) var api
   @Dependency(\.analytics) var analytics
 
   enum Cancel {
