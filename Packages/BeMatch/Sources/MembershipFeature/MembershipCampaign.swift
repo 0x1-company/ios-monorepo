@@ -29,14 +29,14 @@ public struct MembershipCampaignView: View {
               )
             )
 
-            InvitationCodeCampaignView(
-              store: store.scope(
-                state: \.invitationCodeCampaign,
-                action: \.invitationCodeCampaign
-              )
-            )
-
             VStack(spacing: 60) {
+              InvitationCodeCampaignView(
+                store: store.scope(
+                  state: \.invitationCodeCampaign,
+                  action: \.invitationCodeCampaign
+                )
+              )
+
               SpecialOfferView()
 
               HowToReceiveBenefitView(
