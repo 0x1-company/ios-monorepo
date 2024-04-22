@@ -48,10 +48,10 @@ public struct ProfileEditLogic {
         analytics.logScreen(screenName: "ProfileEdit", of: self)
         return .run { send in
           for try await data in currentUser() {
-            await send(.currentUserResponse(.success(data)))
+            await send(.currentUserResponse(.success(data)), animation: .default)
           }
         } catch: { error, send in
-          await send(.currentUserResponse(.failure(error)))
+          await send(.currentUserResponse(.failure(error)), animation: .default)
         }
 
       case .closeButtonTapped:
