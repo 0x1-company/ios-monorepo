@@ -11,6 +11,17 @@
         }
       }
     },
+    "Are you sure you want to unmatch?" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本当にマッチ解除しますか？"
+          }
+        }
+      }
+    },
     "Block" : {
       "localizations" : {
         "ja" : {
@@ -28,6 +39,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "キャンセル"
+          }
+        }
+      }
+    },
+    "Confirm" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マッチを解除する"
           }
         }
       }
@@ -81,6 +103,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "送信"
+          }
+        }
+      }
+    },
+    "Unmatch" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マッチを解除"
           }
         }
       }

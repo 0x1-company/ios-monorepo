@@ -29,7 +29,7 @@ public struct QuickActionLogic {
     }
   }
 
-  private func quickAction(send: Send<Action>, type: String) async {
+  private func quickAction(send: Send<AppLogic.Action>, type: String) async {
     analytics.logEvent("quick_action", ["shortcut_item_type": type])
     guard let url = Constants.quickActionURLs[type] else { return }
     await openURL(url)

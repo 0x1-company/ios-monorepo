@@ -1,48 +1,7 @@
-import AnalyticsClient
 import ComposableArchitecture
+import MembershipLogic
 import Styleguide
 import SwiftUI
-
-@Reducer
-public struct MembershipPurchaseLogic {
-  public init() {}
-
-  public struct State: Equatable {
-    let displayPrice: String
-
-    public init(displayPrice: String) {
-      self.displayPrice = displayPrice
-    }
-  }
-
-  public enum Action {
-    case onTask
-    case upgradeButtonTapped
-    case delegate(Delegate)
-
-    public enum Delegate: Equatable {
-      case purchase
-    }
-  }
-
-  @Dependency(\.analytics) var analytics
-
-  public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { _, action in
-      switch action {
-      case .onTask:
-        analytics.logScreen(screenName: "MembershipPurchase", of: self)
-        return .none
-
-      case .upgradeButtonTapped:
-        return .send(.delegate(.purchase))
-
-      default:
-        return .none
-      }
-    }
-  }
-}
 
 public struct MembershipPurchaseView: View {
   let store: StoreOf<MembershipPurchaseLogic>
@@ -67,8 +26,23 @@ public struct MembershipPurchaseView: View {
       VStack(spacing: 16) {
         ScrollView {
           VStack(spacing: 24) {
-            Image(ImageResource.purchaseHeader)
-              .resizable()
+            VStack(spacing: 16) {
+              Text("Premium Plan", bundle: .module)
+                .font(.footnote)
+                .fontWeight(.semibold)
+                .padding(.vertical, 6)
+                .padding(.horizontal, 8)
+                .overlay(
+                  RoundedRectangle(cornerRadius: 4)
+                    .stroke(Color.white, lineWidth: 1)
+                )
+
+              Image(ImageResource.bematchPro)
+
+              Text("Find someone you care about!", bundle: .module)
+                .font(.title2)
+                .bold()
+            }
 
             VStack(spacing: 40) {
               Button {
@@ -79,8 +53,7 @@ public struct MembershipPurchaseView: View {
               .buttonStyle(ConversionPrimaryButtonStyle())
 
               VStack(spacing: 60) {
-                Image(ImageResource.membershipBenefit)
-                  .resizable()
+                SpecialOfferView()
 
                 PurchaseAboutView(
                   displayPrice: viewStore.displayPrice

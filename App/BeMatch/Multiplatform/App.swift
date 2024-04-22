@@ -1,11 +1,13 @@
 import AnalyticsClient
+import APIClient
 import Apollo
 import ApolloAPI
 import ApolloClientHelpers
 import AppFeature
-import BeMatchClient
+import AppLogic
 import Build
 import ComposableArchitecture
+import EnvironmentClient
 import FirebaseAuth
 import FirebaseAuthClient
 import FirebaseMessaging
@@ -44,7 +46,25 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
       AppLogic()
         ._printChanges()
         .transformDependency(\.self) {
-          $0.bematch = .live(apolloClient: ApolloClient(build: $0.build))
+          guard
+            let appVersion = $0.build.infoDictionary("CFBundleShortVersionString", for: String.self),
+            let endpoint = $0.build.infoDictionary("endpointURL", for: String.self)
+          else { fatalError() }
+
+          let apolloClient = ApolloClient(
+            appVersion: appVersion,
+            endpoint: endpoint
+          )
+          $0.api = APIClient.live(apolloClient: apolloClient)
+          $0.environment = .live(
+            application: EnvironmentClient.Application.bematch,
+            username: String(localized: "bematch"),
+            appId: "6473888485",
+            appStoreForEmptyURL: URL(string: "https://bematch.onelink.me/nob4/ta8yroer")!,
+            appStoreFemaleForEmptyURL: URL(string: "https://bematch.onelink.me/nob4/wgr0m0ga")!,
+            docsURL: URL(string: "https://docs.bematch.jp")!,
+            howToMovieURL: URL(string: "https://storage.googleapis.com/bematch-production.appspot.com/public/how-to.mov")!
+          )
         }
     }
   )

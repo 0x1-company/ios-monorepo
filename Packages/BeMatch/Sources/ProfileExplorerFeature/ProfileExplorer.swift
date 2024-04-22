@@ -1,137 +1,8 @@
-import AnalyticsClient
-import BeMatch
-import BeMatchClient
 import ComposableArchitecture
 import DirectMessageFeature
-import FeedbackGeneratorClient
+import ProfileExplorerLogic
 import ReportFeature
 import SwiftUI
-
-@Reducer
-public struct ProfileExplorerLogic {
-  public init() {}
-
-  public enum Tab: Hashable {
-    case message
-    case profile
-  }
-
-  public struct State: Equatable {
-    let username: String
-    let targetUserId: String
-
-    @BindingState var currentTab: Tab
-    @BindingState var text = ""
-
-    var directMessage: DirectMessageLogic.State
-    var preview: ProfileExplorerPreviewLogic.State
-    @PresentationState var destination: Destination.State?
-
-    var isDisabled: Bool {
-      return text.isEmpty
-    }
-
-    public init(
-      username: String,
-      targetUserId: String,
-      tab: Tab = Tab.message
-    ) {
-      currentTab = tab
-      self.username = username
-      self.targetUserId = targetUserId
-      directMessage = DirectMessageLogic.State(
-        targetUserId: targetUserId
-      )
-      preview = ProfileExplorerPreviewLogic.State(
-        targetUserId: targetUserId
-      )
-    }
-  }
-
-  public enum Action: BindableAction {
-    case onTask
-    case principalButtonTapped
-    case reportButtonTapped
-    case sendButtonTapped
-    case binding(BindingAction<State>)
-    case directMessage(DirectMessageLogic.Action)
-    case preview(ProfileExplorerPreviewLogic.Action)
-    case destination(PresentationAction<Destination.Action>)
-    case createMessageResponse(Result<BeMatch.CreateMessageMutation.Data, Error>)
-  }
-
-  @Dependency(\.bematch) var bematch
-  @Dependency(\.analytics) var analytics
-  @Dependency(\.feedbackGenerator) var feedbackGenerator
-
-  public var body: some Reducer<State, Action> {
-    BindingReducer()
-    Scope(state: \.directMessage, action: \.directMessage) {
-      DirectMessageLogic()
-    }
-    Scope(state: \.preview, action: \.preview) {
-      ProfileExplorerPreviewLogic()
-    }
-    Reduce<State, Action> { state, action in
-      switch action {
-      case .onTask:
-        analytics.logScreen(screenName: "ProfileExplorer", of: self)
-        return .none
-
-      case .principalButtonTapped:
-        state.currentTab = Tab.profile
-        return .none
-
-      case .sendButtonTapped where !state.isDisabled:
-        let input = BeMatch.CreateMessageInput(
-          targetUserId: state.targetUserId,
-          text: state.text
-        )
-        state.text.removeAll()
-        return .run { send in
-          await feedbackGenerator.impactOccurred()
-          await send(.createMessageResponse(Result {
-            try await bematch.createMessage(input)
-          }))
-        }
-
-      case .reportButtonTapped:
-        state.destination = .report(ReportLogic.State(targetUserId: state.targetUserId))
-        return .none
-
-      case let .directMessage(.child(.content(.rows(.element(id, .reportButtonTapped))))):
-        state.destination = .report(ReportLogic.State(messageId: id))
-        return .none
-
-      case .createMessageResponse(.success):
-        return DirectMessageLogic()
-          .reduce(into: &state.directMessage, action: .onTask)
-          .map(Action.directMessage)
-
-      default:
-        return .none
-      }
-    }
-    .ifLet(\.$destination, action: \.destination) {
-      Destination()
-    }
-  }
-
-  @Reducer
-  public struct Destination {
-    public enum State: Equatable {
-      case report(ReportLogic.State)
-    }
-
-    public enum Action {
-      case report(ReportLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.report, action: \.report, child: ReportLogic.init)
-    }
-  }
-}
 
 public struct ProfileExplorerView: View {
   @FocusState var focus: Bool
@@ -198,6 +69,16 @@ public struct ProfileExplorerView: View {
 
         ToolbarItem(placement: .topBarTrailing) {
           Menu {
+            Button(role: .destructive) {
+              store.send(.unmatchButtonTapped)
+            } label: {
+              Label {
+                Text("Unmatch", bundle: .module)
+              } icon: {
+                Image(systemName: "trash")
+              }
+            }
+
             Button {
               store.send(.reportButtonTapped)
             } label: {
@@ -208,7 +89,9 @@ public struct ProfileExplorerView: View {
               }
             }
 
-            Button {} label: {
+            Button {
+              store.send(.blockButtonTapped)
+            } label: {
               Text("Block", bundle: .module)
             }
           } label: {
@@ -222,6 +105,12 @@ public struct ProfileExplorerView: View {
       .sheet(
         store: store.scope(state: \.$destination.report, action: \.destination.report),
         content: ReportView.init(store:)
+      )
+      .confirmationDialog(
+        store: store.scope(
+          state: \.$destination.confirmationDialog,
+          action: \.destination.confirmationDialog
+        )
       )
     }
   }

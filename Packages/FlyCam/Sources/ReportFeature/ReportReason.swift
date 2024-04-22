@@ -1,8 +1,8 @@
 import AnalyticsClient
+import API
+import APIClient
 import ComposableArchitecture
 import FeedbackGeneratorClient
-import FlyCam
-import FlyCamClient
 import SwiftUI
 
 @Reducer
@@ -39,7 +39,7 @@ public struct ReportReasonLogic {
     case binding(BindingAction<State>)
     case alert(PresentationAction<Alert>)
     case delegate(Delegate)
-    case createReportResponse(Result<FlyCam.CreateReportMutation.Data, Error>)
+    case createReportResponse(Result<API.CreateReportMutation.Data, Error>)
 
     public enum Alert: Equatable {
       case confirmOkay
@@ -66,7 +66,7 @@ public struct ReportReasonLogic {
         return .none
 
       case .sendButtonTapped:
-        let input = FlyCam.CreateReportInput(
+        let input = API.CreateReportInput(
           targetUserId: state.targetUserId,
           text: state.text,
           title: state.title

@@ -1,36 +1,6 @@
-import BeMatch
 import ComposableArchitecture
+import DirectMessageLogic
 import SwiftUI
-
-@Reducer
-public struct DirectMessageRowLogic {
-  public init() {}
-
-  public struct State: Equatable, Identifiable {
-    let message: BeMatch.MessageRow
-
-    public var id: String {
-      message.id
-    }
-
-    public init(message: BeMatch.MessageRow) {
-      self.message = message
-    }
-  }
-
-  public enum Action {
-    case reportButtonTapped
-  }
-
-  public var body: some Reducer<State, Action> {
-    Reduce { _, action in
-      switch action {
-      case .reportButtonTapped:
-        return .none
-      }
-    }
-  }
-}
 
 public struct DirectMessageRowView: View {
   let store: StoreOf<DirectMessageRowLogic>

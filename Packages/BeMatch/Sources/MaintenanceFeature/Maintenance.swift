@@ -1,22 +1,7 @@
 import ComposableArchitecture
-import Constants
+import MaintenanceLogic
 import Styleguide
 import SwiftUI
-
-@Reducer
-public struct MaintenanceLogic {
-  public init() {}
-
-  public struct State: Equatable {
-    public init() {}
-  }
-
-  public enum Action {}
-
-  public var body: some Reducer<State, Action> {
-    EmptyReducer()
-  }
-}
 
 public struct MaintenanceView: View {
   let store: StoreOf<MaintenanceLogic>
@@ -26,7 +11,7 @@ public struct MaintenanceView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { _ in
+    WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 80) {
         VStack(spacing: 24) {
           Text("Under Maintenance", bundle: .module)
@@ -36,7 +21,7 @@ public struct MaintenanceView: View {
             .font(.system(.body, weight: .semibold))
         }
 
-        Link(destination: Constants.contactUsURL) {
+        Link(destination: viewStore.contactUsURL) {
           Text("Contact us", bundle: .module)
             .font(.system(.subheadline, weight: .semibold))
             .frame(height: 50)

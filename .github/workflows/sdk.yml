@@ -6,11 +6,11 @@ on:
     branches:
       - main
     paths:
-      - Packages/SDK/**/*
+      - Packages/Dependencies/**/*
       - .github/workflows/sdk.yml
   pull_request:
     paths:
-      - Packages/SDK/**/*
+      - Packages/Dependencies/**/*
       - .github/workflows/sdk.yml
 
 env:
@@ -22,12 +22,12 @@ concurrency:
 
 jobs:
   build:
-    runs-on: macos-13
+    runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
       - uses: irgaly/xcode-cache@v1
         with:
           key: sdk-xcode-cache-deriveddata-${{ github.workflow }}-${{ github.sha }}
           restore-keys: sdk-xcode-cache-deriveddata-${{ github.workflow }}-
-      - run: make bootstrap
-      - run: xcodebuild build -workspace SDK.xcworkspace -scheme "AllLibrary" -skipMacroValidation -sdk iphonesimulator | xcpretty
+      - run: xcodebuild build -workspace SDK.xcworkspace -scheme "UtilityLibrary" -skipMacroValidation -sdk iphonesimulator | xcpretty
+      - run: xcodebuild build -workspace SDK.xcworkspace -scheme "DependenciesLibrary" -skipMacroValidation -sdk iphonesimulator | xcpretty

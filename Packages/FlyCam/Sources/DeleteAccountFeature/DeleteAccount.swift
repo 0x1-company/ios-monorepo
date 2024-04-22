@@ -1,10 +1,10 @@
 import AnalyticsClient
 import AnalyticsKeys
+import API
+import APIClient
 import ComposableArchitecture
 import FeedbackGeneratorClient
 import FirebaseAuthClient
-import FlyCam
-import FlyCamClient
 import Styleguide
 import SwiftUI
 
@@ -32,7 +32,7 @@ public struct DeleteAccountLogic {
     case reasonButtonTapped(String)
     case deleteButtonTapped
     case notNowButtonTapped
-    case closeUserResponse(Result<FlyCam.CloseUserMutation.Data, Error>)
+    case closeUserResponse(Result<API.CloseUserMutation.Data, Error>)
     case binding(BindingAction<State>)
     case confirmationDialog(PresentationAction<ConfirmationDialog>)
     case alert(PresentationAction<Alert>)
@@ -54,7 +54,7 @@ public struct DeleteAccountLogic {
   @Dependency(\.dismiss) var dismiss
   @Dependency(\.analytics) var analytics
   @Dependency(\.firebaseAuth) var firebaseAuth
-  @Dependency(\.flycam.closeUser) var closeUser
+  @Dependency(\.api.closeUser) var closeUser
   @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   public var body: some Reducer<State, Action> {

@@ -1,44 +1,7 @@
-import AnalyticsClient
 import ColorHex
 import ComposableArchitecture
+import MembershipLogic
 import SwiftUI
-
-@Reducer
-public struct InvitationCampaignLogic {
-  public init() {}
-
-  public struct State: Equatable {
-    let quantity: Int
-    let durationWeeks: Int
-
-    var totalBenefit = 0
-
-    public init(
-      quantity: Int,
-      durationWeeks: Int
-    ) {
-      self.quantity = quantity
-      self.durationWeeks = durationWeeks
-    }
-  }
-
-  public enum Action {
-    case onTask
-  }
-
-  @Dependency(\.analytics) var analytics
-
-  public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { state, action in
-      switch action {
-      case .onTask:
-        let price = 500
-        state.totalBenefit = price * state.durationWeeks
-        return .none
-      }
-    }
-  }
-}
 
 public struct InvitationCampaignView: View {
   let store: StoreOf<InvitationCampaignLogic>
@@ -85,16 +48,9 @@ public struct InvitationCampaignView: View {
           Text("Invite a friend and both receive", bundle: .module)
 
           VStack(spacing: 8) {
-            HStack(spacing: 8) {
-              Text(viewStore.totalBenefit.description)
-                .font(.system(size: 72, weight: .heavy))
-              VStack(spacing: 0) {
-                Text("円")
-                Text("分")
-              }
-              .font(.system(size: 22, weight: .bold))
-            }
-            .foregroundStyle(textGradient)
+            Text(viewStore.specialOfferDisplayPrice)
+              .font(.system(size: 72, weight: .heavy))
+              .foregroundStyle(textGradient)
 
             Text("worth benefits", bundle: .module)
           }
@@ -116,7 +72,8 @@ public struct InvitationCampaignView: View {
     store: .init(
       initialState: InvitationCampaignLogic.State(
         quantity: 2000,
-        durationWeeks: 48
+        durationWeeks: 48,
+        specialOfferDisplayPrice: "$100"
       ),
       reducer: { InvitationCampaignLogic() }
     )

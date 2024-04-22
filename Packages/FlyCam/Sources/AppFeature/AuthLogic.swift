@@ -1,11 +1,11 @@
+import API
+import APIClient
 import ComposableArchitecture
 import FirebaseAuthClient
-import FlyCam
-import FlyCamClient
 
 @Reducer
 public struct AuthLogic {
-  @Dependency(\.flycam.createUser) var createUser
+  @Dependency(\.api.createUser) var createUser
   @Dependency(\.firebaseAuth.signInAnonymously) var signInAnonymously
 
   public func reduce(

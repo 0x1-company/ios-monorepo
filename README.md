@@ -2,8 +2,8 @@
 
 <div align='left'>
   <img src='https://github.com/0x1-company/ios-app/actions/workflows/bematch.yml/badge.svg'>
-  <img src='https://github.com/0x1-company/ios-app/actions/workflows/flycam.yml/badge.svg'>
-  <img src='https://github.com/0x1-company/ios-app/actions/workflows/sdk.yml/badge.svg'>
+  <img src='https://github.com/0x1-company/ios-app/actions/workflows/dependencies.yml/badge.svg'>
+  <img src='https://github.com/0x1-company/ios-app/actions/workflows/matchcore.yml/badge.svg'>
   <img src='https://github.com/0x1-company/ios-app/actions/workflows/format.yml/badge.svg'>
 </div>
 
@@ -11,7 +11,7 @@
 
 SwiftUI and the Composable Architecture enable the creation of reusable components, accelerating app release timelines.
 
-App source code, excluding the core concept, can be shared across multiple apps. This reusable code is distributed as an SDK Package, which is then integrated into various apps through swift-dependencies.
+App source code, excluding the core concept, can be shared across multiple apps. This reusable code is distributed as an Dependencies Package, which is then integrated into various apps through swift-dependencies.
 
 We also standardize and reuse the specifications and designs of key features across our app development process. This applies to both iOS and backend systems.
 
@@ -25,6 +25,13 @@ Features such as:
 - Authentication
 
 By standardizing and reusing these feature specifications and designs, our developers can concentrate their efforts on the unique core concepts of each app.
+
+We respect Nikita Bier, who has won US AppStore #1 with Gas(acq by discord) and tbh(acq by facebook).
+
+<img width="541" alt="image" src="https://github.com/0x1-company/ios-monorepo/assets/28350464/5be23030-67ac-4d16-a315-142473933b42">
+
+https://twitter.com/nikitabier/status/1661733445163417601
+
 
 # Apps
 

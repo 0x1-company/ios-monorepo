@@ -1,0 +1,36 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Are you sure you want to unmatch?" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本当にマッチ解除しますか？"
+          }
+        }
+      }
+    },
+    "Confirm" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マッチを解除する"
+          }
+        }
+      }
+    },
+    "Unmatch" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "マッチを解除"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

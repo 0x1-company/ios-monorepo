@@ -1,42 +1,7 @@
-import AnalyticsClient
 import ComposableArchitecture
+import MembershipLogic
 import Styleguide
 import SwiftUI
-
-@Reducer
-public struct InvitationCodeCampaignLogic {
-  public init() {}
-
-  public struct State: Equatable {
-    let code: String
-
-    public init(code: String) {
-      self.code = code
-    }
-  }
-
-  public enum Action {
-    case invitationCodeButtonTapped
-    case delegate(Delegate)
-
-    public enum Delegate: Equatable {
-      case sendInvitationCode
-    }
-  }
-
-  @Dependency(\.analytics) var analytics
-
-  public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { _, action in
-      switch action {
-      case .invitationCodeButtonTapped:
-        return .send(.delegate(.sendInvitationCode))
-      default:
-        return .none
-      }
-    }
-  }
-}
 
 public struct InvitationCodeCampaignView: View {
   let store: StoreOf<InvitationCodeCampaignLogic>
@@ -48,7 +13,7 @@ public struct InvitationCodeCampaignView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 16) {
-        Image(ImageResource.inviteTicket)
+        Image(String(localized: "invite-ticket", bundle: .module), bundle: .module)
           .resizable()
           .aspectRatio(contentMode: .fit)
           .overlay(alignment: .center) {
@@ -72,7 +37,6 @@ public struct InvitationCodeCampaignView: View {
       .multilineTextAlignment(.center)
       .background(Color(uiColor: UIColor.secondarySystemBackground))
       .clipShape(RoundedRectangle(cornerRadius: 16))
-      .padding(.horizontal, 16)
       .padding(.vertical, 24)
       .background()
     }

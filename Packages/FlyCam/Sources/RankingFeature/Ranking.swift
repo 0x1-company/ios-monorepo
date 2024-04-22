@@ -1,8 +1,8 @@
 import AnalyticsClient
+import API
+import APIClient
 import BannerFeature
 import ComposableArchitecture
-import FlyCam
-import FlyCamClient
 import RankingListFeature
 import SwiftUI
 
@@ -20,10 +20,10 @@ public struct RankingLogic {
     case onAppear
     case refresh
     case list(RankingListLogic.Action)
-    case rankingResponse(Result<FlyCam.RankingQuery.Data, Error>)
+    case rankingResponse(Result<API.RankingQuery.Data, Error>)
   }
 
-  @Dependency(\.flycam) var flycam
+  @Dependency(\.api) var api
   @Dependency(\.analytics) var analytics
 
   enum Cancel {
@@ -75,7 +75,7 @@ public struct RankingLogic {
   func rankingRequest(send: Send<Action>) async {
     await withTaskCancellation(id: Cancel.ranking, cancelInFlight: true) {
       do {
-        for try await data in flycam.ranking() {
+        for try await data in api.ranking() {
           await send(.rankingResponse(.success(data)))
         }
       } catch {

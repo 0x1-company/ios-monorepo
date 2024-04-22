@@ -1,10 +1,10 @@
+import API
+import APIClient
 import AVKit
 import AVPlayerNotificationClient
 import ComposableArchitecture
 import FeedbackGeneratorClient
 import FirebaseStorageClient
-import FlyCam
-import FlyCamClient
 import SwiftUI
 
 @Reducer
@@ -30,7 +30,7 @@ public struct CameraResultLogic {
     case sendButtonTapped
     case didPlayToEndTime
     case uploadResponse(Result<URL, Error>)
-    case createPostResponse(Result<FlyCam.CreatePostMutation.Data, Error>)
+    case createPostResponse(Result<API.CreatePostMutation.Data, Error>)
     case delegate(Delegate)
 
     public enum Delegate: Equatable {
@@ -39,7 +39,7 @@ public struct CameraResultLogic {
   }
 
   @Dependency(\.uuid) var uuid
-  @Dependency(\.flycam.createPost) var createPost
+  @Dependency(\.api.createPost) var createPost
   @Dependency(\.firebaseStorage) var firebaseStorage
   @Dependency(\.feedbackGenerator) var feedbackGenerator
   @Dependency(\.avplayerNotification.didPlayToEndTimeNotification) var didPlayToEndTimeNotification
@@ -77,7 +77,7 @@ public struct CameraResultLogic {
         return .none
 
       case let .uploadResponse(.success(url)):
-        let input = FlyCam.CreatePostInput(
+        let input = API.CreatePostInput(
           altitude: state.altitude,
           videoUrl: url.absoluteString
         )
