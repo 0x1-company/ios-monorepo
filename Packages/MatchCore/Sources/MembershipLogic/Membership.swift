@@ -156,12 +156,7 @@ public struct MembershipLogic {
 
           state.shareText = String(
             localized: """
-            I gave you an invitation code [\(data.invitationCode.code)] for free BeMatch PRO worth \(specialOfferDisplayPrice)! 🎁.
-
-            When you become a BeMatch PRO...
-            ■ See who you are Liked by.
-
-            BeReal exchange app "BeMatch." Download it! 🤞🏻
+            I'm sending you an invite code [\(data.invitationCode.code)] to unlock BeMatch PRO for free (worth \(specialOfferDisplayPrice)).
             https://bematch.onelink.me/nob4/mhxumci1
             """,
             bundle: .module
