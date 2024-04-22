@@ -3,7 +3,7 @@ import DependenciesMacros
 
 @DependencyClient
 public struct ConfigGlobalClient: Sendable {
-  public var config: () async throws -> AsyncThrowingStream<Config, Error>
+  public var config: @Sendable () async throws -> AsyncThrowingStream<Config, Error>
 }
 
 public extension ConfigGlobalClient {

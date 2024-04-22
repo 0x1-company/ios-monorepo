@@ -12,6 +12,7 @@
       }
     },
     "BeMatch PRO" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {

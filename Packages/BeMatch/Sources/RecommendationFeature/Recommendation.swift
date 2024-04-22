@@ -13,24 +13,24 @@ public struct RecommendationView: View {
   }
 
   public var body: some View {
-    SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
+    SwitchStore(store) { initialState in
       switch initialState {
       case .loading:
         CaseLet(
-          /RecommendationLogic.Child.State.loading,
-          action: RecommendationLogic.Child.Action.loading,
+          /RecommendationLogic.State.loading,
+          action: RecommendationLogic.Action.loading,
           then: RecommendationLoadingView.init(store:)
         )
       case .swipe:
         CaseLet(
-          /RecommendationLogic.Child.State.swipe,
-          action: RecommendationLogic.Child.Action.swipe,
+          /RecommendationLogic.State.swipe,
+          action: RecommendationLogic.Action.swipe,
           then: RecommendationSwipeView.init(store:)
         )
       case .empty:
         CaseLet(
-          /RecommendationLogic.Child.State.empty,
-          action: RecommendationLogic.Child.Action.empty,
+          /RecommendationLogic.State.empty,
+          action: RecommendationLogic.Action.empty,
           then: RecommendationEmptyView.init(store:)
         )
       }
@@ -43,13 +43,4 @@ public struct RecommendationView: View {
       }
     }
   }
-}
-
-#Preview {
-  RecommendationView(
-    store: .init(
-      initialState: RecommendationLogic.State(),
-      reducer: { RecommendationLogic() }
-    )
-  )
 }
