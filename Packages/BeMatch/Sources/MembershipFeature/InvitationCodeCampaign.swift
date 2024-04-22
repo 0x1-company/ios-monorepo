@@ -37,7 +37,6 @@ public struct InvitationCodeCampaignView: View {
       .multilineTextAlignment(.center)
       .background(Color(uiColor: UIColor.secondarySystemBackground))
       .clipShape(RoundedRectangle(cornerRadius: 16))
-      .padding(.horizontal, 16)
       .padding(.vertical, 24)
       .background()
     }
