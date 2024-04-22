@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Current Version
         id: current-version
-        run: echo "CURRENT_VERSION=$(defaults read $(pwd)/App/BeMatch/Multiplatform/Staging/Info CFBundleShortVersionString)" >> $GITHUB_OUTPUT
+        run: echo "CURRENT_VERSION=$(defaults read "$(pwd)"/App/BeMatch/Multiplatform/Staging/Info CFBundleShortVersionString)" >> "$GITHUB_OUTPUT"
       - run: |
           sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ github.event.inputs.version }}/g" App/BeMatch/Multiplatform/Staging/Info.plist
           sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ github.event.inputs.version }}/g" App/BeMatch/Multiplatform/Production/Info.plist
@@ -54,7 +54,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Current Version
         id: current-version
-        run: echo "CURRENT_VERSION=$(defaults read $(pwd)/App/FlyCam/Multiplatform/Staging/Info CFBundleShortVersionString)" >> $GITHUB_OUTPUT
+        run: echo "CURRENT_VERSION=$(defaults read "$(pwd)"/App/FlyCam/Multiplatform/Staging/Info CFBundleShortVersionString)" >> "$GITHUB_OUTPUT"
       - run: |
           sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ github.event.inputs.version }}/g" App/FlyCam/Multiplatform/Staging/Info.plist
           sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ github.event.inputs.version }}/g" App/FlyCam/Multiplatform/Production/Info.plist
