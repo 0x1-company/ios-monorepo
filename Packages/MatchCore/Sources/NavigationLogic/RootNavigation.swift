@@ -22,7 +22,7 @@ public struct RootNavigationLogic {
   }
 
   public struct State: Equatable {
-    public var recommendation = RecommendationLogic.State()
+    public var recommendation = RecommendationLogic.State.loading()
     public var category = CategoryLogic.State()
     public var match = MatchNavigationLogic.State()
     public var message = DirectMessageTabLogic.State()
