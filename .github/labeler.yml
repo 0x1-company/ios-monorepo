@@ -10,13 +10,6 @@ BeMatch:
     - Packages/BeMatch/**
     - BeMatch.xcworkspace/**
 
-LocketMatch:
-- changed-files:
-  - any-glob-to-any-file:
-    - App/LocketMatch/**
-    - Packages/LocketMatch/**
-    - LocketMatch.xcworkspace/**
-
 FlyCam:
 - changed-files:
   - any-glob-to-any-file:
