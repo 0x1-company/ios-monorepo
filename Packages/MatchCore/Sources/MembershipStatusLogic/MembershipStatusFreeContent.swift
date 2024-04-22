@@ -22,11 +22,11 @@ public struct MembershipStatusFreeContentLogic {
       case .membershipButtonTapped:
         state.destination = .membership()
         return .none
-        
+
       case .destination(.presented(.membership(.delegate(.dismiss)))):
         state.destination = nil
         return .none
-        
+
       case .destination:
         return .none
       }

@@ -20,7 +20,7 @@ public struct MembershipStatusFreeContentView: View {
             Text("Status", bundle: .module)
           }
         }
-        
+
         Section {
           Button {
             store.send(.membershipButtonTapped)

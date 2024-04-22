@@ -71,7 +71,6 @@ public struct SettingsLogic {
     case invitationCodeButtonTapped
     case achievementButtonTapped
     case membershipStatusButtonTapped
-    case bematchProButtonTapped
     case howItWorksButtonTapped
     case otherButtonTapped
     case shareButtonTapped

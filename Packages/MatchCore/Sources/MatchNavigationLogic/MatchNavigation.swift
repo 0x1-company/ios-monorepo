@@ -78,8 +78,7 @@ public struct MatchNavigationLogic {
           await feedbackGenerator.impactOccurred()
         }
 
-      case .match(.receivedLike(.gridButtonTapped)),
-           .path(.element(_, .settings(.bematchProButtonTapped))):
+      case .match(.receivedLike(.gridButtonTapped)):
         return .run { send in
           await withTaskGroup(of: Void.self) { group in
             group.addTask {
