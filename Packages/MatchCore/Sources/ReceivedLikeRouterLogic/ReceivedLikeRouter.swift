@@ -35,10 +35,10 @@ public struct ReceivedLikeRouterLogic {
       case .onTask:
         return .run { send in
           for try await data in api.hasPremiumMembership() {
-            await send(.hasPremiumMembershipResponse(.success(data)))
+            await send(.hasPremiumMembershipResponse(.success(data)), animation: .default)
           }
         } catch: { error, send in
-          await send(.hasPremiumMembershipResponse(.failure(error)))
+          await send(.hasPremiumMembershipResponse(.failure(error)), animation: .default)
         }
         .cancellable(id: Cancel.hasPremiumMembership, cancelInFlight: true)
 
