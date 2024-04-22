@@ -240,9 +240,8 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "MembershipStatusFeature", dependencies: [
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
+      "MembershipFeature",
       .product(name: "MembershipStatusLogic", package: "MatchCore"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "NavigationFeature", dependencies: [
       .product(name: "NavigationLogic", package: "MatchCore"),

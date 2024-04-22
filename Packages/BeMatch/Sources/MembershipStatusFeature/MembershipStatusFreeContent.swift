@@ -1,4 +1,5 @@
 import ComposableArchitecture
+import MembershipFeature
 import MembershipStatusLogic
 import SwiftUI
 
@@ -19,7 +20,24 @@ public struct MembershipStatusFreeContentView: View {
             Text("Status", bundle: .module)
           }
         }
+        
+        Section {
+          Button {
+            store.send(.membershipButtonTapped)
+          } label: {
+            LabeledContent {
+              Image(systemName: "chevron.right")
+            } label: {
+              Text("About BeMatch PRO", bundle: .module)
+                .foregroundStyle(Color.primary)
+            }
+          }
+        }
       }
+      .fullScreenCover(
+        store: store.scope(state: \.$destination.membership, action: \.destination.membership),
+        content: MembershipView.init(store:)
+      )
     }
   }
 }

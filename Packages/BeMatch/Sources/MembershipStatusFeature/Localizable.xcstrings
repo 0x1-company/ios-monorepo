@@ -1,6 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "About BeMatch PRO" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeMatch PROについて"
+          }
+        }
+      }
+    },
     "App Store" : {
       "localizations" : {
         "ja" : {
