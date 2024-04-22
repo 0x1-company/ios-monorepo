@@ -153,7 +153,7 @@ public struct MembershipLogic {
               specialOfferDisplayPrice: specialOfferDisplayPrice
             )
           )
-          
+
           let localized: String.LocalizationValue = """
           I'm sending you an invite code [\(data.invitationCode.code)] to unlock BeMatch PRO for free (worth \(specialOfferDisplayPrice)).
           https://bematch.onelink.me/nob4/mhxumci1
