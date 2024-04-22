@@ -261,10 +261,7 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "MembershipStatusLogic", dependencies: [
-      "AnalyticsKeys",
-      "APIClient",
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      "MembershipLogic",
     ]),
     .target(name: "NavigationLogic", dependencies: [
       "CategoryLogic",

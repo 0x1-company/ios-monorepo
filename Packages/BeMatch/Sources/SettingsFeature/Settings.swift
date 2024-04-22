@@ -50,17 +50,6 @@ public struct SettingsView: View {
                 .foregroundStyle(Color.primary)
             }
           }
-
-          Button {
-            store.send(.bematchProButtonTapped)
-          } label: {
-            LabeledContent {
-              Image(systemName: "chevron.right")
-            } label: {
-              Text("BeMatch PRO", bundle: .module)
-                .foregroundStyle(Color.primary)
-            }
-          }
         } header: {
           Text("PROFILE", bundle: .module)
         }
