@@ -1,0 +1,33 @@
+name: SDK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - Packages/Dependencies/**/*
+      - .github/workflows/sdk.yml
+  pull_request:
+    paths:
+      - Packages/Dependencies/**/*
+      - .github/workflows/sdk.yml
+
+env:
+  PLATFORM_IOS: iOS Simulator,name=iPhone 15 Pro,OS=17.0.1
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: macos-13
+    steps:
+      - uses: actions/checkout@v4
+      - uses: irgaly/xcode-cache@v1
+        with:
+          key: sdk-xcode-cache-deriveddata-${{ github.workflow }}-${{ github.sha }}
+          restore-keys: sdk-xcode-cache-deriveddata-${{ github.workflow }}-
+      - run: xcodebuild build -workspace SDK.xcworkspace -scheme "UtilityLibrary" -skipMacroValidation -sdk iphonesimulator | xcpretty
+      - run: xcodebuild build -workspace SDK.xcworkspace -scheme "DependenciesLibrary" -skipMacroValidation -sdk iphonesimulator | xcpretty

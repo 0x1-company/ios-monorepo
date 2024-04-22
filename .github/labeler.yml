@@ -27,4 +27,3 @@ Dependencies:
 - changed-files:
   - any-glob-to-any-file:
     - Packages/Dependencies/**
-    - Dependencies.xcworkspace/**
