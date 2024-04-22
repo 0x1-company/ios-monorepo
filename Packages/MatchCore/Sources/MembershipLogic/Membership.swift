@@ -153,14 +153,12 @@ public struct MembershipLogic {
               specialOfferDisplayPrice: specialOfferDisplayPrice
             )
           )
-
-          state.shareText = String(
-            localized: """
-            I'm sending you an invite code [\(data.invitationCode.code)] to unlock BeMatch PRO for free (worth \(specialOfferDisplayPrice)).
-            https://bematch.onelink.me/nob4/mhxumci1
-            """,
-            bundle: .module
-          )
+          
+          let localized: String.LocalizationValue = """
+          I'm sending you an invite code [\(data.invitationCode.code)] to unlock BeMatch PRO for free (worth \(specialOfferDisplayPrice)).
+          https://bematch.onelink.me/nob4/mhxumci1
+          """
+          state.shareText = String(localized: localized, bundle: .module)
 
         } else if let product {
           state.child = .purchase(

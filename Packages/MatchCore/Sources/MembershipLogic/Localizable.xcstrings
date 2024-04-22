@@ -52,7 +52,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%2$lld分のBeMatch PROが無料になる招待コード【%1$@】を贈りました！🎁\r\n\r\nBeMatch PROになると…\r\n■ 誰にLikeされているかを見れる\r\n\r\nBeReal交換アプリ「BeMatch.」ダウンロードしてね！🤞🏻\r\nhttps://bematch.onelink.me/nob4/mhxumci1"
+            "value" : "%2$@分のBeMatch PROが無料になる招待コード【%1$@】を贈りました！🎁\n\nBeMatch PROになると…\n■ 誰にLikeされているかを見れる\n\nBeReal交換アプリ「BeMatch.」ダウンロードしてね！🤞🏻\nhttps://bematch.onelink.me/nob4/mhxumci1"
           }
         }
       }
