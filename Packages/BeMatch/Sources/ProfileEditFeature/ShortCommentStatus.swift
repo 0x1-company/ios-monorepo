@@ -17,7 +17,6 @@ struct ShortCommentStatus: View {
     case .rejected:
       Text("Rejected", bundle: .module)
         .foregroundStyle(Color.red)
-
     default:
       Text("No Set", bundle: .module)
     }
