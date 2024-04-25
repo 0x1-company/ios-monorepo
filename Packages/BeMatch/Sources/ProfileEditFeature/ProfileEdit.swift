@@ -16,62 +16,56 @@ public struct ProfileEditView: View {
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
-      Group {
-        if let user = viewStore.user {
-          List {
-            Section {
-              Button {
-                store.send(.usernameSettingButtonTapped)
-              } label: {
-                LabeledContent {
-                  Image(systemName: "chevron.right")
-                } label: {
-                  Text("Username on BeReal.", bundle: .module)
-                    .foregroundStyle(Color.primary)
-                }
-              }
-
-              Button {
-                store.send(.genderSettingButtonTapped)
-              } label: {
-                LabeledContent {
-                  Image(systemName: "chevron.right")
-                } label: {
-                  Text("Gender", bundle: .module)
-                    .foregroundStyle(Color.primary)
-                }
-              }
-
-              Button {
-                store.send(.pictureSettingButtonTapped)
-              } label: {
-                LabeledContent {
-                  Image(systemName: "chevron.right")
-                } label: {
-                  Text("Profile Image", bundle: .module)
-                    .foregroundStyle(Color.primary)
-                }
-              }
-
-              Button {
-                store.send(.shortCommentButtonTapped)
-              } label: {
-                LabeledContent {
-                  HStack {
-                    ShortCommentStatus(status: user.shortComment?.status.value)
-                    Image(systemName: "chevron.right")
-                  }
-                } label: {
-                  Text("Short Comment", bundle: .module)
-                    .foregroundStyle(Color.primary)
-                }
-              }
-            } header: {
-              Text("PROFILE", bundle: .module)
+      List {
+        Section {
+          Button {
+            store.send(.usernameSettingButtonTapped)
+          } label: {
+            LabeledContent {
+              Image(systemName: "chevron.right")
+            } label: {
+              Text("Username on BeReal.", bundle: .module)
+                .foregroundStyle(Color.primary)
             }
           }
-        } else {
-          ProgressView()
+
+          Button {
+            store.send(.genderSettingButtonTapped)
+          } label: {
+            LabeledContent {
+              Image(systemName: "chevron.right")
+            } label: {
+              Text("Gender", bundle: .module)
+                .foregroundStyle(Color.primary)
+            }
+          }
+
+          Button {
+            store.send(.pictureSettingButtonTapped)
+          } label: {
+            LabeledContent {
+              Image(systemName: "chevron.right")
+            } label: {
+              Text("Profile Image", bundle: .module)
+                .foregroundStyle(Color.primary)
+            }
+          }
+
+          Button {
+            store.send(.shortCommentButtonTapped)
+          } label: {
+            LabeledContent {
+              HStack {
+                ShortCommentStatus(status: viewStore.user?.shortComment?.status.value)
+                Image(systemName: "chevron.right")
+              }
+            } label: {
+              Text("Short Comment", bundle: .module)
+                .foregroundStyle(Color.primary)
+            }
+          }
+        } header: {
+          Text("PROFILE", bundle: .module)
         }
       }
       .multilineTextAlignment(.center)
