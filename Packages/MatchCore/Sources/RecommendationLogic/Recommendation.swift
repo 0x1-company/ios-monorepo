@@ -1,10 +1,10 @@
+import AnalyticsClient
 import API
 import APIClient
 import ComposableArchitecture
 import RecommendationEmptyLogic
-import RecommendationLoadingLogic
-import RecommendationSwipeLogic
 import SwiftUI
+import SwipeLogic
 import UIApplicationClient
 import UserNotificationClient
 
@@ -13,19 +13,20 @@ public struct RecommendationLogic {
   public init() {}
 
   public enum State: Equatable {
-    case loading(RecommendationLoadingLogic.State = .init())
-    case swipe(RecommendationSwipeLogic.State)
+    case loading
+    case content(SwipeLogic.State)
     case empty(RecommendationEmptyLogic.State = .init())
   }
 
   public enum Action {
     case onTask
     case recommendationsResponse(Result<API.RecommendationsQuery.Data, Error>)
-    case loading(RecommendationLoadingLogic.Action)
-    case swipe(RecommendationSwipeLogic.Action)
+    case loading
+    case content(SwipeLogic.Action)
     case empty(RecommendationEmptyLogic.Action)
   }
 
+  @Dependency(\.analytics) var analytics
   @Dependency(\.api.recommendations) var recommendations
   @Dependency(\.userNotifications.requestAuthorization) var requestAuthorization
   @Dependency(\.application.registerForRemoteNotifications) var registerForRemoteNotifications
@@ -38,9 +39,18 @@ public struct RecommendationLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
+        analytics.logScreen(screenName: "Recommendation", of: self)
         return .merge(
           .run(operation: { send in
-            await recommendationsRequest(send: send)
+            await withTaskCancellation(id: Cancel.recommendations, cancelInFlight: true) {
+              do {
+                for try await data in recommendations() {
+                  await send(.recommendationsResponse(.success(data)), animation: .default)
+                }
+              } catch {
+                await send(.recommendationsResponse(.failure(error)), animation: .default)
+              }
+            }
           }),
           .run(operation: { _ in
             guard try await requestAuthorization([.alert, .sound, .badge])
@@ -56,10 +66,10 @@ public struct RecommendationLogic {
 
         state = rows.isEmpty
           ? .empty()
-          : .swipe(RecommendationSwipeLogic.State(rows: rows))
+          : .content(SwipeLogic.State(rows: rows))
         return .none
 
-      case .swipe(.swipe(.delegate(.finished))):
+      case .content(.delegate(.finished)):
         state = .empty()
         return .none
 
@@ -67,26 +77,11 @@ public struct RecommendationLogic {
         return .none
       }
     }
-    .ifCaseLet(\.loading, action: \.loading) {
-      RecommendationLoadingLogic()
-    }
-    .ifCaseLet(\.swipe, action: \.swipe) {
-      RecommendationSwipeLogic()
+    .ifCaseLet(\.content, action: \.content) {
+      SwipeLogic()
     }
     .ifCaseLet(\.empty, action: \.empty) {
       RecommendationEmptyLogic()
-    }
-  }
-
-  func recommendationsRequest(send: Send<Action>) async {
-    await withTaskCancellation(id: Cancel.recommendations, cancelInFlight: true) {
-      do {
-        for try await data in recommendations() {
-          await send(.recommendationsResponse(.success(data)), animation: .default)
-        }
-      } catch {
-        await send(.recommendationsResponse(.failure(error)), animation: .default)
-      }
     }
   }
 }

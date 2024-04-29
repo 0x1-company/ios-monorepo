@@ -1,9 +1,8 @@
 import ComposableArchitecture
 import RecommendationEmptyFeature
-import RecommendationLoadingFeature
 import RecommendationLogic
-import RecommendationSwipeFeature
 import SwiftUI
+import SwipeFeature
 
 public struct RecommendationView: View {
   let store: StoreOf<RecommendationLogic>
@@ -16,17 +15,17 @@ public struct RecommendationView: View {
     SwitchStore(store) { initialState in
       switch initialState {
       case .loading:
+        ProgressView()
+          .tint(Color.white)
+          .progressViewStyle(CircularProgressViewStyle())
+
+      case .content:
         CaseLet(
-          /RecommendationLogic.State.loading,
-          action: RecommendationLogic.Action.loading,
-          then: RecommendationLoadingView.init(store:)
+          /RecommendationLogic.State.content,
+          action: RecommendationLogic.Action.content,
+          then: SwipeView.init(store:)
         )
-      case .swipe:
-        CaseLet(
-          /RecommendationLogic.State.swipe,
-          action: RecommendationLogic.Action.swipe,
-          then: RecommendationSwipeView.init(store:)
-        )
+
       case .empty:
         CaseLet(
           /RecommendationLogic.State.empty,

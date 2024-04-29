@@ -49,8 +49,6 @@ let package = Package(
     .library(name: "ReceivedLikeSwipeFeature", targets: ["ReceivedLikeSwipeFeature"]),
     .library(name: "RecommendationEmptyFeature", targets: ["RecommendationEmptyFeature"]),
     .library(name: "RecommendationFeature", targets: ["RecommendationFeature"]),
-    .library(name: "RecommendationLoadingFeature", targets: ["RecommendationLoadingFeature"]),
-    .library(name: "RecommendationSwipeFeature", targets: ["RecommendationSwipeFeature"]),
     .library(name: "ReportFeature", targets: ["ReportFeature"]),
     .library(name: "SettingsFeature", targets: ["SettingsFeature"]),
     .library(name: "ShortCommentSettingFeature", targets: ["ShortCommentSettingFeature"]),
@@ -336,19 +334,8 @@ let package = Package(
       .product(name: "RecommendationLogic", package: "MatchCore"),
       "MatchedFeature",
       "RecommendationEmptyFeature",
-      "RecommendationSwipeFeature",
-      "RecommendationLoadingFeature",
       .product(name: "UIApplicationClient", package: "Dependencies"),
       .product(name: "UserNotificationClient", package: "Dependencies"),
-    ]),
-    .target(name: "RecommendationLoadingFeature", dependencies: [
-      .product(name: "RecommendationLoadingLogic", package: "MatchCore"),
-      "Styleguide",
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-    ]),
-    .target(name: "RecommendationSwipeFeature", dependencies: [
-      "SwipeFeature",
-      .product(name: "RecommendationSwipeLogic", package: "MatchCore"),
     ]),
     .target(name: "ReportFeature", dependencies: [
       "Styleguide",
