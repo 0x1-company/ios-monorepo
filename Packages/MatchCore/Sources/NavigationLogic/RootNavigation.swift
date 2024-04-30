@@ -16,7 +16,7 @@ public struct RootNavigationLogic {
   @CasePathable
   public enum Tab {
     case recommendation
-    case categoryit
+    case category
     case match
     case message
   }
