@@ -1,6 +1,6 @@
 import ActivityView
 import ComposableArchitecture
-import RecommendationEmptyLogic
+import RecommendationLogic
 import Styleguide
 import SwiftUI
 

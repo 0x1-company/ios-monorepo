@@ -1,5 +1,4 @@
 import ComposableArchitecture
-import RecommendationEmptyFeature
 import RecommendationLogic
 import SwiftUI
 import SwipeFeature
