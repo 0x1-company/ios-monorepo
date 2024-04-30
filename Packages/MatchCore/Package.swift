@@ -52,10 +52,7 @@ let package = Package(
     .library(name: "ProfileSharedLogic", targets: ["ProfileSharedLogic"]),
     .library(name: "ReceivedLikeRouterLogic", targets: ["ReceivedLikeRouterLogic"]),
     .library(name: "ReceivedLikeSwipeLogic", targets: ["ReceivedLikeSwipeLogic"]),
-    .library(name: "RecommendationEmptyLogic", targets: ["RecommendationEmptyLogic"]),
     .library(name: "RecommendationLogic", targets: ["RecommendationLogic"]),
-    .library(name: "RecommendationLoadingLogic", targets: ["RecommendationLoadingLogic"]),
-    .library(name: "RecommendationSwipeLogic", targets: ["RecommendationSwipeLogic"]),
     .library(name: "ReportLogic", targets: ["ReportLogic"]),
     .library(name: "SelectControl", targets: ["SelectControl"]),
     .library(name: "SettingsLogic", targets: ["SettingsLogic"]),
@@ -335,28 +332,13 @@ let package = Package(
     .target(name: "ReceivedLikeSwipeLogic", dependencies: [
       "SwipeLogic",
     ]),
-    .target(name: "RecommendationEmptyLogic", dependencies: [
+    .target(name: "RecommendationLogic", dependencies: [
       "APIClient",
-      "AnalyticsKeys",
+      "MatchedLogic",
       "EnvironmentClient",
       .product(name: "ActivityView", package: "Dependencies"),
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-    ]),
-    .target(name: "RecommendationLogic", dependencies: [
-      "MatchedLogic",
-      "RecommendationEmptyLogic",
-      "RecommendationSwipeLogic",
-      "RecommendationLoadingLogic",
       .product(name: "UIApplicationClient", package: "Dependencies"),
       .product(name: "UserNotificationClient", package: "Dependencies"),
-    ]),
-    .target(name: "RecommendationLoadingLogic", dependencies: [
-      "AnalyticsKeys",
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-    ]),
-    .target(name: "RecommendationSwipeLogic", dependencies: [
-      "SwipeLogic",
     ]),
     .target(name: "ReportLogic", dependencies: [
       "APIClient",
