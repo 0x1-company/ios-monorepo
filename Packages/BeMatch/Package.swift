@@ -323,6 +323,7 @@ let package = Package(
       "SwipeFeature",
     ]),
     .target(name: "RecommendationFeature", dependencies: [
+      "SwipeFeature",
       "MatchedFeature",
       .product(name: "ActivityView", package: "Dependencies"),
       .product(name: "RecommendationLogic", package: "MatchCore"),

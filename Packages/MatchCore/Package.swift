@@ -334,6 +334,7 @@ let package = Package(
     ]),
     .target(name: "RecommendationLogic", dependencies: [
       "APIClient",
+      "SwipeLogic",
       "MatchedLogic",
       "EnvironmentClient",
       .product(name: "ActivityView", package: "Dependencies"),
