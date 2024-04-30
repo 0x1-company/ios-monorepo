@@ -16,13 +16,13 @@ public struct RootNavigationLogic {
   @CasePathable
   public enum Tab {
     case recommendation
-    case category
+    case categoryit
     case match
     case message
   }
 
   public struct State: Equatable {
-    public var recommendation = RecommendationLogic.State.loading()
+    public var recommendation = RecommendationLogic.State.loading
     public var category = CategoryLogic.State()
     public var match = MatchNavigationLogic.State()
     public var message = DirectMessageTabLogic.State()
