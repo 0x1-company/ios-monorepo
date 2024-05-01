@@ -1,0 +1,19 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Liked by %@ people" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@人にLikeされてます"
+          }
+        }
+      }
+    },
+    "RECENT MATCH" : {
+
+    }
+  },
+  "version" : "1.0"
+}

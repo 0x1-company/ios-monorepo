@@ -47,6 +47,7 @@ let package = Package(
     .library(name: "ProfileSharedFeature", targets: ["ProfileSharedFeature"]),
     .library(name: "ReceivedLikeRouterFeature", targets: ["ReceivedLikeRouterFeature"]),
     .library(name: "ReceivedLikeSwipeFeature", targets: ["ReceivedLikeSwipeFeature"]),
+    .library(name: "RecentMatchFeature", targets: ["RecentMatchFeature"]),
     .library(name: "RecommendationFeature", targets: ["RecommendationFeature"]),
     .library(name: "ReportFeature", targets: ["ReportFeature"]),
     .library(name: "SettingsFeature", targets: ["SettingsFeature"]),
@@ -314,13 +315,18 @@ let package = Package(
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
     ]),
     .target(name: "ReceivedLikeRouterFeature", dependencies: [
-      .product(name: "ReceivedLikeRouterLogic", package: "MatchCore"),
       "MembershipFeature",
       "ReceivedLikeSwipeFeature",
+      .product(name: "ReceivedLikeRouterLogic", package: "MatchCore"),
     ]),
     .target(name: "ReceivedLikeSwipeFeature", dependencies: [
-      .product(name: "ReceivedLikeSwipeLogic", package: "MatchCore"),
       "SwipeFeature",
+      .product(name: "ReceivedLikeSwipeLogic", package: "MatchCore"),
+    ]),
+    .target(name: "RecentMatchFeature", dependencies: [
+      "DirectMessageFeature",
+      "ReceivedLikeRouterFeature",
+      .product(name: "RecentMatchLogic", package: "MatchCore"),
     ]),
     .target(name: "RecommendationFeature", dependencies: [
       "SwipeFeature",
