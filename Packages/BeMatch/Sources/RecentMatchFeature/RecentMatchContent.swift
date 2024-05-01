@@ -1,4 +1,6 @@
 import SwiftUI
+import DirectMessageFeature
+import ReceivedLikeRouterFeature
 import ComposableArchitecture
 import RecentMatchLogic
 
@@ -47,6 +49,14 @@ public struct RecentMatchContentView: View {
         .padding(.horizontal, 16)
         .padding(.top, 16)
       }
+      .fullScreenCover(
+        store: store.scope(state: \.$destination.likeRouter, action: \.destinatio.likeRouter),
+        content: ReceivedLikeRouterView.init(store:)
+      )
+      .navigationDestination(
+        store: store.scope(state: \.$destination.directMessage, action: \.destinatio.directMessage),
+        destination: DirectMessageView.init(store:)
+      )
     }
   }
 }

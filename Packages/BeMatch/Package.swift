@@ -141,11 +141,11 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "DirectMessageTabFeature", dependencies: [
-      .product(name: "DirectMessageTabLogic", package: "MatchCore"),
       "BannerFeature",
-      "DirectMessageFeature",
+      "RecentMatchFeature",
       "ProfileExplorerFeature",
       "ReceivedLikeRouterFeature",
+      .product(name: "DirectMessageTabLogic", package: "MatchCore"),
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
     ]),
     .target(name: "ForceUpdateFeature", dependencies: [

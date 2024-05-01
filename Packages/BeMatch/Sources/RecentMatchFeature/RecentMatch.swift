@@ -10,18 +10,20 @@ public struct RecentMatchView: View {
   }
   
   public var body: some View {
-    SwitchStore(store) { initialState in
-      switch initialState {
-      case .loading:
-        ProgressView()
-          .tint(Color.white)
-        
-      case .content:
-        CaseLet(
-          /RecentMatchLogic.State.content,
-           action: RecentMatchLogic.Action.content,
-           then: RecentMatchContentView.init(store:)
-        )
+    Group {
+      SwitchStore(store) { initialState in
+        switch initialState {
+        case .loading:
+          ProgressView()
+            .tint(Color.white)
+          
+        case .content:
+          CaseLet(
+            /RecentMatchLogic.State.content,
+             action: RecentMatchLogic.Action.content,
+             then: RecentMatchContentView.init(store:)
+          )
+        }
       }
     }
     .task { await store.send(.onTask).finish() }
