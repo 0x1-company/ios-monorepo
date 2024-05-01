@@ -15,11 +15,6 @@ public struct RecentMatchContentView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       ScrollView(.vertical) {
         LazyVStack(spacing: 8) {
-          Text("RECENT MATCH", bundle: .module)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .font(.system(.callout, weight: .semibold))
-            .foregroundStyle(Color.white)
-          
           LazyVGrid(
             columns: Array(
               repeating: GridItem(spacing: 8),
@@ -47,7 +42,6 @@ public struct RecentMatchContentView: View {
           }
         }
         .padding(.horizontal, 16)
-        .padding(.top, 16)
       }
       .fullScreenCover(
         store: store.scope(state: \.$destination.likeRouter, action: \.destinatio.likeRouter),

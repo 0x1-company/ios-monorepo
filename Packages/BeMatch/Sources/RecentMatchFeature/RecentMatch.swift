@@ -28,10 +28,6 @@ public struct RecentMatchView: View {
     }
     .task { await store.send(.onTask).finish() }
     .navigationBarTitleDisplayMode(.inline)
-    .toolbar {
-      ToolbarItem(placement: .principal) {
-        Image(ImageResource.beMatch)
-      }
-    }
+    .navigationTitle(String(localized: "RECENT MATCH", bundle: .module))
   }
 }
