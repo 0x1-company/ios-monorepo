@@ -1,8 +1,8 @@
 import CachedAsyncImage
 import ComposableArchitecture
+import RecentMatchLogic
 import Styleguide
 import SwiftUI
-import RecentMatchLogic
 
 public struct LikeGridView: View {
   @Environment(\.displayScale) var displayScale

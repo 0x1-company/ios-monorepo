@@ -17,13 +17,13 @@ public struct RecentMatchGridLogic {
     public let createdAt: Date
 
     public init(match: API.RecentMatchGrid) {
-      self.targetUserId = match.targetUser.id
-      
-      self.id = match.id
-      self.isRead = match.isRead
-      self.username = match.targetUser.berealUsername
-      self.imageUrl = match.targetUser.images.first!.imageUrl
-      self.createdAt = if let timeInterval = TimeInterval(match.createdAt) {
+      targetUserId = match.targetUser.id
+
+      id = match.id
+      isRead = match.isRead
+      username = match.targetUser.berealUsername
+      imageUrl = match.targetUser.images.first!.imageUrl
+      createdAt = if let timeInterval = TimeInterval(match.createdAt) {
         Date(timeIntervalSince1970: timeInterval / 1000.0)
       } else {
         Date.now

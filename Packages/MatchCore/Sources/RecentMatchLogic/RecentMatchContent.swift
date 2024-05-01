@@ -12,7 +12,7 @@ public struct RecentMatchContentLogic {
 
     public var hasNextPage: Bool
     var after: String?
-    
+
     @PresentationState public var destination: Destination.State?
   }
 
@@ -29,16 +29,16 @@ public struct RecentMatchContentLogic {
       case .likeGrid(.gridButtonTapped):
         state.destination = .likeRouter()
         return .none
-        
+
       case let .matches(.element(id, .matchButtonTapped)):
         guard let row = state.matches[id: id] else { return .none }
         state.destination = .directMessage(
           DirectMessageLogic.State(targetUserId: row.targetUserId)
         )
         return .none
-        
+
       case .destinatio(.presented(.likeRouter(.swipe(.delegate(.dismiss))))),
-          .destinatio(.presented(.likeRouter(.membership(.delegate(.dismiss))))):
+           .destinatio(.presented(.likeRouter(.membership(.delegate(.dismiss))))):
         state.destination = nil
         return .none
 
@@ -50,19 +50,19 @@ public struct RecentMatchContentLogic {
       Destination()
     }
   }
-  
+
   @Reducer
   public struct Destination {
     public enum State: Equatable {
       case directMessage(DirectMessageLogic.State)
       case likeRouter(ReceivedLikeRouterLogic.State = .loading)
     }
-    
+
     public enum Action {
       case directMessage(DirectMessageLogic.Action)
       case likeRouter(ReceivedLikeRouterLogic.Action)
     }
-    
+
     public var body: some Reducer<State, Action> {
       Scope(state: \.directMessage, action: \.directMessage) {
         DirectMessageLogic()
