@@ -1,6 +1,6 @@
 import ComposableArchitecture
-import RecentMatchFeature
 import DirectMessageTabLogic
+import RecentMatchFeature
 import SwiftUI
 
 public struct UnsentDirectMessageListView: View {
@@ -16,14 +16,14 @@ public struct UnsentDirectMessageListView: View {
         Text("RECENT MATCH", bundle: .module)
           .font(.system(.callout, weight: .semibold))
           .frame(maxWidth: .infinity, alignment: .leading)
-        
+
         Button {
           store.send(.seeAllButtonTapped)
         } label: {
           HStack(spacing: 4) {
             Text("SEE MORE", bundle: .module)
               .font(.caption)
-            
+
             Image(systemName: "chevron.right")
           }
         }

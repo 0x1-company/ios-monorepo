@@ -1,17 +1,17 @@
+import CachedAsyncImage
 import ComposableArchitecture
-import SwiftUI
 import RecentMatchLogic
 import Styleguide
-import CachedAsyncImage
+import SwiftUI
 
 public struct RecentMatchGridView: View {
   @Environment(\.displayScale) var displayScale
   let store: StoreOf<RecentMatchGridLogic>
-  
+
   public init(store: StoreOf<RecentMatchGridLogic>) {
     self.store = store
   }
-  
+
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       Button {

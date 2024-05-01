@@ -10,7 +10,7 @@ public struct UnsentDirectMessageListLogic {
     public var child = Child.State.loading
 
     static let loading = State()
-    
+
     @PresentationState public var destination: Destination.State?
 
     public init() {}
@@ -61,7 +61,7 @@ public struct UnsentDirectMessageListLogic {
       Destination()
     }
   }
-  
+
   @Reducer
   public struct Destination {
     public enum State: Equatable {

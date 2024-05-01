@@ -1,8 +1,8 @@
-import SwiftUI
+import ComposableArchitecture
 import DirectMessageFeature
 import ReceivedLikeRouterFeature
-import ComposableArchitecture
 import RecentMatchLogic
+import SwiftUI
 
 public struct RecentMatchContentView: View {
   let store: StoreOf<RecentMatchContentLogic>
@@ -32,7 +32,7 @@ public struct RecentMatchContentView: View {
               content: RecentMatchGridView.init(store:)
             )
           }
-          
+
           if viewStore.hasNextPage {
             ProgressView()
               .tint(Color.white)
