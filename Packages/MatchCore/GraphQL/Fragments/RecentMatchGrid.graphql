@@ -1,0 +1,13 @@
+fragment RecentMatchGrid on Match {
+  id
+  createdAt
+  isRead
+  targetUser {
+    id
+    berealUsername
+    images {
+      id
+      imageUrl
+    }
+  }
+}

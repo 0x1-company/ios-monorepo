@@ -52,6 +52,7 @@ let package = Package(
     .library(name: "ProfileSharedLogic", targets: ["ProfileSharedLogic"]),
     .library(name: "ReceivedLikeRouterLogic", targets: ["ReceivedLikeRouterLogic"]),
     .library(name: "ReceivedLikeSwipeLogic", targets: ["ReceivedLikeSwipeLogic"]),
+    .library(name: "RecentMatchLogic", targets: ["RecentMatchLogic"]),
     .library(name: "RecommendationLogic", targets: ["RecommendationLogic"]),
     .library(name: "ReportLogic", targets: ["ReportLogic"]),
     .library(name: "SelectControl", targets: ["SelectControl"]),
@@ -331,6 +332,10 @@ let package = Package(
     ]),
     .target(name: "ReceivedLikeSwipeLogic", dependencies: [
       "SwipeLogic",
+    ]),
+    .target(name: "RecentMatchLogic", dependencies: [
+      "DirectMessageLogic",
+      "ReceivedLikeRouterLogic",
     ]),
     .target(name: "RecommendationLogic", dependencies: [
       "APIClient",

@@ -331,6 +331,9 @@ type Query {
   """バナー一覧"""
   banners: [Banner!]!
 
+  """カスタムトークンを作成"""
+  createBematchToken: String!
+
   """ログイン中ユーザーを取得"""
   currentUser: User!
   explorers: [Explorer!]!

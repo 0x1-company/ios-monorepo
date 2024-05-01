@@ -1,0 +1,27 @@
+# import RecentMatchGrid from '../fragments/RecentMatchGrid.graphql'
+
+query RecentMatch($first:Int!) {
+  messageRoomCandidateMatches(first:$first) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    edges {
+      node {
+        ...RecentMatchGrid
+      }
+    }
+  }
+
+  receivedLike {
+    id
+    count
+    latestUser {
+      id
+      images {
+        id
+        imageUrl
+      }
+    }
+  }
+}
