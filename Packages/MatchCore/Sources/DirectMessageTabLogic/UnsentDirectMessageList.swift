@@ -1,4 +1,5 @@
 import ComposableArchitecture
+import RecentMatchLogic
 import SwiftUI
 
 @Reducer
@@ -9,6 +10,8 @@ public struct UnsentDirectMessageListLogic {
     public var child = Child.State.loading
 
     static let loading = State()
+    
+    @PresentationState public var destination: Destination.State?
 
     public init() {}
 
@@ -37,12 +40,41 @@ public struct UnsentDirectMessageListLogic {
   }
 
   public enum Action {
-    case onTask
+    case seeAllButtonTapped
     case child(Child.Action)
+    case destination(PresentationAction<Destination.Action>)
   }
 
   public var body: some Reducer<State, Action> {
     Scope(state: \.child, action: \.child, child: Child.init)
+    Reduce<State, Action> { state, action in
+      switch action {
+      case .seeAllButtonTapped:
+        state.destination = .recentMatch()
+        return .none
+
+      default:
+        return .none
+      }
+    }
+    .ifLet(\.$destination, action: \.destination) {
+      Destination()
+    }
+  }
+  
+  @Reducer
+  public struct Destination {
+    public enum State: Equatable {
+      case recentMatch(RecentMatchLogic.State = .loading)
+    }
+
+    public enum Action {
+      case recentMatch(RecentMatchLogic.Action)
+    }
+
+    public var body: some Reducer<State, Action> {
+      Scope(state: \.recentMatch, action: \.recentMatch, child: RecentMatchLogic.init)
+    }
   }
 
   @Reducer

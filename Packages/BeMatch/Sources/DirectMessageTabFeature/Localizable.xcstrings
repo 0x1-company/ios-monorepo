@@ -40,6 +40,16 @@
           }
         }
       }
+    },
+    "SEE MORE" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべて見る"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

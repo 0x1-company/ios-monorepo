@@ -1,4 +1,5 @@
 import ComposableArchitecture
+import RecentMatchFeature
 import DirectMessageTabLogic
 import SwiftUI
 
@@ -11,9 +12,23 @@ public struct UnsentDirectMessageListView: View {
 
   public var body: some View {
     VStack(alignment: .leading, spacing: 8) {
-      Text("RECENT MATCH", bundle: .module)
-        .font(.system(.callout, weight: .semibold))
-        .padding(.horizontal, 16)
+      HStack(spacing: 0) {
+        Text("RECENT MATCH", bundle: .module)
+          .font(.system(.callout, weight: .semibold))
+          .frame(maxWidth: .infinity, alignment: .leading)
+        
+        Button {
+          store.send(.seeAllButtonTapped)
+        } label: {
+          HStack(spacing: 4) {
+            Text("SEE MORE", bundle: .module)
+              .font(.caption)
+            
+            Image(systemName: "chevron.right")
+          }
+        }
+      }
+      .padding(.horizontal, 16)
 
       SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
         switch initialState {
@@ -34,7 +49,10 @@ public struct UnsentDirectMessageListView: View {
       }
     }
     .padding(.top, 16)
-    .task { await store.send(.onTask).finish() }
+    .navigationDestination(
+      store: store.scope(state: \.$destination.recentMatch, action: \.destination.recentMatch),
+      destination: RecentMatchView.init(store:)
+    )
   }
 }
 
