@@ -62,7 +62,6 @@ public struct InvitationCampaignView: View {
       .frame(maxWidth: .infinity)
       .background(backgroundGradient)
       .multilineTextAlignment(.center)
-      .task { await store.send(.onTask).finish() }
     }
   }
 }
