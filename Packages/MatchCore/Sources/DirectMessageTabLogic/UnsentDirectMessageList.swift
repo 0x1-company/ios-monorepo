@@ -45,7 +45,7 @@ public struct UnsentDirectMessageListLogic {
     case child(Child.Action)
     case destination(PresentationAction<Destination.Action>)
   }
-  
+
   @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   public var body: some Reducer<State, Action> {

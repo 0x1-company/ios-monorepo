@@ -21,6 +21,7 @@ public struct RecentMatchContentLogic {
   public enum Action {
     case scrollViewBottomReached
     case recentMatchContentResponse(Result<API.RecentMatchContentQuery.Data, Error>)
+    case readMatchResponse(Result<API.ReadMatchMutation.Data, Error>)
     case matches(IdentifiedActionOf<RecentMatchGridLogic>)
     case likeGrid(LikeGridLogic.Action)
     case destinatio(PresentationAction<Destination.Action>)
@@ -28,8 +29,9 @@ public struct RecentMatchContentLogic {
 
   @Dependency(\.api) var api
 
-  enum Cancel {
+  enum Cancel: Hashable {
     case recentMatchContent
+    case readMatch(String)
   }
 
   public var body: some Reducer<State, Action> {
@@ -57,20 +59,27 @@ public struct RecentMatchContentLogic {
         state.matches = IdentifiedArrayOf(uniqueElements: state.matches + matches)
         return .none
 
-      case .likeGrid(.gridButtonTapped):
-        state.destination = .likeRouter()
-        return .none
-
       case .recentMatchContentResponse(.failure):
         state.hasNextPage = false
         return .none
 
-      case let .matches(.element(id, .matchButtonTapped)):
-        guard let row = state.matches[id: id] else { return .none }
+      case .likeGrid(.gridButtonTapped):
+        state.destination = .likeRouter()
+        return .none
+
+      case let .matches(.element(matchId, .matchButtonTapped)):
+        guard var row = state.matches[id: matchId] else { return .none }
+        row.read()
+        state.matches.updateOrAppend(row)
         state.destination = .directMessage(
           DirectMessageLogic.State(targetUserId: row.targetUserId)
         )
-        return .none
+        return .run { send in
+          await send(.readMatchResponse(Result {
+            try await api.readMatch(matchId)
+          }))
+        }
+        .cancellable(id: Cancel.readMatch(matchId), cancelInFlight: true)
 
       case .destinatio(.presented(.likeRouter(.swipe(.delegate(.dismiss))))),
            .destinatio(.presented(.likeRouter(.membership(.delegate(.dismiss))))):
