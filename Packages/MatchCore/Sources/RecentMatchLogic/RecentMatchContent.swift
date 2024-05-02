@@ -1,8 +1,8 @@
+import API
+import APIClient
 import ComposableArchitecture
 import DirectMessageLogic
 import ReceivedLikeRouterLogic
-import API
-import APIClient
 
 @Reducer
 public struct RecentMatchContentLogic {
@@ -25,9 +25,9 @@ public struct RecentMatchContentLogic {
     case likeGrid(LikeGridLogic.Action)
     case destinatio(PresentationAction<Destination.Action>)
   }
-  
+
   @Dependency(\.api) var api
-  
+
   enum Cancel {
     case recentMatchContent
   }
@@ -48,19 +48,19 @@ public struct RecentMatchContentLogic {
       case let .recentMatchContentResponse(.success(data)):
         state.after = data.messageRoomCandidateMatches.pageInfo.endCursor
         state.hasNextPage = data.messageRoomCandidateMatches.pageInfo.hasNextPage
-        
+
         let matches = data.messageRoomCandidateMatches.edges
           .map(\.node.fragments.recentMatchGrid)
           .filter { !$0.targetUser.images.isEmpty }
           .map(RecentMatchGridLogic.State.init(match:))
-        
+
         state.matches = IdentifiedArrayOf(uniqueElements: state.matches + matches)
         return .none
 
       case .likeGrid(.gridButtonTapped):
         state.destination = .likeRouter()
         return .none
-        
+
       case .recentMatchContentResponse(.failure):
         state.hasNextPage = false
         return .none
