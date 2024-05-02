@@ -1,8 +1,6 @@
 import AnalyticsClient
 import ComposableArchitecture
 
-import SwiftUI
-
 @Reducer
 public struct MembershipPurchaseLogic {
   public init() {}

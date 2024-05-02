@@ -1,7 +1,4 @@
-import AnalyticsClient
 import ComposableArchitecture
-
-import SwiftUI
 
 @Reducer
 public struct InvitationCodeCampaignLogic {
@@ -23,8 +20,6 @@ public struct InvitationCodeCampaignLogic {
       case sendInvitationCode
     }
   }
-
-  @Dependency(\.analytics) var analytics
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { _, action in

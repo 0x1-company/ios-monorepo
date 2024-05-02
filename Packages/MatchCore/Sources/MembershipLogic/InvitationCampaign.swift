@@ -1,5 +1,3 @@
-import AnalyticsClient
-import ColorHex
 import ComposableArchitecture
 import SwiftUI
 
@@ -12,8 +10,6 @@ public struct InvitationCampaignLogic {
     public let durationWeeks: Int
     public let specialOfferDisplayPrice: AttributedString
 
-    public var totalBenefit = 0
-
     public init(
       quantity: Int,
       durationWeeks: Int,
@@ -25,20 +21,9 @@ public struct InvitationCampaignLogic {
     }
   }
 
-  public enum Action {
-    case onTask
-  }
-
-  @Dependency(\.analytics) var analytics
+  public enum Action {}
 
   public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { state, action in
-      switch action {
-      case .onTask:
-        let price = 500
-        state.totalBenefit = price * state.durationWeeks
-        return .none
-      }
-    }
+    EmptyReducer()
   }
 }
