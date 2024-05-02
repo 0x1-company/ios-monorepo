@@ -153,6 +153,10 @@ public extension APIClient {
       recentMatch: {
         let query = API.RecentMatchQuery(first: 50)
         return apolloClient.watch(query: query)
+      },
+      recentMatchContent: { after in
+        let query = API.RecentMatchContentQuery(first: 50, after: after ?? .null)
+        return apolloClient.watch(query: query)
       }
     )
   }
