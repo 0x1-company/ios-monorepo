@@ -1,0 +1,15 @@
+# import RecentMatchGrid from '../fragments/RecentMatchGrid.graphql'
+
+query RecentMatchContent($first: Int!, $after: String) {
+  messageRoomCandidateMatches(first: $first, after: $after) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    edges {
+      node {
+        ...RecentMatchGrid
+      }
+    }
+  }
+}

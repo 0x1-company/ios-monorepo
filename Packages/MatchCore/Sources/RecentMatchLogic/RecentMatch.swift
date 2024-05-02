@@ -42,6 +42,7 @@ public struct RecentMatchLogic {
       case let .recentMatchResponse(.success(data)):
         let matches = data.messageRoomCandidateMatches.edges
           .map(\.node.fragments.recentMatchGrid)
+          .filter { !$0.targetUser.images.isEmpty }
           .map(RecentMatchGridLogic.State.init(match:))
 
         var likeGrid: LikeGridLogic.State?

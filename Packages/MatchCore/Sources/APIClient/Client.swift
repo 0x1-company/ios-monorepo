@@ -50,4 +50,5 @@ public struct APIClient: Sendable {
   public var unsentDirectMessageListContent: @Sendable (_ after: String?) -> AsyncThrowingStream<API.UnsentDirectMessageListContentQuery.Data, Error> = { _ in .finished() }
   public var profileExplorerPreview: @Sendable (_ targetUserId: String) -> AsyncThrowingStream<API.ProfileExplorerPreviewQuery.Data, Error> = { _ in .finished() }
   public var recentMatch: @Sendable () -> AsyncThrowingStream<API.RecentMatchQuery.Data, Error> = { .finished() }
+  public var recentMatchContent: @Sendable (_ after: String?) -> AsyncThrowingStream<API.RecentMatchContentQuery.Data, Error> = { _ in .finished() }
 }
