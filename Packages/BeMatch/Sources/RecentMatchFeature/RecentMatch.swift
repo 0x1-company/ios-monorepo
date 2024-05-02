@@ -27,6 +27,7 @@ public struct RecentMatchView: View {
       }
     }
     .task { await store.send(.onTask).finish() }
+    .toolbar(.visible, for: .tabBar)
     .navigationBarTitleDisplayMode(.inline)
     .navigationTitle(String(localized: "RECENT MATCH", bundle: .module))
   }
