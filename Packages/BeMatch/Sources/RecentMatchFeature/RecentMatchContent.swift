@@ -1,5 +1,5 @@
 import ComposableArchitecture
-import DirectMessageFeature
+import ProfileExplorerFeature
 import ReceivedLikeRouterFeature
 import RecentMatchLogic
 import SwiftUI
@@ -49,8 +49,8 @@ public struct RecentMatchContentView: View {
         content: ReceivedLikeRouterView.init(store:)
       )
       .navigationDestination(
-        store: store.scope(state: \.$destination.directMessage, action: \.destinatio.directMessage),
-        destination: DirectMessageView.init(store:)
+        store: store.scope(state: \.$destination.explorer, action: \.destinatio.explorer),
+        destination: ProfileExplorerView.init(store:)
       )
     }
   }

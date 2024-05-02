@@ -143,7 +143,6 @@ let package = Package(
     .target(name: "DirectMessageTabFeature", dependencies: [
       "BannerFeature",
       "RecentMatchFeature",
-      "ProfileExplorerFeature",
       "ReceivedLikeRouterFeature",
       .product(name: "DirectMessageTabLogic", package: "MatchCore"),
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
@@ -324,7 +323,7 @@ let package = Package(
       .product(name: "ReceivedLikeSwipeLogic", package: "MatchCore"),
     ]),
     .target(name: "RecentMatchFeature", dependencies: [
-      "DirectMessageFeature",
+      "ProfileExplorerFeature",
       "ReceivedLikeRouterFeature",
       .product(name: "RecentMatchLogic", package: "MatchCore"),
     ]),

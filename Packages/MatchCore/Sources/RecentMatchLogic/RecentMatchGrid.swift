@@ -11,7 +11,7 @@ public struct RecentMatchGridLogic {
     let targetUserId: String
 
     public let id: String
-    public let isRead: Bool
+    public var isRead: Bool
     public let username: String
     public let imageUrl: String
     public let createdAt: Date
@@ -28,6 +28,10 @@ public struct RecentMatchGridLogic {
       } else {
         Date.now
       }
+    }
+
+    mutating func read() {
+      isRead = true
     }
   }
 

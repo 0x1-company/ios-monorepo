@@ -1,4 +1,5 @@
 import ComposableArchitecture
+import FeedbackGeneratorClient
 import RecentMatchLogic
 import SwiftUI
 
@@ -45,13 +46,17 @@ public struct UnsentDirectMessageListLogic {
     case destination(PresentationAction<Destination.Action>)
   }
 
+  @Dependency(\.feedbackGenerator) var feedbackGenerator
+
   public var body: some Reducer<State, Action> {
     Scope(state: \.child, action: \.child, child: Child.init)
     Reduce<State, Action> { state, action in
       switch action {
       case .seeAllButtonTapped:
         state.destination = .recentMatch()
-        return .none
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
 
       default:
         return .none

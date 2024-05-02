@@ -1,7 +1,8 @@
 import API
 import APIClient
 import ComposableArchitecture
-import DirectMessageLogic
+import FeedbackGeneratorClient
+import ProfileExplorerLogic
 import ReceivedLikeRouterLogic
 
 @Reducer
@@ -21,15 +22,18 @@ public struct RecentMatchContentLogic {
   public enum Action {
     case scrollViewBottomReached
     case recentMatchContentResponse(Result<API.RecentMatchContentQuery.Data, Error>)
+    case readMatchResponse(Result<API.ReadMatchMutation.Data, Error>)
     case matches(IdentifiedActionOf<RecentMatchGridLogic>)
     case likeGrid(LikeGridLogic.Action)
     case destinatio(PresentationAction<Destination.Action>)
   }
 
   @Dependency(\.api) var api
+  @Dependency(\.feedbackGenerator) var feedbackGenerator
 
-  enum Cancel {
+  enum Cancel: Hashable {
     case recentMatchContent
+    case readMatch(String)
   }
 
   public var body: some Reducer<State, Action> {
@@ -57,20 +61,28 @@ public struct RecentMatchContentLogic {
         state.matches = IdentifiedArrayOf(uniqueElements: state.matches + matches)
         return .none
 
-      case .likeGrid(.gridButtonTapped):
-        state.destination = .likeRouter()
-        return .none
-
       case .recentMatchContentResponse(.failure):
         state.hasNextPage = false
         return .none
 
-      case let .matches(.element(id, .matchButtonTapped)):
-        guard let row = state.matches[id: id] else { return .none }
-        state.destination = .directMessage(
-          DirectMessageLogic.State(targetUserId: row.targetUserId)
-        )
+      case .likeGrid(.gridButtonTapped):
+        state.destination = .likeRouter()
         return .none
+
+      case let .matches(.element(matchId, .matchButtonTapped)):
+        guard var row = state.matches[id: matchId] else { return .none }
+        row.read()
+        state.matches.updateOrAppend(row)
+        state.destination = .explorer(
+          ProfileExplorerLogic.State(username: row.username, targetUserId: row.targetUserId)
+        )
+        return .run { send in
+          await feedbackGenerator.impactOccurred()
+          await send(.readMatchResponse(Result {
+            try await api.readMatch(matchId)
+          }))
+        }
+        .cancellable(id: Cancel.readMatch(matchId), cancelInFlight: true)
 
       case .destinatio(.presented(.likeRouter(.swipe(.delegate(.dismiss))))),
            .destinatio(.presented(.likeRouter(.membership(.delegate(.dismiss))))):
@@ -89,18 +101,18 @@ public struct RecentMatchContentLogic {
   @Reducer
   public struct Destination {
     public enum State: Equatable {
-      case directMessage(DirectMessageLogic.State)
+      case explorer(ProfileExplorerLogic.State)
       case likeRouter(ReceivedLikeRouterLogic.State = .loading)
     }
 
     public enum Action {
-      case directMessage(DirectMessageLogic.Action)
+      case explorer(ProfileExplorerLogic.Action)
       case likeRouter(ReceivedLikeRouterLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
-      Scope(state: \.directMessage, action: \.directMessage) {
-        DirectMessageLogic()
+      Scope(state: \.explorer, action: \.explorer) {
+        ProfileExplorerLogic()
       }
       Scope(state: \.likeRouter, action: \.likeRouter) {
         ReceivedLikeRouterLogic()
