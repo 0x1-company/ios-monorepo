@@ -32,10 +32,10 @@ public struct RecentMatchLogic {
         analytics.logScreen(screenName: "RecentMatch", of: self)
         return .run { send in
           for try await data in api.recentMatch() {
-            await send(.recentMatchResponse(.success(data)))
+            await send(.recentMatchResponse(.success(data)), animation: .default)
           }
         } catch: { error, send in
-          await send(.recentMatchResponse(.failure(error)))
+          await send(.recentMatchResponse(.failure(error)), animation: .default)
         }
         .cancellable(id: Cancel.recentMatch, cancelInFlight: true)
 
