@@ -1,7 +1,8 @@
 import API
 import APIClient
 import ComposableArchitecture
-import DirectMessageLogic
+import FeedbackGeneratorClient
+import ProfileExplorerLogic
 import ReceivedLikeRouterLogic
 
 @Reducer
@@ -28,6 +29,7 @@ public struct RecentMatchContentLogic {
   }
 
   @Dependency(\.api) var api
+  @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   enum Cancel: Hashable {
     case recentMatchContent
@@ -71,10 +73,11 @@ public struct RecentMatchContentLogic {
         guard var row = state.matches[id: matchId] else { return .none }
         row.read()
         state.matches.updateOrAppend(row)
-        state.destination = .directMessage(
-          DirectMessageLogic.State(targetUserId: row.targetUserId)
+        state.destination = .explorer(
+          ProfileExplorerLogic.State(username: row.username, targetUserId: row.targetUserId)
         )
         return .run { send in
+          await feedbackGenerator.impactOccurred()
           await send(.readMatchResponse(Result {
             try await api.readMatch(matchId)
           }))
@@ -98,18 +101,18 @@ public struct RecentMatchContentLogic {
   @Reducer
   public struct Destination {
     public enum State: Equatable {
-      case directMessage(DirectMessageLogic.State)
+      case explorer(ProfileExplorerLogic.State)
       case likeRouter(ReceivedLikeRouterLogic.State = .loading)
     }
 
     public enum Action {
-      case directMessage(DirectMessageLogic.Action)
+      case explorer(ProfileExplorerLogic.Action)
       case likeRouter(ReceivedLikeRouterLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
-      Scope(state: \.directMessage, action: \.directMessage) {
-        DirectMessageLogic()
+      Scope(state: \.explorer, action: \.explorer) {
+        ProfileExplorerLogic()
       }
       Scope(state: \.likeRouter, action: \.likeRouter) {
         ReceivedLikeRouterLogic()

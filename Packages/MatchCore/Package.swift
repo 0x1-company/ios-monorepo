@@ -158,7 +158,6 @@ let package = Package(
     .target(name: "DirectMessageTabLogic", dependencies: [
       "BannerLogic",
       "RecentMatchLogic",
-      "ProfileExplorerLogic",
       "ReceivedLikeRouterLogic",
     ]),
     .target(name: "EnvironmentClient", dependencies: [
@@ -334,7 +333,7 @@ let package = Package(
       "SwipeLogic",
     ]),
     .target(name: "RecentMatchLogic", dependencies: [
-      "DirectMessageLogic",
+      "ProfileExplorerLogic",
       "ReceivedLikeRouterLogic",
     ]),
     .target(name: "RecommendationLogic", dependencies: [
