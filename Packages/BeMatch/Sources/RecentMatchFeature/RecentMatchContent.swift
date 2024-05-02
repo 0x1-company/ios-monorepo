@@ -41,6 +41,7 @@ public struct RecentMatchContentView: View {
               .task { await store.send(.scrollViewBottomReached).finish() }
           }
         }
+        .padding(.bottom, 24)
         .padding(.horizontal, 16)
       }
       .fullScreenCover(
