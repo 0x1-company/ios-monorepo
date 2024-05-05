@@ -1,6 +1,7 @@
 import ActivityView
 import ComposableArchitecture
 import MembershipLogic
+import ProductPurchaseFeature
 import SwiftUI
 
 public struct MembershipView: View {
@@ -54,6 +55,13 @@ public struct MembershipView: View {
               .progressViewStyle(CircularProgressViewStyle())
               .frame(maxWidth: .infinity, maxHeight: .infinity)
               .background(Color.black.opacity(0.6))
+          }
+        }
+        .fullScreenCover(
+          store: store.scope(state: \.$destination.purchase, action: \.destination.purchase)
+        ) { store in
+          NavigationStack {
+            ProductPurchaseView(store: store)
           }
         }
         .sheet(isPresented: viewStore.$isPresented) {

@@ -44,6 +44,7 @@ let package = Package(
     .library(name: "NetworkErrorLogic", targets: ["NetworkErrorLogic"]),
     .library(name: "NotificationsReEnableLogic", targets: ["NotificationsReEnableLogic"]),
     .library(name: "OnboardLogic", targets: ["OnboardLogic"]),
+    .library(name: "ProductPurchaseLogic", targets: ["ProductPurchaseLogic"]),
     .library(name: "ProfileEditLogic", targets: ["ProfileEditLogic"]),
     .library(name: "ProfileExplorerLogic", targets: ["ProfileExplorerLogic"]),
     .library(name: "ProfileExternalLogic", targets: ["ProfileExternalLogic"]),
@@ -246,8 +247,9 @@ let package = Package(
       "ReceivedLikeSwipeLogic",
     ]),
     .target(name: "MembershipLogic", dependencies: [
-      "AnalyticsKeys",
       "APIClient",
+      "AnalyticsKeys",
+      "ProductPurchaseLogic",
       .product(name: "Build", package: "Dependencies"),
       .product(name: "ColorHex", package: "Utility"),
       .product(name: "TcaHelpers", package: "Utility"),
@@ -287,6 +289,14 @@ let package = Package(
       .product(name: "FirebaseAuthClient", package: "Dependencies"),
       .product(name: "UserNotificationClient", package: "Dependencies"),
       .product(name: "FirebaseStorageClient", package: "Dependencies"),
+    ]),
+    .target(name: "ProductPurchaseLogic", dependencies: [
+      .product(name: "Build", package: "Dependencies"),
+      .product(name: "StoreKitHelpers", package: "Utility"),
+      .product(name: "StoreKitClient", package: "Dependencies"),
+      .product(name: "AnalyticsClient", package: "Dependencies"),
+      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "ProfileEditLogic", dependencies: [
       "HowToMovieLogic",

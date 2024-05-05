@@ -4,6 +4,7 @@ import API
 import APIClient
 import Build
 import ComposableArchitecture
+import ProductPurchaseLogic
 import StoreKit
 import StoreKitClient
 import StoreKitHelpers
@@ -289,10 +290,12 @@ public struct MembershipLogic {
   public struct Destination {
     public enum State: Equatable {
       case alert(AlertState<Action.Alert>)
+      case purchase(ProductPurchaseLogic.State = .loading)
     }
 
     public enum Action {
       case alert(Alert)
+      case purchase(ProductPurchaseLogic.Action)
 
       public enum Alert: Equatable {
         case confirmOkay
@@ -301,6 +304,7 @@ public struct MembershipLogic {
 
     public var body: some Reducer<State, Action> {
       Scope(state: \.alert, action: \.alert) {}
+      Scope(state: \.purchase, action: \.purchase, child: ProductPurchaseLogic.init)
     }
   }
 }
