@@ -39,6 +39,7 @@ let package = Package(
     .library(name: "NetworkErrorFeature", targets: ["NetworkErrorFeature"]),
     .library(name: "NotificationsReEnableFeature", targets: ["NotificationsReEnableFeature"]),
     .library(name: "OnboardFeature", targets: ["OnboardFeature"]),
+    .library(name: "ProductPurchaseFeature", targets: ["ProductPurchaseFeature"]),
     .library(name: "ProfileEditFeature", targets: ["ProfileEditFeature"]),
     .library(name: "ProfileExplorerFeature", targets: ["ProfileExplorerFeature"]),
     .library(name: "ProfileExternalFeature", targets: ["ProfileExternalFeature"]),
@@ -226,6 +227,7 @@ let package = Package(
     ]),
     .target(name: "MembershipFeature", dependencies: [
       "Styleguide",
+      "ProductPurchaseFeature",
       .product(name: "ColorHex", package: "Utility"),
       .product(name: "Build", package: "Dependencies"),
       .product(name: "TcaHelpers", package: "Utility"),
@@ -271,6 +273,10 @@ let package = Package(
       .product(name: "FirebaseAuthClient", package: "Dependencies"),
       .product(name: "UserNotificationClient", package: "Dependencies"),
       .product(name: "FirebaseStorageClient", package: "Dependencies"),
+    ]),
+    .target(name: "ProductPurchaseFeature", dependencies: [
+      "Styleguide",
+      .product(name: "ProductPurchaseLogic", package: "MatchCore"),
     ]),
     .target(name: "ProfileEditFeature", dependencies: [
       .product(name: "ProfileEditLogic", package: "MatchCore"),

@@ -18,7 +18,8 @@ secrets: # Set secrets
 
 install-template: # Install template
 	@swift build -c release --package-path ./SwiftScripts/XCTemplateInstallerTool --product XCTemplateInstaller
-	./SwiftScripts/XCTemplateInstallerTool/.build/release/XCTemplateInstaller --xctemplate-path XCTemplates/TCA.xctemplate
+	./SwiftScripts/XCTemplateInstallerTool/.build/release/XCTemplateInstaller --xctemplate-path XCTemplates/Logic.xctemplate
+	./SwiftScripts/XCTemplateInstallerTool/.build/release/XCTemplateInstaller --xctemplate-path XCTemplates/Feature.xctemplate
 
 generate:
 	@cp ../bematch.jp/typescript/apps/bematch-server/schema.gql ./Packages/MatchCore/GraphQL/schema.graphqls
