@@ -13,7 +13,7 @@ public struct ProductPurchaseContentLogic {
 
     public init(products: [Product]) {
       self.products = products
-      self.selectProductID = products.first(where: { $0.id.contains("1month") })!.id
+      selectProductID = products.first(where: { $0.id.contains("1month") })!.id
     }
   }
 
@@ -28,11 +28,11 @@ public struct ProductPurchaseContentLogic {
       switch action {
       case .onTask:
         return .send(.updateRows, animation: .default)
-        
+
       case let .rows(.element(id, .rowButtonTapped)):
         state.selectProductID = id
         return .send(.updateRows, animation: .default)
-        
+
       case .updateRows:
         let uniqueElements = state.products
           .sorted(by: { $0.price < $1.price })

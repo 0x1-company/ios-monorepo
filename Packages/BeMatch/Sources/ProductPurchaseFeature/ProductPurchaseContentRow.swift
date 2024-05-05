@@ -1,7 +1,7 @@
 import ComposableArchitecture
 import ProductPurchaseLogic
-import SwiftUI
 import Styleguide
+import SwiftUI
 
 public struct ProductPurchaseContentRowView: View {
   let store: StoreOf<ProductPurchaseContentRowLogic>
@@ -59,15 +59,15 @@ public struct ProductPurchaseContentRowView: View {
               .offset(x: 16, y: -16)
           }
         }
-  //      .overlay(alignment: .topLeading) {
-  //        Text("most popular", bundle: .module)
-  //          .padding(.vertical, 6)
-  //          .padding(.horizontal, 12)
-  //          .background(Color.purple)
-  //          .font(.caption)
-  //          .fontWeight(.heavy)
-  //          .clipShape(RoundedRectangle(cornerRadius: 12))
-  //      }
+        //      .overlay(alignment: .topLeading) {
+        //        Text("most popular", bundle: .module)
+        //          .padding(.vertical, 6)
+        //          .padding(.horizontal, 12)
+        //          .background(Color.purple)
+        //          .font(.caption)
+        //          .fontWeight(.heavy)
+        //          .clipShape(RoundedRectangle(cornerRadius: 12))
+        //      }
       }
       .buttonStyle(HoldDownButtonStyle())
     }
