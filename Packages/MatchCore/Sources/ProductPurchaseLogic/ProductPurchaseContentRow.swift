@@ -34,7 +34,7 @@ public struct ProductPurchaseContentRowLogic {
       switch action {
       case .onTask:
         return .none
-        
+
       case .rowButtonTapped:
         return .none
       }
