@@ -44,8 +44,8 @@ public struct ProfileExplorerPreviewContentLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .addBeRealButtonTapped:
-        let username = state.user.berealUsername
-        guard let url = URL(string: "https://bere.al/\(username)")
+        let externalProductUrl = state.user.externalProductUrl
+        guard let url = URL(string: externalProductUrl)
         else { return .none }
 
         analytics.buttonClick(name: \.addBeReal, parameters: [
