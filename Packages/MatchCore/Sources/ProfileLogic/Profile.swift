@@ -71,9 +71,9 @@ public struct ProfileLogic {
         return .none
 
       case .destination(.presented(.confirmationDialog(.jumpToBeReal))):
-        guard let username = state.currentUser?.berealUsername
-        else { return .none }
-        guard let url = URL(string: "https://bere.al/\(username)")
+        guard
+          let externalProductUrl = state.currentUser?.externalProductUrl,
+          let url = URL(string: externalProductUrl)
         else { return .none }
 
         return .run { _ in

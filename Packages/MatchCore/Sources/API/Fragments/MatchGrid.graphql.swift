@@ -6,7 +6,7 @@
 public extension API {
   struct MatchGrid: API.SelectionSet, Fragment {
     public static var fragmentDefinition: StaticString {
-      #"fragment MatchGrid on Match { __typename id createdAt isRead targetUser { __typename id berealUsername ...PictureSlider } }"#
+      #"fragment MatchGrid on Match { __typename id createdAt isRead targetUser { __typename id berealUsername externalProductUrl ...PictureSlider } }"#
     }
 
     public let __data: DataDict
@@ -41,6 +41,7 @@ public extension API {
         .field("__typename", String.self),
         .field("id", API.ID.self),
         .field("berealUsername", String.self),
+        .field("externalProductUrl", String.self),
         .fragment(PictureSlider.self),
       ] }
 
@@ -48,6 +49,7 @@ public extension API {
       public var id: API.ID { __data["id"] }
       /// BeRealのusername
       public var berealUsername: String { __data["berealUsername"] }
+      public var externalProductUrl: String { __data["externalProductUrl"] }
       /// 一言コメント
       public var shortComment: ShortComment? { __data["shortComment"] }
       /// ユーザーの画像一覧

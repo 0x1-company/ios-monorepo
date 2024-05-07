@@ -5,6 +5,7 @@ mutation CreateLike($input: CreateLikeInput!) {
       targetUser {
         id
         berealUsername
+        externalProductUrl
       }
     }
     feedback {

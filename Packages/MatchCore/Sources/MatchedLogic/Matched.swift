@@ -3,7 +3,6 @@ import AnalyticsKeys
 import ComposableArchitecture
 import FeedbackGeneratorClient
 import StoreKit
-
 import SwiftUI
 
 @Reducer
@@ -11,9 +10,14 @@ public struct MatchedLogic {
   public init() {}
 
   public struct State: Equatable {
-    public let username: String
-    public init(username: String) {
-      self.username = username
+    public let externalProductURL: URL
+    
+    public var displayExternalProductURL: String {
+      externalProductURL.absoluteString
+    }
+
+    public init(externalProductURL: URL) {
+      self.externalProductURL = externalProductURL
     }
   }
 
@@ -36,14 +40,11 @@ public struct MatchedLogic {
         return .none
 
       case .addBeRealButtonTapped:
-        guard let url = URL(string: "https://bere.al/\(state.username)")
-        else { return .none }
-
         analytics.buttonClick(name: \.addBeReal, parameters: [
-          "url": url.absoluteString,
+          "url": state.externalProductURL.absoluteString,
         ])
 
-        return .run { _ in
+        return .run { [url = state.externalProductURL] _ in
           await feedbackGenerator.impactOccurred()
           await openURL(url)
           await dismiss()

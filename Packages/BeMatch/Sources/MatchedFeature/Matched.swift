@@ -26,7 +26,8 @@ public struct MatchedView: View {
             store.send(.addBeRealButtonTapped)
           }
 
-          Text("🔗 BeRe.al/\(viewStore.username)", bundle: .module)
+          Text("🔗 \(viewStore.displayExternalProductURL)", bundle: .module)
+            .foregroundStyle(Color.white)
             .font(.system(.caption, weight: .semibold))
         }
       }
@@ -70,17 +71,19 @@ public struct MatchedView: View {
 }
 
 #Preview {
-  Color.black
-    .ignoresSafeArea()
-    .fullScreenCover(isPresented: .constant(true)) {
-      MatchedView(
-        store: .init(
-          initialState: MatchedLogic.State(
-            username: "tomokisun"
-          ),
-          reducer: { MatchedLogic() }
+  NavigationStack {
+    Color.black
+      .ignoresSafeArea()
+      .fullScreenCover(isPresented: .constant(true)) {
+        MatchedView(
+          store: .init(
+            initialState: MatchedLogic.State(
+              externalProductURL: URL(string: "https://bere.al/tomokisun")!
+            ),
+            reducer: { MatchedLogic() }
+          )
         )
-      )
-    }
-    .environment(\.colorScheme, .dark)
+      }
+  }
+  .environment(\.colorScheme, .dark)
 }

@@ -3,6 +3,7 @@
 fragment UserInternal on User {
   id
   berealUsername
+  externalProductUrl
   gender
   status
   images {
