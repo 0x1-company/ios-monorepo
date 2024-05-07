@@ -11,7 +11,7 @@ public struct MatchedLogic {
 
   public struct State: Equatable {
     public let externalProductURL: URL
-    
+
     public var displayExternalProductURL: String {
       externalProductURL.absoluteString
     }
