@@ -142,6 +142,7 @@ public extension API {
               public var id: API.ID { __data["id"] }
               /// BeRealのusername
               public var berealUsername: String { __data["berealUsername"] }
+              public var externalProductUrl: String { __data["externalProductUrl"] }
               /// 一言コメント
               public var shortComment: ShortComment? { __data["shortComment"] }
               /// ユーザーの画像一覧

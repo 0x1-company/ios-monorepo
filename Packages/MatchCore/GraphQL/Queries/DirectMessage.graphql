@@ -4,6 +4,7 @@ query DirectMessage($targetUserId: ID!, $first: Int!) {
   currentUser {
     id
     berealUsername
+    externalProductUrl
   }
 
   messages(targetUserId: $targetUserId, first: $first) {

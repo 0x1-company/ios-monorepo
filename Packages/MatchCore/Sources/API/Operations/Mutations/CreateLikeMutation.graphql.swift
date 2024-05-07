@@ -8,7 +8,7 @@ public extension API {
     public static let operationName: String = "CreateLike"
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"mutation CreateLike($input: CreateLikeInput!) { createLike(input: $input) { __typename match { __typename id targetUser { __typename id berealUsername } } feedback { __typename id targetUserId } } }"#
+        #"mutation CreateLike($input: CreateLikeInput!) { createLike(input: $input) { __typename match { __typename id targetUser { __typename id berealUsername externalProductUrl } } feedback { __typename id targetUserId } } }"#
       ))
 
     public var input: CreateLikeInput
@@ -81,12 +81,14 @@ public extension API {
               .field("__typename", String.self),
               .field("id", API.ID.self),
               .field("berealUsername", String.self),
+              .field("externalProductUrl", String.self),
             ] }
 
             /// user id
             public var id: API.ID { __data["id"] }
             /// BeRealのusername
             public var berealUsername: String { __data["berealUsername"] }
+            public var externalProductUrl: String { __data["externalProductUrl"] }
           }
         }
 

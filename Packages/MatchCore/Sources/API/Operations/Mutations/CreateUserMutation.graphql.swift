@@ -49,6 +49,7 @@ public extension API {
         public var id: API.ID { __data["id"] }
         /// BeRealのusername
         public var berealUsername: String { __data["berealUsername"] }
+        public var externalProductUrl: String { __data["externalProductUrl"] }
         /// gender
         public var gender: GraphQLEnum<API.Gender> { __data["gender"] }
         public var status: GraphQLEnum<API.UserStatus> { __data["status"] }

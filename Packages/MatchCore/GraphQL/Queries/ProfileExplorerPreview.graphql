@@ -4,6 +4,7 @@ query ProfileExplorerPreview($targetUserId: String!) {
   userByMatched(targetUserId: $targetUserId) {
     id
     berealUsername
+    externalProductUrl
     ...PictureSlider
   }
 }

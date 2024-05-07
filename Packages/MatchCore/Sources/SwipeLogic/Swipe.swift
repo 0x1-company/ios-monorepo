@@ -94,9 +94,13 @@ public struct SwipeLogic {
         return .none
 
       case let .createLikeResponse(.success(data)):
-        guard let match = data.createLike.match else { return .none }
-        let username = match.targetUser.berealUsername
-        state.destination = .matched(MatchedLogic.State(username: username))
+        guard
+          let match = data.createLike.match,
+          let url = URL(string: match.targetUser.externalProductUrl)
+        else { return .none }
+
+        state.destination = .matched(MatchedLogic.State(externalProductURL: url))
+
         return .none
 
       default:
