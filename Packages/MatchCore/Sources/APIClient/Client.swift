@@ -11,6 +11,7 @@ public struct APIClient: Sendable {
   public var updateBeReal: @Sendable (API.UpdateBeRealInput) async throws -> API.UpdateBeRealMutation.Data
   public var updateUserImage: @Sendable (API.UpdateUserImageInput) async throws -> API.UpdateUserImageMutation.Data
   public var updateShortComment: @Sendable (API.UpdateShortCommentInput) async throws -> API.UpdateShortCommentMutation.Data
+  public var updateDisplayName: @Sendable (API.UpdateDisplayNameInput) async throws -> API.UpdateDisplayNameMutation.Data
 
   public var recommendations: @Sendable () -> AsyncThrowingStream<API.RecommendationsQuery.Data, Error> = { .finished() }
   public var createLike: @Sendable (API.CreateLikeInput) async throws -> API.CreateLikeMutation.Data

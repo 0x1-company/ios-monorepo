@@ -24,6 +24,7 @@ let package = Package(
     .library(name: "DeleteAccountLogic", targets: ["DeleteAccountLogic"]),
     .library(name: "DirectMessageLogic", targets: ["DirectMessageLogic"]),
     .library(name: "DirectMessageTabLogic", targets: ["DirectMessageTabLogic"]),
+    .library(name: "DisplayNameSettingLogic", targets: ["DisplayNameSettingLogic"]),
     .library(name: "EnvironmentClient", targets: ["EnvironmentClient"]),
     .library(name: "ExplorerLogic", targets: ["ExplorerLogic"]),
     .library(name: "ForceUpdateLogic", targets: ["ForceUpdateLogic"]),
@@ -160,6 +161,12 @@ let package = Package(
       "BannerLogic",
       "RecentMatchLogic",
       "ReceivedLikeRouterLogic",
+    ]),
+    .target(name: "DisplayNameSettingLogic", dependencies: [
+      "APIClient",
+      .product(name: "AnalyticsClient", package: "Dependencies"),
+      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "EnvironmentClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),

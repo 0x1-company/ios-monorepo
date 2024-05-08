@@ -34,6 +34,10 @@ public extension APIClient {
         let mutation = API.UpdateShortCommentMutation(input: input)
         return try await apolloClient.perform(mutation: mutation)
       },
+      updateDisplayName: { input in
+        let mutation = API.UpdateDisplayNameMutation(input: input)
+        return try await apolloClient.perform(mutation: mutation)
+      },
       recommendations: {
         let query = API.RecommendationsQuery()
         return apolloClient.watch(query: query)
