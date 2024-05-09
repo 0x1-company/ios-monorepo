@@ -1,4 +1,5 @@
 import ComposableArchitecture
+import DisplayNameSettingFeature
 import GenderSettingFeature
 import HowToMovieFeature
 import ProfileEditLogic
@@ -134,6 +135,13 @@ public struct ProfileEditView: View {
           action: \.destination.shortComment
         ),
         destination: ShortCommentSettingView.init(store:)
+      )
+      .navigationDestination(
+        store: store.scope(
+          state: \.$destination.displayNameSetting,
+          action: \.destination.displayNameSetting
+        ),
+        destination: DisplayNameSettingView.init(store:)
       )
     }
   }

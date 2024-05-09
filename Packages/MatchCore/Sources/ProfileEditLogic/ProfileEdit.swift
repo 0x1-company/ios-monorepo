@@ -86,7 +86,10 @@ public struct ProfileEditLogic {
         }
 
       case .displayNameSettingButtonTapped:
-        state.destination = .displayNameSetting(.init(displayName: state?.user?.))
+        state.destination = .displayNameSetting(.init(displayName: nil))
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
 
       case .shortCommentButtonTapped:
         state.destination = .shortComment(
@@ -113,7 +116,8 @@ public struct ProfileEditLogic {
       case .destination(.presented(.pictureSetting(.delegate(.nextScreen)))),
            .destination(.presented(.genderSetting(.delegate(.nextScreen)))),
            .destination(.presented(.usernameSetting(.delegate(.nextScreen)))),
-           .destination(.presented(.shortComment(.delegate(.nextScreen)))):
+           .destination(.presented(.shortComment(.delegate(.nextScreen)))),
+           .destination(.presented(.displayNameSetting(.delegate(.nextScreen)))):
         state.destination = nil
         return .send(.delegate(.profileUpdated))
 

@@ -292,6 +292,7 @@ let package = Package(
       "UsernameSettingFeature",
       "ShortCommentSettingFeature",
       "ProfilePictureSettingFeature",
+      "DisplayNameSettingFeature",
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "ProfileExplorerFeature", dependencies: [
