@@ -30,6 +30,17 @@ public struct ProfileEditView: View {
           }
 
           Button {
+            store.send(.displayNameSettingButtonTapped)
+          } label: {
+            LabeledContent {
+              Image(systemName: "chevron.right")
+            } label: {
+              Text("Name", bundle: .module)
+                .foregroundStyle(Color.primary)
+            }
+          }
+
+          Button {
             store.send(.genderSettingButtonTapped)
           } label: {
             LabeledContent {
