@@ -6,6 +6,7 @@ import OnboardLogic
 import ProfilePictureSettingFeature
 import SwiftUI
 import UsernameSettingFeature
+import DisplayNameSettingFeature
 
 public struct OnboardView: View {
   let store: StoreOf<OnboardLogic>
@@ -44,6 +45,14 @@ public struct OnboardView: View {
             ProfilePictureSettingView(store: store, nextButtonStyle: .next)
           }
         )
+      case .displayName:
+          CaseLet(
+            /OnboardLogic.Path.State.displayName,
+            action: OnboardLogic.Path.Action.displayName,
+            then: { store in
+              DisplayNameSettingView(store: store)
+            }
+          )
       case .invitation:
         CaseLet(
           /OnboardLogic.Path.State.invitation,
