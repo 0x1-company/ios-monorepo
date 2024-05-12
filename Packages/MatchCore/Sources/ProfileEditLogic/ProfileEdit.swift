@@ -86,7 +86,9 @@ public struct ProfileEditLogic {
         }
 
       case .displayNameSettingButtonTapped:
-        state.destination = .displayNameSetting(.init(displayName: nil))
+        state.destination = .displayNameSetting(
+          DisplayNameSettingLogic.State(displayName: state.user?.displayName)
+        )
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
