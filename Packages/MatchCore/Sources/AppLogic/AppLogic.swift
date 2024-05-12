@@ -92,6 +92,7 @@ public struct AppLogic {
           state.child = .onboard(OnboardLogic.State(user: user))
 
         case .case(.active):
+          analytics.setUserProperty(key: \.onboardCompleted, value: "true")
           state.child = .navigation()
 
         case .case(.banned):
