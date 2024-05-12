@@ -1,6 +1,7 @@
 import AnalyticsKeys
 import API
 import ComposableArchitecture
+import DisplayNameSettingLogic
 import FeedbackGeneratorClient
 import GenderSettingLogic
 import HowToMovieLogic
@@ -26,6 +27,7 @@ public struct ProfileEditLogic {
     case pictureSettingButtonTapped
     case genderSettingButtonTapped
     case usernameSettingButtonTapped
+    case displayNameSettingButtonTapped
     case shortCommentButtonTapped
     case currentUserResponse(Result<API.CurrentUserQuery.Data, Error>)
     case destination(PresentationAction<Destination.Action>)
@@ -83,6 +85,14 @@ public struct ProfileEditLogic {
           await feedbackGenerator.impactOccurred()
         }
 
+      case .displayNameSettingButtonTapped:
+        state.destination = .displayNameSetting(
+          DisplayNameSettingLogic.State(displayName: state.user?.displayName)
+        )
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
+
       case .shortCommentButtonTapped:
         state.destination = .shortComment(
           ShortCommentSettingLogic.State(
@@ -108,7 +118,8 @@ public struct ProfileEditLogic {
       case .destination(.presented(.pictureSetting(.delegate(.nextScreen)))),
            .destination(.presented(.genderSetting(.delegate(.nextScreen)))),
            .destination(.presented(.usernameSetting(.delegate(.nextScreen)))),
-           .destination(.presented(.shortComment(.delegate(.nextScreen)))):
+           .destination(.presented(.shortComment(.delegate(.nextScreen)))),
+           .destination(.presented(.displayNameSetting(.delegate(.nextScreen)))):
         state.destination = nil
         return .send(.delegate(.profileUpdated))
 
@@ -144,6 +155,7 @@ public struct ProfileEditLogic {
       case genderSetting(GenderSettingLogic.State)
       case usernameSetting(UsernameSettingLogic.State)
       case shortComment(ShortCommentSettingLogic.State)
+      case displayNameSetting(DisplayNameSettingLogic.State)
     }
 
     public enum Action {
@@ -152,6 +164,7 @@ public struct ProfileEditLogic {
       case genderSetting(GenderSettingLogic.Action)
       case usernameSetting(UsernameSettingLogic.Action)
       case shortComment(ShortCommentSettingLogic.Action)
+      case displayNameSetting(DisplayNameSettingLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
@@ -169,6 +182,9 @@ public struct ProfileEditLogic {
       }
       Scope(state: \.shortComment, action: \.shortComment) {
         ShortCommentSettingLogic()
+      }
+      Scope(state: \.displayNameSetting, action: \.displayNameSetting) {
+        DisplayNameSettingLogic()
       }
     }
   }

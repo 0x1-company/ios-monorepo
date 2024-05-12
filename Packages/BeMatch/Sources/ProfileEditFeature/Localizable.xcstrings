@@ -43,6 +43,16 @@
         }
       }
     },
+    "Name" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "名前"
+          }
+        }
+      }
+    },
     "No Set" : {
       "localizations" : {
         "ja" : {

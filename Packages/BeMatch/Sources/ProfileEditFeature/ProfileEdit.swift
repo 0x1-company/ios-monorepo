@@ -1,4 +1,5 @@
 import ComposableArchitecture
+import DisplayNameSettingFeature
 import GenderSettingFeature
 import HowToMovieFeature
 import ProfileEditLogic
@@ -25,6 +26,17 @@ public struct ProfileEditView: View {
               Image(systemName: "chevron.right")
             } label: {
               Text("Username on BeReal.", bundle: .module)
+                .foregroundStyle(Color.primary)
+            }
+          }
+
+          Button {
+            store.send(.displayNameSettingButtonTapped)
+          } label: {
+            LabeledContent {
+              Image(systemName: "chevron.right")
+            } label: {
+              Text("Name", bundle: .module)
                 .foregroundStyle(Color.primary)
             }
           }
@@ -123,6 +135,13 @@ public struct ProfileEditView: View {
           action: \.destination.shortComment
         ),
         destination: ShortCommentSettingView.init(store:)
+      )
+      .navigationDestination(
+        store: store.scope(
+          state: \.$destination.displayNameSetting,
+          action: \.destination.displayNameSetting
+        ),
+        destination: DisplayNameSettingView.init(store:)
       )
     }
   }

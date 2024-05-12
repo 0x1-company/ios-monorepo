@@ -1,4 +1,5 @@
 import ComposableArchitecture
+import DisplayNameSettingFeature
 import GenderSettingFeature
 import HowToMovieFeature
 import InvitationFeature
@@ -42,6 +43,14 @@ public struct OnboardView: View {
           action: OnboardLogic.Path.Action.capture,
           then: { store in
             ProfilePictureSettingView(store: store, nextButtonStyle: .next)
+          }
+        )
+      case .displayName:
+        CaseLet(
+          /OnboardLogic.Path.State.displayName,
+          action: OnboardLogic.Path.Action.displayName,
+          then: { store in
+            DisplayNameSettingView(store: store)
           }
         )
       case .invitation:

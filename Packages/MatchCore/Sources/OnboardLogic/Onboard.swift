@@ -1,6 +1,7 @@
 import API
 import APIClient
 import ComposableArchitecture
+import DisplayNameSettingLogic
 import FirebaseAuth
 import GenderSettingLogic
 import HowToMovieLogic
@@ -85,6 +86,10 @@ public struct OnboardLogic {
         return .none
 
       case .path(.element(_, .capture(.delegate(.nextScreen)))):
+        state.path.append(.displayName())
+        return .none
+
+      case .path(.element(_, .displayName(.delegate(.nextScreen)))):
         if state.hasInvitationCampaign {
           state.path.append(.invitation())
           return .none
@@ -116,6 +121,7 @@ public struct OnboardLogic {
       case gender(GenderSettingLogic.State)
       case howToMovie(HowToMovieLogic.State = .init())
       case capture(ProfilePictureSettingLogic.State = .init())
+      case displayName(DisplayNameSettingLogic.State = .init())
       case invitation(InvitationLogic.State = .init())
     }
 
@@ -123,6 +129,7 @@ public struct OnboardLogic {
       case gender(GenderSettingLogic.Action)
       case howToMovie(HowToMovieLogic.Action)
       case capture(ProfilePictureSettingLogic.Action)
+      case displayName(DisplayNameSettingLogic.Action)
       case invitation(InvitationLogic.Action)
     }
 
@@ -130,6 +137,7 @@ public struct OnboardLogic {
       Scope(state: \.gender, action: \.gender, child: GenderSettingLogic.init)
       Scope(state: \.howToMovie, action: \.howToMovie, child: HowToMovieLogic.init)
       Scope(state: \.capture, action: \.capture, child: ProfilePictureSettingLogic.init)
+      Scope(state: \.displayName, action: \.displayName, child: DisplayNameSettingLogic.init)
       Scope(state: \.invitation, action: \.invitation, child: InvitationLogic.init)
     }
   }

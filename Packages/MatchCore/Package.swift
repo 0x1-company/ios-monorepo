@@ -290,6 +290,7 @@ let package = Package(
       "GenderSettingLogic",
       "UsernameSettingLogic",
       "ProfilePictureSettingLogic",
+      "DisplayNameSettingLogic",
       .product(name: "PhotosClient", package: "Dependencies"),
       .product(name: "UserDefaultsClient", package: "Dependencies"),
       .product(name: "UIApplicationClient", package: "Dependencies"),

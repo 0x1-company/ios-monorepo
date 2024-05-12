@@ -148,6 +148,12 @@ let package = Package(
       .product(name: "DirectMessageTabLogic", package: "MatchCore"),
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
     ]),
+    .target(name: "DisplayNameSettingFeature", dependencies: [
+      .product(name: "DisplayNameSettingLogic", package: "MatchCore"),
+      "Styleguide",
+      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
     .target(name: "ForceUpdateFeature", dependencies: [
       .product(name: "ForceUpdateLogic", package: "MatchCore"),
       "Styleguide",
@@ -267,6 +273,7 @@ let package = Package(
       "GenderSettingFeature",
       "UsernameSettingFeature",
       "ProfilePictureSettingFeature",
+      "DisplayNameSettingFeature",
       .product(name: "PhotosClient", package: "Dependencies"),
       .product(name: "UserDefaultsClient", package: "Dependencies"),
       .product(name: "UIApplicationClient", package: "Dependencies"),
@@ -285,6 +292,7 @@ let package = Package(
       "UsernameSettingFeature",
       "ShortCommentSettingFeature",
       "ProfilePictureSettingFeature",
+      "DisplayNameSettingFeature",
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "ProfileExplorerFeature", dependencies: [

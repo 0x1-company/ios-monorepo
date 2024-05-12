@@ -2,6 +2,7 @@
 
 fragment UserInternal on User {
   id
+  displayName
   berealUsername
   externalProductUrl
   gender

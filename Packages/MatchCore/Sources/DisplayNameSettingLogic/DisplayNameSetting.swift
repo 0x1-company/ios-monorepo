@@ -14,8 +14,8 @@ public struct DisplayNameSettingLogic {
     @BindingState public var displayName: String
     @PresentationState public var alert: AlertState<Action.Alert>?
 
-    public init(displayName: String) {
-      self.displayName = displayName
+    public init(displayName: String? = nil) {
+      self.displayName = displayName ?? ""
     }
   }
 
