@@ -67,7 +67,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "see-who-sent-it-ja"
           }
         }

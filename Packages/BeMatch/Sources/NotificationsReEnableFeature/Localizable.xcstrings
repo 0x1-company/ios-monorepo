@@ -3,7 +3,7 @@
   "strings" : {
     "Activate" : {
       "localizations" : {
-        "en" : {
+        "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "有効にする"
@@ -13,7 +13,7 @@
     },
     "You'll need to enable notifications to notice when you have a match." : {
       "localizations" : {
-        "en" : {
+        "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "マッチした時に気づくために通知を有効にしてね。"

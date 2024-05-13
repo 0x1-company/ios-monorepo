@@ -1,17 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%lld days." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld days."
-          }
-        }
-      }
-    },
     "0.1%" : {
 
     },
@@ -104,17 +93,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "SWIPE"
-          }
-        }
-      }
-    },
-    "today" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "今日"
           }
         }
       }

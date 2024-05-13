@@ -11,45 +11,12 @@
         }
       }
     },
-    "BeMatch PRO" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeMatch PRO"
-          }
-        }
-      }
-    },
-    "Clear BeMatch cache" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeMatchのキャッシュを削除する"
-          }
-        }
-      }
-    },
     "Clear cache" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "キャッシュを削除"
-          }
-        }
-      }
-    },
-    "Clearing cache can help fix some issues" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "キャッシュを削除することで問題を解決できる場合があります"
           }
         }
       }
@@ -120,17 +87,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "BeMatchの使い方"
-          }
-        }
-      }
-    },
-    "I found an app to increase BeReal's friends, try it.\n%@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeRealの友だち増やせるアプリ見つけたからやってみてw w w\n%@"
           }
         }
       }
@@ -251,23 +207,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "バージョン"
-          }
-        }
-      }
-    },
-    "You joined BeMatch %lld days ago on %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "You joined BeMatch %1$lld days ago on %2$@"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "あなたは%1$lld日前（%2$@）にBeMatchに参加しました。"
           }
         }
       }
