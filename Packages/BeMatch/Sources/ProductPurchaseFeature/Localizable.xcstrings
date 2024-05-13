@@ -1,11 +1,25 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "$6.99 / week" : {
-
+    "%@ / month" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ / 月"
+          }
+        }
+      }
     },
-    "1 week" : {
-
+    "%@ / week" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ / 週"
+          }
+        }
+      }
     },
     "Next" : {
       "localizations" : {

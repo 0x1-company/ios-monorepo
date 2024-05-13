@@ -60,11 +60,14 @@ public struct ProductPurchaseLogic {
         .cancellable(id: Cancel.products, cancelInFlight: true)
 
       case .products(.none):
-        return .none
+        return .send(.delegate(.dismiss))
 
       case let .productsResponse(.success(products)):
         state = .content(ProductPurchaseContentLogic.State(products: products))
         return .none
+        
+      case .productsResponse(.failure):
+        return .send(.delegate(.dismiss))
 
       default:
         return .none

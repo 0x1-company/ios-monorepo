@@ -39,7 +39,9 @@ public struct ProductPurchaseContentLogic {
           .map {
             ProductPurchaseContentRowLogic.State(
               id: $0.id,
-              displayPrice: $0.displayPrice,
+              price: $0.price,
+              currencyCode: $0.priceFormatStyle.currencyCode,
+              displayPrice: $0.id.contains("1week") ? nil : $0.displayPrice,
               displayName: $0.displayName,
               isSelected: $0.id == state.selectProductID
             )
