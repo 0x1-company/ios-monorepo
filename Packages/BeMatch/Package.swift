@@ -190,6 +190,7 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "LaunchFeature", dependencies: [
+      "Styleguide",
       .product(name: "LaunchLogic", package: "MatchCore"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),

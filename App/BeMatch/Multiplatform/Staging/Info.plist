@@ -77,7 +77,9 @@
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIImageName</key>
-		<string>Cover</string>
+		<string>Logo</string>
+		<key>UIColorName</key>
+		<string>BackgroundColor</string>
 	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>Launch Screen</string>
