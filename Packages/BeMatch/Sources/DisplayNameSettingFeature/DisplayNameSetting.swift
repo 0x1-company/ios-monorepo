@@ -15,7 +15,7 @@ public struct DisplayNameSettingView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 32) {
-        Text("What's your name?", bundle: .module)
+        Text("What's your nick name?", bundle: .module)
           .frame(height: 50)
           .font(.system(.title3, weight: .semibold))
 

@@ -74,30 +74,31 @@ public struct OnboardLogic {
         return .none
 
       case .path(.element(_, .gender(.delegate(.nextScreen)))):
+        let displayName = state.user?.displayName
+        state.path.append(.displayName(DisplayNameSettingLogic.State(displayName: displayName)))
+        return .none
+
+      case .path(.element(_, .displayName(.delegate(.nextScreen)))):
         state.path.append(.howToMovie())
         return .none
 
       case .path(.element(_, .howToMovie(.delegate(.nextScreen)))):
-        state.path.append(.capture())
+        state.path.append(.profilePicture())
         return .none
 
-      case .path(.element(_, .capture(.delegate(.howTo)))):
+      case .path(.element(_, .profilePicture(.delegate(.howTo)))):
         state.destination = .howToMovie()
         return .none
 
-      case .path(.element(_, .capture(.delegate(.nextScreen)))):
-        state.path.append(.displayName())
-        return .none
-
-      case .path(.element(_, .displayName(.delegate(.nextScreen)))):
+      case .path(.element(_, .profilePicture(.delegate(.nextScreen)))):
         if state.hasInvitationCampaign {
           state.path.append(.invitation())
           return .none
         }
-        return .send(.delegate(.finish))
+        return .send(.delegate(.finish), animation: .default)
 
       case .path(.element(_, .invitation(.delegate(.nextScreen)))):
-        return .send(.delegate(.finish))
+        return .send(.delegate(.finish), animation: .default)
 
       case .destination(.presented(.howToMovie(.delegate(.nextScreen)))):
         state.destination = nil
@@ -120,7 +121,7 @@ public struct OnboardLogic {
     public enum State: Equatable {
       case gender(GenderSettingLogic.State)
       case howToMovie(HowToMovieLogic.State = .init())
-      case capture(ProfilePictureSettingLogic.State = .init())
+      case profilePicture(ProfilePictureSettingLogic.State = .init())
       case displayName(DisplayNameSettingLogic.State = .init())
       case invitation(InvitationLogic.State = .init())
     }
@@ -128,7 +129,7 @@ public struct OnboardLogic {
     public enum Action {
       case gender(GenderSettingLogic.Action)
       case howToMovie(HowToMovieLogic.Action)
-      case capture(ProfilePictureSettingLogic.Action)
+      case profilePicture(ProfilePictureSettingLogic.Action)
       case displayName(DisplayNameSettingLogic.Action)
       case invitation(InvitationLogic.Action)
     }
@@ -136,7 +137,7 @@ public struct OnboardLogic {
     public var body: some Reducer<State, Action> {
       Scope(state: \.gender, action: \.gender, child: GenderSettingLogic.init)
       Scope(state: \.howToMovie, action: \.howToMovie, child: HowToMovieLogic.init)
-      Scope(state: \.capture, action: \.capture, child: ProfilePictureSettingLogic.init)
+      Scope(state: \.profilePicture, action: \.profilePicture, child: ProfilePictureSettingLogic.init)
       Scope(state: \.displayName, action: \.displayName, child: DisplayNameSettingLogic.init)
       Scope(state: \.invitation, action: \.invitation, child: InvitationLogic.init)
     }

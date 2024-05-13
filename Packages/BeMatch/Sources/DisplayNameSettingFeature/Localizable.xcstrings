@@ -14,12 +14,12 @@
         }
       }
     },
-    "What's your name?" : {
+    "What's your nick name?" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "名前を設定してください"
+            "value" : "ニックネームを設定してください"
           }
         }
       }
