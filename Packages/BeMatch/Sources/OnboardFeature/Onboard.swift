@@ -37,10 +37,10 @@ public struct OnboardView: View {
           action: OnboardLogic.Path.Action.howToMovie,
           then: HowToMovieView.init(store:)
         )
-      case .capture:
+      case .profilePicture:
         CaseLet(
-          /OnboardLogic.Path.State.capture,
-          action: OnboardLogic.Path.Action.capture,
+          /OnboardLogic.Path.State.profilePicture,
+          action: OnboardLogic.Path.Action.profilePicture,
           then: { store in
             ProfilePictureSettingView(store: store, nextButtonStyle: .next)
           }
