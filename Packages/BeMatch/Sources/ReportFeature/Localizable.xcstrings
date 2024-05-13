@@ -41,17 +41,6 @@
         }
       }
     },
-    "OK" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK"
-          }
-        }
-      }
-    },
     "Other" : {
       "localizations" : {
         "ja" : {
@@ -68,17 +57,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "通報する"
-          }
-        }
-      }
-    },
-    "Reported." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "通報しました"
           }
         }
       }
