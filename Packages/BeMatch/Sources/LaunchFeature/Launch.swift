@@ -1,7 +1,7 @@
 import ComposableArchitecture
 import LaunchLogic
-import SwiftUI
 import Styleguide
+import SwiftUI
 
 public struct LaunchView: View {
   let store: StoreOf<LaunchLogic>
@@ -16,7 +16,7 @@ public struct LaunchView: View {
         .aspectRatio(contentMode: .fit)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .ignoresSafeArea()
-        .background(Color(0xFFFD2D76))
+        .background(Color(0xFFFD_2D76))
         .task { await store.send(.onTask).finish() }
         .overlay {
           if viewStore.isActivityIndicatorVisible {
