@@ -1,6 +1,7 @@
 import API
 import APIClient
 import ComposableArchitecture
+import FeedbackGeneratorClient
 import StoreKit
 import StoreKitClient
 import StoreKitHelpers
@@ -39,6 +40,7 @@ public struct ProductPurchaseContentLogic {
 
   @Dependency(\.api) var api
   @Dependency(\.store) var store
+  @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
@@ -48,7 +50,10 @@ public struct ProductPurchaseContentLogic {
 
       case let .rows(.element(id, .rowButtonTapped)):
         state.selectProductID = id
-        return .send(.updateRows, animation: .default)
+        return .run { send in
+          await feedbackGenerator.impactOccurred()
+          await send(.updateRows, animation: .default)
+        }
 
       case .updateRows:
         let uniqueElements = state.products
@@ -59,7 +64,6 @@ public struct ProductPurchaseContentLogic {
               price: $0.price,
               currencyCode: $0.priceFormatStyle.currencyCode,
               displayPrice: $0.id.contains("1week") ? nil : $0.displayPrice,
-              displayName: $0.displayName,
               isSelected: $0.id == state.selectProductID
             )
           }
@@ -73,6 +77,8 @@ public struct ProductPurchaseContentLogic {
         state.isActivityIndicatorVisible = true
 
         return .run { [appAccountToken = state.appAccountToken] send in
+          await feedbackGenerator.impactOccurred()
+
           let result = try await store.purchase(product, appAccountToken)
 
           switch result {
