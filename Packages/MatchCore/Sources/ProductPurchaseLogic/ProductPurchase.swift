@@ -1,4 +1,6 @@
 import AnalyticsClient
+import API
+import APIClient
 import Build
 import ComposableArchitecture
 import StoreKit
@@ -17,7 +19,7 @@ public struct ProductPurchaseLogic {
     case onTask
     case closeButtonTapped
     case products([String]?)
-    case productsResponse(Result<[Product], Error>)
+    case productsResponse(Result<[Product], Error>, Result<API.CurrentUserQuery.Data, Error>)
     case content(ProductPurchaseContentLogic.Action)
     case delegate(Delegate)
 
@@ -26,6 +28,7 @@ public struct ProductPurchaseLogic {
     }
   }
 
+  @Dependency(\.api) var api
   @Dependency(\.build) var build
   @Dependency(\.store) var store
   @Dependency(\.analytics) var analytics
@@ -51,20 +54,34 @@ public struct ProductPurchaseLogic {
 
       case let .products(.some(ids)):
         return .run { send in
-          await send(.productsResponse(Result {
-            try await store.products(ids)
-          }))
+          for try await data in api.currentUser() {
+            await send(.productsResponse(Result {
+              try await store.products(ids)
+            }, .success(data)))
+          }
         } catch: { error, send in
-          await send(.productsResponse(.failure(error)))
+          await send(.productsResponse(.success([]), .failure(error)))
         }
         .cancellable(id: Cancel.products, cancelInFlight: true)
 
       case .products(.none):
+        return .send(.delegate(.dismiss))
+
+      case let .productsResponse(.success(products), .success(data)):
+        guard let appAccountToken = UUID(uuidString: data.currentUser.id)
+        else { return .send(.delegate(.dismiss)) }
+
+        let contentState = ProductPurchaseContentLogic.State(
+          appAccountToken: appAccountToken,
+          products: products
+        )
+        state = .content(contentState)
         return .none
 
-      case let .productsResponse(.success(products)):
-        state = .content(ProductPurchaseContentLogic.State(products: products))
-        return .none
+      case .productsResponse(.success, .failure),
+           .productsResponse(.failure, .success),
+           .productsResponse(.failure, .failure):
+        return .send(.delegate(.dismiss))
 
       default:
         return .none

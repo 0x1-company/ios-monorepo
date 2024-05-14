@@ -101,33 +101,35 @@ public struct MembershipLogic {
 
       case .child(.campaign(.delegate(.purchase))),
            .child(.purchase(.delegate(.purchase))):
-        guard
-          let product = state.product,
-          let appAccountToken = state.appAccountToken
-        else { return .none }
-
-        state.isActivityIndicatorVisible = true
-
-        return .run { send in
-          let result = try await store.purchase(product, appAccountToken)
-
-          switch result {
-          case let .success(verificationResult):
-            await send(.purchaseResponse(Result {
-              try checkVerified(verificationResult)
-            }))
-
-          case .pending:
-            await send(.purchaseResponse(.failure(InAppPurchaseError.pending)))
-          case .userCancelled:
-            await send(.purchaseResponse(.failure(InAppPurchaseError.userCancelled)))
-          @unknown default:
-            fatalError()
-          }
-        } catch: { error, send in
-          await send(.purchaseResponse(.failure(error)))
-        }
-        .cancellable(id: Cancel.purchase, cancelInFlight: true)
+        state.destination = .purchase(ProductPurchaseLogic.State.loading)
+        return .none
+//        guard
+//          let product = state.product,
+//          let appAccountToken = state.appAccountToken
+//        else { return .none }
+//
+//        state.isActivityIndicatorVisible = true
+//
+//        return .run { send in
+//          let result = try await store.purchase(product, appAccountToken)
+//
+//          switch result {
+//          case let .success(verificationResult):
+//            await send(.purchaseResponse(Result {
+//              try checkVerified(verificationResult)
+//            }))
+//
+//          case .pending:
+//            await send(.purchaseResponse(.failure(InAppPurchaseError.pending)))
+//          case .userCancelled:
+//            await send(.purchaseResponse(.failure(InAppPurchaseError.userCancelled)))
+//          @unknown default:
+//            fatalError()
+//          }
+//        } catch: { error, send in
+//          await send(.purchaseResponse(.failure(error)))
+//        }
+//        .cancellable(id: Cancel.purchase, cancelInFlight: true)
 
       case let .response(.success(products), .success(data)):
         let userId = data.currentUser.id
@@ -228,6 +230,10 @@ public struct MembershipLogic {
       case .destination(.presented(.alert(.confirmOkay))):
         state.destination = nil
         return .send(.delegate(.dismiss))
+
+      case .destination(.presented(.purchase(.delegate(.dismiss)))):
+        state.destination = nil
+        return .none
 
       default:
         return .none

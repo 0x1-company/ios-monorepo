@@ -1,5 +1,9 @@
+import API
+import APIClient
 import ComposableArchitecture
 import StoreKit
+import StoreKitClient
+import StoreKitHelpers
 
 @Reducer
 public struct ProductPurchaseContentLogic {
@@ -7,11 +11,17 @@ public struct ProductPurchaseContentLogic {
 
   public struct State: Equatable {
     var selectProductID: String
+    let appAccountToken: UUID
     public let products: [Product]
+    public var isActivityIndicatorVisible = false
 
     public var rows: IdentifiedArrayOf<ProductPurchaseContentRowLogic.State> = []
 
-    public init(products: [Product]) {
+    public init(
+      appAccountToken: UUID,
+      products: [Product]
+    ) {
+      self.appAccountToken = appAccountToken
       self.products = products
       selectProductID = products.first(where: { $0.id.contains("1month") })!.id
     }
@@ -21,7 +31,14 @@ public struct ProductPurchaseContentLogic {
     case onTask
     case rows(IdentifiedActionOf<ProductPurchaseContentRowLogic>)
     case updateRows
+    case purchaseButtonTapped
+    case purchaseResponse(Result<StoreKit.Transaction, Error>)
+    case createAppleSubscriptionResponse(Result<API.CreateAppleSubscriptionMutation.Data, Error>)
+    case transactionFinish(Transaction)
   }
+
+  @Dependency(\.api) var api
+  @Dependency(\.store) var store
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
@@ -39,13 +56,70 @@ public struct ProductPurchaseContentLogic {
           .map {
             ProductPurchaseContentRowLogic.State(
               id: $0.id,
-              displayPrice: $0.displayPrice,
+              price: $0.price,
+              currencyCode: $0.priceFormatStyle.currencyCode,
+              displayPrice: $0.id.contains("1week") ? nil : $0.displayPrice,
               displayName: $0.displayName,
               isSelected: $0.id == state.selectProductID
             )
           }
         state.rows = IdentifiedArrayOf(uniqueElements: uniqueElements)
         return .none
+
+      case .purchaseButtonTapped:
+        guard let product = state.products.first(where: { $0.id == state.selectProductID })
+        else { return .none }
+
+        state.isActivityIndicatorVisible = true
+
+        return .run { [appAccountToken = state.appAccountToken] send in
+          let result = try await store.purchase(product, appAccountToken)
+
+          switch result {
+          case let .success(verificationResult):
+            await send(.purchaseResponse(Result {
+              try checkVerified(verificationResult)
+            }))
+          case .pending:
+            await send(.purchaseResponse(.failure(InAppPurchaseError.pending)))
+          case .userCancelled:
+            await send(.purchaseResponse(.failure(InAppPurchaseError.userCancelled)))
+          @unknown default:
+            fatalError()
+          }
+        } catch: { error, send in
+          await send(.purchaseResponse(.failure(error)))
+        }
+
+      case let .purchaseResponse(.success(transaction)):
+        if transaction.environment == .xcode {
+          return .run { send in
+            await send(.transactionFinish(transaction))
+          }
+        }
+        let isProduction = transaction.environment == .production
+        let environment: API.AppleSubscriptionEnvironment = isProduction ? .production : .sandbox
+        let input = API.CreateAppleSubscriptionInput(
+          environment: GraphQLEnum(environment),
+          transactionId: transaction.id.description
+        )
+        return .run { send in
+          let data = try await api.createAppleSubscription(input)
+          guard data.createAppleSubscription else { return }
+          await send(.transactionFinish(transaction))
+        } catch: { error, send in
+          await send(.createAppleSubscriptionResponse(.failure(error)))
+        }
+
+      case .purchaseResponse(.failure),
+           .createAppleSubscriptionResponse(.failure):
+        state.isActivityIndicatorVisible = false
+        return .none
+
+      case let .transactionFinish(transaction):
+        return .run { _ in
+          await transaction.finish()
+        }
 
       default:
         return .none
