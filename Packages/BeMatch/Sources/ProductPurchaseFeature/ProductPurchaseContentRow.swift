@@ -11,28 +11,13 @@ public struct ProductPurchaseContentRowView: View {
     self.store = store
   }
 
-  func applyAttributedString(displayName: String) -> AttributedString {
-    var attributedString = AttributedString(displayName)
-    for digit in "0123456789" {
-      if let range = attributedString.range(of: String(digit)) {
-        attributedString[range].font = .title.bold()
-      }
-    }
-    return attributedString
-  }
-
-  func formatPriceAsCurrency(currencyCode: String, price: Decimal, divisor: Decimal) -> String {
-    let formatStyle = Decimal.FormatStyle.Currency(code: currencyCode)
-    return formatStyle.format(price / divisor)
-  }
-
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       Button {
         store.send(.rowButtonTapped, animation: .default)
       } label: {
         HStack(spacing: 0) {
-          Text(applyAttributedString(displayName: viewStore.displayName))
+          Text(viewStore.period.displayName)
             .font(.headline)
             .fontWeight(.semibold)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -49,26 +34,9 @@ public struct ProductPurchaseContentRowView: View {
                 }
             }
 
-            Group {
-              if viewStore.id.contains("1week") {
-                let price = Decimal.FormatStyle.Currency(code: viewStore.currencyCode).format(viewStore.price)
-                Text("\(price) / week", bundle: .module)
-              } else if viewStore.id.contains("1month") {
-                let price = formatPriceAsCurrency(currencyCode: viewStore.currencyCode, price: viewStore.price, divisor: 4)
-                Text("\(price) / week", bundle: .module)
-              } else if viewStore.id.contains("3month") {
-                let price = formatPriceAsCurrency(currencyCode: viewStore.currencyCode, price: viewStore.price, divisor: 3)
-                Text("\(price) / month", bundle: .module)
-              } else if viewStore.id.contains("6month") {
-                let price = formatPriceAsCurrency(currencyCode: viewStore.currencyCode, price: viewStore.price, divisor: 6)
-                Text("\(price) / month", bundle: .module)
-              } else if viewStore.id.contains("1year") {
-                let price = formatPriceAsCurrency(currencyCode: viewStore.currencyCode, price: viewStore.price, divisor: 12)
-                Text("\(price) / month", bundle: .module)
-              }
-            }
-            .font(.callout)
-            .fontWeight(.semibold)
+            Text(viewStore.displayPriceWithPeriod)
+              .font(.callout)
+              .fontWeight(.semibold)
           }
         }
         .padding(.horizontal, 16)

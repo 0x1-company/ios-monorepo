@@ -3,6 +3,7 @@ import API
 import APIClient
 import Build
 import ComposableArchitecture
+import FeedbackGeneratorClient
 import StoreKit
 import StoreKitClient
 
@@ -32,6 +33,7 @@ public struct ProductPurchaseLogic {
   @Dependency(\.build) var build
   @Dependency(\.store) var store
   @Dependency(\.analytics) var analytics
+  @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   enum Cancel {
     case products
@@ -50,7 +52,10 @@ public struct ProductPurchaseLogic {
         }
 
       case .closeButtonTapped:
-        return .send(.delegate(.dismiss))
+        return .run { send in
+          await feedbackGenerator.impactOccurred()
+          await send(.delegate(.dismiss), animation: .default)
+        }
 
       case let .products(.some(ids)):
         return .run { send in

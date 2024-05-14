@@ -1,26 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%@ / month" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ / 月"
-          }
-        }
-      }
-    },
-    "%@ / week" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ / 週"
-          }
-        }
-      }
-    },
     "Next" : {
       "localizations" : {
         "ja" : {
