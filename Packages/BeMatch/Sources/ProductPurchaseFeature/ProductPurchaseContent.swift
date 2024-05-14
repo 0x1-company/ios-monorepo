@@ -12,14 +12,14 @@ public struct ProductPurchaseContentView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { _ in
+    WithViewStore(store, observe: { $0 }) { viewStore in
       ZStack(alignment: .top) {
         Color.purple
           .frame(width: 190, height: 190)
           .clipShape(Circle())
           .offset(y: -190)
           .blur(radius: 128)
-        
+
         VStack(spacing: 0) {
           ScrollView(.vertical) {
             VStack(spacing: 16) {
@@ -52,10 +52,10 @@ public struct ProductPurchaseContentView: View {
 
           PrimaryButton(
             String(localized: "Next", bundle: .module),
-            isLoading: false,
-            isDisabled: false
+            isLoading: viewStore.isActivityIndicatorVisible,
+            isDisabled: viewStore.isActivityIndicatorVisible
           ) {
-            print("")
+            store.send(.purchaseButtonTapped, animation: .default)
           }
           .padding(.bottom, 16)
           .padding(.horizontal, 16)
@@ -63,6 +63,15 @@ public struct ProductPurchaseContentView: View {
       }
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
+      .overlay {
+        if viewStore.isActivityIndicatorVisible {
+          ProgressView()
+            .tint(Color.white)
+            .progressViewStyle(CircularProgressViewStyle())
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.black.opacity(0.6))
+        }
+      }
     }
   }
 }
@@ -71,7 +80,10 @@ public struct ProductPurchaseContentView: View {
   NavigationStack {
     ProductPurchaseContentView(
       store: .init(
-        initialState: ProductPurchaseContentLogic.State(products: []),
+        initialState: ProductPurchaseContentLogic.State(
+          appAccountToken: UUID(),
+          products: []
+        ),
         reducer: { ProductPurchaseContentLogic() }
       )
     )

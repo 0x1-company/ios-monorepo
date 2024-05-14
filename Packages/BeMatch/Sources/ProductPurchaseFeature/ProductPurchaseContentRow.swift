@@ -1,8 +1,8 @@
 import ComposableArchitecture
 import ProductPurchaseLogic
+import StoreKit
 import Styleguide
 import SwiftUI
-import StoreKit
 
 public struct ProductPurchaseContentRowView: View {
   let store: StoreOf<ProductPurchaseContentRowLogic>
@@ -10,7 +10,7 @@ public struct ProductPurchaseContentRowView: View {
   public init(store: StoreOf<ProductPurchaseContentRowLogic>) {
     self.store = store
   }
-  
+
   func applyAttributedString(displayName: String) -> AttributedString {
     var attributedString = AttributedString(displayName)
     for digit in "0123456789" {
@@ -22,8 +22,8 @@ public struct ProductPurchaseContentRowView: View {
   }
 
   func formatPriceAsCurrency(currencyCode: String, price: Decimal, divisor: Decimal) -> String {
-      let formatStyle = Decimal.FormatStyle.Currency(code: currencyCode)
-      return formatStyle.format(price / divisor)
+    let formatStyle = Decimal.FormatStyle.Currency(code: currencyCode)
+    return formatStyle.format(price / divisor)
   }
 
   public var body: some View {
@@ -106,4 +106,3 @@ public struct ProductPurchaseContentRowView: View {
     }
   }
 }
-
