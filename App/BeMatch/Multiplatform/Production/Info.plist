@@ -106,13 +106,19 @@
 	<string>ArrQmb3aHuS47UnotusTAe</string>
 	<key>apple-app-id</key>
 	<string>6473888485</string>
-	<key>BEMATCH_PRO_ID</key>
-	<string>jp.bematch.ios.production.subscription.pro.1week</string>
 	<key>FacebookAppID</key>
 	<string>398553079297373</string>
 	<key>FacebookClientToken</key>
 	<string>c0105ac08c9f2af92ea97f15eebc4387</string>
 	<key>FacebookDisplayName</key>
 	<string>BeMatch.</string>
+	<key>PRODUCTS</key>
+	<array>
+		<string>jp.bematch.ios.production.subscription.pro.1week</string>
+		<string>jp.bematch.ios.production.subscription.pro.1month</string>
+		<string>jp.bematch.ios.production.subscription.pro.3month</string>
+		<string>jp.bematch.ios.production.subscription.pro.6month</string>
+		<string>jp.bematch.ios.production.subscription.pro.1year</string>
+	</array>
 </dict>
 </plist>
