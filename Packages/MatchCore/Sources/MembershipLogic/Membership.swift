@@ -142,7 +142,7 @@ public struct MembershipLogic {
 
       case let .response(.success(products), .failure):
         guard let product = products.sorted(by: { $0.price < $1.price }).first
-        else  { return .none }
+        else { return .none }
 
         state.child = .purchase(MembershipPurchaseLogic.State(displayPrice: product.displayPrice))
         return .none
