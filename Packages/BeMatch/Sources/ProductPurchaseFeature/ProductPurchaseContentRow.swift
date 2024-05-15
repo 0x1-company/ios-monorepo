@@ -57,18 +57,20 @@ public struct ProductPurchaseContentRowView: View {
               .frame(width: 32, height: 32)
               .background(Color.purple)
               .clipShape(Circle())
-              .offset(x: 16, y: -16)
+              .offset(x: 8, y: -8)
           }
         }
-        //      .overlay(alignment: .topLeading) {
-        //        Text("most popular", bundle: .module)
-        //          .padding(.vertical, 6)
-        //          .padding(.horizontal, 12)
-        //          .background(Color.purple)
-        //          .font(.caption)
-        //          .fontWeight(.heavy)
-        //          .clipShape(RoundedRectangle(cornerRadius: 12))
-        //      }
+        .overlay(alignment: .topLeading) {
+          if viewStore.isMostPopularFlag {
+            Text("most popular", bundle: .module)
+              .padding(.vertical, 6)
+              .padding(.horizontal, 12)
+              .background(Color.purple)
+              .font(.caption)
+              .fontWeight(.heavy)
+              .cornerRadius(12, corners: [.topLeft, .bottomRight])
+          }
+        }
       }
       .buttonStyle(HoldDownButtonStyle())
     }

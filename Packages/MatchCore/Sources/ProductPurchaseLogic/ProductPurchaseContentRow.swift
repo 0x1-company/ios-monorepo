@@ -14,6 +14,7 @@ public struct ProductPurchaseContentRowLogic {
     let currencyCode: String
     public let displayPrice: String?
     public var isSelected: Bool
+    public let isMostPopularFlag: Bool
 
     public var displayPriceWithPeriod: String {
       let formatStyle = Decimal.FormatStyle.Currency(code: currencyCode)
@@ -40,6 +41,7 @@ public struct ProductPurchaseContentRowLogic {
       self.currencyCode = currencyCode
       self.displayPrice = displayPrice
       self.isSelected = isSelected
+      isMostPopularFlag = isSelected && id.contains("1month")
     }
   }
 
