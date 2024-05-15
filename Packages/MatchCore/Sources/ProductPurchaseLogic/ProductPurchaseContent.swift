@@ -17,7 +17,7 @@ public struct ProductPurchaseContentLogic {
     public var isActivityIndicatorVisible = false
 
     public var rows: IdentifiedArrayOf<ProductPurchaseContentRowLogic.State> = []
-    
+
     @PresentationState public var destination: Destination.State?
 
     public init(
@@ -138,7 +138,7 @@ public struct ProductPurchaseContentLogic {
         return .run { _ in
           await transaction.finish()
         }
-        
+
       case .destination(.presented(.alert(.confirmOkay))):
         state.destination = nil
         return .none
@@ -154,21 +154,21 @@ public struct ProductPurchaseContentLogic {
       Destination()
     }
   }
-  
+
   @Reducer
   public struct Destination {
     public enum State: Equatable {
       case alert(AlertState<Action.Alert>)
     }
-    
+
     public enum Action {
       case alert(Alert)
-      
+
       public enum Alert: Equatable {
         case confirmOkay
       }
     }
-    
+
     public var body: some Reducer<State, Action> {
       Scope(state: \.alert, action: \.alert) {}
     }
