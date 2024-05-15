@@ -19,7 +19,6 @@ public struct ProductPurchaseLogic {
   public enum Action {
     case onTask
     case closeButtonTapped
-    case products([String]?)
     case productsResponse(Result<[Product], Error>, Result<API.CurrentUserQuery.Data, Error>)
     case content(ProductPurchaseContentLogic.Action)
     case delegate(Delegate)
@@ -45,19 +44,8 @@ public struct ProductPurchaseLogic {
       case .onTask:
         analytics.logScreen(screenName: "ProductPurchase", of: self)
 
-        return .run { send in
-          await send(.products(
-            build.infoDictionary("PRODUCTS", for: [String].self)
-          ))
-        }
+        let ids = build.infoDictionary("PRODUCTS", for: [String].self)!
 
-      case .closeButtonTapped:
-        return .run { send in
-          await feedbackGenerator.impactOccurred()
-          await send(.delegate(.dismiss), animation: .default)
-        }
-
-      case let .products(.some(ids)):
         return .run { send in
           for try await data in api.currentUser() {
             await send(.productsResponse(Result {
@@ -69,8 +57,11 @@ public struct ProductPurchaseLogic {
         }
         .cancellable(id: Cancel.products, cancelInFlight: true)
 
-      case .products(.none):
-        return .send(.delegate(.dismiss))
+      case .closeButtonTapped:
+        return .run { send in
+          await feedbackGenerator.impactOccurred()
+          await send(.delegate(.dismiss), animation: .default)
+        }
 
       case let .productsResponse(.success(products), .success(data)):
         guard let appAccountToken = UUID(uuidString: data.currentUser.id)
