@@ -2,7 +2,14 @@
   "sourceLanguage" : "en",
   "strings" : {
     "most popular" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "いちばん人気"
+          }
+        }
+      }
     },
     "Next" : {
       "localizations" : {
