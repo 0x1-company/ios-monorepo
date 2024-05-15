@@ -36,7 +36,7 @@ public struct ProfileEditView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Text("Name", bundle: .module)
+              Text("Nick Name", bundle: .module)
                 .foregroundStyle(Color.primary)
             }
           }
@@ -58,7 +58,7 @@ public struct ProfileEditView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Text("Profile Image", bundle: .module)
+              Text("Profile Picture", bundle: .module)
                 .foregroundStyle(Color.primary)
             }
           }
