@@ -114,5 +114,13 @@
 	<string>c0105ac08c9f2af92ea97f15eebc4387</string>
 	<key>FacebookDisplayName</key>
 	<string>BeMatch.</string>
+	<key>PRODUCTS</key>
+	<array>
+		<string>jp.bematch.ios.production.subscription.pro.1week</string>
+		<string>jp.bematch.ios.production.subscription.pro.1month</string>
+		<string>jp.bematch.ios.production.subscription.pro.3month</string>
+		<string>jp.bematch.ios.production.subscription.pro.6month</string>
+		<string>jp.bematch.ios.production.subscription.pro.1year</string>
+	</array>
 </dict>
 </plist>
