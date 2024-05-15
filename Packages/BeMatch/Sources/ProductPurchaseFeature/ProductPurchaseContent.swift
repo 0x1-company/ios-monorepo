@@ -14,7 +14,7 @@ public struct ProductPurchaseContentView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       ZStack(alignment: .top) {
-        Color.purple
+        Color.yellow
           .frame(width: 190, height: 190)
           .clipShape(Circle())
           .offset(y: -190)

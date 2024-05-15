@@ -46,7 +46,7 @@ public struct ProductPurchaseContentRowView: View {
         .overlay(
           viewStore.isSelected
             ? RoundedRectangle(cornerRadius: 12)
-            .stroke(Color.purple, lineWidth: 2.0)
+            .stroke(Color.yellow, lineWidth: 2.0)
             : RoundedRectangle(cornerRadius: 12)
             .stroke(Color(uiColor: UIColor.opaqueSeparator), lineWidth: 1.0)
         )
@@ -55,7 +55,7 @@ public struct ProductPurchaseContentRowView: View {
             Image(systemName: "checkmark")
               .foregroundStyle(Color.black)
               .frame(width: 32, height: 32)
-              .background(Color.purple)
+              .background(Color.yellow)
               .clipShape(Circle())
               .offset(x: 8, y: -8)
           }
@@ -65,7 +65,8 @@ public struct ProductPurchaseContentRowView: View {
             Text("most popular", bundle: .module)
               .padding(.vertical, 6)
               .padding(.horizontal, 12)
-              .background(Color.purple)
+              .background(Color.yellow)
+              .foregroundStyle(Color.black)
               .font(.caption)
               .fontWeight(.heavy)
               .cornerRadius(12, corners: [.topLeft, .bottomRight])
