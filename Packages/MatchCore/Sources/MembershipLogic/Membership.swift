@@ -102,9 +102,7 @@ public struct MembershipLogic {
       case .child(.campaign(.delegate(.purchase))),
            .child(.purchase(.delegate(.purchase))):
         state.destination = .purchase(ProductPurchaseLogic.State.loading)
-        return .run { _ in
-          await feedbackGenerator.impactOccurred()
-        }
+        return .none
 
       case let .response(.success(products), .success(data)):
         state.invitationCode = data.invitationCode.code
