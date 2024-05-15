@@ -14,6 +14,19 @@ public struct ProductPurchaseContentRowLogic {
     let currencyCode: String
     public let displayPrice: String?
     public var isSelected: Bool
+    public let isMostPopularFlag: Bool
+
+    public var displayPriceWithPeriod: String {
+      let formatStyle = Decimal.FormatStyle.Currency(code: currencyCode)
+      switch period {
+      case .oneWeek, .oneMonth:
+        let price = formatStyle.format(price / period.divisor)
+        return String(localized: "\(price) / week", bundle: .module)
+      case .threeMonths, .sixMonths, .twelveMonths:
+        let price = formatStyle.format(price / period.divisor)
+        return String(localized: "\(price) / month", bundle: .module)
+      }
+    }
 
     public var displayPriceWithPeriod: String {
       let formatStyle = Decimal.FormatStyle.Currency(code: currencyCode)
@@ -40,6 +53,7 @@ public struct ProductPurchaseContentRowLogic {
       self.currencyCode = currencyCode
       self.displayPrice = displayPrice
       self.isSelected = isSelected
+      isMostPopularFlag = isSelected && id.contains("1month")
     }
   }
 

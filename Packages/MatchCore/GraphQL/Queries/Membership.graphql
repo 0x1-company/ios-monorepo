@@ -9,8 +9,4 @@ query Membership {
     id
     code
   }
-
-  currentUser {
-    id
-  }
 }

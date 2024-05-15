@@ -28,6 +28,9 @@ public struct ProductPurchaseView: View {
     .navigationBarTitleDisplayMode(.inline)
     .task { await store.send(.onTask).finish() }
     .toolbar {
+      ToolbarItem(placement: .principal) {
+        Image(ImageResource.logo)
+      }
       ToolbarItem(placement: .topBarLeading) {
         Button {
           store.send(.closeButtonTapped)

@@ -37,24 +37,13 @@ public struct MembershipView: View {
         .task { await store.send(.onTask).finish() }
         .alert(store: store.scope(state: \.$destination.alert, action: \.destination.alert))
         .toolbar {
-          if !viewStore.isActivityIndicatorVisible {
-            ToolbarItem(placement: .topBarLeading) {
-              Button {
-                store.send(.closeButtonTapped)
-              } label: {
-                Image(systemName: "xmark")
-                  .foregroundStyle(Color.primary)
-              }
+          ToolbarItem(placement: .topBarLeading) {
+            Button {
+              store.send(.closeButtonTapped)
+            } label: {
+              Image(systemName: "xmark")
+                .foregroundStyle(Color.primary)
             }
-          }
-        }
-        .overlay {
-          if viewStore.isActivityIndicatorVisible {
-            ProgressView()
-              .tint(Color.white)
-              .progressViewStyle(CircularProgressViewStyle())
-              .frame(maxWidth: .infinity, maxHeight: .infinity)
-              .background(Color.black.opacity(0.6))
           }
         }
         .fullScreenCover(

@@ -4,6 +4,7 @@ import API
 import APIClient
 import Build
 import ComposableArchitecture
+import FeedbackGeneratorClient
 import ProductPurchaseLogic
 import StoreKit
 import StoreKitClient
@@ -27,10 +28,8 @@ public struct MembershipLogic {
 
   public struct State: Equatable {
     public var child = Child.State.loading
-    public var isActivityIndicatorVisible = false
 
     public let bematchProOneWeekId: String
-    var appAccountToken: UUID?
     var product: StoreKit.Product?
 
     public var invitationCode = ""
@@ -50,9 +49,6 @@ public struct MembershipLogic {
     case onTask
     case closeButtonTapped
     case response(Result<[Product], Error>, Result<API.MembershipQuery.Data, Error>)
-    case purchaseResponse(Result<StoreKit.Transaction, Error>)
-    case createAppleSubscriptionResponse(Result<API.CreateAppleSubscriptionMutation.Data, Error>)
-    case transactionFinish(StoreKit.Transaction)
     case onCompletion(CompletionWithItems)
     case child(Child.Action)
     case destination(PresentationAction<Destination.Action>)
@@ -68,6 +64,7 @@ public struct MembershipLogic {
   @Dependency(\.build) var build
   @Dependency(\.store) var store
   @Dependency(\.analytics) var analytics
+  @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   enum Cancel {
     case purchase
@@ -92,7 +89,10 @@ public struct MembershipLogic {
         .cancellable(id: Cancel.response, cancelInFlight: true)
 
       case .closeButtonTapped:
-        return .send(.delegate(.dismiss))
+        return .run { send in
+          await feedbackGenerator.impactOccurred()
+          await send(.delegate(.dismiss), animation: .default)
+        }
 
       case .child(.campaign(.delegate(.sendInvitationCode))),
            .child(.campaign(.invitationCodeCampaign(.delegate(.sendInvitationCode)))):
@@ -102,38 +102,11 @@ public struct MembershipLogic {
       case .child(.campaign(.delegate(.purchase))),
            .child(.purchase(.delegate(.purchase))):
         state.destination = .purchase(ProductPurchaseLogic.State.loading)
-        return .none
-//        guard
-//          let product = state.product,
-//          let appAccountToken = state.appAccountToken
-//        else { return .none }
-//
-//        state.isActivityIndicatorVisible = true
-//
-//        return .run { send in
-//          let result = try await store.purchase(product, appAccountToken)
-//
-//          switch result {
-//          case let .success(verificationResult):
-//            await send(.purchaseResponse(Result {
-//              try checkVerified(verificationResult)
-//            }))
-//
-//          case .pending:
-//            await send(.purchaseResponse(.failure(InAppPurchaseError.pending)))
-//          case .userCancelled:
-//            await send(.purchaseResponse(.failure(InAppPurchaseError.userCancelled)))
-//          @unknown default:
-//            fatalError()
-//          }
-//        } catch: { error, send in
-//          await send(.purchaseResponse(.failure(error)))
-//        }
-//        .cancellable(id: Cancel.purchase, cancelInFlight: true)
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
 
       case let .response(.success(products), .success(data)):
-        let userId = data.currentUser.id
-        state.appAccountToken = UUID(uuidString: userId)
         state.invitationCode = data.invitationCode.code
 
         let campaign = data.activeInvitationCampaign
@@ -179,32 +152,6 @@ public struct MembershipLogic {
         state.child = .purchase(MembershipPurchaseLogic.State(displayPrice: product.displayPrice))
         return .none
 
-      case let .purchaseResponse(.success(transaction)):
-        state.isActivityIndicatorVisible = false
-        if transaction.environment == .xcode {
-          return .run { send in
-            await send(.transactionFinish(transaction))
-          }
-        }
-        let isProduction = transaction.environment == .production
-        let environment: API.AppleSubscriptionEnvironment = isProduction ? .production : .sandbox
-        let input = API.CreateAppleSubscriptionInput(
-          environment: GraphQLEnum(environment),
-          transactionId: transaction.id.description
-        )
-        return .run { send in
-          let data = try await api.createAppleSubscription(input)
-          guard data.createAppleSubscription else { return }
-          await send(.transactionFinish(transaction))
-        } catch: { error, send in
-          await send(.createAppleSubscriptionResponse(.failure(error)))
-        }
-
-      case .purchaseResponse(.failure),
-           .createAppleSubscriptionResponse(.failure):
-        state.isActivityIndicatorVisible = false
-        return .none
-
       case let .onCompletion(completion):
         state.isPresented = false
         analytics.logEvent("invitation_code_completion", [
@@ -212,20 +159,6 @@ public struct MembershipLogic {
           "result": completion.result,
         ])
         return .none
-
-      case let .transactionFinish(transaction):
-        state.destination = .alert(
-          AlertState {
-            TextState("I joined BeMatch PRO", bundle: .module)
-          } actions: {
-            ButtonState(action: .confirmOkay) {
-              TextState("OK", bundle: .module)
-            }
-          }
-        )
-        return .run { _ in
-          await transaction.finish()
-        }
 
       case .destination(.presented(.alert(.confirmOkay))):
         state.destination = nil
