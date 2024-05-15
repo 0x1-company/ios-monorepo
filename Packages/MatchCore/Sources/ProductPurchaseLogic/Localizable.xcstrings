@@ -70,6 +70,26 @@
           }
         }
       }
+    },
+    "I joined BeMatch PRO" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeMatch PROの購入が完了しました"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

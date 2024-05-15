@@ -17,6 +17,8 @@ public struct ProductPurchaseContentLogic {
     public var isActivityIndicatorVisible = false
 
     public var rows: IdentifiedArrayOf<ProductPurchaseContentRowLogic.State> = []
+    
+    @PresentationState public var destination: Destination.State?
 
     public init(
       appAccountToken: UUID,
@@ -36,6 +38,7 @@ public struct ProductPurchaseContentLogic {
     case purchaseResponse(Result<StoreKit.Transaction, Error>)
     case createAppleSubscriptionResponse(Result<API.CreateAppleSubscriptionMutation.Data, Error>)
     case transactionFinish(Transaction)
+    case destination(PresentationAction<Destination.Action>)
   }
 
   @Dependency(\.api) var api
@@ -123,9 +126,22 @@ public struct ProductPurchaseContentLogic {
         return .none
 
       case let .transactionFinish(transaction):
+        state.destination = .alert(
+          AlertState {
+            TextState("I joined BeMatch PRO", bundle: .module)
+          } actions: {
+            ButtonState(action: .confirmOkay) {
+              TextState("OK", bundle: .module)
+            }
+          }
+        )
         return .run { _ in
           await transaction.finish()
         }
+        
+      case .destination(.presented(.alert(.confirmOkay))):
+        state.destination = nil
+        return .none
 
       default:
         return .none
@@ -133,6 +149,28 @@ public struct ProductPurchaseContentLogic {
     }
     .forEach(\.rows, action: \.rows) {
       ProductPurchaseContentRowLogic()
+    }
+    .ifLet(\.$destination, action: \.destination) {
+      Destination()
+    }
+  }
+  
+  @Reducer
+  public struct Destination {
+    public enum State: Equatable {
+      case alert(AlertState<Action.Alert>)
+    }
+    
+    public enum Action {
+      case alert(Alert)
+      
+      public enum Alert: Equatable {
+        case confirmOkay
+      }
+    }
+    
+    public var body: some Reducer<State, Action> {
+      Scope(state: \.alert, action: \.alert) {}
     }
   }
 }
