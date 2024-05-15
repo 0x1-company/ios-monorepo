@@ -1,6 +1,7 @@
 import AnalyticsClient
 import API
 import ComposableArchitecture
+import FeedbackGeneratorClient
 import SwiftUI
 
 @Reducer
@@ -56,6 +57,7 @@ public struct MembershipCampaignLogic {
   }
 
   @Dependency(\.analytics) var analytics
+  @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   public var body: some Reducer<State, Action> {
     Scope(state: \.invitationCampaign, action: \.invitationCampaign) {
@@ -77,7 +79,10 @@ public struct MembershipCampaignLogic {
         return .send(.delegate(.sendInvitationCode))
 
       case .upgradeButtonTapped:
-        return .send(.delegate(.purchase))
+        return .run { send in
+          await feedbackGenerator.impactOccurred()
+          await send(.delegate(.purchase), animation: .default)
+        }
 
       default:
         return .none

@@ -450,9 +450,15 @@ type User {
   """ユーザーの画像一覧"""
   images: [UserImage!]!
 
+  """LocketのURL"""
+  locketUrl: String!
+
   """一言コメント"""
   shortComment: ShortComment
   status: UserStatus!
+
+  """TapNowのusername"""
+  tapnowUsername: String!
 }
 
 type UserCategory {

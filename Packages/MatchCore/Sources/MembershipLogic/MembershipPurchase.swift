@@ -1,5 +1,6 @@
 import AnalyticsClient
 import ComposableArchitecture
+import FeedbackGeneratorClient
 
 @Reducer
 public struct MembershipPurchaseLogic {
@@ -24,6 +25,7 @@ public struct MembershipPurchaseLogic {
   }
 
   @Dependency(\.analytics) var analytics
+  @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { _, action in
@@ -33,7 +35,10 @@ public struct MembershipPurchaseLogic {
         return .none
 
       case .upgradeButtonTapped:
-        return .send(.delegate(.purchase))
+        return .run { send in
+          await feedbackGenerator.impactOccurred()
+          await send(.delegate(.purchase), animation: .default)
+        }
 
       default:
         return .none
