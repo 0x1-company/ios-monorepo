@@ -72,6 +72,7 @@ public struct ProductPurchaseContentView: View {
             .background(Color.black.opacity(0.6))
         }
       }
+      .alert(store: store.scope(state: \.$destination.alert, action: \.destination.alert))
     }
   }
 }
