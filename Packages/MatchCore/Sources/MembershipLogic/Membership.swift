@@ -29,7 +29,6 @@ public struct MembershipLogic {
   public struct State: Equatable {
     public var child = Child.State.loading
 
-    public let bematchProOneWeekId: String
     var product: StoreKit.Product?
 
     public var invitationCode = ""
@@ -39,10 +38,7 @@ public struct MembershipLogic {
 
     public var shareText = ""
 
-    public init() {
-      @Dependency(\.build) var build
-      bematchProOneWeekId = build.infoDictionary("BEMATCH_PRO_ID", for: String.self)!
-    }
+    public init() {}
   }
 
   public enum Action: BindableAction {
@@ -77,10 +73,11 @@ public struct MembershipLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
-        return .run { [id = state.bematchProOneWeekId] send in
+        let ids = build.infoDictionary("PRODUCTS", for: [String].self)!
+        return .run { send in
           for try await data in api.membership() {
             await send(.response(Result {
-              try await store.products([id])
+              try await store.products(ids)
             }, .success(data)))
           }
         } catch: { error, send in
@@ -108,7 +105,7 @@ public struct MembershipLogic {
         state.invitationCode = data.invitationCode.code
 
         let campaign = data.activeInvitationCampaign
-        let product = products.first(where: { $0.id == state.bematchProOneWeekId })
+        let product = products.sorted(by: { $0.price < $1.price }).first
         state.product = product
 
         if let campaign, let product {
@@ -144,8 +141,8 @@ public struct MembershipLogic {
         return .none
 
       case let .response(.success(products), .failure):
-        guard let product = products.first(where: { $0.id == state.bematchProOneWeekId })
-        else { return .none }
+        guard let product = products.sorted(by: { $0.price < $1.price }).first
+        else  { return .none }
 
         state.child = .purchase(MembershipPurchaseLogic.State(displayPrice: product.displayPrice))
         return .none
