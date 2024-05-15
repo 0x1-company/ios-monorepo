@@ -7,6 +7,7 @@ import AppFeature
 import AppLogic
 import Build
 import ComposableArchitecture
+import ConfigGlobalClient
 import EnvironmentClient
 import FirebaseAuth
 import FirebaseAuthClient
@@ -56,7 +57,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
             endpoint: endpoint
           )
           $0.api = APIClient.live(apolloClient: apolloClient)
-          $0.environment = .live(
+          $0.environment = EnvironmentClient.live(
             application: EnvironmentClient.Application.bematch,
             username: String(localized: "bematch"),
             appId: "6473888485",
@@ -65,6 +66,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
             docsURL: URL(string: "https://docs.bematch.jp")!,
             howToMovieURL: URL(string: "https://storage.googleapis.com/bematch-production.appspot.com/public/how-to.mov")!
           )
+          $0.configGlobal = ConfigGlobalClient.live(documentId: "bematch")
         }
     }
   )
