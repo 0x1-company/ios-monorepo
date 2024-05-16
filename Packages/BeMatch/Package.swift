@@ -143,6 +143,7 @@ let package = Package(
     ]),
     .target(name: "DirectMessageTabFeature", dependencies: [
       "BannerFeature",
+      "SettingsFeature",
       "RecentMatchFeature",
       "ReceivedLikeRouterFeature",
       "NotificationsReEnableFeature",

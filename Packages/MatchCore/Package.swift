@@ -159,6 +159,7 @@ let package = Package(
     ]),
     .target(name: "DirectMessageTabLogic", dependencies: [
       "BannerLogic",
+      "SettingsLogic",
       "RecentMatchLogic",
       "ReceivedLikeRouterLogic",
       "NotificationsReEnableLogic",
