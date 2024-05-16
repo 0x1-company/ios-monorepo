@@ -134,6 +134,10 @@ public extension APIClient {
         let query = API.MessagesQuery(targetUserId: targetUserId, first: 50, after: after ?? .null)
         return apolloClient.watch(query: query)
       },
+      directMessage: { targetUserId in
+        let query = API.DirectMessageQuery(targetUserId: targetUserId, targetUserIdString: targetUserId, first: 50)
+        return apolloClient.watch(query: query)
+      },
       readMessages: { input in
         let mutation = API.ReadMessagesMutation(input: input)
         return try await apolloClient.perform(mutation: mutation)

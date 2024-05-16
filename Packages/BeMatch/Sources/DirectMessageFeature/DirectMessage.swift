@@ -14,14 +14,11 @@ public struct DirectMessageView: View {
     SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
       switch initialState {
       case .empty:
-        VStack(spacing: 0) {
-          Spacer()
-
-          Text("The operator may check and delete the contents of messages for the purpose of operating a sound service. In addition, the account may be suspended if inappropriate use is confirmed.", bundle: .module)
-            .font(.caption)
-            .foregroundStyle(Color.secondary)
-        }
-        .padding(.horizontal, 16)
+        CaseLet(
+          /DirectMessageLogic.Child.State.empty,
+          action: DirectMessageLogic.Child.Action.empty,
+          then: DirectMessageEmptyView.init(store:)
+        )
 
       case .loading:
         ProgressView()

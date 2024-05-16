@@ -1,8 +1,9 @@
 # import MessageRow from '../fragments/MessageRow.graphql'
 
-query DirectMessage($targetUserId: ID!, $first: Int!) {
-  currentUser {
+query DirectMessage($targetUserId: ID!, $targetUserIdString: String!, $first: Int!) {
+  userByMatched(targetUserId: $targetUserIdString) {
     id
+    displayName
     berealUsername
     externalProductUrl
   }

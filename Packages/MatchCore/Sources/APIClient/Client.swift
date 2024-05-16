@@ -45,11 +45,13 @@ public struct APIClient: Sendable {
 
   public var createMessage: @Sendable (API.CreateMessageInput) async throws -> API.CreateMessageMutation.Data
   public var messages: @Sendable (_ targetUserId: String, _ after: String?) -> AsyncThrowingStream<API.MessagesQuery.Data, Error> = { _, _ in .finished() }
+  public var directMessage: @Sendable (_ targetUserId: String) -> AsyncThrowingStream<API.DirectMessageQuery.Data, Error> = { _ in .finished() }
   public var readMessages: @Sendable (API.ReadMessagesInput) async throws -> API.ReadMessagesMutation.Data
   public var directMessageTab: @Sendable () -> AsyncThrowingStream<API.DirectMessageTabQuery.Data, Error> = { .finished() }
   public var directMessageListContent: @Sendable (_ after: String?) -> AsyncThrowingStream<API.DirectMessageListContentQuery.Data, Error> = { _ in .finished() }
   public var unsentDirectMessageListContent: @Sendable (_ after: String?) -> AsyncThrowingStream<API.UnsentDirectMessageListContentQuery.Data, Error> = { _ in .finished() }
   public var profileExplorerPreview: @Sendable (_ targetUserId: String) -> AsyncThrowingStream<API.ProfileExplorerPreviewQuery.Data, Error> = { _ in .finished() }
+
   public var recentMatch: @Sendable () -> AsyncThrowingStream<API.RecentMatchQuery.Data, Error> = { .finished() }
   public var recentMatchContent: @Sendable (_ after: String?) -> AsyncThrowingStream<API.RecentMatchContentQuery.Data, Error> = { _ in .finished() }
 }
