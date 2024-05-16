@@ -8,23 +8,27 @@ public extension API {
     public static let operationName: String = "DirectMessage"
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"query DirectMessage($targetUserId: ID!, $first: Int!) { currentUser { __typename id berealUsername externalProductUrl } messages(targetUserId: $targetUserId, first: $first) { __typename pageInfo { __typename hasNextPage endCursor } edges { __typename node { __typename ...MessageRow } } } }"#,
+        #"query DirectMessage($targetUserId: ID!, $targetUserIdString: String!, $first: Int!) { userByMatched(targetUserId: $targetUserIdString) { __typename id displayName berealUsername externalProductUrl } messages(targetUserId: $targetUserId, first: $first) { __typename pageInfo { __typename hasNextPage endCursor } edges { __typename node { __typename ...MessageRow } } } }"#,
         fragments: [MessageRow.self]
       ))
 
     public var targetUserId: ID
+    public var targetUserIdString: String
     public var first: Int
 
     public init(
       targetUserId: ID,
+      targetUserIdString: String,
       first: Int
     ) {
       self.targetUserId = targetUserId
+      self.targetUserIdString = targetUserIdString
       self.first = first
     }
 
     public var __variables: Variables? { [
       "targetUserId": targetUserId,
+      "targetUserIdString": targetUserIdString,
       "first": first,
     ] }
 
@@ -34,22 +38,22 @@ public extension API {
 
       public static var __parentType: ApolloAPI.ParentType { API.Objects.Query }
       public static var __selections: [ApolloAPI.Selection] { [
-        .field("currentUser", CurrentUser.self),
+        .field("userByMatched", UserByMatched.self, arguments: ["targetUserId": .variable("targetUserIdString")]),
         .field("messages", Messages.self, arguments: [
           "targetUserId": .variable("targetUserId"),
           "first": .variable("first"),
         ]),
       ] }
 
-      /// ログイン中ユーザーを取得
-      public var currentUser: CurrentUser { __data["currentUser"] }
+      /// マッチしたユーザーを取得
+      public var userByMatched: UserByMatched { __data["userByMatched"] }
       /// 特定のユーザーとのメッセージ一覧
       public var messages: Messages { __data["messages"] }
 
-      /// CurrentUser
+      /// UserByMatched
       ///
       /// Parent Type: `User`
-      public struct CurrentUser: API.SelectionSet {
+      public struct UserByMatched: API.SelectionSet {
         public let __data: DataDict
         public init(_dataDict: DataDict) { __data = _dataDict }
 
@@ -57,12 +61,14 @@ public extension API {
         public static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
           .field("id", API.ID.self),
+          .field("displayName", String?.self),
           .field("berealUsername", String.self),
           .field("externalProductUrl", String.self),
         ] }
 
         /// user id
         public var id: API.ID { __data["id"] }
+        public var displayName: String? { __data["displayName"] }
         /// BeRealのusername
         public var berealUsername: String { __data["berealUsername"] }
         public var externalProductUrl: String { __data["externalProductUrl"] }

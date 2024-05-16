@@ -29,7 +29,7 @@ public struct DirectMessageLogic {
   public enum Action {
     case onTask
     case closeButtonTapped
-    case messagesResponse(Result<API.MessagesQuery.Data, Error>)
+    case directMessageResponse(Result<API.DirectMessageQuery.Data, Error>)
     case readMessagesResponse(Result<API.ReadMessagesMutation.Data, Error>)
     case child(Child.Action)
   }
@@ -47,11 +47,11 @@ public struct DirectMessageLogic {
           await withTaskGroup(of: Void.self) { group in
             group.addTask {
               do {
-                for try await data in api.messages(targetUserId: targetUserId, after: nil) {
-                  await send(.messagesResponse(.success(data)), animation: .default)
+                for try await data in api.directMessage(targetUserId: targetUserId) {
+                  await send(.directMessageResponse(.success(data)), animation: .default)
                 }
               } catch {
-                await send(.messagesResponse(.failure(error)))
+                await send(.directMessageResponse(.failure(error)), animation: .default)
               }
             }
             group.addTask {
@@ -69,7 +69,7 @@ public struct DirectMessageLogic {
           await dismiss()
         }
 
-      case let .messagesResponse(.success(data)):
+      case let .directMessageResponse(.success(data)):
         let rows = IdentifiedArrayOf(
           uniqueElements: data.messages.edges
             .map(\.node.fragments.messageRow)
@@ -82,12 +82,15 @@ public struct DirectMessageLogic {
           rows: rows
         )
 
-        state.child = rows.isEmpty ? .empty : .content(contentState)
+        let user = data.userByMatched
 
-        return .none
+        let emptyState = DirectMessageEmptyLogic.State(
+          displayName: user.displayName ?? user.berealUsername,
+          externalProductUrl: user.externalProductUrl
+        )
 
-      case .messagesResponse(.failure):
-        state.child = .empty
+        state.child = rows.isEmpty ? .empty(emptyState) : .content(contentState)
+
         return .none
 
       default:
@@ -100,17 +103,18 @@ public struct DirectMessageLogic {
   public struct Child {
     public enum State: Equatable {
       case loading
-      case empty
+      case empty(DirectMessageEmptyLogic.State)
       case content(DirectMessageContentLogic.State)
     }
 
     public enum Action {
       case loading
-      case empty
+      case empty(DirectMessageEmptyLogic.Action)
       case content(DirectMessageContentLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
+      Scope(state: \.empty, action: \.empty, child: DirectMessageEmptyLogic.init)
       Scope(state: \.content, action: \.content, child: DirectMessageContentLogic.init)
     }
   }

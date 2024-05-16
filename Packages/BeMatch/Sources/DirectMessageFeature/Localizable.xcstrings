@@ -1,6 +1,36 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Add BeReal" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeRealを追加する"
+          }
+        }
+      }
+    },
+    "Add BeReal and send a message!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeRealを追加してメッセージを送ってみよう！"
+          }
+        }
+      }
+    },
+    "Matched with %@!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@さんとマッチしたよ！"
+          }
+        }
+      }
+    },
     "Report" : {
       "localizations" : {
         "ja" : {
