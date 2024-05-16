@@ -27,7 +27,11 @@ public struct ProfileView: View {
                 .frame(width: 44, height: 44)
             }
             Spacer()
-            if let username = viewStore.currentUser?.berealUsername {
+            if let displayName = viewStore.currentUser?.displayName {
+              Text(displayName)
+                .foregroundStyle(Color.white)
+                .font(.system(.callout, weight: .semibold))
+            } else if let username = viewStore.currentUser?.berealUsername {
               Text(username)
                 .foregroundStyle(Color.white)
                 .font(.system(.callout, weight: .semibold))
@@ -49,11 +53,11 @@ public struct ProfileView: View {
             }
           )
 
-          if let username = viewStore.currentUser?.berealUsername {
+          if let url = viewStore.currentUser?.externalProductUrl {
             Button {
               store.send(.jumpBeRealButtonTapped)
             } label: {
-              Text("🔗 BeRe.al/\(username)")
+              Text("🔗 \(url)")
                 .font(.system(.caption))
                 .foregroundStyle(Color.primary)
             }

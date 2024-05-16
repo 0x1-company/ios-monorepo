@@ -52,7 +52,7 @@ public struct RecentMatchGridView: View {
           }
 
           VStack(spacing: 8) {
-            Text(viewStore.username)
+            Text(viewStore.displayName)
               .font(.system(.subheadline, weight: .semibold))
               .frame(maxWidth: .infinity, alignment: .leading)
 

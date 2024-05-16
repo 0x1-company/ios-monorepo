@@ -32,7 +32,7 @@ public struct ProfileExternalView: View {
             }
             Spacer()
             VStack(spacing: 0) {
-              Text(viewStore.match.targetUser.berealUsername)
+              Text(viewStore.match.targetUser.displayName ?? viewStore.match.targetUser.berealUsername)
                 .foregroundStyle(Color.white)
                 .font(.system(.callout, weight: .semibold))
 

@@ -4,6 +4,7 @@ fragment RecentMatchGrid on Match {
   isRead
   targetUser {
     id
+    displayName
     berealUsername
     externalProductUrl
     images {

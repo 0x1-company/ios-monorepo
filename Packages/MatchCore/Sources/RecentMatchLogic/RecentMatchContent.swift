@@ -74,7 +74,7 @@ public struct RecentMatchContentLogic {
         row.read()
         state.matches.updateOrAppend(row)
         state.destination = .explorer(
-          ProfileExplorerLogic.State(displayName: row.username, targetUserId: row.targetUserId)
+          ProfileExplorerLogic.State(displayName: row.displayName, targetUserId: row.targetUserId)
         )
         return .run { send in
           await feedbackGenerator.impactOccurred()

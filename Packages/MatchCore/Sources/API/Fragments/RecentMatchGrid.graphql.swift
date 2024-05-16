@@ -6,7 +6,7 @@
 public extension API {
   struct RecentMatchGrid: API.SelectionSet, Fragment {
     public static var fragmentDefinition: StaticString {
-      #"fragment RecentMatchGrid on Match { __typename id createdAt isRead targetUser { __typename id berealUsername externalProductUrl images { __typename id imageUrl } } }"#
+      #"fragment RecentMatchGrid on Match { __typename id createdAt isRead targetUser { __typename id displayName berealUsername externalProductUrl images { __typename id imageUrl } } }"#
     }
 
     public let __data: DataDict
@@ -40,6 +40,7 @@ public extension API {
       public static var __selections: [ApolloAPI.Selection] { [
         .field("__typename", String.self),
         .field("id", API.ID.self),
+        .field("displayName", String?.self),
         .field("berealUsername", String.self),
         .field("externalProductUrl", String.self),
         .field("images", [Image].self),
@@ -47,6 +48,7 @@ public extension API {
 
       /// user id
       public var id: API.ID { __data["id"] }
+      public var displayName: String? { __data["displayName"] }
       /// BeRealのusername
       public var berealUsername: String { __data["berealUsername"] }
       public var externalProductUrl: String { __data["externalProductUrl"] }
