@@ -30,7 +30,6 @@ public struct DirectMessageEmptyView: View {
             store.send(.jumpExternalProductButtonTapped)
           }
         }
-        .padding(.horizontal, 16)
         .frame(maxHeight: .infinity)
 
         Text("The operator may check and delete the contents of messages for the purpose of operating a sound service. In addition, the account may be suspended if inappropriate use is confirmed.", bundle: .module)
