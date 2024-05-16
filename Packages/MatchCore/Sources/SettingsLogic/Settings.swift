@@ -8,6 +8,7 @@ import ComposableArchitecture
 import EnvironmentClient
 import FeedbackGeneratorClient
 import FirebaseAuthClient
+import MembershipStatusLogic
 import ProfileEditLogic
 import ProfileLogic
 import SwiftUI
@@ -68,8 +69,6 @@ public struct SettingsLogic {
     case onTask
     case myProfileButtonTapped
     case editProfileButtonTapped
-    case invitationCodeButtonTapped
-    case achievementButtonTapped
     case membershipStatusButtonTapped
     case howItWorksButtonTapped
     case otherButtonTapped
@@ -108,8 +107,14 @@ public struct SettingsLogic {
           await feedbackGenerator.impactOccurred()
         }
 
-      case .achievementButtonTapped:
-        state.destination = .achievement()
+      case .membershipStatusButtonTapped:
+        state.destination = .membershipStatus()
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
+
+      case .otherButtonTapped:
+        state.destination = .other()
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
@@ -188,6 +193,8 @@ public struct SettingsLogic {
       case profile(ProfileLogic.State = .init())
       case tutorial(TutorialLogic.State = .init())
       case achievement(AchievementLogic.State = .loading)
+      case other(SettingsOtherLogic.State = .init())
+      case membershipStatus(MembershipStatusLogic.State = .loading)
     }
 
     public enum Action {
@@ -195,6 +202,8 @@ public struct SettingsLogic {
       case profile(ProfileLogic.Action)
       case tutorial(TutorialLogic.Action)
       case achievement(AchievementLogic.Action)
+      case other(SettingsOtherLogic.Action)
+      case membershipStatus(MembershipStatusLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
@@ -209,6 +218,12 @@ public struct SettingsLogic {
       }
       Scope(state: \.achievement, action: \.achievement) {
         AchievementLogic()
+      }
+      Scope(state: \.other, action: \.other) {
+        SettingsOtherLogic()
+      }
+      Scope(state: \.membershipStatus, action: \.membershipStatus) {
+        MembershipStatusLogic()
       }
     }
   }

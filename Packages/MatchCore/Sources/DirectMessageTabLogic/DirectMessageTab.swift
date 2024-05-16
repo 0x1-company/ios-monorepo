@@ -8,6 +8,7 @@ import FeedbackGeneratorClient
 import NotificationsReEnableLogic
 import ProfileExplorerLogic
 import ReceivedLikeRouterLogic
+import SettingsLogic
 import TcaHelpers
 import UserNotificationClient
 
@@ -26,6 +27,7 @@ public struct DirectMessageTabLogic {
 
   public enum Action {
     case onTask
+    case settingsButtonTapped
     case directMessageTabResponse(Result<API.DirectMessageTabQuery.Data, Error>)
     case notificationSettings(Result<UserNotificationClient.Notification.Settings, Error>)
     case destination(PresentationAction<Destination.Action>)
@@ -62,6 +64,12 @@ public struct DirectMessageTabLogic {
               }))
             }
           }
+        }
+
+      case .settingsButtonTapped:
+        state.destination = .settings()
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
         }
 
       case let .directMessageTabResponse(.success(data)):
@@ -188,18 +196,23 @@ public struct DirectMessageTabLogic {
   @Reducer
   public struct Destination {
     public enum State: Equatable {
+      case settings(SettingsLogic.State = .init())
       case directMessage(DirectMessageLogic.State)
       case explorer(ProfileExplorerLogic.State)
       case receivedLike(ReceivedLikeRouterLogic.State = .loading)
     }
 
     public enum Action {
+      case settings(SettingsLogic.Action)
       case directMessage(DirectMessageLogic.Action)
       case explorer(ProfileExplorerLogic.Action)
       case receivedLike(ReceivedLikeRouterLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
+      Scope(state: \.settings, action: \.settings) {
+        SettingsLogic()
+      }
       Scope(state: \.directMessage, action: \.directMessage) {
         DirectMessageLogic()
       }

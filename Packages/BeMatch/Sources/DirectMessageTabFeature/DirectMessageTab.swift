@@ -5,6 +5,7 @@ import DirectMessageTabLogic
 import NotificationsReEnableFeature
 import ProfileExplorerFeature
 import ReceivedLikeRouterFeature
+import SettingsFeature
 import SwiftUI
 
 public struct DirectMessageTabView: View {
@@ -49,6 +50,14 @@ public struct DirectMessageTabView: View {
         ToolbarItem(placement: .principal) {
           Image(ImageResource.beMatch)
         }
+        ToolbarItem(placement: .topBarTrailing) {
+          Button {
+            store.send(.settingsButtonTapped)
+          } label: {
+            Image(systemName: "gearshape.fill")
+              .foregroundStyle(Color.primary)
+          }
+        }
       }
       .sheet(
         store: store.scope(state: \.$destination.directMessage, action: \.destination.directMessage),
@@ -61,6 +70,10 @@ public struct DirectMessageTabView: View {
       .navigationDestination(
         store: store.scope(state: \.$destination.explorer, action: \.destination.explorer),
         destination: ProfileExplorerView.init(store:)
+      )
+      .navigationDestination(
+        store: store.scope(state: \.$destination.settings, action: \.destination.settings),
+        destination: SettingsView.init(store:)
       )
     }
     .tint(Color.primary)

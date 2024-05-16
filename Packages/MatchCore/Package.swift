@@ -159,6 +159,7 @@ let package = Package(
     ]),
     .target(name: "DirectMessageTabLogic", dependencies: [
       "BannerLogic",
+      "SettingsLogic",
       "RecentMatchLogic",
       "ReceivedLikeRouterLogic",
       "NotificationsReEnableLogic",
@@ -374,13 +375,13 @@ let package = Package(
     ]),
     .target(name: "SelectControl"),
     .target(name: "SettingsLogic", dependencies: [
-      "AnalyticsKeys",
       "ProfileLogic",
       "TutorialLogic",
-      "EnvironmentClient",
       "AchievementLogic",
       "ProfileEditLogic",
+      "EnvironmentClient",
       "DeleteAccountLogic",
+      "MembershipStatusLogic",
       .product(name: "Build", package: "Dependencies"),
       .product(name: "ActivityView", package: "Dependencies"),
       .product(name: "FirebaseAuthClient", package: "Dependencies"),
