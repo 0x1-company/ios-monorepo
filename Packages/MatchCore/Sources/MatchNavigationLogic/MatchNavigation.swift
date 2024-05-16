@@ -57,12 +57,6 @@ public struct MatchNavigationLogic {
           await feedbackGenerator.impactOccurred()
         }
 
-      case .path(.element(_, .settings(.invitationCodeButtonTapped))):
-        state.path.append(.invitationCode())
-        return .run { _ in
-          await feedbackGenerator.impactOccurred()
-        }
-
       case .path(.element(_, .settings(.membershipStatusButtonTapped))):
         state.path.append(.membershipStatus())
         return .run { _ in
