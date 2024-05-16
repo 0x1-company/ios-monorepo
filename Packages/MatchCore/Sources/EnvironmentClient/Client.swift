@@ -4,7 +4,7 @@ import Foundation
 
 @DependencyClient
 public struct EnvironmentClient {
-  public var application: @Sendable () -> Application = { Application.bematch }
+  public var product: @Sendable () -> Product = { Product.bematch }
 
   public var appStoreURL: @Sendable () -> URL = { URL.currentDirectory() }
   public var appStoreForEmptyURL: @Sendable () -> URL = { URL.currentDirectory() }
@@ -30,7 +30,7 @@ public struct EnvironmentClient {
 }
 
 public extension EnvironmentClient {
-  enum Application: Equatable {
+  enum Product: Equatable {
     case bematch
     case locketmatch
   }
