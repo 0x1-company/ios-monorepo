@@ -4,7 +4,6 @@ import CategoryLogic
 import ComposableArchitecture
 import DirectMessageTabLogic
 import FeedbackGeneratorClient
-import MatchNavigationLogic
 import RecommendationLogic
 import SwiftUI
 import UserNotificationClient
@@ -17,14 +16,12 @@ public struct RootNavigationLogic {
   public enum Tab {
     case recommendation
     case category
-    case match
     case message
   }
 
   public struct State: Equatable {
     public var recommendation = RecommendationLogic.State.loading
     public var category = CategoryLogic.State()
-    public var match = MatchNavigationLogic.State()
     public var message = DirectMessageTabLogic.State()
 
     @BindingState public var tab = Tab.recommendation
@@ -36,7 +33,6 @@ public struct RootNavigationLogic {
     case onTask
     case recommendation(RecommendationLogic.Action)
     case category(CategoryLogic.Action)
-    case match(MatchNavigationLogic.Action)
     case message(DirectMessageTabLogic.Action)
     case binding(BindingAction<State>)
     case pushNotificationBadgeResponse(Result<API.PushNotificationBadgeQuery.Data, Error>)
@@ -59,13 +55,10 @@ public struct RootNavigationLogic {
     Scope(state: \.category, action: \.category) {
       CategoryLogic()
     }
-    Scope(state: \.match, action: \.match) {
-      MatchNavigationLogic()
-    }
     Scope(state: \.message, action: \.message) {
       DirectMessageTabLogic()
     }
-    Reduce<State, Action> { state, action in
+    Reduce<State, Action> { _, action in
       switch action {
       case .onTask:
         return .run { send in
@@ -75,10 +68,6 @@ public struct RootNavigationLogic {
             }
           }
         }
-
-      case .match(.match(.empty(.delegate(.toRecommendation)))):
-        state.tab = .recommendation
-        return .none
 
       case .binding(\.$tab):
         return .run { _ in
