@@ -52,7 +52,7 @@ public struct MatchGridView: View {
           }
 
           VStack(spacing: 8) {
-            Text(viewStore.match.targetUser.berealUsername)
+            Text(viewStore.match.targetUser.displayName ?? viewStore.match.targetUser.berealUsername)
               .font(.system(.subheadline, weight: .semibold))
               .frame(maxWidth: .infinity, alignment: .leading)
 

@@ -61,7 +61,7 @@ public struct ProfileExplorerView: View {
           Button {
             store.send(.principalButtonTapped, animation: .default)
           } label: {
-            Text(viewStore.username)
+            Text(viewStore.displayName)
               .foregroundStyle(Color.primary)
               .font(.system(.callout, weight: .semibold))
           }
@@ -121,7 +121,7 @@ public struct ProfileExplorerView: View {
     ProfileExplorerView(
       store: .init(
         initialState: ProfileExplorerLogic.State(
-          username: "tomokisun",
+          displayName: "tomokisun",
           targetUserId: "id"
         ),
         reducer: { ProfileExplorerLogic() }

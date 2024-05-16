@@ -1,6 +1,5 @@
 import API
 import ComposableArchitecture
-import FeedbackGeneratorClient
 import Foundation
 
 @Reducer
@@ -12,7 +11,7 @@ public struct RecentMatchGridLogic {
 
     public let id: String
     public var isRead: Bool
-    public let username: String
+    public let displayName: String
     public let imageUrl: String
     public let createdAt: Date
 
@@ -21,7 +20,7 @@ public struct RecentMatchGridLogic {
 
       id = match.id
       isRead = match.isRead
-      username = match.targetUser.berealUsername
+      displayName = match.targetUser.displayName ?? match.targetUser.berealUsername
       imageUrl = match.targetUser.images.first!.imageUrl
       createdAt = if let timeInterval = TimeInterval(match.createdAt) {
         Date(timeIntervalSince1970: timeInterval / 1000.0)
@@ -39,14 +38,7 @@ public struct RecentMatchGridLogic {
     case matchButtonTapped
   }
 
-  @Dependency(\.feedbackGenerator) var feedbackGenerator
-
   public var body: some Reducer<State, Action> {
-    Reduce<State, Action> { _, action in
-      switch action {
-      case .matchButtonTapped:
-        return .none
-      }
-    }
+    EmptyReducer()
   }
 }

@@ -5,6 +5,7 @@ fragment UnsentDirectMessageListContentRow on Match {
   targetUser {
     id
     status
+    displayName
     berealUsername
     externalProductUrl
     images {

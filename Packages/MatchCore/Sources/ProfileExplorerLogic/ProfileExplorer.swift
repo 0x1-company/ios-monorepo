@@ -17,7 +17,7 @@ public struct ProfileExplorerLogic {
   }
 
   public struct State: Equatable {
-    public let username: String
+    public let displayName: String
     public let targetUserId: String
 
     @BindingState public var currentTab: Tab
@@ -32,12 +32,12 @@ public struct ProfileExplorerLogic {
     }
 
     public init(
-      username: String,
+      displayName: String,
       targetUserId: String,
       tab: Tab = Tab.message
     ) {
       currentTab = tab
-      self.username = username
+      self.displayName = displayName
       self.targetUserId = targetUserId
       directMessage = DirectMessageLogic.State(
         targetUserId: targetUserId

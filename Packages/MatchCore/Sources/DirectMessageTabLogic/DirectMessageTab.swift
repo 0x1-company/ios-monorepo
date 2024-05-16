@@ -122,9 +122,9 @@ public struct DirectMessageTabLogic {
           await feedbackGenerator.impactOccurred()
         }
 
-      case let .unsent(.child(.content(.rows(.element(_, .delegate(.showDirectMessage(username, targetUserId))))))):
+      case let .unsent(.child(.content(.rows(.element(_, .delegate(.showDirectMessage(displayName, targetUserId))))))):
         let explorerState = ProfileExplorerLogic.State(
-          username: username,
+          displayName: displayName,
           targetUserId: targetUserId,
           tab: ProfileExplorerLogic.Tab.message
         )
@@ -133,9 +133,9 @@ public struct DirectMessageTabLogic {
           await feedbackGenerator.impactOccurred()
         }
 
-      case let .messages(.child(.content(.rows(.element(_, .delegate(.showProfile(username, targetUserId))))))):
+      case let .messages(.child(.content(.rows(.element(_, .delegate(.showProfile(displayName, targetUserId))))))):
         let explorerState = ProfileExplorerLogic.State(
-          username: username,
+          displayName: displayName,
           targetUserId: targetUserId,
           tab: ProfileExplorerLogic.Tab.profile
         )
@@ -144,8 +144,12 @@ public struct DirectMessageTabLogic {
           await feedbackGenerator.impactOccurred()
         }
 
-      case let .messages(.child(.content(.rows(.element(_, .delegate(.showDirectMessage(username, targetUserId))))))):
-        state.destination = .explorer(ProfileExplorerLogic.State(username: username, targetUserId: targetUserId))
+      case let .messages(.child(.content(.rows(.element(_, .delegate(.showDirectMessage(displayName, targetUserId))))))):
+        let explorerState = ProfileExplorerLogic.State(
+          displayName: displayName,
+          targetUserId: targetUserId
+        )
+        state.destination = .explorer(explorerState)
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }

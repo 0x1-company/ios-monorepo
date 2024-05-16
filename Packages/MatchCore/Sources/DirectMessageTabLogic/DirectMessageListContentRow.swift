@@ -10,7 +10,7 @@ public struct DirectMessageListContentRowLogic {
     public let id: String
     public let targetUserId: String
     let updatedAt: API.Date
-    public let username: String
+    public let displayName: String
     public let imageUrl: String
     public let text: String
     public let isAuthor: Bool
@@ -24,7 +24,7 @@ public struct DirectMessageListContentRowLogic {
       id = messageRoom.id
       targetUserId = messageRoom.targetUser.id
       updatedAt = messageRoom.updatedAt
-      username = messageRoom.targetUser.berealUsername
+      displayName = messageRoom.targetUser.displayName ?? messageRoom.targetUser.berealUsername
       imageUrl = messageRoom.targetUser.images.first?.imageUrl ?? ""
       text = messageRoom.latestMessage.text
       isAuthor = messageRoom.latestMessage.isAuthor
@@ -42,8 +42,8 @@ public struct DirectMessageListContentRowLogic {
     case delegate(Delegate)
 
     public enum Delegate: Equatable {
-      case showProfile(_ username: String, _ targetUserId: String)
-      case showDirectMessage(_ username: String, _ targetUserId: String)
+      case showProfile(_ displayName: String, _ targetUserId: String)
+      case showDirectMessage(_ displayName: String, _ targetUserId: String)
     }
   }
 
@@ -51,14 +51,14 @@ public struct DirectMessageListContentRowLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .iconButtonTapped:
-        let username = state.username
+        let displayName = state.displayName
         let targetUserId = state.targetUserId
-        return .send(.delegate(.showProfile(username, targetUserId)))
+        return .send(.delegate(.showProfile(displayName, targetUserId)))
 
       case .rowButtonTapped:
-        let username = state.username
+        let displayName = state.displayName
         let targetUserId = state.targetUserId
-        return .send(.delegate(.showDirectMessage(username, targetUserId)))
+        return .send(.delegate(.showDirectMessage(displayName, targetUserId)))
 
       default:
         return .none

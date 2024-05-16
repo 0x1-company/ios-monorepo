@@ -1,8 +1,15 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "🔗 BeRe.al/%@" : {
-
+    "🔗 %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🔗 %@"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
