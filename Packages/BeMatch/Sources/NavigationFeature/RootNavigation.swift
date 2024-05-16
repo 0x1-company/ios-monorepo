@@ -1,7 +1,6 @@
 import CategoryFeature
 import ComposableArchitecture
 import DirectMessageTabFeature
-import MatchNavigationFeature
 import NavigationLogic
 import RecommendationFeature
 import SwiftUI
@@ -38,19 +37,6 @@ public struct RootNavigationView: View {
               viewStore.tab.is(\.category)
                 ? ImageResource.categoryActive
                 : ImageResource.categoryDeactive
-            )
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 30, height: 30)
-          }
-
-        MatchNavigationView(store: store.scope(state: \.match, action: \.match))
-          .tag(RootNavigationLogic.Tab.match)
-          .tabItem {
-            Image(
-              viewStore.tab.is(\.match)
-                ? ImageResource.starActive
-                : ImageResource.starDeactive
             )
             .resizable()
             .aspectRatio(contentMode: .fit)

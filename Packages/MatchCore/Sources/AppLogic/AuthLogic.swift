@@ -30,7 +30,7 @@ public struct AuthLogic {
         }))
       }
 
-    case .child(.navigation(.match(.path(.element(_, .other(.deleteAccount(.presented(.delegate(.accountDeletionCompleted))))))))):
+    case .child(.navigation(.message(.destination(.presented(.settings(.destination(.presented(.other(.deleteAccount(.presented(.delegate(.accountDeletionCompleted)))))))))))):
       return .run { send in
         await send(.signInAnonymouslyResponse(Result {
           try await signInAnonymously()
