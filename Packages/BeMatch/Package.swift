@@ -145,6 +145,7 @@ let package = Package(
       "BannerFeature",
       "RecentMatchFeature",
       "ReceivedLikeRouterFeature",
+      "NotificationsReEnableFeature",
       .product(name: "DirectMessageTabLogic", package: "MatchCore"),
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
     ]),
