@@ -40,6 +40,7 @@ public struct APIClient: Sendable {
   public var createAppleSubscription: @Sendable (API.CreateAppleSubscriptionInput) async throws -> API.CreateAppleSubscriptionMutation.Data
   public var premiumMembership: @Sendable () -> AsyncThrowingStream<API.PremiumMembershipQuery.Data, Error> = { .finished() }
 
+  public var explorers: @Sendable () -> AsyncThrowingStream<API.ExplorersQuery.Data, Error> = { .finished() }
   public var userCategories: @Sendable () -> AsyncThrowingStream<API.UserCategoriesQuery.Data, Error> = { .finished() }
   public var achievement: @Sendable () -> AsyncThrowingStream<API.AchievementQuery.Data, Error> = { .finished() }
 

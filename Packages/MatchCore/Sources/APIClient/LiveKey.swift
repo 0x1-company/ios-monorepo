@@ -118,6 +118,10 @@ public extension APIClient {
         let query = API.PremiumMembershipQuery()
         return apolloClient.watch(query: query)
       },
+      explorers: {
+        let query = API.ExplorersQuery()
+        return apolloClient.watch(query: query)
+      },
       userCategories: {
         let query = API.UserCategoriesQuery()
         return apolloClient.watch(query: query)
