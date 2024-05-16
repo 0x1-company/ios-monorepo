@@ -42,12 +42,12 @@ public extension API {
         public static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
           .field("id", API.ID.self),
-          .field("displayName", String.self),
+          .field("displayName", String?.self),
         ] }
 
         /// user id
         public var id: API.ID { __data["id"] }
-        public var displayName: String { __data["displayName"] }
+        public var displayName: String? { __data["displayName"] }
       }
     }
   }

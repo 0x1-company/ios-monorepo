@@ -435,7 +435,7 @@ input UpdateUserImageInput {
 type User {
   """BeRealのusername"""
   berealUsername: String!
-  displayName: String!
+  displayName: String
   externalProductUrl: String!
 
   """firebase uid"""
