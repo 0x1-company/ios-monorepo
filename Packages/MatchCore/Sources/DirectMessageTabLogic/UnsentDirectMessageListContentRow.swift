@@ -13,7 +13,7 @@ public struct UnsentDirectMessageListContentRowLogic {
     public let createdAt: API.Date
     let matchId: String
     public var isRead: Bool
-    public let username: String
+    public let displayName: String
     public let imageUrl: String
 
     init(match: API.UnsentDirectMessageListContentRow) {
@@ -21,7 +21,7 @@ public struct UnsentDirectMessageListContentRowLogic {
       createdAt = match.createdAt
       matchId = match.id
       isRead = match.isRead
-      username = match.targetUser.berealUsername
+      displayName = match.targetUser.displayName ?? match.targetUser.berealUsername
       imageUrl = match.targetUser.images.first!.imageUrl
     }
 
@@ -35,7 +35,7 @@ public struct UnsentDirectMessageListContentRowLogic {
     case delegate(Delegate)
 
     public enum Delegate: Equatable {
-      case showDirectMessage(_ username: String, _ targetUserId: String)
+      case showDirectMessage(_ displayName: String, _ targetUserId: String)
     }
   }
 
@@ -43,9 +43,9 @@ public struct UnsentDirectMessageListContentRowLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .rowButtonTapped:
-        let username = state.username
+        let displayName = state.displayName
         let targetUserId = state.id
-        return .send(.delegate(.showDirectMessage(username, targetUserId)))
+        return .send(.delegate(.showDirectMessage(displayName, targetUserId)))
 
       default:
         return .none

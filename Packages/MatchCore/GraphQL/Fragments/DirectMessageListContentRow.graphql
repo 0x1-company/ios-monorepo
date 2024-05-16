@@ -4,6 +4,7 @@ fragment DirectMessageListContentRow on MessageRoom {
   targetUser {
     id
     status
+    displayName
     berealUsername
     externalProductUrl
     images {
