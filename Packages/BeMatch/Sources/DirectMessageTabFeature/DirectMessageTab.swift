@@ -2,6 +2,7 @@ import BannerFeature
 import ComposableArchitecture
 import DirectMessageFeature
 import DirectMessageTabLogic
+import NotificationsReEnableFeature
 import ProfileExplorerFeature
 import ReceivedLikeRouterFeature
 import SwiftUI
@@ -16,10 +17,17 @@ public struct DirectMessageTabView: View {
   public var body: some View {
     NavigationStack {
       ScrollView(.vertical) {
-        ForEachStore(
-          store.scope(state: \.banners, action: \.banners),
-          content: BannerView.init(store:)
-        )
+        LazyVStack(spacing: 16) {
+          IfLetStore(
+            store.scope(state: \.notificationsReEnable, action: \.notificationsReEnable),
+            then: NotificationsReEnableView.init(store:)
+          )
+
+          ForEachStore(
+            store.scope(state: \.banners, action: \.banners),
+            content: BannerView.init(store:)
+          )
+        }
         .padding(.horizontal, 16)
 
         LazyVStack(alignment: .leading, spacing: 32) {

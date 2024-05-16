@@ -161,6 +161,9 @@ let package = Package(
       "BannerLogic",
       "RecentMatchLogic",
       "ReceivedLikeRouterLogic",
+      "NotificationsReEnableLogic",
+      .product(name: "TcaHelpers", package: "Utility"),
+      .product(name: "UserNotificationClient", package: "Dependencies"),
     ]),
     .target(name: "DisplayNameSettingLogic", dependencies: [
       "APIClient",

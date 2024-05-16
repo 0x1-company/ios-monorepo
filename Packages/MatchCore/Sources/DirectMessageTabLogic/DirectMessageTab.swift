@@ -5,9 +5,11 @@ import BannerLogic
 import ComposableArchitecture
 import DirectMessageLogic
 import FeedbackGeneratorClient
+import NotificationsReEnableLogic
 import ProfileExplorerLogic
 import ReceivedLikeRouterLogic
-import SwiftUI
+import TcaHelpers
+import UserNotificationClient
 
 @Reducer
 public struct DirectMessageTabLogic {
@@ -18,21 +20,25 @@ public struct DirectMessageTabLogic {
     public var banners: IdentifiedArrayOf<BannerLogic.State> = []
     public var unsent: UnsentDirectMessageListLogic.State? = .loading
     public var messages: DirectMessageListLogic.State? = .loading
+    public var notificationsReEnable: NotificationsReEnableLogic.State?
     public init() {}
   }
 
   public enum Action {
     case onTask
     case directMessageTabResponse(Result<API.DirectMessageTabQuery.Data, Error>)
+    case notificationSettings(Result<UserNotificationClient.Notification.Settings, Error>)
     case destination(PresentationAction<Destination.Action>)
     case banners(IdentifiedActionOf<BannerLogic>)
     case unsent(UnsentDirectMessageListLogic.Action)
     case messages(DirectMessageListLogic.Action)
+    case notificationsReEnable(NotificationsReEnableLogic.Action)
   }
 
   @Dependency(\.api) var api
   @Dependency(\.analytics) var analytics
   @Dependency(\.feedbackGenerator) var feedbackGenerator
+  @Dependency(\.userNotifications) var userNotifications
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
@@ -40,11 +46,22 @@ public struct DirectMessageTabLogic {
       case .onTask:
         analytics.logScreen(screenName: "DirectMessageTab", of: self)
         return .run { send in
-          for try await data in api.directMessageTab() {
-            await send(.directMessageTabResponse(.success(data)), animation: .default)
+          await withTaskGroup(of: Void.self) { group in
+            group.addTask {
+              do {
+                for try await data in api.directMessageTab() {
+                  await send(.directMessageTabResponse(.success(data)), animation: .default)
+                }
+              } catch {
+                await send(.directMessageTabResponse(.failure(error)))
+              }
+            }
+            group.addTask {
+              await send(.notificationSettings(Result {
+                await userNotifications.getNotificationSettings()
+              }))
+            }
           }
-        } catch: { error, send in
-          await send(.directMessageTabResponse(.failure(error)))
         }
 
       case let .directMessageTabResponse(.success(data)):
@@ -88,6 +105,15 @@ public struct DirectMessageTabLogic {
       case .directMessageTabResponse(.failure):
         state.unsent = nil
         state.messages = nil
+        return .none
+
+      case let .notificationSettings(.success(settings)):
+        let isAuthorized = settings.authorizationStatus == .authorized
+        state.notificationsReEnable = isAuthorized ? nil : .init()
+        return .none
+
+      case .notificationSettings(.failure):
+        state.notificationsReEnable = nil
         return .none
 
       case .unsent(.child(.content(.receivedLike(.rowButtonTapped)))):
@@ -149,6 +175,9 @@ public struct DirectMessageTabLogic {
     }
     .ifLet(\.messages, action: \.messages) {
       DirectMessageListLogic()
+    }
+    .ifLet(\.notificationsReEnable, action: \.notificationsReEnable) {
+      NotificationsReEnableLogic()
     }
   }
 
