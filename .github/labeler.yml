@@ -10,6 +10,20 @@ BeMatch:
     - Packages/BeMatch/**
     - BeMatch.xcworkspace/**
 
+TapMatch:
+- changed-files:
+  - any-glob-to-any-file:
+    - App/TapMatch/**
+    - Packages/TapMatch/**
+    - TapMatch.xcworkspace/**
+
+Trinket:
+- changed-files:
+  - any-glob-to-any-file:
+    - App/Trinket/**
+    - Packages/Trinket/**
+    - Trinket.xcworkspace/**
+
 MatchCore:
 - changed-files:
   - any-glob-to-any-file:

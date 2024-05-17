@@ -1,0 +1,26 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "🔗 %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🔗 %@"
+          }
+        }
+      }
+    },
+    "Add BeReal." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeReal.を追加する"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
