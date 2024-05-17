@@ -10,13 +10,6 @@ BeMatch:
     - Packages/BeMatch/**
     - BeMatch.xcworkspace/**
 
-FlyCam:
-- changed-files:
-  - any-glob-to-any-file:
-    - App/FlyCam/**
-    - Packages/FlyCam/**
-    - FlyCam.xcworkspace/**
-
 MatchCore:
 - changed-files:
   - any-glob-to-any-file:

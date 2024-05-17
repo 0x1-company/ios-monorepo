@@ -45,10 +45,13 @@ When you both Like each other and match, you can send messages to each other wit
 
 ![](https://github.com/0x1-company/ios-app/assets/28350464/1582c53d-857c-4a8b-9f3a-0b889ca9158f)
 
-## FlyCam
+## Trinket
 
-- https://docs.flycam.jp
-- https://testflight.apple.com/join/PIPZElKN
+coming soon...
+
+## TapMatch
+
+coming soon...
 
 
 # License

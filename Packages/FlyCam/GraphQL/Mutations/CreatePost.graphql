@@ -1,7 +1,0 @@
-# import RankingRow from '../fragments/RankingRow.graphql'
-
-mutation CreatePost($input: CreatePostInput!) {
-  createPost(input: $input) {
-    ...RankingRow
-  }
-}

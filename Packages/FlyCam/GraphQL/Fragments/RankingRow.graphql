@@ -1,9 +1,0 @@
-fragment RankingRow on Post {
-  id
-  altitude
-  videoUrl
-  user {
-    id
-    displayName
-  }
-}

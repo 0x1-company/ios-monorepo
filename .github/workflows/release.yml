@@ -9,7 +9,6 @@ on:
         type: choice
         options:
           - BeMatch
-          - FlyCam
       version:
         description: 'CFBundleShortVersionString'
         required: true
@@ -47,38 +46,6 @@ jobs:
           PR_URL: ${{ steps.create-pr.outputs.pull-request-url }}
           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
 
-  flycam:
-    runs-on: macOS-latest
-    if: ${{ inputs.project == 'FlyCam' }}
-    steps:
-      - uses: actions/checkout@v4
-      - name: Current Version
-        id: current-version
-        run: echo "CURRENT_VERSION=$(defaults read $(pwd)/App/FlyCam/Multiplatform/Staging/Info CFBundleShortVersionString)" >> $GITHUB_OUTPUT
-      - run: |
-          sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ github.event.inputs.version }}/g" App/FlyCam/Multiplatform/Staging/Info.plist
-          sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ github.event.inputs.version }}/g" App/FlyCam/Multiplatform/Production/Info.plist
-      - continue-on-error: true
-        uses: peter-evans/create-pull-request@v6
-        id: create-pr
-        with:
-          delete-branch: true
-          author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
-          committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
-          branch-suffix: short-commit-hash
-          commit-message: "Bump FlyCam from ${{ steps.current-version.outputs.CURRENT_VERSION }} to ${{ github.event.inputs.version }}"
-          title: "Bump FlyCam from ${{ steps.current-version.outputs.CURRENT_VERSION }} to ${{ github.event.inputs.version }}"
-      - continue-on-error: true
-        run: gh pr merge --auto --squash "$PR_URL"
-        env:
-          PR_URL: ${{ steps.create-pr.outputs.pull-request-url }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - continue-on-error: true
-        run: gh pr review --approve "$PR_URL"
-        env:
-          PR_URL: ${{ steps.create-pr.outputs.pull-request-url }}
-          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
-
   create-release-bematch:
     runs-on: ubuntu-latest
     needs: bematch
@@ -102,42 +69,6 @@ jobs:
             pre_release_count=0
           fi
           echo "::set-output name=release_tag::BeMatch/${{ github.event.inputs.version }}"
-
-      - name: Generate release note
-        id: release_note
-        run: |
-          echo "::set-output name=release_note::$(curl -X POST -H 'Accept: application/vnd.github.v3+json' -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' https://api.github.com/repos/${{ github.repository }}/releases/generate-notes -d '{"tag_name":"${{ steps.release_tag.outputs.release_tag }}", "previous_tag_name":"${{ steps.pre_tag.outputs.pre_tag }}"}' | jq .body | sed 's/"//g')"
-
-      - name: Create Release
-        run: |
-          curl -X POST \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            -d "{ \"tag_name\": \"${{ steps.release_tag.outputs.release_tag }}\", \"name\": \"${{ steps.release_tag.outputs.release_tag }}\", \"body\": \"${{ steps.release_note.outputs.release_note }}\"}" \
-            https://api.github.com/repos/${{ github.repository }}/releases
-
-  create-release-flycam:
-    runs-on: ubuntu-latest
-    needs: flycam
-    env:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      TZ: 'Asia/Tokyo'
-    steps:
-      - uses: actions/checkout@v4
-      - name: Get previous tag
-        id: pre_tag
-        run: |
-          echo "::set-output name=pre_tag::$(curl -H 'Accept: application/vnd.github.v3+json' -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r .tag_name)"
-
-      - name: Generate release tag
-        id: release_tag
-        run: |
-          pre_release_date=$(echo ${{ steps.pre_tag.outputs.pre_tag }} | awk -F'-' '{print $1}')
-          pre_release_count=$(echo ${{ steps.pre_tag.outputs.pre_tag }} | awk -F'-' '{print $2}')
-          if [[ ! $pre_release_date = ${{ github.event.inputs.version }} ]]; then
-            echo "init count"
-            pre_release_count=0
-          fi
-          echo "::set-output name=release_tag::FlyCam/${{ github.event.inputs.version }}"
 
       - name: Generate release note
         id: release_note
