@@ -32,6 +32,7 @@ public struct EnvironmentClient {
 public extension EnvironmentClient {
   enum Product: Equatable {
     case bematch
-    case locketmatch
+    case tapmatch
+    case trinket
   }
 }

@@ -113,7 +113,9 @@ public struct ProfilePictureSettingLogic {
         let requiredSize = switch environment.product() {
         case .bematch:
           CGSize(width: 1500, height: 2000)
-        case .locketmatch:
+        case .tapmatch:
+          CGSize(width: 1170, height: 1170)
+        case .trinket:
           CGSize(width: 1020, height: 1020)
         }
         if let image = UIImage(data: data) {
