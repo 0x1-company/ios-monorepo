@@ -1,4 +1,0 @@
-fragment UserInternal on User {
-  id
-  displayName
-}
