@@ -86,7 +86,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeMatchの使い方"
+            "value" : "TapMatchの使い方"
           }
         }
       }
@@ -151,12 +151,12 @@
         }
       }
     },
-    "Rate BeMatch." : {
+    "Rate TapMatch" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeMatchを評価"
+            "value" : "TapMatchを評価"
           }
         }
       }
@@ -171,12 +171,12 @@
         }
       }
     },
-    "Share BeMatch." : {
+    "Share TapMatch" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeMatchをシェア"
+            "value" : "TapMatchをシェア"
           }
         }
       }
