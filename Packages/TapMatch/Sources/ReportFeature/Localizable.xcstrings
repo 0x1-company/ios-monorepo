@@ -51,7 +51,7 @@
         }
       }
     },
-    "Report a BeMatch." : {
+    "Report a TapMatch" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {

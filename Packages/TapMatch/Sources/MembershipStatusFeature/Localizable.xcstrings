@@ -1,12 +1,12 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "About BeMatch PRO" : {
+    "About TapMatch PRO" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeMatch PROについて"
+            "value" : "TapMatch PROについて"
           }
         }
       }
@@ -21,12 +21,12 @@
         }
       }
     },
-    "BeMatch PRO" : {
+    "TapMatch PRO" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeMatch PRO"
+            "value" : "TapMatch PRO"
           }
         }
       }
@@ -36,7 +36,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeMatch PROの解約"
+            "value" : "TapMatch PROの解約"
           }
         }
       }
