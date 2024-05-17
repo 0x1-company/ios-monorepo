@@ -58,15 +58,15 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
           )
           $0.api = APIClient.live(apolloClient: apolloClient)
           $0.environment = EnvironmentClient.live(
-            product: EnvironmentClient.Product.bematch,
+            product: EnvironmentClient.Product.trinket,
             username: String(localized: "bematch"),
-            appId: "6473888485",
+            appId: "6502700423",
             appStoreForEmptyURL: URL(string: "https://bematch.onelink.me/nob4/ta8yroer")!,
             appStoreFemaleForEmptyURL: URL(string: "https://bematch.onelink.me/nob4/wgr0m0ga")!,
-            docsURL: URL(string: "https://docs.bematch.jp")!,
+            docsURL: URL(string: "https://docs.trinket.camera")!,
             howToMovieURL: URL(string: "https://storage.googleapis.com/bematch-production.appspot.com/public/how-to.mov")!
           )
-          $0.configGlobal = ConfigGlobalClient.live(documentId: "bematch")
+          $0.configGlobal = ConfigGlobalClient.live(documentId: "trinket")
         }
     }
   )
