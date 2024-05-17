@@ -1,0 +1,26 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Just a little... Too much swiping... Please help me share BeMatch... 🙏." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ちょっと...スワイプしすぎです...。BeMatch.のシェアに協力してください... 🙏"
+          }
+        }
+      }
+    },
+    "Share" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シェアする"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

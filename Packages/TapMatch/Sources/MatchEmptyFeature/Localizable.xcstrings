@@ -1,0 +1,36 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Let's swipe." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スワイプしよう"
+          }
+        }
+      }
+    },
+    "Swipe" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スワイプする"
+          }
+        }
+      }
+    },
+    "When you match with someone, their profile will appear here" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "誰かとマッチするとここに相手のプロフィールが表示されます"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
