@@ -86,7 +86,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeMatchの使い方"
+            "value" : "Trinketの使い方"
           }
         }
       }
@@ -151,12 +151,12 @@
         }
       }
     },
-    "Rate BeMatch." : {
+    "Rate Trinket" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeMatchを評価"
+            "value" : "Trinketを評価"
           }
         }
       }
@@ -171,12 +171,12 @@
         }
       }
     },
-    "Share BeMatch." : {
+    "Share Trinket" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeMatchをシェア"
+            "value" : "Trinketをシェア"
           }
         }
       }

@@ -1,11 +1,11 @@
-@testable import BeMatchPackage
+@testable import TrinketPackage
 import XCTest
 
-final class BeMatchPackageTests: XCTestCase {
+final class TrinketPackageTests: XCTestCase {
   func testExample() throws {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct
     // results.
-    XCTAssertEqual(BeMatchPackage().text, "Hello, World!")
+    XCTAssertEqual(TrinketPackage().text, "Hello, World!")
   }
 }

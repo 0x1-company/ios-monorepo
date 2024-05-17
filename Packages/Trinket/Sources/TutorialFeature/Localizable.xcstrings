@@ -1,12 +1,12 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "BeMatch is an application that allows you to exchange BeReal with everyone in Japan!" : {
+    "Trinket is an application that allows you to exchange BeReal with everyone in Japan!" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeMatchは日本中のみんなとBeRealを交換できるアプリです"
+            "value" : "Trinketは日本中のみんなとBeRealを交換できるアプリです"
           }
         }
       }

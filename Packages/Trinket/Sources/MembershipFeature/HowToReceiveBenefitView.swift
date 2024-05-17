@@ -10,7 +10,7 @@ struct HowToReceiveBenefitView: View {
         Text("1. Send invitation code", bundle: .module)
           .font(.system(.title3, weight: .semibold))
 
-        Text("Send an invitation code to a friend who hasn't used BeMatch.", bundle: .module)
+        Text("Send an invitation code to a friend who hasn't used Trinket", bundle: .module)
       }
 
       Image(ImageResource.line)
@@ -21,7 +21,7 @@ struct HowToReceiveBenefitView: View {
         Text("2. \(displayDuration) free for both parties!", bundle: .module)
           .font(.system(.title3, weight: .semibold))
 
-        Text("When they enter the Invitation Code and register, you will both receive BeMatch.PRO for sure!", bundle: .module)
+        Text("When they enter the Invitation Code and register, you will both receive Trinket PRO for sure!", bundle: .module)
       }
 
       Image(ImageResource.invitationCodeSample)

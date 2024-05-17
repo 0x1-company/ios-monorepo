@@ -42,7 +42,7 @@ public struct UsernameSettingView: View {
         }
         .font(.system(.title3, weight: .semibold))
 
-        Text("By entering your username you agree to our [Terms](https://docs.bematch.jp/terms-of-use) and [Privacy Policy](https://docs.bematch.jp/privacy-policy)", bundle: .module)
+        Text("By entering your username you agree to our [Terms](https://docs.trinket.camera/terms-of-use) and [Privacy Policy](https://docs.trinket.camera/privacy-policy)", bundle: .module)
           .font(.system(.caption))
           .foregroundStyle(Color.gray)
 
