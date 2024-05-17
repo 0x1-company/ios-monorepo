@@ -1,12 +1,12 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Just a little... Too much swiping... Please help me share BeMatch... 🙏." : {
+    "Just a little... Too much swiping... Please help me share Trinket... 🙏" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ちょっと...スワイプしすぎです...。BeMatch.のシェアに協力してください... 🙏"
+            "value" : "ちょっと...スワイプしすぎです...。Trinketのシェアに協力してください... 🙏"
           }
         }
       }

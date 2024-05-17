@@ -133,12 +133,12 @@
         }
       }
     },
-    "Send an invitation code to a friend who hasn't used BeMatch." : {
+    "Send an invitation code to a friend who hasn't used Trinket" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "まだBeMatch.を使っていない友達に招待コードを贈りましょう！"
+            "value" : "まだTrinketを使っていない友達に招待コードを贈りましょう！"
           }
         }
       }
@@ -173,12 +173,12 @@
         }
       }
     },
-    "When they enter the Invitation Code and register, you will both receive BeMatch.PRO for sure!" : {
+    "When they enter the Invitation Code and register, you will both receive Trinket PRO for sure!" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "相手が招待コードを入力して登録すると、お互いにBeMatch.PROを必ずプレゼント！"
+            "value" : "相手が招待コードを入力して登録すると、お互いにTrinket PROを必ずプレゼント！"
           }
         }
       }

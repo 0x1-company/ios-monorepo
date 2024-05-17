@@ -14,12 +14,12 @@
         }
       }
     },
-    "By entering your username you agree to our [Terms](https://docs.bematch.jp/terms-of-use) and [Privacy Policy](https://docs.bematch.jp/privacy-policy)" : {
+    "By entering your username you agree to our [Terms](https://docs.trinket.camera/terms-of-use) and [Privacy Policy](https://docs.trinket.camera/privacy-policy)" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "この操作を行うと、私たちの[プライバシーポリシー](https://docs.bematch.jp/privacy-policy)と[利用規約](https://docs.bematch.jp/terms-of-use)に同意したことになります。"
+            "value" : "この操作を行うと、私たちの[プライバシーポリシー](https://docs.trinket.camera/privacy-policy)と[利用規約](https://docs.trinket.camera/terms-of-use)に同意したことになります。"
           }
         }
       }
