@@ -61,7 +61,7 @@ public struct DirectMessageTabLogic {
             group.addTask {
               await send(.notificationSettings(Result {
                 await userNotifications.getNotificationSettings()
-              }))
+              }), animation: .default)
             }
           }
         }
