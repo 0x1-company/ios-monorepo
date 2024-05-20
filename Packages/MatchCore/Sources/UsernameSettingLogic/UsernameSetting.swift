@@ -86,6 +86,7 @@ public struct UsernameSettingLogic {
         return .none
 
       case .alert(.presented(.confirmOkay)):
+        state.alert = nil
         return .none
 
       default:
