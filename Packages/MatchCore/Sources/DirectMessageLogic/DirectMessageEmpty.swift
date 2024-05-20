@@ -1,3 +1,5 @@
+import AnalyticsKeys
+import AnalyticsClient
 import ComposableArchitecture
 import FeedbackGeneratorClient
 import Foundation
@@ -21,6 +23,7 @@ public struct DirectMessageEmptyLogic {
   }
 
   @Dependency(\.openURL) var openURL
+  @Dependency(\.analytics) var analytics
   @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   public var body: some Reducer<State, Action> {
@@ -29,6 +32,10 @@ public struct DirectMessageEmptyLogic {
       case .jumpExternalProductButtonTapped:
         guard let url = URL(string: state.externalProductUrl)
         else { return .none }
+        
+        analytics.buttonClick(name: \.addBeReal, parameters: [
+          "url": url.absoluteString
+        ])
 
         return .run { _ in
           await feedbackGenerator.impactOccurred()

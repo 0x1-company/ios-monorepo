@@ -1,3 +1,4 @@
+import AnalyticsKeys
 import AnalyticsClient
 import API
 import APIClient
@@ -75,6 +76,10 @@ public struct ProfileLogic {
           let externalProductUrl = state.currentUser?.externalProductUrl,
           let url = URL(string: externalProductUrl)
         else { return .none }
+        
+        analytics.buttonClick(name: \.addBeReal, parameters: [
+          "url": url.absoluteString
+        ])
 
         return .run { _ in
           await feedbackGenerator.impactOccurred()
