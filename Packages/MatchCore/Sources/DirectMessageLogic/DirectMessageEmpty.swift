@@ -1,5 +1,5 @@
-import AnalyticsKeys
 import AnalyticsClient
+import AnalyticsKeys
 import ComposableArchitecture
 import FeedbackGeneratorClient
 import Foundation
@@ -32,9 +32,9 @@ public struct DirectMessageEmptyLogic {
       case .jumpExternalProductButtonTapped:
         guard let url = URL(string: state.externalProductUrl)
         else { return .none }
-        
+
         analytics.buttonClick(name: \.addBeReal, parameters: [
-          "url": url.absoluteString
+          "url": url.absoluteString,
         ])
 
         return .run { _ in

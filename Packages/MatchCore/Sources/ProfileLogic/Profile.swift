@@ -1,5 +1,5 @@
-import AnalyticsKeys
 import AnalyticsClient
+import AnalyticsKeys
 import API
 import APIClient
 import ComposableArchitecture
@@ -76,9 +76,9 @@ public struct ProfileLogic {
           let externalProductUrl = state.currentUser?.externalProductUrl,
           let url = URL(string: externalProductUrl)
         else { return .none }
-        
+
         analytics.buttonClick(name: \.addBeReal, parameters: [
-          "url": url.absoluteString
+          "url": url.absoluteString,
         ])
 
         return .run { _ in
