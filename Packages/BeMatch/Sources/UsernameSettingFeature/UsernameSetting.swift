@@ -33,7 +33,7 @@ public struct UsernameSettingView: View {
             .foregroundStyle(Color.gray)
             .hidden()
 
-          TextField("", text: viewStore.$username)
+          TextField("", text: viewStore.$value)
             .foregroundStyle(Color.white)
             .keyboardType(.alphabet)
             .textInputAutocapitalization(.never)

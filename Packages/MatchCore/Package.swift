@@ -388,6 +388,7 @@ let package = Package(
     .target(name: "UsernameSettingLogic", dependencies: [
       "APIClient",
       "AnalyticsKeys",
+      "EnvironmentClient",
       .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),

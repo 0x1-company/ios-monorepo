@@ -2,6 +2,7 @@ import API
 import APIClient
 import ComposableArchitecture
 import DisplayNameSettingLogic
+import EnvironmentClient
 import FirebaseAuth
 import GenderSettingLogic
 import HowToMovieLogic
@@ -24,7 +25,16 @@ public struct OnboardLogic {
 
     public init(user: API.UserInternal?) {
       self.user = user
-      username = UsernameSettingLogic.State(username: user?.berealUsername ?? "")
+
+      @Dependency(\.environment) var environment
+      switch environment.product() {
+      case .bematch:
+        username = UsernameSettingLogic.State(username: user?.berealUsername ?? "")
+      case .tapmatch:
+        username = UsernameSettingLogic.State(username: user?.tapnowUsername ?? "")
+      case .trinket:
+        username = UsernameSettingLogic.State(username: user?.locketUrl ?? "")
+      }
     }
   }
 

@@ -26,6 +26,14 @@ public extension APIClient {
         let mutation = API.UpdateBeRealMutation(input: input)
         return try await apolloClient.perform(mutation: mutation)
       },
+      updateTapNow: { input in
+        let mutation = API.UpdateTapNowMutation(input: input)
+        return try await apolloClient.perform(mutation: mutation)
+      },
+      updateLocket: { input in
+        let mutation = API.UpdateLocketMutation(input: input)
+        return try await apolloClient.perform(mutation: mutation)
+      },
       updateUserImage: { input in
         let mutation = API.UpdateUserImageMutation(input: input)
         return try await apolloClient.perform(mutation: mutation)

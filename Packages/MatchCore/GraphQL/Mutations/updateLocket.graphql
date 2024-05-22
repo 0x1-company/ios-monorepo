@@ -1,0 +1,6 @@
+mutation UpdateLocket($input: UpdateLocketInput!) {
+  updateLocket(input: $input) {
+    id
+    locketUrl
+  }
+}
