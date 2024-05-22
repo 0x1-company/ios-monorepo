@@ -53,8 +53,9 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
           else { fatalError() }
 
           let apolloClient = ApolloClient(
-            appVersion: "Trinket",
-            endpoint: endpoint
+            appVersion: appVersion,
+            endpoint: endpoint,
+            product: "Trinket"
           )
           $0.api = APIClient.live(apolloClient: apolloClient)
           $0.environment = EnvironmentClient.live(
