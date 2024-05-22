@@ -7,7 +7,6 @@ public extension EnvironmentClient {
     username: String,
     appId: String,
     appStoreForEmptyURL: URL,
-    appStoreFemaleForEmptyURL: URL,
     docsURL: URL,
     howToMovieURL: URL
   ) -> Self {
@@ -19,7 +18,6 @@ public extension EnvironmentClient {
       product: { product },
       appStoreURL: { URL(string: "https://apps.apple.com/jp/app/id\(appId)")! },
       appStoreForEmptyURL: { appStoreForEmptyURL },
-      appStoreFemaleForEmptyURL: { appStoreFemaleForEmptyURL },
       appStoreReviewURL: { URL(string: "https://itunes.apple.com/us/app/apple-store/id\(appId)?mt=8&action=write-review")! },
       founderURL: { founderURL },
       developerURL: { developerURL },

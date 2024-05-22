@@ -63,7 +63,6 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
             username: String(localized: "bematch"),
             appId: "6502700423",
             appStoreForEmptyURL: URL(string: "https://bematch.onelink.me/nob4/ta8yroer")!,
-            appStoreFemaleForEmptyURL: URL(string: "https://bematch.onelink.me/nob4/wgr0m0ga")!,
             docsURL: URL(string: "https://docs.trinket.camera")!,
             howToMovieURL: URL(string: "https://storage.googleapis.com/bematch-production.appspot.com/public/how-to.mov")!
           )

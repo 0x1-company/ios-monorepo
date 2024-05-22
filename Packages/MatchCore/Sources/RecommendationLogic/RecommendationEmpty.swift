@@ -1,8 +1,6 @@
 import ActivityView
 import AnalyticsClient
 import AnalyticsKeys
-import API
-import APIClient
 import ComposableArchitecture
 import EnvironmentClient
 import SwiftUI
@@ -40,18 +38,12 @@ public struct RecommendationEmptyLogic {
   public enum Action: BindableAction {
     case onTask
     case shareButtonTapped
-    case currentUserResponse(Result<API.CurrentUserQuery.Data, Error>)
     case onCompletion(CompletionWithItems)
     case binding(BindingAction<State>)
   }
 
-  @Dependency(\.environment) var environment
   @Dependency(\.analytics) var analytics
-  @Dependency(\.api.currentUser) var currentUser
-
-  enum Cancel {
-    case currentUser
-  }
+  @Dependency(\.environment) var environment
 
   public var body: some Reducer<State, Action> {
     BindingReducer()
@@ -59,24 +51,11 @@ public struct RecommendationEmptyLogic {
       switch action {
       case .onTask:
         analytics.logScreen(screenName: "RecommendationEmpty", of: self)
-        return .run { send in
-          for try await data in currentUser() {
-            await send(.currentUserResponse(.success(data)))
-          }
-        } catch: { error, send in
-          await send(.currentUserResponse(.failure(error)))
-        }
-        .cancellable(id: Cancel.currentUser, cancelInFlight: true)
+        return .none
 
       case .shareButtonTapped:
         state.isPresented = true
         analytics.buttonClick(name: \.share)
-        return .none
-
-      case let .currentUserResponse(.success(data)):
-        state.shareURL = data.currentUser.gender == .female
-          ? environment.appStoreFemaleForEmptyURL()
-          : environment.appStoreForEmptyURL()
         return .none
 
       case let .onCompletion(completion):
