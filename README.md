@@ -31,6 +31,18 @@ We respect Nikita Bier, who has won US AppStore #1 with Gas(acq by discord) and 
 
 https://twitter.com/nikitabier/status/1661733445163417601
 
+# Architecture
+
+```mermaid
+graph TD;
+Dependencies --> MatchCore
+Utility --> MatchCore
+
+MatchCore --> BeMatch
+MatchCore --> Trinket
+MatchCore --> TapMatch
+```
+
 
 # Apps
 
