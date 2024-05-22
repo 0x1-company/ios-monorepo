@@ -54,7 +54,8 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
 
           let apolloClient = ApolloClient(
             appVersion: appVersion,
-            endpoint: endpoint
+            endpoint: endpoint,
+            product: "TapMatch"
           )
           $0.api = APIClient.live(apolloClient: apolloClient)
           $0.environment = EnvironmentClient.live(
