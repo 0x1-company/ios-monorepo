@@ -25,7 +25,7 @@ public struct UsernameSettingView: View {
           .tint(Color.gray)
           .foregroundStyle(Color.gray)
 
-        TextEditor(text: viewStore.$username)
+        TextEditor(text: viewStore.$value)
           .keyboardType(.alphabet)
           .textInputAutocapitalization(.never)
           .autocorrectionDisabled()

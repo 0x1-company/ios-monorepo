@@ -1,0 +1,6 @@
+mutation UpdateTapNow($input: UpdateTapNowInput!) {
+  updateTapNow(input: $input) {
+    id
+    tapnowUsername
+  }
+}

@@ -4,9 +4,8 @@ import API
 import APIClient
 import ApolloConcurrency
 import ComposableArchitecture
+import EnvironmentClient
 import FeedbackGeneratorClient
-
-import SwiftUI
 
 @Reducer
 public struct UsernameSettingLogic {
@@ -14,11 +13,11 @@ public struct UsernameSettingLogic {
 
   public struct State: Equatable {
     public var isActivityIndicatorVisible = false
-    @BindingState public var username: String
+    @BindingState public var value: String
     @PresentationState public var alert: AlertState<Action.Alert>?
 
     public init(username: String) {
-      self.username = username
+      value = username
     }
   }
 
@@ -26,6 +25,8 @@ public struct UsernameSettingLogic {
     case onTask
     case nextButtonTapped
     case updateBeRealResponse(Result<API.UpdateBeRealMutation.Data, Error>)
+    case updateTapNowResponse(Result<API.UpdateTapNowMutation.Data, Error>)
+    case updateLocketResponse(Result<API.UpdateLocketMutation.Data, Error>)
     case binding(BindingAction<State>)
     case alert(PresentationAction<Alert>)
     case delegate(Delegate)
@@ -39,13 +40,10 @@ public struct UsernameSettingLogic {
     }
   }
 
+  @Dependency(\.api) var api
   @Dependency(\.analytics) var analytics
-  @Dependency(\.api.updateBeReal) var updateBeReal
+  @Dependency(\.environment) var environment
   @Dependency(\.feedbackGenerator) var feedbackGenerator
-
-  enum Cancel {
-    case updateBeReal
-  }
 
   public var body: some Reducer<State, Action> {
     BindingReducer()
@@ -57,33 +55,68 @@ public struct UsernameSettingLogic {
 
       case .nextButtonTapped:
         state.isActivityIndicatorVisible = true
-        let input = API.UpdateBeRealInput(
-          username: state.username
-        )
-        return .run { send in
-          await feedbackGenerator.impactOccurred()
-          await send(.updateBeRealResponse(Result {
-            try await updateBeReal(input)
-          }))
-        }
-        .cancellable(id: Cancel.updateBeReal, cancelInFlight: true)
 
-      case .updateBeRealResponse(.success):
+        let bematchInput = API.UpdateBeRealInput(username: state.value)
+        let tapmatchInput = API.UpdateTapNowInput(username: state.value)
+        let trinketInput = API.UpdateLocketInput(url: state.value)
+
+        let product = environment.product()
+
+        return .run { send in
+          await withTaskGroup(of: Void.self) { group in
+            group.addTask {
+              await feedbackGenerator.impactOccurred()
+            }
+
+            switch product {
+            case .bematch:
+              group.addTask {
+                await send(.updateBeRealResponse(Result {
+                  try await api.updateBeReal(bematchInput)
+                }))
+              }
+            case .tapmatch:
+              group.addTask {
+                await send(.updateTapNowResponse(Result {
+                  try await api.updateTapNow(tapmatchInput)
+                }))
+              }
+            case .trinket:
+              group.addTask {
+                await send(.updateLocketResponse(Result {
+                  try await api.updateLocket(trinketInput)
+                }))
+              }
+            }
+          }
+        }
+
+      case .updateBeRealResponse(.success),
+           .updateTapNowResponse(.success),
+           .updateLocketResponse(.success):
         state.isActivityIndicatorVisible = false
-        analytics.setUserProperty(key: \.username, value: state.username)
+        analytics.setUserProperty(key: \.username, value: state.value)
         return .send(.delegate(.nextScreen))
 
       case let .updateBeRealResponse(.failure(error as ServerError)):
         state.isActivityIndicatorVisible = false
-        state.alert = AlertState {
-          TextState("Error", bundle: .module)
-        } actions: {
-          ButtonState(action: .confirmOkay) {
-            TextState("OK", bundle: .module)
-          }
-        } message: {
-          TextState(error.message)
-        }
+        state.alert = AlertState.errorLog(message: error.message)
+        return .none
+
+      case let .updateTapNowResponse(.failure(error as ServerError)):
+        state.isActivityIndicatorVisible = false
+        state.alert = AlertState.errorLog(message: error.message)
+        return .none
+
+      case let .updateLocketResponse(.failure(error as ServerError)):
+        state.isActivityIndicatorVisible = false
+        state.alert = AlertState.errorLog(message: error.message)
+        return .none
+
+      case .updateBeRealResponse(.failure),
+           .updateTapNowResponse(.failure),
+           .updateLocketResponse(.failure):
+        state.isActivityIndicatorVisible = false
         return .none
 
       case .alert(.presented(.confirmOkay)):
@@ -95,5 +128,19 @@ public struct UsernameSettingLogic {
       }
     }
     .ifLet(\.$alert, action: \.alert)
+  }
+}
+
+extension AlertState where Action == UsernameSettingLogic.Action.Alert {
+  static func errorLog(message: String) -> Self {
+    Self {
+      TextState("Error", bundle: .module)
+    } actions: {
+      ButtonState(action: .confirmOkay) {
+        TextState("OK", bundle: .module)
+      }
+    } message: {
+      TextState(message)
+    }
   }
 }
