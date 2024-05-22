@@ -81,7 +81,7 @@ public struct GenderSettingView: View {
       .task { await store.send(.onTask).finish() }
       .toolbar {
         ToolbarItem(placement: .principal) {
-          Image(ImageResource.beMatch)
+          Image(ImageResource.logo)
         }
       }
     }

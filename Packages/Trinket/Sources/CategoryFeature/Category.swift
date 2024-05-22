@@ -37,7 +37,7 @@ public struct CategoryView: View {
       .alert(store: store.scope(state: \.$alert, action: \.alert))
       .toolbar {
         ToolbarItem(placement: .principal) {
-          Image(ImageResource.beMatch)
+          Image(ImageResource.logo)
         }
       }
     }
