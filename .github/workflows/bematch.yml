@@ -20,7 +20,6 @@ on:
       - .github/workflows/bematch.yml
 
 env:
-  PLATFORM_IOS: iOS Simulator,name=iPhone 15 Pro,OS=17.0.1
   BEMATCH_FILE_FIREBASE_STAGING: ${{ secrets.BEMATCH_FILE_FIREBASE_STAGING }}
 
 concurrency:
@@ -32,9 +31,8 @@ jobs:
     runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
-      - uses: irgaly/xcode-cache@v1
+      - uses: ./.github/actions/build-ios
         with:
-          key: bematch-xcode-cache-deriveddata-${{ github.workflow }}-${{ github.sha }}
-          restore-keys: bematch-xcode-cache-deriveddata-${{ github.workflow }}-
-      - run: make bootstrap
-      - run: xcodebuild build -workspace BeMatch.xcworkspace -scheme "App (Staging project)" -skipMacroValidation -destination platform="${{ env.PLATFORM_IOS }}" | xcpretty
+          platform_ios: iOS Simulator,name=iPhone 15 Pro,OS=17.0.1
+          workspace: BeMatch.xcworkspace
+          key: bematch

@@ -20,7 +20,6 @@ on:
       - .github/workflows/trinket.yml
 
 env:
-  PLATFORM_IOS: iOS Simulator,name=iPhone 15 Pro,OS=17.0.1
   TRINKET_FILE_FIREBASE_STAGING: ${{ secrets.TRINKET_FILE_FIREBASE_STAGING }}
 
 concurrency:
@@ -32,9 +31,8 @@ jobs:
     runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
-      - uses: irgaly/xcode-cache@v1
+      - uses: ./.github/actions/build-ios
         with:
-          key: trinket-xcode-cache-deriveddata-${{ github.workflow }}-${{ github.sha }}
-          restore-keys: trinket-xcode-cache-deriveddata-${{ github.workflow }}-
-      - run: make bootstrap
-      - run: xcodebuild build -workspace Trinket.xcworkspace -scheme "App (Staging project)" -skipMacroValidation -destination platform="${{ env.PLATFORM_IOS }}" | xcpretty
+          platform_ios: iOS Simulator,name=iPhone 15 Pro,OS=17.0.1
+          workspace: Trinket.xcworkspace
+          key: trinket
