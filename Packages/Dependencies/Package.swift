@@ -40,7 +40,7 @@ var package = Package(
     .library(name: "WidgetClient", targets: ["WidgetClient"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/apollographql/apollo-ios", from: "1.11.0"),
+    .package(url: "https://github.com/apollographql/apollo-ios", from: "1.12.0"),
     .package(url: "https://github.com/facebook/facebook-ios-sdk", from: "17.0.1"),
     .package(url: "https://github.com/firebase/firebase-ios-sdk", from: "10.26.0"),
     .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.3.0"),
