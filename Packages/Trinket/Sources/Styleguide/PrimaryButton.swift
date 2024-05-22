@@ -40,7 +40,7 @@ public struct PrimaryButton: View {
       .background(
         isLoading || isDisabled
           ? Color(uiColor: UIColor.secondarySystemBackground)
-          : Color.yellow
+          : Color.white
       )
       .cornerRadius(16)
     }

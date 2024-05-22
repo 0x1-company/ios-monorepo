@@ -1,12 +1,22 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Next" : {
+    "Continue" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "つぎへ"
+            "value" : "続ける"
+          }
+        }
+      }
+    },
+    "It will be public 🌎" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "公開されます🌎"
           }
         }
       }
@@ -22,22 +32,22 @@
         }
       }
     },
-    "Select a photo saved with BeReal." : {
+    "Select a photo saved with Locket." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeRealで保存した写真を選択してください"
+            "value" : "Locketで保存した写真を選択してください。"
           }
         }
       }
     },
-    "Set your saved photo to your profile (it will be public 🌏)" : {
+    "Set your saved Locket.\nto your profile. " : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "保存した写真を3枚プロフィールに設定しよう（公開されるよ 🌏）"
+            "value" : "保存したLocketを\nプロフィールに設定します。"
           }
         }
       }
