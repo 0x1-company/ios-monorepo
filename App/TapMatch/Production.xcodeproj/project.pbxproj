@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B7008E6F2A8027FA00C36803 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7CCF99F2A7AF46D00B64CFE /* GoogleService-Info.plist */; };
+		B75814232BFE1B0D00CB5A60 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B75814222BFE1B0D00CB5A60 /* AppFeature */; };
 		B7703D712AB32A26006BF41F /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B7703D702AB32A26006BF41F /* InfoPlist.xcstrings */; };
 		B7765AF62B46C825001B5C13 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7765AF52B46C825001B5C13 /* AdSupport.framework */; };
 		B7765AF82B46C82A001B5C13 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7765AF72B46C82A001B5C13 /* AppTrackingTransparency.framework */; };
@@ -15,7 +16,6 @@
 		B783E0EB2A11FFBE002E782F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B783E0EA2A11FFBE002E782F /* Preview Assets.xcassets */; };
 		B783E1042A12000A002E782F /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B783E1032A12000A002E782F /* App.swift */; };
 		B7AAEEED2BCFF786005704E4 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B7AAEEEC2BCFF786005704E4 /* Localizable.xcstrings */; };
-		B7AEC3012BF74129001EC298 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B7AEC3002BF74129001EC298 /* AppFeature */; };
 		B7BC78BA2B55571C00C0B97E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7BC78B92B55571C00C0B97E /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,7 +57,7 @@
 				B7765AF82B46C82A001B5C13 /* AppTrackingTransparency.framework in Frameworks */,
 				B7765AF62B46C825001B5C13 /* AdSupport.framework in Frameworks */,
 				B7BC78BA2B55571C00C0B97E /* StoreKit.framework in Frameworks */,
-				B7AEC3012BF74129001EC298 /* AppFeature in Frameworks */,
+				B75814232BFE1B0D00CB5A60 /* AppFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,7 +134,7 @@
 			);
 			name = App;
 			packageProductDependencies = (
-				B7AEC3002BF74129001EC298 /* AppFeature */,
+				B75814222BFE1B0D00CB5A60 /* AppFeature */,
 			);
 			productName = iOS;
 			productReference = B783E0E12A11FFBE002E782F /* App.app */;
@@ -417,7 +417,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B7AEC3002BF74129001EC298 /* AppFeature */ = {
+		B75814222BFE1B0D00CB5A60 /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;
 		};

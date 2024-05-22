@@ -10,7 +10,7 @@ public extension ApolloClient {
       endpointURL: URL(string: endpoint)!,
       additionalHeaders: [
         "Content-Type": "application/json",
-        "User-Agent": "BeMatch/\(appVersion) iOS/0.0.0",
+        "User-Agent": "TapMatch/\(appVersion) iOS/0.0.0",
       ]
     )
     self.init(

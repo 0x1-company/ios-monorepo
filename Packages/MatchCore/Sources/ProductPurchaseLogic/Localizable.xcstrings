@@ -1,28 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%@ / month" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ / 月"
-          }
-        }
-      }
-    },
-    "%@ / week" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ / 週"
-          }
-        }
-      }
-    },
     "1 Month" : {
       "localizations" : {
         "ja" : {
@@ -73,12 +51,12 @@
         }
       }
     },
-    "I joined BeMatch PRO" : {
+    "I joined TapMatch PRO" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeMatch PROの購入が完了しました"
+            "value" : "TapMatch PROの購入が完了しました"
           }
         }
       }

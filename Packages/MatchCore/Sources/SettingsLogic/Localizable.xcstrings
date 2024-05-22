@@ -1,22 +1,22 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Clear BeMatch cache" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeMatchのキャッシュを削除する"
-          }
-        }
-      }
-    },
     "Clear cache" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "キャッシュを削除"
+          }
+        }
+      }
+    },
+    "Clear TapMatch cache" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TapMatchのキャッシュを削除する"
           }
         }
       }
@@ -51,18 +51,12 @@
         }
       }
     },
-    "You joined BeMatch %lld days ago on %@" : {
+    "You joined TapMatch %lld days ago on %@" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "You joined BeMatch %1$lld days ago on %2$@"
-          }
-        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "あなたは%1$lld日前（%2$@）にBeMatchに参加しました。"
+            "value" : "あなたは%1$lld日前（%2$@）にTapMatchに参加しました。"
           }
         }
       }

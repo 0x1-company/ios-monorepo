@@ -132,7 +132,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
 }
 
 @main
-struct BeMatchApp: App {
+struct TrinketApp: App {
   @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
 
   var body: some Scene {
