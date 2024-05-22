@@ -39,7 +39,7 @@ public struct SettingsOtherLogic {
           TextState("Clear cache", bundle: .module)
         } actions: {
           ButtonState(action: .clear) {
-            TextState("Clear BeMatch cache", bundle: .module)
+            TextState("Clear TapMatch cache", bundle: .module)
           }
         } message: {
           TextState("Clearing cache can help fix some issues", bundle: .module)
