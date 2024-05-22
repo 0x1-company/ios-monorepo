@@ -1,59 +1,17 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "" : {
+    "By doing this, you agree\nto our [Privacy Policy](https://docs.trinket.camera/privacy-policy) and [Terms of Use](https://docs.trinket.camera/terms-of-use)." : {
 
     },
-    "BeRe.al/" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeRe.al/"
-          }
-        }
-      }
+    "Continue" : {
+
     },
-    "By entering your username you agree to our [Terms](https://docs.trinket.camera/terms-of-use) and [Privacy Policy](https://docs.trinket.camera/privacy-policy)" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "この操作を行うと、私たちの[プライバシーポリシー](https://docs.trinket.camera/privacy-policy)と[利用規約](https://docs.trinket.camera/terms-of-use)に同意したことになります。"
-          }
-        }
-      }
+    "ex. https://locket.camera/links/aFzBtwv49D63SK3S7" : {
+
     },
-    "Next" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "つぎへ"
-          }
-        }
-      }
-    },
-    "Save" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "保存する"
-          }
-        }
-      }
-    },
-    "What's your username on BeReal?" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeRealのユーザーネーム\nを設定してください"
-          }
-        }
-      }
+    "Give me the Locket\ninvitation link." : {
+
     }
   },
   "version" : "1.0"

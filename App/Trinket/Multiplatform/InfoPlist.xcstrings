@@ -38,13 +38,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "BeMatch."
+            "value" : "Trinket"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeMatch."
+            "value" : "Trinket"
           }
         }
       }

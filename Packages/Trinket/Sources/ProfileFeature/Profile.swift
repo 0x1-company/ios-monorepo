@@ -104,7 +104,7 @@ public struct ProfileView: View {
         store: store.scope(state: \.$destination.editUsername, action: \.destination.editUsername)
       ) { childStore in
         NavigationStack {
-          UsernameSettingView(store: childStore, nextButtonStyle: .save)
+          UsernameSettingView(store: childStore)
             .toolbar {
               ToolbarItem(placement: .topBarLeading) {
                 Button {

@@ -32,11 +32,15 @@ public struct PrimaryButton: View {
       .font(.system(.subheadline, weight: .semibold))
       .frame(height: 50)
       .frame(maxWidth: .infinity)
-      .foregroundStyle(Color.black)
+      .foregroundStyle(
+        isLoading || isDisabled
+          ? Color(uiColor: UIColor.quaternaryLabel)
+          : Color.black
+      )
       .background(
         isLoading || isDisabled
-          ? Color(uiColor: UIColor.systemGray2)
-          : Color.white
+          ? Color(uiColor: UIColor.secondarySystemBackground)
+          : Color.yellow
       )
       .cornerRadius(16)
     }

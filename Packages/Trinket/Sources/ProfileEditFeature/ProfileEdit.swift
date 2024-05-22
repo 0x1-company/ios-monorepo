@@ -117,10 +117,9 @@ public struct ProfileEditView: View {
         store: store.scope(
           state: \.$destination.usernameSetting,
           action: \.destination.usernameSetting
-        )
-      ) { store in
-        UsernameSettingView(store: store, nextButtonStyle: .save)
-      }
+        ),
+        destination: UsernameSettingView.init(store:)
+      )
       .navigationDestination(
         store: store.scope(
           state: \.$destination.pictureSetting,
