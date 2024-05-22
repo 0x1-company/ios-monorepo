@@ -1,4 +1,5 @@
 import AnalyticsClient
+import ApolloConcurrency
 import AnalyticsKeys
 import API
 import APIClient
@@ -72,7 +73,7 @@ public struct UsernameSettingLogic {
         analytics.setUserProperty(key: \.username, value: state.username)
         return .send(.delegate(.nextScreen))
 
-      case .updateBeRealResponse(.failure):
+      case let .updateBeRealResponse(.failure(error as ServerError)):
         state.isActivityIndicatorVisible = false
         state.alert = AlertState {
           TextState("Error", bundle: .module)
@@ -81,7 +82,7 @@ public struct UsernameSettingLogic {
             TextState("OK", bundle: .module)
           }
         } message: {
-          TextState("username must be a string at least 3 characters long and up to 30 characters long containing only letters, numbers, underscores, and periods except that no two periods shall be in sequence or undefined", bundle: .module)
+          TextState(error.message)
         }
         return .none
 

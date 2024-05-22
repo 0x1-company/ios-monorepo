@@ -33,6 +33,7 @@
       }
     },
     "username must be a string at least 3 characters long and up to 30 characters long containing only letters, numbers, underscores, and periods except that no two periods shall be in sequence or undefined" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
