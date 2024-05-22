@@ -44,6 +44,10 @@ public extension API {
         public var displayName: String? { __data["displayName"] }
         /// BeRealのusername
         public var berealUsername: String { __data["berealUsername"] }
+        /// TapNowのusername
+        public var tapnowUsername: String { __data["tapnowUsername"] }
+        /// LocketのURL
+        public var locketUrl: String { __data["locketUrl"] }
         public var externalProductUrl: String { __data["externalProductUrl"] }
         /// gender
         public var gender: GraphQLEnum<API.Gender> { __data["gender"] }

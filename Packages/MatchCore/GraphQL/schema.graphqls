@@ -289,8 +289,14 @@ type Mutation {
   """性別を更新する"""
   updateGender(input: UpdateGenderInput!): User!
 
+  """LocketのURLを更新する"""
+  updateLocket(input: UpdateLocketInput!): User!
+
   """一言コメントを更新する"""
   updateShortComment(input: UpdateShortCommentInput!): User!
+
+  """TapNowのユーザー名を更新する"""
+  updateTapNow(input: UpdateTapNowInput!): User!
 
   """プロフィール画像を更新する"""
   updateUserImage(input: UpdateUserImageInput!): [UserImage!]!
@@ -423,8 +429,18 @@ input UpdateGenderInput {
   gender: Gender!
 }
 
+input UpdateLocketInput {
+  """LocketのURL"""
+  url: String!
+}
+
 input UpdateShortCommentInput {
   body: String!
+}
+
+input UpdateTapNowInput {
+  """TapNowのユーザー名"""
+  username: String!
 }
 
 input UpdateUserImageInput {

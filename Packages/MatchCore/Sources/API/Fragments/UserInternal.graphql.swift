@@ -6,7 +6,7 @@
 public extension API {
   struct UserInternal: API.SelectionSet, Fragment {
     public static var fragmentDefinition: StaticString {
-      #"fragment UserInternal on User { __typename id displayName berealUsername externalProductUrl gender status images { __typename id imageUrl } shortComment { __typename id body status } ...PictureSlider }"#
+      #"fragment UserInternal on User { __typename id displayName berealUsername tapnowUsername locketUrl externalProductUrl gender status images { __typename id imageUrl } shortComment { __typename id body status } ...PictureSlider }"#
     }
 
     public let __data: DataDict
@@ -18,6 +18,8 @@ public extension API {
       .field("id", API.ID.self),
       .field("displayName", String?.self),
       .field("berealUsername", String.self),
+      .field("tapnowUsername", String.self),
+      .field("locketUrl", String.self),
       .field("externalProductUrl", String.self),
       .field("gender", GraphQLEnum<API.Gender>.self),
       .field("status", GraphQLEnum<API.UserStatus>.self),
@@ -31,6 +33,10 @@ public extension API {
     public var displayName: String? { __data["displayName"] }
     /// BeRealのusername
     public var berealUsername: String { __data["berealUsername"] }
+    /// TapNowのusername
+    public var tapnowUsername: String { __data["tapnowUsername"] }
+    /// LocketのURL
+    public var locketUrl: String { __data["locketUrl"] }
     public var externalProductUrl: String { __data["externalProductUrl"] }
     /// gender
     public var gender: GraphQLEnum<API.Gender> { __data["gender"] }

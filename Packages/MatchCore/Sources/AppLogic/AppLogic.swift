@@ -5,6 +5,7 @@ import AsyncValue
 import BannedLogic
 import ComposableArchitecture
 import ConfigGlobalClient
+import EnvironmentClient
 import FirebaseAuth
 import FirebaseAuthClient
 import FirebaseCrashlyticsClient
@@ -60,6 +61,7 @@ public struct AppLogic {
   @Dependency(\.crashlytics) var crashlytics
   @Dependency(\.firebaseAuth) var firebaseAuth
   @Dependency(\.userDefaults) var userDefaults
+  @Dependency(\.environment) var environment
 
   public var body: some Reducer<State, Action> {
     core
@@ -85,9 +87,11 @@ public struct AppLogic {
           case let .success(user) = account.user
         else { return .none }
 
+        let product = environment.product()
+        let isOnboardCompleted = isOnboardCompleted(user: user, product: product)
+
         switch user.status {
-        case .case(.active) where user.images.count < 3,
-             .case(.active) where user.berealUsername.isEmpty:
+        case .case(.active) where !isOnboardCompleted:
           analytics.setUserProperty(key: \.onboardCompleted, value: "false")
           state.child = .onboard(OnboardLogic.State(user: user))
 
@@ -127,6 +131,20 @@ public struct AppLogic {
       default:
         return .none
       }
+    }
+  }
+
+  func isOnboardCompleted(
+    user: API.UserInternal,
+    product: EnvironmentClient.Product
+  ) -> Bool {
+    switch product {
+    case .bematch:
+      return !user.berealUsername.isEmpty && user.images.count >= 3
+    case .tapmatch:
+      return !user.tapnowUsername.isEmpty && user.images.count >= 3
+    case .trinket:
+      return !user.locketUrl.isEmpty && user.images.count >= 3
     }
   }
 
