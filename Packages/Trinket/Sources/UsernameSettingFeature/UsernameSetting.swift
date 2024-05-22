@@ -17,7 +17,6 @@ public struct UsernameSettingView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 16) {
         Text("Give me the Locket\ninvitation link.", bundle: .module)
-          .frame(height: 56)
           .font(.system(.title2, weight: .bold))
 
         Text("ex. https://locket.camera/links/aFzBtwv49D63SK3S7", bundle: .module)
@@ -52,7 +51,7 @@ public struct UsernameSettingView: View {
           store.send(.nextButtonTapped)
         }
       }
-      .padding(.top, 36)
+      .padding(.top, 32)
       .padding(.bottom, 16)
       .padding(.horizontal, 16)
       .multilineTextAlignment(.center)

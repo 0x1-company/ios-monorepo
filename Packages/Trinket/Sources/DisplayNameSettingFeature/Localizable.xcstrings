@@ -4,6 +4,9 @@
     "" : {
 
     },
+    "ex. tomokisun" : {
+
+    },
     "Next" : {
       "localizations" : {
         "ja" : {
@@ -14,7 +17,7 @@
         }
       }
     },
-    "What's your nick name?" : {
+    "Set your nick name" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {

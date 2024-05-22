@@ -14,19 +14,26 @@ public struct DisplayNameSettingView: View {
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
-      VStack(spacing: 32) {
-        Text("What's your nick name?", bundle: .module)
-          .frame(height: 50)
-          .font(.system(.title3, weight: .semibold))
+      VStack(spacing: 8) {
+        Text("Set your nick name", bundle: .module)
+          .font(.system(.title2, weight: .bold))
 
-        VStack(spacing: 0) {
+        VStack(spacing: 32) {
+          Text("ex. tomokisun", bundle: .module)
+            .font(.caption)
+            .tint(Color.gray)
+            .foregroundStyle(Color.gray)
+
           TextField("", text: viewStore.$displayName)
             .foregroundStyle(Color.white)
             .textInputAutocapitalization(.never)
             .autocorrectionDisabled()
+            .frame(height: 56)
             .focused($isFocused)
+            .background(Color(uiColor: UIColor.systemFill))
+            .font(.system(.title3, weight: .semibold))
+            .clipShape(RoundedRectangle(cornerRadius: 12))
         }
-        .font(.system(.title3, weight: .semibold))
 
         Spacer()
 
@@ -37,7 +44,7 @@ public struct DisplayNameSettingView: View {
           store.send(.nextButtonTapped)
         }
       }
-      .padding(.top, 24)
+      .padding(.top, 32)
       .padding(.bottom, 16)
       .padding(.horizontal, 16)
       .multilineTextAlignment(.center)
