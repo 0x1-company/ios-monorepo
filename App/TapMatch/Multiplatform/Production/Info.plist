@@ -16,7 +16,7 @@
 		<string>ja</string>
 	</array>
 	<key>CFBundleName</key>
-	<string>BeMatch.</string>
+	<string>TapMatch</string>
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
