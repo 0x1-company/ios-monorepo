@@ -22,5 +22,5 @@ runs:
     - run: make bootstrap
       shell: bash
 
-    - run: xcodebuild build -workspace ${{ inputs.xcworkspace }} -scheme "App (Staging project)" -skipMacroValidation -destination platform="${{ inputs.platform_ios }}" | xcpretty
+    - run: xcodebuild build -workspace "${{ inputs.workspace }}" -scheme "App (Staging project)" -skipMacroValidation -destination platform="${{ inputs.platform_ios }}" | xcpretty
       shell: bash
