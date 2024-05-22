@@ -19,9 +19,6 @@ on:
       - Packages/Dependencies/**/*
       - .github/workflows/trinket.yml
 
-env:
-  TRINKET_FILE_FIREBASE_STAGING: ${{ secrets.TRINKET_FILE_FIREBASE_STAGING }}
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -36,3 +33,5 @@ jobs:
           platform_ios: iOS Simulator,name=iPhone 15 Pro,OS=17.0.1
           workspace: Trinket.xcworkspace
           key: trinket
+        env:
+          FILE_FIREBASE_STAGING: ${{ secrets.TRINKET_FILE_FIREBASE_STAGING }}

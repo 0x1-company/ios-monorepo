@@ -19,9 +19,6 @@ on:
       - Packages/Dependencies/**/*
       - .github/workflows/bematch.yml
 
-env:
-  BEMATCH_FILE_FIREBASE_STAGING: ${{ secrets.BEMATCH_FILE_FIREBASE_STAGING }}
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -36,3 +33,5 @@ jobs:
           platform_ios: iOS Simulator,name=iPhone 15 Pro,OS=17.0.1
           workspace: BeMatch.xcworkspace
           key: bematch
+        env:
+          FILE_FIREBASE_STAGING: ${{ secrets.BEMATCH_FILE_FIREBASE_STAGING }}

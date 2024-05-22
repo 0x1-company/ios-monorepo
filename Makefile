@@ -16,9 +16,9 @@ clean:
 	rm -rf **/*/.build
 
 secrets: # Set secrets
-	echo $(BEMATCH_FILE_FIREBASE_STAGING) | base64 -D > App/BeMatch/Multiplatform/Staging/GoogleService-Info.plist
-	echo $(TRINKET_FILE_FIREBASE_STAGING) | base64 -D > App/Trinket/Multiplatform/Staging/GoogleService-Info.plist
-	echo $(TAPMATCH_FILE_FIREBASE_STAGING) | base64 -D > App/TapMatch/Multiplatform/Staging/GoogleService-Info.plist
+	echo $(FILE_FIREBASE_STAGING) | base64 -D > App/BeMatch/Multiplatform/Staging/GoogleService-Info.plist
+	echo $(FILE_FIREBASE_STAGING) | base64 -D > App/Trinket/Multiplatform/Staging/GoogleService-Info.plist
+	echo $(FILE_FIREBASE_STAGING) | base64 -D > App/TapMatch/Multiplatform/Staging/GoogleService-Info.plist
 
 install-template: # Install template
 	@swift build -c release --package-path ./SwiftScripts/XCTemplateInstallerTool --product XCTemplateInstaller
