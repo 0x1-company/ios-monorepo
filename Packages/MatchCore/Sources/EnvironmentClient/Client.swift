@@ -8,7 +8,6 @@ public struct EnvironmentClient {
 
   public var appStoreURL: @Sendable () -> URL = { URL.currentDirectory() }
   public var appStoreForEmptyURL: @Sendable () -> URL = { URL.currentDirectory() }
-  public var appStoreFemaleForEmptyURL: @Sendable () -> URL = { URL.currentDirectory() }
 
   public var appStoreReviewURL: @Sendable () -> URL = { URL.currentDirectory() }
 
