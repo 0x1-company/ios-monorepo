@@ -15,8 +15,8 @@ runs:
   using: composite
   steps:
     - uses: irgaly/xcode-cache@v1
-        with:
-          key: ${{ inputs.key }}-xcode-cache-deriveddata-${{ github.workflow }}-${{ github.sha }}
-          restore-keys: ${{ inputs.key }}-xcode-cache-deriveddata-${{ github.workflow }}-
+      with:
+        key: ${{ inputs.key }}-xcode-cache-deriveddata-${{ github.workflow }}-${{ github.sha }}
+        restore-keys: ${{ inputs.key }}-xcode-cache-deriveddata-${{ github.workflow }}-
     - run: make bootstrap
     - run: xcodebuild build -workspace ${{ inputs.xcworkspace }} -scheme "App (Staging project)" -skipMacroValidation -destination platform="${{ inputs.platform_ios }}" | xcpretty
