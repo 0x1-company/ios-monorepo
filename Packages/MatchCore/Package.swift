@@ -46,7 +46,6 @@ let package = Package(
     .library(name: "ProductPurchaseLogic", targets: ["ProductPurchaseLogic"]),
     .library(name: "ProfileEditLogic", targets: ["ProfileEditLogic"]),
     .library(name: "ProfileExplorerLogic", targets: ["ProfileExplorerLogic"]),
-    .library(name: "ProfileExternalLogic", targets: ["ProfileExternalLogic"]),
     .library(name: "ProfileLogic", targets: ["ProfileLogic"]),
     .library(name: "ProfilePictureSettingLogic", targets: ["ProfilePictureSettingLogic"]),
     .library(name: "ProfileSharedLogic", targets: ["ProfileSharedLogic"]),
@@ -300,9 +299,6 @@ let package = Package(
     ]),
     .target(name: "ProfileExplorerLogic", dependencies: [
       "DirectMessageLogic",
-      "ProfileSharedLogic",
-    ]),
-    .target(name: "ProfileExternalLogic", dependencies: [
       "ProfileSharedLogic",
     ]),
     .target(name: "ProfileLogic", dependencies: [
