@@ -5,7 +5,20 @@
 
     },
     "Continue" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "続ける"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계속"
+          }
+        }
+      }
     },
     "ex. https://locket.camera/links/aFzBtwv49D63SK3S7" : {
 

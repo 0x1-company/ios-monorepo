@@ -1,32 +1,22 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Female" : {
+    "Continue" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "女性"
+            "value" : "続ける"
           }
         }
       }
     },
-    "Male" : {
+    "Men" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "男性"
-          }
-        }
-      }
-    },
-    "Next" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "つぎへ"
           }
         }
       }
@@ -37,6 +27,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "その他"
+          }
+        }
+      }
+    },
+    "Please tell us your gender." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "性別を教えてください"
           }
         }
       }
@@ -62,12 +62,12 @@
         }
       }
     },
-    "What's your gender?" : {
+    "Women" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "性別を教えてください"
+            "value" : "女性"
           }
         }
       }

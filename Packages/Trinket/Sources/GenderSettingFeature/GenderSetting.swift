@@ -24,22 +24,22 @@ public struct GenderSettingView: View {
     self.canSkip = canSkip
   }
 
-  func genderText(_ gender: API.Gender) -> LocalizedStringKey {
+  func genderText(_ gender: API.Gender) -> String {
     switch gender {
     case .male:
-      return "Male"
+      return String(localized: "Men", bundle: .module)
     case .female:
-      return "Female"
+      return String(localized: "Women", bundle: .module)
     case .other:
-      return "Non-Binary"
+      return String(localized: "Non-Binary", bundle: .module)
     }
   }
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 0) {
-        Text("What's your gender?", bundle: .module)
-          .font(.system(.title3, weight: .semibold))
+        Text("Please tell us your gender.", bundle: .module)
+          .font(.system(.title2, weight: .bold))
 
         List(viewStore.genders, id: \.self) { gender in
           Button {
@@ -50,10 +50,10 @@ public struct GenderSettingView: View {
                 Image(systemName: "checkmark.circle")
               }
             } label: {
-              Text(genderText(gender), bundle: .module)
+              Text(genderText(gender))
                 .font(.system(.headline, weight: .semibold))
             }
-            .frame(height: 50)
+            .frame(height: 44)
           }
         }
         .scrollDisabled(true)
@@ -65,7 +65,7 @@ public struct GenderSettingView: View {
           PrimaryButton(
             nextButtonStyle == .save
               ? String(localized: "Save", bundle: .module)
-              : String(localized: "Next", bundle: .module),
+              : String(localized: "Continue", bundle: .module),
             isLoading: viewStore.isActivityIndicatorVisible,
             isDisabled: viewStore.selection == nil
           ) {
@@ -85,7 +85,7 @@ public struct GenderSettingView: View {
         }
         .padding(.horizontal, 16)
       }
-      .padding(.top, 24)
+      .padding(.top, 32)
       .padding(.bottom, 16)
       .multilineTextAlignment(.center)
       .navigationBarTitleDisplayMode(.inline)
