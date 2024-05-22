@@ -2,7 +2,11 @@ import Apollo
 import Foundation
 
 public extension ApolloClient {
-  convenience init(appVersion: String, endpoint: String) {
+  convenience init(
+    appVersion: String,
+    endpoint: String,
+    product: String
+  ) {
     let store = ApolloStore()
     let provider = NetworkInterceptorProvider(store: store)
     let requestChainTransport = RequestChainNetworkTransport(
@@ -10,7 +14,7 @@ public extension ApolloClient {
       endpointURL: URL(string: endpoint)!,
       additionalHeaders: [
         "Content-Type": "application/json",
-        "User-Agent": "TapMatch/\(appVersion) iOS/0.0.0",
+        "User-Agent": "\(product)/\(appVersion) iOS/0.0.0",
       ]
     )
     self.init(
