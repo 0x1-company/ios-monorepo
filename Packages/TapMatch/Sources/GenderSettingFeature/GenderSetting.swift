@@ -24,17 +24,6 @@ public struct GenderSettingView: View {
     self.canSkip = canSkip
   }
 
-  func genderText(_ gender: API.Gender) -> LocalizedStringKey {
-    switch gender {
-    case .male:
-      return "Male"
-    case .female:
-      return "Female"
-    case .other:
-      return "Non-Binary"
-    }
-  }
-
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 0) {
@@ -50,7 +39,7 @@ public struct GenderSettingView: View {
                 Image(systemName: "checkmark.circle")
               }
             } label: {
-              Text(genderText(gender), bundle: .module)
+              Text(gender.displayValue)
                 .font(.system(.headline, weight: .semibold))
             }
             .frame(height: 50)

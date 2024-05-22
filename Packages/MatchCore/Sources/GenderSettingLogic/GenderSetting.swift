@@ -5,8 +5,6 @@ import APIClient
 import ComposableArchitecture
 import FeedbackGeneratorClient
 
-import SwiftUI
-
 @Reducer
 public struct GenderSettingLogic {
   public init() {}
@@ -83,6 +81,19 @@ public struct GenderSettingLogic {
       default:
         return .none
       }
+    }
+  }
+}
+
+public extension API.Gender {
+  var displayValue: String {
+    switch self {
+    case .male:
+      return String(localized: "Men", bundle: .module)
+    case .female:
+      return String(localized: "Women", bundle: .module)
+    case .other:
+      return String(localized: "Non-Binary", bundle: .module)
     }
   }
 }
