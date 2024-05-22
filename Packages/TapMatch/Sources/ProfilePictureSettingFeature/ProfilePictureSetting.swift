@@ -91,7 +91,7 @@ public struct ProfilePictureSettingView: View {
       .task { await store.send(.onTask).finish() }
       .toolbar {
         ToolbarItem(placement: .principal) {
-          Image(ImageResource.beMatch)
+          Image(ImageResource.logo)
         }
       }
       .alert(

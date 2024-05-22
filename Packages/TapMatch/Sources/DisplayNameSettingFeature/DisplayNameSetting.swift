@@ -48,7 +48,7 @@ public struct DisplayNameSettingView: View {
       }
       .toolbar {
         ToolbarItem(placement: .principal) {
-          Image(ImageResource.beMatch)
+          Image(ImageResource.logo)
         }
       }
       .alert(store: store.scope(state: \.$alert, action: \.alert))

@@ -37,7 +37,7 @@ public struct RecommendationView: View {
     .navigationBarTitleDisplayMode(.inline)
     .toolbar {
       ToolbarItem(placement: .principal) {
-        Image(ImageResource.beMatch)
+        Image(ImageResource.logo)
       }
     }
   }

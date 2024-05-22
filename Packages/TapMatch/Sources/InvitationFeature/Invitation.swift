@@ -60,7 +60,7 @@ public struct InvitationView: View {
       }
       .toolbar {
         ToolbarItem(placement: .principal) {
-          Image(ImageResource.beMatch)
+          Image(ImageResource.logo)
         }
       }
     }
