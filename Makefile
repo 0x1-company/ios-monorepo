@@ -33,3 +33,12 @@ generate:
 format:
 	@swift build -c release --package-path ./SwiftScripts/SwiftFormatTool --product swiftformat
 	./SwiftScripts/SwiftFormatTool/.build/release/swiftformat ./
+
+release-bematch:
+	@sh Scripts/make-release-draft.sh -n BeMatch
+
+release-tapmatch:
+	@sh Scripts/make-release-draft.sh -n TapMatch
+
+release-trinket:
+	@sh Scripts/make-release-draft.sh -n Trinket
