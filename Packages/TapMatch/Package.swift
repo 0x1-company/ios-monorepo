@@ -40,7 +40,6 @@ let package = Package(
     .library(name: "ProductPurchaseFeature", targets: ["ProductPurchaseFeature"]),
     .library(name: "ProfileEditFeature", targets: ["ProfileEditFeature"]),
     .library(name: "ProfileExplorerFeature", targets: ["ProfileExplorerFeature"]),
-    .library(name: "ProfileExternalFeature", targets: ["ProfileExternalFeature"]),
     .library(name: "ProfileFeature", targets: ["ProfileFeature"]),
     .library(name: "ProfilePictureSettingFeature", targets: ["ProfilePictureSettingFeature"]),
     .library(name: "ProfileSharedFeature", targets: ["ProfileSharedFeature"]),
@@ -278,10 +277,6 @@ let package = Package(
     .target(name: "ProfileExplorerFeature", dependencies: [
       .product(name: "ProfileExplorerLogic", package: "MatchCore"),
       "DirectMessageFeature",
-      "ProfileSharedFeature",
-    ]),
-    .target(name: "ProfileExternalFeature", dependencies: [
-      .product(name: "ProfileExternalLogic", package: "MatchCore"),
       "ProfileSharedFeature",
     ]),
     .target(name: "ProfileFeature", dependencies: [
