@@ -16,8 +16,6 @@ public protocol API_MutableInlineFragment: ApolloAPI.MutableSelectionSet & Apoll
   where Schema == API.SchemaMetadata {}
 
 public extension API {
-  typealias ID = String
-
   typealias SelectionSet = API_SelectionSet
 
   typealias InlineFragment = API_InlineFragment

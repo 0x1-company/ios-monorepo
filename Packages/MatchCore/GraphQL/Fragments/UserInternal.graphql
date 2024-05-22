@@ -4,6 +4,8 @@ fragment UserInternal on User {
   id
   displayName
   berealUsername
+  tapnowUsername
+  locketUrl
   externalProductUrl
   gender
   status
