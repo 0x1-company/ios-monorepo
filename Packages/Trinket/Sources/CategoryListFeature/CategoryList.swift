@@ -13,7 +13,7 @@ public struct CategoryListView: View {
 
   public var body: some View {
     ScrollView(.vertical) {
-      VStack(spacing: 24) {
+      LazyVStack(spacing: 16) {
         ForEachStore(
           store.scope(state: \.rows, action: \.rows),
           content: CategorySectionView.init(store:)

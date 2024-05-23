@@ -36,10 +36,10 @@ public struct CategoryRowView: View {
           image
             .resizable()
             .aspectRatio(contentMode: .fill)
-            .frame(width: 150, height: 200)
+            .frame(width: 144, height: 144)
         } placeholder: {
           Color.black
-            .frame(width: 150, height: 200)
+            .frame(width: 144, height: 144)
             .overlay {
               ProgressView()
                 .tint(Color.white)
@@ -47,20 +47,6 @@ public struct CategoryRowView: View {
         }
         .blur(radius: viewStore.isBlur ? 18 : 0)
         .clipShape(RoundedRectangle(cornerRadius: 8))
-        .overlay(alignment: .bottom) {
-          if !viewStore.isBlur {
-            LinearGradient(
-              colors: [
-                Color.black.opacity(0.0),
-                Color.black.opacity(1.0),
-              ],
-              startPoint: .top,
-              endPoint: .bottom
-            )
-            .frame(height: 100)
-            .clipShape(RoundedRectangle(cornerRadius: 8))
-          }
-        }
         .overlay {
           if viewStore.isBlur {
             RoundedRectangle(cornerRadius: 8)
