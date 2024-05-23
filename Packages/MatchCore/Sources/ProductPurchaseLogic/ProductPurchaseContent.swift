@@ -128,7 +128,7 @@ public struct ProductPurchaseContentLogic {
       case let .transactionFinish(transaction):
         state.destination = .alert(
           AlertState {
-            TextState("I joined TapMatch PRO", bundle: .module)
+            TextState("Purchase completed.", bundle: .module)
           } actions: {
             ButtonState(action: .confirmOkay) {
               TextState("OK", bundle: .module)

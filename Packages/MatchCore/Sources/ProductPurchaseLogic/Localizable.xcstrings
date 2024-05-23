@@ -51,22 +51,22 @@
         }
       }
     },
-    "I joined TapMatch PRO" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "TapMatch PROの購入が完了しました"
-          }
-        }
-      }
-    },
     "OK" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
+          }
+        }
+      }
+    },
+    "Purchase completed." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入が完了しました"
           }
         }
       }

@@ -1,4 +1,5 @@
 import ComposableArchitecture
+import EnvironmentClient
 import SwiftUI
 
 @Reducer
@@ -21,6 +22,7 @@ public struct CreationDateLogic {
   @Dependency(\.date.now) var now
   @Dependency(\.locale) var locale
   @Dependency(\.calendar) var calendar
+  @Dependency(\.environment) var environment
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
@@ -38,8 +40,10 @@ public struct CreationDateLogic {
         dateFormatter.dateStyle = .long
         let formattedCreationDate = dateFormatter.string(from: state.creationDate)
 
+        let product = environment.product()
+
         state.creationDateString = String(
-          localized: "You joined TapMatch \(daysAgo) days ago on \(formattedCreationDate)",
+          localized: "You joined \(product.displayName) \(daysAgo) days ago on \(formattedCreationDate)",
           bundle: .module
         )
         return .none

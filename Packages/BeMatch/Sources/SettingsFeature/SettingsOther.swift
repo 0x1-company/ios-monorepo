@@ -14,19 +14,6 @@ public struct SettingsOtherView: View {
     WithViewStore(store, observe: { $0 }) { _ in
       List {
         Section {
-          Button {
-            store.send(.clearCacheButtonTapped)
-          } label: {
-            LabeledContent {
-              Image(systemName: "chevron.right")
-            } label: {
-              Text("Clear cache", bundle: .module)
-                .foregroundStyle(Color.primary)
-            }
-          }
-        }
-
-        Section {
           Button(role: .destructive) {
             store.send(.deleteAccountButtonTapped)
           } label: {
@@ -38,9 +25,6 @@ public struct SettingsOtherView: View {
       .navigationTitle(String(localized: "Other", bundle: .module))
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
-      .confirmationDialog(
-        store: store.scope(state: \.$confirmationDialog, action: \.confirmationDialog)
-      )
       .fullScreenCover(
         store: store.scope(
           state: \.$deleteAccount,

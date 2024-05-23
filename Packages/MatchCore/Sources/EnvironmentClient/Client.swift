@@ -26,12 +26,21 @@ public struct EnvironmentClient {
   public var contactUsURL: @Sendable () -> URL = { URL.currentDirectory() }
 
   public var howToMovieURL: @Sendable () -> URL = { URL.currentDirectory() }
-}
 
-public extension EnvironmentClient {
-  enum Product: Equatable {
+  public enum Product: Equatable {
     case bematch
     case tapmatch
     case trinket
+
+    public var displayName: String {
+      switch self {
+      case .bematch:
+        return "BeMatch"
+      case .tapmatch:
+        return "TapMatch"
+      case .trinket:
+        return "Trinket"
+      }
+    }
   }
 }
