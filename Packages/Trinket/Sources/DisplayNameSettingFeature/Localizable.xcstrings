@@ -5,7 +5,14 @@
 
     },
     "ex. tomokisun" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "例: ともき"
+          }
+        }
+      }
     },
     "Next" : {
       "localizations" : {
