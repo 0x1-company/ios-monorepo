@@ -15,13 +15,6 @@ public struct PictureSliderView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 24) {
-        SelectControl(
-          current: viewStore.selection,
-          items: viewStore.data.images
-        )
-        .padding(.top, 3)
-        .padding(.horizontal, 16)
-
         ForEach(viewStore.data.images, id: \.id) { picture in
           if picture == viewStore.selection {
             CachedAsyncImage(
@@ -31,7 +24,7 @@ public struct PictureSliderView: View {
               content: { content in
                 content
                   .resizable()
-                  .aspectRatio(3 / 4, contentMode: .fit)
+                  .aspectRatio(1, contentMode: .fit)
                   .frame(width: UIScreen.main.bounds.size.width)
               },
               placeholder: {
@@ -46,30 +39,28 @@ public struct PictureSliderView: View {
             )
           }
         }
+        .overlay(alignment: .top) {
+          SelectControl(
+            current: viewStore.selection,
+            items: viewStore.data.images
+          )
+          .padding(.top, 8)
+          .padding(.horizontal, 40)
+        }
         .overlay(alignment: .bottom) {
           if let shortComment = viewStore.data.shortComment?.body {
-            ZStack(alignment: .bottom) {
-              LinearGradient(
-                colors: [
-                  Color.black.opacity(0.0),
-                  Color.black.opacity(1.0),
-                ],
-                startPoint: .top,
-                endPoint: .bottom
-              )
-
-              Text(shortComment)
-                .font(.system(.subheadline, weight: .semibold))
-                .padding(.bottom, 8)
-                .padding(.horizontal, 16)
-            }
-            .multilineTextAlignment(.center)
-            .clipShape(RoundedRectangle(cornerRadius: 16))
-            .frame(height: UIScreen.main.bounds.width / 3 * 2)
+            Text(shortComment)
+              .padding(.vertical, 12)
+              .padding(.horizontal, 24)
+              .background(Material.ultraThin)
+              .clipShape(Capsule())
+              .padding(.bottom, 16)
+              .padding(.horizontal, 32)
+              .multilineTextAlignment(.center)
+              .font(.system(.footnote, weight: .semibold))
           }
         }
-        .clipShape(RoundedRectangle(cornerRadius: 16))
-        .aspectRatio(1, contentMode: .fill)
+        .clipShape(RoundedRectangle(cornerRadius: 48))
         .frame(width: UIScreen.main.bounds.size.width)
         .overlay {
           HStack(spacing: 0) {

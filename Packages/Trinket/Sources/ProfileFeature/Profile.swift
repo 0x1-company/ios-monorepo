@@ -16,7 +16,7 @@ public struct ProfileView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack {
-        VStack(spacing: 24) {
+        VStack(spacing: 56) {
           HStack(spacing: 0) {
             Button {
               store.send(.closeButtonTapped)
@@ -43,25 +43,28 @@ public struct ProfileView: View {
           .padding(.top, 56)
           .padding(.horizontal, 16)
 
-          IfLetStore(
-            store.scope(state: \.pictureSlider, action: \.pictureSlider),
-            then: PictureSliderView.init(store:),
-            else: {
-              Color.black
-                .aspectRatio(1, contentMode: .fill)
-                .frame(width: UIScreen.main.bounds.width)
-            }
-          )
+          VStack(spacing: 16) {
+            IfLetStore(
+              store.scope(state: \.pictureSlider, action: \.pictureSlider),
+              then: PictureSliderView.init(store:),
+              else: {
+                Color.black
+                  .aspectRatio(1, contentMode: .fill)
+                  .frame(width: UIScreen.main.bounds.width)
+              }
+            )
 
-          if let url = viewStore.currentUser?.externalProductUrl {
-            Button {
-              store.send(.jumpBeRealButtonTapped)
-            } label: {
-              Text("🔗 \(url)")
-                .font(.system(.caption))
-                .foregroundStyle(Color.primary)
+            if let url = viewStore.currentUser?.externalProductUrl {
+              Button {
+                store.send(.jumpBeRealButtonTapped)
+              } label: {
+                Text("🔗 \(url)")
+                  .font(.system(.caption))
+                  .foregroundStyle(Color.primary)
+              }
             }
           }
+
           Spacer()
         }
         .background(Color.black)
