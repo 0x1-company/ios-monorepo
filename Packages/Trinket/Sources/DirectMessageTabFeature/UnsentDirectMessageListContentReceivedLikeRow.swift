@@ -15,11 +15,11 @@ public struct UnsentDirectMessageListContentReceivedLikeRowView: View {
   var goldGradient: LinearGradient {
     LinearGradient(
       colors: [
-        Color(0xFFE8_B423),
-        Color(0xFFF5_D068),
+        Color(0xFF9F0A),
+        Color(0xFFD60A),
       ],
-      startPoint: .leading,
-      endPoint: .trailing
+      startPoint: .top,
+      endPoint: .bottom
     )
   }
 
@@ -36,12 +36,12 @@ public struct UnsentDirectMessageListContentReceivedLikeRowView: View {
             content: { image in
               image
                 .resizable()
-                .frame(width: 90, height: 120)
+                .frame(width: 96, height: 96)
                 .blur(radius: 18)
             },
             placeholder: {
               Color.black
-                .frame(width: 90, height: 120)
+                .frame(width: 96, height: 96)
                 .overlay {
                   ProgressView()
                     .progressViewStyle(CircularProgressViewStyle())
@@ -49,22 +49,24 @@ public struct UnsentDirectMessageListContentReceivedLikeRowView: View {
                 }
             }
           )
-          .clipShape(RoundedRectangle(cornerRadius: 6))
           .overlay {
             RoundedRectangle(cornerRadius: 6)
-              .stroke(goldGradient, lineWidth: 3)
+              .stroke(goldGradient, lineWidth: 4)
           }
+          .clipShape(RoundedRectangle(cornerRadius: 6))
           .overlay {
-            Text(viewStore.displayCount)
-              .font(.system(.body, weight: .semibold))
-              .frame(width: 40, height: 40)
-              .foregroundStyle(Color.white)
-              .background(goldGradient)
-              .clipShape(Circle())
-          }
-          .overlay(alignment: .bottom) {
-            Image(ImageResource.receivedLike)
-              .offset(y: 17)
+            HStack(alignment: .center, spacing: 0) {
+              Text(Image(systemName: "heart.fill"))
+                .font(.system(size: 14))
+
+                Text(viewStore.displayCount)
+                .font(.system(.body, weight: .semibold))
+            }
+            .foregroundStyle(Color.black)
+            .padding(.vertical, 4)
+            .padding(.horizontal, 6)
+            .background(goldGradient)
+            .clipShape(RoundedRectangle(cornerRadius: .infinity))
           }
 
           Text("Like", bundle: .module)

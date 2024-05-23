@@ -1,11 +1,20 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "12" : {
+
+    },
     "Let's Reply" : {
       "localizations" : {
-        "ja" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Reply!"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "返信しよう"
           }
         }
@@ -13,9 +22,15 @@
     },
     "Like" : {
       "localizations" : {
-        "ja" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Likes"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "Like"
           }
         }
@@ -23,9 +38,15 @@
     },
     "MESSAGE" : {
       "localizations" : {
-        "ja" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Messages"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "メッセージ"
           }
         }
@@ -33,9 +54,15 @@
     },
     "RECENT MATCH" : {
       "localizations" : {
-        "ja" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Recently Match"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "最近のマッチ"
           }
         }
@@ -43,9 +70,15 @@
     },
     "SEE MORE" : {
       "localizations" : {
-        "ja" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "See More"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "すべて見る"
           }
         }
