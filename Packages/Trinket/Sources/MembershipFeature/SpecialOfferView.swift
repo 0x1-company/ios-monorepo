@@ -14,14 +14,14 @@ public struct SpecialOfferView: View {
           LinearGradient(
             colors: [
               Color.black,
-              Color.yellow
+              Color.yellow,
             ],
             startPoint: .top,
             endPoint: .bottom
           )
         )
         .clipShape(RoundedRectangle(cornerRadius: 6))
-      
+
       VStack(spacing: 24) {
         Text("See who sent it!", bundle: .module)
           .font(.system(.title2, weight: .bold))
