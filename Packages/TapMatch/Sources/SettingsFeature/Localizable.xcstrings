@@ -11,16 +11,6 @@
         }
       }
     },
-    "Clear cache" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "キャッシュを削除"
-          }
-        }
-      }
-    },
     "Contact Us" : {
       "localizations" : {
         "ja" : {
