@@ -1,3 +1,4 @@
+import API
 import CachedAsyncImage
 import ComposableArchitecture
 import SelectControl
@@ -87,24 +88,15 @@ public struct SwipeCardView: View {
       }
       .overlay(alignment: .bottom) {
         if let shortComment = viewStore.data.shortComment?.body {
-          ZStack(alignment: .bottom) {
-            LinearGradient(
-              colors: [
-                Color.black.opacity(0.0),
-                Color.black.opacity(1.0),
-              ],
-              startPoint: .top,
-              endPoint: .bottom
-            )
-
-            Text(shortComment)
-              .font(.system(.subheadline, weight: .semibold))
-              .padding(.bottom, 8)
-              .padding(.horizontal, 16)
-          }
-          .multilineTextAlignment(.center)
-          .clipShape(RoundedRectangle(cornerRadius: 48))
-          .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width / 2)
+          Text(shortComment)
+            .padding(.vertical, 12)
+            .padding(.horizontal, 24)
+            .background(Material.ultraThin)
+            .clipShape(Capsule())
+            .padding(.bottom, 16)
+            .padding(.horizontal, 32)
+            .multilineTextAlignment(.center)
+            .font(.system(.footnote, weight: .semibold))
         }
       }
       .offset(translation)
@@ -144,82 +136,79 @@ public struct SwipeCardView: View {
   }
 }
 
-// #Preview {
-//  SwipeCardView(
-//    store: .init(
-//      initialState: SwipeCardLogic.State(
-//        data: API.SwipeCard(
-//          _dataDict: DataDict(
-//            data: [
-//              "id": "1",
-//              "shortComment": [
-//                DataDict(
-//                  data: [
-//                    "id": "1",
-//                    "userId": "1",
-//                    "body": "生まれたからには世界中の人と仲良くなりたいです。近くに住んでいる人いたら教えてください。",
-//                  ],
-//                  fulfilledFragments: []
-//                ),
-//              ],
-//              "images": [
-//                DataDict(
-//                  data: [
-//                    "id": "1",
-//                    "imageUrl": "https://asia-northeast1-bematch-staging.cloudfunctions.net/onRequestResizedImage/users/profile_images/vJ2NQU467OgyW6czPxFvfWoUOFC2/1.png?size=600x800",
-//                  ],
-//                  fulfilledFragments: []
-//                ),
-//                DataDict(
-//                  data: [
-//                    "id": "2",
-//                    "imageUrl": "https://asia-northeast1-bematch-staging.cloudfunctions.net/onRequestResizedImage/users/profile_images/vJ2NQU467OgyW6czPxFvfWoUOFC2/2.png?size=600x800",
-//                  ],
-//                  fulfilledFragments: []
-//                ),
-//              ],
-//            ],
-//            fulfilledFragments: []
-//          )
-//        )
-//      ),
-//      reducer: SwipeCardLogic.init
-//    )
-//  )
-//  .environment(\.colorScheme, .dark)
-// }
-//
-// #Preview {
-//  SwipeCardView(
-//    store: .init(
-//      initialState: SwipeCardLogic.State(
-//        data: API.SwipeCard(
-//          _dataDict: DataDict(
-//            data: [
-//              "id": "1",
-//              "images": [
-//                DataDict(
-//                  data: [
-//                    "id": "1",
-//                    "imageUrl": "https://asia-northeast1-bematch-staging.cloudfunctions.net/onRequestResizedImage/users/profile_images/vJ2NQU467OgyW6czPxFvfWoUOFC2/1.png?size=600x800",
-//                  ],
-//                  fulfilledFragments: []
-//                ),
-//                DataDict(
-//                  data: [
-//                    "id": "2",
-//                    "imageUrl": "https://asia-northeast1-bematch-staging.cloudfunctions.net/onRequestResizedImage/users/profile_images/vJ2NQU467OgyW6czPxFvfWoUOFC2/2.png?size=600x800",
-//                  ],
-//                  fulfilledFragments: []
-//                ),
-//              ],
-//            ],
-//            fulfilledFragments: []
-//          )
-//        )
-//      ),
-//      reducer: SwipeCardLogic.init
-//    )
-//  )
-//  .environment(\.colorScheme, .dark)
-// }
+#Preview {
+  SwipeCardView(
+    store: .init(
+      initialState: SwipeCardLogic.State(
+        data: API.SwipeCard(
+          _dataDict: DataDict(
+            data: [
+              "id": "1",
+              "shortComment": DataDict(
+                data: [
+                  "id": "1",
+                  "body": "生まれたからには世界中の人と仲良くなりたいです。近くに住んでいる人いたら教えてください。",
+                ],
+                fulfilledFragments: []
+              ),
+              "images": [
+                DataDict(
+                  data: [
+                    "id": "1",
+                    "imageUrl": "https://bematch-staging.firebaseapp.com/users/profile_images/Yd3XEZmHGxhCCWBMY117JjklFoy1/4ACA05F5-6FA7-4E26-8595-15E0EF00A544.jpeg?size=408x408",
+                  ],
+                  fulfilledFragments: []
+                ),
+                DataDict(
+                  data: [
+                    "id": "2",
+                    "imageUrl": "https://bematch-staging.firebaseapp.com/users/profile_images/Yd3XEZmHGxhCCWBMY117JjklFoy1/675DD4EA-D968-4E0E-AC6C-37498A44061C.jpeg?size=408x408",
+                  ],
+                  fulfilledFragments: []
+                ),
+              ],
+            ],
+            fulfilledFragments: []
+          )
+        )
+      ),
+      reducer: SwipeCardLogic.init
+    )
+  )
+  .environment(\.colorScheme, .dark)
+}
+
+#Preview {
+  SwipeCardView(
+    store: .init(
+      initialState: SwipeCardLogic.State(
+        data: API.SwipeCard(
+          _dataDict: DataDict(
+            data: [
+              "id": "1",
+              "images": [
+                DataDict(
+                  data: [
+                    "id": "1",
+                    "imageUrl": "https://bematch-staging.firebaseapp.com/users/profile_images/Yd3XEZmHGxhCCWBMY117JjklFoy1/4ACA05F5-6FA7-4E26-8595-15E0EF00A544.jpeg?size=408x408",
+                  ],
+                  fulfilledFragments: []
+                ),
+                DataDict(
+                  data: [
+                    "id": "2",
+                    "imageUrl": "https://bematch-staging.firebaseapp.com/users/profile_images/Yd3XEZmHGxhCCWBMY117JjklFoy1/675DD4EA-D968-4E0E-AC6C-37498A44061C.jpeg?size=408x408",
+                  ],
+                  fulfilledFragments: []
+                ),
+              ],
+            ],
+            fulfilledFragments: []
+          )
+        )
+      ),
+      reducer: SwipeCardLogic.init
+    )
+  )
+  .environment(\.colorScheme, .dark)
+}
