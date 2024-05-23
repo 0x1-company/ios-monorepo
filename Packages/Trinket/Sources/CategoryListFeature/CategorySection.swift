@@ -13,11 +13,12 @@ public struct CategorySectionView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(alignment: .leading, spacing: 8) {
         Text(viewStore.userCategory.title)
-          .font(.system(.callout, weight: .semibold))
+          .font(.system(.subheadline, weight: .semibold))
+          .foregroundStyle(Color.secondary)
           .padding(.horizontal, 16)
 
         ScrollView(.horizontal, showsIndicators: false) {
-          LazyHStack(spacing: 12) {
+          LazyHStack(spacing: 8) {
             ForEachStore(
               store.scope(state: \.rows, action: \.rows),
               content: CategoryRowView.init(store:)
