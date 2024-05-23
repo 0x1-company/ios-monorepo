@@ -1,3 +1,4 @@
+import CachedAsyncImage
 import ComposableArchitecture
 import MatchedFeature
 import ReportFeature
@@ -7,6 +8,7 @@ import SwipeCardFeature
 import SwipeLogic
 
 public struct SwipeView: View {
+  @Environment(\.displayScale) var displayScale
   let store: StoreOf<SwipeLogic>
 
   public init(store: StoreOf<SwipeLogic>) {
@@ -14,42 +16,67 @@ public struct SwipeView: View {
   }
 
   public var body: some View {
-    VStack(spacing: 32) {
-      ZStack {
-        ForEachStore(
-          store.scope(state: \.rows, action: \.rows),
-          content: SwipeCardView.init(store:)
+    WithViewStore(store, observe: { $0 }) { viewStore in
+      VStack(spacing: 32) {
+        Spacer()
+
+        ZStack {
+          ForEachStore(
+            store.scope(state: \.rows, action: \.rows),
+            content: SwipeCardView.init(store:)
+          )
+        }
+
+        HStack(spacing: 40) {
+          Button {
+            store.send(.nopeButtonTapped)
+          } label: {
+            Image(ImageResource.xmark)
+              .resizable()
+              .frame(width: 56, height: 56)
+              .clipShape(Circle())
+          }
+
+          Button {
+            store.send(.likeButtonTapped)
+          } label: {
+            Image(ImageResource.heart)
+              .resizable()
+              .frame(width: 56, height: 56)
+              .clipShape(Circle())
+          }
+        }
+        .buttonStyle(HoldDownButtonStyle())
+
+        Spacer()
+      }
+      .frame(maxWidth: .infinity)
+      .background {
+        CachedAsyncImage(
+          url: viewStore.backgroundCoverImageUrl,
+          urlCache: URLCache.shared,
+          scale: displayScale,
+          content: { content in
+            content
+              .resizable()
+              .aspectRatio(contentMode: .fill)
+          },
+          placeholder: {
+            Color.black
+          }
         )
+        .blur(radius: 40)
+        .overlay(Color.black.opacity(0.8))
       }
-
-      HStack(spacing: 40) {
-        Button {
-          store.send(.nopeButtonTapped)
-        } label: {
-          Image(ImageResource.xmark)
-            .resizable()
-            .frame(width: 56, height: 56)
-            .clipShape(Circle())
+      .ignoresSafeArea()
+      .fullScreenCover(
+        store: store.scope(state: \.$destination.matched, action: \.destination.matched),
+        content: MatchedView.init(store:)
+      )
+      .sheet(store: store.scope(state: \.$destination.report, action: \.destination.report)) { store in
+        NavigationStack {
+          ReportView(store: store)
         }
-
-        Button {
-          store.send(.likeButtonTapped)
-        } label: {
-          Image(ImageResource.heart)
-            .resizable()
-            .frame(width: 56, height: 56)
-            .clipShape(Circle())
-        }
-      }
-      .buttonStyle(HoldDownButtonStyle())
-    }
-    .fullScreenCover(
-      store: store.scope(state: \.$destination.matched, action: \.destination.matched),
-      content: MatchedView.init(store:)
-    )
-    .sheet(store: store.scope(state: \.$destination.report, action: \.destination.report)) { store in
-      NavigationStack {
-        ReportView(store: store)
       }
     }
   }

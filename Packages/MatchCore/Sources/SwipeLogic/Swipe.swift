@@ -3,10 +3,9 @@ import AnalyticsKeys
 import API
 import APIClient
 import ComposableArchitecture
+import Foundation
 import MatchedLogic
 import ReportLogic
-
-import SwiftUI
 import SwipeCardLogic
 import TcaHelpers
 
@@ -18,6 +17,12 @@ public struct SwipeLogic {
     @PresentationState public var destination: Destination.State?
 
     public var rows: IdentifiedArrayOf<SwipeCardLogic.State> = []
+
+    public var backgroundCoverImageUrl: URL? {
+      guard let selection = rows.last?.selection
+      else { return nil }
+      return URL(string: selection.imageUrl)
+    }
 
     public init(rows: [API.SwipeCard]) {
       self.rows = IdentifiedArrayOf(

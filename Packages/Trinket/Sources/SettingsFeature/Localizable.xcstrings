@@ -12,6 +12,7 @@
       }
     },
     "Clear cache" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
