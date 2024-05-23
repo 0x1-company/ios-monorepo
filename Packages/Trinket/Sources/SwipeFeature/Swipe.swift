@@ -14,7 +14,7 @@ public struct SwipeView: View {
   }
 
   public var body: some View {
-    VStack(spacing: 24) {
+    VStack(spacing: 32) {
       ZStack {
         ForEachStore(
           store.scope(state: \.rows, action: \.rows),
@@ -42,10 +42,7 @@ public struct SwipeView: View {
         }
       }
       .buttonStyle(HoldDownButtonStyle())
-
-      Spacer()
     }
-    .padding(.top, 16)
     .fullScreenCover(
       store: store.scope(state: \.$destination.matched, action: \.destination.matched),
       content: MatchedView.init(store:)
