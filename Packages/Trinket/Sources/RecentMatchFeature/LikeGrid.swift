@@ -36,12 +36,12 @@ public struct LikeGridView: View {
             content: { image in
               image
                 .resizable()
-                .aspectRatio(3 / 4, contentMode: .fill)
+                .aspectRatio(1, contentMode: .fill)
                 .blur(radius: 18)
             },
             placeholder: {
               Color.black
-                .aspectRatio(3 / 4, contentMode: .fill)
+                .aspectRatio(1, contentMode: .fill)
                 .overlay {
                   ProgressView()
                     .progressViewStyle(CircularProgressViewStyle())

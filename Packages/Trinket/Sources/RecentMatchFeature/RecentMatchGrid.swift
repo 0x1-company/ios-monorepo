@@ -25,11 +25,11 @@ public struct RecentMatchGridView: View {
             content: { image in
               image
                 .resizable()
-                .aspectRatio(3 / 4, contentMode: .fill)
+                .aspectRatio(1, contentMode: .fill)
             },
             placeholder: {
               Color.black
-                .aspectRatio(3 / 4, contentMode: .fill)
+                .aspectRatio(1, contentMode: .fill)
                 .overlay {
                   ProgressView()
                     .progressViewStyle(CircularProgressViewStyle())
