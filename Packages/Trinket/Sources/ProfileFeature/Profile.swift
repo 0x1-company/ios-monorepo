@@ -48,7 +48,7 @@ public struct ProfileView: View {
             then: PictureSliderView.init(store:),
             else: {
               Color.black
-                .aspectRatio(3 / 4, contentMode: .fill)
+                .aspectRatio(1, contentMode: .fill)
                 .frame(width: UIScreen.main.bounds.width)
             }
           )

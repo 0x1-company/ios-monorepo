@@ -36,7 +36,7 @@ public struct PictureSliderView: View {
               },
               placeholder: {
                 Color.black
-                  .aspectRatio(3 / 4, contentMode: .fill)
+                  .aspectRatio(1, contentMode: .fill)
                   .overlay {
                     ProgressView()
                       .progressViewStyle(CircularProgressViewStyle())
@@ -69,7 +69,7 @@ public struct PictureSliderView: View {
           }
         }
         .clipShape(RoundedRectangle(cornerRadius: 16))
-        .aspectRatio(3 / 4, contentMode: .fill)
+        .aspectRatio(1, contentMode: .fill)
         .frame(width: UIScreen.main.bounds.size.width)
         .overlay {
           HStack(spacing: 0) {
