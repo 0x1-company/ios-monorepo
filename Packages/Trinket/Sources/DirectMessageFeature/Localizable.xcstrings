@@ -1,22 +1,22 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Add BeReal" : {
+    "Add Locket" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeRealを追加する"
+            "value" : "Locketを追加する"
           }
         }
       }
     },
-    "Add BeReal and send a message!" : {
+    "Add Locket and send a message!" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeRealを追加してメッセージを送ってみよう！"
+            "value" : "Locketを追加してメッセージを送ってみよう！"
           }
         }
       }

@@ -1,42 +1,12 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Female" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "女性"
-          }
-        }
-      }
-    },
-    "Male" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "男性"
-          }
-        }
-      }
-    },
     "Next" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "つぎへ"
-          }
-        }
-      }
-    },
-    "Non-Binary" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "その他"
           }
         }
       }
