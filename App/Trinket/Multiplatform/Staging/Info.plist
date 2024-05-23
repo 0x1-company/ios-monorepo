@@ -40,14 +40,6 @@
 	<true/>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>Analytics are used to accurately measure</string>
-	<key>PRODUCTS</key>
-	<array>
-		<string>jp.bematch.ios.staging.subscription.pro.1week</string>
-		<string>jp.bematch.ios.staging.subscription.pro.1month</string>
-		<string>jp.bematch.ios.staging.subscription.pro.3month</string>
-		<string>jp.bematch.ios.staging.subscription.pro.6month</string>
-		<string>jp.bematch.ios.staging.subscription.pro.1year</string>
-	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -119,5 +111,13 @@
 	<string>ArrQmb3aHuS47UnotusTAe</string>
 	<key>endpointURL</key>
 	<string>https://trinket-server-zjgv3o7bea-an.a.run.app/graphql</string>
+	<key>PRODUCTS</key>
+	<array>
+		<string>camera.trinket.ios.staging.subscription.pro.1week</string>
+		<string>camera.trinket.ios.staging.subscription.pro.1month</string>
+		<string>camera.trinket.ios.staging.subscription.pro.3month</string>
+		<string>camera.trinket.ios.staging.subscription.pro.6month</string>
+		<string>camera.trinket.ios.staging.subscription.pro.1year</string>
+	</array>
 </dict>
 </plist>
