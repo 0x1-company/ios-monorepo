@@ -13,9 +13,15 @@
     },
     "RECENT MATCH" : {
       "localizations" : {
-        "ja" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Recent Match"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "最近のマッチ"
           }
         }
