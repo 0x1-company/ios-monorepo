@@ -59,7 +59,7 @@ public struct UnsentDirectMessageListContentReceivedLikeRowView: View {
               Text(Image(systemName: "heart.fill"))
                 .font(.system(size: 14))
 
-                Text(viewStore.displayCount)
+              Text(viewStore.displayCount)
                 .font(.system(.body, weight: .semibold))
             }
             .foregroundStyle(Color.black)

@@ -14,7 +14,7 @@ public struct RecommendationEmptyView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 40) {
-          Image(ImageResource.break)
+        Image(ImageResource.break)
           .resizable()
           .aspectRatio(contentMode: .fit)
           .frame(maxWidth: .infinity)
