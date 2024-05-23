@@ -11,12 +11,12 @@
         }
       }
     },
-    "Add BeReal." : {
+    "Add Locket." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeReal.を追加する"
+            "value" : "Locketを追加する"
           }
         }
       }

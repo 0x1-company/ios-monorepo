@@ -21,7 +21,7 @@ public struct MatchedView: View {
 
         VStack(spacing: 12) {
           PrimaryButton(
-            String(localized: "Add BeReal.", bundle: .module)
+            String(localized: "Add Locket.", bundle: .module)
           ) {
             store.send(.addBeRealButtonTapped)
           }
