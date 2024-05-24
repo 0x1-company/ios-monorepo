@@ -22,8 +22,8 @@ public struct RootNavigationView: View {
         .tabItem {
           Image(
             viewStore.tab.is(\.recommendation)
-              ? ImageResource.searchActive
-              : ImageResource.searchDeactive
+            ? ImageResource.recommendationActive
+            : ImageResource.recommendationDeactive
           )
           .resizable()
           .aspectRatio(contentMode: .fit)
@@ -35,8 +35,8 @@ public struct RootNavigationView: View {
           .tabItem {
             Image(
               viewStore.tab.is(\.category)
-                ? ImageResource.categoryActive
-                : ImageResource.categoryDeactive
+                ? ImageResource.explorerActive
+              : ImageResource.explorerDeactive
             )
             .resizable()
             .aspectRatio(contentMode: .fit)
@@ -49,7 +49,7 @@ public struct RootNavigationView: View {
             Image(
               viewStore.tab.is(\.message)
                 ? ImageResource.messageActive
-                : ImageResource.messageDeactive
+              : ImageResource.messageDeactive
             )
             .resizable()
             .aspectRatio(contentMode: .fit)

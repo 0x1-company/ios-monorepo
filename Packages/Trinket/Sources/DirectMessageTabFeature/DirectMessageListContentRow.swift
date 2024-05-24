@@ -51,7 +51,7 @@ public struct DirectMessageListContentRowView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
 
               if !viewStore.isAuthor {
-                Text("Let's Reply", bundle: .module)
+                Text("Reply!", bundle: .module)
                   .font(.system(.caption2, weight: .medium))
                   .foregroundStyle(Color.black)
                   .padding(.vertical, 3)
