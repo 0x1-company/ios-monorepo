@@ -27,7 +27,7 @@ public struct OnboardLogic {
       self.user = user
 
       @Dependency(\.environment) var environment
-      switch environment.product() {
+      switch environment.brand() {
       case .bematch:
         username = UsernameSettingLogic.State(username: user?.berealUsername ?? "")
       case .tapmatch:

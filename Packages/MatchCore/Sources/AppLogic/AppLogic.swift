@@ -87,8 +87,8 @@ public struct AppLogic {
           case let .success(user) = account.user
         else { return .none }
 
-        let product = environment.product()
-        let isOnboardCompleted = isOnboardCompleted(user: user, product: product)
+        let brand = environment.brand()
+        let isOnboardCompleted = isOnboardCompleted(user: user, brand: brand)
 
         switch user.status {
         case .case(.active) where !isOnboardCompleted:
@@ -136,9 +136,9 @@ public struct AppLogic {
 
   func isOnboardCompleted(
     user: API.UserInternal,
-    product: EnvironmentClient.Product
+    brand: EnvironmentClient.Brand
   ) -> Bool {
-    switch product {
+    switch brand {
     case .bematch:
       return !user.berealUsername.isEmpty && user.images.count >= 3
     case .tapmatch:
