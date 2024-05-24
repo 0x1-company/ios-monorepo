@@ -59,7 +59,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
           )
           $0.api = APIClient.live(apolloClient: apolloClient)
           $0.environment = EnvironmentClient.live(
-            product: EnvironmentClient.Product.tapmatch,
+            brand: EnvironmentClient.Brand.tapmatch,
             username: String(localized: "bematch"),
             appId: "6502700340",
             appStoreForEmptyURL: URL(string: "https://bematch.onelink.me/nob4/ta8yroer")!,

@@ -4,6 +4,7 @@ import API
 import APIClient
 import Build
 import ComposableArchitecture
+import EnvironmentClient
 import FeedbackGeneratorClient
 import ProductPurchaseLogic
 import StoreKit
@@ -60,6 +61,7 @@ public struct MembershipLogic {
   @Dependency(\.build) var build
   @Dependency(\.store) var store
   @Dependency(\.analytics) var analytics
+  @Dependency(\.environment) var environment
   @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   enum Cancel {
@@ -126,7 +128,7 @@ public struct MembershipLogic {
           )
 
           let localized: String.LocalizationValue = """
-          I'm sending you an invite code [\(data.invitationCode.code)] to unlock TapMatch PRO for free (worth \(specialOfferDisplayPrice)).
+          I'm sending you an invite code [\(data.invitationCode.code)] to unlock BeMatch PRO for free (worth \(specialOfferDisplayPrice)).
           https://bematch.onelink.me/nob4/mhxumci1
           """
           state.shareText = String(localized: localized, bundle: .module)

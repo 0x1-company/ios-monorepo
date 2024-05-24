@@ -42,7 +42,7 @@ public struct ProductPurchaseContentRowLogic {
       self.currencyCode = currencyCode
       self.displayPrice = displayPrice
       self.isSelected = isSelected
-      isMostPopularFlag = isSelected && id.contains("1month")
+      isMostPopularFlag = isSelected && id.contains("3month")
     }
   }
 

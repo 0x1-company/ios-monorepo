@@ -110,7 +110,7 @@ public struct ProfilePictureSettingLogic {
         }
 
       case let .loadTransferableResponse(offset, .success(.some(data))):
-        let requiredSize = switch environment.product() {
+        let requiredSize = switch environment.brand() {
         case .bematch:
           CGSize(width: 1500, height: 2000)
         case .tapmatch:

@@ -10,6 +10,7 @@ public extension DependencyValues {
 
 extension StoreKitClient: TestDependencyKey {
   public static let testValue = Self(
+    sync: unimplemented("\(Self.self).sync"),
     transactionUpdates: unimplemented("\(Self.self).transactionUpdates"),
     products: unimplemented("\(Self.self).products"),
     purchase: unimplemented("\(Self.self).purchase")

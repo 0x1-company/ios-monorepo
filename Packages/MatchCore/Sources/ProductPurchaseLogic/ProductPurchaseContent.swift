@@ -26,7 +26,7 @@ public struct ProductPurchaseContentLogic {
     ) {
       self.appAccountToken = appAccountToken
       self.products = products
-      selectProductID = products.first(where: { $0.id.contains("1month") })!.id
+      selectProductID = products.first(where: { $0.id.contains("3month") })!.id
     }
   }
 
@@ -34,8 +34,10 @@ public struct ProductPurchaseContentLogic {
     case onTask
     case rows(IdentifiedActionOf<ProductPurchaseContentRowLogic>)
     case updateRows
+    case restoreButtonTapped
     case purchaseButtonTapped
     case purchaseResponse(Result<StoreKit.Transaction, Error>)
+    case restoreResponse(Result<Void, Error>)
     case createAppleSubscriptionResponse(Result<API.CreateAppleSubscriptionMutation.Data, Error>)
     case transactionFinish(Transaction)
     case destination(PresentationAction<Destination.Action>)
@@ -72,6 +74,13 @@ public struct ProductPurchaseContentLogic {
           }
         state.rows = IdentifiedArrayOf(uniqueElements: uniqueElements)
         return .none
+
+      case .restoreButtonTapped:
+        return .run { send in
+          await send(.restoreResponse(Result {
+            try await store.sync()
+          }))
+        }
 
       case .purchaseButtonTapped:
         guard let product = state.products.first(where: { $0.id == state.selectProductID })
@@ -141,6 +150,7 @@ public struct ProductPurchaseContentLogic {
 
       case .destination(.presented(.alert(.confirmOkay))):
         state.destination = nil
+        state.isActivityIndicatorVisible = false
         return .none
 
       default:

@@ -23,60 +23,64 @@ public struct MembershipPurchaseView: View {
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
-      VStack(spacing: 16) {
-        ScrollView {
-          VStack(spacing: 24) {
+      ZStack(alignment: .top) {
+        Color.yellow
+          .frame(width: 190, height: 190)
+          .clipShape(Circle())
+          .offset(y: -190)
+          .blur(radius: 64)
+
+        VStack(spacing: 16) {
+          ScrollView {
             VStack(spacing: 16) {
               Text("Premium Plan", bundle: .module)
-                .font(.footnote)
+                .font(.subheadline)
                 .fontWeight(.semibold)
                 .padding(.vertical, 6)
-                .padding(.horizontal, 8)
+                .padding(.horizontal, 12)
                 .overlay(
-                  RoundedRectangle(cornerRadius: 4)
+                  Capsule()
                     .stroke(Color.white, lineWidth: 1)
                 )
 
-              Image(ImageResource.bematchPro)
+              VStack(spacing: 24) {
+                Text("Find someone you care about!", bundle: .module)
+                  .font(.system(.title2, weight: .bold))
 
-              Text("Find someone you care about!", bundle: .module)
-                .font(.title2)
-                .bold()
-            }
-
-            VStack(spacing: 40) {
-              Button {
-                store.send(.upgradeButtonTapped)
-              } label: {
-                Text("Upgrade for \(viewStore.displayPrice)/week", bundle: .module)
+                Button {
+                  store.send(.upgradeButtonTapped)
+                } label: {
+                  Text("Upgrade for \(viewStore.displayPrice)/week", bundle: .module)
+                }
+                .buttonStyle(ConversionPrimaryButtonStyle())
               }
-              .buttonStyle(ConversionPrimaryButtonStyle())
 
-              VStack(spacing: 60) {
-                SpecialOfferView()
+              SpecialOfferView()
 
-                PurchaseAboutView(
-                  displayPrice: viewStore.displayPrice
-                )
-              }
+              PurchaseAboutView(
+                displayPrice: viewStore.displayPrice
+              )
             }
+            .padding(.bottom, 48)
+            .padding(.horizontal, 16)
           }
-          .padding(.top, 96)
-          .padding(.bottom, 48)
-          .padding(.horizontal, 16)
-        }
 
-        Button {
-          store.send(.upgradeButtonTapped)
-        } label: {
-          Text("Upgrade for \(viewStore.displayPrice)/week", bundle: .module)
+          Button {
+            store.send(.upgradeButtonTapped)
+          } label: {
+            Text("Upgrade for \(viewStore.displayPrice)/week", bundle: .module)
+          }
+          .buttonStyle(ConversionPrimaryButtonStyle())
+          .padding(.horizontal, 16)
+          .padding(.bottom, 36)
         }
-        .buttonStyle(ConversionPrimaryButtonStyle())
-        .padding(.horizontal, 16)
-        .padding(.bottom, 36)
+        .task { await store.send(.onTask).finish() }
       }
-      .background()
-      .task { await store.send(.onTask).finish() }
+      .toolbar {
+        ToolbarItem(placement: .principal) {
+          Image(ImageResource.logo)
+        }
+      }
     }
   }
 }

@@ -33,7 +33,7 @@ public struct MembershipView: View {
             )
           }
         }
-        .ignoresSafeArea()
+        .navigationBarTitleDisplayMode(.inline)
         .task { await store.send(.onTask).finish() }
         .alert(store: store.scope(state: \.$destination.alert, action: \.destination.alert))
         .toolbar {
