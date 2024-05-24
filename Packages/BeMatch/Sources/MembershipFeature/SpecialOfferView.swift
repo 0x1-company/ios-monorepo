@@ -5,41 +5,41 @@ public struct SpecialOfferView: View {
   @Environment(\.locale) var locale
 
   public var body: some View {
-    VStack(spacing: 24) {
-      Text("See who sent it!", bundle: .module)
-        .font(.title3)
-        .fontWeight(.semibold)
-        .frame(maxWidth: .infinity)
-        .padding(.top, 44)
+    VStack(spacing: 16) {
+      Text("Special offer", bundle: .module)
+        .font(.system(.title2, weight: .bold))
+        .padding(.vertical, 8)
+        .padding(.horizontal, 12)
+        .background(
+          LinearGradient(
+            colors: [
+              Color.black,
+              Color.yellow,
+            ],
+            startPoint: .top,
+            endPoint: .bottom
+          )
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 6))
 
-      Image(String(localized: "image-see-who-sent-it", bundle: .module), bundle: .module)
-        .resizable()
-        .aspectRatio(contentMode: .fit)
+      VStack(spacing: 24) {
+        Text("See who sent it!", bundle: .module)
+          .font(.system(.title2, weight: .bold))
+
+        Image(String(localized: "image-see-who-sent-it", bundle: .module), bundle: .module)
+          .resizable()
+          .aspectRatio(contentMode: .fit)
+      }
     }
-    .padding(.bottom, 20)
+    .padding(.top, 36)
     .padding(.horizontal, 16)
     .multilineTextAlignment(.center)
     .background(Color(uiColor: UIColor.secondarySystemBackground))
     .clipShape(RoundedRectangle(cornerRadius: 16))
-    .overlay(alignment: .top) {
-      Text("Special offer", bundle: .module)
-        .font(.title2)
-        .bold()
-        .padding(.vertical, 6)
-        .padding(.horizontal, 8)
-        .background(
-          LinearGradient(
-            colors: [
-              Color(0xFFFD_2D76),
-              Color(0xFFFE_7056),
-            ],
-            startPoint: .bottomLeading,
-            endPoint: .topTrailing
-          )
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 4))
-        .offset(y: -20)
-    }
+    .overlay(
+      RoundedRectangle(cornerRadius: 16)
+        .stroke(Color(uiColor: UIColor.opaqueSeparator), lineWidth: 0.5)
+    )
   }
 }
 
