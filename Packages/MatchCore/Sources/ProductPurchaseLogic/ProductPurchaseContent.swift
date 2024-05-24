@@ -34,6 +34,7 @@ public struct ProductPurchaseContentLogic {
     case onTask
     case rows(IdentifiedActionOf<ProductPurchaseContentRowLogic>)
     case updateRows
+    case restoreButtonTapped
     case purchaseButtonTapped
     case purchaseResponse(Result<StoreKit.Transaction, Error>)
     case createAppleSubscriptionResponse(Result<API.CreateAppleSubscriptionMutation.Data, Error>)
@@ -72,6 +73,11 @@ public struct ProductPurchaseContentLogic {
           }
         state.rows = IdentifiedArrayOf(uniqueElements: uniqueElements)
         return .none
+        
+      case .restoreButtonTapped:
+        return .run { _ in
+          try await store.sync()
+        }
 
       case .purchaseButtonTapped:
         guard let product = state.products.first(where: { $0.id == state.selectProductID })
