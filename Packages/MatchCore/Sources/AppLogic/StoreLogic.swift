@@ -31,13 +31,13 @@ public struct StoreLogic {
       .cancellable(id: Cancel.transactionUpdates, cancelInFlight: true)
 
     case let .transaction(.success(transaction)):
+      let isProduction = transaction.environment == .production
+      let environment: API.AppleSubscriptionEnvironment = isProduction ? .production : .sandbox
+      let input = API.CreateAppleSubscriptionInput(
+        environment: .init(environment),
+        transactionId: transaction.id.description
+      )
       return .run { _ in
-        let isProduction = transaction.environment == .production
-        let environment: API.AppleSubscriptionEnvironment = isProduction ? .production : .sandbox
-        let input = API.CreateAppleSubscriptionInput(
-          environment: .init(environment),
-          transactionId: transaction.id.description
-        )
         let data = try await api.createAppleSubscription(input)
         if data.createAppleSubscription {
           await transaction.finish()
