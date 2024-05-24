@@ -56,7 +56,6 @@ public struct AppLogic {
     case trackingAuthorization(ATTrackingManager.AuthorizationStatus)
     case transaction(Result<StoreKit.Transaction, Error>)
     case userDidTakeScreenshotNotification
-    case destination(PresentationAction<Destination.Action>)
   }
 
   @Dependency(\.analytics) var analytics

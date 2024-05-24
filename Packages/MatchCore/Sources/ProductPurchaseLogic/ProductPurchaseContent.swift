@@ -73,7 +73,7 @@ public struct ProductPurchaseContentLogic {
           }
         state.rows = IdentifiedArrayOf(uniqueElements: uniqueElements)
         return .none
-        
+
       case .restoreButtonTapped:
         return .run { _ in
           try await store.sync()
