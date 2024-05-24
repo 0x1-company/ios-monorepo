@@ -141,6 +141,7 @@ public struct ProductPurchaseContentLogic {
 
       case .destination(.presented(.alert(.confirmOkay))):
         state.destination = nil
+        state.isActivityIndicatorVisible = false
         return .none
 
       default:
