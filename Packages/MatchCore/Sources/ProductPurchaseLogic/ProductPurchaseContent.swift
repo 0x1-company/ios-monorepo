@@ -26,7 +26,7 @@ public struct ProductPurchaseContentLogic {
     ) {
       self.appAccountToken = appAccountToken
       self.products = products
-      selectProductID = products.first(where: { $0.id.contains("1month") })!.id
+      selectProductID = products.first(where: { $0.id.contains("3month") })!.id
     }
   }
 
