@@ -69,7 +69,7 @@ public struct UnsentDirectMessageListContentReceivedLikeRowView: View {
             .clipShape(RoundedRectangle(cornerRadius: .infinity))
           }
 
-          Text("Like", bundle: .module)
+          Text("Likes", bundle: .module)
             .font(.system(.subheadline, weight: .semibold))
             .foregroundStyle(Color.primary)
         }

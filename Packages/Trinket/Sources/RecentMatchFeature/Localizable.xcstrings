@@ -11,17 +11,11 @@
         }
       }
     },
-    "RECENT MATCH" : {
+    "Recently Match" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Recent Match"
-          }
-        },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "最近のマッチ"
           }
         }

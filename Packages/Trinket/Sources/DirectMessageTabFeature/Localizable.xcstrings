@@ -1,81 +1,51 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Let's Reply" : {
+    "Likes" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reply!"
-          }
-        },
         "ja" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "返信しよう"
-          }
-        }
-      }
-    },
-    "Like" : {
-      "localizations" : {
-        "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Likes"
           }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Like"
-          }
         }
       }
     },
-    "MESSAGE" : {
+    "Messages" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Messages"
-          }
-        },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "メッセージ"
           }
         }
       }
     },
-    "RECENT MATCH" : {
+    "Recently Match" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Recently Match"
-          }
-        },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "最近のマッチ"
           }
         }
       }
     },
-    "SEE MORE" : {
+    "Reply!" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "See More"
-          }
-        },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
+            "value" : "返信しよう"
+          }
+        }
+      }
+    },
+    "See More" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "すべて見る"
           }
         }
