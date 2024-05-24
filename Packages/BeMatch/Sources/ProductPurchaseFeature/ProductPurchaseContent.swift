@@ -42,6 +42,13 @@ public struct ProductPurchaseContentView: View {
                 content: ProductPurchaseContentRowView.init(store:)
               )
 
+              Button {
+                store.send(.restoreButtonTapped)
+              } label: {
+                Text("Restore a purchase", bundle: .module)
+                  .font(.system(.footnote, weight: .semibold))
+              }
+
               Text("Recurring billing. You can cancel at any time. Your payment will be charged to your iTunes account and will auto-renew until you cancel in the iTunes Store settings. By tapping Unlock, you agree to the Terms of Service and auto-renewal.", bundle: .module)
                 .font(.caption)
                 .foregroundStyle(Color(uiColor: UIColor.tertiaryLabel))
@@ -51,7 +58,7 @@ public struct ProductPurchaseContentView: View {
           }
 
           PrimaryButton(
-            String(localized: "Next", bundle: .module),
+            String(localized: "Continue", bundle: .module),
             isLoading: viewStore.isActivityIndicatorVisible,
             isDisabled: viewStore.isActivityIndicatorVisible
           ) {

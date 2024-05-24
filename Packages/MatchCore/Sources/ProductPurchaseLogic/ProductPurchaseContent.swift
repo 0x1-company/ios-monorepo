@@ -37,6 +37,7 @@ public struct ProductPurchaseContentLogic {
     case restoreButtonTapped
     case purchaseButtonTapped
     case purchaseResponse(Result<StoreKit.Transaction, Error>)
+    case restoreResponse(Result<Void, Error>)
     case createAppleSubscriptionResponse(Result<API.CreateAppleSubscriptionMutation.Data, Error>)
     case transactionFinish(Transaction)
     case destination(PresentationAction<Destination.Action>)
@@ -75,8 +76,10 @@ public struct ProductPurchaseContentLogic {
         return .none
 
       case .restoreButtonTapped:
-        return .run { _ in
-          try await store.sync()
+        return .run { send in
+          await send(.restoreResponse(Result {
+            try await store.sync()
+          }))
         }
 
       case .purchaseButtonTapped:
