@@ -51,6 +51,7 @@ public struct AppLogic {
     case configFetched
     case configResponse(TaskResult<ConfigGlobalClient.Config>)
     case signInAnonymouslyResponse(Result<AuthDataResult, Error>)
+    case productsResponse(Result<[Product], Error>)
     case createUserResponse(Result<API.CreateUserMutation.Data, Error>)
     case trackingAuthorization(ATTrackingManager.AuthorizationStatus)
     case transaction(Result<StoreKit.Transaction, Error>)

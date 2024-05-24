@@ -6,11 +6,15 @@ import Apollo
 import AppsFlyerClient
 import ATTrackingManagerClient
 import BannedLogic
+import Build
 import ComposableArchitecture
 import FirebaseAuthClient
+import StoreKit
 
 @Reducer
 public struct AuthLogic {
+  @Dependency(\.build) var build
+  @Dependency(\.store) var store
   @Dependency(\.locale) var locale
   @Dependency(\.appsFlyer) var appsFlyer
   @Dependency(\.analytics) var analytics
@@ -38,19 +42,32 @@ public struct AuthLogic {
       }
 
     case .signInAnonymouslyResponse(.success):
-      let countryCode = locale.region?.identifier
-      let input = API.CreateUserInput(
-        countryCode: countryCode ?? .null
-      )
+      let ids = build.infoDictionary("PRODUCTS", for: [String].self)!
       return .run { send in
-        await send(.createUserResponse(Result {
-          try await createUser(input)
+        await send(.productsResponse(Result {
+          try await store.products(ids)
         }))
       }
 
     case .signInAnonymouslyResponse(.failure):
       state.child = .networkError()
       return .none
+
+    case let .productsResponse(.success(products)):
+      let countryCode: String? = if let product = products.first {
+        product.priceFormatStyle.locale.region?.identifier
+      } else {
+        locale.region?.identifier
+      }
+      return .run { send in
+        await requestCreateUser(send: send, countryCode: countryCode)
+      }
+
+    case .productsResponse(.failure):
+      let countryCode = locale.region?.identifier
+      return .run { send in
+        await requestCreateUser(send: send, countryCode: countryCode)
+      }
 
     case let .createUserResponse(.success(data)):
       let user = data.createUserV2.fragments.userInternal
@@ -78,5 +95,12 @@ public struct AuthLogic {
     default:
       return .none
     }
+  }
+
+  func requestCreateUser(send: Send<AppLogic.Action>, countryCode: String?) async {
+    let input = API.CreateUserInput(countryCode: countryCode ?? .null)
+    await send(.createUserResponse(Result {
+      try await createUser(input)
+    }))
   }
 }
