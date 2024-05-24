@@ -40,10 +40,10 @@ public struct CreationDateLogic {
         dateFormatter.dateStyle = .long
         let formattedCreationDate = dateFormatter.string(from: state.creationDate)
 
-        let product = environment.product()
+        let brand = environment.brand()
 
         state.creationDateString = String(
-          localized: "You joined \(product.displayName) \(daysAgo) days ago on \(formattedCreationDate)",
+          localized: "You joined \(brand.displayName) \(daysAgo) days ago on \(formattedCreationDate)",
           bundle: .module
         )
         return .none

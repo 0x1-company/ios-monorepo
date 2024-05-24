@@ -3,7 +3,7 @@ import Foundation
 
 public extension EnvironmentClient {
   static func live(
-    product: Product,
+    brand: Brand,
     username: String,
     appId: String,
     appStoreForEmptyURL: URL,
@@ -15,7 +15,7 @@ public extension EnvironmentClient {
     let developerURL = URL(string: "https://instagram.com/tomokisun")!
 
     return EnvironmentClient(
-      product: { product },
+      brand: { brand },
       appStoreURL: { URL(string: "https://apps.apple.com/jp/app/id\(appId)")! },
       appStoreForEmptyURL: { appStoreForEmptyURL },
       appStoreReviewURL: { URL(string: "https://itunes.apple.com/us/app/apple-store/id\(appId)?mt=8&action=write-review")! },

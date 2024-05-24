@@ -4,7 +4,7 @@ import Foundation
 
 @DependencyClient
 public struct EnvironmentClient {
-  public var product: @Sendable () -> Product = { Product.bematch }
+  public var brand: @Sendable () -> Brand = { Brand.bematch }
 
   public var appStoreURL: @Sendable () -> URL = { URL.currentDirectory() }
   public var appStoreForEmptyURL: @Sendable () -> URL = { URL.currentDirectory() }
@@ -27,7 +27,7 @@ public struct EnvironmentClient {
 
   public var howToMovieURL: @Sendable () -> URL = { URL.currentDirectory() }
 
-  public enum Product: Equatable {
+  public enum Brand: Equatable {
     case bematch
     case tapmatch
     case trinket

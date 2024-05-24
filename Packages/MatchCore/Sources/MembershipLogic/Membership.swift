@@ -4,6 +4,7 @@ import API
 import APIClient
 import Build
 import ComposableArchitecture
+import EnvironmentClient
 import FeedbackGeneratorClient
 import ProductPurchaseLogic
 import StoreKit
@@ -60,6 +61,7 @@ public struct MembershipLogic {
   @Dependency(\.build) var build
   @Dependency(\.store) var store
   @Dependency(\.analytics) var analytics
+  @Dependency(\.environment) var environment
   @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   enum Cancel {

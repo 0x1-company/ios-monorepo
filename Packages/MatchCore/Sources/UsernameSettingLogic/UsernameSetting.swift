@@ -60,7 +60,7 @@ public struct UsernameSettingLogic {
         let tapmatchInput = API.UpdateTapNowInput(username: state.value)
         let trinketInput = API.UpdateLocketInput(url: state.value)
 
-        let product = environment.product()
+        let brand = environment.brand()
 
         return .run { send in
           await withTaskGroup(of: Void.self) { group in
@@ -68,7 +68,7 @@ public struct UsernameSettingLogic {
               await feedbackGenerator.impactOccurred()
             }
 
-            switch product {
+            switch brand {
             case .bematch:
               group.addTask {
                 await send(.updateBeRealResponse(Result {
