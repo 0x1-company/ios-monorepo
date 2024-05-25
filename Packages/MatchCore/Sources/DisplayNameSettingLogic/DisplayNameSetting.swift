@@ -69,7 +69,7 @@ public struct DisplayNameSettingLogic {
         state.isActivityIndicatorVisible = false
         return .send(.delegate(.nextScreen))
 
-      case let .updateDisplayNameResponse(.failure(error)):
+      case let .updateDisplayNameResponse(.failure(error as ServerError)):
         state.isActivityIndicatorVisible = false
         state.alert = AlertState {
           TextState("Error", bundle: .module)
@@ -78,7 +78,7 @@ public struct DisplayNameSettingLogic {
             TextState("OK", bundle: .module)
           }
         } message: {
-          TextState(error.localizedDescription)
+          TextState(error.message)
         }
         return .none
 
