@@ -32,7 +32,7 @@ public struct InvitationView: View {
 
         VStack(spacing: 0) {
           PrimaryButton(
-            String(localized: "Next", bundle: .module),
+            String(localized: "Continue", bundle: .module),
             isLoading: viewStore.isActivityIndicatorVisible,
             isDisabled: viewStore.isDisabled
           ) {

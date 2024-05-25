@@ -16,7 +16,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "性別を教えてください"
+            "value" : "性別を設定してください"
           }
         }
       }

@@ -51,7 +51,7 @@ public struct ProductPurchaseContentView: View {
           }
 
           PrimaryButton(
-            String(localized: "Next", bundle: .module),
+            String(localized: "Continue", bundle: .module),
             isLoading: viewStore.isActivityIndicatorVisible,
             isDisabled: viewStore.isActivityIndicatorVisible
           ) {

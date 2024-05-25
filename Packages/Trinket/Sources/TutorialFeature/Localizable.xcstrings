@@ -1,12 +1,12 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Trinket is an application that allows you to exchange BeReal with everyone in Japan!" : {
+    "Continue" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Trinketは日本中のみんなとBeRealを交換できるアプリです"
+            "value" : "続ける"
           }
         }
       }
@@ -61,16 +61,6 @@
         }
       }
     },
-    "Next" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "次へ"
-          }
-        }
-      }
-    },
     "Right if you are interested!" : {
       "localizations" : {
         "ja" : {
@@ -87,6 +77,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "スキップ"
+          }
+        }
+      }
+    },
+    "Trinket is an application that allows you to exchange Locket with everyone in Global!" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trinketは日本中のみんなとLocketを交換できるアプリです"
           }
         }
       }
