@@ -1,22 +1,22 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Just a little... Too much swiping... Please help me share Trinket... 🙏" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ちょっと...スワイプしすぎです...。Trinketのシェアに協力してください... 🙏"
-          }
-        }
-      }
-    },
     "Share" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "シェアする"
+          }
+        }
+      }
+    },
+    "Too much swiping...\nPlease help us share Trinket... 🙏" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ちょっと...スワイプしすぎです...。Trinketのシェアに協力してください... 🙏"
           }
         }
       }
