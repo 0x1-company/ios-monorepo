@@ -110,7 +110,7 @@
 	<key>apps-flyer-dev-key</key>
 	<string>ArrQmb3aHuS47UnotusTAe</string>
 	<key>endpointURL</key>
-	<string>https://trinket-server-zjgv3o7bea-an.a.run.app/graphql</string>
+	<string>https://api.staging.trinket.camera/graphql</string>
 	<key>PRODUCTS</key>
 	<array>
 		<string>camera.trinket.ios.staging.subscription.pro.1week</string>
