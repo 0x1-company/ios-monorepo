@@ -1,6 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Continue" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "続ける"
+          }
+        }
+      }
+    },
     "If you have an invitation code.\nPlease let us know." : {
       "localizations" : {
         "ja" : {
@@ -17,16 +27,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "招待コード"
-          }
-        }
-      }
-    },
-    "Next" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "つぎへ"
           }
         }
       }

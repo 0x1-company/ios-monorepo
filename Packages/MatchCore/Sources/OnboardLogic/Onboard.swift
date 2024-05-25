@@ -35,6 +35,10 @@ public struct OnboardLogic {
       case .trinket:
         username = UsernameSettingLogic.State(username: user?.locketUrl ?? "")
       }
+      if !username.value.isEmpty {
+        let gender = user?.gender.value
+        path.append(.gender(GenderSettingLogic.State(gender: gender == .other ? nil : gender)))
+      }
     }
   }
 

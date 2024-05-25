@@ -2,7 +2,14 @@
   "sourceLanguage" : "en",
   "strings" : {
     "By doing this, you agree\nto our [Privacy Policy](https://docs.trinket.camera/privacy-policy) and [Terms of Use](https://docs.trinket.camera/terms-of-use)." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "続けることで[プライバシーポリシー](https://docs.trinket.camera/privacy-policy)および[利用規約](https://docs.trinket.camera/terms-of-use)に同意するものとします。"
+          }
+        }
+      }
     },
     "Continue" : {
       "localizations" : {
@@ -24,7 +31,14 @@
 
     },
     "Give me the Locket\ninvitation link." : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Locketの招待リンクを設定してください"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

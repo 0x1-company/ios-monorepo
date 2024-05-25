@@ -38,7 +38,7 @@ public struct DisplayNameSettingView: View {
         Spacer()
 
         PrimaryButton(
-          String(localized: "Next", bundle: .module),
+          String(localized: "Continue", bundle: .module),
           isLoading: viewStore.isActivityIndicatorVisible
         ) {
           store.send(.nextButtonTapped)
