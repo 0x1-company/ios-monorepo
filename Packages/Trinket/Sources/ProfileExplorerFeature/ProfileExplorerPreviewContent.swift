@@ -21,8 +21,6 @@ public struct ProfileExplorerPreviewContentView: View {
         store.send(.addBeRealButtonTapped)
       }
       .padding(.horizontal, 16)
-
-      Spacer()
     }
     .confirmationDialog(store: store.scope(state: \.$confirmationDialog, action: \.confirmationDialog))
   }
