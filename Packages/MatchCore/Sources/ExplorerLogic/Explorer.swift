@@ -32,7 +32,13 @@ public struct ExplorerLogic {
       switch action {
       case .onTask:
         analytics.logScreen(screenName: "Explorer", of: self)
-        return .none
+        return .run { send in
+          for try await data in api.explorers() {
+            await send(.explorersResponse(.success(data)))
+          }
+        } catch: { error, send in
+          await send(.explorersResponse(.failure(error)))
+        }
 
       case let .explorersResponse(.success(data)):
         let elements = data.explorers

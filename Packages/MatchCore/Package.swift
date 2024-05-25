@@ -255,6 +255,7 @@ let package = Package(
     ]),
     .target(name: "NavigationLogic", dependencies: [
       "CategoryLogic",
+      "ExplorerLogic",
       "DirectMessageTabLogic",
       "RecommendationLogic",
     ]),

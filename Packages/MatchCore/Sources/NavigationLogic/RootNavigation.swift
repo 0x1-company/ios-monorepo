@@ -3,6 +3,7 @@ import APIClient
 import CategoryLogic
 import ComposableArchitecture
 import DirectMessageTabLogic
+import ExplorerLogic
 import FeedbackGeneratorClient
 import RecommendationLogic
 import SwiftUI
@@ -16,12 +17,14 @@ public struct RootNavigationLogic {
   public enum Tab {
     case recommendation
     case category
+    case explorer
     case message
   }
 
   public struct State: Equatable {
     public var recommendation = RecommendationLogic.State.loading
     public var category = CategoryLogic.State()
+    public var explorer = ExplorerLogic.State.loading
     public var message = DirectMessageTabLogic.State()
 
     @BindingState public var tab = Tab.recommendation
@@ -33,6 +36,7 @@ public struct RootNavigationLogic {
     case onTask
     case recommendation(RecommendationLogic.Action)
     case category(CategoryLogic.Action)
+    case explorer(ExplorerLogic.Action)
     case message(DirectMessageTabLogic.Action)
     case binding(BindingAction<State>)
     case pushNotificationBadgeResponse(Result<API.PushNotificationBadgeQuery.Data, Error>)
@@ -54,6 +58,9 @@ public struct RootNavigationLogic {
     }
     Scope(state: \.category, action: \.category) {
       CategoryLogic()
+    }
+    Scope(state: \.explorer, action: \.explorer) {
+      ExplorerLogic()
     }
     Scope(state: \.message, action: \.message) {
       DirectMessageTabLogic()
