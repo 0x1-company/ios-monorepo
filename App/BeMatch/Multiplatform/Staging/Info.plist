@@ -101,7 +101,7 @@
 	<key>UIUserInterfaceStyle</key>
 	<string>Dark</string>
 	<key>endpointURL</key>
-	<string>https://bematch-server-zjgv3o7bea-an.a.run.app/graphql</string>
+	<string>https://api.staging.bematch.jp/graphql</string>
 	<key>apps-flyer-dev-key</key>
 	<string>ArrQmb3aHuS47UnotusTAe</string>
 	<key>apple-app-id</key>
