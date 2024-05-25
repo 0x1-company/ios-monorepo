@@ -119,6 +119,6 @@
 	<key>apps-flyer-dev-key</key>
 	<string>ArrQmb3aHuS47UnotusTAe</string>
 	<key>endpointURL</key>
-	<string></string>
+	<string>https://tapmatch-server-zjgv3o7bea-an.a.run.app/graphql</string>
 </dict>
 </plist>
