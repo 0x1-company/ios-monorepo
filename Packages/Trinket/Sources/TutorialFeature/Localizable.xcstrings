@@ -8,6 +8,12 @@
             "state" : "translated",
             "value" : "続ける"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계속하기"
+          }
         }
       }
     },
@@ -17,6 +23,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "さっそくはじめる"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시작하기"
           }
         }
       }
@@ -28,6 +40,12 @@
             "state" : "translated",
             "value" : "うーん...のときは左"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "흠... 언제 떠났나요?"
+          }
         }
       }
     },
@@ -37,6 +55,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "お互いにLikeするとマッチが成立。早速試してみよう！"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "두 사람이 서로 마음에 들면 매칭이 성사됩니다. 지금 바로 시도해 보세요!"
           }
         }
       }
@@ -48,6 +72,12 @@
             "state" : "translated",
             "value" : "ちょっと違うかも...と思ったら、左にスワイプしよう。Nopeしたことは相手に伝わらないから大丈夫。"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“아닐 수도 있는데...”라고 생각되면 왼쪽으로 스와이프합니다.적절하지 않다고 생각되면 왼쪽으로 스와이프합니다."
+          }
         }
       }
     },
@@ -57,6 +87,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "さっそくはじめよう！"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시작해보자!"
           }
         }
       }
@@ -68,6 +104,12 @@
             "state" : "translated",
             "value" : "気になる人は右！"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "관심이 있으시다면 바로 그거예요!"
+          }
         }
       }
     },
@@ -78,6 +120,12 @@
             "state" : "translated",
             "value" : "スキップ"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "건너뛰기"
+          }
         }
       }
     },
@@ -87,6 +135,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Trinketは日本中のみんなとLocketを交換できるアプリです"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "트링켓은 한국의 모든 사람들과 로켓을 교환할 수 있는 애플리케이션입니다!"
           }
         }
       }

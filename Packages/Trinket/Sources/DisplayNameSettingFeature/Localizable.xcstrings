@@ -11,6 +11,12 @@
             "state" : "translated",
             "value" : "続ける"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계속하기"
+          }
         }
       }
     },
