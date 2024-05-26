@@ -1,0 +1,70 @@
+name: app
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - multi-app
+
+env:
+  PLATFORM_IOS: iOS Simulator,name=iPhone 15 Pro,OS=17.0.1
+  BEMATCH_FILE_FIREBASE_STAGING: ${{ secrets.BEMATCH_FILE_FIREBASE_STAGING }}
+  TAPMATCH_FILE_FIREBASE_STAGING: ${{ secrets.TAPMATCH_FILE_FIREBASE_STAGING }}
+  TRINKET_FILE_FIREBASE_STAGING: ${{ secrets.TRINKET_FILE_FIREBASE_STAGING }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  generate-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      app: ${{ steps.filter.outputs.changes }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            BeMatch:
+              - App/BeMatch/**
+              - Packages/BeMatch/**
+              - BeMatch.xcworkspace/**
+              - Packages/Utility/**
+              - Packages/MatchCore/**
+              - Packages/Dependencies/**
+              - .github/workflows/app.yml
+            TapMatch:
+              - App/TapMatch/**
+              - Packages/TapMatch/**
+              - TapMatch.xcworkspace/**
+              - Packages/Utility/**
+              - Packages/MatchCore/**
+              - Packages/Dependencies/**
+              - .github/workflows/app.yml
+            Trinket:
+              - App/Trinket/**
+              - Packages/Trinket/**
+              - Trinket.xcworkspace/**
+              - Packages/Utility/**
+              - Packages/MatchCore/**
+              - Packages/Dependencies/**
+              - .github/workflows/app.yml
+
+  build:
+    runs-on: macos-14
+    strategy:
+      fail-fast: false
+      matrix:
+        app: ${{ fromJSON(needs.generate-matrix.outputs.app) }}
+    needs: [generate-matrix]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: irgaly/xcode-cache@v1
+        with:
+          key: ${{ matrix.app }}-xcode-cache-deriveddata-${{ github.workflow }}-${{ github.sha }}
+          restore-keys: ${{ matrix.app }}-xcode-cache-deriveddata-${{ github.workflow }}-
+      - run: make bootstrap
+      - run: xcodebuild build -workspace ${{ matrix.app }}.xcworkspace -scheme "App (Staging project)" -skipMacroValidation -destination platform="${{ env.PLATFORM_IOS }}" | xcpretty
