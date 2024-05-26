@@ -13,6 +13,8 @@
 	<key>CFBundleLocalizations</key>
 	<array>
 		<string>en</string>
+		<string>ja</string>
+		<string>ko</string>
 	</array>
 	<key>CFBundleName</key>
 	<string>Trinket</string>

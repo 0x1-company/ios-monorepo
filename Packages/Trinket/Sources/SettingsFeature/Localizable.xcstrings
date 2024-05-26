@@ -8,16 +8,11 @@
             "state" : "translated",
             "value" : "基本情報"
           }
-        }
-      }
-    },
-    "Clear cache" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
+        },
+        "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "キャッシュを削除"
+            "value" : "정보"
           }
         }
       }
@@ -29,6 +24,12 @@
             "state" : "translated",
             "value" : "お問い合わせ"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "문의하기"
+          }
         }
       }
     },
@@ -38,6 +39,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "アカウントを削除する"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계정 삭제"
           }
         }
       }
@@ -49,6 +56,12 @@
             "state" : "translated",
             "value" : "プロフィール編集"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프로필 수정"
+          }
         }
       }
     },
@@ -58,6 +71,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "よくある質問"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "자주 묻는 질문"
           }
         }
       }
@@ -69,6 +88,12 @@
             "state" : "translated",
             "value" : "フォローしてね"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "팔로우하기"
+          }
         }
       }
     },
@@ -79,6 +104,12 @@
             "state" : "translated",
             "value" : "ヘルプ"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "도움말"
+          }
         }
       }
     },
@@ -88,6 +119,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Trinketの使い方"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "작동 방식"
           }
         }
       }
@@ -109,6 +146,12 @@
             "state" : "translated",
             "value" : "会員ステータス"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "멤버십 상태"
+          }
         }
       }
     },
@@ -118,6 +161,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "自分のプロフィール"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "내 프로필"
           }
         }
       }
@@ -129,6 +178,12 @@
             "state" : "translated",
             "value" : "その他"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기타"
+          }
         }
       }
     },
@@ -138,6 +193,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "プライバシーポリシー"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "개인정보 보호정책"
           }
         }
       }
@@ -149,6 +210,12 @@
             "state" : "translated",
             "value" : "プロフィール"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프로필"
+          }
         }
       }
     },
@@ -158,6 +225,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Trinketを評価"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "장신구 평가하기"
           }
         }
       }
@@ -169,6 +242,12 @@
             "state" : "translated",
             "value" : "設定"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설정"
+          }
         }
       }
     },
@@ -179,6 +258,12 @@
             "state" : "translated",
             "value" : "Trinketをシェア"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "장신구 공유"
+          }
         }
       }
     },
@@ -188,6 +273,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "利用規約"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이용 약관"
           }
         }
       }
@@ -208,6 +299,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "バージョン"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "버전"
           }
         }
       }

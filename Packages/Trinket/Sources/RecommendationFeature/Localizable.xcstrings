@@ -8,6 +8,12 @@
             "state" : "translated",
             "value" : "シェアする"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "공유"
+          }
         }
       }
     },
@@ -17,6 +23,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ちょっと...スワイプしすぎです...。Trinketのシェアに協力してください... 🙏"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "너무 많이 스와이프...\n장신구 공유를 도와주세요... 🙏"
           }
         }
       }
