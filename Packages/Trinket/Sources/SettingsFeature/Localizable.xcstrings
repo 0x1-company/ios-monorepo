@@ -136,6 +136,12 @@
             "state" : "translated",
             "value" : "Instagram"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instagram"
+          }
         }
       }
     },
@@ -286,6 +292,12 @@
     "TikTok" : {
       "localizations" : {
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TikTok"
+          }
+        },
+        "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "TikTok"
