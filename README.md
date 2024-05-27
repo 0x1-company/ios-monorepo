@@ -1,7 +1,7 @@
 # iOS Apps
 
 <div align='left'>
-  <img src='https://github.com/0x1-company/ios-app/actions/workflows/bematch.yml/badge.svg'>
+  <img src='https://github.com/0x1-company/ios-app/actions/workflows/app.yml/badge.svg'>
   <img src='https://github.com/0x1-company/ios-app/actions/workflows/sdk.yml/badge.svg'>
   <img src='https://github.com/0x1-company/ios-app/actions/workflows/format.yml/badge.svg'>
 </div>
