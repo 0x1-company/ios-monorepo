@@ -42,11 +42,11 @@
 	<string>Analytics are used to accurately measure</string>
 	<key>PRODUCTS</key>
 	<array>
-		<string>jp.bematch.ios.production.subscription.pro.1week</string>
-		<string>jp.bematch.ios.production.subscription.pro.1month</string>
-		<string>jp.bematch.ios.production.subscription.pro.3month</string>
-		<string>jp.bematch.ios.production.subscription.pro.6month</string>
-		<string>jp.bematch.ios.production.subscription.pro.1year</string>
+		<string>camera.trinket.ios.production.subscription.pro.1week</string>
+		<string>camera.trinket.ios.production.subscription.pro.1month</string>
+		<string>camera.trinket.ios.production.subscription.pro.3month</string>
+		<string>camera.trinket.ios.production.subscription.pro.6month</string>
+		<string>camera.trinket.ios.production.subscription.pro.1year</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
