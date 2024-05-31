@@ -40,7 +40,7 @@ public struct UnsentDirectMessageListContentRowView: View {
           .clipShape(RoundedRectangle(cornerRadius: 6))
           .overlay(alignment: .bottom) {
             if !viewStore.isRead {
-              Color.white
+              Color(0xFFD60A)
                 .frame(width: 16, height: 16)
                 .clipShape(Circle())
                 .offset(y: 8)
