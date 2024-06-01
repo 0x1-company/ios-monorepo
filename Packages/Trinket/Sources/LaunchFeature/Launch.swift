@@ -22,7 +22,7 @@ public struct LaunchView: View {
           if viewStore.isActivityIndicatorVisible {
             ProgressView()
               .tint(Color.white)
-              .offset(y: 40)
+              .offset(y: 114)
           }
         }
     }
