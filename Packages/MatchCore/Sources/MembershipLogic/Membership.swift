@@ -126,7 +126,7 @@ public struct MembershipLogic {
               specialOfferDisplayPrice: specialOfferDisplayPrice
             )
           )
-          
+
           let brand = environment.brand()
 
           let localized: String.LocalizationValue = """
