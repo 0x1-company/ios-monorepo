@@ -21,7 +21,8 @@ jobs:
           sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ github.event.inputs.version }}/g" App/TapMatch/Multiplatform/Production/Info.plist
           sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ github.event.inputs.version }}/g" App/Trinket/Multiplatform/Staging/Info.plist
           sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ github.event.inputs.version }}/g" App/Trinket/Multiplatform/Production/Info.plist
-      - uses: peter-evans/create-pull-request@v6
+      - continue-on-error: true
+        uses: peter-evans/create-pull-request@v6
         id: create-pr
         with:
           delete-branch: true
@@ -30,11 +31,13 @@ jobs:
           branch-suffix: short-commit-hash
           commit-message: "Bump App from ${{ steps.current-version.outputs.CURRENT_VERSION }} to ${{ github.event.inputs.version }}"
           title: "Bump App from ${{ steps.current-version.outputs.CURRENT_VERSION }} to ${{ github.event.inputs.version }}"
-      - run: gh pr merge --auto --squash "$PR_URL"
+      - continue-on-error: true
+        run: gh pr merge --auto --squash "$PR_URL"
         env:
           PR_URL: ${{ steps.create-pr.outputs.pull-request-url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: gh pr review --approve "$PR_URL"
+      - continue-on-error: true
+        run: gh pr review --approve "$PR_URL"
         env:
           PR_URL: ${{ steps.create-pr.outputs.pull-request-url }}
           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
@@ -47,6 +50,9 @@ jobs:
       NEXT_TAG: ${{ github.event.inputs.version }}
     steps:
       - uses: actions/checkout@v4
+      - uses: jakejarvis/wait-action@master
+        with:
+          time: '30s'
       - run: |
           gh release create ${{ env.NEXT_TAG }}\
             --generate-notes \
