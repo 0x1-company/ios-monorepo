@@ -37,10 +37,7 @@ public struct SettingsLogic {
 
     public var shareURL: URL
     public var shareText: String {
-      return String(
-        localized: "I found an app to increase BeReal's friends, try it.\n\(shareURL.absoluteString)",
-        bundle: .module
-      )
+      return shareURL.absoluteString
     }
 
     public let faqURL: URL
