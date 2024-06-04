@@ -44,11 +44,11 @@ jobs:
     needs: version-up
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      $NEXT_TAG: ${{ github.event.inputs.version }}
+      NEXT_TAG: ${{ github.event.inputs.version }}
     steps:
       - uses: actions/checkout@v4
       - run: |
-          gh release create $NEXT_TAG\
+          gh release create ${{ env.NEXT_TAG }}\
             --generate-notes \
             --latest \
             --target main
