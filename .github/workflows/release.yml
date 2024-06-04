@@ -28,8 +28,8 @@ jobs:
           author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           branch-suffix: short-commit-hash
-          commit-message: "Bump BeMatch from ${{ steps.current-version.outputs.CURRENT_VERSION }} to ${{ github.event.inputs.version }}"
-          title: "Bump BeMatch from ${{ steps.current-version.outputs.CURRENT_VERSION }} to ${{ github.event.inputs.version }}"
+          commit-message: "Bump App from ${{ steps.current-version.outputs.CURRENT_VERSION }} to ${{ github.event.inputs.version }}"
+          title: "Bump App from ${{ steps.current-version.outputs.CURRENT_VERSION }} to ${{ github.event.inputs.version }}"
       - run: gh pr merge --auto --squash "$PR_URL"
         env:
           PR_URL: ${{ steps.create-pr.outputs.pull-request-url }}
@@ -44,7 +44,7 @@ jobs:
     needs: version-up
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      $NEXT_TAG: BeMatch/${{ github.event.inputs.version }}
+      $NEXT_TAG: ${{ github.event.inputs.version }}
     steps:
       - uses: actions/checkout@v4
       - run: |
