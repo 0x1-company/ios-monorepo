@@ -31,18 +31,18 @@
         }
       }
     },
-    "I'm sending you an invite code [%@] to unlock BeMatch PRO for free (worth %@).\nhttps://bematch.onelink.me/nob4/mhxumci1" : {
+    "I'm sending you an invite code [%@] to unlock %@ PRO for free (worth %@).\nhttps://bematch.onelink.me/nob4/mhxumci1" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "I'm sending you an invite code [%1$@] to unlock BeMatch PRO for free (worth %2$@).\nhttps://bematch.onelink.me/nob4/mhxumci1"
+            "value" : "I'm sending you an invite code [%1$@] to unlock %2$@ PRO for free (worth %3$@).\nhttps://bematch.onelink.me/nob4/mhxumci1"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%2$@分のBeMatch PROが無料になる招待コード【%1$@】を贈りました！🎁\n\nBeMatch PROになると…\n■ 誰にLikeされているかを見れる\n\nBeReal交換アプリ「BeMatch.」ダウンロードしてね！🤞🏻\nhttps://bematch.onelink.me/nob4/mhxumci1"
+            "value" : "%3$@分の%2$@ PROが無料になる招待コード【%1$@】を贈りました！🎁\n\n%2$@ PROになると…\n■ 誰にLikeされているかを見れる\n\n「%2$@」ダウンロードしてね！🤞🏻\nhttps://bematch.onelink.me/nob4/mhxumci1"
           }
         }
       }
