@@ -49,10 +49,10 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       NEXT_TAG: ${{ github.event.inputs.version }}
     steps:
-      - uses: actions/checkout@v4
       - uses: jakejarvis/wait-action@master
         with:
-          time: '30s'
+          time: '10s'
+      - uses: actions/checkout@v4
       - run: |
           gh release create ${{ env.NEXT_TAG }}\
             --generate-notes \
