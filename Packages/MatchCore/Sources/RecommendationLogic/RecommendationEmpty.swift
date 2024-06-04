@@ -22,7 +22,7 @@ public struct RecommendationEmptyLogic {
   public struct State: Equatable {
     public var shareURL: URL
     public var shareText: String {
-      return shareURL.absoluteString 
+      return shareURL.absoluteString
     }
 
     @BindingState public var isPresented = false
