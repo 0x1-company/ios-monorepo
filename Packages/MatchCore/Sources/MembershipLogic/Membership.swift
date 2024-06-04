@@ -126,9 +126,11 @@ public struct MembershipLogic {
               specialOfferDisplayPrice: specialOfferDisplayPrice
             )
           )
+          
+          let brand = environment.brand()
 
           let localized: String.LocalizationValue = """
-          I'm sending you an invite code [\(data.invitationCode.code)] to unlock BeMatch PRO for free (worth \(specialOfferDisplayPrice)).
+          I'm sending you an invite code [\(data.invitationCode.code)] to unlock \(brand.displayName) PRO for free (worth \(specialOfferDisplayPrice)).
           https://bematch.onelink.me/nob4/mhxumci1
           """
           state.shareText = String(localized: localized, bundle: .module)
