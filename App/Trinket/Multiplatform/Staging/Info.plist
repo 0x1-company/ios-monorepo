@@ -12,6 +12,7 @@
 	<string>6.0</string>
 	<key>CFBundleLocalizations</key>
 	<array>
+		<string>fr</string>
 		<string>en</string>
 		<string>ja</string>
 		<string>ko</string>
