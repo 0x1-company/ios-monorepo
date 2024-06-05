@@ -43,6 +43,16 @@
         }
       }
     },
+    "Locket invitation link" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Locketのリンク"
+          }
+        }
+      }
+    },
     "Nick Name" : {
       "localizations" : {
         "ja" : {
@@ -122,16 +132,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ユーザーネーム"
-          }
-        }
-      }
-    },
-    "Username on BeReal." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeRealのユーザーネーム"
           }
         }
       }
