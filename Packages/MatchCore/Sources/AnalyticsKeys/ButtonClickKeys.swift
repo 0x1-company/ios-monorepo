@@ -7,7 +7,7 @@ public extension ButtonClickKeys {
   var nope: String { "nope" }
   var swipeLike: String { "swipe_like" }
   var swipeNope: String { "swipe_nope" }
-  var addBeReal: String { "add_bereal" }
+  var addExternalProduct: String { "add_external_product" }
   var close: String { "close" }
   var notNow: String { "not_now" }
   var delete: String { "delete" }

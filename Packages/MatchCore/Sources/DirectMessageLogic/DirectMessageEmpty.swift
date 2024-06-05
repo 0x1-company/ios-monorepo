@@ -33,7 +33,7 @@ public struct DirectMessageEmptyLogic {
         guard let url = URL(string: state.externalProductUrl)
         else { return .none }
 
-        analytics.buttonClick(name: \.addBeReal, parameters: [
+        analytics.buttonClick(name: \.addExternalProduct, parameters: [
           "url": url.absoluteString,
         ])
 

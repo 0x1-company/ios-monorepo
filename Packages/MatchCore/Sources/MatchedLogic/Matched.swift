@@ -40,7 +40,7 @@ public struct MatchedLogic {
         return .none
 
       case .addBeRealButtonTapped:
-        analytics.buttonClick(name: \.addBeReal, parameters: [
+        analytics.buttonClick(name: \.addExternalProduct, parameters: [
           "url": state.externalProductURL.absoluteString,
         ])
 

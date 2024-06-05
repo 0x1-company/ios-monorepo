@@ -48,7 +48,7 @@ public struct ProfileExplorerPreviewContentLogic {
         guard let url = URL(string: externalProductUrl)
         else { return .none }
 
-        analytics.buttonClick(name: \.addBeReal, parameters: [
+        analytics.buttonClick(name: \.addExternalProduct, parameters: [
           "url": url.absoluteString,
         ])
 
