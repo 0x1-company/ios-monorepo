@@ -42,5 +42,16 @@ public struct EnvironmentClient {
         return "Trinket"
       }
     }
+    
+    public var externalProduct: String {
+      switch self {
+      case .bematch:
+        return "BeReal"
+      case .tapmatch:
+        return "TapNow"
+      case .trinket:
+        return "Locket"
+      }
+    }
   }
 }
