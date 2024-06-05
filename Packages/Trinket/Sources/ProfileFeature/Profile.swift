@@ -56,7 +56,7 @@ public struct ProfileView: View {
 
             if let url = viewStore.currentUser?.externalProductUrl {
               Button {
-                store.send(.jumpBeRealButtonTapped)
+                store.send(.jumpExternalProductButtonTapped)
               } label: {
                 Text("🔗 \(url)")
                   .font(.system(.caption))

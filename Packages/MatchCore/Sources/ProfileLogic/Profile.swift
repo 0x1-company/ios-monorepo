@@ -25,7 +25,7 @@ public struct ProfileLogic {
     case onTask
     case onAppear
     case closeButtonTapped
-    case jumpBeRealButtonTapped
+    case jumpExternalProductButtonTapped
     case editUsernameCloseButtonTapped
     case currentUserResponse(Result<API.CurrentUserQuery.Data, Error>)
     case pictureSlider(PictureSliderLogic.Action)
@@ -58,7 +58,7 @@ public struct ProfileLogic {
           await dismiss()
         }
 
-      case .jumpBeRealButtonTapped:
+      case .jumpExternalProductButtonTapped:
         switch environment.brand() {
         case .bematch:
           state.destination = .confirmationDialog(.bematch())

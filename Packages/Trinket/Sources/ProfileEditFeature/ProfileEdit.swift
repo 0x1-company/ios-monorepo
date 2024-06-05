@@ -97,8 +97,8 @@ public struct ProfileEditView: View {
       }
       .sheet(
         store: store.scope(
-          state: \.$destination.beRealSample,
-          action: \.destination.beRealSample
+          state: \.$destination.howToMovie,
+          action: \.destination.howToMovie
         )
       ) { store in
         NavigationStack {
