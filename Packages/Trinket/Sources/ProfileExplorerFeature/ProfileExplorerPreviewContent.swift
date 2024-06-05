@@ -18,7 +18,7 @@ public struct ProfileExplorerPreviewContentView: View {
       PrimaryButton(
         String(localized: "Add Locket", bundle: .module)
       ) {
-        store.send(.addBeRealButtonTapped)
+        store.send(.addExternalProductButtonTapped)
       }
       .padding(.horizontal, 16)
     }

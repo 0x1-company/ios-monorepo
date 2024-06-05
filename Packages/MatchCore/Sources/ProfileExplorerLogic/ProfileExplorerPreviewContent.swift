@@ -24,7 +24,7 @@ public struct ProfileExplorerPreviewContentLogic {
   }
 
   public enum Action {
-    case addBeRealButtonTapped
+    case addExternalProductButtonTapped
     case pictureSlider(PictureSliderLogic.Action)
     case confirmationDialog(PresentationAction<ConfirmationDialog>)
 
@@ -43,7 +43,7 @@ public struct ProfileExplorerPreviewContentLogic {
     }
     Reduce<State, Action> { state, action in
       switch action {
-      case .addBeRealButtonTapped:
+      case .addExternalProductButtonTapped:
         let externalProductUrl = state.user.externalProductUrl
         guard let url = URL(string: externalProductUrl)
         else { return .none }
