@@ -1,6 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "@bematchus" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "@bematchjp"
+          }
+        }
+      }
+    },
     "bematch" : {
       "localizations" : {
         "en" : {
@@ -12,6 +22,16 @@
         "ja" : {
           "stringUnit" : {
             "state" : "needs_review",
+            "value" : "bematchjp"
+          }
+        }
+      }
+    },
+    "bematchus" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "bematchjp"
           }
         }

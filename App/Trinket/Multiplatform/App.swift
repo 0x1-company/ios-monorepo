@@ -60,7 +60,8 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
           $0.api = APIClient.live(apolloClient: apolloClient)
           $0.environment = EnvironmentClient.live(
             brand: EnvironmentClient.Brand.trinket,
-            username: String(localized: "bematch"),
+            instagramUsername: String(localized: "bematchus"),
+            tiktokUsername: String(localized: "@bematchus"),
             appId: "6502700423",
             appStoreForEmptyURL: URL(string: "https://bematch.onelink.me/nob4/ta8yroer")!,
             docsURL: URL(string: "https://docs.trinket.camera")!,

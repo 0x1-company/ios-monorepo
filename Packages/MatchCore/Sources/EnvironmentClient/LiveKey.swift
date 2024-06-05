@@ -4,13 +4,14 @@ import Foundation
 public extension EnvironmentClient {
   static func live(
     brand: Brand,
-    username: String,
+    instagramUsername: String,
+    tiktokUsername: String,
     appId: String,
     appStoreForEmptyURL: URL,
     docsURL: URL,
     howToMovieURL: URL
   ) -> Self {
-    let contactUsURL = URL(string: "https://ig.me/m/\(username)")!
+    let contactUsURL = URL(string: "https://ig.me/m/\(instagramUsername)")!
     let founderURL = URL(string: "https://instagram.com/satoya__")!
     let developerURL = URL(string: "https://instagram.com/tomokisun")!
 
@@ -26,8 +27,8 @@ public extension EnvironmentClient {
         "talk-to-founder": founderURL,
         "talk-to-developer": developerURL,
       ] },
-      instagramURL: { URL(string: "https://instagram.com/\(username)")! },
-      tiktokURL: { URL(string: "https://tiktok.com/@\(username)")! },
+      instagramURL: { URL(string: "https://instagram.com/\(instagramUsername)")! },
+      tiktokURL: { URL(string: "https://tiktok.com/\(tiktokUsername)")! },
       docsURL: { docsURL },
       faqURL: { URL(string: "\(docsURL)/faq")! },
       privacyPolicyURL: { URL(string: "\(docsURL)/privacy-policy")! },
