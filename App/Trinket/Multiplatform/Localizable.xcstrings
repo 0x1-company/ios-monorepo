@@ -1,17 +1,21 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "bematch" : {
+    "@bematchus" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "bematchus"
-          }
-        },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
+            "value" : "@bematchjp"
+          }
+        }
+      }
+    },
+    "bematchus" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "bematchjp"
           }
         }
