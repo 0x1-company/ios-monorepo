@@ -1,9 +1,9 @@
 import AnalyticsClient
-import EnvironmentClient
 import AnalyticsKeys
 import API
 import APIClient
 import ComposableArchitecture
+import EnvironmentClient
 import FeedbackGeneratorClient
 import ProfileSharedLogic
 import SwiftUI
@@ -157,7 +157,7 @@ extension ConfirmationDialogState where Action == ProfileLogic.Destination.Actio
       }
     }
   }
-  
+
   static func trinket() -> Self {
     Self {
       TextState("Select Locket", bundle: .module)
@@ -170,7 +170,7 @@ extension ConfirmationDialogState where Action == ProfileLogic.Destination.Actio
       }
     }
   }
-  
+
   static func tapmatch() -> Self {
     Self {
       TextState("Select TapNow", bundle: .module)
