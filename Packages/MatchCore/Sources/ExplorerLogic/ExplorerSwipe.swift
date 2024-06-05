@@ -44,6 +44,7 @@ public struct ExplorerSwipeLogic {
   @Dependency(\.analytics) var analytics
 
   public var body: some Reducer<State, Action> {
+    Scope(state: \.child, action: \.child, child: Child.init)
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:

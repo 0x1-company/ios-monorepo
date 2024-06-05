@@ -20,6 +20,7 @@ public struct ExplorerSwipeView: View {
             action: ExplorerSwipeLogic.Child.Action.content,
             then: SwipeView.init(store:)
           )
+          .padding(.horizontal, 16)
         case .empty:
           CaseLet(
             /ExplorerSwipeLogic.Child.State.empty,
