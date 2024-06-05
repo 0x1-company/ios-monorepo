@@ -1,6 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Edit locket link" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Locket招待リンクを変更"
+          }
+        }
+      }
+    },
     "Edit username" : {
       "localizations" : {
         "ja" : {
@@ -21,12 +31,52 @@
         }
       }
     },
+    "Jump to Locket" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Locketに飛ぶ"
+          }
+        }
+      }
+    },
+    "Jump to TapNow" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TapNowに飛ぶ"
+          }
+        }
+      }
+    },
     "Select BeReal" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Select BeReal"
+          }
+        }
+      }
+    },
+    "Select Locket" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Locket"
+          }
+        }
+      }
+    },
+    "Select TapNow" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select TapNow"
           }
         }
       }
