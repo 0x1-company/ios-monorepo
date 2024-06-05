@@ -23,7 +23,7 @@ public struct MatchedView: View {
           PrimaryButton(
             String(localized: "Add Locket", bundle: .module)
           ) {
-            store.send(.addBeRealButtonTapped)
+            store.send(.addExternalProductButtonTapped)
           }
 
           Text("🔗 \(viewStore.displayExternalProductURL)", bundle: .module)

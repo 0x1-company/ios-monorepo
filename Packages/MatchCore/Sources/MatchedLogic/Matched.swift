@@ -23,7 +23,7 @@ public struct MatchedLogic {
 
   public enum Action: Equatable {
     case onTask
-    case addBeRealButtonTapped
+    case addExternalProductButtonTapped
     case closeButtonTapped
   }
 
@@ -39,8 +39,8 @@ public struct MatchedLogic {
         analytics.logScreen(screenName: "Matched", of: self)
         return .none
 
-      case .addBeRealButtonTapped:
-        analytics.buttonClick(name: \.addBeReal, parameters: [
+      case .addExternalProductButtonTapped:
+        analytics.buttonClick(name: \.addExternalProduct, parameters: [
           "url": state.externalProductURL.absoluteString,
         ])
 

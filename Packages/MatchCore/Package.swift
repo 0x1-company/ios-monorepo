@@ -303,6 +303,7 @@ let package = Package(
       "ProfileSharedLogic",
     ]),
     .target(name: "ProfileLogic", dependencies: [
+      "EnvironmentClient",
       "ProfileSharedLogic",
       "UsernameSettingLogic",
     ]),

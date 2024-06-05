@@ -124,12 +124,12 @@ public struct ProfileEditLogic {
         return .send(.delegate(.profileUpdated))
 
       case .destination(.presented(.pictureSetting(.delegate(.howTo)))):
-        state.destination = .beRealSample()
+        state.destination = .howToMovie()
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
 
-      case .destination(.presented(.beRealSample(.delegate(.nextScreen)))):
+      case .destination(.presented(.howToMovie(.delegate(.nextScreen)))):
         state.destination = nil
         return .run { _ in
           await feedbackGenerator.impactOccurred()
@@ -150,7 +150,7 @@ public struct ProfileEditLogic {
   @Reducer
   public struct Destination {
     public enum State: Equatable {
-      case beRealSample(HowToMovieLogic.State = .init())
+      case howToMovie(HowToMovieLogic.State = .init())
       case pictureSetting(ProfilePictureSettingLogic.State = .init())
       case genderSetting(GenderSettingLogic.State)
       case usernameSetting(UsernameSettingLogic.State)
@@ -159,7 +159,7 @@ public struct ProfileEditLogic {
     }
 
     public enum Action {
-      case beRealSample(HowToMovieLogic.Action)
+      case howToMovie(HowToMovieLogic.Action)
       case pictureSetting(ProfilePictureSettingLogic.Action)
       case genderSetting(GenderSettingLogic.Action)
       case usernameSetting(UsernameSettingLogic.Action)
@@ -168,7 +168,7 @@ public struct ProfileEditLogic {
     }
 
     public var body: some Reducer<State, Action> {
-      Scope(state: \.beRealSample, action: \.beRealSample) {
+      Scope(state: \.howToMovie, action: \.howToMovie) {
         HowToMovieLogic()
       }
       Scope(state: \.pictureSetting, action: \.pictureSetting) {

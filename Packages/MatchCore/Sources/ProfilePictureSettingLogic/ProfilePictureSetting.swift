@@ -145,8 +145,9 @@ public struct ProfilePictureSettingLogic {
 
       case .nextButtonTapped:
         let notBeRealIamges = state.images.filter(\.isWarning)
+        let externalProduct = environment.brand().externalProduct
         guard notBeRealIamges.isEmpty else {
-          state.destination = .alert(.validateError())
+          state.destination = .alert(.validateError(externalProduct: externalProduct))
           return .none
         }
 
@@ -261,9 +262,9 @@ extension AlertState where Action == ProfilePictureSettingLogic.Destination.Acti
     }
   }
 
-  static func validateError() -> Self {
+  static func validateError(externalProduct: String) -> Self {
     Self {
-      TextState("Select a photo saved with BeReal.", bundle: .module)
+      TextState("Select a photo saved with \(externalProduct)", bundle: .module)
     } actions: {
       ButtonState(action: .confirmOkay) {
         TextState("OK", bundle: .module)

@@ -52,12 +52,12 @@
         }
       }
     },
-    "Select a photo saved with BeReal." : {
+    "Select a photo saved with %@" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeRealで保存した写真を選択してください"
+            "value" : "%@で保存した写真を選択してください"
           }
         }
       }

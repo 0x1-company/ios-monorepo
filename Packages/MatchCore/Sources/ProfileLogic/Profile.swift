@@ -1,4 +1,5 @@
 import AnalyticsClient
+import EnvironmentClient
 import AnalyticsKeys
 import API
 import APIClient
@@ -24,7 +25,7 @@ public struct ProfileLogic {
     case onTask
     case onAppear
     case closeButtonTapped
-    case jumpBeRealButtonTapped
+    case jumpExternalProductButtonTapped
     case editUsernameCloseButtonTapped
     case currentUserResponse(Result<API.CurrentUserQuery.Data, Error>)
     case pictureSlider(PictureSliderLogic.Action)
@@ -34,6 +35,7 @@ public struct ProfileLogic {
   @Dependency(\.openURL) var openURL
   @Dependency(\.dismiss) var dismiss
   @Dependency(\.analytics) var analytics
+  @Dependency(\.environment) var environment
   @Dependency(\.api.currentUser) var currentUser
   @Dependency(\.feedbackGenerator) var feedbackGenerator
 
@@ -56,19 +58,15 @@ public struct ProfileLogic {
           await dismiss()
         }
 
-      case .jumpBeRealButtonTapped:
-        state.destination = .confirmationDialog(
-          ConfirmationDialogState(titleVisibility: .hidden) {
-            TextState("Select BeReal", bundle: .module)
-          } actions: {
-            ButtonState(action: .jumpToBeReal) {
-              TextState("Jump to BeReal", bundle: .module)
-            }
-            ButtonState(action: .editUsername) {
-              TextState("Edit username", bundle: .module)
-            }
-          }
-        )
+      case .jumpExternalProductButtonTapped:
+        switch environment.brand() {
+        case .bematch:
+          state.destination = .confirmationDialog(.bematch())
+        case .tapmatch:
+          state.destination = .confirmationDialog(.tapmatch())
+        case .trinket:
+          state.destination = .confirmationDialog(.trinket())
+        }
         return .none
 
       case .destination(.presented(.confirmationDialog(.jumpToBeReal))):
@@ -77,7 +75,7 @@ public struct ProfileLogic {
           let url = URL(string: externalProductUrl)
         else { return .none }
 
-        analytics.buttonClick(name: \.addBeReal, parameters: [
+        analytics.buttonClick(name: \.addExternalProduct, parameters: [
           "url": url.absoluteString,
         ])
 
@@ -142,6 +140,47 @@ public struct ProfileLogic {
     public var body: some Reducer<State, Action> {
       Scope(state: \.editUsername, action: \.editUsername, child: UsernameSettingLogic.init)
       Scope(state: \.confirmationDialog, action: \.confirmationDialog, child: EmptyReducer.init)
+    }
+  }
+}
+
+extension ConfirmationDialogState where Action == ProfileLogic.Destination.Action.ConfirmationDialog {
+  static func bematch() -> Self {
+    Self {
+      TextState("Select BeReal", bundle: .module)
+    } actions: {
+      ButtonState(action: .jumpToBeReal) {
+        TextState("Jump to BeReal", bundle: .module)
+      }
+      ButtonState(action: .editUsername) {
+        TextState("Edit username", bundle: .module)
+      }
+    }
+  }
+  
+  static func trinket() -> Self {
+    Self {
+      TextState("Select Locket", bundle: .module)
+    } actions: {
+      ButtonState(action: .jumpToBeReal) {
+        TextState("Jump to Locket", bundle: .module)
+      }
+      ButtonState(action: .editUsername) {
+        TextState("Edit locket link", bundle: .module)
+      }
+    }
+  }
+  
+  static func tapmatch() -> Self {
+    Self {
+      TextState("Select TapNow", bundle: .module)
+    } actions: {
+      ButtonState(action: .jumpToBeReal) {
+        TextState("Jump to TapNow", bundle: .module)
+      }
+      ButtonState(action: .editUsername) {
+        TextState("Edit username", bundle: .module)
+      }
     }
   }
 }
