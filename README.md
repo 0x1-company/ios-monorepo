@@ -70,7 +70,12 @@ When you both Like each other and match, you can send messages to each other wit
 
 ## TapMatch | Make new TapNow friends
 
-coming soon...
+TapMatch is an app that lets you exchange TapNow with people worldwide.<br>
+You can swipe to send a Like to friends you want to connect with on TapNow.<br>
+When you both Like each other and match, you can send messages to each other within the app.
+
+- https://tapmatch.jp
+- https://apps.apple.com/app/apple-store/id6502700340
 
 
 # License
