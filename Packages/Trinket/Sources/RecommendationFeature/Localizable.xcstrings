@@ -14,6 +14,30 @@
             "state" : "translated",
             "value" : "공유"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partager"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Udostępnij"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chia sẻ"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compartir"
+          }
         }
       }
     },
@@ -29,6 +53,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "너무 많이 스와이프...\n장신구 공유를 도와주세요... 🙏"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trop de balayage...\nAidez-nous à partager Trinket... 🙏"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Za dużo przesuń...\nProszę, pomóż nam udostępnić Trinket... 🙏"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quẹt quá nhiều...\nXin hãy giúp chúng tôi chia sẻ Trinket... 🙏"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demasiado deslizamiento...\nPor favor, ayúdanos a compartir Trinket... 🙏"
           }
         }
       }

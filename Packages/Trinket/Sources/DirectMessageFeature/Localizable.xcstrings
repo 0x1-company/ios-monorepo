@@ -8,6 +8,36 @@
             "state" : "translated",
             "value" : "Locketを追加する"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "로켓 추가"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un Locket"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dodaj Locket"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thêm Locket"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agregar Locket"
+          }
         }
       }
     },
@@ -17,6 +47,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Locketを追加してメッセージを送ってみよう！"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "로켓을 추가하고 메시지를 보내세요!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajoutez un Locket et envoyez un message !"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dodaj Locket i wyślij wiadomość!"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thêm Locket và gửi tin nhắn!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Agrega Locket y envía un mensaje!"
           }
         }
       }
@@ -28,6 +88,36 @@
             "state" : "translated",
             "value" : "%@さんとマッチしたよ！"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@님과 매치되었습니다!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correspondance avec %@ !"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dopasowany z %@!"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kết hợp với %@!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Emparejado con %@!"
+          }
         }
       }
     },
@@ -38,6 +128,36 @@
             "state" : "translated",
             "value" : "通報"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "신고"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signaler"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zgłoś"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Báo cáo"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informar"
+          }
         }
       }
     },
@@ -47,6 +167,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "健全なサービスを運営する目的で運営者がメッセージの内容を確認・削除する場合があります。また、不適切な利用を確認するとアカウントを停止する場合があります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "운영자는 건전한 서비스를 운영하기 위해 메시지 내용을 확인하고 삭제할 수 있습니다. 또한 부적절한 사용이 확인되면 계정이 정지될 수 있습니다."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'opérateur peut vérifier et supprimer le contenu des messages dans le but de fournir un service sain. De plus, le compte peut être suspendu si une utilisation inappropriée est confirmée."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Operator może sprawdzać i usuwać treści wiadomości w celu zapewnienia prawidłowego działania usługi. Ponadto konto może zostać zawieszone w przypadku potwierdzenia nieodpowiedniego użytkowania."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nhà điều hành có thể kiểm tra và xóa nội dung tin nhắn để cung cấp dịch vụ tốt. Ngoài ra, tài khoản có thể bị đình chỉ nếu phát hiện sử dụng không đúng mục đích."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El operador puede verificar y eliminar el contenido de los mensajes con el propósito de operar un servicio saludable. Además, la cuenta puede ser suspendida si se confirma el uso inapropiado."
           }
         }
       }
