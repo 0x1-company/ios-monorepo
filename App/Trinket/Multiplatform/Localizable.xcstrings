@@ -11,12 +11,12 @@
         }
       }
     },
-    "bematchus" : {
+    "trinketcamera" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "bematchjp"
+            "value" : "trinketcamera"
           }
         }
       }
