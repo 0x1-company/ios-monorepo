@@ -18,12 +18,11 @@ jobs:
       - run: echo "CURRENT_VERSION=$(defaults read $(pwd)/App/BeMatch/Multiplatform/Staging/Info CFBundleShortVersionString)" >> $GITHUB_OUTPUT
         id: current-version
       - run: |
+          CURRENT_VERSION=${{ steps.current-version.outputs.CURRENT_VERSION }}
           if [ "${{ github.event.inputs.version }}" == "minor" ]; then
-            VERSION=`echo ${{ steps.current-version.outputs.CURRENT_VERSION }} | awk -F. -v 'OFS=.' '{print $1,$2+1,0}'`
-            echo "NEXT_VERSION=$($VERSION)" >> $GITHUB_OUTPUT
+            echo "NEXT_VERSION=$(echo $CURRENT_VERSION | awk -F. -v OFS=. '{print $1,$2+1,0}')" >> $GITHUB_OUTPUT
           else
-            VERSION=`echo ${{ steps.current-version.outputs.CURRENT_VERSION }} | awk -F. -v 'OFS=.' '{print $1,$2,$3+1}'`
-            echo "NEXT_VERSION=$($VERSION)" >> $GITHUB_OUTPUT
+            echo "NEXT_VERSION=$(echo $CURRENT_VERSION | awk -F. -v OFS=. '{print $1,$2,$3+1}')" >> $GITHUB_OUTPUT
           fi
         id: next-version
       - run: |
