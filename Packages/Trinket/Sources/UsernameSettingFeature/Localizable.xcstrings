@@ -12,7 +12,31 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이렇게 하면 다음 사항에 동의하는 것입니다.\n[개인정보처리방침](https://docs.trinket.camera/privacy-policy) 및 [이용약관](https://docs.trinket.camera/terms-of-use)에 동의합니다."
+            "value" : "이렇게 하면 [개인정보 처리방침](https://docs.trinket.camera/privacy-policy) 및 [이용약관](https://docs.trinket.camera/terms-of-use)에 동의하는 것으로 간주됩니다."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En faisant cela, vous acceptez\nnotre [Politique de confidentialité](https://docs.trinket.camera/privacy-policy) et nos [Conditions d'utilisation](https://docs.trinket.camera/terms-of-use)."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Postępując w ten sposób, zgadzasz się\nna naszą [Politykę Prywatności](https://docs.trinket.camera/privacy-policy) oraz [Warunki Użytkowania](https://docs.trinket.camera/terms-of-use)."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bằng cách này, bạn đồng ý với\n[Chính sách quyền riêng tư](https://docs.trinket.camera/privacy-policy) và [Điều khoản sử dụng](https://docs.trinket.camera/terms-of-use) của chúng tôi."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al hacer esto, aceptas\nnuestra [Política de Privacidad](https://docs.trinket.camera/privacy-policy) y [Términos de Uso](https://docs.trinket.camera/terms-of-use)."
           }
         }
       }
@@ -28,7 +52,31 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "계속하기"
+            "value" : "계속"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontynuuj"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiếp tục"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
           }
         }
       }
@@ -46,6 +94,30 @@
             "state" : "translated",
             "value" : "예: https://locket.camera/links/aFzBtwv49D63SK3S7"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ex. https://locket.camera/links/aFzBtwv49D63SK3S7"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "np. https://locket.camera/links/aFzBtwv49D63SK3S7"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ví dụ. https://locket.camera/links/aFzBtwv49D63SK3S7"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ej. https://locket.camera/links/aFzBtwv49D63SK3S7"
+          }
         }
       }
     },
@@ -60,7 +132,31 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "로켓을 주세요 \n초대 링크를 주세요."
+            "value" : "Locket 초대 링크를 주세요."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Donnez-moi le lien\nd'invitation Locket."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podaj mi link zaproszenia\nLocket."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cung cấp cho tôi liên kết\nmời Locket."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dame el enlace de\ninvitación de Locket."
           }
         }
       }
