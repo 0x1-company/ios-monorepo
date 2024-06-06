@@ -1,16 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "@bematchus" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "@bematchjp"
-          }
-        }
-      }
-    },
     "trinketcamera" : {
       "localizations" : {
         "ja" : {

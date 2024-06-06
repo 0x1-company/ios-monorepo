@@ -10,13 +10,6 @@
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
-	<key>CFBundleLocalizations</key>
-	<array>
-		<string>fr</string>
-		<string>en</string>
-		<string>ja</string>
-		<string>ko</string>
-	</array>
 	<key>CFBundleName</key>
 	<string>Trinket</string>
 	<key>CFBundlePackageType</key>
@@ -27,6 +20,16 @@
 	<string>1</string>
 	<key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
 	<true/>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>fr</string>
+		<string>ko</string>
+		<string>ja</string>
+		<string>pl</string>
+		<string>vi</string>
+		<string>es</string>
+	</array>
 	<key>FacebookAppID</key>
 	<string>398553079297373</string>
 	<key>FacebookClientToken</key>
