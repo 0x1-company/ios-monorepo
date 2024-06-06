@@ -47,6 +47,9 @@ jobs:
         env:
           PR_URL: ${{ steps.create-pr.outputs.pull-request-url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: jakejarvis/wait-action@master
+        with:
+          time: '3s'
       - continue-on-error: true
         run: gh pr review --approve "$PR_URL"
         env:
@@ -63,10 +66,9 @@ jobs:
         with:
           time: '10s'
       - uses: actions/checkout@v4
-      - run: echo "CURRENT_VERSION=$(defaults read $(pwd)/App/BeMatch/Multiplatform/Staging/Info CFBundleShortVersionString)" >> $GITHUB_OUTPUT
-        id: current-version
       - run: |
-          gh release create ${{ steps.current-version.outputs.CURRENT_VERSION }}\
+          CURRENT_VERSION=$(defaults read $(pwd)/App/BeMatch/Multiplatform/Staging/Info CFBundleShortVersionString)
+          gh release create "$CURRENT_VERSION"
             --generate-notes \
             --latest \
             --target main
