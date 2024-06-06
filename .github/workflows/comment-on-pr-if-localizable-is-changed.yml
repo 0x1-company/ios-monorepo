@@ -1,0 +1,20 @@
+name: Comment on PR if Localizable.xcstrings is changed
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - '**/Localizable.xcstrings'
+
+jobs:
+  check-files:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: peter-evans/create-or-update-comment@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            The `Localizable.xcstrings` file has been changed. Please ensure all changes are correctly localized.
