@@ -289,22 +289,6 @@
         }
       }
     },
-    "TikTok" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "TikTok"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "TikTok"
-          }
-        }
-      }
-    },
     "Version" : {
       "localizations" : {
         "ja" : {

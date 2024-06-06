@@ -5,7 +5,6 @@ public extension EnvironmentClient {
   static func live(
     brand: Brand,
     instagramUsername: String,
-    tiktokUsername: String,
     appId: String,
     appStoreForEmptyURL: URL,
     docsURL: URL,
@@ -28,7 +27,6 @@ public extension EnvironmentClient {
         "talk-to-developer": developerURL,
       ] },
       instagramURL: { URL(string: "https://instagram.com/\(instagramUsername)")! },
-      tiktokURL: { URL(string: "https://tiktok.com/\(tiktokUsername)")! },
       docsURL: { docsURL },
       faqURL: { URL(string: "\(docsURL)/faq")! },
       privacyPolicyURL: { URL(string: "\(docsURL)/privacy-policy")! },

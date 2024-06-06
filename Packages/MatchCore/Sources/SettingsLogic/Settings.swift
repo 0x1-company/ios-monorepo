@@ -43,7 +43,6 @@ public struct SettingsLogic {
     public let faqURL: URL
     public let contactUsURL: URL
     public let instagramURL: URL
-    public let tiktokURL: URL
     public let termsOfUseURL: URL
     public let privacyPolicyURL: URL
 
@@ -56,7 +55,6 @@ public struct SettingsLogic {
       faqURL = environment.faqURL()
       contactUsURL = environment.contactUsURL()
       instagramURL = environment.instagramURL()
-      tiktokURL = environment.tiktokURL()
       termsOfUseURL = environment.termsOfUseURL()
       privacyPolicyURL = environment.privacyPolicyURL()
     }
