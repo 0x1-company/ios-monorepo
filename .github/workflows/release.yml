@@ -65,7 +65,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: |
           CURRENT_VERSION=$(defaults read $(pwd)/App/BeMatch/Multiplatform/Staging/Info CFBundleShortVersionString)
-          gh release create "$CURRENT_VERSION"
+          gh release create "$CURRENT_VERSION" \
             --generate-notes \
             --latest \
             --target main
