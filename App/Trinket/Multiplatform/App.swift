@@ -64,7 +64,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
             appId: "6502700423",
             appStoreForEmptyURL: URL(string: "https://bematch.onelink.me/nob4/ta8yroer")!,
             docsURL: URL(string: "https://docs.trinket.camera")!,
-            howToMovieURL: URL(string: "https://storage.googleapis.com/bematch-production.appspot.com/public/how-to.mov")!
+            howToMovieURL: URL(string: "https://storage.googleapis.com/bematch-production.appspot.com/public/trinket/how-to-picture-upload.MP4")!
           )
           $0.configGlobal = ConfigGlobalClient.live(documentId: "trinket")
         }

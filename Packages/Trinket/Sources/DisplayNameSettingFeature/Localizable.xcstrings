@@ -1,8 +1,23 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "Continue" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13,12 +28,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "계속"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Continuer"
           }
         },
         "pl" : {
@@ -32,17 +41,23 @@
             "state" : "translated",
             "value" : "Tiếp tục"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Continuar"
-          }
         }
       }
     },
     "ex. tomokisun" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ej. tomokisun"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ex. tomokisun"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53,12 +68,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "예: tomokisun"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ex. tomokisun"
           }
         },
         "pl" : {
@@ -72,17 +81,23 @@
             "state" : "translated",
             "value" : "ví dụ: tomokisun"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ej. tomokisun"
-          }
         }
       }
     },
     "Set your nick name" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Establece tu apodo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Définissez votre pseudo"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -95,12 +110,6 @@
             "value" : "별명을 설정하세요"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Définissez votre pseudo"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -111,12 +120,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Đặt biệt danh của bạn"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Establece tu apodo"
           }
         }
       }

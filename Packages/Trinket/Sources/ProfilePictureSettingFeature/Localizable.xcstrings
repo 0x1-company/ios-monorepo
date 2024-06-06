@@ -3,6 +3,18 @@
   "strings" : {
     "Continue" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13,12 +25,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "계속"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Continuer"
           }
         },
         "pl" : {
@@ -32,17 +38,23 @@
             "state" : "translated",
             "value" : "Tiếp tục"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Continuar"
-          }
         }
       }
     },
     "It will be public 🌎" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Será público 🌎"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce sera public 🌎"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53,12 +65,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "공개됩니다 🌎"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ce sera public 🌎"
           }
         },
         "pl" : {
@@ -72,18 +78,24 @@
             "state" : "translated",
             "value" : "Nó sẽ được công khai 🌎"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Será público 🌎"
-          }
         }
       }
     },
     "Save" : {
       "extractionState" : "manual",
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrer"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -94,12 +106,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "저장"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enregistrer"
           }
         },
         "pl" : {
@@ -113,17 +119,23 @@
             "state" : "translated",
             "value" : "Lưu"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Guardar"
-          }
         }
       }
     },
     "Select a photo saved with Locket." : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleccione una foto guardada con Locket."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sélectionnez une photo enregistrée avec Locket."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -134,12 +146,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Locket으로 저장된 사진을 선택하세요."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sélectionnez une photo enregistrée avec Locket."
           }
         },
         "pl" : {
@@ -153,17 +159,24 @@
             "state" : "translated",
             "value" : "Chọn một bức ảnh được lưu bằng Locket."
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seleccione una foto guardada con Locket."
-          }
         }
       }
     },
     "Set your saved Locket.\nto your profile." : {
+      "extractionState" : "stale",
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Establezca su Locket guardado en su perfil."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Définissez votre Locket enregistré\nsur votre profil."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -174,12 +187,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "저장한 로켓을 프로필에 설정하세요."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Définissez votre Locket enregistré\nsur votre profil."
           }
         },
         "pl" : {
@@ -193,14 +200,11 @@
             "state" : "translated",
             "value" : "Đặt Locket đã lưu của bạn vào hồ sơ của bạn."
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Establezca su Locket guardado en su perfil."
-          }
         }
       }
+    },
+    "Set your saved Locket.\nto your profile. " : {
+
     }
   },
   "version" : "1.0"
