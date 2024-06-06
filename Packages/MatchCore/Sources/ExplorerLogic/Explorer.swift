@@ -33,11 +33,13 @@ public struct ExplorerLogic {
       case .onTask:
         analytics.logScreen(screenName: "Explorer", of: self)
         return .run { send in
-          for try await data in api.explorers() {
-            await send(.explorersResponse(.success(data)))
-          }
-        } catch: { error, send in
-          await send(.explorersResponse(.failure(error)))
+          try await requestExplorers(send: send)
+        }
+
+      case .content(.destination(.presented(.swipe(.delegate(.dismiss))))),
+           .content(.destination(.presented(.swipe(.delegate(.finished))))):
+        return .run { send in
+          try await requestExplorers(send: send)
         }
 
       case let .explorersResponse(.success(data)):
@@ -53,6 +55,16 @@ public struct ExplorerLogic {
       default:
         return .none
       }
+    }
+  }
+
+  private func requestExplorers(send: Send<Action>) async throws {
+    try {
+      for try await data in api.explorers() {
+        await send(.explorersResponse(.success(data)))
+      }
+    } catch {
+      await send(.explorersResponse(.failure(error)))
     }
   }
 }
