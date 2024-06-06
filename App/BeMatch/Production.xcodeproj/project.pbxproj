@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B7008E6F2A8027FA00C36803 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7CCF99F2A7AF46D00B64CFE /* GoogleService-Info.plist */; };
+		B7554CEB2C11AB6E00C87C22 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B7554CEA2C11AB6E00C87C22 /* PrivacyInfo.xcprivacy */; };
 		B7703D712AB32A26006BF41F /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B7703D702AB32A26006BF41F /* InfoPlist.xcstrings */; };
 		B7765AF62B46C825001B5C13 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7765AF52B46C825001B5C13 /* AdSupport.framework */; };
 		B7765AF82B46C82A001B5C13 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7765AF72B46C82A001B5C13 /* AppTrackingTransparency.framework */; };
@@ -33,6 +34,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B7554CEA2C11AB6E00C87C22 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		B7703D702AB32A26006BF41F /* InfoPlist.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		B7765AF52B46C825001B5C13 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		B7765AF72B46C82A001B5C13 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
@@ -89,6 +91,7 @@
 				B783E1742A137F38002E782F /* App.entitlements */,
 				B783E0E72A11FFBE002E782F /* Assets.xcassets */,
 				B7703D702AB32A26006BF41F /* InfoPlist.xcstrings */,
+				B7554CEA2C11AB6E00C87C22 /* PrivacyInfo.xcprivacy */,
 				B783E16F2A121FCD002E782F /* Info.plist */,
 				B7CCF99F2A7AF46D00B64CFE /* GoogleService-Info.plist */,
 				B783E0E92A11FFBE002E782F /* Preview Content */,
@@ -180,6 +183,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7554CEB2C11AB6E00C87C22 /* PrivacyInfo.xcprivacy in Resources */,
 				B783E0EB2A11FFBE002E782F /* Preview Assets.xcassets in Resources */,
 				B7AAEEED2BCFF786005704E4 /* Localizable.xcstrings in Resources */,
 				B783E0E82A11FFBE002E782F /* Assets.xcassets in Resources */,

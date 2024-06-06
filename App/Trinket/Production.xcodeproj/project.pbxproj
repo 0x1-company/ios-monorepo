@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B7008E6F2A8027FA00C36803 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7CCF99F2A7AF46D00B64CFE /* GoogleService-Info.plist */; };
+		B7554CE92C11AB0F00C87C22 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B7554CE82C10572B00C87C22 /* PrivacyInfo.xcprivacy */; };
 		B7703D712AB32A26006BF41F /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B7703D702AB32A26006BF41F /* InfoPlist.xcstrings */; };
 		B7765AF62B46C825001B5C13 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7765AF52B46C825001B5C13 /* AdSupport.framework */; };
 		B7765AF82B46C82A001B5C13 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7765AF72B46C82A001B5C13 /* AppTrackingTransparency.framework */; };
@@ -187,6 +188,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7554CE92C11AB0F00C87C22 /* PrivacyInfo.xcprivacy in Resources */,
 				B783E0EB2A11FFBE002E782F /* Preview Assets.xcassets in Resources */,
 				B7AAEEED2BCFF786005704E4 /* Localizable.xcstrings in Resources */,
 				B783E0E82A11FFBE002E782F /* Assets.xcassets in Resources */,
