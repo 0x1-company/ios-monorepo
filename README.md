@@ -46,7 +46,7 @@ MatchCore --> TapMatch
 
 # Apps
 
-## BeMatch.
+## BeMatch. | Make new BeReal friends
 
 BeMatch is an app that lets you exchange BeReal with people worldwide.<br>
 You can swipe to send a Like to friends you want to connect with on BeReal.<br>
@@ -57,11 +57,18 @@ When you both Like each other and match, you can send messages to each other wit
 
 ![](https://github.com/0x1-company/ios-app/assets/28350464/1582c53d-857c-4a8b-9f3a-0b889ca9158f)
 
-## Trinket
+## Trinket | Make new Locket friends
 
-coming soon...
+Trinket is an app that lets you exchange Locket with people worldwide.<br>
+You can swipe to send a Like to friends you want to connect with on Locket.<br>
+When you both Like each other and match, you can send messages to each other within the app.
 
-## TapMatch
+- https://trinket.camera
+- https://apps.apple.com/app/apple-store/id6502700423
+
+![](https://github.com/0x1-company/ios-monorepo/assets/28350464/3bc80b9a-223e-4743-a550-a4726976e74d)
+
+## TapMatch | Make new TapNow friends
 
 coming soon...
 
