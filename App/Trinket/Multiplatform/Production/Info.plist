@@ -19,6 +19,7 @@
 		<string>pl</string>
 		<string>vi</string>
 		<string>es</string>
+		<string>pt-BR</string>
 	</array>
 	<key>CFBundleName</key>
 	<string>Trinket</string>
