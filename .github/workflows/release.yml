@@ -3,9 +3,13 @@ name: Release
 on:
   workflow_dispatch:
     inputs:
-      version:
-        description: 'CFBundleShortVersionString'
+      project:
+        description: 'Select Project'
         required: true
+        type: choice
+        options:
+          - minor
+          - patch
 
 jobs:
   version-up:
@@ -15,12 +19,19 @@ jobs:
       - run: echo "CURRENT_VERSION=$(defaults read $(pwd)/App/BeMatch/Multiplatform/Staging/Info CFBundleShortVersionString)" >> $GITHUB_OUTPUT
         id: current-version
       - run: |
-          sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ github.event.inputs.version }}/g" App/BeMatch/Multiplatform/Staging/Info.plist
-          sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ github.event.inputs.version }}/g" App/BeMatch/Multiplatform/Production/Info.plist
-          sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ github.event.inputs.version }}/g" App/TapMatch/Multiplatform/Staging/Info.plist
-          sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ github.event.inputs.version }}/g" App/TapMatch/Multiplatform/Production/Info.plist
-          sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ github.event.inputs.version }}/g" App/Trinket/Multiplatform/Staging/Info.plist
-          sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ github.event.inputs.version }}/g" App/Trinket/Multiplatform/Production/Info.plist
+          if [ "${{ github.event.inputs.project }}" == "minor" ]; then
+            echo "NEXT_VERSION=$(${{ steps.current-version.outputs.CURRENT_VERSION }} | awk -F. -v 'OFS=.' '{print $1,$2+1,0}')" >> $GITHUB_OUTPUT
+          else
+            echo "NEXT_VERSION=$(${{ steps.current-version.outputs.CURRENT_VERSION }} | awk -F. -v 'OFS=.' '{print $1,$2,$3+1}')" >> $GITHUB_OUTPUT
+          fi
+        id: next-version
+      - run: |
+          sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ steps.next-version.outputs.NEXT_VERSION }}/g" App/BeMatch/Multiplatform/Staging/Info.plist
+          sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ steps.next-version.outputs.NEXT_VERSION }}/g" App/BeMatch/Multiplatform/Production/Info.plist
+          sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ steps.next-version.outputs.NEXT_VERSION }}/g" App/TapMatch/Multiplatform/Staging/Info.plist
+          sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ steps.next-version.outputs.NEXT_VERSION }}/g" App/TapMatch/Multiplatform/Production/Info.plist
+          sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ steps.next-version.outputs.NEXT_VERSION }}/g" App/Trinket/Multiplatform/Staging/Info.plist
+          sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ steps.next-version.outputs.NEXT_VERSION }}/g" App/Trinket/Multiplatform/Production/Info.plist
       - continue-on-error: true
         uses: peter-evans/create-pull-request@v6
         id: create-pr
@@ -29,8 +40,8 @@ jobs:
           author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           branch-suffix: short-commit-hash
-          commit-message: "Bump App from ${{ steps.current-version.outputs.CURRENT_VERSION }} to ${{ github.event.inputs.version }}"
-          title: "Bump App from ${{ steps.current-version.outputs.CURRENT_VERSION }} to ${{ github.event.inputs.version }}"
+          commit-message: "Bump App from ${{ steps.current-version.outputs.CURRENT_VERSION }} to ${{ steps.next-version.outputs.NEXT_VERSION }}"
+          title: "Bump App from ${{ steps.current-version.outputs.CURRENT_VERSION }} to ${{ steps.next-version.outputs.NEXT_VERSION }}"
       - continue-on-error: true
         run: gh pr merge --auto --squash "$PR_URL"
         env:
@@ -47,14 +58,15 @@ jobs:
     needs: version-up
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      NEXT_TAG: ${{ github.event.inputs.version }}
     steps:
       - uses: jakejarvis/wait-action@master
         with:
           time: '10s'
       - uses: actions/checkout@v4
+      - run: echo "CURRENT_VERSION=$(defaults read $(pwd)/App/BeMatch/Multiplatform/Staging/Info CFBundleShortVersionString)" >> $GITHUB_OUTPUT
+        id: current-version
       - run: |
-          gh release create ${{ env.NEXT_TAG }}\
+          gh release create ${{ steps.current-version.outputs.CURRENT_VERSION }}\
             --generate-notes \
             --latest \
             --target main
