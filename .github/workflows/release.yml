@@ -12,7 +12,7 @@ on:
 
 jobs:
   version-up:
-    runs-on: ubuntu-latest
+    runs-on: macOS-latest
     steps:
       - uses: actions/checkout@v4
       - run: echo "CURRENT_VERSION=$(defaults read $(pwd)/App/BeMatch/Multiplatform/Staging/Info CFBundleShortVersionString)" >> $GITHUB_OUTPUT
@@ -47,9 +47,6 @@ jobs:
         env:
           PR_URL: ${{ steps.create-pr.outputs.pull-request-url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: jakejarvis/wait-action@master
-        with:
-          time: '3s'
       - continue-on-error: true
         run: gh pr review --approve "$PR_URL"
         env:
