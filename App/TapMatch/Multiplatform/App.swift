@@ -61,7 +61,6 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
           $0.environment = EnvironmentClient.live(
             brand: EnvironmentClient.Brand.tapmatch,
             instagramUsername: String(localized: "bematchus"),
-            tiktokUsername: String(localized: "@bematchus"),
             appId: "6502700340",
             appStoreForEmptyURL: URL(string: "https://bematch.onelink.me/nob4/ta8yroer")!,
             docsURL: URL(string: "https://docs.tapmatch.jp")!,

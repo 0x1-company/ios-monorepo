@@ -105,28 +105,6 @@ public struct SettingsView: View {
         }
 
         Section {
-          Link(destination: viewStore.instagramURL) {
-            LabeledContent {
-              Image(systemName: "chevron.right")
-            } label: {
-              Text("Instagram", bundle: .module)
-                .foregroundStyle(Color.primary)
-            }
-          }
-
-          Link(destination: viewStore.tiktokURL) {
-            LabeledContent {
-              Image(systemName: "chevron.right")
-            } label: {
-              Text("TikTok", bundle: .module)
-                .foregroundStyle(Color.primary)
-            }
-          }
-        } header: {
-          Text("FOLLOW ME", bundle: .module)
-        }
-
-        Section {
           Link(destination: viewStore.termsOfUseURL) {
             LabeledContent {
               Image(systemName: "chevron.right")

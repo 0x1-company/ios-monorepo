@@ -17,7 +17,6 @@ public struct EnvironmentClient {
   public var quickActionURLs: @Sendable () -> [String: URL] = { [:] }
 
   public var instagramURL: @Sendable () -> URL = { URL.currentDirectory() }
-  public var tiktokURL: @Sendable () -> URL = { URL.currentDirectory() }
 
   public var docsURL: @Sendable () -> URL = { URL.currentDirectory() }
   public var faqURL: @Sendable () -> URL = { URL.currentDirectory() }
