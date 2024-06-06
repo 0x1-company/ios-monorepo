@@ -19,9 +19,9 @@ jobs:
         id: current-version
       - run: |
           if [ "${{ github.event.inputs.version }}" == "minor" ]; then
-            echo "NEXT_VERSION=$(${{ steps.current-version.outputs.CURRENT_VERSION }} | awk -F. -v 'OFS=.' '{print $1,$2+1,0}')" >> $GITHUB_OUTPUT
+            echo "NEXT_VERSION=${{ steps.current-version.outputs.CURRENT_VERSION }} | awk -F. -v 'OFS=.' '{print $1,$2+1,0}'" >> $GITHUB_OUTPUT
           else
-            echo "NEXT_VERSION=$(${{ steps.current-version.outputs.CURRENT_VERSION }} | awk -F. -v 'OFS=.' '{print $1,$2,$3+1}')" >> $GITHUB_OUTPUT
+            echo "NEXT_VERSION=${{ steps.current-version.outputs.CURRENT_VERSION }} | awk -F. -v 'OFS=.' '{print $1,$2,$3+1}'" >> $GITHUB_OUTPUT
           fi
         id: next-version
       - run: |
