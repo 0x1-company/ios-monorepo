@@ -15,10 +15,10 @@ jobs:
     runs-on: macOS-latest
     steps:
       - uses: actions/checkout@v4
-      - run: echo "CURRENT_VERSION=$(defaults read $(pwd)/App/BeMatch/Multiplatform/Staging/Info CFBundleShortVersionString)" >> $GITHUB_OUTPUT
+      - run: echo "CURRENT_VERSION=$(defaults read \"$(pwd)/App/BeMatch/Multiplatform/Staging/Info\" CFBundleShortVersionString)" >> $GITHUB_OUTPUT
         id: current-version
       - run: |
-          CURRENT_VERSION=${{ steps.current-version.outputs.CURRENT_VERSION }}
+          CURRENT_VERSION="${{ steps.current-version.outputs.CURRENT_VERSION }}"
           if [ "${{ github.event.inputs.version }}" == "minor" ]; then
             echo "NEXT_VERSION=$(echo $CURRENT_VERSION | awk -F. -v OFS=. '{print $1,$2+1,0}')" >> $GITHUB_OUTPUT
           else
@@ -54,7 +54,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
 
   create-release:
-    runs-on: macOS-latest
+    runs-on: ubuntu-latest
     needs: version-up
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -63,10 +63,12 @@ jobs:
         with:
           time: '10s'
       - uses: actions/checkout@v4
-      - run: echo "CURRENT_VERSION=$(defaults read $(pwd)/App/BeMatch/Multiplatform/Staging/Info CFBundleShortVersionString)" >> $GITHUB_OUTPUT
+      - run: echo "CURRENT_VERSION=$(defaults read \"$(pwd)/App/BeMatch/Multiplatform/Staging/Info\" CFBundleShortVersionString)" >> $GITHUB_OUTPUT
         id: current-version
-      - run: |
-          gh release create ${{ steps.current-version.outputs.CURRENT_VERSION }} \
+      - name: Create Release
+        shell: bash
+        run: |
+          gh release create "${{ steps.current-version.outputs.CURRENT_VERSION }}" \
             --generate-notes \
             --latest \
             --target main
