@@ -54,7 +54,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
 
   create-release:
-    runs-on: ubuntu-latest
+    runs-on: macOS-latest
     needs: version-up
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
