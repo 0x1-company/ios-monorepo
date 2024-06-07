@@ -63,11 +63,11 @@ jobs:
         with:
           time: '10s'
       - uses: actions/checkout@v4
-      - run: echo "CURRENT_VERSION=$(defaults read $(pwd)/App/BeMatch/Multiplatform/Staging/Info CFBundleShortVersionString)" >> $GITHUB_OUTPUT
+      - name: Current Version
         id: current-version
-      - name: Create Release
         shell: bash
-        run: |
+        run: echo "::set-output name=CURRENT_VERSION::$(defaults read $(pwd)/App/BeMatch/Multiplatform/Staging/Info CFBundleShortVersionString)"
+      - run: |
           gh release create "${{ steps.current-version.outputs.CURRENT_VERSION }}" \
             --generate-notes \
             --latest \
