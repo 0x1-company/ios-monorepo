@@ -11,7 +11,11 @@
         }
       }
     },
+    "Do not write Locket or other social media username." : {
+
+    },
     "Do not write vour BeReal or other social media username.Your profile will not be visible to others." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {

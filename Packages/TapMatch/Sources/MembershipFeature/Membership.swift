@@ -33,7 +33,7 @@ public struct MembershipView: View {
             )
           }
         }
-        .ignoresSafeArea()
+        .navigationBarTitleDisplayMode(.inline)
         .task { await store.send(.onTask).finish() }
         .alert(store: store.scope(state: \.$destination.alert, action: \.destination.alert))
         .toolbar {
@@ -42,7 +42,11 @@ public struct MembershipView: View {
               store.send(.closeButtonTapped)
             } label: {
               Image(systemName: "xmark")
+                .font(.system(size: 12, weight: .regular))
+                .frame(width: 32, height: 32)
                 .foregroundStyle(Color.primary)
+                .background(Color(uiColor: UIColor.quaternarySystemFill))
+                .clipShape(Circle())
             }
           }
         }

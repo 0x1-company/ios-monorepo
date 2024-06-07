@@ -17,10 +17,7 @@ public struct OnboardView: View {
 
   public var body: some View {
     NavigationStackStore(store.scope(state: \.path, action: \.path)) {
-      UsernameSettingView(
-        store: store.scope(state: \.username, action: \.username),
-        nextButtonStyle: .next
-      )
+      UsernameSettingView(store: store.scope(state: \.username, action: \.username))
     } destination: { store in
       switch store {
       case .gender:

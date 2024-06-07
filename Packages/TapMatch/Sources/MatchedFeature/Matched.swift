@@ -13,15 +13,15 @@ public struct MatchedView: View {
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
-      VStack(spacing: 40) {
+      VStack(spacing: 0) {
         Image(ImageResource.matched)
           .resizable()
           .aspectRatio(contentMode: .fit)
-          .frame(height: 240)
+          .frame(maxHeight: .infinity)
 
         VStack(spacing: 12) {
           PrimaryButton(
-            String(localized: "Add BeReal.", bundle: .module)
+            String(localized: "Add Locket", bundle: .module)
           ) {
             store.send(.addExternalProductButtonTapped)
           }
@@ -32,7 +32,6 @@ public struct MatchedView: View {
         }
       }
       .padding(.horizontal, 16)
-      .ignoresSafeArea()
       .frame(maxWidth: .infinity, maxHeight: .infinity)
       .task {
         requestReview()
@@ -55,17 +54,7 @@ public struct MatchedView: View {
             store.send(.closeButtonTapped)
           }
       )
-      .presentationBackground(
-        LinearGradient(
-          colors: [
-            Color(0xFFFE_7056),
-            Color(0xFFFD_2D76),
-          ],
-          startPoint: .topTrailing,
-          endPoint: .bottomLeading
-        )
-        .opacity(0.95)
-      )
+      .presentationBackground(Color.black.opacity(0.95))
     }
   }
 }

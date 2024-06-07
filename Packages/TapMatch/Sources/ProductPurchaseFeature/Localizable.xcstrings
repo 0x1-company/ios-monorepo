@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Continue" : {
+
+    },
     "most popular" : {
       "localizations" : {
         "ja" : {
@@ -12,6 +15,7 @@
       }
     },
     "Next" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
