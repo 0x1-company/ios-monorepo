@@ -33,7 +33,7 @@ jobs:
           author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           branch-suffix: short-commit-hash
-          commit-message: "style: 💄 swift-format"
+          commit-message: "style: swift-format"
           title: Run swift-format
       - continue-on-error: true
         run: gh pr merge --auto --squash "$PR_URL"
