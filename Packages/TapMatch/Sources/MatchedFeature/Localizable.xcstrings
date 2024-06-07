@@ -12,6 +12,7 @@
       }
     },
     "Add BeReal." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -20,6 +21,9 @@
           }
         }
       }
+    },
+    "Add Locket" : {
+
     }
   },
   "version" : "1.0"

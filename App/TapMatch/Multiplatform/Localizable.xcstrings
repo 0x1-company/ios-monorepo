@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "bematch" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -16,6 +17,9 @@
           }
         }
       }
+    },
+    "bematchus" : {
+
     }
   },
   "version" : "1.0"

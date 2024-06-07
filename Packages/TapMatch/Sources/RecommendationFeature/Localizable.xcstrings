@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "Just a little... Too much swiping... Please help me share TapMatch... 🙏." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -20,6 +21,9 @@
           }
         }
       }
+    },
+    "Too much swiping...\nPlease help us share TapMatch... 🙏" : {
+
     }
   },
   "version" : "1.0"

@@ -4,7 +4,14 @@
     "" : {
 
     },
+    "Continue" : {
+
+    },
+    "ex. tomokisun" : {
+
+    },
     "Next" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -14,7 +21,11 @@
         }
       }
     },
+    "Set your nick name" : {
+
+    },
     "What's your nick name?" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {

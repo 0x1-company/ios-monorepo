@@ -26,7 +26,7 @@ public struct UnsentDirectMessageListContentView: View {
           if viewStore.hasNextPage {
             ProgressView()
               .tint(Color.white)
-              .frame(width: 90, height: 120)
+              .frame(width: 96, height: 96)
               .task { await store.send(.scrollViewBottomReached).finish() }
           }
         }

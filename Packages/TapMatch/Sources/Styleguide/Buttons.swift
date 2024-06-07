@@ -11,7 +11,7 @@ public struct HoldDownButtonStyle: ButtonStyle {
 
 #Preview {
   Button(action: {}) {
-    Text("Next")
+    Text("Continue")
       .frame(height: 54)
       .frame(maxWidth: .infinity)
       .foregroundStyle(.white)

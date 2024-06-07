@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Continue" : {
+
+    },
     "If you have an invitation code.\nPlease let us know." : {
       "localizations" : {
         "ja" : {
@@ -22,6 +25,7 @@
       }
     },
     "Next" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {

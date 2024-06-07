@@ -14,20 +14,20 @@ public struct HowToMovieView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 36) {
-        Text(#"Press "Add to Photo" in memory and save it 📸."#, bundle: .module)
-          .font(.system(.title3, weight: .semibold))
+        Text("In the Locket, select your favorites and tap 'Save' 📸.", bundle: .module)
+          .font(.system(.title2, weight: .bold))
 
         VideoPlayer(player: viewStore.player)
 
         Spacer()
 
         PrimaryButton(
-          String(localized: "Next", bundle: .module)
+          String(localized: "Continue", bundle: .module)
         ) {
           store.send(.nextButtonTapped)
         }
       }
-      .padding(.top, 24)
+      .padding(.top, 32)
       .padding(.bottom, 16)
       .padding(.horizontal, 16)
       .background(Color.black)

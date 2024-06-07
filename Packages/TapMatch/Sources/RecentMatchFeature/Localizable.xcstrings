@@ -12,6 +12,7 @@
       }
     },
     "RECENT MATCH" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -20,6 +21,9 @@
           }
         }
       }
+    },
+    "Recently Match" : {
+
     }
   },
   "version" : "1.0"

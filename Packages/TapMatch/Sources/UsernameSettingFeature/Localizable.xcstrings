@@ -5,6 +5,7 @@
 
     },
     "BeRe.al/" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -14,7 +15,11 @@
         }
       }
     },
+    "By doing this, you agree\nto our [Privacy Policy](https://docs.tapmatch.jp/privacy-policy) and [Terms of Use](https://docs.tapmatch.jp/terms-of-use)." : {
+
+    },
     "By entering your username you agree to our [Terms](https://docs.tapmatch.jp/terms-of-use) and [Privacy Policy](https://docs.tapmatch.jp/privacy-policy)" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -24,7 +29,17 @@
         }
       }
     },
+    "Continue" : {
+
+    },
+    "ex. https://locket.camera/links/aFzBtwv49D63SK3S7" : {
+
+    },
+    "Give me the Locket\ninvitation link." : {
+
+    },
     "Next" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -46,6 +61,7 @@
       }
     },
     "What's your username on BeReal?" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {

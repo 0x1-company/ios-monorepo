@@ -43,6 +43,9 @@
         }
       }
     },
+    "Locket invitation link" : {
+
+    },
     "Nick Name" : {
       "localizations" : {
         "ja" : {
@@ -127,6 +130,7 @@
       }
     },
     "Username on BeReal." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {

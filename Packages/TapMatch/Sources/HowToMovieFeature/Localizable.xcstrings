@@ -1,7 +1,14 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Continue" : {
+
+    },
+    "In the Locket, select your favorites and tap 'Save' 📸." : {
+
+    },
     "Next" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -12,6 +19,7 @@
       }
     },
     "Press \"Add to Photo\" in memory and save it 📸." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {

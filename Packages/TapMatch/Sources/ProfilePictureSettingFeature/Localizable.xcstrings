@@ -1,7 +1,14 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Continue" : {
+
+    },
+    "It will be public 🌎" : {
+
+    },
     "Next" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -23,6 +30,7 @@
       }
     },
     "Select a photo saved with BeReal." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -32,7 +40,14 @@
         }
       }
     },
+    "Select a photo saved with Locket." : {
+
+    },
+    "Set your saved Locket.\nto your profile. " : {
+
+    },
     "Set your saved photo to your profile (it will be public 🌏)" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {

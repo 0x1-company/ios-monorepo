@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "Add BeReal" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -12,6 +13,7 @@
       }
     },
     "Add BeReal and send a message!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -20,6 +22,12 @@
           }
         }
       }
+    },
+    "Add Locket" : {
+
+    },
+    "Add Locket and send a message!" : {
+
     },
     "Matched with %@!" : {
       "localizations" : {

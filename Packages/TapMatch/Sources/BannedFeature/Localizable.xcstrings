@@ -42,6 +42,7 @@
       }
     },
     "Your account has been banned from TapMatch" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -50,6 +51,9 @@
           }
         }
       }
+    },
+    "Your account has been banned from TapMatch." : {
+
     }
   },
   "version" : "1.0"

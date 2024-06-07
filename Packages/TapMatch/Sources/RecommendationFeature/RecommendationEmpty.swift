@@ -14,13 +14,14 @@ public struct RecommendationEmptyView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 40) {
-        Image(ImageResource.highAlert)
+        Image(ImageResource.break)
           .resizable()
           .aspectRatio(contentMode: .fit)
-          .frame(height: 160)
+          .frame(maxWidth: .infinity)
+          .padding(.horizontal, 2)
 
         VStack(spacing: 16) {
-          Text("Just a little... Too much swiping... Please help me share TapMatch... 🙏.", bundle: .module)
+          Text("Too much swiping...\nPlease help us share TapMatch... 🙏", bundle: .module)
             .font(.system(.subheadline, weight: .semibold))
             .foregroundStyle(Color.white)
             .multilineTextAlignment(.center)
@@ -38,8 +39,8 @@ public struct RecommendationEmptyView: View {
           }
           .buttonStyle(HoldDownButtonStyle())
         }
+        .padding(.horizontal, 16)
       }
-      .padding(.horizontal, 16)
       .background(Color.black)
       .task { await store.send(.onTask).finish() }
       .sheet(isPresented: viewStore.$isPresented) {

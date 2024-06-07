@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "Let's Reply" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -12,6 +13,7 @@
       }
     },
     "Like" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -21,7 +23,11 @@
         }
       }
     },
+    "Likes" : {
+
+    },
     "MESSAGE" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -31,7 +37,11 @@
         }
       }
     },
+    "Messages" : {
+
+    },
     "RECENT MATCH" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -41,7 +51,17 @@
         }
       }
     },
+    "Recently Match" : {
+
+    },
+    "Reply!" : {
+
+    },
+    "See More" : {
+
+    },
     "SEE MORE" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {

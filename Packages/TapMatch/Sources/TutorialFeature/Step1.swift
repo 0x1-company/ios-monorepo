@@ -11,7 +11,7 @@ struct Step1View: View {
         Text("Let's get started!", bundle: .module)
           .font(.system(.title, design: .rounded, weight: .bold))
 
-        Text("TapMatch is an application that allows you to exchange BeReal with everyone in Japan!", bundle: .module)
+        Text("TapMatch is an application that allows you to exchange Locket with everyone in Global!", bundle: .module)
           .font(.system(.headline, design: .rounded))
       }
       .padding(.horizontal, 56)

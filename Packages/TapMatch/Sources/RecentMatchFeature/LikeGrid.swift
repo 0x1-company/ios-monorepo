@@ -15,11 +15,11 @@ public struct LikeGridView: View {
   var goldGradient: LinearGradient {
     LinearGradient(
       colors: [
-        Color(0xFFE8_B423),
-        Color(0xFFF5_D068),
+        Color(0xFF9F0A),
+        Color(0xFFD60A),
       ],
-      startPoint: .leading,
-      endPoint: .trailing
+      startPoint: .top,
+      endPoint: .bottom
     )
   }
 
@@ -28,7 +28,7 @@ public struct LikeGridView: View {
       Button {
         store.send(.gridButtonTapped)
       } label: {
-        VStack(spacing: 0) {
+        VStack(spacing: 8) {
           CachedAsyncImage(
             url: URL(string: viewStore.imageUrl),
             urlCache: .shared,
@@ -36,12 +36,12 @@ public struct LikeGridView: View {
             content: { image in
               image
                 .resizable()
-                .aspectRatio(3 / 4, contentMode: .fill)
+                .aspectRatio(1, contentMode: .fill)
                 .blur(radius: 18)
             },
             placeholder: {
               Color.black
-                .aspectRatio(3 / 4, contentMode: .fill)
+                .aspectRatio(1, contentMode: .fill)
                 .overlay {
                   ProgressView()
                     .progressViewStyle(CircularProgressViewStyle())
@@ -55,22 +55,24 @@ public struct LikeGridView: View {
               .stroke(goldGradient, lineWidth: 3)
           }
           .overlay {
-            Text(viewStore.receivedCount)
-              .font(.system(.body, weight: .semibold))
-              .frame(width: 40, height: 40)
-              .foregroundStyle(Color.white)
-              .background(goldGradient)
-              .clipShape(Circle())
-          }
-          .overlay(alignment: .bottom) {
-            Image(ImageResource.receivedLike)
-              .offset(y: 17)
+            HStack(alignment: .center, spacing: 0) {
+              Text(Image(systemName: "heart.fill"))
+                .font(.system(size: 14))
+
+              Text(viewStore.receivedCount)
+                .font(.system(.body, weight: .semibold))
+            }
+            .foregroundStyle(Color.black)
+            .padding(.vertical, 4)
+            .padding(.horizontal, 6)
+            .background(goldGradient)
+            .clipShape(RoundedRectangle(cornerRadius: .infinity))
           }
 
           Text("Liked by \(viewStore.receivedCount) people", bundle: .module)
             .foregroundStyle(Color.primary)
             .font(.system(.subheadline, weight: .semibold))
-            .frame(maxWidth: .infinity, minHeight: 54, maxHeight: .infinity, alignment: .leading)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         }
       }
     }

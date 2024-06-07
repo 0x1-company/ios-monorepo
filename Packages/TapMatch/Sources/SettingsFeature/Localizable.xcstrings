@@ -52,6 +52,7 @@
       }
     },
     "FOLLOW ME" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -82,6 +83,7 @@
       }
     },
     "Instagram" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {

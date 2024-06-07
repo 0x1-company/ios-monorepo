@@ -27,8 +27,8 @@ public struct GenderSettingView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 0) {
-        Text("What's your gender?", bundle: .module)
-          .font(.system(.title3, weight: .semibold))
+        Text("Please tell us your gender.", bundle: .module)
+          .font(.system(.title2, weight: .bold))
 
         List(viewStore.genders, id: \.self) { gender in
           Button {
@@ -42,7 +42,7 @@ public struct GenderSettingView: View {
               Text(gender.displayValue)
                 .font(.system(.headline, weight: .semibold))
             }
-            .frame(height: 50)
+            .frame(height: 44)
           }
         }
         .scrollDisabled(true)
@@ -54,7 +54,7 @@ public struct GenderSettingView: View {
           PrimaryButton(
             nextButtonStyle == .save
               ? String(localized: "Save", bundle: .module)
-              : String(localized: "Next", bundle: .module),
+              : String(localized: "Continue", bundle: .module),
             isLoading: viewStore.isActivityIndicatorVisible,
             isDisabled: viewStore.selection == nil
           ) {
@@ -74,7 +74,7 @@ public struct GenderSettingView: View {
         }
         .padding(.horizontal, 16)
       }
-      .padding(.top, 24)
+      .padding(.top, 32)
       .padding(.bottom, 16)
       .multilineTextAlignment(.center)
       .navigationBarTitleDisplayMode(.inline)

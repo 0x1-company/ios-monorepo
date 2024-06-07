@@ -14,7 +14,7 @@ public struct BannedView: View {
       VStack(spacing: 24) {
         Spacer()
 
-        Text("Your account has been banned from TapMatch", bundle: .module)
+        Text("Your account has been banned from TapMatch.", bundle: .module)
           .font(.system(.headline, weight: .semibold))
 
         Text("It's important to us that TapMatch is a welcoming and safe space for everyone.\nUnfortunately, we found that you violated our [Terms of Use](https://docs.tapmatch.jp/terms-of-use) and so we've made the decision to remove you from the TapMatch Platform.", bundle: .module)

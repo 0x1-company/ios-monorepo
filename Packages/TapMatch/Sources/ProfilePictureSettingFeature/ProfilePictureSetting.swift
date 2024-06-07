@@ -27,11 +27,13 @@ public struct ProfilePictureSettingView: View {
         ScrollView {
           VStack(spacing: 36) {
             VStack(spacing: 8) {
-              Text("Set your saved photo to your profile (it will be public 🌏)", bundle: .module)
-                .lineLimit(2)
-                .frame(minHeight: 50)
-                .layoutPriority(1)
-                .font(.system(.title3, weight: .semibold))
+              Text("Set your saved Locket.\nto your profile. ", bundle: .module)
+                .frame(minHeight: 56)
+                .font(.system(.title2, weight: .bold))
+
+              Text("It will be public 🌎", bundle: .module)
+                .font(.system(.footnote, weight: .semibold))
+                .foregroundStyle(Color.secondary)
 
               if viewStore.isWarningTextVisible {
                 Button {
@@ -41,7 +43,7 @@ public struct ProfilePictureSettingView: View {
                     Image(systemName: "exclamationmark.triangle.fill")
                       .foregroundStyle(Color.yellow)
 
-                    Text("Select a photo saved with BeReal.", bundle: .module)
+                    Text("Select a photo saved with Locket.", bundle: .module)
                       .foregroundStyle(Color.secondary)
                   }
                   .font(.callout)
@@ -78,7 +80,7 @@ public struct ProfilePictureSettingView: View {
         PrimaryButton(
           nextButtonStyle == .save
             ? String(localized: "Save", bundle: .module)
-            : String(localized: "Next", bundle: .module),
+            : String(localized: "Continue", bundle: .module),
           isLoading: viewStore.isActivityIndicatorVisible
         ) {
           store.send(.nextButtonTapped)
