@@ -1,7 +1,7 @@
 import AnalyticsClient
-import FeedbackGeneratorClient
 import AVKit
 import ComposableArchitecture
+import FeedbackGeneratorClient
 
 @Reducer
 public struct HowToLocketLinkLogic {
@@ -20,7 +20,7 @@ public struct HowToLocketLinkLogic {
     case onTask
     case closeButtonTapped
     case delegate(Delegate)
-    
+
     public enum Delegate: Equatable {
       case dismiss
     }
@@ -36,13 +36,13 @@ public struct HowToLocketLinkLogic {
         state.player.play()
         analytics.logScreen(screenName: "HowToLocketLink", of: self)
         return .none
-        
+
       case .closeButtonTapped:
         return .run { send in
           await feedbackGenerator.impactOccurred()
           await send(.delegate(.dismiss))
         }
-        
+
       default:
         return .none
       }

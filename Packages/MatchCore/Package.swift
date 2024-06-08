@@ -30,8 +30,8 @@ let package = Package(
     .library(name: "ForceUpdateLogic", targets: ["ForceUpdateLogic"]),
     .library(name: "FreezedLogic", targets: ["FreezedLogic"]),
     .library(name: "GenderSettingLogic", targets: ["GenderSettingLogic"]),
-    .library(name: "HowToMovieLogic", targets: ["HowToMovieLogic"]),
     .library(name: "HowToLocketLinkLogic", targets: ["HowToLocketLinkLogic"]),
+    .library(name: "HowToMovieLogic", targets: ["HowToMovieLogic"]),
     .library(name: "InvitationCodeLogic", targets: ["InvitationCodeLogic"]),
     .library(name: "InvitationLogic", targets: ["InvitationLogic"]),
     .library(name: "LaunchLogic", targets: ["LaunchLogic"]),
@@ -201,15 +201,15 @@ let package = Package(
       .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
+    .target(name: "HowToLocketLinkLogic", dependencies: [
+      "AnalyticsKeys",
+      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
     .target(name: "HowToMovieLogic", dependencies: [
       "AnalyticsKeys",
       "EnvironmentClient",
       .product(name: "UIApplicationClient", package: "Dependencies"),
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-    ]),
-    .target(name: "HowToLocketLinkLogic", dependencies: [
-      "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
@@ -395,10 +395,8 @@ let package = Package(
     ]),
     .target(name: "UsernameSettingLogic", dependencies: [
       "APIClient",
-      "AnalyticsKeys",
       "EnvironmentClient",
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      "HowToLocketLinkLogic",
     ]),
   ]
 )

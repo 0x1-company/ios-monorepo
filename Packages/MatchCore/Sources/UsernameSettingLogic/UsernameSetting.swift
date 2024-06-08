@@ -6,6 +6,7 @@ import ApolloConcurrency
 import ComposableArchitecture
 import EnvironmentClient
 import FeedbackGeneratorClient
+import HowToLocketLinkLogic
 
 @Reducer
 public struct UsernameSettingLogic {
@@ -14,7 +15,7 @@ public struct UsernameSettingLogic {
   public struct State: Equatable {
     public var isActivityIndicatorVisible = false
     @BindingState public var value: String
-    @PresentationState public var alert: AlertState<Action.Alert>?
+    @PresentationState public var destination: Destination.State?
 
     public init(username: String) {
       value = username
@@ -23,17 +24,14 @@ public struct UsernameSettingLogic {
 
   public enum Action: BindableAction {
     case onTask
+    case locketQuestionButtonTapped
     case nextButtonTapped
     case updateBeRealResponse(Result<API.UpdateBeRealMutation.Data, Error>)
     case updateTapNowResponse(Result<API.UpdateTapNowMutation.Data, Error>)
     case updateLocketResponse(Result<API.UpdateLocketMutation.Data, Error>)
     case binding(BindingAction<State>)
-    case alert(PresentationAction<Alert>)
+    case destination(PresentationAction<Destination.Action>)
     case delegate(Delegate)
-
-    public enum Alert: Equatable {
-      case confirmOkay
-    }
 
     public enum Delegate: Equatable {
       case nextScreen
@@ -51,6 +49,10 @@ public struct UsernameSettingLogic {
       switch action {
       case .onTask:
         analytics.logScreen(screenName: "UsernameSetting", of: self)
+        return .none
+
+      case .locketQuestionButtonTapped:
+        state.destination = .howToLocketLink()
         return .none
 
       case .nextButtonTapped:
@@ -100,17 +102,23 @@ public struct UsernameSettingLogic {
 
       case let .updateBeRealResponse(.failure(error as ServerError)):
         state.isActivityIndicatorVisible = false
-        state.alert = AlertState.errorLog(message: error.message)
+        state.destination = .alert(
+          AlertState.errorLog(message: error.message)
+        )
         return .none
 
       case let .updateTapNowResponse(.failure(error as ServerError)):
         state.isActivityIndicatorVisible = false
-        state.alert = AlertState.errorLog(message: error.message)
+        state.destination = .alert(
+          AlertState.errorLog(message: error.message)
+        )
         return .none
 
       case let .updateLocketResponse(.failure(error as ServerError)):
         state.isActivityIndicatorVisible = false
-        state.alert = AlertState.errorLog(message: error.message)
+        state.destination = .alert(
+          AlertState.errorLog(message: error.message)
+        )
         return .none
 
       case .updateBeRealResponse(.failure),
@@ -119,19 +127,46 @@ public struct UsernameSettingLogic {
         state.isActivityIndicatorVisible = false
         return .none
 
-      case .alert(.presented(.confirmOkay)):
-        state.alert = nil
+      case .destination(.presented(.alert(.confirmOkay))),
+           .destination(.presented(.howToLocketLink(.delegate(.dismiss)))):
+        state.destination = nil
         return .none
 
       default:
         return .none
       }
     }
-    .ifLet(\.$alert, action: \.alert)
+    .ifLet(\.$destination, action: \.destination) {
+      Destination()
+    }
+  }
+
+  @Reducer
+  public struct Destination {
+    public enum State: Equatable {
+      case alert(AlertState<Action.Alert>)
+      case howToLocketLink(HowToLocketLinkLogic.State = .init())
+    }
+
+    public enum Action {
+      case alert(Alert)
+      case howToLocketLink(HowToLocketLinkLogic.Action)
+
+      public enum Alert: Equatable {
+        case confirmOkay
+      }
+    }
+
+    public var body: some Reducer<State, Action> {
+      Scope(state: \.alert, action: \.alert, child: {})
+      Scope(state: \.howToLocketLink, action: \.howToLocketLink) {
+        HowToLocketLinkLogic()
+      }
+    }
   }
 }
 
-extension AlertState where Action == UsernameSettingLogic.Action.Alert {
+extension AlertState where Action == UsernameSettingLogic.Destination.Action.Alert {
   static func errorLog(message: String) -> Self {
     Self {
       TextState("Error", bundle: .module)

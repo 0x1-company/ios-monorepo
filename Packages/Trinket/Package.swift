@@ -377,10 +377,8 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "UsernameSettingFeature", dependencies: [
+      "HowToLocketLinkFeature",
       .product(name: "UsernameSettingLogic", package: "MatchCore"),
-      "Styleguide",
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
   ]
 )

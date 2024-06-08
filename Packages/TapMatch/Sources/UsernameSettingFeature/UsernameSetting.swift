@@ -65,7 +65,9 @@ public struct UsernameSettingView: View {
           Image(ImageResource.logo)
         }
       }
-      .alert(store: store.scope(state: \.$alert, action: \.alert))
+      .alert(
+        store: store.scope(state: \.$destination.alert, action: \.destination.alert)
+      )
     }
   }
 }

@@ -1,7 +1,7 @@
 import AVKit
+import ComposableArchitecture
 import HowToLocketLinkLogic
 import Styleguide
-import ComposableArchitecture
 import SwiftUI
 
 public struct HowToLocketLinkView: View {
@@ -36,7 +36,7 @@ public struct HowToLocketLinkView: View {
             store.send(.closeButtonTapped)
           } label: {
             Image(systemName: "xmark")
-              .font(.system(size: 16, weight: .regular))
+              .font(.system(size: 12, weight: .bold))
               .foregroundStyle(Color.white)
               .frame(width: 44, height: 44)
               .background(Color(uiColor: UIColor.quaternarySystemFill))
