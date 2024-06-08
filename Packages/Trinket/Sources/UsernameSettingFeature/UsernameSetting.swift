@@ -1,4 +1,5 @@
 import ComposableArchitecture
+import HowToLocketLinkFeature
 import Styleguide
 import SwiftUI
 import UsernameSettingLogic
@@ -64,8 +65,33 @@ public struct UsernameSettingView: View {
         ToolbarItem(placement: .principal) {
           Image(ImageResource.logo)
         }
+
+        ToolbarItem(placement: .topBarTrailing) {
+          Button {
+            store.send(.locketQuestionButtonTapped)
+          } label: {
+            Image(systemName: "questionmark")
+              .font(.system(size: 12, weight: .bold))
+              .foregroundStyle(Color.white)
+              .frame(width: 44, height: 44)
+              .background(Color(uiColor: UIColor.quaternarySystemFill))
+              .clipShape(Circle())
+          }
+        }
       }
-      .alert(store: store.scope(state: \.$alert, action: \.alert))
+      .alert(
+        store: store.scope(state: \.$destination.alert, action: \.destination.alert)
+      )
+      .sheet(
+        store: store.scope(
+          state: \.$destination.howToLocketLink,
+          action: \.destination.howToLocketLink
+        )
+      ) { store in
+        NavigationStack {
+          HowToLocketLinkView(store: store)
+        }
+      }
     }
   }
 }

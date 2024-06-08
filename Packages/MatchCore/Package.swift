@@ -30,6 +30,7 @@ let package = Package(
     .library(name: "ForceUpdateLogic", targets: ["ForceUpdateLogic"]),
     .library(name: "FreezedLogic", targets: ["FreezedLogic"]),
     .library(name: "GenderSettingLogic", targets: ["GenderSettingLogic"]),
+    .library(name: "HowToLocketLinkLogic", targets: ["HowToLocketLinkLogic"]),
     .library(name: "HowToMovieLogic", targets: ["HowToMovieLogic"]),
     .library(name: "InvitationCodeLogic", targets: ["InvitationCodeLogic"]),
     .library(name: "InvitationLogic", targets: ["InvitationLogic"]),
@@ -196,6 +197,11 @@ let package = Package(
     ]),
     .target(name: "GenderSettingLogic", dependencies: [
       "APIClient",
+      "AnalyticsKeys",
+      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
+    .target(name: "HowToLocketLinkLogic", dependencies: [
       "AnalyticsKeys",
       .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
@@ -389,10 +395,8 @@ let package = Package(
     ]),
     .target(name: "UsernameSettingLogic", dependencies: [
       "APIClient",
-      "AnalyticsKeys",
       "EnvironmentClient",
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      "HowToLocketLinkLogic",
     ]),
   ]
 )

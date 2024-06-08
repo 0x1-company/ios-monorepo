@@ -1,0 +1,52 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "In the Locket, select others and tap 'Copy' 📸.": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Locketでその他を選択し、「コピー」📸をタップします。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "락켓에서 다른 사람을 선택하고 '복사'를 탭하세요 📸."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dans le Locket, sélectionnez d'autres personnes et appuyez sur 'Copier' 📸."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "W Locket wybierz innych i stuknij 'Kopiuj' 📸."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trong Locket, chọn người khác và nhấn 'Sao chép' 📸."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En Locket, selecciona a otros y toca 'Copiar' 📸."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No Locket, selecione outras pessoas e toque em 'Copiar' 📸."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

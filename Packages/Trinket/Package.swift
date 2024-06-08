@@ -24,6 +24,7 @@ let package = Package(
     .library(name: "ForceUpdateFeature", targets: ["ForceUpdateFeature"]),
     .library(name: "FreezedFeature", targets: ["FreezedFeature"]),
     .library(name: "GenderSettingFeature", targets: ["GenderSettingFeature"]),
+    .library(name: "HowToLocketLinkFeature", targets: ["HowToLocketLinkFeature"]),
     .library(name: "HowToMovieFeature", targets: ["HowToMovieFeature"]),
     .library(name: "InvitationCodeFeature", targets: ["InvitationCodeFeature"]),
     .library(name: "InvitationFeature", targets: ["InvitationFeature"]),
@@ -170,6 +171,10 @@ let package = Package(
       "Styleguide",
       .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
+    .target(name: "HowToLocketLinkFeature", dependencies: [
+      "Styleguide",
+      .product(name: "HowToLocketLinkLogic", package: "MatchCore"),
     ]),
     .target(name: "HowToMovieFeature", dependencies: [
       "Styleguide",
@@ -372,10 +377,8 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "UsernameSettingFeature", dependencies: [
+      "HowToLocketLinkFeature",
       .product(name: "UsernameSettingLogic", package: "MatchCore"),
-      "Styleguide",
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
   ]
 )
