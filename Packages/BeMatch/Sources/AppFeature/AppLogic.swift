@@ -12,6 +12,7 @@ import SwiftUI
 import TutorialFeature
 
 public struct AppView: View {
+  @Environment(\.scenePhase) private var scenePhase
   let store: StoreOf<AppLogic>
 
   public init(store: StoreOf<AppLogic>) {
@@ -69,6 +70,14 @@ public struct AppView: View {
           action: AppLogic.Child.Action.networkError,
           then: NetworkErrorView.init(store:)
         )
+      }
+    }
+    .onChange(of: scenePhase) { phase in
+      switch phase {
+      case .background:
+        fatalError("background")
+      default:
+        print(phase)
       }
     }
     .overlay {

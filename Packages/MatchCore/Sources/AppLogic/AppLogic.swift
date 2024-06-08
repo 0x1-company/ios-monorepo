@@ -1,4 +1,5 @@
 import AnalyticsKeys
+import UserNotificationClient
 import API
 import AppTrackingTransparency
 import AsyncValue
@@ -44,6 +45,7 @@ public struct AppLogic {
   }
 
   public enum Action {
+    case scenePhaseChanged(ScenePhase)
     case appDelegate(AppDelegateLogic.Action)
     case sceneDelegate(SceneDelegateLogic.Action)
     case child(Child.Action)
@@ -63,6 +65,7 @@ public struct AppLogic {
   @Dependency(\.firebaseAuth) var firebaseAuth
   @Dependency(\.userDefaults) var userDefaults
   @Dependency(\.environment) var environment
+  @Dependency(\.userNotifications) var userNotifications
 
   public var body: some Reducer<State, Action> {
     core
@@ -120,6 +123,11 @@ public struct AppLogic {
       }
     Reduce<State, Action> { state, action in
       switch action {
+      case let .scenePhaseChanged(scenePhase) where scenePhase == ScenePhase.background:
+        return .run { _ in
+          await registerPushNotificationAfter24Hours()
+        }
+
       case .child(.onboard(.delegate(.finish))):
         analytics.setUserProperty(key: \.onboardCompleted, value: "true")
         state.tutorial = .init()
@@ -133,6 +141,27 @@ public struct AppLogic {
       default:
         return .none
       }
+    }
+  }
+
+  func registerPushNotificationAfter24Hours() async {
+    let content = UNMutableNotificationContent()
+    content.body = String(localized: "Hey, new users have been pouring in lately, so how about we check it out again soon?", bundle: .module)
+    
+    let trigger = UNTimeIntervalNotificationTrigger(
+      timeInterval: 60 * 60 * 24,
+      repeats: false
+    )
+    let request = UNNotificationRequest(
+      identifier: "after-24-hours",
+      content: content,
+      trigger: trigger
+    )
+    
+    do {
+      try await userNotifications.add(request)
+    } catch {
+      print("\(#function): \(error)")
     }
   }
 
