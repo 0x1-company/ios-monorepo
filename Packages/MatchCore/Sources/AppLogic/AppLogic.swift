@@ -1,5 +1,4 @@
 import AnalyticsKeys
-import UserNotificationClient
 import API
 import AppTrackingTransparency
 import AsyncValue
@@ -22,6 +21,7 @@ import SwiftUI
 import TcaHelpers
 import TutorialLogic
 import UserDefaultsClient
+import UserNotificationClient
 
 @Reducer
 public struct AppLogic {
@@ -147,7 +147,7 @@ public struct AppLogic {
   func registerPushNotificationAfter24Hours() async {
     let content = UNMutableNotificationContent()
     content.body = String(localized: "Hey, new users have been pouring in lately, so how about we check it out again soon?", bundle: .module)
-    
+
     let trigger = UNTimeIntervalNotificationTrigger(
       timeInterval: 60 * 60 * 24,
       repeats: false
@@ -157,7 +157,7 @@ public struct AppLogic {
       content: content,
       trigger: trigger
     )
-    
+
     do {
       try await userNotifications.add(request)
     } catch {
