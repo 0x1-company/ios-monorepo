@@ -16,7 +16,7 @@ public struct LaunchView: View {
         .aspectRatio(contentMode: .fit)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .ignoresSafeArea()
-        .background(Color.yellow)
+        .background(Color.black)
         .task { await store.send(.onTask).finish() }
         .overlay {
           if viewStore.isActivityIndicatorVisible {
