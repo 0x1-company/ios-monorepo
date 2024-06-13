@@ -46,6 +46,7 @@ public struct PictureSliderLogic {
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
+
       default:
         return .none
       }

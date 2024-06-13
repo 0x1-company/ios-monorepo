@@ -63,12 +63,14 @@ public struct DeleteAccountLogic {
           await feedbackGenerator.impactOccurred()
           await dismiss()
         }
+
       case .notNowButtonTapped:
         analytics.buttonClick(name: \.notNow)
         return .run { _ in
           await feedbackGenerator.impactOccurred()
           await dismiss()
         }
+
       case let .reasonButtonTapped(reason):
         if state.selectedReasons.contains(reason) {
           state.selectedReasons = state.selectedReasons.filter { $0 != reason }
