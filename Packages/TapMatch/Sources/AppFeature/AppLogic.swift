@@ -73,12 +73,7 @@ public struct AppView: View {
       }
     }
     .onChange(of: scenePhase) { phase in
-      switch phase {
-      case .background:
-        fatalError("background")
-      default:
-        print(phase)
-      }
+      store.send(.scenePhaseChanged(scenePhase))
     }
     .overlay {
       IfLetStore(
