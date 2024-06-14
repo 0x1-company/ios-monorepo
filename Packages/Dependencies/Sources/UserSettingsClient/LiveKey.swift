@@ -10,6 +10,7 @@ extension UserSettingsClient: DependencyKey {
         .document(param.uid)
         .setData(
           [
+            "brand": param.brand,
             "notificationStatus": param.notificationStatus,
             "trackingAuthorizationStatus": param.trackingAuthorizationStatus,
           ],

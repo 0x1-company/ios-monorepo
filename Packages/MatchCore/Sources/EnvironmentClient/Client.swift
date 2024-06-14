@@ -26,10 +26,10 @@ public struct EnvironmentClient {
 
   public var howToMovieURL: @Sendable () -> URL = { URL.currentDirectory() }
 
-  public enum Brand: Equatable {
-    case bematch
-    case tapmatch
-    case trinket
+  public enum Brand: String, Equatable {
+    case bematch = "BEMATCH"
+    case tapmatch = "TAPMATCH"
+    case trinket = "TRINKET"
 
     public var displayName: String {
       switch self {
