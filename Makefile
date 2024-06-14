@@ -9,9 +9,6 @@ tapmatch:
 trinket:
 	open Trinket.xcworkspace
 
-sdk:
-	open SDK.xcworkspace
-
 clean:
 	rm -rf **/*/.build
 
