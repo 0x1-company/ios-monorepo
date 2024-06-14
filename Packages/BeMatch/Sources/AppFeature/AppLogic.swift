@@ -72,7 +72,7 @@ public struct AppView: View {
         )
       }
     }
-    .onChange(of: scenePhase) { phase in
+    .onChange(of: scenePhase) { _ in
       store.send(.scenePhaseChanged(scenePhase))
     }
     .overlay {
