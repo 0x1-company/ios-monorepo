@@ -4,22 +4,7 @@
     "" : {
 
     },
-    "BeRe.al/" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeRe.al/"
-          }
-        }
-      }
-    },
     "By doing this, you agree\nto our [Privacy Policy](https://docs.tapmatch.jp/privacy-policy) and [Terms of Use](https://docs.tapmatch.jp/terms-of-use)." : {
-
-    },
-    "By entering your username you agree to our [Terms](https://docs.tapmatch.jp/terms-of-use) and [Privacy Policy](https://docs.tapmatch.jp/privacy-policy)" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -30,21 +15,31 @@
       }
     },
     "Continue" : {
-
-    },
-    "ex. https://locket.camera/links/aFzBtwv49D63SK3S7" : {
-
-    },
-    "Give me the Locket\ninvitation link." : {
-
-    },
-    "Next" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "つぎへ"
+            "value" : "続ける"
+          }
+        }
+      }
+    },
+    "ex. tomokisun" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "例: tomokisun"
+          }
+        }
+      }
+    },
+    "Give me the TapNow username." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TapNowのユーザーネーム を設定してください"
           }
         }
       }
@@ -56,17 +51,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "保存する"
-          }
-        }
-      }
-    },
-    "What's your username on BeReal?" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeRealのユーザーネーム\nを設定してください"
           }
         }
       }

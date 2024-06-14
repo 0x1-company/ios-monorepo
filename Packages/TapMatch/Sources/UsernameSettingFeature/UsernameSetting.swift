@@ -16,24 +16,22 @@ public struct UsernameSettingView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 16) {
-        Text("Give me the Locket\ninvitation link.", bundle: .module)
+        Text("Give me the TapNow username.", bundle: .module)
           .font(.system(.title2, weight: .bold))
 
-        Text("ex. https://locket.camera/links/aFzBtwv49D63SK3S7", bundle: .module)
+        Text("ex. tomokisun", bundle: .module)
           .font(.caption)
           .tint(Color.gray)
           .foregroundStyle(Color.gray)
 
-        TextEditor(text: viewStore.$value)
+        TextField("", text: viewStore.$value)
           .keyboardType(.alphabet)
           .textInputAutocapitalization(.never)
           .autocorrectionDisabled()
-          .scrollContentBackground(.hidden)
-          .multilineTextAlignment(.leading)
-          .focused($isFocused)
-          .padding(.all, 12)
-          .frame(height: 112)
           .foregroundStyle(Color.white)
+          .autocorrectionDisabled()
+          .frame(height: 56)
+          .focused($isFocused)
           .background(Color(uiColor: UIColor.systemFill))
           .font(.system(.title3, weight: .semibold))
           .clipShape(RoundedRectangle(cornerRadius: 12))
