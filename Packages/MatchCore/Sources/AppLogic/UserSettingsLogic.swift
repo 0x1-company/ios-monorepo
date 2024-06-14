@@ -1,10 +1,10 @@
 import ATTrackingManagerClient
 import ComposableArchitecture
+import EnvironmentClient
 import FirebaseAuthClient
 import FirebaseCrashlyticsClient
 import UserNotificationClient
 import UserSettingsClient
-import EnvironmentClient
 
 @Reducer
 public struct UserSettingsLogic {
