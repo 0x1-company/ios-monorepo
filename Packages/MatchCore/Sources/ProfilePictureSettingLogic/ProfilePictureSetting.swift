@@ -114,7 +114,7 @@ public struct ProfilePictureSettingLogic {
         case .bematch:
           CGSize(width: 1500, height: 2000)
         case .tapmatch:
-          CGSize(width: 1170, height: 1170)
+          CGSize(width: 1179, height: 1179)
         case .trinket:
           CGSize(width: 1020, height: 1020)
         }
