@@ -4,9 +4,11 @@ import FirebaseAuthClient
 import FirebaseCrashlyticsClient
 import UserNotificationClient
 import UserSettingsClient
+import EnvironmentClient
 
 @Reducer
 public struct UserSettingsLogic {
+  @Dependency(\.environment) var environment
   @Dependency(\.crashlytics) var crashlytics
   @Dependency(\.userSettings) var userSettings
   @Dependency(\.firebaseAuth) var firebaseAuth
@@ -27,9 +29,11 @@ public struct UserSettingsLogic {
         let notificationStatus = notificationSettings.authorizationStatus
 
         let trackingAuthorizationStatus = trackingManager.trackingAuthorizationStatus()
+        let brand = environment.brand()
 
         let param = UserSettingsClient.UpdateParam(
           uid: uid,
+          brand: brand.rawValue,
           notification: notificationStatus,
           trackingAuthorization: trackingAuthorizationStatus
         )

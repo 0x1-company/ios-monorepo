@@ -7,15 +7,18 @@ public struct UserSettingsClient {
 
   public struct UpdateParam: Equatable {
     let uid: String
+    let brand: String
     let notificationStatus: String
     let trackingAuthorizationStatus: String
 
     public init(
       uid: String,
+      brand: String,
       notification: UNAuthorizationStatus,
       trackingAuthorization: ATTrackingManager.AuthorizationStatus
     ) {
       self.uid = uid
+      self.brand = brand
       notificationStatus = notification.stringValue
       trackingAuthorizationStatus = trackingAuthorization.stringValue
     }
