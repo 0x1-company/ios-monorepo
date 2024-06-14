@@ -118,7 +118,6 @@ public struct AppLogic {
           crashlytics.log(message: "failed to user.status: \(unknown)")
           state.child = .maintenance()
         }
-        state.child = .onboard(OnboardLogic.State(user: user))
         return .none
       }
     Reduce<State, Action> { state, action in
