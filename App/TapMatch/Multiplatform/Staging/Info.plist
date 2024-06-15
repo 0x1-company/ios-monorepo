@@ -40,7 +40,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>Analytics are used to accurately measure</string>
+	<string>Allow to see your optimized ads</string>
 	<key>PRODUCTS</key>
 	<array>
 		<string>jp.tapmatch.ios.staging.subscription.pro.1week</string>

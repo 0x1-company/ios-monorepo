@@ -76,13 +76,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Analytics are used to accurately measure"
+            "value" : "Allow to see your optimized ads"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "アナリティクスを正確に計測するために使用します"
+            "value" : "「許可」するとお客様に最適化された広告が表示されます"
           }
         }
       }
