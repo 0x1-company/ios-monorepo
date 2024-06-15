@@ -46,7 +46,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>Analytics are used to accurately measure</string>
+	<string>&quot;Allow&quot; to see your optimized ads</string>
 	<key>PRODUCTS</key>
 	<array>
 		<string>camera.trinket.ios.production.subscription.pro.1week</string>

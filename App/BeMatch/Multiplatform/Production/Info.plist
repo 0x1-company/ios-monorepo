@@ -8,7 +8,7 @@
 		<string>ja</string>
 	</array>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>Analytics are used to accurately measure</string>
+	<string>Allow to see your optimized ads</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
