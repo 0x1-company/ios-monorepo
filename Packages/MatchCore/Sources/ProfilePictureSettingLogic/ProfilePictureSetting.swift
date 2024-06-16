@@ -110,22 +110,15 @@ public struct ProfilePictureSettingLogic {
         }
 
       case let .loadTransferableResponse(offset, .success(.some(data))):
-        let requiredSize = switch environment.brand() {
-        case .bematch:
-          CGSize(width: 1500, height: 2000)
-        case .tapmatch:
-          CGSize(width: 1179, height: 1179)
-        case .trinket:
-          CGSize(width: 1020, height: 1020)
-        }
-        if let image = UIImage(data: data) {
-          if image.size == requiredSize {
-            state.images[offset] = .active(image)
-          } else {
-            state.images[offset] = .warning(image)
-          }
-        } else {
+        guard let image = UIImage(data: data) else {
           state.images[offset] = .empty
+          return .none
+        }
+        let brand = environment.brand()
+        if isValidSize(for: brand, size: image.size) {
+          state.images[offset] = .active(image)
+        } else {
+          state.images[offset] = .warning(image)
         }
         return .none
 
@@ -247,6 +240,17 @@ public struct ProfilePictureSettingLogic {
     public var body: some Reducer<State, Action> {
       Scope(state: \.alert, action: \.alert) {}
       Scope(state: \.confirmationDialog, action: \.confirmationDialog) {}
+    }
+  }
+
+  func isValidSize(for brand: EnvironmentClient.Brand, size: CGSize) -> Bool {
+    switch brand {
+    case .bematch:
+      return size == CGSize(width: 1500, height: 2000)
+    case .tapmatch:
+      return size.width == size.height
+    case .trinket:
+      return size == CGSize(width: 1020, height: 1020)
     }
   }
 }
