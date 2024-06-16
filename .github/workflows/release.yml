@@ -65,7 +65,7 @@ jobs:
         shell: bash
         run: echo "::set-output name=CURRENT_VERSION::$(defaults read $(pwd)/App/BeMatch/Multiplatform/Staging/Info CFBundleShortVersionString)"
       - run: |
-          gh release create "${{ steps.current-version.outputs.CURRENT_VERSION }}" \
+          gh release create ${{ steps.current-version.outputs.CURRENT_VERSION }} \
             --generate-notes \
             --latest \
             --target main
