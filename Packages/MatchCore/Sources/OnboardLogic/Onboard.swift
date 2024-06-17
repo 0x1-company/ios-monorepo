@@ -32,6 +32,8 @@ public struct OnboardLogic {
         username = UsernameSettingLogic.State(username: user?.berealUsername ?? "")
       case .tapmatch:
         username = UsernameSettingLogic.State(username: user?.tapnowUsername ?? "")
+      case .tenmatch:
+        fatalError("tenmatch")
       case .trinket:
         username = UsernameSettingLogic.State(username: user?.locketUrl ?? "")
       }

@@ -29,6 +29,7 @@ public struct EnvironmentClient {
   public enum Brand: String, Equatable {
     case bematch = "BEMATCH"
     case tapmatch = "TAPMATCH"
+    case tenmatch = "TENMATCH"
     case trinket = "TRINKET"
 
     public var displayName: String {
@@ -37,6 +38,8 @@ public struct EnvironmentClient {
         return "BeMatch"
       case .tapmatch:
         return "TapMatch"
+      case .tenmatch:
+        return "TenMatch"
       case .trinket:
         return "Trinket"
       }
@@ -48,6 +51,8 @@ public struct EnvironmentClient {
         return "BeReal"
       case .tapmatch:
         return "TapNow"
+      case .tenmatch:
+        return "ten ten"
       case .trinket:
         return "Locket"
       }

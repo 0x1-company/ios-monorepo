@@ -64,6 +64,8 @@ public struct ProfileLogic {
           state.destination = .confirmationDialog(.bematch())
         case .tapmatch:
           state.destination = .confirmationDialog(.tapmatch())
+        case .tenmatch:
+          state.destination = .confirmationDialog(.tenmatch())
         case .trinket:
           state.destination = .confirmationDialog(.trinket())
         }
@@ -180,6 +182,19 @@ extension ConfirmationDialogState where Action == ProfileLogic.Destination.Actio
       }
       ButtonState(action: .editUsername) {
         TextState("Edit username", bundle: .module)
+      }
+    }
+  }
+  
+  static func tenmatch() -> Self {
+    Self {
+      TextState("Select ten ten", bundle: .module)
+    } actions: {
+      ButtonState(action: .jumpToBeReal) {
+        TextState("Jump to ten ten", bundle: .module)
+      }
+      ButtonState(action: .editUsername) {
+        TextState("Edit PIN", bundle: .module)
       }
     }
   }

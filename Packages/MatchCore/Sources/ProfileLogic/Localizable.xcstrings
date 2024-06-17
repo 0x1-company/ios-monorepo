@@ -11,6 +11,9 @@
         }
       }
     },
+    "Edit PIN" : {
+
+    },
     "Edit username" : {
       "localizations" : {
         "ja" : {
@@ -51,6 +54,9 @@
         }
       }
     },
+    "Jump to ten ten" : {
+
+    },
     "Select BeReal" : {
       "localizations" : {
         "ja" : {
@@ -80,6 +86,9 @@
           }
         }
       }
+    },
+    "Select ten ten" : {
+
     }
   },
   "version" : "1.0"
