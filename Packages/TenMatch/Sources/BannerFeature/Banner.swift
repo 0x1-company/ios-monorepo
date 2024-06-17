@@ -54,7 +54,7 @@ public struct BannerView: View {
               "title": "TenMatchの社長と話そう",
               "description": "アプリの改善策や不具合などあれば教えてください。",
               "buttonTitle": "開く",
-              "url": "https://trinket.camera",
+              "url": "https://tenmatch.app",
               "startAt": 10,
               "endAt": 10,
             ],
