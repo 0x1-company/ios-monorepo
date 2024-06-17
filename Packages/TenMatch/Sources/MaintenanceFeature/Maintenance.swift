@@ -15,15 +15,15 @@ public struct MaintenanceView: View {
       VStack(spacing: 80) {
         VStack(spacing: 24) {
           Text("Under Maintenance", bundle: .module)
-            .font(.system(.title, weight: .semibold))
+            .font(.system(.title, design: .rounded, weight: .semibold))
 
           Text("Please wait for a while until service resumes.", bundle: .module)
-            .font(.system(.body, weight: .semibold))
+            .font(.system(.body, design: .rounded, weight: .semibold))
         }
 
         Link(destination: viewStore.contactUsURL) {
           Text("Contact us", bundle: .module)
-            .font(.system(.subheadline, weight: .semibold))
+            .font(.system(.subheadline, design: .rounded, weight: .semibold))
             .frame(height: 50)
             .frame(maxWidth: .infinity)
             .foregroundStyle(Color.black)

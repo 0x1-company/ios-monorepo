@@ -13,7 +13,7 @@ public struct CategorySectionView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(alignment: .leading, spacing: 8) {
         Text(viewStore.userCategory.title)
-          .font(.system(.subheadline, weight: .semibold))
+          .font(.system(.subheadline, design: .rounded, weight: .semibold))
           .foregroundStyle(Color.secondary)
           .padding(.horizontal, 16)
 

@@ -23,7 +23,7 @@ public struct MatchEmptyView: View {
           .font(.system(.largeTitle, weight: .bold))
 
         Text("When you match with someone, their profile will appear here", bundle: .module)
-          .font(.system(.callout, weight: .semibold))
+          .font(.system(.callout, design: .rounded, weight: .semibold))
 
         PrimaryButton(
           String(localized: "Swipe", bundle: .module)

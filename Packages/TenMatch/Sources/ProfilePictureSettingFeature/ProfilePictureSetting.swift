@@ -32,7 +32,7 @@ public struct ProfilePictureSettingView: View {
                 .font(.system(.title2, weight: .bold))
 
               Text("It will be public 🌎", bundle: .module)
-                .font(.system(.footnote, weight: .semibold))
+                .font(.system(.footnote, design: .rounded, weight: .semibold))
                 .foregroundStyle(Color.secondary)
 
               if viewStore.isWarningTextVisible {

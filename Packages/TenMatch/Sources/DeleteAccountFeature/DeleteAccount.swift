@@ -14,7 +14,7 @@ public struct DeleteAccountView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 8) {
         Text("Are you sure you want to delete your account?", bundle: .module)
-          .font(.system(.body, weight: .semibold))
+          .font(.system(.body, design: .rounded, weight: .semibold))
 
         Text("This **cannot** be undone or recovered.", bundle: .module)
 
@@ -30,7 +30,7 @@ public struct DeleteAccountView: View {
               } label: {
                 Text(reason)
                   .foregroundStyle(Color.white)
-                  .font(.system(.headline, weight: .semibold))
+                  .font(.system(.headline, design: .rounded, weight: .semibold))
               }
               .frame(height: 50)
             }
@@ -65,7 +65,7 @@ public struct DeleteAccountView: View {
           Text("Not Now", bundle: .module)
             .frame(height: 50)
             .foregroundStyle(Color.white)
-            .font(.system(.subheadline, weight: .semibold))
+            .font(.system(.subheadline, design: .rounded, weight: .semibold))
         }
       }
       .multilineTextAlignment(.center)
@@ -74,7 +74,7 @@ public struct DeleteAccountView: View {
       .toolbar {
         ToolbarItem(placement: .principal) {
           Text("Delete Account", bundle: .module)
-            .font(.system(.title3, weight: .semibold))
+            .font(.system(.title3, design: .rounded, weight: .semibold))
         }
         ToolbarItem(placement: .topBarLeading) {
           Button {

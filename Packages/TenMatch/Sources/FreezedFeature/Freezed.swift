@@ -18,7 +18,7 @@ public struct FreezedView: View {
         .frame(width: 120)
 
       Text("Currently unable to re-register", bundle: .module)
-        .font(.system(.title3, weight: .semibold))
+        .font(.system(.title3, design: .rounded, weight: .semibold))
 
       Text("Once you have deleted your TenMatch account, you will not be able to register again for a certain period of time after the deletion.", bundle: .module)
 

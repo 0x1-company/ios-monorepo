@@ -14,10 +14,10 @@ public struct ForceUpdateView: View {
     WithViewStore(store, observe: { $0 }) { _ in
       VStack(spacing: 24) {
         Text("Notice", bundle: .module)
-          .font(.system(.title, weight: .semibold))
+          .font(.system(.title, design: .rounded, weight: .semibold))
 
         Text("... Oh? ! ! Looks like TenMatch...! \nPlease update to the latest version.", bundle: .module)
-          .font(.system(.body, weight: .semibold))
+          .font(.system(.body, design: .rounded, weight: .semibold))
 
         PrimaryButton(
           String(localized: "Update", bundle: .module)

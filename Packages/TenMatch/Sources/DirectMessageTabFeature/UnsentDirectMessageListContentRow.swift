@@ -48,7 +48,7 @@ public struct UnsentDirectMessageListContentRowView: View {
           }
 
           Text(viewStore.displayName)
-            .font(.system(.subheadline, weight: .semibold))
+            .font(.system(.subheadline, design: .rounded, weight: .semibold))
             .foregroundStyle(Color.primary)
         }
       }
