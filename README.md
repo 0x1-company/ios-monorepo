@@ -38,8 +38,9 @@ Dependencies --> MatchCore
 Utility --> MatchCore
 
 MatchCore --> BeMatch
-MatchCore --> Trinket
 MatchCore --> TapMatch
+MatchCore --> TenMatch
+MatchCore --> Trinket
 ```
 
 
