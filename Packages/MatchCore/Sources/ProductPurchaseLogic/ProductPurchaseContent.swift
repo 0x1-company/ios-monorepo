@@ -26,7 +26,14 @@ public struct ProductPurchaseContentLogic {
     ) {
       self.appAccountToken = appAccountToken
       self.products = products
-      selectProductID = products.first(where: { $0.id.contains("3month") })!.id
+      
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = "yyyy/MM/dd"
+      let date = dateFormatter.date(from: "2024/06/23")!
+      
+      let popularFlagProductId = Date.now >= date ? "6month" : "3month"
+
+      selectProductID = products.first(where: { $0.id.contains(popularFlagProductId) })!.id
     }
   }
 
