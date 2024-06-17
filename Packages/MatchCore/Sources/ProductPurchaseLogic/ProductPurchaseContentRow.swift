@@ -42,13 +42,13 @@ public struct ProductPurchaseContentRowLogic {
       self.currencyCode = currencyCode
       self.displayPrice = displayPrice
       self.isSelected = isSelected
-      
+
       let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = "yyyy/MM/dd"
       let date = dateFormatter.date(from: "2024/06/23")!
-      
+
       let popularFlagProductId = Date.now >= date ? "6month" : "3month"
-      
+
       isMostPopularFlag = isSelected && id.contains(popularFlagProductId)
     }
   }
