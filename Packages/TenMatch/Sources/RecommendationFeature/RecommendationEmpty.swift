@@ -45,8 +45,8 @@ public struct RecommendationEmptyView: View {
       .background(
         LinearGradient(
           colors: [
-            Color(0xFFB85BE9),
-            Color(0xFF000000)
+            Color(0xFFB8_5BE9),
+            Color(0xFF00_0000),
           ],
           startPoint: .topTrailing,
           endPoint: .bottomLeading
