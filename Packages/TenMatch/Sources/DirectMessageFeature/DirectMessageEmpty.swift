@@ -18,7 +18,7 @@ public struct DirectMessageEmptyView: View {
 
           VStack(spacing: 8) {
             Text("Matched with \(viewStore.displayName)!", bundle: .module)
-              .font(.system(.title3, weight: .semibold))
+              .font(.system(.title3, design: .rounded, weight: .semibold))
 
             Text("Add ten ten and send a message!", bundle: .module)
           }

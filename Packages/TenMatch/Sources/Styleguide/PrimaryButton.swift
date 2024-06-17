@@ -29,7 +29,7 @@ public struct PrimaryButton: View {
           Text(title)
         }
       }
-      .font(.system(.subheadline, weight: .semibold))
+      .font(.system(.subheadline, design: .rounded, weight: .semibold))
       .frame(height: 50)
       .frame(maxWidth: .infinity)
       .foregroundStyle(

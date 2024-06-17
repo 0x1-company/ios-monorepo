@@ -31,7 +31,7 @@ public struct DisplayNameSettingView: View {
             .frame(height: 56)
             .focused($isFocused)
             .background(Color(uiColor: UIColor.systemFill))
-            .font(.system(.title3, weight: .semibold))
+            .font(.system(.title3, design: .rounded, weight: .semibold))
             .clipShape(RoundedRectangle(cornerRadius: 12))
         }
 

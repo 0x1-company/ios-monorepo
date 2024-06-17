@@ -15,7 +15,7 @@ public struct BannerView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 8) {
         Text(viewStore.banner.title)
-          .font(.system(.footnote, weight: .semibold))
+          .font(.system(.footnote, design: .rounded, weight: .semibold))
 
         if let description = viewStore.banner.description {
           Text(description)
@@ -26,7 +26,7 @@ public struct BannerView: View {
           store.send(.bannerButtonTapped)
         } label: {
           Text(viewStore.banner.buttonTitle)
-            .font(.system(.caption2, weight: .semibold))
+            .font(.system(.caption2, design: .rounded, weight: .semibold))
             .foregroundStyle(Color.black)
             .frame(height: 38)
             .frame(maxWidth: .infinity)

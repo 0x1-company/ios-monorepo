@@ -20,7 +20,7 @@ public struct UsernameSettingView: View {
           .font(.system(.title2, weight: .bold))
 
         Text("ex. https://locket.camera/links/aFzBtwv49D63SK3S7", bundle: .module)
-          .font(.caption)
+          .font(.caption, design: .rounded)
           .tint(Color.gray)
           .foregroundStyle(Color.gray)
 
@@ -35,13 +35,13 @@ public struct UsernameSettingView: View {
           .frame(height: 112)
           .foregroundStyle(Color.white)
           .background(Color(uiColor: UIColor.systemFill))
-          .font(.system(.title3, weight: .semibold))
+          .font(.system(.title3, design: .rounded, weight: .semibold))
           .clipShape(RoundedRectangle(cornerRadius: 12))
 
         Spacer()
 
         Text("By doing this, you agree\nto our [Privacy Policy](https://docs.tenmatch.app/privacy-policy) and [Terms of Use](https://docs.tenmatch.app/terms-of-use).", bundle: .module)
-          .font(.system(.caption))
+          .font(.system(.caption, design: .rounded))
           .foregroundStyle(Color.gray)
 
         PrimaryButton(

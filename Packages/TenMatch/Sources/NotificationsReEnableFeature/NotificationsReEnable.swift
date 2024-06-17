@@ -15,11 +15,11 @@ public struct NotificationsReEnableView: View {
         .font(.system(size: 20, weight: .regular))
 
       Text("You'll need to enable notifications to notice when you have a match.", bundle: .module)
-        .font(.system(.caption, weight: .semibold))
+        .font(.system(.caption, design: .rounded, weight: .semibold))
         .frame(maxWidth: .infinity, alignment: .leading)
 
       Text("Activate", bundle: .module)
-        .font(.system(.caption2, weight: .semibold))
+        .font(.system(.caption2, design: .rounded, weight: .semibold))
         .padding(.vertical, 12)
         .padding(.horizontal, 28)
         .foregroundStyle(Color.black)

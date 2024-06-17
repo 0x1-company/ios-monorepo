@@ -28,7 +28,7 @@ public struct MatchedView: View {
 
           Text("🔗 \(viewStore.displayExternalProductURL)", bundle: .module)
             .foregroundStyle(Color.white)
-            .font(.system(.caption, weight: .semibold))
+            .font(.system(.caption, design: .rounded, weight: .semibold))
         }
       }
       .padding(.horizontal, 16)

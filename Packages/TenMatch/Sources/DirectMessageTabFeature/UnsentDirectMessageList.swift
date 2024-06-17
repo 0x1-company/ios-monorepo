@@ -14,7 +14,7 @@ public struct UnsentDirectMessageListView: View {
     VStack(alignment: .leading, spacing: 8) {
       HStack(spacing: 0) {
         Text("Recently Match", bundle: .module)
-          .font(.system(.callout, weight: .semibold))
+          .font(.system(.callout, design: .rounded, weight: .semibold))
           .frame(maxWidth: .infinity, alignment: .leading)
 
         Button {

@@ -30,11 +30,11 @@ public struct ProfileView: View {
             if let displayName = viewStore.currentUser?.displayName {
               Text(displayName)
                 .foregroundStyle(Color.white)
-                .font(.system(.callout, weight: .semibold))
+                .font(.system(.callout, design: .rounded, weight: .semibold))
             } else if let username = viewStore.currentUser?.berealUsername {
               Text(username)
                 .foregroundStyle(Color.white)
-                .font(.system(.callout, weight: .semibold))
+                .font(.system(.callout, design: .rounded, weight: .semibold))
             }
             Spacer()
             Spacer()

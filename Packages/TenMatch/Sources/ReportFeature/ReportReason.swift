@@ -21,7 +21,7 @@ public struct ReportReasonView: View {
             .layoutPriority(1)
             .frame(minHeight: 50)
         }
-        .font(.system(.footnote))
+        .font(.system(.footnote, design: .rounded))
 
         VStack(alignment: .leading, spacing: 8) {
           TextEditor(text: viewStore.$text)
@@ -35,7 +35,7 @@ public struct ReportReasonView: View {
 
           Text("Minimum of 10 characters required.", bundle: .module)
             .foregroundStyle(Color.secondary)
-            .font(.caption)
+            .font(.caption, design: .rounded)
         }
 
         Spacer()

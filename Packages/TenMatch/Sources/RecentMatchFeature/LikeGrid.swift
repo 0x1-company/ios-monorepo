@@ -60,7 +60,7 @@ public struct LikeGridView: View {
                 .font(.system(size: 14))
 
               Text(viewStore.receivedCount)
-                .font(.system(.body, weight: .semibold))
+                .font(.system(.body, design: .rounded, weight: .semibold))
             }
             .foregroundStyle(Color.black)
             .padding(.vertical, 4)
@@ -71,7 +71,7 @@ public struct LikeGridView: View {
 
           Text("Liked by \(viewStore.receivedCount) people", bundle: .module)
             .foregroundStyle(Color.primary)
-            .font(.system(.subheadline, weight: .semibold))
+            .font(.system(.subheadline, design: .rounded, weight: .semibold))
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         }
       }
