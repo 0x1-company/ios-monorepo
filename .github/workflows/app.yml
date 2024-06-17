@@ -43,6 +43,14 @@ jobs:
               - Packages/MatchCore/**
               - Packages/Dependencies/**
               - .github/workflows/app.yml
+            TenMatch:
+              - App/TenMatch/**
+              - Packages/TenMatch/**
+              - TenMatch.xcworkspace/**
+              - Packages/Utility/**
+              - Packages/MatchCore/**
+              - Packages/Dependencies/**
+              - .github/workflows/app.yml
             Trinket:
               - App/Trinket/**
               - Packages/Trinket/**

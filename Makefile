@@ -6,6 +6,9 @@ bematch:
 tapmatch:
 	open TapMatch.xcworkspace
 
+tenmatch:
+	open TenMatch.xcworkspace
+
 trinket:
 	open Trinket.xcworkspace
 
