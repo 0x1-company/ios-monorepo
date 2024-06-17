@@ -173,6 +173,8 @@ public struct AppLogic {
       return !user.berealUsername.isEmpty && user.images.count >= 3
     case .tapmatch:
       return !user.tapnowUsername.isEmpty && user.images.count >= 3
+    case .tenmatch:
+      fatalError("tenmatch")
     case .trinket:
       return !user.locketUrl.isEmpty && user.images.count >= 3
     }

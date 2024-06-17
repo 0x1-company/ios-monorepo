@@ -249,6 +249,8 @@ public struct ProfilePictureSettingLogic {
       return size == CGSize(width: 1500, height: 2000)
     case .tapmatch:
       return size.width == size.height
+    case .tenmatch:
+      return true
     case .trinket:
       return size == CGSize(width: 1020, height: 1020)
     }

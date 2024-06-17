@@ -83,6 +83,8 @@ public struct UsernameSettingLogic {
                   try await api.updateTapNow(tapmatchInput)
                 }))
               }
+            case .tenmatch:
+              fatalError("TenMatch")
             case .trinket:
               group.addTask {
                 await send(.updateLocketResponse(Result {

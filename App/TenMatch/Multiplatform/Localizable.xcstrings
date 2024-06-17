@@ -1,0 +1,16 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "trinketcamera" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "trinketcamera"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
