@@ -35,7 +35,7 @@ public struct ReportReasonView: View {
 
           Text("Minimum of 10 characters required.", bundle: .module)
             .foregroundStyle(Color.secondary)
-            .font(.caption, design: .rounded)
+            .font(.system(.caption, design: .rounded))
         }
 
         Spacer()
