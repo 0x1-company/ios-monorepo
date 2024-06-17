@@ -185,7 +185,7 @@ extension ConfirmationDialogState where Action == ProfileLogic.Destination.Actio
       }
     }
   }
-  
+
   static func tenmatch() -> Self {
     Self {
       TextState("Select ten ten", bundle: .module)
