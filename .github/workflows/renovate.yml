@@ -16,6 +16,7 @@ jobs:
       - run: defaults write com.apple.dt.Xcode IDESkipMacroFingerprintValidation -bool YES
       - run: xcodebuild -workspace BeMatch.xcworkspace -resolvePackageDependencies -scheme "App (Staging project)" -skipMacroValidation
       - run: xcodebuild -workspace TapMatch.xcworkspace -resolvePackageDependencies -scheme "App (Staging project)" -skipMacroValidation
+      - run: xcodebuild -workspace TenMatch.xcworkspace -resolvePackageDependencies -scheme "App (Staging project)" -skipMacroValidation
       - run: xcodebuild -workspace Trinket.xcworkspace -resolvePackageDependencies -scheme "App (Staging project)" -skipMacroValidation
       - run: swift build -c release --package-path ./SwiftScripts/ApolloTool
       - run: swift build -c release --package-path ./SwiftScripts/SwiftFormatTool --product swiftformat
