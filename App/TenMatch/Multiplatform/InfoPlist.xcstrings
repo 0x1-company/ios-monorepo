@@ -38,12 +38,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Trinket"
+            "value" : "TenMatch"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Trinket"
           }
         }
@@ -76,12 +76,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Allow to see your optimized ads"
+            "value" : "\"Allow\" to see your optimized ads"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "「許可」するとお客様に最適化された広告が表示されます"
           }
         }

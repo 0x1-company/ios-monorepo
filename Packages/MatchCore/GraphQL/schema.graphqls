@@ -298,6 +298,9 @@ type Mutation {
   """TapNowのユーザー名を更新する"""
   updateTapNow(input: UpdateTapNowInput!): User!
 
+  """TentenのPINコードを更新する"""
+  updateTenten(input: UpdateTentenInput!): User!
+
   """プロフィール画像を更新する"""
   updateUserImage(input: UpdateUserImageInput!): [UserImage!]!
 }
@@ -443,6 +446,11 @@ input UpdateTapNowInput {
   username: String!
 }
 
+input UpdateTentenInput {
+  """TentenのPINコード"""
+  pinCode: String!
+}
+
 input UpdateUserImageInput {
   """ユーザー画像URL"""
   imageUrls: [String!]!
@@ -475,6 +483,9 @@ type User {
 
   """TapNowのusername"""
   tapnowUsername: String!
+
+  """TentenのPINコード"""
+  tentenPinCode: String!
 }
 
 type UserCategory {

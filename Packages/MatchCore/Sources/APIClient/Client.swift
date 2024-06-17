@@ -11,6 +11,7 @@ public struct APIClient: Sendable {
   public var updateBeReal: @Sendable (API.UpdateBeRealInput) async throws -> API.UpdateBeRealMutation.Data
   public var updateTapNow: @Sendable (API.UpdateTapNowInput) async throws -> API.UpdateTapNowMutation.Data
   public var updateLocket: @Sendable (API.UpdateLocketInput) async throws -> API.UpdateLocketMutation.Data
+  public var updateTenten: @Sendable (API.UpdateTentenInput) async throws -> API.UpdateTentenMutation.Data
   public var updateUserImage: @Sendable (API.UpdateUserImageInput) async throws -> API.UpdateUserImageMutation.Data
   public var updateShortComment: @Sendable (API.UpdateShortCommentInput) async throws -> API.UpdateShortCommentMutation.Data
   public var updateDisplayName: @Sendable (API.UpdateDisplayNameInput) async throws -> API.UpdateDisplayNameMutation.Data

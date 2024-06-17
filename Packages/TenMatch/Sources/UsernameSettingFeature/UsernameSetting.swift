@@ -20,7 +20,7 @@ public struct UsernameSettingView: View {
           .font(.system(.title2, weight: .bold))
 
         Text("ex. https://locket.camera/links/aFzBtwv49D63SK3S7", bundle: .module)
-          .font(.caption, design: .rounded)
+          .font(.system(.caption, design: .rounded))
           .tint(Color.gray)
           .foregroundStyle(Color.gray)
 

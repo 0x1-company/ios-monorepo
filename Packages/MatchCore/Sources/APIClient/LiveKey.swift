@@ -34,6 +34,10 @@ public extension APIClient {
         let mutation = API.UpdateLocketMutation(input: input)
         return try await apolloClient.perform(mutation: mutation)
       },
+      updateTenten: { input in
+        let mutation = API.UpdateTentenMutation(input: input)
+        return try await apolloClient.perform(mutation: mutation)
+      },
       updateUserImage: { input in
         let mutation = API.UpdateUserImageMutation(input: input)
         return try await apolloClient.perform(mutation: mutation)

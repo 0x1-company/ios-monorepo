@@ -29,6 +29,7 @@ public struct UsernameSettingLogic {
     case updateBeRealResponse(Result<API.UpdateBeRealMutation.Data, Error>)
     case updateTapNowResponse(Result<API.UpdateTapNowMutation.Data, Error>)
     case updateLocketResponse(Result<API.UpdateLocketMutation.Data, Error>)
+    case updateTentenResponse(Result<API.UpdateTentenMutation.Data, Error>)
     case binding(BindingAction<State>)
     case destination(PresentationAction<Destination.Action>)
     case delegate(Delegate)
@@ -61,6 +62,7 @@ public struct UsernameSettingLogic {
         let bematchInput = API.UpdateBeRealInput(username: state.value)
         let tapmatchInput = API.UpdateTapNowInput(username: state.value)
         let trinketInput = API.UpdateLocketInput(url: state.value)
+        let tenmatchInput = API.UpdateTentenInput(pinCode: state.value)
 
         let brand = environment.brand()
 
@@ -84,7 +86,11 @@ public struct UsernameSettingLogic {
                 }))
               }
             case .tenmatch:
-              fatalError("TenMatch")
+              group.addTask {
+                await send(.updateTentenResponse(Result {
+                  try await api.updateTenten(tenmatchInput)
+                }))
+              }
             case .trinket:
               group.addTask {
                 await send(.updateLocketResponse(Result {
@@ -97,7 +103,8 @@ public struct UsernameSettingLogic {
 
       case .updateBeRealResponse(.success),
            .updateTapNowResponse(.success),
-           .updateLocketResponse(.success):
+           .updateLocketResponse(.success),
+           .updateTentenResponse(.success):
         state.isActivityIndicatorVisible = false
         analytics.setUserProperty(key: \.username, value: state.value)
         return .send(.delegate(.nextScreen))
@@ -122,10 +129,18 @@ public struct UsernameSettingLogic {
           AlertState.errorLog(message: error.message)
         )
         return .none
+        
+      case let .updateTentenResponse(.failure(error as ServerError)):
+        state.isActivityIndicatorVisible = false
+        state.destination = .alert(
+          AlertState.errorLog(message: error.message)
+        )
+        return .none
 
       case .updateBeRealResponse(.failure),
            .updateTapNowResponse(.failure),
-           .updateLocketResponse(.failure):
+           .updateLocketResponse(.failure),
+           .updateTentenResponse(.failure):
         state.isActivityIndicatorVisible = false
         return .none
 

@@ -1,0 +1,6 @@
+mutation UpdateTenten($input: UpdateTentenInput!) {
+  updateTenten(input: $input) {
+    id
+    tentenPinCode
+  }
+}

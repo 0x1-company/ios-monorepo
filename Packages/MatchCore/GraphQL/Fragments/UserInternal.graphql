@@ -6,6 +6,7 @@ fragment UserInternal on User {
   berealUsername
   tapnowUsername
   locketUrl
+  tentenPinCode
   externalProductUrl
   gender
   status

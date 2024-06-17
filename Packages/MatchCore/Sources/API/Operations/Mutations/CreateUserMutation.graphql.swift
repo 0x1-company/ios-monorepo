@@ -54,6 +54,8 @@ public extension API {
         public var tapnowUsername: String { __data["tapnowUsername"] }
         /// LocketのURL
         public var locketUrl: String { __data["locketUrl"] }
+        /// TentenのPINコード
+        public var tentenPinCode: String { __data["tentenPinCode"] }
         public var externalProductUrl: String { __data["externalProductUrl"] }
         /// gender
         public var gender: GraphQLEnum<API.Gender> { __data["gender"] }
