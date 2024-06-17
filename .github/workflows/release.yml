@@ -59,7 +59,7 @@ jobs:
     steps:
       - uses: jakejarvis/wait-action@master
         with:
-          time: '10s'
+          time: '30s'
 
   create-release:
     runs-on: macOS-latest
