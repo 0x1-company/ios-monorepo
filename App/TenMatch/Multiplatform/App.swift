@@ -55,18 +55,18 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
           let apolloClient = ApolloClient(
             appVersion: appVersion,
             endpoint: endpoint,
-            product: "Trinket"
+            product: "TenMatch"
           )
           $0.api = APIClient.live(apolloClient: apolloClient)
           $0.environment = EnvironmentClient.live(
-            brand: EnvironmentClient.Brand.trinket,
-            instagramUsername: String(localized: "trinketcamera"),
-            appId: "6502700423",
+            brand: EnvironmentClient.Brand.tenmatch,
+            instagramUsername: String(localized: "tenmatchapp"),
+            appId: "6504491960",
             appStoreForEmptyURL: URL(string: "https://bematch.onelink.me/nob4/ta8yroer")!,
             docsURL: URL(string: "https://docs.trinket.camera")!,
             howToMovieURL: URL(string: "https://storage.googleapis.com/bematch-production.appspot.com/public/trinket/how-to-picture-upload.MP4")!
           )
-          $0.configGlobal = ConfigGlobalClient.live(documentId: "trinket")
+          $0.configGlobal = ConfigGlobalClient.live(documentId: "tenmatch")
         }
     }
   )

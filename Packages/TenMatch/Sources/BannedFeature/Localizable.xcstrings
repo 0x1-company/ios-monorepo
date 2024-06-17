@@ -41,42 +41,42 @@
         }
       }
     },
-    "It's important to us that TenMatch is a welcoming and safe space for everyone.\nUnfortunately, we found that you violated our [Terms of Use](https://docs.trinket.camera/terms-of-use) and so we've made the decision to remove you from the TenMatch Platform." : {
+    "It's important to us that TenMatch is a welcoming and safe space for everyone.\nUnfortunately, we found that you violated our [Terms of Use](https://docs.tenmatch.app/terms-of-use) and so we've made the decision to remove you from the TenMatch Platform." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatchでは、すべての人にとって安心で安全な場所であることを重視しています。残念ながらあなたの行為が[利用規約](https://docs.trinket.camera/terms-of-use)に違反したことが判明したため、当社はあなたをTenMatchのプラットフォームから削除することを決定しました。"
+            "value" : "TenMatchでは、すべての人にとって安心で安全な場所であることを重視しています。残念ながらあなたの行為が[利用規約](https://docs.tenmatch.app/terms-of-use)に違反したことが判明したため、当社はあなたをTenMatchのプラットフォームから削除することを決定しました。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatch은 모든 사람에게 환영받고 안전한 공간이 되는 것이 중요합니다. 안타깝게도 귀하가 당사의 [이용 약관](https://docs.trinket.camera/terms-of-use)을 위반한 사실이 발견되어 귀하를 TenMatch 플랫폼에서 삭제하기로 결정했습니다."
+            "value" : "TenMatch은 모든 사람에게 환영받고 안전한 공간이 되는 것이 중요합니다. 안타깝게도 귀하가 당사의 [이용 약관](https://docs.tenmatch.app/terms-of-use)을 위반한 사실이 발견되어 귀하를 TenMatch 플랫폼에서 삭제하기로 결정했습니다."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Il est important pour nous que TenMatch soit un espace accueillant et sûr pour tout le monde. Malheureusement, nous avons constaté que vous avez violé nos [Conditions d'utilisation](https://docs.trinket.camera/terms-of-use) et avons donc pris la décision de vous retirer de la plateforme TenMatch."
+            "value" : "Il est important pour nous que TenMatch soit un espace accueillant et sûr pour tout le monde. Malheureusement, nous avons constaté que vous avez violé nos [Conditions d'utilisation](https://docs.tenmatch.app/terms-of-use) et avons donc pris la décision de vous retirer de la plateforme TenMatch."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dla nas ważne jest, aby TenMatch było przyjaznym i bezpiecznym miejscem dla każdego. Niestety stwierdziliśmy, że naruszyłeś nasze [Warunki użytkowania](https://docs.trinket.camera/terms-of-use), dlatego podjęliśmy decyzję o usunięciu Cię z platformy TenMatch."
+            "value" : "Dla nas ważne jest, aby TenMatch było przyjaznym i bezpiecznym miejscem dla każdego. Niestety stwierdziliśmy, że naruszyłeś nasze [Warunki użytkowania](https://docs.tenmatch.app/terms-of-use), dlatego podjęliśmy decyzję o usunięciu Cię z platformy TenMatch."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Điều quan trọng đối với chúng tôi là TenMatch là một không gian chào đón và an toàn cho mọi người. Thật không may, chúng tôi nhận thấy rằng bạn đã vi phạm [Điều khoản Sử dụng](https://docs.trinket.camera/terms-of-use) của chúng tôi và do đó, chúng tôi đã quyết định xóa bạn khỏi Nền tảng TenMatch."
+            "value" : "Điều quan trọng đối với chúng tôi là TenMatch là một không gian chào đón và an toàn cho mọi người. Thật không may, chúng tôi nhận thấy rằng bạn đã vi phạm [Điều khoản Sử dụng](https://docs.tenmatch.app/terms-of-use) của chúng tôi và do đó, chúng tôi đã quyết định xóa bạn khỏi Nền tảng TenMatch."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Es importante para nosotros que TenMatch sea un espacio acogedor y seguro para todos. Desafortunadamente, encontramos que has violado nuestros [Términos de uso](https://docs.trinket.camera/terms-of-use) y por lo tanto hemos tomado la decisión de eliminarte de la plataforma TenMatch."
+            "value" : "Es importante para nosotros que TenMatch sea un espacio acogedor y seguro para todos. Desafortunadamente, encontramos que has violado nuestros [Términos de uso](https://docs.tenmatch.app/terms-of-use) y por lo tanto hemos tomado la decisión de eliminarte de la plataforma TenMatch."
           }
         }
       }

@@ -40,7 +40,7 @@ public struct UsernameSettingView: View {
 
         Spacer()
 
-        Text("By doing this, you agree\nto our [Privacy Policy](https://docs.trinket.camera/privacy-policy) and [Terms of Use](https://docs.trinket.camera/terms-of-use).", bundle: .module)
+        Text("By doing this, you agree\nto our [Privacy Policy](https://docs.tenmatch.app/privacy-policy) and [Terms of Use](https://docs.tenmatch.app/terms-of-use).", bundle: .module)
           .font(.system(.caption))
           .foregroundStyle(Color.gray)
 
