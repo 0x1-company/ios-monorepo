@@ -10,6 +10,7 @@ env:
   PLATFORM_IOS: iOS Simulator,name=iPhone 15 Pro,OS=17.0.1
   BEMATCH_FILE_FIREBASE_STAGING: ${{ secrets.BEMATCH_FILE_FIREBASE_STAGING }}
   TAPMATCH_FILE_FIREBASE_STAGING: ${{ secrets.TAPMATCH_FILE_FIREBASE_STAGING }}
+  TENMATCH_FILE_FIREBASE_STAGING: ${{ secrets.TENMATCH_FILE_FIREBASE_STAGING }}
   TRINKET_FILE_FIREBASE_STAGING: ${{ secrets.TRINKET_FILE_FIREBASE_STAGING }}
 
 concurrency:
@@ -39,6 +40,14 @@ jobs:
               - App/TapMatch/**
               - Packages/TapMatch/**
               - TapMatch.xcworkspace/**
+              - Packages/Utility/**
+              - Packages/MatchCore/**
+              - Packages/Dependencies/**
+              - .github/workflows/app.yml
+            TenMatch:
+              - App/TenMatch/**
+              - Packages/TenMatch/**
+              - TenMatch.xcworkspace/**
               - Packages/Utility/**
               - Packages/MatchCore/**
               - Packages/Dependencies/**
