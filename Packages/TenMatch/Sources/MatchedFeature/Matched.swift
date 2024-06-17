@@ -18,17 +18,17 @@ public struct MatchedView: View {
           Image(ImageResource.matched)
             .resizable()
             .aspectRatio(contentMode: .fit)
-          
+
           HStack(spacing: 8) {
             Color.blue
               .clipShape(Circle())
               .frame(width: 128, height: 128)
-            
+
             Color.blue
               .clipShape(Circle())
               .frame(width: 128, height: 128)
           }
-          
+
           Text("You matched with XXXX", bundle: .module)
             .foregroundStyle(Color.white)
             .font(.system(.headline, design: .rounded, weight: .semibold))
@@ -69,10 +69,10 @@ public struct MatchedView: View {
       .background(
         LinearGradient(
           colors: [
-            Color(0xFF30D158),
-            Color(0xFFFFD60A),
-            Color(0xFFFF2E00),
-            Color(0xFF000000)
+            Color(0xFF30_D158),
+            Color(0xFFFF_D60A),
+            Color(0xFFFF_2E00),
+            Color(0xFF00_0000),
           ],
           startPoint: .top,
           endPoint: .bottom

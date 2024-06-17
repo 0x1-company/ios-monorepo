@@ -129,7 +129,7 @@ public struct UsernameSettingLogic {
           AlertState.errorLog(message: error.message)
         )
         return .none
-        
+
       case let .updateTentenResponse(.failure(error as ServerError)):
         state.isActivityIndicatorVisible = false
         state.destination = .alert(
