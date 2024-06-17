@@ -18,7 +18,7 @@ public struct RecommendationEmptyView: View {
           .resizable()
           .aspectRatio(contentMode: .fit)
           .frame(maxWidth: .infinity)
-          .padding(.horizontal, 2)
+          .padding(.horizontal, 37)
 
         VStack(spacing: 16) {
           Text("Too much swiping...\nPlease help us share TenMatch... 🙏", bundle: .module)
@@ -41,7 +41,17 @@ public struct RecommendationEmptyView: View {
         }
         .padding(.horizontal, 16)
       }
-      .background(Color.black)
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .background(
+        LinearGradient(
+          colors: [
+            Color(0xFFB85BE9),
+            Color(0xFF000000)
+          ],
+          startPoint: .topTrailing,
+          endPoint: .bottomLeading
+        )
+      )
       .task { await store.send(.onTask).finish() }
       .sheet(isPresented: viewStore.$isPresented) {
         ActivityView(
@@ -64,11 +74,18 @@ public struct RecommendationEmptyView: View {
 }
 
 #Preview {
-  RecommendationEmptyView(
-    store: .init(
-      initialState: RecommendationEmptyLogic.State(),
-      reducer: { RecommendationEmptyLogic() }
+  NavigationStack {
+    RecommendationEmptyView(
+      store: .init(
+        initialState: RecommendationEmptyLogic.State(),
+        reducer: { RecommendationEmptyLogic() }
+      )
     )
-  )
+    .toolbar {
+      ToolbarItem(placement: .principal) {
+        Image(ImageResource.logo)
+      }
+    }
+  }
   .environment(\.locale, Locale(identifier: "ja-JP"))
 }

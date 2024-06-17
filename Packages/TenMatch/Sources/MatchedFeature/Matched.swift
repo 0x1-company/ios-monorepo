@@ -14,24 +14,40 @@ public struct MatchedView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 0) {
-        Image(ImageResource.matched)
-          .resizable()
-          .aspectRatio(contentMode: .fit)
-          .frame(maxHeight: .infinity)
+        VStack(spacing: 16) {
+          Image(ImageResource.matched)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+          
+          HStack(spacing: 8) {
+            Color.blue
+              .clipShape(Circle())
+              .frame(width: 128, height: 128)
+            
+            Color.blue
+              .clipShape(Circle())
+              .frame(width: 128, height: 128)
+          }
+          
+          Text("You matched with XXXX", bundle: .module)
+            .foregroundStyle(Color.white)
+            .font(.system(.headline, design: .rounded, weight: .semibold))
+        }
+        .frame(maxHeight: .infinity)
 
         VStack(spacing: 12) {
           PrimaryButton(
-            String(localized: "Add ten ten", bundle: .module)
+            String(localized: "Copy tenten's PIN", bundle: .module)
           ) {
             store.send(.addExternalProductButtonTapped)
           }
 
-          Text("🔗 \(viewStore.displayExternalProductURL)", bundle: .module)
+          Text("🧷 \(viewStore.displayExternalProductURL)", bundle: .module)
             .foregroundStyle(Color.white)
             .font(.system(.caption, design: .rounded, weight: .semibold))
         }
       }
-      .padding(.horizontal, 16)
+      .padding(.horizontal, 37)
       .frame(maxWidth: .infinity, maxHeight: .infinity)
       .task {
         requestReview()
@@ -42,37 +58,40 @@ public struct MatchedView: View {
           store.send(.closeButtonTapped)
         } label: {
           Image(systemName: "xmark")
-            .bold()
+            .font(.system(size: 12, weight: .regular))
+            .frame(width: 36, height: 36)
             .foregroundStyle(Color.white)
-            .padding(.all, 24)
+            .background(Color(uiColor: UIColor.quaternarySystemFill))
+            .clipShape(Circle())
         }
+        .padding(.horizontal, 12)
       }
       .background(
-        Color.clear
-          .compositingGroup()
-          .onTapGesture {
-            store.send(.closeButtonTapped)
-          }
+        LinearGradient(
+          colors: [
+            Color(0xFF30D158),
+            Color(0xFFFFD60A),
+            Color(0xFFFF2E00),
+            Color(0xFF000000)
+          ],
+          startPoint: .top,
+          endPoint: .bottom
+        )
       )
-      .presentationBackground(Color.black.opacity(0.95))
     }
   }
 }
 
 #Preview {
   NavigationStack {
-    Color.black
-      .ignoresSafeArea()
-      .fullScreenCover(isPresented: .constant(true)) {
-        MatchedView(
-          store: .init(
-            initialState: MatchedLogic.State(
-              externalProductURL: URL(string: "https://bere.al/tomokisun")!
-            ),
-            reducer: { MatchedLogic() }
-          )
-        )
-      }
+    MatchedView(
+      store: .init(
+        initialState: MatchedLogic.State(
+          externalProductURL: URL(string: "https://bere.al/tomokisun")!
+        ),
+        reducer: { MatchedLogic() }
+      )
+    )
   }
   .environment(\.colorScheme, .dark)
 }
