@@ -14,7 +14,7 @@ public struct HowToMovieView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 36) {
-        Text("In the Locket, select your favorites and tap 'Save' 📸.", bundle: .module)
+        Text("In the TapNow, select your favorites and tap 'Save' 📸.", bundle: .module)
           .font(.system(.title2, weight: .bold))
 
         VideoPlayer(player: viewStore.player)

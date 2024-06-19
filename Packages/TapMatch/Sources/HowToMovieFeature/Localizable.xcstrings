@@ -2,29 +2,21 @@
   "sourceLanguage" : "en",
   "strings" : {
     "Continue" : {
-
-    },
-    "In the Locket, select your favorites and tap 'Save' 📸." : {
-
-    },
-    "Next" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "つぎへ"
+            "value" : "続ける"
           }
         }
       }
     },
-    "Press \"Add to Photo\" in memory and save it 📸." : {
-      "extractionState" : "stale",
+    "In the TapNow, select your favorites and tap 'Save' 📸." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "メモリーで、お気に入りを選んで「写真に追加」で保存してね 📸"
+            "value" : "お気に入りを選んで「写真を保存」で保存してね 📸"
           }
         }
       }

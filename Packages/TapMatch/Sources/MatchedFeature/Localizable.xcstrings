@@ -11,19 +11,15 @@
         }
       }
     },
-    "Add BeReal." : {
-      "extractionState" : "stale",
+    "Add TapNow" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeReal.を追加する"
+            "value" : "TapNowを追加する"
           }
         }
       }
-    },
-    "Add Locket" : {
-
     }
   },
   "version" : "1.0"

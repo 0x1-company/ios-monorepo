@@ -51,17 +51,6 @@
         }
       }
     },
-    "FOLLOW ME" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "フォローしてね"
-          }
-        }
-      }
-    },
     "Help" : {
       "localizations" : {
         "ja" : {
@@ -78,17 +67,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "TapMatchの使い方"
-          }
-        }
-      }
-    },
-    "Instagram" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Instagram"
           }
         }
       }

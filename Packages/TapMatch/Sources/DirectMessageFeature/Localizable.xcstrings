@@ -1,33 +1,25 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Add BeReal" : {
-      "extractionState" : "stale",
+    "Add TapNow" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeRealを追加する"
+            "value" : "TapNowを追加する"
           }
         }
       }
     },
-    "Add BeReal and send a message!" : {
-      "extractionState" : "stale",
+    "Add TapNow and send a message!" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeRealを追加してメッセージを送ってみよう！"
+            "value" : "TapNowを追加してメッセージを送ってみよう！"
           }
         }
       }
-    },
-    "Add Locket" : {
-
-    },
-    "Add Locket and send a message!" : {
-
     },
     "Matched with %@!" : {
       "localizations" : {

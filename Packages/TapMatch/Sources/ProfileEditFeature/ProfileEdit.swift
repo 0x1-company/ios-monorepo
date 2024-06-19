@@ -25,7 +25,7 @@ public struct ProfileEditView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Text("Locket invitation link", bundle: .module)
+              Text("TapNow username", bundle: .module)
                 .foregroundStyle(Color.primary)
             }
           }

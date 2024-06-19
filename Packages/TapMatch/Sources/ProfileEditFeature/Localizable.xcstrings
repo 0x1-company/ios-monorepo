@@ -43,9 +43,6 @@
         }
       }
     },
-    "Locket invitation link" : {
-
-    },
     "Nick Name" : {
       "localizations" : {
         "ja" : {
@@ -118,6 +115,16 @@
         }
       }
     },
+    "TapNow username" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TapNowのユーザーネーム"
+          }
+        }
+      }
+    },
     "Username" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -125,17 +132,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ユーザーネーム"
-          }
-        }
-      }
-    },
-    "Username on BeReal." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeRealのユーザーネーム"
           }
         }
       }

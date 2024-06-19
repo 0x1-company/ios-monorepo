@@ -27,7 +27,7 @@ public struct ProfilePictureSettingView: View {
         ScrollView {
           VStack(spacing: 36) {
             VStack(spacing: 8) {
-              Text("Set your saved Locket.\nto your profile. ", bundle: .module)
+              Text("Set your saved TapNow.\nto your profile. ", bundle: .module)
                 .frame(minHeight: 56)
                 .font(.system(.title2, weight: .bold))
 
@@ -43,7 +43,7 @@ public struct ProfilePictureSettingView: View {
                     Image(systemName: "exclamationmark.triangle.fill")
                       .foregroundStyle(Color.yellow)
 
-                    Text("Select a photo saved with Locket.", bundle: .module)
+                    Text("Select a photo saved with TapNow.", bundle: .module)
                       .foregroundStyle(Color.secondary)
                   }
                   .font(.callout)

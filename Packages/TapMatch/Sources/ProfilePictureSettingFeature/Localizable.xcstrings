@@ -2,18 +2,21 @@
   "sourceLanguage" : "en",
   "strings" : {
     "Continue" : {
-
-    },
-    "It will be public 🌎" : {
-
-    },
-    "Next" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "つぎへ"
+            "value" : "続ける"
+          }
+        }
+      }
+    },
+    "It will be public 🌎" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "公開されるよ 🌏"
           }
         }
       }
@@ -29,30 +32,22 @@
         }
       }
     },
-    "Select a photo saved with BeReal." : {
-      "extractionState" : "stale",
+    "Select a photo saved with TapNow." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeRealで保存した写真を選択してください"
+            "value" : "TapNowで保存した写真を選択してください。"
           }
         }
       }
     },
-    "Select a photo saved with Locket." : {
-
-    },
-    "Set your saved Locket.\nto your profile. " : {
-
-    },
-    "Set your saved photo to your profile (it will be public 🌏)" : {
-      "extractionState" : "stale",
+    "Set your saved TapNow.\nto your profile. " : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "保存した写真を3枚プロフィールに設定しよう（公開されるよ 🌏）"
+            "value" : "TapNowで保存した写真を3枚プロフィールに設定しよう"
           }
         }
       }

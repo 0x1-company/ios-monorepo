@@ -5,27 +5,26 @@
 
     },
     "Continue" : {
-
-    },
-    "ex. tomokisun" : {
-
-    },
-    "Next" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "つぎへ"
+            "value" : "続ける"
+          }
+        }
+      }
+    },
+    "ex. tomokisun" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "例: ともき"
           }
         }
       }
     },
     "Set your nick name" : {
-
-    },
-    "What's your nick name?" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {

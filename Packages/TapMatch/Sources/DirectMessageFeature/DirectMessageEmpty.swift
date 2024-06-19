@@ -20,12 +20,12 @@ public struct DirectMessageEmptyView: View {
             Text("Matched with \(viewStore.displayName)!", bundle: .module)
               .font(.system(.title3, weight: .semibold))
 
-            Text("Add Locket and send a message!", bundle: .module)
+            Text("Add TapNow and send a message!", bundle: .module)
           }
           .multilineTextAlignment(.center)
 
           PrimaryButton(
-            String(localized: "Add Locket", bundle: .module)
+            String(localized: "Add TapNow", bundle: .module)
           ) {
             store.send(.jumpExternalProductButtonTapped)
           }
