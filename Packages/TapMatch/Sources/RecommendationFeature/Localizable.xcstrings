@@ -1,17 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Just a little... Too much swiping... Please help me share TapMatch... 🙏." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ちょっと...スワイプしすぎです...。TapMatchのシェアに協力してください... 🙏"
-          }
-        }
-      }
-    },
     "Share" : {
       "localizations" : {
         "ja" : {
@@ -23,7 +12,14 @@
       }
     },
     "Too much swiping...\nPlease help us share TapMatch... 🙏" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ちょっと...スワイプしすぎです...。TapMatchのシェアに協力してください... 🙏"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

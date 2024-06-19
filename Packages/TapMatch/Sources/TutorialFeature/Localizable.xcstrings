@@ -2,7 +2,14 @@
   "sourceLanguage" : "en",
   "strings" : {
     "Continue" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "続ける"
+          }
+        }
+      }
     },
     "Get started" : {
       "localizations" : {
@@ -54,17 +61,6 @@
         }
       }
     },
-    "Next" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "次へ"
-          }
-        }
-      }
-    },
     "Right if you are interested!" : {
       "localizations" : {
         "ja" : {
@@ -85,19 +81,15 @@
         }
       }
     },
-    "TapMatch is an application that allows you to exchange BeReal with everyone in Japan!" : {
-      "extractionState" : "stale",
+    "TapMatch is an application that allows you to exchange TapNow with everyone in Global!" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TapMatchは日本中のみんなとBeRealを交換できるアプリです"
+            "value" : "TapMatchは日本中のみんなとTapNowを交換できるアプリです"
           }
         }
       }
-    },
-    "TapMatch is an application that allows you to exchange Locket with everyone in Global!" : {
-
     }
   },
   "version" : "1.0"

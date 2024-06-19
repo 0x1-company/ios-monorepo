@@ -11,16 +11,12 @@
         }
       }
     },
-    "Do not write Locket or other social media username." : {
-
-    },
-    "Do not write vour BeReal or other social media username.Your profile will not be visible to others." : {
-      "extractionState" : "stale",
+    "Do not write TapNow or other social media username." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeRealのユーザーネームや他のSNSのIDを書かないでください。あなたのプロフィールが他の人に表示されなくなります。"
+            "value" : "TapNowのユーザーネームや他のSNSのIDを書かないでください。あなたのプロフィールが他の人に表示されなくなります。"
           }
         }
       }

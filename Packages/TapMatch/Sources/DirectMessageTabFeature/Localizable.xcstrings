@@ -1,33 +1,17 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Let's Reply" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "返信しよう"
-          }
-        }
-      }
-    },
-    "Like" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Like"
-          }
-        }
-      }
-    },
     "Likes" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Likes"
+          }
+        }
+      }
     },
-    "MESSAGE" : {
-      "extractionState" : "stale",
+    "Messages" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -37,11 +21,7 @@
         }
       }
     },
-    "Messages" : {
-
-    },
-    "RECENT MATCH" : {
-      "extractionState" : "stale",
+    "Recently Match" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -51,17 +31,17 @@
         }
       }
     },
-    "Recently Match" : {
-
-    },
     "Reply!" : {
-
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "返信"
+          }
+        }
+      }
     },
     "See More" : {
-
-    },
-    "SEE MORE" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
