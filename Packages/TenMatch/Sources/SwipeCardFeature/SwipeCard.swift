@@ -9,6 +9,7 @@ public struct SwipeCardView: View {
   @Environment(\.displayScale) var displayScale
   let store: StoreOf<SwipeCardLogic>
   @State var translation: CGSize = .zero
+  let width = UIScreen.main.bounds.width
 
   public init(store: StoreOf<SwipeCardLogic>) {
     self.store = store
@@ -26,17 +27,17 @@ public struct SwipeCardView: View {
               content
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
+                .frame(width: width, height: width * (4 / 3))
             },
             placeholder: {
               ProgressView()
                 .progressViewStyle(CircularProgressViewStyle())
                 .tint(Color.white)
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
+                .frame(width: width, height: width * (4 / 3))
                 .background()
             }
           )
-          .cornerRadius(48)
+          .cornerRadius(16)
           .overlay(alignment: .top) {
             SelectControl(
               current: viewStore.selection,
