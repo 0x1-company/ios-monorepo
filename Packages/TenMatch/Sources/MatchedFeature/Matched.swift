@@ -1,7 +1,7 @@
+import CachedAsyncImage
 import ComposableArchitecture
 import MatchedLogic
 import Styleguide
-import CachedAsyncImage
 import SwiftUI
 
 public struct MatchedView: View {
@@ -62,7 +62,7 @@ public struct MatchedView: View {
 
         VStack(spacing: 12) {
           PrimaryButton(
-            String(localized: "Copy tenten's PIN", bundle: .module)
+            String(localized: "Copy tenten’s PIN", bundle: .module)
           ) {
             store.send(.addExternalProductButtonTapped)
           }

@@ -1,7 +1,7 @@
-import API
-import APIClient
 import AnalyticsClient
 import AnalyticsKeys
+import API
+import APIClient
 import ComposableArchitecture
 import EnvironmentClient
 import FeedbackGeneratorClient
@@ -17,7 +17,7 @@ public struct MatchedLogic {
     let tentenPinCode: String
     let externalProductURL: URL
     let brand: EnvironmentClient.Brand
-    
+
     public var currentUserImageUrl: URL?
     public var targetUserImageUrl: URL?
 
@@ -115,20 +115,20 @@ public struct MatchedLogic {
         return .run { _ in
           await dismiss()
         }
-        
+
       case let .matchedResponse(.success(data)):
         let currentUserImages = data.currentUser.images.sorted(by: { $0.order > $1.order })
         let targetUserImages = data.userByMatched.images.sorted(by: { $0.order > $1.order })
-        
+
         guard
           let currentUserImage = currentUserImages.first,
           let targetUserImage = targetUserImages.first
         else { return .none }
-        
+
         state.currentUserImageUrl = URL(string: currentUserImage.imageUrl)
         state.targetUserImageUrl = URL(string: targetUserImage.imageUrl)
         return .none
-        
+
       case .matchedResponse(.failure):
         return .run { _ in
           await dismiss()

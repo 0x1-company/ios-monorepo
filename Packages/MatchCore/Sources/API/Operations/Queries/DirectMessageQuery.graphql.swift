@@ -8,7 +8,7 @@ public extension API {
     public static let operationName: String = "DirectMessage"
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"query DirectMessage($targetUserId: ID!, $targetUserIdString: String!, $first: Int!) { userByMatched(targetUserId: $targetUserIdString) { __typename id displayName berealUsername externalProductUrl } messages(targetUserId: $targetUserId, first: $first) { __typename pageInfo { __typename hasNextPage endCursor } edges { __typename node { __typename ...MessageRow } } } }"#,
+        #"query DirectMessage($targetUserId: ID!, $targetUserIdString: String!, $first: Int!) { userByMatched(targetUserId: $targetUserIdString) { __typename id displayName berealUsername tentenPinCode externalProductUrl } messages(targetUserId: $targetUserId, first: $first) { __typename pageInfo { __typename hasNextPage endCursor } edges { __typename node { __typename ...MessageRow } } } }"#,
         fragments: [MessageRow.self]
       ))
 
@@ -63,6 +63,7 @@ public extension API {
           .field("id", API.ID.self),
           .field("displayName", String?.self),
           .field("berealUsername", String.self),
+          .field("tentenPinCode", String.self),
           .field("externalProductUrl", String.self),
         ] }
 
@@ -71,6 +72,8 @@ public extension API {
         public var displayName: String? { __data["displayName"] }
         /// BeRealのusername
         public var berealUsername: String { __data["berealUsername"] }
+        /// TentenのPINコード
+        public var tentenPinCode: String { __data["tentenPinCode"] }
         public var externalProductUrl: String { __data["externalProductUrl"] }
       }
 
