@@ -5,6 +5,7 @@ query DirectMessage($targetUserId: ID!, $targetUserIdString: String!, $first: In
     id
     displayName
     berealUsername
+    tentenPinCode
     externalProductUrl
   }
 

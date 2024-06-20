@@ -24,10 +24,16 @@ public struct DirectMessageEmptyView: View {
           }
           .multilineTextAlignment(.center)
 
-          PrimaryButton(
-            String(localized: "Add tenten", bundle: .module)
-          ) {
-            store.send(.jumpExternalProductButtonTapped)
+          VStack(spacing: 12) {
+            PrimaryButton(
+              String(localized: "Copy tenten’s PIN", bundle: .module)
+            ) {
+              store.send(.jumpExternalProductButtonTapped)
+            }
+
+            Text("🧷 \(viewStore.tentenPinCode)", bundle: .module)
+              .foregroundStyle(Color.white)
+              .font(.system(.caption, design: .rounded, weight: .semibold))
           }
         }
         .frame(maxHeight: .infinity)
@@ -48,7 +54,8 @@ public struct DirectMessageEmptyView: View {
       store: .init(
         initialState: DirectMessageEmptyLogic.State(
           displayName: "tomokisun",
-          externalProductUrl: "https://bere.al/tomokisun"
+          externalProductUrl: "https://bere.al/tomokisun",
+          tentenPinCode: "du9v5pq"
         ),
         reducer: { DirectMessageEmptyLogic() }
       )

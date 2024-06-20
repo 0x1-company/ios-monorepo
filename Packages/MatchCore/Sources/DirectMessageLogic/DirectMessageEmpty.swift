@@ -11,10 +11,12 @@ public struct DirectMessageEmptyLogic {
   public struct State: Equatable {
     public let displayName: String
     let externalProductUrl: String
+    public let tentenPinCode: String
 
-    public init(displayName: String, externalProductUrl: String) {
+    public init(displayName: String, externalProductUrl: String, tentenPinCode: String) {
       self.displayName = displayName
       self.externalProductUrl = externalProductUrl
+      self.tentenPinCode = tentenPinCode
     }
   }
 

@@ -14,6 +14,7 @@ public struct UnsentDirectMessageListView: View {
     VStack(alignment: .leading, spacing: 8) {
       HStack(spacing: 0) {
         Text("Recently Match", bundle: .module)
+          .foregroundStyle(Color.secondary)
           .font(.system(.callout, design: .rounded, weight: .semibold))
           .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -23,6 +24,7 @@ public struct UnsentDirectMessageListView: View {
           HStack(spacing: 4) {
             Text("See More", bundle: .module)
               .font(.caption)
+              .foregroundStyle(Color.secondary)
 
             Image(systemName: "chevron.right")
           }

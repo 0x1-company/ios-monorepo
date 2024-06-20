@@ -86,7 +86,8 @@ public struct DirectMessageLogic {
 
         let emptyState = DirectMessageEmptyLogic.State(
           displayName: user.displayName ?? user.berealUsername,
-          externalProductUrl: user.externalProductUrl
+          externalProductUrl: user.externalProductUrl,
+          tentenPinCode: user.tentenPinCode
         )
 
         state.child = rows.isEmpty ? .empty(emptyState) : .content(contentState)
