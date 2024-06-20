@@ -7,6 +7,7 @@ import SwiftUI
 public struct PictureSliderView: View {
   @Environment(\.displayScale) var displayScale
   let store: StoreOf<PictureSliderLogic>
+  let width = UIScreen.main.bounds.width
 
   public init(store: StoreOf<PictureSliderLogic>) {
     self.store = store
@@ -24,12 +25,13 @@ public struct PictureSliderView: View {
               content: { content in
                 content
                   .resizable()
-                  .aspectRatio(1, contentMode: .fit)
-                  .frame(width: UIScreen.main.bounds.size.width)
+                  .aspectRatio(contentMode: .fill)
+                  .frame(width: width, height: width * (4 / 3))
               },
               placeholder: {
                 Color.black
-                  .aspectRatio(1, contentMode: .fill)
+                  .aspectRatio(contentMode: .fill)
+                  .frame(width: width, height: width * (4 / 3))
                   .overlay {
                     ProgressView()
                       .progressViewStyle(CircularProgressViewStyle())
@@ -60,8 +62,8 @@ public struct PictureSliderView: View {
               .font(.system(.footnote, design: .rounded, weight: .semibold))
           }
         }
-        .clipShape(RoundedRectangle(cornerRadius: 48))
-        .frame(width: UIScreen.main.bounds.size.width)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .frame(width: width, height: width * (4 / 3))
         .overlay {
           HStack(spacing: 0) {
             Color.clear

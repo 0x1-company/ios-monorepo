@@ -8,6 +8,7 @@ public struct ProfileView: View {
   @State var translation: CGSize = .zero
   @State var scaleEffect: Double = 1.0
   let store: StoreOf<ProfileLogic>
+  let width = UIScreen.main.bounds.width
 
   public init(store: StoreOf<ProfileLogic>) {
     self.store = store
@@ -49,8 +50,8 @@ public struct ProfileView: View {
               then: PictureSliderView.init(store:),
               else: {
                 Color.black
-                  .aspectRatio(1, contentMode: .fill)
-                  .frame(width: UIScreen.main.bounds.width)
+                  .aspectRatio(contentMode: .fill)
+                  .frame(width: width, height: width * (4 / 3))
               }
             )
 
@@ -68,7 +69,7 @@ public struct ProfileView: View {
           Spacer()
         }
         .background(Color.black)
-        .cornerRadius(40)
+        .cornerRadius(16)
         .scaleEffect(scaleEffect)
         .ignoresSafeArea()
       }

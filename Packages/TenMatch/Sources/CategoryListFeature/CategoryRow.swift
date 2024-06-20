@@ -36,10 +36,10 @@ public struct CategoryRowView: View {
           image
             .resizable()
             .aspectRatio(contentMode: .fill)
-            .frame(width: 144, height: 144)
+            .frame(width: 144, height: 192)
         } placeholder: {
           Color.black
-            .frame(width: 144, height: 144)
+            .frame(width: 144, height: 192)
             .overlay {
               ProgressView()
                 .tint(Color.white)
