@@ -11,3 +11,6 @@ echo $FILE_FIREBASE_PRODUCTION | base64 --decode > App/TapMatch/Multiplatform/Pr
 
 echo $FILE_FIREBASE_STAGING | base64 --decode > App/Trinket/Multiplatform/Staging/GoogleService-Info.plist
 echo $FILE_FIREBASE_PRODUCTION | base64 --decode > App/Trinket/Multiplatform/Production/GoogleService-Info.plist
+
+echo $FILE_FIREBASE_STAGING | base64 --decode > App/TenMatch/Multiplatform/Staging/GoogleService-Info.plist
+echo $FILE_FIREBASE_PRODUCTION | base64 --decode > App/TenMatch/Multiplatform/Production/GoogleService-Info.plist

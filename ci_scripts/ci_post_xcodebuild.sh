@@ -20,3 +20,4 @@ cd ..
 $CI_DERIVED_DATA_PATH/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/upload-symbols -gsp $CI_PRIMARY_REPOSITORY_PATH/App/BeMatch/Multiplatform/Production/GoogleService-Info.plist -p ios $CI_ARCHIVE_PATH/dSYMs
 $CI_DERIVED_DATA_PATH/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/upload-symbols -gsp $CI_PRIMARY_REPOSITORY_PATH/App/TapMatch/Multiplatform/Production/GoogleService-Info.plist -p ios $CI_ARCHIVE_PATH/dSYMs
 $CI_DERIVED_DATA_PATH/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/upload-symbols -gsp $CI_PRIMARY_REPOSITORY_PATH/App/Trinket/Multiplatform/Production/GoogleService-Info.plist -p ios $CI_ARCHIVE_PATH/dSYMs
+$CI_DERIVED_DATA_PATH/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/upload-symbols -gsp $CI_PRIMARY_REPOSITORY_PATH/App/TenMatch/Multiplatform/Production/GoogleService-Info.plist -p ios $CI_ARCHIVE_PATH/dSYMs
