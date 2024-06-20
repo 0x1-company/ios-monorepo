@@ -155,16 +155,16 @@ public struct ProfileEditLogic {
 
       case .delegate:
         return .none
-        
+
       case .makeNewBeRealButtonTapped:
         return .none
-        
+
       case .makeNewLocketButtonTapped:
         return .none
-        
+
       case .makeNewTapNowButtonTapped:
         return .none
-        
+
       case .makeNewTenTenButtonTapped:
         return .none
       }

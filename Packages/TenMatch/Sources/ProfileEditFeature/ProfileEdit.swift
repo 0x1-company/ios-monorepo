@@ -79,7 +79,7 @@ public struct ProfileEditView: View {
         } header: {
           Text("PROFILE", bundle: .module)
         }
-        
+
         Section {
           Button {
             store.send(.makeNewBeRealButtonTapped)
@@ -91,7 +91,7 @@ public struct ProfileEditView: View {
                 .foregroundStyle(Color.primary)
             }
           }
-          
+
           Button {
             store.send(.makeNewLocketButtonTapped)
           } label: {
@@ -102,7 +102,7 @@ public struct ProfileEditView: View {
                 .foregroundStyle(Color.primary)
             }
           }
-          
+
           Button {
             store.send(.makeNewTapNowButtonTapped)
           } label: {
@@ -116,7 +116,6 @@ public struct ProfileEditView: View {
         } header: {
           Text("OTHER", bundle: .module)
         }
-
       }
       .multilineTextAlignment(.center)
       .navigationTitle(String(localized: "Edit Profile", bundle: .module))
