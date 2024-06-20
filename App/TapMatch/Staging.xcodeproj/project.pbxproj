@@ -163,6 +163,11 @@
 			knownRegions = (
 				en,
 				ja,
+				fr,
+				es,
+				vi,
+				pl,
+				"pt-BR",
 			);
 			mainGroup = B783E0A92A11FF7D002E782F;
 			productRefGroup = B783E0B32A11FF7D002E782F /* Products */;
