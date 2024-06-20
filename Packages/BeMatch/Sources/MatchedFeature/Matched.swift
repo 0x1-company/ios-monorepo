@@ -69,21 +69,3 @@ public struct MatchedView: View {
     }
   }
 }
-
-#Preview {
-  NavigationStack {
-    Color.black
-      .ignoresSafeArea()
-      .fullScreenCover(isPresented: .constant(true)) {
-        MatchedView(
-          store: .init(
-            initialState: MatchedLogic.State(
-              externalProductURL: URL(string: "https://bere.al/tomokisun")!
-            ),
-            reducer: { MatchedLogic() }
-          )
-        )
-      }
-  }
-  .environment(\.colorScheme, .dark)
-}

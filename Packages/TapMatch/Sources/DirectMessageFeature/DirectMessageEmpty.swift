@@ -41,18 +41,3 @@ public struct DirectMessageEmptyView: View {
     }
   }
 }
-
-#Preview {
-  NavigationStack {
-    DirectMessageEmptyView(
-      store: .init(
-        initialState: DirectMessageEmptyLogic.State(
-          displayName: "tomokisun",
-          externalProductUrl: "https://bere.al/tomokisun"
-        ),
-        reducer: { DirectMessageEmptyLogic() }
-      )
-    )
-  }
-  .environment(\.colorScheme, .dark)
-}
