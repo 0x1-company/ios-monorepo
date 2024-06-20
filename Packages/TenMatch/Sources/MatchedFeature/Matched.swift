@@ -1,7 +1,7 @@
+import CachedAsyncImage
 import ComposableArchitecture
 import MatchedLogic
 import Styleguide
-import CachedAsyncImage
 import SwiftUI
 
 public struct MatchedView: View {

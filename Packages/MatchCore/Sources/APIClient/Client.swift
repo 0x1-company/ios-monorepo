@@ -19,7 +19,7 @@ public struct APIClient: Sendable {
   public var recommendations: @Sendable () -> AsyncThrowingStream<API.RecommendationsQuery.Data, Error> = { .finished() }
   public var createLike: @Sendable (API.CreateLikeInput) async throws -> API.CreateLikeMutation.Data
   public var createNope: @Sendable (API.CreateNopeInput) async throws -> API.CreateNopeMutation.Data
-  
+
   public var matched: @Sendable (_ targetUserId: String) -> AsyncThrowingStream<API.MatchedQuery.Data, Error> = { _ in .finished() }
 
   public var matches: @Sendable (_ first: Int, _ after: String?) -> AsyncThrowingStream<API.MatchesQuery.Data, Error> = { _, _ in .finished() }
