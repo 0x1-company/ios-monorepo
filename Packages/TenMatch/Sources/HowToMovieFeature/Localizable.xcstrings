@@ -41,42 +41,42 @@
         }
       }
     },
-    "In the ten ten, select your favorites and tap 'Save' 📸." : {
+    "In the tenten, select your favorites and tap 'Save' 📸." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ten tenでお気に入りを選択し、「保存」📸をタップします。"
+            "value" : "tentenでお気に入りを選択し、「保存」📸をタップします。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ten ten에서 즐겨찾기를 선택하고 '저장' 📸을(를) 탭하세요."
+            "value" : "tenten에서 즐겨찾기를 선택하고 '저장' 📸을(를) 탭하세요."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dans le ten ten, sélectionnez vos favoris et appuyez sur 'Enregistrer' 📸."
+            "value" : "Dans le tenten, sélectionnez vos favoris et appuyez sur 'Enregistrer' 📸."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "W ten ten wybierz swoje ulubione i dotknij 'Zapisz' 📸."
+            "value" : "W tenten wybierz swoje ulubione i dotknij 'Zapisz' 📸."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Trong ten ten, chọn những mục yêu thích của bạn và nhấn 'Lưu' 📸."
+            "value" : "Trong tenten, chọn những mục yêu thích của bạn và nhấn 'Lưu' 📸."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En el ten ten, selecciona tus favoritos y toca 'Guardar' 📸."
+            "value" : "En el tenten, selecciona tus favoritos y toca 'Guardar' 📸."
           }
         }
       }

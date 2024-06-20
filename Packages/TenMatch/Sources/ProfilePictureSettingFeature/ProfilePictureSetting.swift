@@ -25,30 +25,14 @@ public struct ProfilePictureSettingView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 8) {
         ScrollView {
-          VStack(spacing: 36) {
+          VStack(spacing: 32) {
             VStack(spacing: 8) {
-              Text("Set your saved ten ten.\nto your profile. ", bundle: .module)
-                .frame(minHeight: 56)
-                .font(.system(.title2, weight: .bold))
+              Text("Set your profile pic.", bundle: .module)
+                .font(.system(.title2, design: .rounded, weight: .bold))
 
               Text("It will be public 🌎", bundle: .module)
                 .font(.system(.footnote, design: .rounded, weight: .semibold))
                 .foregroundStyle(Color.secondary)
-
-              if viewStore.isWarningTextVisible {
-                Button {
-                  store.send(.howToButtonTapped)
-                } label: {
-                  HStack(spacing: 2) {
-                    Image(systemName: "exclamationmark.triangle.fill")
-                      .foregroundStyle(Color.yellow)
-
-                    Text("Select a photo saved with ten ten.", bundle: .module)
-                      .foregroundStyle(Color.secondary)
-                  }
-                  .font(.callout)
-                }
-              }
             }
 
             LazyVGrid(

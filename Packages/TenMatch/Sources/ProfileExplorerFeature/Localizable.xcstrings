@@ -1,12 +1,12 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Add ten ten" : {
+    "Add tenten" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ten tenを追加する"
+            "value" : "tentenを追加する"
           }
         },
         "ko" : {
@@ -18,25 +18,25 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ajouter un ten ten"
+            "value" : "Ajouter un tenten"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dodaj ten ten"
+            "value" : "Dodaj tenten"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Thêm ten ten"
+            "value" : "Thêm tenten"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Agregar ten ten"
+            "value" : "Agregar tenten"
           }
         }
       }

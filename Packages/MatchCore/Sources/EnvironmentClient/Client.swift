@@ -52,7 +52,7 @@ public struct EnvironmentClient {
       case .tapmatch:
         return "TapNow"
       case .tenmatch:
-        return "ten ten"
+        return "tenten"
       case .trinket:
         return "Locket"
       }

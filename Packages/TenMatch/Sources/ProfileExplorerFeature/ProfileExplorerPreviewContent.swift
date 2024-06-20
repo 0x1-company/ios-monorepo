@@ -16,7 +16,7 @@ public struct ProfileExplorerPreviewContentView: View {
       PictureSliderView(store: store.scope(state: \.pictureSlider, action: \.pictureSlider))
 
       PrimaryButton(
-        String(localized: "Add ten ten", bundle: .module)
+        String(localized: "Add tenten", bundle: .module)
       ) {
         store.send(.addExternalProductButtonTapped)
       }

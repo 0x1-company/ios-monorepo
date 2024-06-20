@@ -321,12 +321,12 @@
         }
       }
     },
-    "TenMatch is an application that allows you to exchange ten ten with everyone in Global!" : {
+    "TenMatch is an application that allows you to exchange tenten with everyone in Global!" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatchは日本中のみんなとten tenを交換できるアプリです"
+            "value" : "TenMatchは日本中のみんなとtentenを交換できるアプリです"
           }
         },
         "ko" : {
@@ -338,25 +338,25 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatch est une application qui vous permet d'échanger ten ten avec tout le monde dans le monde!"
+            "value" : "TenMatch est une application qui vous permet d'échanger tenten avec tout le monde dans le monde!"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatch to aplikacja umożliwiająca wymianę ten ten z wszystkimi na całym świecie!"
+            "value" : "TenMatch to aplikacja umożliwiająca wymianę tenten z wszystkimi na całym świecie!"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatch là một ứng dụng cho phép bạn trao đổi ten ten với mọi người trên toàn cầu!"
+            "value" : "TenMatch là một ứng dụng cho phép bạn trao đổi tenten với mọi người trên toàn cầu!"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¡TenMatch es una aplicación que te permite intercambiar ten ten con todos en el mundo!"
+            "value" : "¡TenMatch es una aplicación que te permite intercambiar tenten con todos en el mundo!"
           }
         }
       }

@@ -1,12 +1,12 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Add ten ten" : {
+    "Add tenten" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ten tenを追加する"
+            "value" : "tentenを追加する"
           }
         },
         "ko" : {
@@ -18,35 +18,35 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ajouter un ten ten"
+            "value" : "Ajouter un tenten"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dodaj ten ten"
+            "value" : "Dodaj tenten"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Thêm ten ten"
+            "value" : "Thêm tenten"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Agregar ten ten"
+            "value" : "Agregar tenten"
           }
         }
       }
     },
-    "Add ten ten and send a message!" : {
+    "Add tenten and send a message!" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ten tenを追加してメッセージを送ってみよう！"
+            "value" : "tentenを追加してメッセージを送ってみよう！"
           }
         },
         "ko" : {
@@ -58,25 +58,25 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ajoutez un ten ten et envoyez un message !"
+            "value" : "Ajoutez un tenten et envoyez un message !"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dodaj ten ten i wyślij wiadomość!"
+            "value" : "Dodaj tenten i wyślij wiadomość!"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Thêm ten ten và gửi tin nhắn!"
+            "value" : "Thêm tenten và gửi tin nhắn!"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¡Agrega ten ten y envía un mensaje!"
+            "value" : "¡Agrega tenten y envía un mensaje!"
           }
         }
       }

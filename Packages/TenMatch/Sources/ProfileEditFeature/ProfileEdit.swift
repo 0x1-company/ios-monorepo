@@ -25,7 +25,7 @@ public struct ProfileEditView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Text("ten ten invitation link", bundle: .module)
+              Text("tenten invitation link", bundle: .module)
                 .foregroundStyle(Color.primary)
             }
           }

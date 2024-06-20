@@ -58,6 +58,7 @@ public struct OnboardLogic {
   }
 
   @Dependency(\.api) var api
+  @Dependency(\.environment) var environment
   @Dependency(\.userDefaults) var userDefaults
 
   enum Cancel {
@@ -95,7 +96,11 @@ public struct OnboardLogic {
         return .none
 
       case .path(.element(_, .displayName(.delegate(.nextScreen)))):
-        state.path.append(.howToMovie())
+        if case .tenmatch = environment.brand() {
+          state.path.append(.profilePicture())
+        } else {
+          state.path.append(.howToMovie())
+        }
         return .none
 
       case .path(.element(_, .howToMovie(.delegate(.nextScreen)))):
@@ -103,7 +108,11 @@ public struct OnboardLogic {
         return .none
 
       case .path(.element(_, .profilePicture(.delegate(.howTo)))):
-        state.destination = .howToMovie()
+        if case .tenmatch = environment.brand() {
+          return .none
+        } else {
+          state.destination = .howToMovie()
+        }
         return .none
 
       case .path(.element(_, .profilePicture(.delegate(.nextScreen)))):
