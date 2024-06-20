@@ -200,9 +200,10 @@ let package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "MatchedFeature", dependencies: [
-      .product(name: "MatchedLogic", package: "MatchCore"),
       "Styleguide",
+      .product(name: "MatchedLogic", package: "MatchCore"),
       .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
+      .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "MatchEmptyFeature", dependencies: [

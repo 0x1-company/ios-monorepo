@@ -1,13 +1,10 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "🧷 %@" : {
+    "Copied tenten’s PIN" : {
 
     },
-    "Copy tenten's PIN" : {
-
-    },
-    "You matched with %@" : {
+    "OK" : {
 
     }
   },

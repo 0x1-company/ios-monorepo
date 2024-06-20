@@ -104,7 +104,14 @@ public struct SwipeLogic {
           let url = URL(string: match.targetUser.externalProductUrl)
         else { return .none }
 
-        state.destination = .matched(MatchedLogic.State(externalProductURL: url))
+        state.destination = .matched(
+          MatchedLogic.State(
+            targetUserId: match.targetUser.id,
+            displayName: match.targetUser.displayName,
+            tentenPinCode: match.targetUser.tentenPinCode,
+            externalProductURL: url
+          )
+        )
 
         return .none
 

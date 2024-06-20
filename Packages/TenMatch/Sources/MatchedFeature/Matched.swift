@@ -1,9 +1,11 @@
 import ComposableArchitecture
 import MatchedLogic
 import Styleguide
+import CachedAsyncImage
 import SwiftUI
 
 public struct MatchedView: View {
+  @Environment(\.displayScale) var displayScale
   @Environment(\.requestReview) var requestReview
   let store: StoreOf<MatchedLogic>
 
@@ -19,21 +21,44 @@ public struct MatchedView: View {
             .resizable()
             .aspectRatio(contentMode: .fit)
 
-          HStack(spacing: 8) {
-            Color.blue
+          HStack(spacing: -12) {
+            ForEach(
+              [viewStore.currentUserImageUrl, viewStore.targetUserImageUrl],
+              id: \.self
+            ) { imageUrl in
+              CachedAsyncImage(
+                url: imageUrl,
+                urlCache: URLCache.shared,
+                scale: displayScale,
+                content: { image in
+                  image
+                    .resizable()
+                },
+                placeholder: {
+                  Color.clear
+                    .overlay {
+                      ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .tint(Color.white)
+                    }
+                }
+              )
+              .aspectRatio(1, contentMode: .fill)
               .clipShape(Circle())
               .frame(width: 128, height: 128)
-
-            Color.blue
-              .clipShape(Circle())
-              .frame(width: 128, height: 128)
+              .overlay(
+                RoundedRectangle(cornerRadius: 128 / 2)
+                  .stroke(Color(uiColor: UIColor.opaqueSeparator), lineWidth: 2.0)
+              )
+            }
           }
 
-          Text("You matched with XXXX", bundle: .module)
+          Text("You matched with \(viewStore.targetUserDisplayName)", bundle: .module)
             .foregroundStyle(Color.white)
             .font(.system(.headline, design: .rounded, weight: .semibold))
         }
         .frame(maxHeight: .infinity)
+        .padding(.horizontal, 37)
 
         VStack(spacing: 12) {
           PrimaryButton(
@@ -42,12 +67,12 @@ public struct MatchedView: View {
             store.send(.addExternalProductButtonTapped)
           }
 
-          Text("🧷 \(viewStore.displayExternalProductURL)", bundle: .module)
+          Text("🧷 \(viewStore.displayTargetUserInfo)", bundle: .module)
             .foregroundStyle(Color.white)
             .font(.system(.caption, design: .rounded, weight: .semibold))
         }
       }
-      .padding(.horizontal, 37)
+      .padding(.horizontal, 16)
       .frame(maxWidth: .infinity, maxHeight: .infinity)
       .task {
         requestReview()
@@ -78,6 +103,9 @@ public struct MatchedView: View {
           endPoint: .bottom
         )
       )
+      .alert(
+        store: store.scope(state: \.$destination.alert, action: \.destination.alert)
+      )
     }
   }
 }
@@ -87,9 +115,22 @@ public struct MatchedView: View {
     MatchedView(
       store: .init(
         initialState: MatchedLogic.State(
+          targetUserId: "",
+          displayName: "tomokisun",
+          tentenPinCode: "du9v5pq",
           externalProductURL: URL(string: "https://bere.al/tomokisun")!
         ),
-        reducer: { MatchedLogic() }
+        reducer: MatchedLogic.init,
+        withDependencies: {
+          $0.environment = .live(
+            brand: .tenmatch,
+            instagramUsername: "",
+            appId: "",
+            appStoreForEmptyURL: .applicationDirectory,
+            docsURL: .applicationDirectory,
+            howToMovieURL: .applicationDirectory
+          )
+        }
       )
     )
   }

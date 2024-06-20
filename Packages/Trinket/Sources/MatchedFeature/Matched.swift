@@ -26,7 +26,7 @@ public struct MatchedView: View {
             store.send(.addExternalProductButtonTapped)
           }
 
-          Text("🔗 \(viewStore.displayExternalProductURL)", bundle: .module)
+          Text("🔗 \(viewStore.displayTargetUserInfo)", bundle: .module)
             .foregroundStyle(Color.white)
             .font(.system(.caption, weight: .semibold))
         }

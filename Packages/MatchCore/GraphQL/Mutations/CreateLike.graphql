@@ -4,7 +4,8 @@ mutation CreateLike($input: CreateLikeInput!) {
       id
       targetUser {
         id
-        berealUsername
+        displayName
+        tentenPinCode
         externalProductUrl
       }
     }
