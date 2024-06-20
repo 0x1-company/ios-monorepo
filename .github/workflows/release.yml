@@ -62,11 +62,6 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
-      - run: git fetch --tags -f
-      - name: Current Version
-        id: current-version
-        shell: bash
-        run: echo "::set-output name=CURRENT_VERSION::$(defaults read $(pwd)/App/BeMatch/Multiplatform/Staging/Info CFBundleShortVersionString)"
       - run: |
           gh release create ${{ needs.version-up.outputs.next_version }} \
             --generate-notes \
