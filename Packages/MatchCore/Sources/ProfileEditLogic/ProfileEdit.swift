@@ -7,6 +7,7 @@ import GenderSettingLogic
 import HowToMovieLogic
 import ProfilePictureSettingLogic
 import ShortCommentSettingLogic
+import EnvironmentClient
 import SwiftUI
 import UsernameSettingLogic
 
@@ -40,6 +41,7 @@ public struct ProfileEditLogic {
   }
 
   @Dependency(\.analytics) var analytics
+  @Dependency(\.environment) var environment
   @Dependency(\.feedbackGenerator) var feedbackGenerator
   @Dependency(\.api.currentUser) var currentUser
 
@@ -76,10 +78,19 @@ public struct ProfileEditLogic {
         }
 
       case .usernameSettingButtonTapped:
+        let brand = environment.brand()
+        let username = switch brand {
+        case .bematch:
+          state.user?.berealUsername ?? ""
+        case .tapmatch:
+          state.user?.tapnowUsername ?? ""
+        case .tenmatch:
+          state.user?.tentenPinCode ?? ""
+        case .trinket:
+          state.user?.locketUrl ?? ""
+        }
         state.destination = .usernameSetting(
-          UsernameSettingLogic.State(
-            username: state.user?.berealUsername ?? ""
-          )
+          UsernameSettingLogic.State(username: username)
         )
         return .run { _ in
           await feedbackGenerator.impactOccurred()

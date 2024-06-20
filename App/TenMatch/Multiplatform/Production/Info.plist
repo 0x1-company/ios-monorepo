@@ -125,6 +125,6 @@
 	<key>apps-flyer-dev-key</key>
 	<string>ArrQmb3aHuS47UnotusTAe</string>
 	<key>endpointURL</key>
-	<string>https://trinket-server-fvkngnom3a-an.a.run.app/graphql</string>
+	<string>https://tenmatch-server-fvkngnom3a-an.a.run.app/graphql</string>
 </dict>
 </plist>
