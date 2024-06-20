@@ -1,0 +1,19 @@
+query Matched($targetUserId: String!) {
+  currentUser {
+    id
+    images {
+      id
+      order
+      imageUrl
+    }
+  }
+
+  userByMatched(targetUserId: $targetUserId) {
+    id
+    images {
+      id
+      order
+      imageUrl
+    }
+  }
+}

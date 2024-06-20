@@ -7,6 +7,7 @@ import SwiftUI
 public struct RecentMatchGridView: View {
   @Environment(\.displayScale) var displayScale
   let store: StoreOf<RecentMatchGridLogic>
+  let width = UIScreen.main.bounds.width
 
   public init(store: StoreOf<RecentMatchGridLogic>) {
     self.store = store
@@ -25,11 +26,13 @@ public struct RecentMatchGridView: View {
             content: { image in
               image
                 .resizable()
-                .aspectRatio(1, contentMode: .fill)
+                .aspectRatio(contentMode: .fill)
+                .frame(width: width, height: width * (4 / 3))
             },
             placeholder: {
               Color.black
-                .aspectRatio(1, contentMode: .fill)
+                .aspectRatio(contentMode: .fill)
+                .frame(width: width, height: width * (4 / 3))
                 .overlay {
                   ProgressView()
                     .progressViewStyle(CircularProgressViewStyle())

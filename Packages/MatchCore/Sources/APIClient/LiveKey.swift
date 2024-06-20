@@ -62,6 +62,10 @@ public extension APIClient {
         let mutation = API.CreateNopeMutation(input: input)
         return try await apolloClient.perform(mutation: mutation)
       },
+      matched: { targetUserId in
+        let query = API.MatchedQuery(targetUserId: targetUserId)
+        return apolloClient.watch(query: query)
+      },
       matches: { first, after in
         let query = API.MatchesQuery(first: first, after: after ?? .null)
         return apolloClient.watch(query: query)
