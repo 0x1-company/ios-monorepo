@@ -30,6 +30,10 @@ public struct ProfileEditLogic {
     case usernameSettingButtonTapped
     case displayNameSettingButtonTapped
     case shortCommentButtonTapped
+    case makeNewBeRealButtonTapped
+    case makeNewLocketButtonTapped
+    case makeNewTapNowButtonTapped
+    case makeNewTenTenButtonTapped
     case currentUserResponse(Result<API.CurrentUserQuery.Data, Error>)
     case destination(PresentationAction<Destination.Action>)
     case delegate(Delegate)
@@ -150,6 +154,18 @@ public struct ProfileEditLogic {
         return .none
 
       case .delegate:
+        return .none
+        
+      case .makeNewBeRealButtonTapped:
+        return .none
+        
+      case .makeNewLocketButtonTapped:
+        return .none
+        
+      case .makeNewTapNowButtonTapped:
+        return .none
+        
+      case .makeNewTenTenButtonTapped:
         return .none
       }
     }

@@ -79,6 +79,44 @@ public struct ProfileEditView: View {
         } header: {
           Text("PROFILE", bundle: .module)
         }
+        
+        Section {
+          Button {
+            store.send(.makeNewBeRealButtonTapped)
+          } label: {
+            LabeledContent {
+              Image(systemName: "chevron.right")
+            } label: {
+              Text("Make new BeReal friends", bundle: .module)
+                .foregroundStyle(Color.primary)
+            }
+          }
+          
+          Button {
+            store.send(.makeNewLocketButtonTapped)
+          } label: {
+            LabeledContent {
+              Image(systemName: "chevron.right")
+            } label: {
+              Text("Make new Locket friends", bundle: .module)
+                .foregroundStyle(Color.primary)
+            }
+          }
+          
+          Button {
+            store.send(.makeNewTapNowButtonTapped)
+          } label: {
+            LabeledContent {
+              Image(systemName: "chevron.right")
+            } label: {
+              Text("Make new TapNow friends", bundle: .module)
+                .foregroundStyle(Color.primary)
+            }
+          }
+        } header: {
+          Text("OTHER", bundle: .module)
+        }
+
       }
       .multilineTextAlignment(.center)
       .navigationTitle(String(localized: "Edit Profile", bundle: .module))
