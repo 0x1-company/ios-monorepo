@@ -16,24 +16,20 @@ public struct UsernameSettingView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 16) {
-        Text("Give me the ten ten\ninvitation link.", bundle: .module)
+        Text("Please tell me your\ntenten PIN.", bundle: .module)
           .font(.system(.title2, weight: .bold))
 
-        Text("ex. https://locket.camera/links/aFzBtwv49D63SK3S7", bundle: .module)
+        Text("ex. du9v5pq", bundle: .module)
           .font(.system(.caption, design: .rounded))
           .tint(Color.gray)
           .foregroundStyle(Color.gray)
 
-        TextEditor(text: viewStore.$value)
-          .keyboardType(.alphabet)
+        TextField("", text: viewStore.$value)
+          .foregroundStyle(Color.white)
           .textInputAutocapitalization(.never)
           .autocorrectionDisabled()
-          .scrollContentBackground(.hidden)
-          .multilineTextAlignment(.leading)
+          .frame(height: 56)
           .focused($isFocused)
-          .padding(.all, 12)
-          .frame(height: 112)
-          .foregroundStyle(Color.white)
           .background(Color(uiColor: UIColor.systemFill))
           .font(.system(.title3, design: .rounded, weight: .semibold))
           .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -63,19 +59,6 @@ public struct UsernameSettingView: View {
       .toolbar {
         ToolbarItem(placement: .principal) {
           Image(ImageResource.logo)
-        }
-
-        ToolbarItem(placement: .topBarTrailing) {
-          Button {
-            store.send(.locketQuestionButtonTapped)
-          } label: {
-            Image(systemName: "questionmark")
-              .font(.system(size: 12, weight: .bold))
-              .foregroundStyle(Color.white)
-              .frame(width: 44, height: 44)
-              .background(Color(uiColor: UIColor.quaternarySystemFill))
-              .clipShape(Circle())
-          }
         }
       }
       .alert(

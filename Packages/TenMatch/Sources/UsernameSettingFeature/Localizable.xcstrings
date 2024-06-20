@@ -1,8 +1,23 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "By doing this, you agree\nto our [Privacy Policy](https://docs.tenmatch.app/privacy-policy) and [Terms of Use](https://docs.tenmatch.app/terms-of-use)." : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al hacer esto, aceptas\nnuestra [Política de Privacidad](https://docs.tenmatch.app/privacy-policy) y [Términos de Uso](https://docs.tenmatch.app/terms-of-use)."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En faisant cela, vous acceptez\nnotre [Politique de confidentialité](https://docs.tenmatch.app/privacy-policy) et nos [Conditions d'utilisation](https://docs.tenmatch.app/terms-of-use)."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13,12 +28,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "이렇게 하면 [개인정보 처리방침](https://docs.tenmatch.app/privacy-policy) 및 [이용약관](https://docs.tenmatch.app/terms-of-use)에 동의하는 것으로 간주됩니다."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En faisant cela, vous acceptez\nnotre [Politique de confidentialité](https://docs.tenmatch.app/privacy-policy) et nos [Conditions d'utilisation](https://docs.tenmatch.app/terms-of-use)."
           }
         },
         "pl" : {
@@ -32,17 +41,23 @@
             "state" : "translated",
             "value" : "Bằng cách này, bạn đồng ý với\n[Chính sách quyền riêng tư](https://docs.tenmatch.app/privacy-policy) và [Điều khoản sử dụng](https://docs.tenmatch.app/terms-of-use) của chúng tôi."
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Al hacer esto, aceptas\nnuestra [Política de Privacidad](https://docs.tenmatch.app/privacy-policy) y [Términos de Uso](https://docs.tenmatch.app/terms-of-use)."
-          }
         }
       }
     },
     "Continue" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53,12 +68,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "계속"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Continuer"
           }
         },
         "pl" : {
@@ -72,17 +81,27 @@
             "state" : "translated",
             "value" : "Tiếp tục"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Continuar"
-          }
         }
       }
     },
+    "ex. du9v5pq" : {
+
+    },
     "ex. https://locket.camera/links/aFzBtwv49D63SK3S7" : {
+      "extractionState" : "stale",
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ej. https://locket.camera/links/aFzBtwv49D63SK3S7"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ex. https://locket.camera/links/aFzBtwv49D63SK3S7"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -93,12 +112,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "예: https://locket.camera/links/aFzBtwv49D63SK3S7"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ex. https://locket.camera/links/aFzBtwv49D63SK3S7"
           }
         },
         "pl" : {
@@ -112,54 +125,52 @@
             "state" : "translated",
             "value" : "ví dụ. https://locket.camera/links/aFzBtwv49D63SK3S7"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ej. https://locket.camera/links/aFzBtwv49D63SK3S7"
-          }
         }
       }
     },
-    "Give me the ten ten\ninvitation link." : {
+    "Give me the tenten\ninvitation link." : {
+      "extractionState" : "stale",
       "localizations" : {
-        "ja" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ten tenの招待リンクを設定してください"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ten ten 초대 링크를 주세요."
+            "value" : "Dame el enlace de\ninvitación de tenten."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Donnez-moi le lien\nd'invitation ten ten."
+            "value" : "Donnez-moi le lien\nd'invitation tenten."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tentenの招待リンクを設定してください"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tenten 초대 링크를 주세요."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Podaj mi link zaproszenia\nten ten."
+            "value" : "Podaj mi link zaproszenia\ntenten."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cung cấp cho tôi liên kết\nmời ten ten."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dame el enlace de\ninvitación de ten ten."
+            "value" : "Cung cấp cho tôi liên kết\nmời tenten."
           }
         }
       }
+    },
+    "Please tell me your\ntenten PIN." : {
+
     }
   },
   "version" : "1.0"

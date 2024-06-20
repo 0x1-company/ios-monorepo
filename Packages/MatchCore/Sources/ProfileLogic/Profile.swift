@@ -188,10 +188,10 @@ extension ConfirmationDialogState where Action == ProfileLogic.Destination.Actio
 
   static func tenmatch() -> Self {
     Self {
-      TextState("Select ten ten", bundle: .module)
+      TextState("Select tenten", bundle: .module)
     } actions: {
       ButtonState(action: .jumpToBeReal) {
-        TextState("Jump to ten ten", bundle: .module)
+        TextState("Jump to tenten", bundle: .module)
       }
       ButtonState(action: .editUsername) {
         TextState("Edit PIN", bundle: .module)

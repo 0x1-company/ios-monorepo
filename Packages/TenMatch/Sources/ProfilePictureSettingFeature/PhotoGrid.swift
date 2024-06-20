@@ -14,7 +14,7 @@ public struct PhotoGrid: View {
       Button(action: onDelete) {
         Image(uiImage: image)
           .resizable()
-          .aspectRatio(1, contentMode: .fill)
+          .aspectRatio(3 / 4, contentMode: .fill)
           .clipped()
           .clipShape(RoundedRectangle(cornerRadius: 10))
       }
@@ -31,7 +31,7 @@ public struct PhotoGrid: View {
             .frame(width: 32, height: 32)
             .foregroundStyle(Color.yellow)
         }
-        .aspectRatio(1, contentMode: .fill)
+        .aspectRatio(3 / 4, contentMode: .fill)
         .clipped()
         .clipShape(RoundedRectangle(cornerRadius: 10))
       }
@@ -44,7 +44,7 @@ public struct PhotoGrid: View {
         preferredItemEncoding: .automatic
       ) {
         Color(uiColor: UIColor.secondarySystemFill)
-          .aspectRatio(1, contentMode: .fill)
+          .aspectRatio(3 / 4, contentMode: .fill)
           .cornerRadius(10)
           .overlay {
             PlusIcon()

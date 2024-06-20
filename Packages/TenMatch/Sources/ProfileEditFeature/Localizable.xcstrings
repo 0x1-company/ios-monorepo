@@ -163,12 +163,12 @@
         }
       }
     },
-    "ten ten invitation link" : {
+    "tenten invitation link" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ten tenのリンク"
+            "value" : "tentenのリンク"
           }
         },
         "ko" : {
@@ -180,25 +180,25 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lien d'invitation ten ten"
+            "value" : "Lien d'invitation tenten"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Link zaproszenia do ten ten"
+            "value" : "Link zaproszenia do tenten"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Liên kết lời mời ten ten"
+            "value" : "Liên kết lời mời tenten"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enlace de invitación de ten ten"
+            "value" : "Enlace de invitación de tenten"
           }
         }
       }
