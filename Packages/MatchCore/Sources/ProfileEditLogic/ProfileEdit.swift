@@ -2,12 +2,12 @@ import AnalyticsKeys
 import API
 import ComposableArchitecture
 import DisplayNameSettingLogic
+import EnvironmentClient
 import FeedbackGeneratorClient
 import GenderSettingLogic
 import HowToMovieLogic
 import ProfilePictureSettingLogic
 import ShortCommentSettingLogic
-import EnvironmentClient
 import SwiftUI
 import UsernameSettingLogic
 
