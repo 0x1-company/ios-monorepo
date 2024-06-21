@@ -1,24 +1,7 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "bematch" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "bematchus"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "bematchjp"
-          }
-        }
-      }
-    },
-    "bematchus" : {
+    "tapmatchjp" : {
 
     }
   },
