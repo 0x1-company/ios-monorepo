@@ -62,7 +62,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
             brand: EnvironmentClient.Brand.trinket,
             instagramUsername: String(localized: "trinketcamera"),
             appId: "6502700423",
-            appStoreForEmptyURL: URL(string: "https://bematch.onelink.me/nob4/ta8yroer")!,
+            appStoreForEmptyURL: URL(string: "https://trinket.onelink.me/QUNV/q6c45ts0")!,
             docsURL: URL(string: "https://docs.trinket.camera")!,
             howToMovieURL: URL(string: "https://storage.googleapis.com/bematch-production.appspot.com/public/trinket/how-to-picture-upload.MP4")!
           )

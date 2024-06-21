@@ -128,10 +128,21 @@ public struct MembershipLogic {
           )
 
           let brand = environment.brand()
+          
+          let invitationLink = switch brand {
+          case .bematch:
+            "https://bematch.onelink.me/nob4/mhxumci1"
+          case .tapmatch:
+            "https://tapmatch.onelink.me/3cHT/9p06ezpt"
+          case .tenmatch:
+            ""
+          case .trinket:
+            "https://trinket.onelink.me/QUNV/eb1vz43z"
+          }
 
           let localized: String.LocalizationValue = """
           I'm sending you an invite code [\(data.invitationCode.code)] to unlock \(brand.displayName) PRO for free (worth \(specialOfferDisplayPrice)).
-          https://bematch.onelink.me/nob4/mhxumci1
+          \(invitationLink)
           """
           state.shareText = String(localized: localized, bundle: .module)
 

@@ -62,7 +62,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
             brand: EnvironmentClient.Brand.tapmatch,
             instagramUsername: String(localized: "tapmatchjp"),
             appId: "6502700340",
-            appStoreForEmptyURL: URL(string: "https://bematch.onelink.me/nob4/ta8yroer")!,
+            appStoreForEmptyURL: URL(string: "https://tapmatch.onelink.me/3cHT/mkwh8xq9")!,
             docsURL: URL(string: "https://docs.tapmatch.jp")!,
             howToMovieURL: URL(string: "https://storage.googleapis.com/bematch-production.appspot.com/public/how-to.mov")!
           )
