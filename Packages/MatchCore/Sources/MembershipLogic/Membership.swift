@@ -128,7 +128,7 @@ public struct MembershipLogic {
           )
 
           let brand = environment.brand()
-          
+
           let invitationLink = switch brand {
           case .bematch:
             "https://bematch.onelink.me/nob4/mhxumci1"
