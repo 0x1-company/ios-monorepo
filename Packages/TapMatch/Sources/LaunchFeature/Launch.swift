@@ -22,7 +22,7 @@ public struct LaunchView: View {
           if viewStore.isActivityIndicatorVisible {
             ProgressView()
               .tint(Color.white)
-              .offset(y: 114)
+              .offset(y: 104)
           }
         }
     }
@@ -36,4 +36,5 @@ public struct LaunchView: View {
       reducer: { LaunchLogic() }
     )
   )
+  .environment(\.colorScheme, ColorScheme.dark)
 }
