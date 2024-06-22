@@ -22,7 +22,7 @@
 		<string>pt-BR</string>
 	</array>
 	<key>CFBundleName</key>
-	<string>TenMatch</string>
+	<string>Staging</string>
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
