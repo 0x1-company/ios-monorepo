@@ -1,6 +1,6 @@
 import ComposableArchitecture
 import MembershipLogic
-import SwiftUI
+import StoreKitClient
 
 @Reducer
 public struct MembershipStatusFreeContentLogic {
@@ -13,8 +13,12 @@ public struct MembershipStatusFreeContentLogic {
 
   public enum Action {
     case membershipButtonTapped
+    case restoreButtonTapped
+    case restoreResponse(Result<Void, Error>)
     case destination(PresentationAction<Destination.Action>)
   }
+
+  @Dependency(\.store) var store
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
@@ -27,7 +31,14 @@ public struct MembershipStatusFreeContentLogic {
         state.destination = nil
         return .none
 
-      case .destination:
+      case .restoreButtonTapped:
+        return .run { send in
+          await send(.restoreResponse(Result {
+            try await store.sync()
+          }))
+        }
+
+      default:
         return .none
       }
     }
