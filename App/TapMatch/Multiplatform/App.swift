@@ -64,7 +64,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
             appId: "6502700340",
             appStoreForEmptyURL: URL(string: "https://tapmatch.onelink.me/3cHT/mkwh8xq9")!,
             docsURL: URL(string: "https://docs.tapmatch.jp")!,
-            howToMovieURL: URL(string: "https://storage.googleapis.com/bematch-production.appspot.com/public/how-to.mov")!
+            howToMovieURL: URL(string: "https://storage.googleapis.com/bematch-production.appspot.com/public/tapmatch/how-to-picture-upload.MP4")!
           )
           $0.configGlobal = ConfigGlobalClient.live(documentId: "tapmatch")
         }
