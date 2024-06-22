@@ -62,7 +62,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
             brand: EnvironmentClient.Brand.tenmatch,
             instagramUsername: String(localized: "tenmatchapp"),
             appId: "6504491960",
-            appStoreForEmptyURL: URL(string: "https://bematch.onelink.me/nob4/ta8yroer")!,
+            appStoreForEmptyURL: URL(string: "https://tenmatch.onelink.me/Qlqa/1bonw0b2")!,
             docsURL: URL(string: "https://docs.tenmatch.app")!,
             howToMovieURL: URL(string: "https://storage.googleapis.com/bematch-production.appspot.com/public/trinket/how-to-picture-upload.MP4")!
           )

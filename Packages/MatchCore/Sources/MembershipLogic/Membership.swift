@@ -135,7 +135,7 @@ public struct MembershipLogic {
           case .tapmatch:
             "https://tapmatch.onelink.me/3cHT/9p06ezpt"
           case .tenmatch:
-            ""
+            "https://tenmatch.onelink.me/Qlqa/2ejn2khj"
           case .trinket:
             "https://trinket.onelink.me/QUNV/eb1vz43z"
           }
