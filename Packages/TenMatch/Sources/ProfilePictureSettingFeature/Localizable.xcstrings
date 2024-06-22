@@ -122,87 +122,42 @@
         }
       }
     },
-    "Select a photo saved with tenten." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seleccione una foto guardada con tenten."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sélectionnez une photo enregistrée avec tenten."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "tentenで保存した写真を選択してください。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "tenten으로 저장된 사진을 선택하세요."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wybierz zdjęcie zapisane za pomocą tenten."
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chọn một bức ảnh được lưu bằng tenten."
-          }
-        }
-      }
-    },
     "Set your profile pic." : {
-
-    },
-    "Set your saved tenten.\nto your profile." : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Establezca su tenten guardado en su perfil."
+            "value" : "Establece tu foto de perfil."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Définissez votre tenten enregistré\nsur votre profil."
+            "value" : "Définissez votre photo de profil."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "保存したtentenを\nプロフィールに設定します。"
+            "value" : "プロフィール写真を設定してください。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "저장한 로켓을 프로필에 설정하세요."
+            "value" : "프로필 사진을 설정하세요."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ustaw zapisany tenten.\nna swoim profilu."
+            "value" : "Ustaw swoje zdjęcie profilowe."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Đặt tenten đã lưu của bạn vào hồ sơ của bạn."
+            "value" : "Đặt ảnh hồ sơ của bạn."
           }
         }
       }
