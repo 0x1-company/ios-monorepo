@@ -3,6 +3,12 @@
   "strings" : {
     "Liked by %@ people" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aimé par %@ personnes"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13,6 +19,12 @@
     },
     "RECENT MATCH" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RENCONTRE RÉCENTE"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",

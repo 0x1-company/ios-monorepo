@@ -1,26 +1,38 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "NETWORK ERROR" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ネットワークエラー"
+  "sourceLanguage": "en",
+  "strings": {
+    "NETWORK ERROR": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ネットワークエラー"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ERREUR RÉSEAU"
           }
         }
       }
     },
-    "Servers are crowded. Please try restarting the application after a while." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "サーバーが混み合っています。しばらくしてからアプリの再起動をお試しください。"
+    "Servers are crowded. Please try restarting the application after a while.": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "サーバーが混み合っています。しばらくしてからアプリの再起動をお試しください。"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les serveurs sont saturés. Veuillez réessayer de redémarrer l'application après un certain temps."
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

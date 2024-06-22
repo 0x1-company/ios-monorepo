@@ -1,36 +1,54 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "Let's swipe." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "スワイプしよう"
+  "sourceLanguage": "en",
+  "strings": {
+    "Let's swipe.": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "スワイプしよう"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Faisons glisser."
           }
         }
       }
     },
-    "Swipe" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "スワイプする"
+    "Swipe": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "スワイプする"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Glisser"
           }
         }
       }
     },
-    "When you match with someone, their profile will appear here" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "誰かとマッチするとここに相手のプロフィールが表示されます"
+    "When you match with someone, their profile will appear here": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "誰かとマッチするとここに相手のプロフィールが表示されます"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lorsque vous correspondez avec quelqu'un, son profil apparaîtra ici"
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

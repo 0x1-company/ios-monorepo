@@ -3,6 +3,12 @@
   "strings" : {
     "🔗 %@" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🔗 %@"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",

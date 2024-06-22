@@ -1,56 +1,86 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "id: %@" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "id: %@"
+  "sourceLanguage": "en",
+  "strings": {
+    "id: %@": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "id: %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "id : %@"
           }
         }
       }
     },
-    "It's important to us that BeMatch is a welcoming and safe space for everyone.\nUnfortunately, we found that you violated our [Terms of Use](https://docs.bematch.jp/terms-of-use) and so we've made the decision to remove you from the BeMatch Platform." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeMatchでは、すべての人にとって安心で安全な場所であることを重視しています。残念ながらあなたの行為が[利用規約](https://docs.bematch.jp/terms-of-use)に違反したことが判明したため、当社はあなたをBeMatchのプラットフォームから削除することを決定しました。"
+    "It's important to us that BeMatch is a welcoming and safe space for everyone.\nUnfortunately, we found that you violated our [Terms of Use](https://docs.bematch.jp/terms-of-use) and so we've made the decision to remove you from the BeMatch Platform.": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BeMatchでは、すべての人にとって安心で安全な場所であることを重視しています。残念ながらあなたの行為が[利用規約](https://docs.bematch.jp/terms-of-use)に違反したことが判明したため、当社はあなたをBeMatchのプラットフォームから削除することを決定しました。"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il est important pour nous que BeMatch soit un espace accueillant et sûr pour tout le monde. Malheureusement, nous avons constaté que vous avez violé nos [Conditions d'utilisation](https://docs.bematch.jp/terms-of-use) et avons donc décidé de vous retirer de la plateforme BeMatch."
           }
         }
       }
     },
-    "Please note that if you are subscribed to any premium services through the App Store, you will need to cancel your subscription with the appropriate provider." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "App Storeを通じて購読している場合は、App Storeで解約する必要がありますのでご注意ください。"
+    "Please note that if you are subscribed to any premium services through the App Store, you will need to cancel your subscription with the appropriate provider.": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App Storeを通じて購読している場合は、App Storeで解約する必要がありますのでご注意ください。"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Veuillez noter que si vous êtes abonné à des services premium via l'App Store, vous devrez annuler votre abonnement auprès du fournisseur approprié."
           }
         }
       }
     },
-    "You will no longer be able to access your BeMatch account or create new accounts in the future." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "あなたは今後、BeMatchのアカウントにアクセスしたり、新しいアカウントを作成することは出来ません。"
+    "You will no longer be able to access your BeMatch account or create new accounts in the future.": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "あなたは今後、BeMatchのアカウントにアクセスしたり、新しいアカウントを作成することは出来ません。"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vous ne pourrez plus accéder à votre compte BeMatch ou créer de nouveaux comptes à l'avenir."
           }
         }
       }
     },
-    "Your account has been banned from BeMatch." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "あなたのBeMatchアカウントは利用停止されました。"
+    "Your account has been banned from BeMatch.": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "あなたのBeMatchアカウントは利用停止されました。"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Votre compte a été banni de BeMatch."
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

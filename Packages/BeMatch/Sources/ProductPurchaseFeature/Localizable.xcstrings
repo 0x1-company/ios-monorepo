@@ -3,6 +3,12 @@
   "strings" : {
     "Continue" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13,6 +19,12 @@
     },
     "most popular" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "le plus populaire"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -23,6 +35,12 @@
     },
     "Premium Plan" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan Premium"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -33,6 +51,12 @@
     },
     "Recurring billing. You can cancel at any time. Your payment will be charged to your iTunes account and will auto-renew until you cancel in the iTunes Store settings. By tapping Unlock, you agree to the Terms of Service and auto-renewal." : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facturation récurrente. Vous pouvez annuler à tout moment. Votre paiement sera débité de votre compte iTunes et sera renouvelé automatiquement jusqu'à ce que vous annuliez dans les paramètres de l'iTunes Store. En appuyant sur Débloquer, vous acceptez les conditions d'utilisation et le renouvellement automatique."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -43,6 +67,12 @@
     },
     "Restore a purchase" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurer un achat"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53,6 +83,12 @@
     },
     "See who likes you" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voir qui vous aime"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",

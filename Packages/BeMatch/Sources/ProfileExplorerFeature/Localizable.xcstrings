@@ -3,6 +3,12 @@
   "strings" : {
     "Add BeReal" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter BeReal"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13,6 +19,12 @@
     },
     "Block" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloquer"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -24,6 +36,12 @@
     "Cancel" : {
       "extractionState" : "manual",
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -35,6 +53,12 @@
     "I confirmed transmission" : {
       "extractionState" : "manual",
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transmission confirmée"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -45,6 +69,12 @@
     },
     "Message" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Message"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -55,6 +85,12 @@
     },
     "Report" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signaler"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -65,6 +101,12 @@
     },
     "Unmatch" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retirer la correspondance"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",

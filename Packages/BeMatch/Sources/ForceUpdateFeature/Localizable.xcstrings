@@ -1,36 +1,55 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "... Oh? ! ! Looks like BeMatch...! \nPlease update to the latest version." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "...おや？！BeMatch.のようすが...！\n最新バージョンへのアップデートをお願いします。"
+  "sourceLanguage": "en",
+  "strings": {
+    "... Oh? ! ! Looks like BeMatch...! \nPlease update to the latest version.": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "...おや？！BeMatch.のようすが...！\n最新バージョンへのアップデートをお願いします。"
+          },
+        },
+          "fr": {
+            "stringUnit": {
+              "state": "translated",
+              "value": "... Oh? ! ! On dirait BeMatch... ! \nVeuillez mettre à jour vers la dernière version."
+            }
           }
-        }
       }
     },
-    "Notice" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "お知らせ"
+    "Notice": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "お知らせ"
+          },
+        },
+          "fr": {
+            "stringUnit": {
+              "state": "translated",
+              "value": "Avis"
+            }
           }
-        }
       }
     },
-    "Update" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アップデート"
+    "Update": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アップデート"
+          },
+        },  
+          "fr": {
+            "stringUnit": {
+              "state": "translated",
+              "value": "Mettre à jour"
+            }
           }
         }
-      }
+
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }
