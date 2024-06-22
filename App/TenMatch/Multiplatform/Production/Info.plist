@@ -49,11 +49,11 @@
 	<string>&quot;Allow&quot; to see your optimized ads</string>
 	<key>PRODUCTS</key>
 	<array>
-		<string>camera.trinket.ios.production.subscription.pro.1week</string>
-		<string>camera.trinket.ios.production.subscription.pro.1month</string>
-		<string>camera.trinket.ios.production.subscription.pro.3month</string>
-		<string>camera.trinket.ios.production.subscription.pro.6month</string>
-		<string>camera.trinket.ios.production.subscription.pro.1year</string>
+		<string>app.tenmatch.ios.production.subscription.pro.1week</string>
+		<string>app.tenmatch.ios.production.subscription.pro.1month</string>
+		<string>app.tenmatch.ios.production.subscription.pro.3month</string>
+		<string>app.tenmatch.ios.production.subscription.pro.6month</string>
+		<string>app.tenmatch.ios.production.subscription.pro.1year</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

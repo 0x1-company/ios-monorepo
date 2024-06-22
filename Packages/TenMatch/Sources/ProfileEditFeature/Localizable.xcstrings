@@ -164,6 +164,7 @@
       }
     },
     "Make new BeReal friends" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -174,6 +175,7 @@
       }
     },
     "Make new Locket friends" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -184,6 +186,7 @@
       }
     },
     "Make new TapNow friends" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -274,6 +277,7 @@
       }
     },
     "OTHER" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
