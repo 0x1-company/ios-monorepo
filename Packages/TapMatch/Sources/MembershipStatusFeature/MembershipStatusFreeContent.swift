@@ -32,6 +32,12 @@ public struct MembershipStatusFreeContentView: View {
                 .foregroundStyle(Color.primary)
             }
           }
+
+          Button {
+            store.send(.restoreButtonTapped)
+          } label: {
+            Text("Restore a purchase", bundle: .module)
+          }
         }
       }
       .fullScreenCover(

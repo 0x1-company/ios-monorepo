@@ -342,7 +342,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Multiplatform/Staging/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = TenMatch;
+				INFOPLIST_KEY_CFBundleDisplayName = Staging;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -380,7 +380,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Multiplatform/Staging/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = TenMatch;
+				INFOPLIST_KEY_CFBundleDisplayName = Staging;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
