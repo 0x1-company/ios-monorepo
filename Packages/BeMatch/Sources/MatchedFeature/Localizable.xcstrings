@@ -1,26 +1,38 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "🔗 %@" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "🔗 %@"
+  "sourceLanguage": "en",
+  "strings": {
+    "🔗 %@": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "🔗 %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "🔗 %@"
           }
         }
       }
     },
-    "Add BeReal." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeReal.を追加する"
+    "Add BeReal.": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BeReal.を追加する"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajouter BeReal."
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

@@ -1,66 +1,102 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "Are you sure you want to delete your account?" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "本当にアカウントを削除しますか？"
+  "sourceLanguage": "en",
+  "strings": {
+    "Are you sure you want to delete your account?": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "本当にアカウントを削除しますか？"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Êtes-vous sûr de vouloir supprimer votre compte ?"
           }
         }
       }
     },
-    "Delete Account" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アカウント削除"
+    "Delete Account": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アカウント削除"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Supprimer le compte"
           }
         }
       }
     },
-    "Not Now" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "今はしない"
+    "Not Now": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今はしない"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pas maintenant"
           }
         }
       }
     },
-    "Other Reason" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "その他の理由"
+    "Other Reason": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "その他の理由"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autre raison"
           }
         }
       }
     },
-    "Proceed with Deletion" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "削除する"
+    "Proceed with Deletion": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "削除する"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Procéder à la suppression"
           }
         }
       }
     },
-    "This **cannot** be undone or recovered." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "これを元に戻したり、回復したりすることは**出来ません**。"
+    "This **cannot** be undone or recovered.": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "これを元に戻したり、回復したりすることは**出来ません**。"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cela **ne peut pas** être annulé ou récupéré."
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

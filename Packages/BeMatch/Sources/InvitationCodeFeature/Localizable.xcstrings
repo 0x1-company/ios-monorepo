@@ -1,16 +1,22 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "Invitation Code" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "招待コード"
+  "sourceLanguage": "en",
+  "strings": {
+    "Invitation Code": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "招待コード"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Code d'invitation"
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

@@ -2,10 +2,36 @@
   "sourceLanguage" : "en",
   "strings" : {
     "Looks like he's gone." : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On dirait qu'il est parti."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "もういないみたい..."
+          }
+        }
+      }
     },
     "Swipe others" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balayer d'autres"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "他の人をスワイプする"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

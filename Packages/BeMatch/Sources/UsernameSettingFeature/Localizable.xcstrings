@@ -6,6 +6,12 @@
     },
     "BeRe.al/" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeRe.al/"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16,6 +22,12 @@
     },
     "By entering your username you agree to our [Terms](https://docs.bematch.jp/terms-of-use) and [Privacy Policy](https://docs.bematch.jp/privacy-policy)" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En entrant votre nom d'utilisateur, vous acceptez nos [Conditions d'utilisation](https://docs.bematch.jp/terms-of-use) et notre [Politique de confidentialité](https://docs.bematch.jp/privacy-policy)"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -26,6 +38,12 @@
     },
     "Next" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suivant"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -37,6 +55,12 @@
     "Save" : {
       "extractionState" : "manual",
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrer"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -47,6 +71,12 @@
     },
     "What's your username on BeReal?" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quel est votre nom d'utilisateur sur BeReal?"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",

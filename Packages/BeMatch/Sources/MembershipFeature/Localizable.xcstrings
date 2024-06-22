@@ -3,42 +3,60 @@
   "strings" : {
     "%@ for %@" : {
       "localizations" : {
-        "en" : {
+        "fr" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ for %2$@"
+            "state" : "translated",
+            "value" : "%1$@ pour %2$@"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "が%2$@%1$@"
+            "value" : "%2$@のための%1$@"
           }
         }
       }
     },
     "1. Send invitation code" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Envoyer un code d'invitation"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "1.招待コードを送る"
+            "value" : "1. 招待コードを送る"
           }
         }
       }
     },
     "2. %@ free for both parties!" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. %@ gratuit pour les deux parties !"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "2.お互いに%@無料！"
+            "value" : "2. お互いに%@無料！"
           }
         }
       }
     },
     "Find someone you care about!" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trouvez quelqu'un qui vous tient à cœur !"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -49,6 +67,12 @@
     },
     "How to Receive Benefits" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comment recevoir des avantages"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -65,6 +89,12 @@
             "value" : "see-who-sent-it"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "voir-qui-l'a-envoyé-fr"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -75,6 +105,12 @@
     },
     "Invite a friend and both receive" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invitez un ami et recevez tous les deux"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -85,6 +121,12 @@
     },
     "invite-ticket" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "billet-d'invitation-fr"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -95,6 +137,12 @@
     },
     "Limited to first %lld Users" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limité aux premiers %lld utilisateurs"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -105,6 +153,12 @@
     },
     "Premium Plan" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan Premium pour 10 fois plus de plaisir"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -115,6 +169,12 @@
     },
     "Recurring billing. You can cancel at any time. Payment will be charged to your iTunes account and your subscription will auto-renew at %@/week until you cancel in iTunes Store settings. By tapping Unlock, you agree to the Terms of Service and auto-renewal." : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facturation récurrente. Vous pouvez annuler à tout moment. Le paiement sera facturé sur votre compte iTunes et votre abonnement se renouvellera automatiquement à %@/semaine jusqu'à ce que vous annuliez dans les paramètres de l'iTunes Store. En appuyant sur Débloquer, vous acceptez les conditions d'utilisation et le renouvellement automatique."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -125,6 +185,12 @@
     },
     "See who sent it!" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voir qui l'a envoyé !"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -135,6 +201,12 @@
     },
     "Send an invitation code to a friend who hasn't used BeMatch." : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envoyez un code d'invitation à un ami qui n'a pas utilisé BeMatch."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -145,6 +217,12 @@
     },
     "Send Invitation Code" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envoyer un code d'invitation"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -155,6 +233,12 @@
     },
     "Special offer" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offre spéciale"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -165,6 +249,12 @@
     },
     "Upgrade for %@/week" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mise à niveau pour %@/semaine"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -175,6 +265,12 @@
     },
     "When they enter the Invitation Code and register, you will both receive BeMatch.PRO for sure!" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lorsqu'ils saisissent le code d'invitation et s'inscrivent, vous recevrez tous les deux BeMatch.PRO !"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -185,6 +281,12 @@
     },
     "when they use your invitation code you get" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "lorsqu'ils utilisent votre code d'invitation, vous obtenez"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -195,6 +297,12 @@
     },
     "worth benefits" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "des avantages d'une valeur de"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",

@@ -1,26 +1,38 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "Looks like he's gone." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "もういないみたい..."
+  "sourceLanguage": "en",
+  "strings": {
+    "Looks like he's gone.": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "もういないみたい..."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On dirait qu'il est parti."
           }
         }
       }
     },
-    "Swipe others" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "他の人をスワイプする"
+    "Swipe others": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "他の人をスワイプする"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Balayer d'autres"
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

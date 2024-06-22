@@ -3,6 +3,12 @@
   "strings" : {
     "Comment" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commentaire"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13,16 +19,28 @@
     },
     "Do not write vour BeReal or other social media username.Your profile will not be visible to others." : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "N'écrivez pas votre nom d'utilisateur BeReal ou d'autres réseaux sociaux. Votre profil ne sera pas visible par les autres."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeRealのユーザーネームや他のSNSのIDを書かないでください。あなたのプロフィールが他の人に表示されなくなります。"
+            "value" : "BeRealや他のソーシャルメディアのユーザーネームを書かないでください。あなたのプロフィールは他の人には見えません。"
           }
         }
       }
     },
     "Save" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrer"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",

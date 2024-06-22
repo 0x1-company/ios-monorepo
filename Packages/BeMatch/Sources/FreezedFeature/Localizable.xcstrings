@@ -3,6 +3,12 @@
   "strings" : {
     "Answer" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Répondre"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13,6 +19,12 @@
     },
     "Currently unable to re-register" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actuellement impossible de se réinscrire"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -23,6 +35,12 @@
     },
     "Once you have deleted your BeMatch account, you will not be able to register again for a certain period of time after the deletion." : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une fois que vous avez supprimé votre compte BeMatch, vous ne pourrez pas vous réinscrire pendant une certaine période après la suppression."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -33,6 +51,12 @@
     },
     "Please answer our simple questionnaire to help us improve our service." : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez répondre à notre simple questionnaire pour nous aider à améliorer notre service."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",

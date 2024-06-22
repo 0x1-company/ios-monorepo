@@ -3,6 +3,12 @@
   "strings" : {
     "Next" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suivant"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14,6 +20,12 @@
     "Save" : {
       "extractionState" : "manual",
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrer"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -24,6 +36,12 @@
     },
     "Select a photo saved with BeReal." : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sélectionnez une photo enregistrée avec BeReal."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -34,6 +52,12 @@
     },
     "Set your saved photo to your profile (it will be public 🌏)" : {
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Définissez votre photo enregistrée sur votre profil (elle sera publique 🌏)"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",

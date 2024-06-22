@@ -1,56 +1,86 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "Add BeReal" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeRealを追加する"
+  "sourceLanguage": "en",
+  "strings": {
+    "Add BeReal": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BeRealを追加する"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajouter BeReal"
           }
         }
       }
     },
-    "Add BeReal and send a message!" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeRealを追加してメッセージを送ってみよう！"
+    "Add BeReal and send a message!": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BeRealを追加してメッセージを送ってみよう！"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajoutez BeReal et envoyez un message !"
           }
         }
       }
     },
-    "Matched with %@!" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@さんとマッチしたよ！"
+    "Matched with %@!": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@さんとマッチしたよ！"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Correspondance avec %@ !"
           }
         }
       }
     },
-    "Report" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "通報"
+    "Report": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "通報"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signaler"
           }
         }
       }
     },
-    "The operator may check and delete the contents of messages for the purpose of operating a sound service. In addition, the account may be suspended if inappropriate use is confirmed." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "健全なサービスを運営する目的で運営者がメッセージの内容を確認・削除する場合があります。また、不適切な利用を確認するとアカウントを停止する場合があります。"
+    "The operator may check and delete the contents of messages for the purpose of operating a sound service. In addition, the account may be suspended if inappropriate use is confirmed.": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "健全なサービスを運営する目的で運営者がメッセージの内容を確認・削除する場合があります。また、不適切な利用を確認するとアカウントを停止する場合があります。"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'opérateur peut vérifier et supprimer le contenu des messages afin de maintenir un service sain. De plus, le compte peut être suspendu en cas d'utilisation inappropriée."
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }
