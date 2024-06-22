@@ -2,45 +2,41 @@
   "sourceLanguage" : "en",
   "strings" : {
     "🧷 %@" : {
-
-    },
-    "Add tenten" : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Agregar tenten"
+            "value" : "🧷 %@"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ajouter un tenten"
+            "value" : "🧷 %@"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "tentenを追加する"
+            "value" : "🧷 %@"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "로켓 추가"
+            "value" : "🧷 %@"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dodaj tenten"
+            "value" : "🧷 %@"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Thêm tenten"
+            "value" : "🧷 %@"
           }
         }
       }
@@ -86,7 +82,44 @@
       }
     },
     "Copy tenten’s PIN" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copiar el PIN de tenten"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copier le PIN de tenten"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tentenのPINをコピー"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tenten의 PIN 복사"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skopiuj PIN tenten"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sao chép PIN của tenten"
+          }
+        }
+      }
     },
     "Matched with %@!" : {
       "localizations" : {

@@ -163,39 +163,6 @@
         }
       }
     },
-    "Make new BeReal friends" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeRealの新しい友だちを作る"
-          }
-        }
-      }
-    },
-    "Make new Locket friends" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Locketの新しい友だちを作る"
-          }
-        }
-      }
-    },
-    "Make new TapNow friends" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "TapNowの新しい友だちを作る"
-          }
-        }
-      }
-    },
     "Nick Name" : {
       "localizations" : {
         "es" : {
@@ -272,17 +239,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chưa đặt"
-          }
-        }
-      }
-    },
-    "OTHER" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "その他"
           }
         }
       }

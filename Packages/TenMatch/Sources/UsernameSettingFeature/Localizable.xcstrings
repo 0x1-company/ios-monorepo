@@ -85,92 +85,84 @@
       }
     },
     "ex. du9v5pq" : {
-
-    },
-    "ex. https://locket.camera/links/aFzBtwv49D63SK3S7" : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ej. https://locket.camera/links/aFzBtwv49D63SK3S7"
+            "value" : "p. ej. du9v5pq"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ex. https://locket.camera/links/aFzBtwv49D63SK3S7"
+            "value" : "ex. du9v5pq"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "例: https://locket.camera/links/aFzBtwv49D63SK3S7"
+            "value" : "例: du9v5pq"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "예: https://locket.camera/links/aFzBtwv49D63SK3S7"
+            "value" : "예: du9v5pq"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "np. https://locket.camera/links/aFzBtwv49D63SK3S7"
+            "value" : "np. du9v5pq"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ví dụ. https://locket.camera/links/aFzBtwv49D63SK3S7"
-          }
-        }
-      }
-    },
-    "Give me the tenten\ninvitation link." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dame el enlace de\ninvitación de tenten."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Donnez-moi le lien\nd'invitation tenten."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "tentenの招待リンクを設定してください"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "tenten 초대 링크를 주세요."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Podaj mi link zaproszenia\ntenten."
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cung cấp cho tôi liên kết\nmời tenten."
+            "value" : "ví dụ: du9v5pq"
           }
         }
       }
     },
     "Please tell me your\ntenten PIN." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, dime tu\nPIN de tenten."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "S'il vous plaît dites-moi votre\nPIN de tenten."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tentenのPINを教えてください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tenten PIN을 알려주세요."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proszę powiedz mi swój\nPIN tenten."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vui lòng cho tôi biết PIN của bạn\ntrên tenten."
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
