@@ -57,6 +57,17 @@ When you both Like each other and match, you can send messages to each other wit
 
 ![](https://github.com/0x1-company/ios-app/assets/28350464/1582c53d-857c-4a8b-9f3a-0b889ca9158f)
 
+## TapMatch | Make new TapNow friends
+
+TapMatch is an app that lets you exchange TapNow with people worldwide.<br>
+You can swipe to send a Like to friends you want to connect with on TapNow.<br>
+When you both Like each other and match, you can send messages to each other within the app.
+
+- https://tapmatch.jp
+- https://apps.apple.com/app/apple-store/id6502700340
+
+![](https://github.com/0x1-company/ios-monorepo/assets/28350464/428d785a-0cdc-4f57-9f2b-2941edd7d986)
+
 ## Trinket | Make new Locket friends
 
 Trinket is an app that lets you exchange Locket with people worldwide.<br>
@@ -66,16 +77,18 @@ When you both Like each other and match, you can send messages to each other wit
 - https://trinket.camera
 - https://apps.apple.com/app/apple-store/id6502700423
 
-![](https://github.com/0x1-company/ios-monorepo/assets/28350464/3bc80b9a-223e-4743-a550-a4726976e74d)
+![](https://github.com/0x1-company/ios-monorepo/assets/28350464/6eb5d5f9-770a-4caa-9437-d993f4fdbfb0)
 
-## TapMatch | Make new TapNow friends
+## TenMatch | Make new tenten friends
 
-TapMatch is an app that lets you exchange TapNow with people worldwide.<br>
-You can swipe to send a Like to friends you want to connect with on TapNow.<br>
+TenMatch is an app that lets you exchange tenten with people worldwide.<br>
+You can swipe to send a Like to friends you want to connect with on tenten.<br>
 When you both Like each other and match, you can send messages to each other within the app.
 
-- https://tapmatch.jp
-- https://apps.apple.com/app/apple-store/id6502700340
+- https://tenmatch.app
+- https://apps.apple.com/app/apple-store/id6504491960
+
+![](https://github.com/0x1-company/ios-monorepo/assets/28350464/6b93853c-8136-4690-86ae-1cca7ec1438b)
 
 
 # License
