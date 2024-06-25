@@ -3,6 +3,18 @@
   "strings" : {
     "Share" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compartir"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partager"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13,12 +25,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "공유"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Partager"
           }
         },
         "pl" : {
@@ -32,17 +38,23 @@
             "state" : "translated",
             "value" : "Chia sẻ"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Compartir"
-          }
         }
       }
     },
     "Too much swiping...\nPlease help us share Trinket... 🙏" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demasiado deslizamiento...\nPor favor, ayúdanos a compartir Trinket... 🙏"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trop de balayage...\nAidez-nous à partager Trinket... 🙏"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -55,12 +67,6 @@
             "value" : "너무 많이 스와이프...\n장신구 공유를 도와주세요... 🙏"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Trop de balayage...\nAidez-nous à partager Trinket... 🙏"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -70,13 +76,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quẹt quá nhiều...\nXin hãy giúp chúng tôi chia sẻ Trinket... 🙏"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Demasiado deslizamiento...\nPor favor, ayúdanos a compartir Trinket... 🙏"
+            "value" : "Oops, đã hết lượt quẹt rồi! \nHãy giới thiệu Trinket đến bạn bè để mở rộng cộng đồng của chúng ta thêm nhé! (Oops, no more swipes left! Let's introduce Trinket to friends to expand our community!)"
           }
         }
       }

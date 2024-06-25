@@ -3,6 +3,18 @@
   "strings" : {
     "Approved" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aprobado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Approuvé"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13,12 +25,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "승인됨"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Approuvé"
           }
         },
         "pl" : {
@@ -32,18 +38,24 @@
             "state" : "translated",
             "value" : "Đã phê duyệt"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aprobado"
-          }
         }
       }
     },
     "Edit Profile" : {
       "extractionState" : "manual",
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar perfil"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifier le profil"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -54,12 +66,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "프로필 수정"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Modifier le profil"
           }
         },
         "pl" : {
@@ -73,18 +79,24 @@
             "state" : "translated",
             "value" : "Chỉnh sửa hồ sơ"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Editar perfil"
-          }
         }
       }
     },
     "Gender" : {
       "extractionState" : "manual",
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Género"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genre"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -95,12 +107,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "성별"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Genre"
           }
         },
         "pl" : {
@@ -114,17 +120,23 @@
             "state" : "translated",
             "value" : "Giới tính"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Género"
-          }
         }
       }
     },
     "In Review" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En revisión"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En révision"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -135,12 +147,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "검토 중"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En révision"
           }
         },
         "pl" : {
@@ -154,17 +160,23 @@
             "state" : "translated",
             "value" : "Đang xem xét"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En revisión"
-          }
         }
       }
     },
     "Locket invitation link" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enlace de invitación de Locket"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lien d'invitation Locket"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -175,12 +187,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "로켓 초대 링크"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lien d'invitation Locket"
           }
         },
         "pl" : {
@@ -194,17 +200,23 @@
             "state" : "translated",
             "value" : "Liên kết lời mời Locket"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enlace de invitación de Locket"
-          }
         }
       }
     },
     "Nick Name" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apodo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Surnom"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -215,12 +227,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "닉네임"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Surnom"
           }
         },
         "pl" : {
@@ -234,17 +240,23 @@
             "state" : "translated",
             "value" : "Biệt danh"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apodo"
-          }
         }
       }
     },
     "No Set" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No establecido"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non défini"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -255,12 +267,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "설정 안 됨"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Non défini"
           }
         },
         "pl" : {
@@ -274,18 +280,24 @@
             "state" : "translated",
             "value" : "Chưa đặt"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No establecido"
-          }
         }
       }
     },
     "PROFILE" : {
       "extractionState" : "manual",
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PERFIL"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PROFIL"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -296,12 +308,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "프로필"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PROFIL"
           }
         },
         "pl" : {
@@ -315,18 +321,24 @@
             "state" : "translated",
             "value" : "HỒ SƠ"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PERFIL"
-          }
         }
       }
     },
     "Profile Image" : {
       "extractionState" : "manual",
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imagen de perfil"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image de profil"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -337,12 +349,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "프로필 이미지"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Image de profil"
           }
         },
         "pl" : {
@@ -356,17 +362,23 @@
             "state" : "translated",
             "value" : "Ảnh hồ sơ"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Imagen de perfil"
-          }
         }
       }
     },
     "Profile Picture" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Foto de perfil"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photo de profil"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -377,12 +389,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "프로필 사진"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Photo de profil"
           }
         },
         "pl" : {
@@ -396,17 +402,23 @@
             "state" : "translated",
             "value" : "Ảnh đại diện"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Foto de perfil"
-          }
         }
       }
     },
     "Rejected" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rechazado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rejeté"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -417,12 +429,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "거절됨"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rejeté"
           }
         },
         "pl" : {
@@ -436,17 +442,23 @@
             "state" : "translated",
             "value" : "Đã từ chối"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rechazado"
-          }
         }
       }
     },
     "Short Comment" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comentario breve"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commentaire court"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -459,12 +471,6 @@
             "value" : "짧은 댓글"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Commentaire court"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -474,13 +480,7 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bình luận ngắn"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Comentario breve"
+            "value" : "Giới thiệu ngắn"
           }
         }
       }
@@ -488,6 +488,18 @@
     "Username" : {
       "extractionState" : "manual",
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre de usuario"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom d'utilisateur"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -500,12 +512,6 @@
             "value" : "사용자 이름"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nom d'utilisateur"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -516,12 +522,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tên người dùng"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nombre de usuario"
           }
         }
       }

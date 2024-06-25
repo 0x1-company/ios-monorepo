@@ -3,6 +3,18 @@
   "strings" : {
     "ABOUT" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acerca de"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À propos"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13,12 +25,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "정보"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "À propos"
           }
         },
         "pl" : {
@@ -32,17 +38,23 @@
             "state" : "translated",
             "value" : "Thông tin"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Acerca de"
-          }
         }
       }
     },
     "Contact Us" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contáctenos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contactez-nous"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53,12 +65,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "문의하기"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Contactez-nous"
           }
         },
         "pl" : {
@@ -72,17 +78,23 @@
             "state" : "translated",
             "value" : "Liên hệ"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Contáctenos"
-          }
         }
       }
     },
     "Delete Account" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar cuenta"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer le compte"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -93,12 +105,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "계정 삭제"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Supprimer le compte"
           }
         },
         "pl" : {
@@ -112,17 +118,23 @@
             "state" : "translated",
             "value" : "Xóa tài khoản"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eliminar cuenta"
-          }
         }
       }
     },
     "Edit Profile" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar perfil"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifier le profil"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -133,12 +145,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "프로필 수정"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Modifier le profil"
           }
         },
         "pl" : {
@@ -152,17 +158,23 @@
             "state" : "translated",
             "value" : "Chỉnh sửa hồ sơ"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Editar perfil"
-          }
         }
       }
     },
     "FAQ" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preguntas frecuentes"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FAQ"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -173,12 +185,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "자주 묻는 질문"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "FAQ"
           }
         },
         "pl" : {
@@ -192,58 +198,23 @@
             "state" : "translated",
             "value" : "Câu hỏi thường gặp"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Preguntas frecuentes"
-          }
-        }
-      }
-    },
-    "FOLLOW ME" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "フォローしてね"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "팔로우하기"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Suivez-moi"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Śledź mnie"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Theo dõi tôi"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sígueme"
-          }
         }
       }
     },
     "Help" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayuda"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aide"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -254,12 +225,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "도움말"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aide"
           }
         },
         "pl" : {
@@ -273,17 +238,23 @@
             "state" : "translated",
             "value" : "Trợ giúp"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ayuda"
-          }
         }
       }
     },
     "How It Works" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cómo funciona"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comment ça marche"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -296,12 +267,6 @@
             "value" : "작동 방식"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Comment ça marche"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -311,60 +276,25 @@
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cách hoạt động"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cómo funciona"
-          }
-        }
-      }
-    },
-    "Instagram" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Instagram"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Instagram"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Instagram"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Instagram"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Instagram"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Instagram"
+            "value" : "Hướng dẫn sử dụng"
           }
         }
       }
     },
     "Membership Status" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado de membresía"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statut de l'abonnement"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -375,12 +305,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "멤버십 상태"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Statut de l'abonnement"
           }
         },
         "pl" : {
@@ -394,17 +318,23 @@
             "state" : "translated",
             "value" : "Tình trạng thành viên"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Estado de membresía"
-          }
         }
       }
     },
     "My Profile" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mi perfil"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mon profil"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -415,12 +345,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "내 프로필"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mon profil"
           }
         },
         "pl" : {
@@ -434,17 +358,23 @@
             "state" : "translated",
             "value" : "Hồ sơ của tôi"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mi perfil"
-          }
         }
       }
     },
     "Other" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otro"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autre"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -455,12 +385,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "기타"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Autre"
           }
         },
         "pl" : {
@@ -474,17 +398,23 @@
             "state" : "translated",
             "value" : "Khác"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Otro"
-          }
         }
       }
     },
     "Privacy Policy" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Política de privacidad"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Politique de confidentialité"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -495,12 +425,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "개인정보 보호정책"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Politique de confidentialité"
           }
         },
         "pl" : {
@@ -514,17 +438,23 @@
             "state" : "translated",
             "value" : "Chính sách bảo mật"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Política de privacidad"
-          }
         }
       }
     },
     "PROFILE" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfil"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -535,12 +465,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "프로필"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Profil"
           }
         },
         "pl" : {
@@ -554,17 +478,23 @@
             "state" : "translated",
             "value" : "Hồ sơ"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Perfil"
-          }
         }
       }
     },
     "Rate Trinket" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calificar Trinket"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noter Trinket"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -575,12 +505,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "장신구 평가하기"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Noter Trinket"
           }
         },
         "pl" : {
@@ -594,17 +518,23 @@
             "state" : "translated",
             "value" : "Đánh giá Trinket"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Calificar Trinket"
-          }
         }
       }
     },
     "Settings" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuraciones"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paramètres"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -615,12 +545,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "설정"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Paramètres"
           }
         },
         "pl" : {
@@ -634,17 +558,23 @@
             "state" : "translated",
             "value" : "Cài đặt"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Configuraciones"
-          }
         }
       }
     },
     "Share Trinket" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compartir Trinket"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partager Trinket"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -655,12 +585,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "장신구 공유"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Partager Trinket"
           }
         },
         "pl" : {
@@ -674,17 +598,23 @@
             "state" : "translated",
             "value" : "Chia sẻ Trinket"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Compartir Trinket"
-          }
         }
       }
     },
     "Terms of Use" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Términos de uso"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conditions d'utilisation"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -695,12 +625,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "이용 약관"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Conditions d'utilisation"
           }
         },
         "pl" : {
@@ -714,17 +638,23 @@
             "state" : "translated",
             "value" : "Điều khoản sử dụng"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Términos de uso"
-          }
         }
       }
     },
     "Version" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -737,12 +667,6 @@
             "value" : "버전"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Version"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -753,12 +677,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Phiên bản"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Versión"
           }
         }
       }
