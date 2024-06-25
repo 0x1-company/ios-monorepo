@@ -5,7 +5,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "👋 Talk to CEO!"
           }
         },
@@ -57,7 +57,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "👨🏻‍💻 Talk to Developer"
           }
         },
@@ -109,7 +109,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "🥺 Contact us"
           }
         },
@@ -163,49 +163,49 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Staging"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "TenMatch"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "TenMatch"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "TenMatch"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "TenMatch"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "TenMatch"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "TenMatch"
           }
         },
         "vi" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "TenMatch"
           }
         }
@@ -215,7 +215,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "If you want to talk about development discuss"
           }
         },
@@ -267,7 +267,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "If you want to talk about product discuss"
           }
         },
@@ -321,50 +321,50 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Allow to see your optimized ads"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "“Permitir” para ver tus anuncios optimizados"
+            "state" : "translated",
+            "value" : "Utilizamos tus datos de actividad para mostrarte anuncios personalizados que coinciden con tus intereses."
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "\"Autoriser\" pour voir vos annonces optimisées"
+            "state" : "translated",
+            "value" : "Nous utilisons vos données d'activité pour vous montrer des publicités personnalisées correspondant à vos intérêts."
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "「許可」するとお客様に最適化された広告が表示されます"
+            "state" : "translated",
+            "value" : "あなたの興味に合ったパーソナライズされた広告を表示するために、あなたのアクティビティデータを使用します。"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "\"허용\"하여 최적화된 광고를 확인하세요"
+            "state" : "translated",
+            "value" : "당신의 관심사에 맞는 맞춤형 광고를 보여주기 위해 당신의 활동 데이터를 사용합니다."
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "\"Zezwól\", aby zobaczyć zoptymalizowane reklamy"
+            "state" : "translated",
+            "value" : "Używamy Twoich danych aktywności, aby pokazywać Ci spersonalizowane reklamy, które odpowiadają Twoim zainteresowaniom."
           }
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "\"Permitir\" para ver seus anúncios otimizados"
+            "state" : "translated",
+            "value" : "Usamos seus dados de atividade para mostrar anúncios personalizados que correspondem aos seus interesses."
           }
         },
         "vi" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "\"Cho phép\" để xem quảng cáo được tối ưu hóa của bạn"
+            "state" : "translated",
+            "value" : "Chúng tôi sử dụng dữ liệu hoạt động của bạn để hiển thị cho bạn các quảng cáo cá nhân hóa phù hợp với sở thích của bạn."
           }
         }
       }
@@ -373,7 +373,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Tell us about any glitches or improvements!"
           }
         },

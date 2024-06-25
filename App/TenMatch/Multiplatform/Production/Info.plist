@@ -46,7 +46,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>&quot;Allow&quot; to see your optimized ads</string>
+	<string>We use your activity data to show you personalized ads that match your interests.</string>
 	<key>PRODUCTS</key>
 	<array>
 		<string>app.tenmatch.ios.production.subscription.pro.1week</string>
