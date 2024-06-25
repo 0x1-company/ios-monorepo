@@ -14,6 +14,12 @@
             "state" : "translated",
             "value" : "남성"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nam"
+          }
         }
       }
     },
@@ -30,6 +36,12 @@
             "state" : "translated",
             "value" : "비 바이너리"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Khác"
+          }
         }
       }
     },
@@ -45,6 +57,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "여성"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nữ"
           }
         }
       }
