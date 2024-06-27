@@ -1,4 +1,5 @@
 import ComposableArchitecture
+import FeedbackGeneratorClient
 import MembershipLogic
 import StoreKitClient
 
@@ -19,13 +20,16 @@ public struct MembershipStatusFreeContentLogic {
   }
 
   @Dependency(\.store) var store
+  @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
       switch action {
       case .membershipButtonTapped:
         state.destination = .membership()
-        return .none
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
 
       case .destination(.presented(.membership(.delegate(.dismiss)))):
         state.destination = nil
