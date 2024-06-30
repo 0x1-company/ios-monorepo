@@ -1,246 +1,354 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "Are you sure you want to delete your account?" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "本当にアカウントを削除しますか？"
+  "sourceLanguage": "en",
+  "strings": {
+    "Are you sure you want to delete your account?": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "本当にアカウントを削除しますか？"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "정말로 계정을 삭제하시겠습니까?"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "정말로 계정을 삭제하시겠습니까?"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Êtes-vous sûr de vouloir supprimer votre compte ?"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Êtes-vous sûr de vouloir supprimer votre compte ?"
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Czy na pewno chcesz usunąć swoje konto?"
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Czy na pewno chcesz usunąć swoje konto?"
           }
         },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bạn có chắc chắn muốn xóa tài khoản của mình không?"
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bạn có chắc chắn muốn xóa tài khoản của mình không?"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Estás seguro de que deseas eliminar tu cuenta?"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿Estás seguro de que deseas eliminar tu cuenta?"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tem certeza de que deseja excluir sua conta?"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هل أنت متأكد من أنك تريد حذف حسابك؟"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apakah Anda yakin ingin menghapus akun Anda?"
           }
         }
       }
     },
-    "Delete Account" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アカウント削除"
+    "Delete Account": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アカウント削除"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "계정 삭제"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "계정 삭제"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Supprimer le compte"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Supprimer le compte"
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Usuń konto"
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Usuń konto"
           }
         },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Xóa tài khoản"
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xóa tài khoản"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eliminar cuenta"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eliminar cuenta"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Excluir conta"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حذف الحساب"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hapus Akun"
           }
         }
       }
     },
-    "Not Now" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "今はしない"
+    "Not Now": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今はしない"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "지금은 아니오"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "지금은 아니오"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pas maintenant"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pas maintenant"
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nie teraz"
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nie teraz"
           }
         },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Không phải bây giờ"
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Không phải bây giờ"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No ahora"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No ahora"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agora não"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ليس الآن"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak Sekarang"
           }
         }
       }
     },
-    "Other Reason" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "その他の理由"
+    "Other Reason": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "その他の理由"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "다른 이유"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "다른 이유"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Autre raison"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autre raison"
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Inny powód"
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inny powód"
           }
         },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lý do khác"
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lý do khác"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Otra razón"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otra razón"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Outro motivo"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سبب آخر"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alasan Lain"
           }
         }
       }
     },
-    "Proceed with Deletion" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "削除する"
+    "Proceed with Deletion": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "削除する"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "삭제 진행"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "삭제 진행"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Procéder à la suppression"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Procéder à la suppression"
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Przejdź do usunięcia"
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Przejdź do usunięcia"
           }
         },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tiến hành xóa"
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tiến hành xóa"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Proceder con la eliminación"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Proceder con la eliminación"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prosseguir com a exclusão"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المتابعة مع الحذف"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lanjutkan Penghapusan"
           }
         }
       }
     },
-    "This **cannot** be undone or recovered." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "これを元に戻したり、回復したりすることは**出来ません**。"
+    "This **cannot** be undone or recovered.": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "これを元に戻したり、回復したりすることは**出来ません**。"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "이것은 **되돌릴 수** 없거나 복구할 수 없습니다."
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이것은 **되돌릴 수** 없거나 복구할 수 없습니다."
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cela **ne peut pas** être annulé ou récupéré."
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cela **ne peut pas** être annulé ou récupéré."
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tego **nie można** cofnąć ani odzyskać."
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tego **nie można** cofnąć ani odzyskać."
           }
         },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Điều này **không thể** được hoàn tác hoặc khôi phục."
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Điều này **không thể** được hoàn tác hoặc khôi phục."
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Esto **no** se puede deshacer ni recuperar."
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Esto **no** se puede deshacer ni recuperar."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Isso **não** pode ser desfeito ou recuperado."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا يمكن **التراجع** عن هذا أو استعادته."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ini **tidak dapat** dibatalkan atau dipulihkan."
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

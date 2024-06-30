@@ -1,206 +1,296 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "Likes" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Likes"
+  "sourceLanguage": "en",
+  "strings": {
+    "Likes": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Likes"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "좋아요"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "좋아요"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "J'aime"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "J'aime"
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Polubienia"
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Polubienia"
           }
         },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Thích"
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thích"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Me gusta"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Me gusta"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Curtidas"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إعجابات"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Suka"
           }
         }
       }
     },
-    "Messages" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "メッセージ"
+    "Messages": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "メッセージ"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "메시지"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "메시지"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Messages"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Messages"
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wiadomości"
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wiadomości"
           }
         },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tin nhắn"
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tin nhắn"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mensajes"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mensajes"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mensagens"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الرسائل"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pesan"
           }
         }
       }
     },
-    "Recently Match" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "最近のマッチ"
+    "Recently Match": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最近のマッチ"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "최근 매치"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "최근 매치"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Match récent"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Match récent"
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Niedawno dopasowane"
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Niedawno dopasowane"
           }
         },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kết hợp gần đây"
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kết hợp gần đây"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Coincidencia reciente"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coincidencia reciente"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Match recente"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مطابقة حديثة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cocok Baru-baru Ini"
           }
         }
       }
     },
-    "Reply!" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "返信しよう"
+    "Reply!": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "返信しよう"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "답장!"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "답장!"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Répondre !"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Répondre !"
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Odpowiedz!"
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odpowiedz!"
           }
         },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Trả lời!"
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trả lời!"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¡Responder!"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¡Responder!"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Responda!"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "رد!"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Balas!"
           }
         }
       }
     },
-    "See More" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "すべて見る"
+    "See More": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "すべて見る"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "더 보기"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "더 보기"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Voir plus"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Voir plus"
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zobacz więcej"
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zobacz więcej"
           }
         },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Xem thêm"
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xem thêm"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ver más"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ver más"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ver mais"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عرض المزيد"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lihat Lagi"
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

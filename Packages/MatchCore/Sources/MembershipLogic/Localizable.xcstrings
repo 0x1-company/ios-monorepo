@@ -1,46 +1,238 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "%lld month" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lldヶ月間"
+  "sourceLanguage": "en",
+  "strings": {
+    "%lld month": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lldヶ月間"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld개월"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld tháng"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld mois"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld miesiąc"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld mes"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld mês"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld شهر"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld bulan"
           }
         }
       }
     },
-    "%lld week" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld週間"
+    "%lld week": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld週間"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld주"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld tuần"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld semaine"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld tydzień"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld semana"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld semana"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld أسبوع"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld minggu"
           }
         }
       }
     },
-    "%lld year" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld年間"
+    "%lld year": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld年間"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld년"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld năm"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld an"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld rok"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld año"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld ano"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld عام"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld tahun"
           }
         }
       }
     },
-    "I'm sending you an invite code [%@] to unlock %@ PRO for free (worth %@).\n%@" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%3$@分の%2$@ PROが無料になる招待コード【%1$@】を贈りました！🎁\n\n%2$@ PROになると…\n■ 誰にLikeされているかを見れる\n\n「%2$@」ダウンロードしてね！🤞🏻\n%4$@"
+    "I'm sending you an invite code [%@] to unlock %@ PRO for free (worth %@).\n%@": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%3$@分の%2$@ PROが無料になる招待コード【%1$@】を贈りました！🎁\n\n%2$@ PROになると…\n■ 誰にLikeされているかを見れる\n\n「%2$@」ダウンロードしてね！🤞🏻\n%4$@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%3$@ 가치의 %2$@ PRO를 무료로 잠금 해제할 초대 코드 [%1$@]를 보냅니다.\n%4$@"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tôi đang gửi cho bạn mã mời [%1$@] để mở khóa %2$@ PRO miễn phí (trị giá %3$@).\n%4$@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Je vous envoie un code d'invitation [%1$@] pour débloquer %2$@ PRO gratuitement (d'une valeur de %3$@).\n%4$@"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wysyłam ci kod zaproszenia [%1$@], aby odblokować %2$@ PRO za darmo (o wartości %3$@).\n%4$@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Te estoy enviando un código de invitación [%1$@] para desbloquear %2$@ PRO gratis (valorado en %3$@).\n%4$@"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estou enviando um código de convite [%1$@] para desbloquear %2$@ PRO gratuitamente (no valor de %3$@).\n%4$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أرسل لك رمز الدعوة [%1$@] لفتح %2$@ PRO مجانًا (بقيمة %3$@).\n%4$@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saya mengirimkan Anda kode undangan [%1$@] untuk membuka %@ PRO secara gratis (senilai %3$@).\n%4$@"
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

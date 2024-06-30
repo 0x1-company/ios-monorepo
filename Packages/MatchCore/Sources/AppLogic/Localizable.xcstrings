@@ -44,6 +44,18 @@
             "state": "translated",
             "value": "Ei, novos usuários têm chegado ultimamente, que tal darmos uma olhada de novo em breve?"
           }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مرحبًا، لقد بدأ المستخدمون الجدد في التدفق مؤخرًا، فماذا عن أن نتحقق من ذلك مرة أخرى قريبًا؟"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hei, pengguna baru telah datang belakangan ini, bagaimana kalau kita periksa lagi segera?"
+          }
         }
       }
     }

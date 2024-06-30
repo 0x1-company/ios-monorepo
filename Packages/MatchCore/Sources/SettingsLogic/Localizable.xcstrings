@@ -1,32 +1,128 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "Settings" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "設定"
+  "sourceLanguage": "en",
+  "strings": {
+    "Settings": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "설정"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paramètres"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ustawienia"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cài đặt"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajustes"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Configurações"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الإعدادات"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pengaturan"
           }
         }
       }
     },
-    "You joined %@ %lld days ago on %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "You joined %1$@ %2$lld days ago on %3$@"
+    "You joined %@ %lld days ago on %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "You joined %1$@ %2$lld days ago on %3$@"
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "あなたは%2$lld日前（%3$@）に%1$@に参加しました。"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "あなたは%2$lld日前（%3$@）に%1$@に参加しました。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "new",
+            "value": "당신은 %1$@에 %2$lld일 전에 %3$@에 가입했습니다."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Vous avez rejoint %1$@ il y a %2$lld jours le %3$@"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Dołączyłeś do %1$@ %2$lld dni temu, dnia %3$@"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Bạn đã tham gia %1$@ %2$lld ngày trước vào ngày %3$@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Te uniste a %1$@ hace %2$lld días el %3$@"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Você ingressou em %1$@ há %2$lld dias em %3$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "new",
+            "value": "لقد انضممت إلى %1$@ منذ %2$lld يوم على %3$@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Anda bergabung dengan %1$@ %2$lld hari yang lalu pada %3$@"
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

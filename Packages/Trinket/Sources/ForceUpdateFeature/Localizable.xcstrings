@@ -1,126 +1,180 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "... Oh? ! ! Looks like Trinket...! \nPlease update to the latest version." : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "...おや？！Trinketのようすが...！\n最新バージョンへのアップデートをお願いします。"
+  "sourceLanguage": "en",
+  "strings": {
+    "... Oh? ! ! Looks like Trinket...! \nPlease update to the latest version.": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "...おや？！Trinketのようすが...！\n最新バージョンへのアップデートをお願いします。"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "...오? ! ! Trinket처럼 보이네요...! \n최신 버전으로 업데이트해 주세요."
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "...오? ! ! Trinket처럼 보이네요...! \n최신 버전으로 업데이트해 주세요."
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "... Oh ? ! ! On dirait Trinket...! \nVeuillez mettre à jour vers la dernière version."
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "... Oh ? ! ! On dirait Trinket...! \nVeuillez mettre à jour vers la dernière version."
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "... Och? ! ! Wygląda na Trinket...! \nProszę zaktualizować do najnowszej wersji."
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "... Och? ! ! Wygląda na Trinket...! \nProszę zaktualizować do najnowszej wersji."
           }
         },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "... Ồ? ! ! Trông giống như Trinket...! \nVui lòng cập nhật lên phiên bản mới nhất."
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "... Ồ? ! ! Trông giống như Trinket...! \nVui lòng cập nhật lên phiên bản mới nhất."
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "... ¡Oh? ! ! Parece Trinket...! \nPor favor, actualiza a la última versión."
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "... ¡Oh? ! ! Parece Trinket...! \nPor favor, actualiza a la última versión."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "... Oh? ! ! Parece o Trinket...! \nPor favor, atualize para a versão mais recente."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "... أوه؟ ! ! يبدو مثل Trinket...! \nيرجى التحديث إلى أحدث إصدار."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "... Oh? ! ! Sepertinya Trinket...! \nSilakan perbarui ke versi terbaru."
           }
         }
       }
     },
-    "Notice" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "お知らせ"
+    "Notice": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "お知らせ"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "공지"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "공지"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Avis"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avis"
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Powiadomienie"
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Powiadomienie"
           }
         },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Thông báo"
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thông báo"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aviso"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aviso"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aviso"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إشعار"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pemberitahuan"
           }
         }
       }
     },
-    "Update" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アップデート"
+    "Update": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アップデート"
           }
         },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "업데이트"
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "업데이트"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mettre à jour"
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mettre à jour"
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aktualizować"
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktualizować"
           }
         },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cập nhật"
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cập nhật"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Actualizar"
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Actualizar"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atualizar"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تحديث"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perbarui"
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }
