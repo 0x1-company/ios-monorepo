@@ -252,7 +252,7 @@ public struct ProfilePictureSettingLogic {
     case .tenmatch:
       return true
     case .trinket:
-      return size == CGSize(width: 1020, height: 1020)
+      return size.width == size.height
     }
   }
 }
