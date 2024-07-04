@@ -68,7 +68,7 @@ public struct ProductPurchaseLogic {
             await send(.productsResponse(Result {
               let products = try await store.products(ids)
               return products.compactMap { product in
-                return MembershipProduct(appleProduct: product, data: mapping[product.id])
+                MembershipProduct(appleProduct: product, data: mapping[product.id])
               }
             }, .success(userData)))
           }

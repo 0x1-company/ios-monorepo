@@ -92,7 +92,7 @@ public struct ProductPurchaseContentLogic {
         return .run { [appAccountToken = state.appAccountToken] send in
           await feedbackGenerator.impactOccurred()
 
-            let result = try await store.purchase(product.appleProduct, appAccountToken)
+          let result = try await store.purchase(product.appleProduct, appAccountToken)
 
           switch result {
           case let .success(verificationResult):
