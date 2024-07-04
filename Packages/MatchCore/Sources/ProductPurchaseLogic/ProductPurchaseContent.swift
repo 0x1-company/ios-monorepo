@@ -11,7 +11,7 @@ public struct ProductPurchaseContentLogic {
   public init() {}
 
   public struct State: Equatable {
-    var selectProductID: String?
+    var selectedProductID: String?
     let appAccountToken: UUID
     public let products: [MembershipProduct]
     public var isActivityIndicatorVisible = false
@@ -26,7 +26,7 @@ public struct ProductPurchaseContentLogic {
     ) {
       self.appAccountToken = appAccountToken
       self.products = products
-      selectProductID = products.first(where: { $0.isRecommended })?.appleProduct.id ?? products.first?.appleProduct.id
+      selectedProductID = products.first(where: { $0.isRecommended })?.appleProduct.id ?? products.first?.appleProduct.id
     }
   }
 
@@ -54,7 +54,7 @@ public struct ProductPurchaseContentLogic {
         return .send(.updateRows, animation: .default)
 
       case let .rows(.element(id, .rowButtonTapped)):
-        state.selectProductID = id
+        state.selectedProductID = id
         return .run { send in
           await feedbackGenerator.impactOccurred()
           await send(.updateRows, animation: .default)
@@ -69,7 +69,7 @@ public struct ProductPurchaseContentLogic {
               price: $0.appleProduct.price,
               currencyCode: $0.appleProduct.priceFormatStyle.currencyCode,
               displayPrice: $0.id.contains("1week") ? nil : $0.appleProduct.displayPrice,
-              isSelected: $0.id == state.selectProductID,
+              isSelected: $0.id == state.selectedProductID,
               isMostPopular: $0.isMostPopular
             )
           }
@@ -84,7 +84,7 @@ public struct ProductPurchaseContentLogic {
         }
 
       case .purchaseButtonTapped:
-        guard let product = state.products.first(where: { $0.appleProduct.id == state.selectProductID })
+        guard let product = state.products.first(where: { $0.appleProduct.id == state.selectedProductID })
         else { return .none }
 
         state.isActivityIndicatorVisible = true
