@@ -11,9 +11,9 @@ public struct ProductPurchaseContentLogic {
   public init() {}
 
   public struct State: Equatable {
-    var selectProductID: String
+    var selectProductID: String?
     let appAccountToken: UUID
-    public let products: [Product]
+    public let products: [MembershipProduct]
     public var isActivityIndicatorVisible = false
 
     public var rows: IdentifiedArrayOf<ProductPurchaseContentRowLogic.State> = []
@@ -22,18 +22,11 @@ public struct ProductPurchaseContentLogic {
 
     public init(
       appAccountToken: UUID,
-      products: [Product]
+      products: [MembershipProduct]
     ) {
       self.appAccountToken = appAccountToken
       self.products = products
-
-      let dateFormatter = DateFormatter()
-      dateFormatter.dateFormat = "yyyy/MM/dd"
-      let date = dateFormatter.date(from: "2024/06/23")!
-
-      let popularFlagProductId = Date.now >= date ? "6month" : "3month"
-
-      selectProductID = products.first(where: { $0.id.contains(popularFlagProductId) })!.id
+      selectProductID = products.first(where: { $0.isRecommended })?.appleProduct.id ?? products.first?.appleProduct.id
     }
   }
 
@@ -69,14 +62,15 @@ public struct ProductPurchaseContentLogic {
 
       case .updateRows:
         let uniqueElements = state.products
-          .sorted(by: { $0.price < $1.price })
+          .sorted(by: { $0.appleProduct.price < $1.appleProduct.price })
           .map {
             ProductPurchaseContentRowLogic.State(
               id: $0.id,
-              price: $0.price,
-              currencyCode: $0.priceFormatStyle.currencyCode,
-              displayPrice: $0.id.contains("1week") ? nil : $0.displayPrice,
-              isSelected: $0.id == state.selectProductID
+              price: $0.appleProduct.price,
+              currencyCode: $0.appleProduct.priceFormatStyle.currencyCode,
+              displayPrice: $0.id.contains("1week") ? nil : $0.appleProduct.displayPrice,
+              isSelected: $0.id == state.selectProductID,
+              isMostPopular: $0.isMostPopular
             )
           }
         state.rows = IdentifiedArrayOf(uniqueElements: uniqueElements)
@@ -90,7 +84,7 @@ public struct ProductPurchaseContentLogic {
         }
 
       case .purchaseButtonTapped:
-        guard let product = state.products.first(where: { $0.id == state.selectProductID })
+        guard let product = state.products.first(where: { $0.appleProduct.id == state.selectProductID })
         else { return .none }
 
         state.isActivityIndicatorVisible = true
@@ -98,7 +92,7 @@ public struct ProductPurchaseContentLogic {
         return .run { [appAccountToken = state.appAccountToken] send in
           await feedbackGenerator.impactOccurred()
 
-          let result = try await store.purchase(product, appAccountToken)
+            let result = try await store.purchase(product.appleProduct, appAccountToken)
 
           switch result {
           case let .success(verificationResult):

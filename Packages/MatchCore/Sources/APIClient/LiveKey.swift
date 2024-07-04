@@ -178,6 +178,10 @@ public extension APIClient {
         let query = API.ProfileExplorerPreviewQuery(targetUserId: targetUserId)
         return apolloClient.watch(query: query)
       },
+      productList: {
+        let query = API.ProductListQuery()
+        return apolloClient.watch(query: query)
+      },
       recentMatch: {
         let query = API.RecentMatchQuery(first: 50)
         return apolloClient.watch(query: query)

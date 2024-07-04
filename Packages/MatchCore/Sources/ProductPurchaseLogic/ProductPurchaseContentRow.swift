@@ -34,7 +34,8 @@ public struct ProductPurchaseContentRowLogic {
       price: Decimal,
       currencyCode: String,
       displayPrice: String?,
-      isSelected: Bool
+      isSelected: Bool,
+      isMostPopular: Bool
     ) {
       self.id = id
       period = Period.fromProductIdentifier(id: id)
@@ -42,14 +43,7 @@ public struct ProductPurchaseContentRowLogic {
       self.currencyCode = currencyCode
       self.displayPrice = displayPrice
       self.isSelected = isSelected
-
-      let dateFormatter = DateFormatter()
-      dateFormatter.dateFormat = "yyyy/MM/dd"
-      let date = dateFormatter.date(from: "2024/06/23")!
-
-      let popularFlagProductId = Date.now >= date ? "6month" : "3month"
-
-      isMostPopularFlag = isSelected && id.contains(popularFlagProductId)
+      isMostPopularFlag = isSelected && isMostPopular
     }
   }
 

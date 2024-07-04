@@ -19,7 +19,8 @@ public struct ProductPurchaseLogic {
   public enum Action {
     case onTask
     case closeButtonTapped
-    case productsResponse(Result<[Product], Error>, Result<API.CurrentUserQuery.Data, Error>)
+    case productListResponse(Result<API.ProductListQuery.Data, Error>)
+    case productsResponse(Result<[MembershipProduct], Error>, Result<API.CurrentUserQuery.Data, Error>)
     case content(ProductPurchaseContentLogic.Action)
     case delegate(Delegate)
 
@@ -44,13 +45,32 @@ public struct ProductPurchaseLogic {
       case .onTask:
         analytics.logScreen(screenName: "ProductPurchase", of: self)
 
-        let ids = build.infoDictionary("PRODUCTS", for: [String].self)!
-
         return .run { send in
-          for try await data in api.currentUser() {
+          for try await productList in api.productList() {
+            await send(.productListResponse(Result {
+              productList
+            }))
+          }
+        } catch: { error, send in
+          await send(.productListResponse(.failure(error)))
+        }
+        .cancellable(id: Cancel.products, cancelInFlight: true)
+
+      case let .productListResponse(.success(data)):
+        return .run { send in
+          let ids = data.productList.membershipProducts.map(\.id)
+          let mapping = data.productList.membershipProducts.reduce(
+            into: [String: API.ProductListQuery.Data.ProductList.MembershipProduct]()
+          ) { dict, productData in
+            dict[productData.id] = productData
+          }
+          for try await userData in api.currentUser() {
             await send(.productsResponse(Result {
-              try await store.products(ids)
-            }, .success(data)))
+              let products = try await store.products(ids)
+              return products.compactMap { product in
+                return MembershipProduct(appleProduct: product, data: mapping[product.id])
+              }
+            }, .success(userData)))
           }
         } catch: { error, send in
           await send(.productsResponse(.success([]), .failure(error)))
@@ -74,7 +94,8 @@ public struct ProductPurchaseLogic {
         state = .content(contentState)
         return .none
 
-      case .productsResponse(.success, .failure),
+      case .productListResponse(.failure),
+           .productsResponse(.success, .failure),
            .productsResponse(.failure, .success),
            .productsResponse(.failure, .failure):
         return .send(.delegate(.dismiss))
