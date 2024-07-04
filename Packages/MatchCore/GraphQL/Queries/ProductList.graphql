@@ -1,0 +1,10 @@
+query ProductList {
+  productList {
+    membershipProducts {
+      id
+      isMostPopular
+      isRecommended
+      periodKind
+    }
+  }
+}

@@ -17,7 +17,7 @@ public extension API {
       public let __data: DataDict
       public init(_dataDict: DataDict) { __data = _dataDict }
 
-      public static var __parentType: ApolloAPI.ParentType { API.Objects.Query }
+      public static var __parentType: any ApolloAPI.ParentType { API.Objects.Query }
       public static var __selections: [ApolloAPI.Selection] { [
         .field("activeInvitationCampaign", ActiveInvitationCampaign?.self),
         .field("invitationCode", InvitationCode.self),
@@ -35,7 +35,7 @@ public extension API {
         public let __data: DataDict
         public init(_dataDict: DataDict) { __data = _dataDict }
 
-        public static var __parentType: ApolloAPI.ParentType { API.Objects.InvitationCampaign }
+        public static var __parentType: any ApolloAPI.ParentType { API.Objects.InvitationCampaign }
         public static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
           .field("id", API.ID.self),
@@ -57,7 +57,7 @@ public extension API {
         public let __data: DataDict
         public init(_dataDict: DataDict) { __data = _dataDict }
 
-        public static var __parentType: ApolloAPI.ParentType { API.Objects.InvitationCode }
+        public static var __parentType: any ApolloAPI.ParentType { API.Objects.InvitationCode }
         public static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
           .field("id", API.ID.self),

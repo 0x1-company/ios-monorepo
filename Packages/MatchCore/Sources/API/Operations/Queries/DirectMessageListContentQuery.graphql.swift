@@ -32,7 +32,7 @@ public extension API {
       public let __data: DataDict
       public init(_dataDict: DataDict) { __data = _dataDict }
 
-      public static var __parentType: ApolloAPI.ParentType { API.Objects.Query }
+      public static var __parentType: any ApolloAPI.ParentType { API.Objects.Query }
       public static var __selections: [ApolloAPI.Selection] { [
         .field("messageRooms", MessageRooms.self, arguments: [
           "first": .variable("first"),
@@ -49,7 +49,7 @@ public extension API {
         public let __data: DataDict
         public init(_dataDict: DataDict) { __data = _dataDict }
 
-        public static var __parentType: ApolloAPI.ParentType { API.Objects.MessageRoomConnection }
+        public static var __parentType: any ApolloAPI.ParentType { API.Objects.MessageRoomConnection }
         public static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
           .field("pageInfo", PageInfo.self),
@@ -66,7 +66,7 @@ public extension API {
           public let __data: DataDict
           public init(_dataDict: DataDict) { __data = _dataDict }
 
-          public static var __parentType: ApolloAPI.ParentType { API.Objects.PageInfo }
+          public static var __parentType: any ApolloAPI.ParentType { API.Objects.PageInfo }
           public static var __selections: [ApolloAPI.Selection] { [
             .field("__typename", String.self),
             .field("hasNextPage", Bool.self),
@@ -86,7 +86,7 @@ public extension API {
           public let __data: DataDict
           public init(_dataDict: DataDict) { __data = _dataDict }
 
-          public static var __parentType: ApolloAPI.ParentType { API.Objects.MessageRoomEdge }
+          public static var __parentType: any ApolloAPI.ParentType { API.Objects.MessageRoomEdge }
           public static var __selections: [ApolloAPI.Selection] { [
             .field("__typename", String.self),
             .field("node", Node.self),
@@ -101,7 +101,7 @@ public extension API {
             public let __data: DataDict
             public init(_dataDict: DataDict) { __data = _dataDict }
 
-            public static var __parentType: ApolloAPI.ParentType { API.Objects.MessageRoom }
+            public static var __parentType: any ApolloAPI.ParentType { API.Objects.MessageRoom }
             public static var __selections: [ApolloAPI.Selection] { [
               .field("__typename", String.self),
               .fragment(DirectMessageListContentRow.self),
