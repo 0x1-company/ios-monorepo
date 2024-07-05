@@ -25,7 +25,7 @@ public extension API {
   typealias MutableInlineFragment = API_MutableInlineFragment
 
   enum SchemaMetadata: ApolloAPI.SchemaMetadata {
-    public static let configuration: ApolloAPI.SchemaConfiguration.Type = SchemaConfiguration.self
+    public static let configuration: any ApolloAPI.SchemaConfiguration.Type = SchemaConfiguration.self
 
     public static func objectType(forTypename typename: String) -> ApolloAPI.Object? {
       switch typename {
@@ -45,6 +45,8 @@ public extension API {
       case "MessageConnection": return API.Objects.MessageConnection
       case "MessageEdge": return API.Objects.MessageEdge
       case "Explorer": return API.Objects.Explorer
+      case "ProductList": return API.Objects.ProductList
+      case "MembershipProduct": return API.Objects.MembershipProduct
       case "UserCategory": return API.Objects.UserCategory
       case "PushNotificationBadge": return API.Objects.PushNotificationBadge
       case "MessageRoomConnection": return API.Objects.MessageRoomConnection

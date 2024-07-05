@@ -24,7 +24,7 @@ public extension API {
       public let __data: DataDict
       public init(_dataDict: DataDict) { __data = _dataDict }
 
-      public static var __parentType: ApolloAPI.ParentType { API.Objects.Mutation }
+      public static var __parentType: any ApolloAPI.ParentType { API.Objects.Mutation }
       public static var __selections: [ApolloAPI.Selection] { [
         .field("createUserV2", CreateUserV2.self, arguments: ["input": .variable("input")]),
       ] }
@@ -39,7 +39,7 @@ public extension API {
         public let __data: DataDict
         public init(_dataDict: DataDict) { __data = _dataDict }
 
-        public static var __parentType: ApolloAPI.ParentType { API.Objects.User }
+        public static var __parentType: any ApolloAPI.ParentType { API.Objects.User }
         public static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
           .fragment(UserInternal.self),
@@ -80,7 +80,7 @@ public extension API {
           public let __data: DataDict
           public init(_dataDict: DataDict) { __data = _dataDict }
 
-          public static var __parentType: ApolloAPI.ParentType { API.Objects.UserImage }
+          public static var __parentType: any ApolloAPI.ParentType { API.Objects.UserImage }
 
           public var id: API.ID { __data["id"] }
           public var imageUrl: String { __data["imageUrl"] }
@@ -93,7 +93,7 @@ public extension API {
           public let __data: DataDict
           public init(_dataDict: DataDict) { __data = _dataDict }
 
-          public static var __parentType: ApolloAPI.ParentType { API.Objects.ShortComment }
+          public static var __parentType: any ApolloAPI.ParentType { API.Objects.ShortComment }
 
           public var id: API.ID { __data["id"] }
           public var body: String { __data["body"] }
