@@ -46,9 +46,9 @@ public struct ProductPurchaseLogic {
         analytics.logScreen(screenName: "ProductPurchase", of: self)
 
         return .run { send in
-          for try await productList in api.productList() {
+          for try await data in api.productList() {
             await send(.productListResponse(Result {
-              productList
+              data
             }))
           }
         } catch: { error, send in
