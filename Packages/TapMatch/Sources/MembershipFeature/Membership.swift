@@ -37,6 +37,10 @@ public struct MembershipView: View {
         .task { await store.send(.onTask).finish() }
         .alert(store: store.scope(state: \.$destination.alert, action: \.destination.alert))
         .toolbar {
+          ToolbarItem(placement: .principal) {
+            Image(ImageResource.logo)
+          }
+
           ToolbarItem(placement: .topBarLeading) {
             Button {
               store.send(.closeButtonTapped)
