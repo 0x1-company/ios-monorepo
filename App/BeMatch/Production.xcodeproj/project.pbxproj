@@ -18,6 +18,7 @@
 		B7AAEEED2BCFF786005704E4 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B7AAEEEC2BCFF786005704E4 /* Localizable.xcstrings */; };
 		B7BC78BA2B55571C00C0B97E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7BC78B92B55571C00C0B97E /* StoreKit.framework */; };
 		B7C884272BCFD7FE0099548C /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B7C884262BCFD7FE0099548C /* AppFeature */; };
+		B7DA47DB2C43E01400BC96F2 /* APIClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = B7DA47DA2C43E01400BC96F2 /* APIClientLive */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,6 +59,7 @@
 			files = (
 				B7765AF82B46C82A001B5C13 /* AppTrackingTransparency.framework in Frameworks */,
 				B7765AF62B46C825001B5C13 /* AdSupport.framework in Frameworks */,
+				B7DA47DB2C43E01400BC96F2 /* APIClientLive in Frameworks */,
 				B7BC78BA2B55571C00C0B97E /* StoreKit.framework in Frameworks */,
 				B7C884272BCFD7FE0099548C /* AppFeature in Frameworks */,
 			);
@@ -138,6 +140,7 @@
 			name = App;
 			packageProductDependencies = (
 				B7C884262BCFD7FE0099548C /* AppFeature */,
+				B7DA47DA2C43E01400BC96F2 /* APIClientLive */,
 			);
 			productName = iOS;
 			productReference = B783E0E12A11FFBE002E782F /* App.app */;
@@ -430,6 +433,10 @@
 		B7C884262BCFD7FE0099548C /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;
+		};
+		B7DA47DA2C43E01400BC96F2 /* APIClientLive */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = APIClientLive;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

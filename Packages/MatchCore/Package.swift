@@ -17,6 +17,7 @@ let package = Package(
     .library(name: "BannerLogic", targets: ["BannerLogic"]),
     .library(name: "API", targets: ["API"]),
     .library(name: "APIClient", targets: ["APIClient"]),
+    .library(name: "APIClientLive", targets: ["APIClientLive"]),
     .library(name: "CategoryEmptyLogic", targets: ["CategoryEmptyLogic"]),
     .library(name: "CategoryLogic", targets: ["CategoryLogic"]),
     .library(name: "CategoryListLogic", targets: ["CategoryListLogic"]),
@@ -115,9 +116,12 @@ let package = Package(
     ]),
     .target(name: "APIClient", dependencies: [
       "API",
-      .product(name: "ApolloConcurrency", package: "Utility"),
       .product(name: "Dependencies", package: "swift-dependencies"),
       .product(name: "DependenciesMacros", package: "swift-dependencies"),
+    ]),
+    .target(name: "APIClientLive", dependencies: [
+      "APIClient",
+      .product(name: "ApolloConcurrency", package: "Utility"),
     ]),
     .target(name: "CategoryEmptyLogic", dependencies: [
       "API",
