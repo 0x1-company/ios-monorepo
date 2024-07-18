@@ -83,21 +83,15 @@
     },
     "image-see-who-sent-it" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "see-who-sent-it"
-          }
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "voir-qui-l'a-envoyé-fr"
+            "value" : "image-see-who-sent-it-en"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "see-who-sent-it-ja"
           }
         }
@@ -124,7 +118,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "billet-d'invitation-fr"
+            "value" : "invite-ticket-en"
           }
         },
         "ja" : {
@@ -248,7 +242,20 @@
       }
     },
     "Upgrade for %@/month" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mise à niveau pour %@/mois"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "続ける - %@/月"
+          }
+        }
+      }
     },
     "Upgrade for %@/week" : {
       "extractionState" : "stale",
