@@ -83,10 +83,16 @@
     },
     "image-see-who-sent-it" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "see-who-sent-it"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "image-see-who-sent-it-en"
+            "value" : "see-who-sent-it"
           }
         },
         "ja" : {
