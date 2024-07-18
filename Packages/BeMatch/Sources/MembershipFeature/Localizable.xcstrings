@@ -247,7 +247,11 @@
         }
       }
     },
+    "Upgrade for %@/month" : {
+
+    },
     "Upgrade for %@/week" : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {

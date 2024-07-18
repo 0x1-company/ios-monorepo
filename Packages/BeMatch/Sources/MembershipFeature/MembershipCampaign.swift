@@ -63,7 +63,7 @@ public struct MembershipCampaignView: View {
           Button {
             store.send(.upgradeButtonTapped)
           } label: {
-            Text("Upgrade for \(viewStore.displayPrice)/week", bundle: .module)
+            Text("Upgrade for \(viewStore.displayPrice)/month", bundle: .module)
           }
           .buttonStyle(ConversionSecondaryButtonStyle())
         }
