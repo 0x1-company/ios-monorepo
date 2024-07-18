@@ -43,7 +43,7 @@ var package = Package(
     .package(url: "https://github.com/apollographql/apollo-ios", from: "1.13.0"),
     .package(url: "https://github.com/facebook/facebook-ios-sdk", from: "17.0.2"),
     .package(url: "https://github.com/firebase/firebase-ios-sdk", from: "10.29.0"),
-    .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.3.2"),
+    .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.3.3"),
     .package(url: "https://github.com/AppsFlyerSDK/AppsFlyerFramework-Dynamic", from: "6.14.5"),
   ],
   targets: [
