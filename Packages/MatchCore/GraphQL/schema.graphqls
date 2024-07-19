@@ -194,6 +194,25 @@ type MatchEdge {
   node: Match!
 }
 
+enum MembershipPeriodKind {
+  ONE_MONTH
+  ONE_WEEK
+  ONE_YEAR
+  SIX_MONTH
+  THREE_MONTH
+}
+
+type MembershipProduct {
+  id: ID!
+
+  """一番人気"""
+  isMostPopular: Boolean!
+
+  """デフォルトで選択するもの"""
+  isRecommended: Boolean!
+  periodKind: MembershipPeriodKind!
+}
+
 type Message {
   createdAt: Date!
   deletedAt: Date
@@ -303,6 +322,9 @@ type Mutation {
 
   """プロフィール画像を更新する"""
   updateUserImage(input: UpdateUserImageInput!): [UserImage!]!
+
+  """Push通知設定を更新する"""
+  updateUserPushNotificationSettings(input: UpdateUserPushNotificationSettingsInput!): [UserPushNotificationSetting!]!
 }
 
 type PageInfo {
@@ -328,10 +350,20 @@ enum PremiumType {
   PRO
 }
 
+type ProductList {
+  membershipProducts: [MembershipProduct!]!
+}
+
 type PushNotificationBadge {
   """バッジ数"""
   count: Int!
   id: ID!
+}
+
+enum PushNotificationKind {
+  LIKE
+  MATCH
+  MESSAGE
 }
 
 type Query {
@@ -372,6 +404,9 @@ type Query {
 
   """プレミアムメンバーシップ情報"""
   premiumMembership: PremiumMembership
+
+  """product一覧を取得"""
+  productList: ProductList!
   pushNotificationBadge: PushNotificationBadge!
 
   """自分の受け取ったLikeを取得する"""
@@ -383,6 +418,9 @@ type Query {
   """マッチしたユーザーを取得"""
   userByMatched(targetUserId: String!): User!
   userCategories: [UserCategory!]!
+
+  """Push通知設定を取得する"""
+  userPushNotificationSettings: [UserPushNotificationSetting!]!
 
   """LIKEしてくれたユーザー一覧"""
   usersByLiker: [User!]!
@@ -456,6 +494,15 @@ input UpdateUserImageInput {
   imageUrls: [String!]!
 }
 
+input UpdateUserPushNotificationSettingInput {
+  allow: Boolean!
+  pushNotificationKind: PushNotificationKind!
+}
+
+input UpdateUserPushNotificationSettingsInput {
+  updateUserPushNotificationSettingsInput: [UpdateUserPushNotificationSettingInput!]!
+}
+
 type User {
   """BeRealのusername"""
   berealUsername: String!
@@ -505,6 +552,11 @@ type UserImage {
   id: ID!
   imageUrl: String!
   order: Int!
+}
+
+type UserPushNotificationSetting {
+  allow: Boolean!
+  pushNotificationKind: PushNotificationKind!
 }
 
 enum UserStatus {

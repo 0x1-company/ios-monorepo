@@ -18,7 +18,7 @@ public extension API {
       public let __data: DataDict
       public init(_dataDict: DataDict) { __data = _dataDict }
 
-      public static var __parentType: ApolloAPI.ParentType { API.Objects.Query }
+      public static var __parentType: any ApolloAPI.ParentType { API.Objects.Query }
       public static var __selections: [ApolloAPI.Selection] { [
         .field("usersByLiker", [UsersByLiker].self),
       ] }
@@ -33,7 +33,7 @@ public extension API {
         public let __data: DataDict
         public init(_dataDict: DataDict) { __data = _dataDict }
 
-        public static var __parentType: ApolloAPI.ParentType { API.Objects.User }
+        public static var __parentType: any ApolloAPI.ParentType { API.Objects.User }
         public static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
           .fragment(SwipeCard.self),
@@ -61,7 +61,7 @@ public extension API {
           public let __data: DataDict
           public init(_dataDict: DataDict) { __data = _dataDict }
 
-          public static var __parentType: ApolloAPI.ParentType { API.Objects.ShortComment }
+          public static var __parentType: any ApolloAPI.ParentType { API.Objects.ShortComment }
 
           public var id: API.ID { __data["id"] }
           public var body: String { __data["body"] }
