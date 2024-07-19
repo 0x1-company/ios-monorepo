@@ -296,6 +296,7 @@ let package = Package(
       .product(name: "FirebaseStorageClient", package: "Dependencies"),
     ]),
     .target(name: "ProductPurchaseLogic", dependencies: [
+      "APIClient",
       .product(name: "Build", package: "Dependencies"),
       .product(name: "StoreKitHelpers", package: "Utility"),
       .product(name: "StoreKitClient", package: "Dependencies"),
