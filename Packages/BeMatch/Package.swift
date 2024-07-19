@@ -324,6 +324,7 @@ let package = Package(
       "ProfileEditFeature",
       "DeleteAccountFeature",
       "MembershipStatusFeature",
+      "PushNotificationSettingsFeature",
       .product(name: "Build", package: "Dependencies"),
       .product(name: "SettingsLogic", package: "MatchCore"),
       .product(name: "ActivityView", package: "Dependencies"),
