@@ -26,7 +26,13 @@ public struct PushNotificationSettingsLogic {
       switch action {
       case .onTask:
         analytics.logScreen(screenName: "PushNotificationSettings", of: self)
-        return .none
+        return .run { send in
+          for try await data in api.userPushNotificationSettings() {
+            await send(.userPushNotificationSettingsResponse(.success(data)), animation: .default)
+          }
+        } catch: { error, send in
+          await send(.userPushNotificationSettingsResponse(.failure(error)), animation: .default)
+        }
 
       case let .userPushNotificationSettingsResponse(.success(data)):
         let settings = data.userPushNotificationSettings
@@ -38,7 +44,7 @@ public struct PushNotificationSettingsLogic {
 
       case .userPushNotificationSettingsResponse(.failure):
         return .none
-        
+
       case .rows:
         return .none
       }

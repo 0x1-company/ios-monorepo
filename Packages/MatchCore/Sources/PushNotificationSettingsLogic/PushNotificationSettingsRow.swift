@@ -10,7 +10,7 @@ public struct PushNotificationSettingsRowLogic {
       pushNotificationKind.rawValue
     }
 
-    public var allow: Bool
+    @BindingState public var allow: Bool
     public var pushNotificationKind: GraphQLEnum<API.PushNotificationKind>
 
     public init(
@@ -22,19 +22,14 @@ public struct PushNotificationSettingsRowLogic {
     }
   }
 
-  public enum Action {
-    case onTask
-    case toggleButtonTapped
+  public enum Action: BindableAction {
+    case binding(BindingAction<State>)
   }
 
   public var body: some Reducer<State, Action> {
     Reduce<State, Action> { state, action in
       switch action {
-      case .onTask:
-        return .none
-      
-      case .toggleButtonTapped:
-        state.allow.toggle()
+      case .binding:
         return .none
       }
     }
