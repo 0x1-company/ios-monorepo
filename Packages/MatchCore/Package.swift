@@ -51,6 +51,7 @@ let package = Package(
     .library(name: "ProfileLogic", targets: ["ProfileLogic"]),
     .library(name: "ProfilePictureSettingLogic", targets: ["ProfilePictureSettingLogic"]),
     .library(name: "ProfileSharedLogic", targets: ["ProfileSharedLogic"]),
+    .library(name: "PushNotificationSettingsLogic", targets: ["PushNotificationSettingsLogic"]),
     .library(name: "ReceivedLikeRouterLogic", targets: ["ReceivedLikeRouterLogic"]),
     .library(name: "ReceivedLikeSwipeLogic", targets: ["ReceivedLikeSwipeLogic"]),
     .library(name: "RecentMatchLogic", targets: ["RecentMatchLogic"]),
@@ -170,6 +171,7 @@ let package = Package(
     ]),
     .target(name: "DisplayNameSettingLogic", dependencies: [
       "APIClient",
+      .product(name: "ApolloConcurrency", package: "Utility"),
       .product(name: "AnalyticsClient", package: "Dependencies"),
       .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
@@ -294,6 +296,7 @@ let package = Package(
       .product(name: "FirebaseStorageClient", package: "Dependencies"),
     ]),
     .target(name: "ProductPurchaseLogic", dependencies: [
+      "APIClient",
       .product(name: "Build", package: "Dependencies"),
       .product(name: "StoreKitHelpers", package: "Utility"),
       .product(name: "StoreKitClient", package: "Dependencies"),
@@ -336,6 +339,12 @@ let package = Package(
       "EnvironmentClient",
       "DirectMessageLogic",
     ]),
+    .target(name: "PushNotificationSettingsLogic", dependencies: [
+      "APIClient",
+      "AnalyticsKeys",
+      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
     .target(name: "ReceivedLikeRouterLogic", dependencies: [
       "MembershipLogic",
       "ReceivedLikeSwipeLogic",
@@ -371,6 +380,7 @@ let package = Package(
       "EnvironmentClient",
       "DeleteAccountLogic",
       "MembershipStatusLogic",
+      "PushNotificationSettingsLogic",
       .product(name: "Build", package: "Dependencies"),
       .product(name: "ActivityView", package: "Dependencies"),
       .product(name: "FirebaseAuthClient", package: "Dependencies"),
@@ -378,6 +388,7 @@ let package = Package(
     .target(name: "ShortCommentSettingLogic", dependencies: [
       "APIClient",
       "AnalyticsKeys",
+      .product(name: "ApolloConcurrency", package: "Utility"),
       .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),

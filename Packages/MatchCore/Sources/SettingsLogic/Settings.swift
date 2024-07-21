@@ -11,6 +11,7 @@ import FirebaseAuthClient
 import MembershipStatusLogic
 import ProfileEditLogic
 import ProfileLogic
+import PushNotificationSettingsLogic
 import SwiftUI
 import TutorialLogic
 
@@ -66,6 +67,7 @@ public struct SettingsLogic {
     case editProfileButtonTapped
     case membershipStatusButtonTapped
     case howItWorksButtonTapped
+    case pushNotificationSettingsButtonTapped
     case otherButtonTapped
     case shareButtonTapped
     case rateButtonTapped
@@ -116,6 +118,12 @@ public struct SettingsLogic {
 
       case .howItWorksButtonTapped:
         state.destination = .tutorial()
+        return .run { _ in
+          await feedbackGenerator.impactOccurred()
+        }
+
+      case .pushNotificationSettingsButtonTapped:
+        state.destination = .pushNotificationSettings()
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
@@ -190,6 +198,7 @@ public struct SettingsLogic {
       case achievement(AchievementLogic.State = .loading)
       case other(SettingsOtherLogic.State = .init())
       case membershipStatus(MembershipStatusLogic.State = .loading)
+      case pushNotificationSettings(PushNotificationSettingsLogic.State = .init())
     }
 
     public enum Action {
@@ -199,6 +208,7 @@ public struct SettingsLogic {
       case achievement(AchievementLogic.Action)
       case other(SettingsOtherLogic.Action)
       case membershipStatus(MembershipStatusLogic.Action)
+      case pushNotificationSettings(PushNotificationSettingsLogic.Action)
     }
 
     public var body: some Reducer<State, Action> {
@@ -219,6 +229,9 @@ public struct SettingsLogic {
       }
       Scope(state: \.membershipStatus, action: \.membershipStatus) {
         MembershipStatusLogic()
+      }
+      Scope(state: \.pushNotificationSettings, action: \.pushNotificationSettings) {
+        PushNotificationSettingsLogic()
       }
     }
   }
