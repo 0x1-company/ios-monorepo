@@ -1,3 +1,5 @@
+PLATFORM_IOS = iOS Simulator,name=iPhone 15 Pro,OS=17.5
+
 bootstrap: secrets
 
 bematch:
@@ -14,6 +16,31 @@ trinket:
 
 clean:
 	rm -rf **/*/.build
+
+build-all:
+	@xcodebuild build \
+		-workspace BeMatch.xcworkspace \
+		-scheme "App (Staging project)" \
+		-destination platform="$(PLATFORM_IOS)" \
+		-skipMacroValidation | xcpretty
+
+	@xcodebuild build \
+		-workspace TapMatch.xcworkspace \
+		-scheme "App (Staging project)" \
+		-destination platform="$(PLATFORM_IOS)" \
+		-skipMacroValidation | xcpretty
+
+	@xcodebuild build \
+		-workspace TenMatch.xcworkspace \
+		-scheme "App (Staging project)" \
+		-destination platform="$(PLATFORM_IOS)" \
+		-skipMacroValidation | xcpretty
+
+	@xcodebuild build \
+		-workspace Trinket.xcworkspace \
+		-scheme "App (Staging project)" \
+		-destination platform="$(PLATFORM_IOS)" \
+		-skipMacroValidation | xcpretty
 
 secrets: # Set secrets
 	echo $(BEMATCH_FILE_FIREBASE_STAGING) | base64 -D > App/BeMatch/Multiplatform/Staging/GoogleService-Info.plist
