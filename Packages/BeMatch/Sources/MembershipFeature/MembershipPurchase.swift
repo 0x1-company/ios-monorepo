@@ -59,7 +59,7 @@ public struct MembershipPurchaseView: View {
           Button {
             store.send(.upgradeButtonTapped)
           } label: {
-            Text("Upgrade for \(viewStore.displayPrice)/month", bundle: .module)
+            Text("Upgrade for \(viewStore.displayPrice)/week", bundle: .module)
           }
           .buttonStyle(ConversionPrimaryButtonStyle())
           .padding(.horizontal, 16)
