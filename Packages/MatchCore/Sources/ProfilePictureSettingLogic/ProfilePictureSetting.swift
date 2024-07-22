@@ -60,7 +60,7 @@ public struct ProfilePictureSettingLogic {
     case loadTransferableResponse(Int, Result<Data?, Error>)
     case loadTransferableFinished
     case uploadResponse(Result<URL, Error>)
-    case updateUserImage(Result<API.UpdateUserImageMutation.Data, Error>)
+    case updateUserImageV2(Result<API.UpdateUserImageV2Mutation.Data, Error>)
     case destination(PresentationAction<Destination.Action>)
     case binding(BindingAction<State>)
     case delegate(Delegate)
@@ -71,13 +71,13 @@ public struct ProfilePictureSettingLogic {
     }
   }
 
+  @Dependency(\.api) var api
   @Dependency(\.uuid) var uuid
   @Dependency(\.analytics) var analytics
   @Dependency(\.environment) var environment
   @Dependency(\.firebaseAuth) var firebaseAuth
   @Dependency(\.firebaseStorage) var firebaseStorage
   @Dependency(\.feedbackGenerator) var feedbackGenerator
-  @Dependency(\.api.updateUserImage) var updateUserImage
 
   public var body: some Reducer<State, Action> {
     BindingReducer()
@@ -178,24 +178,24 @@ public struct ProfilePictureSettingLogic {
           } catch {
             await send(.uploadResponse(.failure(error)))
           }
-
-          let input = API.UpdateUserImageInput(
-            imageUrls: imageUrls.map(\.absoluteString)
-          )
-          await send(.updateUserImage(Result {
-            try await updateUserImage(input)
+          
+          let inputs = imageUrls.enumerated()
+            .map { API.UpdateUserImageV2Input(imageUrl: $0.element.absoluteString, order: $0.offset) }
+          
+          await send(.updateUserImageV2(Result {
+            try await api.updateUserImageV2(inputs)
           }))
         }
 
       case .uploadResponse(.failure):
         state.isActivityIndicatorVisible = false
         return .none
-
-      case .updateUserImage(.success):
+        
+      case .updateUserImageV2(.success):
         state.isActivityIndicatorVisible = false
         return .send(.delegate(.nextScreen))
 
-      case .updateUserImage(.failure):
+      case .updateUserImageV2(.failure):
         state.isActivityIndicatorVisible = false
         return .none
 
