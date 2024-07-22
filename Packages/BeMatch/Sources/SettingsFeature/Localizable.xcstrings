@@ -193,16 +193,6 @@
         }
       }
     },
-    "Push Notifications" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "プッシュ通知"
-          }
-        }
-      }
-    },
     "Rate BeMatch." : {
       "localizations" : {
         "fr" : {
