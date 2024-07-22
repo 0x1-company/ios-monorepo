@@ -178,10 +178,10 @@ public struct ProfilePictureSettingLogic {
           } catch {
             await send(.uploadResponse(.failure(error)))
           }
-          
+
           let inputs = imageUrls.enumerated()
             .map { API.UpdateUserImageV2Input(imageUrl: $0.element.absoluteString, order: $0.offset) }
-          
+
           await send(.updateUserImageV2(Result {
             try await api.updateUserImageV2(inputs)
           }))
@@ -190,7 +190,7 @@ public struct ProfilePictureSettingLogic {
       case .uploadResponse(.failure):
         state.isActivityIndicatorVisible = false
         return .none
-        
+
       case .updateUserImageV2(.success):
         state.isActivityIndicatorVisible = false
         return .send(.delegate(.nextScreen))
