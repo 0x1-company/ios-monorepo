@@ -186,14 +186,6 @@ public extension APIClient {
       recentMatchContent: { after in
         let query = API.RecentMatchContentQuery(first: 50, after: after ?? .null)
         return apolloClient.watch(query: query)
-      },
-      userPushNotificationSettings: {
-        let query = API.UserPushNotificationSettingsQuery()
-        return apolloClient.watch(query: query)
-      },
-      updateUserPushNotificationSettings: { input in
-        let mutation = API.UpdateUserPushNotificationSettingsMutation(input: input)
-        return try await apolloClient.perform(mutation: mutation)
       }
     )
   }

@@ -25,7 +25,7 @@ public extension API {
   typealias MutableInlineFragment = API_MutableInlineFragment
 
   enum SchemaMetadata: ApolloAPI.SchemaMetadata {
-    public static let configuration: any ApolloAPI.SchemaConfiguration.Type = SchemaConfiguration.self
+    public static let configuration: ApolloAPI.SchemaConfiguration.Type = SchemaConfiguration.self
 
     public static func objectType(forTypename typename: String) -> ApolloAPI.Object? {
       switch typename {
@@ -38,7 +38,6 @@ public extension API {
       case "Feedback": return API.Objects.Feedback
       case "Message": return API.Objects.Message
       case "UserImage": return API.Objects.UserImage
-      case "UserPushNotificationSetting": return API.Objects.UserPushNotificationSetting
       case "Query": return API.Objects.Query
       case "MatchConnection": return API.Objects.MatchConnection
       case "PageInfo": return API.Objects.PageInfo
