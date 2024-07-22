@@ -25,7 +25,7 @@ public extension API {
   typealias MutableInlineFragment = API_MutableInlineFragment
 
   enum SchemaMetadata: ApolloAPI.SchemaMetadata {
-    public static let configuration: ApolloAPI.SchemaConfiguration.Type = SchemaConfiguration.self
+    public static let configuration: any ApolloAPI.SchemaConfiguration.Type = SchemaConfiguration.self
 
     public static func objectType(forTypename typename: String) -> ApolloAPI.Object? {
       switch typename {

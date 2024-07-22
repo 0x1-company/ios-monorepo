@@ -1,0 +1,6 @@
+mutation UpdateUserImageV2($inputs: [UpdateUserImageV2Input!]!) {
+  updateUserImageV2(inputs: $inputs) {
+    id
+    imageUrl
+  }
+}
