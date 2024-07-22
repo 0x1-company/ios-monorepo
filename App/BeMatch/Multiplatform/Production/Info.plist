@@ -120,6 +120,7 @@
 	<string>BeMatch.</string>
 	<key>PRODUCTS</key>
 	<array>
+		<string>jp.bematch.ios.production.subscription.pro.1week</string>
 		<string>jp.bematch.ios.production.subscription.pro.1month</string>
 		<string>jp.bematch.ios.production.subscription.pro.3month</string>
 		<string>jp.bematch.ios.production.subscription.pro.6month</string>

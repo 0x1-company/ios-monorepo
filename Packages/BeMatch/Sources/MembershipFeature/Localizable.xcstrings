@@ -97,7 +97,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "see-who-sent-it-ja"
           }
         }
@@ -247,24 +247,7 @@
         }
       }
     },
-    "Upgrade for %@/month" : {
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mise à niveau pour %@/mois"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "続ける - %@/月"
-          }
-        }
-      }
-    },
     "Upgrade for %@/week" : {
-      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
