@@ -1,6 +1,0 @@
-mutation UpdateUserImage($input:UpdateUserImageInput!) {
-  updateUserImage(input:$input) {
-    id
-    imageUrl
-  }
-}
