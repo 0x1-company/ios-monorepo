@@ -165,14 +165,11 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
-				ko,
 				ja,
+				Base,
 				vi,
 				fr,
-				pl,
-				es,
-				"pt-BR",
+				ko,
 			);
 			mainGroup = B783E0A92A11FF7D002E782F;
 			productRefGroup = B783E0B32A11FF7D002E782F /* Products */;
