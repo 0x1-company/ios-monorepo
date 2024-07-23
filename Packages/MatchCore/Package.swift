@@ -378,6 +378,7 @@ let package = Package(
       "EnvironmentClient",
       "DeleteAccountLogic",
       "MembershipStatusLogic",
+      "PushNotificationSettingsLogic",
       .product(name: "Build", package: "Dependencies"),
       .product(name: "ActivityView", package: "Dependencies"),
       .product(name: "FirebaseAuthClient", package: "Dependencies"),
