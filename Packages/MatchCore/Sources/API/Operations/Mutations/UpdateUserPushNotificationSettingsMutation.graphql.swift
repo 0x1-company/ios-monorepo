@@ -8,16 +8,16 @@ public extension API {
     public static let operationName: String = "UpdateUserPushNotificationSettings"
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"mutation UpdateUserPushNotificationSettings($input: UpdateUserPushNotificationSettingsInput!) { updateUserPushNotificationSettings(input: $input) { __typename allow pushNotificationKind } }"#
+        #"mutation UpdateUserPushNotificationSettings($inputs: [UpdateUserPushNotificationSettingInput!]!) { updateUserPushNotificationSettings(inputs: $inputs) { __typename allow pushNotificationKind } }"#
       ))
 
-    public var input: UpdateUserPushNotificationSettingsInput
+    public var inputs: [UpdateUserPushNotificationSettingInput]
 
-    public init(input: UpdateUserPushNotificationSettingsInput) {
-      self.input = input
+    public init(inputs: [UpdateUserPushNotificationSettingInput]) {
+      self.inputs = inputs
     }
 
-    public var __variables: Variables? { ["input": input] }
+    public var __variables: Variables? { ["inputs": inputs] }
 
     public struct Data: API.SelectionSet {
       public let __data: DataDict
@@ -25,7 +25,7 @@ public extension API {
 
       public static var __parentType: any ApolloAPI.ParentType { API.Objects.Mutation }
       public static var __selections: [ApolloAPI.Selection] { [
-        .field("updateUserPushNotificationSettings", [UpdateUserPushNotificationSetting].self, arguments: ["input": .variable("input")]),
+        .field("updateUserPushNotificationSettings", [UpdateUserPushNotificationSetting].self, arguments: ["inputs": .variable("inputs")]),
       ] }
 
       /// Push通知設定を更新する

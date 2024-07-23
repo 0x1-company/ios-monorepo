@@ -191,8 +191,8 @@ public extension APIClient {
         let query = API.UserPushNotificationSettingsQuery()
         return apolloClient.watch(query: query)
       },
-      updateUserPushNotificationSettings: { input in
-        let mutation = API.UpdateUserPushNotificationSettingsMutation(input: input)
+      updateUserPushNotificationSettings: { inputs in
+        let mutation = API.UpdateUserPushNotificationSettingsMutation(inputs: inputs)
         return try await apolloClient.perform(mutation: mutation)
       }
     )

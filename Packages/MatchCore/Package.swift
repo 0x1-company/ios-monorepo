@@ -51,6 +51,7 @@ let package = Package(
     .library(name: "ProfileLogic", targets: ["ProfileLogic"]),
     .library(name: "ProfilePictureSettingLogic", targets: ["ProfilePictureSettingLogic"]),
     .library(name: "ProfileSharedLogic", targets: ["ProfileSharedLogic"]),
+    .library(name: "PushNotificationSettingsLogic", targets: ["PushNotificationSettingsLogic"]),
     .library(name: "ReceivedLikeRouterLogic", targets: ["ReceivedLikeRouterLogic"]),
     .library(name: "ReceivedLikeSwipeLogic", targets: ["ReceivedLikeSwipeLogic"]),
     .library(name: "RecentMatchLogic", targets: ["RecentMatchLogic"]),
@@ -335,6 +336,12 @@ let package = Package(
       "AnalyticsKeys",
       "EnvironmentClient",
       "DirectMessageLogic",
+    ]),
+    .target(name: "PushNotificationSettingsLogic", dependencies: [
+      "APIClient",
+      "AnalyticsKeys",
+      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "ReceivedLikeRouterLogic", dependencies: [
       "MembershipLogic",
