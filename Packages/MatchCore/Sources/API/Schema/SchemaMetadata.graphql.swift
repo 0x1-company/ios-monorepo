@@ -38,6 +38,7 @@ public extension API {
       case "Feedback": return API.Objects.Feedback
       case "Message": return API.Objects.Message
       case "UserImage": return API.Objects.UserImage
+      case "UserPushNotificationSetting": return API.Objects.UserPushNotificationSetting
       case "Query": return API.Objects.Query
       case "MatchConnection": return API.Objects.MatchConnection
       case "PageInfo": return API.Objects.PageInfo
