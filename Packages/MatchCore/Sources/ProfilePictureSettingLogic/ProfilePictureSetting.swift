@@ -156,31 +156,25 @@ public struct ProfilePictureSettingLogic {
         state.isActivityIndicatorVisible = true
 
         return .run { send in
-          var imageUrls: [URL] = []
+          var imageUrls: [Int: URL] = [:]
           let userFolder = "users/profile_images/\(uid)"
 
           do {
-            try await withThrowingTaskGroup(of: URL.self) { group in
-              for imageState in validImages {
-                guard let imageData = imageState.imageData else { return }
-                group.addTask {
-                  try await firebaseStorage.upload(
-                    path: userFolder + "/\(uuid().uuidString).jpeg",
-                    uploadData: imageData
-                  )
-                }
-              }
-
-              for try await result in group {
-                imageUrls.append(result)
-              }
+            for (order, imageState) in validImages.enumerated() {
+              guard let imageData = imageState.imageData else { return }
+              let imageUrl = try await firebaseStorage.upload(
+                path: userFolder + "/\(uuid().uuidString).jpeg",
+                uploadData: imageData
+              )
+              imageUrls[order] = imageUrl
             }
           } catch {
             await send(.uploadResponse(.failure(error)))
           }
 
-          let inputs = imageUrls.enumerated()
-            .map { API.UpdateUserImageV2Input(imageUrl: $0.element.absoluteString, order: $0.offset) }
+          let inputs = imageUrls.map { order, imageUrl in
+            API.UpdateUserImageV2Input(imageUrl: imageUrl.absoluteString, order: order)
+          }
 
           await send(.updateUserImageV2(Result {
             try await api.updateUserImageV2(inputs)
