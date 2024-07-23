@@ -58,14 +58,12 @@ let package = Package(
     .package(path: "../Utility"),
     .package(path: "../MatchCore"),
     .package(path: "../Dependencies"),
-    .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.12.0"),
     .package(url: "https://github.com/lorenzofiamingo/swiftui-cached-async-image", from: "2.1.1"),
   ],
   targets: [
     .target(name: "AchievementFeature", dependencies: [
       .product(name: "AchievementLogic", package: "MatchCore"),
       .product(name: "FirebaseAuthClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "AppFeature", dependencies: [
       "LaunchFeature",
@@ -90,27 +88,21 @@ let package = Package(
       .product(name: "FirebaseCrashlyticsClient", package: "Dependencies"),
     ]),
     .target(name: "BannedFeature", dependencies: [
-      .product(name: "BannedLogic", package: "MatchCore"),
       "Styleguide",
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      .product(name: "BannedLogic", package: "MatchCore"),
     ]),
     .target(name: "BannerFeature", dependencies: [
-      .product(name: "BannerLogic", package: "MatchCore"),
       "Styleguide",
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      .product(name: "BannerLogic", package: "MatchCore"),
     ]),
     .target(name: "DeleteAccountFeature", dependencies: [
       "Styleguide",
       .product(name: "DeleteAccountLogic", package: "MatchCore"),
       .product(name: "FirebaseAuthClient", package: "Dependencies"),
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "DirectMessageFeature", dependencies: [
       "ReportFeature",
       .product(name: "DirectMessageLogic", package: "MatchCore"),
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "DirectMessageTabFeature", dependencies: [
       "BannerFeature",
@@ -122,76 +114,55 @@ let package = Package(
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
     ]),
     .target(name: "DisplayNameSettingFeature", dependencies: [
-      .product(name: "DisplayNameSettingLogic", package: "MatchCore"),
       "Styleguide",
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      .product(name: "DisplayNameSettingLogic", package: "MatchCore"),
     ]),
     .target(name: "ExplorerFeature", dependencies: [
       "Styleguide",
       "SwipeFeature",
       "MembershipFeature",
       .product(name: "ExplorerLogic", package: "MatchCore"),
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "ForceUpdateFeature", dependencies: [
-      .product(name: "ForceUpdateLogic", package: "MatchCore"),
       "Styleguide",
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      .product(name: "ForceUpdateLogic", package: "MatchCore"),
     ]),
     .target(name: "FreezedFeature", dependencies: [
-      .product(name: "FreezedLogic", package: "MatchCore"),
       "Styleguide",
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      .product(name: "FreezedLogic", package: "MatchCore"),
     ]),
     .target(name: "GenderSettingFeature", dependencies: [
-      .product(name: "GenderSettingLogic", package: "MatchCore"),
       "Styleguide",
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      .product(name: "GenderSettingLogic", package: "MatchCore"),
     ]),
     .target(name: "HowToMovieFeature", dependencies: [
       "Styleguide",
       .product(name: "UIApplicationClient", package: "Dependencies"),
       .product(name: "HowToMovieLogic", package: "MatchCore"),
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "InvitationCodeFeature", dependencies: [
-      .product(name: "InvitationCodeLogic", package: "MatchCore"),
       "Styleguide",
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      .product(name: "InvitationCodeLogic", package: "MatchCore"),
     ]),
     .target(name: "InvitationFeature", dependencies: [
-      .product(name: "InvitationLogic", package: "MatchCore"),
       "Styleguide",
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      .product(name: "InvitationLogic", package: "MatchCore"),
     ]),
     .target(name: "LaunchFeature", dependencies: [
       "Styleguide",
       .product(name: "LaunchLogic", package: "MatchCore"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "MaintenanceFeature", dependencies: [
-      .product(name: "MaintenanceLogic", package: "MatchCore"),
       "Styleguide",
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      .product(name: "MaintenanceLogic", package: "MatchCore"),
     ]),
     .target(name: "MatchedFeature", dependencies: [
-      .product(name: "MatchedLogic", package: "MatchCore"),
       "Styleguide",
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      .product(name: "MatchedLogic", package: "MatchCore"),
     ]),
     .target(name: "MatchEmptyFeature", dependencies: [
-      .product(name: "MatchEmptyLogic", package: "MatchCore"),
       "Styleguide",
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      .product(name: "MatchEmptyLogic", package: "MatchCore"),
     ]),
     .target(name: "MembershipFeature", dependencies: [
       "Styleguide",
@@ -199,12 +170,10 @@ let package = Package(
       .product(name: "ColorHex", package: "Utility"),
       .product(name: "Build", package: "Dependencies"),
       .product(name: "TcaHelpers", package: "Utility"),
+      .product(name: "StoreKitHelpers", package: "Utility"),
       .product(name: "MembershipLogic", package: "MatchCore"),
       .product(name: "ActivityView", package: "Dependencies"),
       .product(name: "StoreKitClient", package: "Dependencies"),
-      .product(name: "StoreKitHelpers", package: "Utility"),
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "MembershipStatusFeature", dependencies: [
       "MembershipFeature",
@@ -218,14 +187,10 @@ let package = Package(
     ]),
     .target(name: "NetworkErrorFeature", dependencies: [
       .product(name: "NetworkErrorLogic", package: "MatchCore"),
-      .product(name: "AnalyticsClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "NotificationsReEnableFeature", dependencies: [
       .product(name: "UIApplicationClient", package: "Dependencies"),
       .product(name: "NotificationsReEnableLogic", package: "MatchCore"),
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "OnboardFeature", dependencies: [
       "InvitationFeature",
@@ -254,7 +219,6 @@ let package = Package(
       "ShortCommentSettingFeature",
       "ProfilePictureSettingFeature",
       .product(name: "ProfileEditLogic", package: "MatchCore"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "ProfileExplorerFeature", dependencies: [
       "DirectMessageFeature",
@@ -271,10 +235,8 @@ let package = Package(
       .product(name: "TcaHelpers", package: "Utility"),
       .product(name: "FirebaseAuthClient", package: "Dependencies"),
       .product(name: "FirebaseStorageClient", package: "Dependencies"),
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
       .product(name: "ProfilePictureSettingLogic", package: "MatchCore"),
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "ProfileSharedFeature", dependencies: [
       "Styleguide",
@@ -305,13 +267,10 @@ let package = Package(
       .product(name: "RecommendationLogic", package: "MatchCore"),
       .product(name: "UIApplicationClient", package: "Dependencies"),
       .product(name: "UserNotificationClient", package: "Dependencies"),
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
     ]),
     .target(name: "ReportFeature", dependencies: [
       "Styleguide",
       .product(name: "ReportLogic", package: "MatchCore"),
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "SettingsFeature", dependencies: [
       "ProfileFeature",
@@ -328,19 +287,14 @@ let package = Package(
     .target(name: "ShortCommentSettingFeature", dependencies: [
       "Styleguide",
       .product(name: "ShortCommentSettingLogic", package: "MatchCore"),
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "Styleguide"),
     .target(name: "SwipeCardFeature", dependencies: [
       .product(name: "SelectControl", package: "MatchCore"),
       .product(name: "SwipeCardLogic", package: "MatchCore"),
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "SwipeFeature", dependencies: [
-      "Styleguide",
       "ReportFeature",
       "MatchedFeature",
       "SwipeCardFeature",
@@ -350,14 +304,10 @@ let package = Package(
     .target(name: "TutorialFeature", dependencies: [
       "Styleguide",
       .product(name: "TutorialLogic", package: "MatchCore"),
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "UsernameSettingFeature", dependencies: [
       "Styleguide",
       .product(name: "UsernameSettingLogic", package: "MatchCore"),
-      .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
   ]
 )
