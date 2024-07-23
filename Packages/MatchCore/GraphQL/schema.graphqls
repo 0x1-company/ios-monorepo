@@ -327,7 +327,7 @@ type Mutation {
   updateUserImageV2(inputs: [UpdateUserImageV2Input!]!): [UserImage!]!
 
   """Push通知設定を更新する"""
-  updateUserPushNotificationSettings(input: UpdateUserPushNotificationSettingsInput!): [UserPushNotificationSetting!]!
+  updateUserPushNotificationSettings(inputs: [UpdateUserPushNotificationSettingInput!]!): [UserPushNotificationSetting!]!
 }
 
 type PageInfo {
@@ -508,10 +508,6 @@ input UpdateUserImageV2Input {
 input UpdateUserPushNotificationSettingInput {
   allow: Boolean!
   pushNotificationKind: PushNotificationKind!
-}
-
-input UpdateUserPushNotificationSettingsInput {
-  updateUserPushNotificationSettingsInput: [UpdateUserPushNotificationSettingInput!]!
 }
 
 type User {

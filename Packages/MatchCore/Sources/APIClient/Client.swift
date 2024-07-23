@@ -62,5 +62,5 @@ public struct APIClient: Sendable {
   public var recentMatchContent: @Sendable (_ after: String?) -> AsyncThrowingStream<API.RecentMatchContentQuery.Data, Error> = { _ in .finished() }
 
   public var userPushNotificationSettings: @Sendable () -> AsyncThrowingStream<API.UserPushNotificationSettingsQuery.Data, Error> = { .finished() }
-  public var updateUserPushNotificationSettings: @Sendable (API.UpdateUserPushNotificationSettingsInput) async throws -> API.UpdateUserPushNotificationSettingsMutation.Data
+  public var updateUserPushNotificationSettings: @Sendable ([API.UpdateUserPushNotificationSettingInput]) async throws -> API.UpdateUserPushNotificationSettingsMutation.Data
 }

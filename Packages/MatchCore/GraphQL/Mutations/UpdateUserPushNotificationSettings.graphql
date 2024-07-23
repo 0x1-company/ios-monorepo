@@ -1,5 +1,5 @@
-mutation UpdateUserPushNotificationSettings($input: UpdateUserPushNotificationSettingsInput!) {
-  updateUserPushNotificationSettings(input: $input) {
+mutation UpdateUserPushNotificationSettings($inputs: [UpdateUserPushNotificationSettingInput!]!) {
+  updateUserPushNotificationSettings(inputs: $inputs) {
     allow
     pushNotificationKind
   }
