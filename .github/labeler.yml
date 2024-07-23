@@ -17,6 +17,13 @@ TapMatch:
     - Packages/TapMatch/**
     - TapMatch.xcworkspace/**
 
+TenMatch:
+- changed-files:
+  - any-glob-to-any-file:
+    - App/TenMatch/**
+    - Packages/TenMatch/**
+    - TenMatch.xcworkspace/**
+
 Trinket:
 - changed-files:
   - any-glob-to-any-file:
