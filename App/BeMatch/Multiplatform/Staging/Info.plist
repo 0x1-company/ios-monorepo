@@ -8,10 +8,7 @@
 		<string>fr</string>
 		<string>ko</string>
 		<string>ja</string>
-		<string>pl</string>
 		<string>vi</string>
-		<string>es</string>
-		<string>pt-BR</string>
 	</array>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>Allow to see your optimized ads</string>
