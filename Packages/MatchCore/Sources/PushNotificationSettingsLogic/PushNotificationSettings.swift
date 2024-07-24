@@ -46,7 +46,7 @@ public struct PushNotificationSettingsLogic {
       case .userPushNotificationSettingsResponse(.failure):
         return .none
 
-      case let .rows(.element(_, .binding(\.$allow))):
+      case .rows(.element(_, .binding(\.$allow))):
         let inputs = state.rows.map { row in
           API.UpdateUserPushNotificationSettingInput(
             allow: row.allow,
