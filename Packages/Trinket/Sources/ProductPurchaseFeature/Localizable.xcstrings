@@ -3,6 +3,18 @@
   "strings" : {
     "Continue" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13,12 +25,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "계속"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Continuer"
           }
         },
         "pl" : {
@@ -32,17 +38,23 @@
             "state" : "translated",
             "value" : "Tiếp tục"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Continuar"
-          }
         }
       }
     },
     "most popular" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "más popular"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "le plus populaire"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53,12 +65,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "가장 인기 있는"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "le plus populaire"
           }
         },
         "pl" : {
@@ -72,17 +78,23 @@
             "state" : "translated",
             "value" : "phổ biến nhất"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "más popular"
-          }
         }
       }
     },
     "Premium Plan" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan Premium"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan Premium"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -93,12 +105,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "프리미엄 플랜"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Plan Premium"
           }
         },
         "pl" : {
@@ -112,17 +118,23 @@
             "state" : "translated",
             "value" : "Gói cao cấp"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Plan Premium"
-          }
         }
       }
     },
     "Recurring billing. You can cancel at any time. Your payment will be charged to your iTunes account and will auto-renew until you cancel in the iTunes Store settings. By tapping Unlock, you agree to the Terms of Service and auto-renewal." : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facturación recurrente. Puedes cancelar en cualquier momento. Su pago se cargará a su cuenta de iTunes y se renovará automáticamente hasta que cancele en la configuración de la tienda de iTunes. Al tocar Desbloquear, acepta los Términos de servicio y la renovación automática."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facturation récurrente. Vous pouvez annuler à tout moment. Votre paiement sera débité de votre compte iTunes et sera renouvelé automatiquement jusqu'à ce que vous annuliez dans les paramètres de l'iTunes Store. En appuyant sur Déverrouiller, vous acceptez les Conditions d'utilisation et le renouvellement automatique."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -133,12 +145,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "정기 결제. 언제든지 취소할 수 있습니다. 결제는 iTunes 계정으로 청구되며 iTunes 스토어 설정에서 취소할 때까지 자동 갱신됩니다. 잠금을 해제하면 서비스 약관 및 자동 갱신에 동의하게 됩니다."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Facturation récurrente. Vous pouvez annuler à tout moment. Votre paiement sera débité de votre compte iTunes et sera renouvelé automatiquement jusqu'à ce que vous annuliez dans les paramètres de l'iTunes Store. En appuyant sur Déverrouiller, vous acceptez les Conditions d'utilisation et le renouvellement automatique."
           }
         },
         "pl" : {
@@ -152,17 +158,51 @@
             "state" : "translated",
             "value" : "Lập hóa đơn định kỳ. Bạn có thể hủy bất cứ lúc nào. Thanh toán của bạn sẽ được tính vào tài khoản iTunes của bạn và sẽ tự động gia hạn cho đến khi bạn hủy trong cài đặt của iTunes Store. Bằng cách nhấn Mở khóa, bạn đồng ý với Điều khoản dịch vụ và tự động gia hạn."
           }
-        },
-        "es" : {
+        }
+      }
+    },
+    "Restore a purchase" : {
+      "localizations" : {
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Facturación recurrente. Puedes cancelar en cualquier momento. Su pago se cargará a su cuenta de iTunes y se renovará automáticamente hasta que cancele en la configuración de la tienda de iTunes. Al tocar Desbloquear, acepta los Términos de servicio y la renovación automática."
+            "value" : "Restaurer un achat"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "구매 복원"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Khôi phục mua hàng"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入の復元"
           }
         }
       }
     },
     "See who likes you" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver quién te gusta"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voir qui vous aime"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -175,12 +215,6 @@
             "value" : "당신을 좋아하는 사람을 확인하세요"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Voir qui vous aime"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -191,12 +225,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Xem ai thích bạn"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ver quién te gusta"
           }
         }
       }
