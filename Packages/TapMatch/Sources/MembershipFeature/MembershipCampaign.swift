@@ -100,5 +100,4 @@ public struct MembershipCampaignView: View {
   )
   .ignoresSafeArea()
   .environment(\.colorScheme, .dark)
-//  .environment(\.locale, Locale(identifier: "ja-JP"))
 }
