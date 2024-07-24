@@ -164,7 +164,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Staging"
+            "value" : "Trinket"
           }
         },
         "es" : {
@@ -322,7 +322,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Allow to see your optimized ads"
+            "value" : "\"Allow\" to see your optimized ads"
           }
         },
         "es" : {

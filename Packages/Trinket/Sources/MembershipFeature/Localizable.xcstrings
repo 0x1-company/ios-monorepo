@@ -294,6 +294,7 @@
       }
     },
     "invite-ticket" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
