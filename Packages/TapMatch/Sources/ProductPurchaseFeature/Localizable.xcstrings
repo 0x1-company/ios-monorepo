@@ -41,6 +41,16 @@
         }
       }
     },
+    "Restore a purchase" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入を復元する"
+          }
+        }
+      }
+    },
     "See who likes you" : {
       "localizations" : {
         "ja" : {
