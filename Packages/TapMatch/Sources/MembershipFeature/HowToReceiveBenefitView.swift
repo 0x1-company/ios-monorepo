@@ -6,6 +6,22 @@ struct HowToReceiveBenefitView: View {
 
   var body: some View {
     VStack(spacing: 24) {
+      Text("How to Receive Benefits", bundle: .module)
+        .font(.system(.title2, weight: .semibold))
+        .frame(height: 40)
+        .padding(.horizontal, 8)
+        .background(
+          LinearGradient(
+            colors: [
+              Color.black,
+              Color.yellow,
+            ],
+            startPoint: .top,
+            endPoint: .bottom
+          )
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 4))
+
       VStack(spacing: 8) {
         Text("1. Send invitation code", bundle: .module)
           .font(.system(.title3, weight: .semibold))
@@ -28,30 +44,12 @@ struct HowToReceiveBenefitView: View {
         .resizable()
         .aspectRatio(contentMode: .fit)
     }
-    .padding(.all, 16)
-    .padding(.top, 44)
+    .padding(.top, 36)
     .padding(.bottom, 20)
+    .padding(.horizontal, 16)
     .multilineTextAlignment(.center)
     .background(Color(uiColor: UIColor.secondarySystemBackground))
     .clipShape(RoundedRectangle(cornerRadius: 16))
-    .overlay(alignment: .top) {
-      Text("How to Receive Benefits", bundle: .module)
-        .font(.system(.title2, weight: .semibold))
-        .frame(height: 40)
-        .padding(.horizontal, 8)
-        .background(
-          LinearGradient(
-            colors: [
-              Color(0xFFFD_2D76),
-              Color(0xFFFE_7056),
-            ],
-            startPoint: .bottomLeading,
-            endPoint: .topTrailing
-          )
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 4))
-        .offset(y: -20)
-    }
   }
 }
 
