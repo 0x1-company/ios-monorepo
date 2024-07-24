@@ -1,326 +1,330 @@
 {
-  "sourceLanguage": "en",
-  "strings": {
-    "Account deletion failed.": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "アカウント削除に失敗しました。"
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Account deletion failed." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error al eliminar la cuenta."
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "계정 삭제 실패."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Échec de la suppression du compte."
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Échec de la suppression du compte."
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウント削除に失敗しました。"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Usunięcie konta nie powiodło się."
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계정 삭제 실패."
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Xóa tài khoản thất bại."
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usunięcie konta nie powiodło się."
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Error al eliminar la cuenta."
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xóa tài khoản thất bại."
           }
         }
       }
     },
-    "Are you sure you want to delete your account?": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "本当にアカウントを削除しますか？"
+    "Are you sure you want to delete your account?" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Está seguro de que desea eliminar su cuenta?"
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "정말 계정을 삭제하시겠습니까?"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Êtes-vous sûr de vouloir supprimer votre compte?"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Êtes-vous sûr de vouloir supprimer votre compte?"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本当にアカウントを削除しますか？"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Czy na pewno chcesz usunąć swoje konto?"
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "정말 계정을 삭제하시겠습니까?"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bạn có chắc chắn muốn xóa tài khoản của mình không?"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Czy na pewno chcesz usunąć swoje konto?"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "¿Está seguro de que desea eliminar su cuenta?"
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bạn có chắc chắn muốn xóa tài khoản của mình không?"
           }
         }
       }
     },
-    "Confirm": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "削除を実行する"
+    "Confirm" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmar"
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "확인"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmer"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Confirmer"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "削除を実行する"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Potwierdź"
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "확인"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Xác nhận"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Potwierdź"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Confirmar"
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xác nhận"
           }
         }
       }
     },
-    "Delete Account": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "アカウント削除"
+    "Delete Account" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar cuenta"
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "계정 삭제"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer le compte"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Supprimer le compte"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アカウント削除"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Usuń konto"
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계정 삭제"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Xóa tài khoản"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń konto"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eliminar cuenta"
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xóa tài khoản"
           }
         }
       }
     },
-    "I don't know how to use it": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "使い方が分からない"
+    "I don't know how to use it" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No sé cómo usarlo"
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "사용 방법을 모르겠어요"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Je ne sais pas comment l'utiliser"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Je ne sais pas comment l'utiliser"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使い方が分からない"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nie wiem jak tego używać"
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사용 방법을 모르겠어요"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tôi không biết cách sử dụng nó"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie wiem jak tego używać"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No sé cómo usarlo"
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tôi không biết cách sử dụng nó"
           }
         }
       }
     },
-    "I want to create a new account": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "新しいアカウントを作成したい"
+    "I want to create a new account" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiero crear una nueva cuenta"
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "새 계정을 만들고 싶어요"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Je veux créer un nouveau compte"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Je veux créer un nouveau compte"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新しいアカウントを作成したい"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chcę utworzyć nowe konto"
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "새 계정을 만들고 싶어요"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tôi muốn tạo một tài khoản mới"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chcę utworzyć nowe konto"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quiero crear una nueva cuenta"
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tôi muốn tạo một tài khoản mới"
           }
         }
       }
     },
-    "OK": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "OK"
+    "OK" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "OK"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "OK"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "OK"
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "OK"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "OK"
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
           }
         }
       }
     },
-    "Safety or privacy concerns": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "安全性やプライバシーに関する懸念"
+    "Safety or privacy concerns" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preocupaciones de seguridad o privacidad"
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "안전 또는 개인정보 문제"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Préoccupations de sécurité ou de confidentialité"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Préoccupations de sécurité ou de confidentialité"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "安全性やプライバシーに関する懸念"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Problemy z bezpieczeństwem lub prywatnością"
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "안전 또는 개인정보 문제"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mối quan tâm về an toàn hoặc quyền riêng tư"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Problemy z bezpieczeństwem lub prywatnością"
           }
         },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Preocupaciones de seguridad o privacidad"
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mối quan tâm về an toàn hoặc quyền riêng tư"
           }
         }
       }
+    },
+    "Safety or privacy conerns" : {
+
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }
