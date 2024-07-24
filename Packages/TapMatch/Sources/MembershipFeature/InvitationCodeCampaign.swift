@@ -13,32 +13,38 @@ public struct InvitationCodeCampaignView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 16) {
-        Image(String(localized: "invite-ticket", bundle: .module), bundle: .module)
+        Image(ImageResource.inviteTicket)
           .resizable()
           .aspectRatio(contentMode: .fit)
           .overlay(alignment: .center) {
             Text(viewStore.code)
-              .foregroundStyle(Color(0xFFFF_CC00))
-              .font(.system(.largeTitle, design: .rounded, weight: .bold))
-              .offset(x: -35, y: 8)
-          }
-          .onTapGesture {
-            store.send(.invitationCodeButtonTapped)
+              .foregroundStyle(Color.primary)
+              .font(.system(.largeTitle, weight: .bold))
           }
 
         Button {
           store.send(.invitationCodeButtonTapped)
         } label: {
           Text("Send Invitation Code", bundle: .module)
+            .font(.system(.subheadline, weight: .semibold))
+            .frame(height: 50)
+            .frame(maxWidth: .infinity)
+            .foregroundStyle(Color.primary)
+            .background(
+              Color(uiColor: UIColor.tertiarySystemBackground),
+              in: RoundedRectangle(cornerRadius: 16)
+            )
         }
-        .buttonStyle(ConversionSecondaryButtonStyle())
+        .buttonStyle(HoldDownButtonStyle())
       }
       .padding(.all, 16)
       .multilineTextAlignment(.center)
       .background(Color(uiColor: UIColor.secondarySystemBackground))
       .clipShape(RoundedRectangle(cornerRadius: 16))
-      .padding(.vertical, 24)
-      .background()
+      .overlay(
+        RoundedRectangle(cornerRadius: 16)
+          .stroke(Color(uiColor: UIColor.opaqueSeparator), lineWidth: 0.5)
+      )
     }
   }
 }
@@ -51,5 +57,4 @@ public struct InvitationCodeCampaignView: View {
     )
   )
   .environment(\.colorScheme, .dark)
-  .environment(\.locale, Locale(identifier: "ja-JP"))
 }

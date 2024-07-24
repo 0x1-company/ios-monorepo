@@ -12,24 +12,24 @@ public struct MembershipCampaignView: View {
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
-      VStack(spacing: 16) {
-        ScrollView {
-          VStack(spacing: 0) {
-            InvitationCampaignView(
-              store: store.scope(
-                state: \.invitationCampaign,
-                action: \.invitationCampaign
-              )
-            )
+      ZStack(alignment: .top) {
+        Color.yellow
+          .frame(width: 190, height: 190)
+          .clipShape(Circle())
+          .offset(y: -190)
+          .blur(radius: 64)
 
-            InvitationCampaignPriceView(
-              store: store.scope(
-                state: \.invitationCampaignPrice,
-                action: \.invitationCampaignPrice
+        VStack(spacing: 16) {
+          ScrollView {
+            VStack(spacing: 16) {
+              InvitationCampaignView(
+                store: store.scope(
+                  state: \.invitationCampaign,
+                  action: \.invitationCampaign
+                )
               )
-            )
+              .padding(.top, 16)
 
-            VStack(spacing: 60) {
               InvitationCodeCampaignView(
                 store: store.scope(
                   state: \.invitationCodeCampaign,
@@ -47,30 +47,29 @@ public struct MembershipCampaignView: View {
                 displayPrice: viewStore.displayPrice
               )
             }
+            .padding(.bottom, 80)
             .padding(.horizontal, 16)
           }
-          .padding(.bottom, 80)
-        }
 
-        VStack(spacing: 16) {
-          Button {
-            store.send(.invitationCodeButtonTapped)
-          } label: {
-            Text("Send Invitation Code", bundle: .module)
-          }
-          .buttonStyle(ConversionPrimaryButtonStyle())
+          VStack(spacing: 16) {
+            Button {
+              store.send(.invitationCodeButtonTapped)
+            } label: {
+              Text("Send Invitation Code", bundle: .module)
+            }
+            .buttonStyle(ConversionPrimaryButtonStyle())
 
-          Button {
-            store.send(.upgradeButtonTapped)
-          } label: {
-            Text("Upgrade for \(viewStore.displayPrice)/week", bundle: .module)
+            Button {
+              store.send(.upgradeButtonTapped)
+            } label: {
+              Text("Upgrade for \(viewStore.displayPrice)/week", bundle: .module)
+            }
+            .buttonStyle(ConversionSecondaryButtonStyle())
           }
-          .buttonStyle(ConversionSecondaryButtonStyle())
+          .padding(.horizontal, 16)
+          .padding(.bottom, 36)
         }
-        .padding(.horizontal, 16)
-        .padding(.bottom, 36)
       }
-      .background()
       .task { await store.send(.onTask).finish() }
     }
   }
