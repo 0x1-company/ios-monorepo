@@ -1,8 +1,19 @@
 {
   "images" : [
     {
-      "filename" : "see-who-sent-it.pdf",
-      "idiom" : "universal"
+      "filename" : "image 90.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "image 90@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "image 90@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
