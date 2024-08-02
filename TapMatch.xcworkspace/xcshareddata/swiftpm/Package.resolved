@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apollographql/apollo-ios",
       "state" : {
-        "revision" : "e218b565661b12c3a1e5c0964eac805d44da7c76",
-        "version" : "1.14.0"
+        "revision" : "104cc94e97741e71f5c8fc9709bf909c464a9702",
+        "version" : "1.14.1"
       }
     },
     {
