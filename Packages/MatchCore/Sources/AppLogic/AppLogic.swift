@@ -16,6 +16,7 @@ import MaintenanceLogic
 import NavigationLogic
 import NetworkErrorLogic
 import OnboardLogic
+import ReceivedLikeRouterLogic
 import StoreKit
 import SwiftUI
 import TcaHelpers
@@ -34,6 +35,7 @@ public struct AppLogic {
     var sceneDelegate = SceneDelegateLogic.State()
     public var child: Child.State = .launch()
     public var tutorial: TutorialLogic.State?
+    @PresentationState public var destination: Destination.State?
 
     public struct Account: Equatable {
       var user = AsyncValue<API.UserInternal>.none
@@ -50,6 +52,7 @@ public struct AppLogic {
     case sceneDelegate(SceneDelegateLogic.Action)
     case child(Child.Action)
     case tutorial(TutorialLogic.Action)
+    case destination(PresentationAction<Destination.Action>)
     case configFetched
     case configResponse(TaskResult<ConfigGlobalClient.Config>)
     case signInAnonymouslyResponse(Result<AuthDataResult, Error>)
@@ -71,6 +74,9 @@ public struct AppLogic {
     core
       .ifLet(\.tutorial, action: \.tutorial) {
         TutorialLogic()
+      }
+      .ifLet(\.$destination, action: \.destination) {
+        Destination()
       }
       .onChange(of: \.account.isForceUpdate) { isForceUpdate, state, _ in
         if case .success(true) = isForceUpdate {
@@ -135,6 +141,18 @@ public struct AppLogic {
 
       case .tutorial(.delegate(.finish)):
         state.tutorial = nil
+        return .none
+
+      case let .appDelegate(.userNotifications(.didReceiveResponse(response, _))):
+        let request = response.notification.request
+        let userInfo = request.content.userInfo
+        guard
+          let rawKind = userInfo["kind"] as? String,
+          let kind = API.PushNotificationKind(rawValue: rawKind)
+        else { return .none }
+        if case .like = kind {
+          state.destination = .receivedLike()
+        }
         return .none
 
       default:
@@ -226,6 +244,21 @@ public struct AppLogic {
       Scope(state: \.banned, action: \.banned, child: BannedLogic.init)
       Scope(state: \.freezed, action: \.freezed, child: FreezedLogic.init)
       Scope(state: \.networkError, action: \.networkError, child: NetworkErrorLogic.init)
+    }
+  }
+
+  @Reducer
+  public struct Destination {
+    public enum State: Equatable {
+      case receivedLike(ReceivedLikeRouterLogic.State = .loading)
+    }
+
+    public enum Action {
+      case receivedLike(ReceivedLikeRouterLogic.Action)
+    }
+
+    public var body: some Reducer<State, Action> {
+      Scope(state: \.receivedLike, action: \.receivedLike, child: ReceivedLikeRouterLogic.init)
     }
   }
 }
