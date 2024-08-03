@@ -155,6 +155,11 @@ public struct AppLogic {
         }
         return .none
 
+      case .destination(.presented(.receivedLike(.swipe(.delegate(.dismiss))))),
+           .destination(.presented(.receivedLike(.membership(.delegate(.dismiss))))):
+        state.destination = nil
+        return .none
+
       default:
         return .none
       }
