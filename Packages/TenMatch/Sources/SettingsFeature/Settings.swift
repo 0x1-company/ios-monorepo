@@ -4,6 +4,7 @@ import ComposableArchitecture
 import MembershipStatusFeature
 import ProfileEditFeature
 import ProfileFeature
+import PushNotificationSettingsFeature
 import SettingsLogic
 import SwiftUI
 import TutorialFeature
@@ -90,6 +91,17 @@ public struct SettingsView: View {
         }
 
         Section {
+          Button {
+            store.send(.pushNotificationSettingsButtonTapped)
+          } label: {
+            LabeledContent {
+              Image(systemName: "chevron.right")
+            } label: {
+              Text("Push Notifications", bundle: .module)
+                .foregroundStyle(Color.primary)
+            }
+          }
+
           Button {
             store.send(.otherButtonTapped)
           } label: {
@@ -204,13 +216,6 @@ public struct SettingsView: View {
           ProfileEditView(store: store)
         }
       }
-      .fullScreenCover(
-        store: store.scope(state: \.$destination.achievement, action: \.destination.achievement)
-      ) { store in
-        NavigationStack {
-          AchievementView(store: store)
-        }
-      }
       .navigationDestination(
         store: store.scope(state: \.$destination.membershipStatus, action: \.destination.membershipStatus),
         destination: MembershipStatusView.init(store:)
@@ -218,6 +223,10 @@ public struct SettingsView: View {
       .navigationDestination(
         store: store.scope(state: \.$destination.other, action: \.destination.other),
         destination: SettingsOtherView.init(store:)
+      )
+      .navigationDestination(
+        store: store.scope(state: \.$destination.pushNotificationSettings, action: \.destination.pushNotificationSettings),
+        destination: PushNotificationSettingsView.init(store:)
       )
     }
   }

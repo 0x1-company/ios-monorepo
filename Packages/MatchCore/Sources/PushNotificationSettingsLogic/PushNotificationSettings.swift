@@ -63,5 +63,8 @@ public struct PushNotificationSettingsLogic {
         return .none
       }
     }
+    .forEach(\.rows, action: \.rows) {
+      PushNotificationSettingsRowLogic()
+    }
   }
 }
