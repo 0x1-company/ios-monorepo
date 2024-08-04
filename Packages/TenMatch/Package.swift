@@ -43,6 +43,7 @@ let package = Package(
     .library(name: "ProfileFeature", targets: ["ProfileFeature"]),
     .library(name: "ProfilePictureSettingFeature", targets: ["ProfilePictureSettingFeature"]),
     .library(name: "ProfileSharedFeature", targets: ["ProfileSharedFeature"]),
+    .library(name: "PushNotificationSettingsFeature", targets: ["PushNotificationSettingsFeature"]),
     .library(name: "ReceivedLikeRouterFeature", targets: ["ReceivedLikeRouterFeature"]),
     .library(name: "ReceivedLikeSwipeFeature", targets: ["ReceivedLikeSwipeFeature"]),
     .library(name: "RecentMatchFeature", targets: ["RecentMatchFeature"]),
@@ -264,6 +265,9 @@ let package = Package(
       .product(name: "ProfileSharedLogic", package: "MatchCore"),
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
     ]),
+    .target(name: "PushNotificationSettingsFeature", dependencies: [
+      .product(name: "PushNotificationSettingsLogic", package: "MatchCore"),
+    ]),
     .target(name: "ReceivedLikeRouterFeature", dependencies: [
       "MembershipFeature",
       "ReceivedLikeSwipeFeature",
@@ -297,6 +301,7 @@ let package = Package(
       "ProfileEditFeature",
       "DeleteAccountFeature",
       "MembershipStatusFeature",
+      "PushNotificationSettingsFeature",
       .product(name: "Build", package: "Dependencies"),
       .product(name: "SettingsLogic", package: "MatchCore"),
       .product(name: "ActivityView", package: "Dependencies"),

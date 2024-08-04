@@ -14,6 +14,18 @@
             "state" : "translated",
             "value" : "基本情報"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VỀ CHÚNG TÔI"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "정보"
+          }
         }
       }
     },
@@ -29,6 +41,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "お問い合わせ"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liên hệ với chúng tôi"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "문의하기"
           }
         }
       }
@@ -46,6 +70,18 @@
             "state" : "translated",
             "value" : "アカウントを削除する"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xóa tài khoản"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계정 삭제"
+          }
         }
       }
     },
@@ -61,6 +97,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "プロフィール編集"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chỉnh sửa hồ sơ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프로필 수정"
           }
         }
       }
@@ -78,6 +126,18 @@
             "state" : "translated",
             "value" : "よくある質問"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Câu hỏi thường gặp"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "자주 묻는 질문"
+          }
         }
       }
     },
@@ -93,6 +153,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ヘルプ"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trợ giúp"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "도움말"
           }
         }
       }
@@ -110,6 +182,18 @@
             "state" : "translated",
             "value" : "BeMatchの使い方"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cách hoạt động"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "작동 방식"
+          }
         }
       }
     },
@@ -125,6 +209,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "会員ステータス"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tình trạng hội viên"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "회원 상태"
           }
         }
       }
@@ -142,6 +238,18 @@
             "state" : "translated",
             "value" : "自分のプロフィール"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hồ sơ của tôi"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "내 프로필"
+          }
         }
       }
     },
@@ -157,6 +265,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "その他"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Khác"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기타"
           }
         }
       }
@@ -174,6 +294,18 @@
             "state" : "translated",
             "value" : "プライバシーポリシー"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chính sách bảo mật"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "개인정보 처리방침"
+          }
         }
       }
     },
@@ -189,6 +321,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "プロフィール"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HỒ SƠ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프로필"
+          }
+        }
+      }
+    },
+    "Push Notifications" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プッシュ通知"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thông báo đẩy"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "푸시 알림"
           }
         }
       }
@@ -206,6 +372,18 @@
             "state" : "translated",
             "value" : "BeMatchを評価"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đánh giá BeMatch."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeMatch 평가하기"
+          }
         }
       }
     },
@@ -221,6 +399,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "設定"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cài đặt"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설정"
           }
         }
       }
@@ -238,6 +428,18 @@
             "state" : "translated",
             "value" : "BeMatchをシェア"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chia sẻ BeMatch."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeMatch 공유하기"
+          }
         }
       }
     },
@@ -254,6 +456,18 @@
             "state" : "translated",
             "value" : "利用規約"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Điều khoản sử dụng"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이용 약관"
+          }
         }
       }
     },
@@ -269,6 +483,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "バージョン"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phiên bản"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "버전"
           }
         }
       }
