@@ -14,6 +14,18 @@
             "state": "translated",
             "value": "Suivant"
           }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tiếp theo"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "다음"
+          }
         }
       }
     },
@@ -31,6 +43,18 @@
             "state": "translated",
             "value": "Enregistrer"
           }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lưu"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "저장"
+          }
         }
       }
     },
@@ -46,6 +70,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Passer"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bỏ qua"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "건너뛰기"
           }
         }
       }
@@ -63,9 +99,22 @@
             "state": "translated",
             "value": "Quel est votre genre ?"
           }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Giới tính của bạn là gì?"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "성별이 무엇인가요?"
+          }
         }
       }
     }
   },
   "version": "1.0"
 }
+

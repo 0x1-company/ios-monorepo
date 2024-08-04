@@ -14,6 +14,18 @@
             "state" : "translated",
             "value" : "つぎへ"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiếp theo"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다음"
+          }
         }
       }
     },
@@ -31,6 +43,18 @@
             "state" : "translated",
             "value" : "保存する"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lưu"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "저장"
+          }
         }
       }
     },
@@ -47,6 +71,18 @@
             "state" : "translated",
             "value" : "BeRealで保存した写真を選択してください"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chọn một bức ảnh đã lưu bằng BeReal."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeReal로 저장한 사진을 선택하세요."
+          }
         }
       }
     },
@@ -61,7 +97,19 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "保存した写真を3枚プロフィールに設定しよう（公開されるよ 🌏）"
+            "value" : "BeRealで保存した写真を3枚プロフィールに設定しよう（公開されるよ 🌏）"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đặt ảnh đã lưu của bạn làm ảnh hồ sơ (sẽ được công khai 🌏)"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "저장된 사진을 프로필로 설정하세요 (공개됩니다 🌏)"
           }
         }
       }

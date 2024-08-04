@@ -14,6 +14,18 @@
             "state": "translated",
             "value": "🔗 %@"
           }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "🔗 %@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "🔗 %@"
+          }
         }
       }
     },
@@ -22,7 +34,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "BeReal.を追加する"
+            "value": "BeRealを追加する"
           }
         },
         "fr": {
@@ -30,9 +42,22 @@
             "state": "translated",
             "value": "Ajouter BeReal."
           }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thêm BeReal."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BeReal 추가."
+          }
         }
       }
     }
   },
   "version": "1.0"
 }
+

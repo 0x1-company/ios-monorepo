@@ -14,6 +14,18 @@
             "state": "translated",
             "value": "Suivant"
           }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tiếp theo"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "다음"
+          }
         }
       }
     },
@@ -30,9 +42,22 @@
             "state": "translated",
             "value": "Appuyez sur \"Ajouter à la photo\" en mémoire et enregistrez-le 📸."
           }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nhấn \"Thêm vào Ảnh\" trong bộ nhớ và lưu lại 📸."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "메모리에서 \"사진에 추가\"를 눌러 저장하세요 📸."
+          }
         }
       }
     }
   },
   "version": "1.0"
 }
+

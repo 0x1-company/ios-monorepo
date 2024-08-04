@@ -14,6 +14,18 @@
             "state": "translated",
             "value": "Ajouter BeReal"
           }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thêm BeReal"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BeReal 추가"
+          }
         }
       }
     },
@@ -29,6 +41,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ajoutez BeReal et envoyez un message !"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thêm BeReal và gửi tin nhắn!"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BeReal을 추가하고 메시지 보내기!"
           }
         }
       }
@@ -46,6 +70,18 @@
             "state": "translated",
             "value": "Correspondance avec %@ !"
           }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Đã ghép đôi với %@!"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@와 매치되었습니다!"
+          }
         }
       }
     },
@@ -62,6 +98,18 @@
             "state": "translated",
             "value": "Signaler"
           }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Báo cáo"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "신고"
+          }
         }
       }
     },
@@ -77,6 +125,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "L'opérateur peut vérifier et supprimer le contenu des messages afin de maintenir un service sain. De plus, le compte peut être suspendu en cas d'utilisation inappropriée."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Người điều hành có thể kiểm tra và xóa nội dung tin nhắn nhằm duy trì dịch vụ lành mạnh. Ngoài ra, tài khoản có thể bị đình chỉ nếu xác nhận việc sử dụng không phù hợp."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "운영자는 건전한 서비스를 위해 메시지 내용을 확인 및 삭제할 수 있습니다. 또한 부적절한 사용이 확인되면 계정이 정지될 수 있습니다."
           }
         }
       }

@@ -1,39 +1,65 @@
 {
-  "sourceLanguage": "en",
-  "strings": {
-    "": {},
-    "Next": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "つぎへ"
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "Next" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suivant"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Suivant"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "つぎへ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다음"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiếp theo"
           }
         }
       }
     },
-    "What's your nick name?": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ニックネームを設定してください"
+    "What's your nick name?" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quel est votre surnom ?"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quel est votre surnom ?"
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ニックネームを設定してください"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "닉네임이 무엇인가요?"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biệt danh của bạn là gì?"
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

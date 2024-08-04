@@ -14,6 +14,18 @@
             "state": "translated",
             "value": "Répondons"
           }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hãy trả lời"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "답장하자"
+          }
         }
       }
     },
@@ -29,6 +41,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "J'aime"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thích"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "좋아요"
           }
         }
       }
@@ -46,6 +70,18 @@
             "state": "translated",
             "value": "MESSAGE"
           }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TIN NHẮN"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "메시지"
+          }
         }
       }
     },
@@ -61,6 +97,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "CORRESPONDANCE RÉCENTE"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GHÉP ĐÔI GẦN ĐÂY"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "최근 매치"
           }
         }
       }
@@ -78,9 +126,22 @@
             "state": "translated",
             "value": "Voir plus"
           }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xem thêm"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "더 보기"
+          }
         }
       }
     }
   },
   "version": "1.0"
 }
+
