@@ -14,6 +14,18 @@
             "state": "translated",
             "value": "Êtes-vous sûr de vouloir supprimer votre compte ?"
           }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bạn có chắc chắn muốn xóa tài khoản của mình không?"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "정말 계정을 삭제하시겠습니까?"
+          }
         }
       }
     },
@@ -29,6 +41,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Supprimer le compte"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xóa tài khoản"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "계정 삭제"
           }
         }
       }
@@ -46,6 +70,18 @@
             "state": "translated",
             "value": "Pas maintenant"
           }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Không phải bây giờ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "지금은 안함"
+          }
         }
       }
     },
@@ -61,6 +97,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "Autre raison"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lý do khác"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "기타 이유"
           }
         }
       }
@@ -78,6 +126,18 @@
             "state": "translated",
             "value": "Procéder à la suppression"
           }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tiến hành xóa"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "삭제 진행"
+          }
         }
       }
     },
@@ -94,9 +154,22 @@
             "state": "translated",
             "value": "Cela **ne peut pas** être annulé ou récupéré."
           }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Điều này **không thể** hoàn tác hoặc khôi phục."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 작업은 **취소**하거나 복구할 수 없습니다."
+          }
         }
       }
     }
   },
   "version": "1.0"
 }
+

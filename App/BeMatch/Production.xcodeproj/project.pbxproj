@@ -170,9 +170,7 @@
 				en,
 				ja,
 				Base,
-				vi,
 				fr,
-				ko,
 			);
 			mainGroup = B783E0C32A11FF87002E782F;
 			productRefGroup = B783E0CD2A11FF87002E782F /* Products */;

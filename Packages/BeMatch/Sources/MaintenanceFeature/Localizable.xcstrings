@@ -14,6 +14,18 @@
             "state": "translated",
             "value": "Contactez-nous"
           }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Liên hệ với chúng tôi"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "문의하기"
+          }
         }
       }
     },
@@ -30,6 +42,18 @@
             "state": "translated",
             "value": "Veuillez patienter un moment jusqu'à ce que le service reprenne."
           }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vui lòng đợi một chút cho đến khi dịch vụ hoạt động trở lại."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "서비스가 재개될 때까지 잠시 기다려 주십시오."
+          }
         }
       }
     },
@@ -45,6 +69,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "En maintenance"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Đang bảo trì"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "점검 중"
           }
         }
       }

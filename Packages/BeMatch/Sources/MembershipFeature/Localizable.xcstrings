@@ -14,6 +14,18 @@
             "state" : "translated",
             "value" : "%2$@のための%1$@"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ cho %2$@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$@을 위한 %1$@"
+          }
         }
       }
     },
@@ -29,6 +41,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "1. 招待コードを送る"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Gửi mã mời"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. 초대 코드 보내기"
           }
         }
       }
@@ -46,6 +70,18 @@
             "state" : "translated",
             "value" : "2. お互いに%@無料！"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. %@ miễn phí cho cả hai bên!"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. 양측 모두에게 %@ 무료!"
+          }
         }
       }
     },
@@ -62,6 +98,18 @@
             "state" : "translated",
             "value" : "で気になる人を見つけよう！"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tìm ai đó bạn quan tâm!"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "관심 있는 사람을 찾으세요!"
+          }
         }
       }
     },
@@ -77,6 +125,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "特典の受け取り方"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cách nhận lợi ích"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "혜택을 받는 방법"
           }
         }
       }
@@ -100,6 +160,18 @@
             "state" : "translated",
             "value" : "see-who-sent-it-ja"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "xem-ai-đã-gửi"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "누가 보냈는지 보기"
+          }
         }
       }
     },
@@ -115,6 +187,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "招待した人も、された人も"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mời bạn bè và cả hai đều nhận"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "친구를 초대하고 둘 다 받으세요"
           }
         }
       }
@@ -132,6 +216,18 @@
             "state" : "translated",
             "value" : "invite-ticket-ja"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mã-mời"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "초대-티켓"
+          }
         }
       }
     },
@@ -147,6 +243,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "先着%lld名限定"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giới hạn cho %lld người dùng đầu tiên"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "선착순 %lld명 한정"
           }
         }
       }
@@ -164,6 +272,18 @@
             "state" : "translated",
             "value" : "10倍楽しめるプレミアムプラン"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gói Premium để có nhiều niềm vui gấp 10 lần"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10배 더 즐거운 프리미엄 플랜"
+          }
         }
       }
     },
@@ -179,6 +299,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "定期課金。いつでもキャンセルできます。お支払いはiTunesアカウントに請求され、iTunes Storeの設定でキャンセルするまで、購読は%@/週で自動更新されます。ロック解除をタップすると、利用規約と自動更新に同意したことになります。"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thanh toán định kỳ. Bạn có thể hủy bất cứ lúc nào. Thanh toán sẽ được tính vào tài khoản iTunes của bạn và đăng ký của bạn sẽ tự động gia hạn tại %@/tuần cho đến khi bạn hủy trong cài đặt iTunes Store. Bằng cách nhấn Mở khóa, bạn đồng ý với Điều khoản Dịch vụ và tự động gia hạn."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "정기 결제. 언제든지 취소할 수 있습니다. 결제는 iTunes 계정으로 청구되며, iTunes Store 설정에서 취소할 때까지 구독이 %@/주에 자동 갱신됩니다. 잠금 해제를 탭하면 서비스 약관과 자동 갱신에 동의하는 것입니다."
           }
         }
       }
@@ -196,6 +328,18 @@
             "state" : "translated",
             "value" : "自分をLikeした人を見れる！"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xem ai đã gửi nó!"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "누가 보냈는지 확인하세요!"
+          }
         }
       }
     },
@@ -211,6 +355,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "まだBeMatch.を使っていない友達に招待コードを贈りましょう！"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gửi mã mời cho một người bạn chưa sử dụng BeMatch."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeMatch를 사용하지 않은 친구에게 초대 코드를 보내세요."
           }
         }
       }
@@ -228,6 +384,18 @@
             "state" : "translated",
             "value" : "招待コードを送る"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gửi mã mời"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "초대 코드 보내기"
+          }
         }
       }
     },
@@ -243,6 +411,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "うれしい特典"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ưu đãi đặc biệt"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "특별 제공"
           }
         }
       }
@@ -260,6 +440,18 @@
             "state" : "translated",
             "value" : "続ける - %@/週"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nâng cấp với %@/tuần"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "업그레이드 - %@/주"
+          }
         }
       }
     },
@@ -275,6 +467,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "相手が招待コードを入力して登録すると、お互いにBeMatch.PROを必ずプレゼント！"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Khi họ nhập Mã mời và đăng ký, cả hai bạn chắc chắn sẽ nhận được BeMatch.PRO!"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "초대 코드를 입력하고 등록하면 두 사람 모두 BeMatch.PRO를 받을 수 있습니다!"
           }
         }
       }
@@ -292,6 +496,18 @@
             "state" : "translated",
             "value" : "友達があなたの招待コードを\n入力すると、お互いに"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "khi họ sử dụng mã mời của bạn, bạn sẽ nhận được"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "친구가 초대 코드를 입력하면"
+          }
         }
       }
     },
@@ -307,6 +523,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "の特典がお互いにもらえる！"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "những lợi ích có giá trị"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "가치 있는 혜택을 받을 수 있습니다!"
           }
         }
       }
