@@ -19,6 +19,7 @@ var package = Package(
     .library(name: "ConfigGlobalClient", targets: ["ConfigGlobalClient"]),
     .library(name: "ContactsClient", targets: ["ContactsClient"]),
     .library(name: "DeviceCheckClient", targets: ["DeviceCheckClient"]),
+    .library(name: "DeviceClient", targets: ["DeviceClient"]),
     .library(name: "FacebookClient", targets: ["FacebookClient"]),
     .library(name: "FeedbackGeneratorClient", targets: ["FeedbackGeneratorClient"]),
     .library(name: "FirebaseAuthClient", targets: ["FirebaseAuthClient"]),
@@ -85,6 +86,10 @@ var package = Package(
       .product(name: "DependenciesMacros", package: "swift-dependencies"),
     ]),
     .target(name: "DeviceCheckClient", dependencies: [
+      .product(name: "Dependencies", package: "swift-dependencies"),
+      .product(name: "DependenciesMacros", package: "swift-dependencies"),
+    ]),
+    .target(name: "DeviceClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
       .product(name: "DependenciesMacros", package: "swift-dependencies"),
     ]),
