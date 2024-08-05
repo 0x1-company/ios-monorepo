@@ -19,7 +19,7 @@ public struct DeleteAccountLogic {
     @BindingState public var otherReason = ""
     public var selectedReasons: [String] = []
     public let reasons = [
-      String(localized: "Safety or privacy conerns", bundle: .module),
+      String(localized: "Safety or privacy concerns", bundle: .module),
       String(localized: "I want to create a new account", bundle: .module),
       String(localized: "I don't know how to use it", bundle: .module),
     ]
