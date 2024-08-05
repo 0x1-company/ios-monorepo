@@ -149,6 +149,7 @@ let package = Package(
     .target(name: "DeleteAccountLogic", dependencies: [
       "APIClient",
       "AnalyticsKeys",
+      .product(name: "ApolloConcurrency", package: "Utility"),
       .product(name: "FirebaseAuthClient", package: "Dependencies"),
       .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),

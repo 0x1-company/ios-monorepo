@@ -282,7 +282,6 @@
       }
     },
     "Safety or privacy concerns" : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -321,9 +320,6 @@
           }
         }
       }
-    },
-    "Safety or privacy conerns" : {
-
     }
   },
   "version" : "1.0"
