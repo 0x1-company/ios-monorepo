@@ -41,15 +41,7 @@ public struct RecommendationLogic {
         analytics.logScreen(screenName: "Recommendation", of: self)
         return .merge(
           .run(operation: { send in
-            await withTaskCancellation(id: Cancel.recommendations, cancelInFlight: true) {
-              do {
-                for try await data in recommendations() {
-                  await send(.recommendationsResponse(.success(data)), animation: .default)
-                }
-              } catch {
-                await send(.recommendationsResponse(.failure(error)), animation: .default)
-              }
-            }
+            await requestRecommendations(send: send)
           }),
           .run(operation: { _ in
             guard try await requestAuthorization([.alert, .sound, .badge])
@@ -72,6 +64,11 @@ public struct RecommendationLogic {
         state = .empty()
         return .none
 
+      case .empty(.delegate(.shareFinished)):
+        return .run { send in
+          await requestRecommendations(send: send)
+        }
+
       default:
         return .none
       }
@@ -81,6 +78,18 @@ public struct RecommendationLogic {
     }
     .ifCaseLet(\.empty, action: \.empty) {
       RecommendationEmptyLogic()
+    }
+  }
+
+  private func requestRecommendations(send: Send<Action>) async {
+    await withTaskCancellation(id: Cancel.recommendations, cancelInFlight: true) {
+      do {
+        for try await data in recommendations() {
+          await send(.recommendationsResponse(.success(data)), animation: .default)
+        }
+      } catch {
+        await send(.recommendationsResponse(.failure(error)), animation: .default)
+      }
     }
   }
 }
