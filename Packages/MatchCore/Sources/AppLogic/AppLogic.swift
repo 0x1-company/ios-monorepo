@@ -141,6 +141,7 @@ public struct AppLogic {
 
       case .tutorial(.delegate(.finish)):
         state.tutorial = nil
+        state.destination = .receivedLike()
         return .none
 
       case let .appDelegate(.userNotifications(.didReceiveResponse(response, _))):
