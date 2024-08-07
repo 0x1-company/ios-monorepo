@@ -45,7 +45,7 @@ var package = Package(
     .package(url: "https://github.com/facebook/facebook-ios-sdk", from: "17.0.2"),
     .package(url: "https://github.com/firebase/firebase-ios-sdk", from: "10.29.0"),
     .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.3.6"),
-    .package(url: "https://github.com/AppsFlyerSDK/AppsFlyerFramework-Dynamic", from: "6.14.6"),
+    .package(url: "https://github.com/AppsFlyerSDK/AppsFlyerFramework-Dynamic", from: "6.15.0"),
   ],
   targets: [
     .target(name: "ActivityView"),
