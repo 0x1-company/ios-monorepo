@@ -1,6 +1,12 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@ / month" : {
+
+    },
+    "%@ / week" : {
+
+    },
     "1 Month" : {
       "localizations" : {
         "ja" : {
