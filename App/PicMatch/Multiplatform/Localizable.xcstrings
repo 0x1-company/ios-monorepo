@@ -1,0 +1,43 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "@bematchus" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "@bematchjp"
+          }
+        }
+      }
+    },
+    "bematch" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "bematchus"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "bematchjp"
+          }
+        }
+      }
+    },
+    "bematchus" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "bematchjp"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

@@ -1,0 +1,119 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Answer" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Répondre"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "回答する"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trả lời"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "답변"
+          }
+        }
+      }
+    },
+    "Currently unable to re-register" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actuellement impossible de se réinscrire"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "現在再登録することができません"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hiện không thể đăng ký lại"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "현재 재등록 불가"
+          }
+        }
+      }
+    },
+    "Once you have deleted your BeMatch account, you will not be able to register again for a certain period of time after the deletion." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une fois que vous avez supprimé votre compte BeMatch, vous ne pourrez pas vous réinscrire pendant une certaine période après la suppression."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一度BeMatchのアカウント削除をされた方は、削除してから一定期間は再登録していただくことができません。"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sau khi bạn đã xóa tài khoản BeMatch của mình, bạn sẽ không thể đăng ký lại trong một khoảng thời gian nhất định sau khi xóa."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BeMatch 계정을 삭제하면 삭제 후 일정 기간 동안 다시 등록할 수 없습니다."
+          }
+        }
+      }
+    },
+    "Please answer our simple questionnaire to help us improve our service." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez répondre à notre simple questionnaire pour nous aider à améliorer notre service."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サービス改善のためにかんたんなアンケートへのご回答お願いします。"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vui lòng trả lời bảng câu hỏi đơn giản của chúng tôi để giúp chúng tôi cải thiện dịch vụ của mình."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "서비스 개선을 위해 간단한 설문지에 답변해 주세요."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
+

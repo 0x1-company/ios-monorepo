@@ -10,6 +10,13 @@ BeMatch:
     - Packages/BeMatch/**
     - BeMatch.xcworkspace/**
 
+PicMatch:
+- changed-files:
+  - any-glob-to-any-file:
+    - App/PicMatch/**
+    - Packages/PicMatch/**
+    - PicMatch.xcworkspace/**
+
 TapMatch:
 - changed-files:
   - any-glob-to-any-file:

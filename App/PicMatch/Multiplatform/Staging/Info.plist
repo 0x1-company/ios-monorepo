@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>fr</string>
+		<string>ja</string>
+	</array>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Allow to see your optimized ads</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>Staging</string>
+	<key>CFBundlePackageType</key>
+	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.54.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
+	<true/>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
+	<key>FirebaseAutomaticScreenReportingEnabled</key>
+	<false/>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<true/>
+	</dict>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>If you want to talk about product discuss</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>👋 Talk to CEO!</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>talk-to-founder</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>If you want to talk about development discuss</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>👨🏻‍💻 Talk to Developer</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>talk-to-developer</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Tell us about any glitches or improvements!</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>🥺 Contact us</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>/</string>
+		</dict>
+	</array>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIImageName</key>
+		<string>Logo</string>
+		<key>UIColorName</key>
+		<string>BackgroundColor</string>
+	</dict>
+	<key>UILaunchStoryboardName</key>
+	<string>Launch Screen</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Dark</string>
+	<key>endpointURL</key>
+	<string>https://api.staging.picmatch.jp/graphql</string>
+	<key>apps-flyer-dev-key</key>
+	<string>ArrQmb3aHuS47UnotusTAe</string>
+	<key>apple-app-id</key>
+	<string>6473888434</string>
+	<key>FacebookAppID</key>
+	<string>398553079297373</string>
+	<key>FacebookClientToken</key>
+	<string>c0105ac08c9f2af92ea97f15eebc4387</string>
+	<key>FacebookDisplayName</key>
+	<string>PicMatch.</string>
+	<key>PRODUCTS</key>
+	<array>
+		<string>app.picmatch.ios.staging.subscription.pro.1week</string>
+		<string>app.picmatch.ios.staging.subscription.pro.1month</string>
+		<string>app.picmatch.ios.staging.subscription.pro.3month</string>
+		<string>app.picmatch.ios.staging.subscription.pro.6month</string>
+		<string>app.picmatch.ios.staging.subscription.pro.1year</string>
+	</array>
+</dict>
+</plist>

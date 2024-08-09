@@ -28,6 +28,7 @@ public struct EnvironmentClient {
 
   public enum Brand: String, Equatable {
     case bematch = "BEMATCH"
+    case picmatch = "PICMATCH"
     case tapmatch = "TAPMATCH"
     case tenmatch = "TENMATCH"
     case trinket = "TRINKET"
@@ -36,6 +37,8 @@ public struct EnvironmentClient {
       switch self {
       case .bematch:
         return "BeMatch"
+      case .picmatch:
+        return "PicMatch"
       case .tapmatch:
         return "TapMatch"
       case .tenmatch:
@@ -49,6 +52,8 @@ public struct EnvironmentClient {
       switch self {
       case .bematch:
         return "BeReal"
+      case .picmatch:
+        return "Instagram"
       case .tapmatch:
         return "TapNow"
       case .tenmatch:
