@@ -241,6 +241,8 @@ public struct ProfilePictureSettingLogic {
     switch brand {
     case .bematch:
       return size == CGSize(width: 1500, height: 2000)
+    case .picmatch:
+      return true
     case .tapmatch:
       return size.width == size.height
     case .tenmatch:

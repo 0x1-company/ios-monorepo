@@ -79,6 +79,8 @@ public struct UsernameSettingLogic {
                   try await api.updateBeReal(bematchInput)
                 }))
               }
+            case .picmatch:
+              break
             case .tapmatch:
               group.addTask {
                 await send(.updateTapNowResponse(Result {

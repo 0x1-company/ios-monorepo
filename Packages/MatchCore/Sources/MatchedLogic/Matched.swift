@@ -24,7 +24,7 @@ public struct MatchedLogic {
     public let targetUserDisplayName: String
     public var displayTargetUserInfo: String {
       switch brand {
-      case .bematch, .tapmatch, .trinket:
+      case .bematch, .picmatch, .tapmatch, .trinket:
         return externalProductURL.absoluteString
       case .tenmatch:
         return tentenPinCode
@@ -78,7 +78,7 @@ public struct MatchedLogic {
 
       case .addExternalProductButtonTapped:
         switch environment.brand() {
-        case .bematch, .tapmatch, .trinket:
+        case .bematch, .picmatch, .tapmatch, .trinket:
           analytics.buttonClick(name: \.addExternalProduct, parameters: [
             "url": state.externalProductURL.absoluteString,
           ])
