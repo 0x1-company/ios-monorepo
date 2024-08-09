@@ -161,7 +161,7 @@ extension ConfirmationDialogState where Action == ProfileLogic.Destination.Actio
       }
     }
   }
-  
+
   static func picmatch() -> Self {
     Self {
       TextState("Select Instagram", bundle: .module)
