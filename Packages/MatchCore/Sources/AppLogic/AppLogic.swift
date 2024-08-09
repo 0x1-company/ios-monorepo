@@ -195,6 +195,8 @@ public struct AppLogic {
     switch brand {
     case .bematch:
       return !user.berealUsername.isEmpty && user.images.count >= 3
+    case .picmatch:
+      return false
     case .tapmatch:
       return !user.tapnowUsername.isEmpty && user.images.count >= 3
     case .tenmatch:
