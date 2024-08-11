@@ -15,6 +15,7 @@
 		B783E0E82A11FFBE002E782F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B783E0E72A11FFBE002E782F /* Assets.xcassets */; };
 		B783E0EB2A11FFBE002E782F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B783E0EA2A11FFBE002E782F /* Preview Assets.xcassets */; };
 		B783E1042A12000A002E782F /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B783E1032A12000A002E782F /* App.swift */; };
+		B78C58F82C68777D009FD1E1 /* AppsFlyerClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = B78C58F72C68777D009FD1E1 /* AppsFlyerClientLive */; };
 		B7AAEEED2BCFF786005704E4 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B7AAEEEC2BCFF786005704E4 /* Localizable.xcstrings */; };
 		B7BC78BA2B55571C00C0B97E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7BC78B92B55571C00C0B97E /* StoreKit.framework */; };
 		B7DA47DD2C43E03D00BC96F2 /* APIClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = B7DA47DC2C43E03D00BC96F2 /* APIClientLive */; };
@@ -57,6 +58,7 @@
 			files = (
 				B7765AF82B46C82A001B5C13 /* AppTrackingTransparency.framework in Frameworks */,
 				B7765AF62B46C825001B5C13 /* AdSupport.framework in Frameworks */,
+				B78C58F82C68777D009FD1E1 /* AppsFlyerClientLive in Frameworks */,
 				B7DA47DD2C43E03D00BC96F2 /* APIClientLive in Frameworks */,
 				B7BC78BA2B55571C00C0B97E /* StoreKit.framework in Frameworks */,
 				B75814232BFE1B0D00CB5A60 /* AppFeature in Frameworks */,
@@ -138,6 +140,7 @@
 			packageProductDependencies = (
 				B75814222BFE1B0D00CB5A60 /* AppFeature */,
 				B7DA47DC2C43E03D00BC96F2 /* APIClientLive */,
+				B78C58F72C68777D009FD1E1 /* AppsFlyerClientLive */,
 			);
 			productName = iOS;
 			productReference = B783E0E12A11FFBE002E782F /* App.app */;
@@ -426,6 +429,10 @@
 		B75814222BFE1B0D00CB5A60 /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;
+		};
+		B78C58F72C68777D009FD1E1 /* AppsFlyerClientLive */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AppsFlyerClientLive;
 		};
 		B7DA47DC2C43E03D00BC96F2 /* APIClientLive */ = {
 			isa = XCSwiftPackageProductDependency;

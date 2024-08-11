@@ -12,6 +12,7 @@ var package = Package(
     .library(name: "ActivityView", targets: ["ActivityView"]),
     .library(name: "AnalyticsClient", targets: ["AnalyticsClient"]),
     .library(name: "AppsFlyerClient", targets: ["AppsFlyerClient"]),
+    .library(name: "AppsFlyerClientLive", targets: ["AppsFlyerClientLive"]),
     .library(name: "ATTrackingManagerClient", targets: ["ATTrackingManagerClient"]),
     .library(name: "AVFoundationClient", targets: ["AVFoundationClient"]),
     .library(name: "AVPlayerNotificationClient", targets: ["AVPlayerNotificationClient"]),
@@ -57,6 +58,9 @@ var package = Package(
     .target(name: "AppsFlyerClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
       .product(name: "DependenciesMacros", package: "swift-dependencies"),
+    ]),
+    .target(name: "AppsFlyerClientLive", dependencies: [
+      "AppsFlyerClient",
       .product(name: "AppsFlyerLib-Dynamic", package: "AppsFlyerFramework-Dynamic"),
     ]),
     .target(name: "ATTrackingManagerClient", dependencies: [
