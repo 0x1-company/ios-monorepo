@@ -19,7 +19,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>PicMatch.</string>
+	<string>PicMatch</string>
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
@@ -112,7 +112,7 @@
 	<key>FacebookClientToken</key>
 	<string>c0105ac08c9f2af92ea97f15eebc4387</string>
 	<key>FacebookDisplayName</key>
-	<string>PicMatch.</string>
+	<string>PicMatch</string>
 	<key>PRODUCTS</key>
 	<array>
 		<string>app.picmatch.ios.production.subscription.pro.1week</string>
