@@ -67,7 +67,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
             docsURL: URL(string: "https://docs.bematch.jp")!,
             howToMovieURL: URL(string: "https://storage.googleapis.com/bematch-production.appspot.com/public/how-to.mov")!
           )
-          $0.configGlobal = ConfigGlobalClient.live(documentId: "bematch")
+          $0.configGlobal = ConfigGlobalClient.live(documentId: "bematch")          
         }
     }
   )

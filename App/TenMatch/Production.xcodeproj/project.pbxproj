@@ -15,6 +15,7 @@
 		B783E0E82A11FFBE002E782F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B783E0E72A11FFBE002E782F /* Assets.xcassets */; };
 		B783E0EB2A11FFBE002E782F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B783E0EA2A11FFBE002E782F /* Preview Assets.xcassets */; };
 		B783E1042A12000A002E782F /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B783E1032A12000A002E782F /* App.swift */; };
+		B78C59002C6877B6009FD1E1 /* AppsFlyerClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = B78C58FF2C6877B6009FD1E1 /* AppsFlyerClientLive */; };
 		B7AAEEED2BCFF786005704E4 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B7AAEEEC2BCFF786005704E4 /* Localizable.xcstrings */; };
 		B7AEC2FD2BF7402E001EC298 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B7AEC2FC2BF7402E001EC298 /* AppFeature */; };
 		B7BC78BA2B55571C00C0B97E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7BC78B92B55571C00C0B97E /* StoreKit.framework */; };
@@ -59,6 +60,7 @@
 			files = (
 				B7765AF82B46C82A001B5C13 /* AppTrackingTransparency.framework in Frameworks */,
 				B7765AF62B46C825001B5C13 /* AdSupport.framework in Frameworks */,
+				B78C59002C6877B6009FD1E1 /* AppsFlyerClientLive in Frameworks */,
 				B7DA47E12C43E07300BC96F2 /* APIClientLive in Frameworks */,
 				B7BC78BA2B55571C00C0B97E /* StoreKit.framework in Frameworks */,
 				B7AEC2FD2BF7402E001EC298 /* AppFeature in Frameworks */,
@@ -141,6 +143,7 @@
 			packageProductDependencies = (
 				B7AEC2FC2BF7402E001EC298 /* AppFeature */,
 				B7DA47E02C43E07300BC96F2 /* APIClientLive */,
+				B78C58FF2C6877B6009FD1E1 /* AppsFlyerClientLive */,
 			);
 			productName = iOS;
 			productReference = B783E0E12A11FFBE002E782F /* App.app */;
@@ -433,6 +436,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B78C58FF2C6877B6009FD1E1 /* AppsFlyerClientLive */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AppsFlyerClientLive;
+		};
 		B7AEC2FC2BF7402E001EC298 /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;
