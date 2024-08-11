@@ -1,3 +1,4 @@
+import AppsFlyerClient
 import AppsFlyerLib
 import Dependencies
 

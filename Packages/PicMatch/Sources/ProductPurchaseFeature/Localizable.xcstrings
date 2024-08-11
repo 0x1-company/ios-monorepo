@@ -1,0 +1,102 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Continue" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "続ける"
+          }
+        }
+      }
+    },
+    "most popular" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "le plus populaire"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "いちばん人気"
+          }
+        }
+      }
+    },
+    "Premium Plan" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan Premium"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10倍楽しめるプレミアムプラン"
+          }
+        }
+      }
+    },
+    "Recurring billing. You can cancel at any time. Your payment will be charged to your iTunes account and will auto-renew until you cancel in the iTunes Store settings. By tapping Unlock, you agree to the Terms of Service and auto-renewal." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facturation récurrente. Vous pouvez annuler à tout moment. Votre paiement sera débité de votre compte iTunes et sera renouvelé automatiquement jusqu'à ce que vous annuliez dans les paramètres de l'iTunes Store. En appuyant sur Débloquer, vous acceptez les conditions d'utilisation et le renouvellement automatique."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "定期課金。いつでもキャンセルできます。お支払いはiTunesアカウントに請求され、iTunes Storeの設定でキャンセルするまで、自動更新されます。ロック解除をタップすると、利用規約と自動更新に同意したことになります。"
+          }
+        }
+      }
+    },
+    "Restore a purchase" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurer un achat"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入を復元する"
+          }
+        }
+      }
+    },
+    "See who likes you" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voir qui vous aime"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自分をLikeした人を見れる！"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

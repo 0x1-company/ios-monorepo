@@ -5,6 +5,9 @@ bootstrap: secrets
 bematch:
 	open BeMatch.xcworkspace
 
+picmatch:
+	open PicMatch.xcworkspace
+
 tapmatch:
 	open TapMatch.xcworkspace
 

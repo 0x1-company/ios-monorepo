@@ -86,6 +86,8 @@ public struct ProfileEditLogic {
         let username = switch brand {
         case .bematch:
           state.user?.berealUsername ?? ""
+        case .picmatch:
+          ""
         case .tapmatch:
           state.user?.tapnowUsername ?? ""
         case .tenmatch:

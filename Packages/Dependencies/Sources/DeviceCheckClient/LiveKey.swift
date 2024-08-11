@@ -8,6 +8,6 @@ import DeviceCheck
 
 extension DeviceCheckClient: DependencyKey {
   public static let liveValue = Self(
-    generateToken: { DCDevice.current.generateToken() }
+    generateToken: { try await DCDevice.current.generateToken() }
   )
 }

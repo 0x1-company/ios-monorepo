@@ -23,16 +23,16 @@ public struct ProductPurchaseContentRowView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
 
           VStack(alignment: .trailing, spacing: 4) {
-//            if let displayPrice = viewStore.displayPrice {
-//              Text(displayPrice)
-//                .font(.callout)
-//                .fontWeight(.semibold)
-//                .foregroundStyle(Color.secondary)
-//                .overlay(alignment: .center) {
-//                  Color.secondary
-//                    .frame(height: 2)
-//                }
-//            }
+            if let displayPrice = viewStore.displayPrice {
+              Text(displayPrice)
+                .font(.callout)
+                .fontWeight(.semibold)
+                .foregroundStyle(Color.secondary)
+                .overlay(alignment: .center) {
+                  Color.secondary
+                    .frame(height: 2)
+                }
+            }
 
             Text(viewStore.displayPriceWithPeriod)
               .font(.callout)

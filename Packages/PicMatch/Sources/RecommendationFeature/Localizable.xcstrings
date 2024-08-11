@@ -1,0 +1,38 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Just a little... Too much swiping... Please help me share BeMatch... 🙏." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Juste un peu... Trop de balayages... Aidez-moi à partager BeMatch... 🙏."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ちょっと...スワイプしすぎです...。BeMatchのシェアに協力してください... 🙏"
+          }
+        }
+      }
+    },
+    "Share" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partager"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "シェアする"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

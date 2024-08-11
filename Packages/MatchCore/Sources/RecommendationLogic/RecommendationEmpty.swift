@@ -37,6 +37,11 @@ public struct RecommendationEmptyLogic {
     case shareButtonTapped
     case onCompletion(CompletionWithItems)
     case binding(BindingAction<State>)
+    case delegate(Delegate)
+
+    public enum Delegate: Equatable {
+      case shareFinished
+    }
   }
 
   @Dependency(\.analytics) var analytics
@@ -61,6 +66,10 @@ public struct RecommendationEmptyLogic {
           "activity_type": completion.activityType?.rawValue ?? "",
           "result": completion.result,
         ])
+
+        if completion.result {
+          return Effect.send(.delegate(.shareFinished), animation: .default)
+        }
         return .none
 
       default:

@@ -30,6 +30,8 @@ public struct OnboardLogic {
       switch environment.brand() {
       case .bematch:
         username = UsernameSettingLogic.State(username: user?.berealUsername ?? "")
+      case .picmatch:
+        username = UsernameSettingLogic.State(username: "")
       case .tapmatch:
         username = UsernameSettingLogic.State(username: user?.tapnowUsername ?? "")
       case .tenmatch:

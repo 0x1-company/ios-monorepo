@@ -132,6 +132,8 @@ public struct MembershipLogic {
           let invitationLink = switch brand {
           case .bematch:
             "https://bematch.onelink.me/nob4/mhxumci1"
+          case .picmatch:
+            ""
           case .tapmatch:
             "https://tapmatch.onelink.me/3cHT/9p06ezpt"
           case .tenmatch:

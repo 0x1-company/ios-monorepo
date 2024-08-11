@@ -69,7 +69,7 @@ let package = Package(
     .package(path: "../Utility"),
     .package(path: "../Dependencies"),
     .package(url: "https://github.com/apollographql/apollo-ios", from: "1.14.1"),
-    .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.3.6"),
+    .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.3.7"),
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.12.1"),
   ],
   targets: [
@@ -149,6 +149,7 @@ let package = Package(
     .target(name: "DeleteAccountLogic", dependencies: [
       "APIClient",
       "AnalyticsKeys",
+      .product(name: "ApolloConcurrency", package: "Utility"),
       .product(name: "FirebaseAuthClient", package: "Dependencies"),
       .product(name: "FeedbackGeneratorClient", package: "Dependencies"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),

@@ -10,14 +10,5 @@ public extension DependencyValues {
 }
 
 extension Build: TestDependencyKey {
-  public static let testValue = Self(
-    isDebug: unimplemented("\(Self.self).isDebug"),
-    bundleURL: unimplemented("\(Self.self).bundleURL"),
-    bundleIdentifier: unimplemented("\(Self.self).bundleIdentifier"),
-    bundlePath: unimplemented("\(Self.self).bundlePath"),
-    bundleName: unimplemented("\(Self.self).bundleName"),
-    bundleVersion: unimplemented("\(Self.self).bundleVersion"),
-    bundleShortVersion: unimplemented("\(Self.self).bundleShortVersion"),
-    infoDictionary: unimplemented("\(Self.self).infoDictionary")
-  )
+  public static let testValue = Self()
 }

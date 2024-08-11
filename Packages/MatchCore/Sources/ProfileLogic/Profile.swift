@@ -62,6 +62,8 @@ public struct ProfileLogic {
         switch environment.brand() {
         case .bematch:
           state.destination = .confirmationDialog(.bematch())
+        case .picmatch:
+          state.destination = .confirmationDialog(.picmatch())
         case .tapmatch:
           state.destination = .confirmationDialog(.tapmatch())
         case .tenmatch:
@@ -153,6 +155,19 @@ extension ConfirmationDialogState where Action == ProfileLogic.Destination.Actio
     } actions: {
       ButtonState(action: .jumpToBeReal) {
         TextState("Jump to BeReal", bundle: .module)
+      }
+      ButtonState(action: .editUsername) {
+        TextState("Edit username", bundle: .module)
+      }
+    }
+  }
+
+  static func picmatch() -> Self {
+    Self {
+      TextState("Select Instagram", bundle: .module)
+    } actions: {
+      ButtonState(action: .jumpToBeReal) {
+        TextState("Jump to Instagram", bundle: .module)
       }
       ButtonState(action: .editUsername) {
         TextState("Edit username", bundle: .module)

@@ -18,15 +18,14 @@ public struct ProductPurchaseContentRowLogic {
 
     public var displayPriceWithPeriod: String {
       let formatStyle = Decimal.FormatStyle.Currency(code: currencyCode)
-//      switch period {
-//      case .oneWeek, .oneMonth:
-//        let price = formatStyle.format(price / period.divisor)
-//        return String(localized: "\(price) / week", bundle: .module)
-//      case .threeMonths, .sixMonths, .twelveMonths:
-//        let price = formatStyle.format(price / period.divisor)
-//        return String(localized: "\(price) / month", bundle: .module)
-//      }
-      return formatStyle.format(price)
+      switch period {
+      case .oneWeek, .oneMonth:
+        let price = formatStyle.format(price / period.divisor)
+        return String(localized: "\(price) / week", bundle: .module)
+      case .threeMonths, .sixMonths, .twelveMonths:
+        let price = formatStyle.format(price / period.divisor)
+        return String(localized: "\(price) / month", bundle: .module)
+      }
     }
 
     public init(

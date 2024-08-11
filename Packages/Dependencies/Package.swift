@@ -13,6 +13,7 @@ var package = Package(
     .library(name: "AnalyticsClient", targets: ["AnalyticsClient"]),
     .library(name: "AnalyticsClientLive", targets: ["AnalyticsClientLive"]),
     .library(name: "AppsFlyerClient", targets: ["AppsFlyerClient"]),
+    .library(name: "AppsFlyerClientLive", targets: ["AppsFlyerClientLive"]),
     .library(name: "ATTrackingManagerClient", targets: ["ATTrackingManagerClient"]),
     .library(name: "AVFoundationClient", targets: ["AVFoundationClient"]),
     .library(name: "AVPlayerNotificationClient", targets: ["AVPlayerNotificationClient"]),
@@ -20,6 +21,7 @@ var package = Package(
     .library(name: "ConfigGlobalClient", targets: ["ConfigGlobalClient"]),
     .library(name: "ContactsClient", targets: ["ContactsClient"]),
     .library(name: "DeviceCheckClient", targets: ["DeviceCheckClient"]),
+    .library(name: "DeviceClient", targets: ["DeviceClient"]),
     .library(name: "FacebookClient", targets: ["FacebookClient"]),
     .library(name: "FeedbackGeneratorClient", targets: ["FeedbackGeneratorClient"]),
     .library(name: "FirebaseAuthClient", targets: ["FirebaseAuthClient"]),
@@ -42,10 +44,10 @@ var package = Package(
   ],
   dependencies: [
     .package(url: "https://github.com/apollographql/apollo-ios", from: "1.14.1"),
-    .package(url: "https://github.com/facebook/facebook-ios-sdk", from: "17.0.2"),
+    .package(url: "https://github.com/facebook/facebook-ios-sdk", from: "17.0.3"),
     .package(url: "https://github.com/firebase/firebase-ios-sdk", from: "10.29.0"),
-    .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.3.6"),
-    .package(url: "https://github.com/AppsFlyerSDK/AppsFlyerFramework-Dynamic", from: "6.14.6"),
+    .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.3.7"),
+    .package(url: "https://github.com/AppsFlyerSDK/AppsFlyerFramework-Dynamic", from: "6.15.0"),
   ],
   targets: [
     .target(name: "ActivityView"),
@@ -60,6 +62,9 @@ var package = Package(
     .target(name: "AppsFlyerClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
       .product(name: "DependenciesMacros", package: "swift-dependencies"),
+    ]),
+    .target(name: "AppsFlyerClientLive", dependencies: [
+      "AppsFlyerClient",
       .product(name: "AppsFlyerLib-Dynamic", package: "AppsFlyerFramework-Dynamic"),
     ]),
     .target(name: "ATTrackingManagerClient", dependencies: [
@@ -89,6 +94,10 @@ var package = Package(
       .product(name: "DependenciesMacros", package: "swift-dependencies"),
     ]),
     .target(name: "DeviceCheckClient", dependencies: [
+      .product(name: "Dependencies", package: "swift-dependencies"),
+      .product(name: "DependenciesMacros", package: "swift-dependencies"),
+    ]),
+    .target(name: "DeviceClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
       .product(name: "DependenciesMacros", package: "swift-dependencies"),
     ]),

@@ -1,0 +1,150 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "BeMatch is an application that allows you to exchange BeReal with everyone in Global!" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeMatch est une application qui vous permet d'échanger BeReal avec tout le monde dans le monde entier !"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeMatchは日本中のみんなとBeRealを交換できるアプリです"
+          }
+        }
+      }
+    },
+    "Get started" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commencer"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "さっそくはじめる"
+          }
+        }
+      }
+    },
+    "Hmmm... left when" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hmmm... à gauche quand"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "うーん...のときは左"
+          }
+        }
+      }
+    },
+    "If you both Like each other, a match is made. Let's give it a try right away!" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si vous vous aimez tous les deux, une correspondance est établie. Essayons-le tout de suite !"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お互いにLikeするとマッチが成立。早速試してみよう！"
+          }
+        }
+      }
+    },
+    "If you think, \"Maybe not...\", swipe left. If you think it's not quite right, swipe left." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si vous pensez « Peut-être pas... », balayez vers la gauche. Si vous pensez que ce n'est pas tout à fait ça, balayez vers la gauche."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ちょっと違うかも...と思ったら、左にスワイプしよう。Nopeしたことは相手に伝わらないから大丈夫。"
+          }
+        }
+      }
+    },
+    "Let's get started!" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commençons !"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "さっそくはじめよう！"
+          }
+        }
+      }
+    },
+    "Next" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suivant"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "次へ"
+          }
+        }
+      }
+    },
+    "Right if you are interested!" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À droite si vous êtes intéressé !"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "気になる人は右！"
+          }
+        }
+      }
+    },
+    "Skip" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passer"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スキップ"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
