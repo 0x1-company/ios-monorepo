@@ -41,7 +41,8 @@ public struct ConfigGlobalLogic {
 
     case .configResponse(.failure):
       state.account.isForceUpdate = .success(false)
-      state.account.isMaintenance = .success(true)
+      state.account.isMaintenance = .success(false)
+      state.child = .networkError()
       return .none
 
     default:
