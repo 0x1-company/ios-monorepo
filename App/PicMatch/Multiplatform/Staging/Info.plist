@@ -102,7 +102,7 @@
 	<key>UIUserInterfaceStyle</key>
 	<string>Dark</string>
 	<key>endpointURL</key>
-	<string>https://api.staging.picmatch.jp/graphql</string>
+	<string>https://picmatch-server-zjgv3o7bea-an.a.run.app/graphql</string>
 	<key>apps-flyer-dev-key</key>
 	<string>ArrQmb3aHuS47UnotusTAe</string>
 	<key>apple-app-id</key>
