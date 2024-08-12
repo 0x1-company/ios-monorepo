@@ -50,6 +50,8 @@ public extension API {
         public var locketUrl: String { __data["locketUrl"] }
         /// TentenのPINコード
         public var tentenPinCode: String { __data["tentenPinCode"] }
+        /// Instagramのusername
+        public var instagramUsername: String { __data["instagramUsername"] }
         public var externalProductUrl: String { __data["externalProductUrl"] }
         /// gender
         public var gender: GraphQLEnum<API.Gender> { __data["gender"] }
