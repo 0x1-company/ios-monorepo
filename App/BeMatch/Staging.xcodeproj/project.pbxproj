@@ -15,6 +15,7 @@
 		B783E0FD2A11FFD0002E782F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B783E0FC2A11FFD0002E782F /* Preview Assets.xcassets */; };
 		B783E1022A120003002E782F /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B783E1012A120003002E782F /* App.swift */; };
 		B78C58F42C68774D009FD1E1 /* AppsFlyerClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = B78C58F32C68774D009FD1E1 /* AppsFlyerClientLive */; };
+		B79C344E2C69BC63002C4E79 /* AnalyticsClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = B79C344D2C69BC63002C4E79 /* AnalyticsClientLive */; };
 		B7AAEEEF2BCFF941005704E4 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B7AAEEEE2BCFF941005704E4 /* Localizable.xcstrings */; };
 		B7BC78B82B55571400C0B97E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7BC78B72B55571400C0B97E /* StoreKit.framework */; };
 		B7C884252BCFD7540099548C /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B7C884242BCFD7540099548C /* AppFeature */; };
@@ -60,6 +61,7 @@
 				B7765AF22B46C80D001B5C13 /* AdSupport.framework in Frameworks */,
 				B78C58F42C68774D009FD1E1 /* AppsFlyerClientLive in Frameworks */,
 				B7DA47D92C43E00C00BC96F2 /* APIClientLive in Frameworks */,
+				B79C344E2C69BC63002C4E79 /* AnalyticsClientLive in Frameworks */,
 				B7BC78B82B55571400C0B97E /* StoreKit.framework in Frameworks */,
 				B7C884252BCFD7540099548C /* AppFeature in Frameworks */,
 			);
@@ -141,6 +143,7 @@
 				B7C884242BCFD7540099548C /* AppFeature */,
 				B7DA47D82C43E00C00BC96F2 /* APIClientLive */,
 				B78C58F32C68774D009FD1E1 /* AppsFlyerClientLive */,
+				B79C344D2C69BC63002C4E79 /* AnalyticsClientLive */,
 			);
 			productName = iOS;
 			productReference = B783E0F32A11FFD0002E782F /* App.app */;
@@ -425,6 +428,10 @@
 		B78C58F32C68774D009FD1E1 /* AppsFlyerClientLive */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppsFlyerClientLive;
+		};
+		B79C344D2C69BC63002C4E79 /* AnalyticsClientLive */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AnalyticsClientLive;
 		};
 		B7C884242BCFD7540099548C /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
