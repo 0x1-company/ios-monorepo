@@ -1,0 +1,6 @@
+mutation UpdateInstagram($input: UpdateInstagramInput!) {
+  updateInstagram(input: $input) {
+    id
+    instagramUsername
+  }
+}

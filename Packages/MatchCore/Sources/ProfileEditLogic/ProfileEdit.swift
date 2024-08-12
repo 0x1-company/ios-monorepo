@@ -87,7 +87,7 @@ public struct ProfileEditLogic {
         case .bematch:
           state.user?.berealUsername ?? ""
         case .picmatch:
-          ""
+          state.user?.instagramUsername ?? ""
         case .tapmatch:
           state.user?.tapnowUsername ?? ""
         case .tenmatch:

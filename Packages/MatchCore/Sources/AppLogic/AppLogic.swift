@@ -196,7 +196,7 @@ public struct AppLogic {
     case .bematch:
       return !user.berealUsername.isEmpty && user.images.count >= 3
     case .picmatch:
-      return false
+      return !user.instagramUsername.isEmpty && user.images.count >= 3
     case .tapmatch:
       return !user.tapnowUsername.isEmpty && user.images.count >= 3
     case .tenmatch:

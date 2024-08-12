@@ -39,6 +39,10 @@ public extension APIClient {
         let mutation = API.UpdateTentenMutation(input: input)
         return try await apolloClient.perform(mutation: mutation)
       },
+      updateInstagram: { input in
+        let mutation = API.UpdateInstagramMutation(input: input)
+        return try await apolloClient.perform(mutation: mutation)
+      },
       updateUserImageV2: { inputs in
         let mutation = API.UpdateUserImageV2Mutation(inputs: inputs)
         return try await apolloClient.perform(mutation: mutation)

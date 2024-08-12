@@ -30,6 +30,7 @@ public struct UsernameSettingLogic {
     case updateTapNowResponse(Result<API.UpdateTapNowMutation.Data, Error>)
     case updateLocketResponse(Result<API.UpdateLocketMutation.Data, Error>)
     case updateTentenResponse(Result<API.UpdateTentenMutation.Data, Error>)
+    case updateInstagramResponse(Result<API.UpdateInstagramMutation.Data, Error>)
     case binding(BindingAction<State>)
     case destination(PresentationAction<Destination.Action>)
     case delegate(Delegate)
@@ -63,6 +64,7 @@ public struct UsernameSettingLogic {
         let tapmatchInput = API.UpdateTapNowInput(username: state.value)
         let trinketInput = API.UpdateLocketInput(url: state.value)
         let tenmatchInput = API.UpdateTentenInput(pinCode: state.value)
+        let picmatchInput = API.UpdateInstagramInput(username: state.value)
 
         let brand = environment.brand()
 
@@ -80,7 +82,11 @@ public struct UsernameSettingLogic {
                 }))
               }
             case .picmatch:
-              break
+              group.addTask {
+                await send(.updateInstagramResponse(Result {
+                  try await api.updateInstagram(picmatchInput)
+                }))
+              }
             case .tapmatch:
               group.addTask {
                 await send(.updateTapNowResponse(Result {
@@ -106,7 +112,8 @@ public struct UsernameSettingLogic {
       case .updateBeRealResponse(.success),
            .updateTapNowResponse(.success),
            .updateLocketResponse(.success),
-           .updateTentenResponse(.success):
+           .updateTentenResponse(.success),
+           .updateInstagramResponse(.success):
         state.isActivityIndicatorVisible = false
         analytics.setUserProperty(key: \.username, value: state.value)
         return .send(.delegate(.nextScreen))
@@ -133,6 +140,13 @@ public struct UsernameSettingLogic {
         return .none
 
       case let .updateTentenResponse(.failure(error as ServerError)):
+        state.isActivityIndicatorVisible = false
+        state.destination = .alert(
+          AlertState.errorLog(message: error.message)
+        )
+        return .none
+        
+      case let .updateInstagramResponse(.failure(error as ServerError)):
         state.isActivityIndicatorVisible = false
         state.destination = .alert(
           AlertState.errorLog(message: error.message)
