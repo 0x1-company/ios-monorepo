@@ -11,6 +11,7 @@ var package = Package(
   products: [
     .library(name: "ActivityView", targets: ["ActivityView"]),
     .library(name: "AnalyticsClient", targets: ["AnalyticsClient"]),
+    .library(name: "AnalyticsClientLive", targets: ["AnalyticsClientLive"]),
     .library(name: "AppsFlyerClient", targets: ["AppsFlyerClient"]),
     .library(name: "AppsFlyerClientLive", targets: ["AppsFlyerClientLive"]),
     .library(name: "ATTrackingManagerClient", targets: ["ATTrackingManagerClient"]),
@@ -52,8 +53,11 @@ var package = Package(
     .target(name: "ActivityView"),
     .target(name: "AnalyticsClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
-      .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
       .product(name: "DependenciesMacros", package: "swift-dependencies"),
+    ]),
+    .target(name: "AnalyticsClientLive", dependencies: [
+      "AnalyticsClient",
+      .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
     ]),
     .target(name: "AppsFlyerClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
