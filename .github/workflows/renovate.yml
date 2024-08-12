@@ -15,6 +15,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: defaults write com.apple.dt.Xcode IDESkipMacroFingerprintValidation -bool YES
       - run: xcodebuild -workspace BeMatch.xcworkspace -resolvePackageDependencies -scheme "App (Staging project)" -skipMacroValidation
+      - run: xcodebuild -workspace PicMatch.xcworkspace -resolvePackageDependencies -scheme "App (Staging project)" -skipMacroValidation
       - run: xcodebuild -workspace TapMatch.xcworkspace -resolvePackageDependencies -scheme "App (Staging project)" -skipMacroValidation
       - run: xcodebuild -workspace TenMatch.xcworkspace -resolvePackageDependencies -scheme "App (Staging project)" -skipMacroValidation
       - run: xcodebuild -workspace Trinket.xcworkspace -resolvePackageDependencies -scheme "App (Staging project)" -skipMacroValidation
