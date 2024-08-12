@@ -13,6 +13,7 @@
       }
     },
     "bematch" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -29,6 +30,7 @@
       }
     },
     "bematchus" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -37,6 +39,9 @@
           }
         }
       }
+    },
+    "picmatchus" : {
+
     }
   },
   "version" : "1.0"
