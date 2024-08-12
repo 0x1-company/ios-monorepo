@@ -28,6 +28,12 @@ build-all:
 		-skipMacroValidation | xcpretty
 
 	@xcodebuild build \
+		-workspace PicMatch.xcworkspace \
+		-scheme "App (Staging project)" \
+		-destination platform="$(PLATFORM_IOS)" \
+		-skipMacroValidation | xcpretty
+
+	@xcodebuild build \
 		-workspace TapMatch.xcworkspace \
 		-scheme "App (Staging project)" \
 		-destination platform="$(PLATFORM_IOS)" \
@@ -47,6 +53,7 @@ build-all:
 
 secrets: # Set secrets
 	echo $(BEMATCH_FILE_FIREBASE_STAGING) | base64 -D > App/BeMatch/Multiplatform/Staging/GoogleService-Info.plist
+	echo $(PICMATCH_FILE_FIREBASE_STAGING) | base64 -D > App/PicMatch/Multiplatform/Staging/GoogleService-Info.plist
 	echo $(TRINKET_FILE_FIREBASE_STAGING) | base64 -D > App/Trinket/Multiplatform/Staging/GoogleService-Info.plist
 	echo $(TAPMATCH_FILE_FIREBASE_STAGING) | base64 -D > App/TapMatch/Multiplatform/Staging/GoogleService-Info.plist
 	echo $(TENMATCH_FILE_FIREBASE_STAGING) | base64 -D > App/TenMatch/Multiplatform/Staging/GoogleService-Info.plist
