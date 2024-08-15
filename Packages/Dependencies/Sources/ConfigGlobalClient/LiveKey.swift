@@ -1,6 +1,5 @@
 import Dependencies
 import FirebaseFirestore
-import FirebaseFirestoreSwift
 
 extension ConfigGlobalClient: DependencyKey {
   public static let liveValue = Self.live(documentId: "global")

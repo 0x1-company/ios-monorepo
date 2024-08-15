@@ -87,7 +87,6 @@ var package = Package(
       .product(name: "Dependencies", package: "swift-dependencies"),
       .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"),
       .product(name: "DependenciesMacros", package: "swift-dependencies"),
-      .product(name: "FirebaseFirestoreSwift", package: "firebase-ios-sdk"),
     ]),
     .target(name: "ContactsClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
@@ -178,7 +177,6 @@ var package = Package(
     .target(name: "UserSettingsClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
       .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"),
-      .product(name: "FirebaseFirestoreSwift", package: "firebase-ios-sdk"),
     ]),
     .target(name: "WidgetClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
