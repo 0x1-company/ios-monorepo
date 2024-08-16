@@ -1,6 +1,5 @@
 import Dependencies
 import FirebaseFirestore
-import FirebaseFirestoreSwift
 
 extension UserSettingsClient: DependencyKey {
   public static let liveValue = Self(
