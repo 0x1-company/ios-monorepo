@@ -7,30 +7,26 @@
 
 # About
 
-SwiftUI and the Composable Architecture enable the creation of reusable components, accelerating app release timelines.
+We currently develop and manage four different brands. While the UI details vary slightly between brands, all of them are ID exchange apps built on the same core business logic.<br>
+Since we operate with a very small team, it would be challenging to develop and manage each brand as a completely independent app.<br>
+To address this, we've adopted an approach where the business logic is shared across all brands, and only the UI is implemented separately.<br>
 
-App source code, excluding the core concept, can be shared across multiple apps. This reusable code is distributed as an Dependencies Package, which is then integrated into various apps through swift-dependencies.
-
-We also standardize and reuse the specifications and designs of key features across our app development process. This applies to both iOS and backend systems.
-
-Features such as:
-
-- Forced Updates
-- Maintenance
-- Management Reporting
-- Notification Banners
-- Navigation
-- Authentication
-
-By standardizing and reusing these feature specifications and designs, our developers can concentrate their efforts on the unique core concepts of each app.
-
-We respect Nikita Bier, who has won US AppStore #1 with Gas(acq by discord) and tbh(acq by facebook).
-
-<img width="541" alt="image" src="https://github.com/0x1-company/ios-monorepo/assets/28350464/5be23030-67ac-4d16-a315-142473933b42">
-
-https://twitter.com/nikitabier/status/1661733445163417601
-
-# Swift Packages
+- Utility
+  - A package that consolidates code related to utilities.
+- Dependencies
+  - A collection of code using swift-dependencies.
+  - This code is decoupled from the main application, making it reusable even when developing entirely different products.
+  - We've been reusing this dependencies code from two previous products.
+- BeMatch (App UI Package)
+  - The UI code for BeMatch.
+- TapMatch (App UI Package)
+  - The UI code for TapMatch.
+- Trinket (App UI Package)
+  - The UI code for Trinket.
+- MatchCore
+  - A package that consolidates all the business logic.
+  - It's essentially a collection of reducers, as per TCA.
+  - The code is written with the intent of being used across all brands.
 
 ```mermaid
 graph TD;
@@ -43,6 +39,13 @@ MatchCore --> TenMatch
 MatchCore --> Trinket
 ```
 
+MatchCore is a package that only implements reducers, as defined in TCA.<br>
+The code is written to be shared across all App UI Packages.<br>
+For example, if we implement a RecommendationReducer in MatchCore, each App UI Package will then implement a corresponding RecommendationView.<br>
+While the UI of RecommendationView may differ slightly between brands, the underlying logic remains the same, referencing the RecommendationReducer from MatchCore.<br>
+
+details:
+https://engineering.0x1.company/tech-stack-of-ios-d6466798ed80
 
 # Apps
 
