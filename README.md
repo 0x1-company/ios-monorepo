@@ -44,6 +44,9 @@ The code is written to be shared across all App UI Packages.<br>
 For example, if we implement a RecommendationReducer in MatchCore, each App UI Package will then implement a corresponding RecommendationView.<br>
 While the UI of RecommendationView may differ slightly between brands, the underlying logic remains the same, referencing the RecommendationReducer from MatchCore.<br>
 
+details:
+https://engineering.0x1.company/tech-stack-of-ios-d6466798ed80
+
 # Apps
 
 ## BeMatch. | Make new BeReal friends
