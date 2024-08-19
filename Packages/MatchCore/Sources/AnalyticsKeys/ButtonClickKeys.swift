@@ -3,10 +3,6 @@ import AnalyticsClient
 public extension ButtonClickKeys {
   var banner: String { "banner" }
   var forceUpdate: String { "force_update" }
-  var like: String { "like" }
-  var nope: String { "nope" }
-  var swipeLike: String { "swipe_like" }
-  var swipeNope: String { "swipe_nope" }
   var addExternalProduct: String { "add_external_product" }
   var close: String { "close" }
   var notNow: String { "not_now" }
