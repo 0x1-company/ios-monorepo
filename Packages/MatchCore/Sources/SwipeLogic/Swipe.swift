@@ -59,7 +59,6 @@ public struct SwipeLogic {
       case .nopeButtonTapped:
         guard let last = state.rows.last else { return .none }
         state.rows.remove(id: last.data.id)
-        analytics.buttonClick(name: \.nope)
 
         return .run { send in
           await feedbackGenerator.impactOccurred()
@@ -69,7 +68,6 @@ public struct SwipeLogic {
       case .likeButtonTapped:
         guard let last = state.rows.last else { return .none }
         state.rows.remove(id: last.data.id)
-        analytics.buttonClick(name: \.like)
 
         return .run { send in
           await feedbackGenerator.impactOccurred()
@@ -78,7 +76,6 @@ public struct SwipeLogic {
 
       case let .rows(.element(id, .delegate(.nope))):
         state.rows.remove(id: id)
-        analytics.buttonClick(name: \.swipeNope)
 
         return .run { send in
           await feedbackGenerator.impactOccurred()
@@ -87,7 +84,6 @@ public struct SwipeLogic {
 
       case let .rows(.element(id, .delegate(.like))):
         state.rows.remove(id: id)
-        analytics.buttonClick(name: \.swipeLike)
 
         return .run { send in
           await feedbackGenerator.impactOccurred()
