@@ -9,6 +9,7 @@ import AppLogic
 import Build
 import ComposableArchitecture
 import ConfigGlobalClient
+import ConfigGlobalClientLive
 import EnvironmentClient
 import FirebaseAuth
 import FirebaseAuthClient
