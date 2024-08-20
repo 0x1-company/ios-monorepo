@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AppsFlyerSDK/AppsFlyerFramework-Dynamic",
       "state" : {
-        "revision" : "58c66d5e14c65328809860d206754a16181f392c",
-        "version" : "6.15.0"
+        "revision" : "495155124c23783ff96c3b9f82653ea4269ca6d5",
+        "version" : "6.15.1"
       }
     },
     {
@@ -59,8 +59,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk",
       "state" : {
-        "revision" : "a5c253d1b4409eb8aef4346015ba000f9935cb2d",
-        "version" : "11.0.0"
+        "revision" : "9118aca998dbe2ceac45d64b21a91c6376928df7",
+        "version" : "11.1.0"
       }
     },
     {
@@ -68,8 +68,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleAppMeasurement.git",
       "state" : {
-        "revision" : "ca30c987b732d130732fb60b071e0b655a85ada7",
-        "version" : "11.0.0"
+        "revision" : "07a2f57d147d2bf368a0d2dcb5579ff082d9e44f",
+        "version" : "11.1.0"
       }
     },
     {
@@ -257,8 +257,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/swiftlang/swift-syntax",
       "state" : {
-        "revision" : "06b5cdc432e93b60e3bdf53aff2857c6b312991a",
-        "version" : "600.0.0-prerelease-2024-07-30"
+        "revision" : "515f79b522918f83483068d99c68daeb5116342d",
+        "version" : "600.0.0-prerelease-2024-08-14"
       }
     },
     {
@@ -275,8 +275,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/xctest-dynamic-overlay",
       "state" : {
-        "revision" : "357ca1e5dd31f613a1d43320870ebc219386a495",
-        "version" : "1.2.2"
+        "revision" : "9829b6a67cc9fb08ccdb499eb92d2be5cc2f5d64",
+        "version" : "1.2.4"
       }
     }
   ],

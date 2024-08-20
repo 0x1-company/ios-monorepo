@@ -1,0 +1,246 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "🧷 %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🧷 %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🧷 %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🧷 %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🧷 %@"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🧷 %@"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🧷 %@"
+          }
+        }
+      }
+    },
+    "Add tenten and send a message!" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Agrega tenten y envía un mensaje!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajoutez un tenten et envoyez un message !"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tentenを追加してメッセージを送ってみよう！"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "로켓을 추가하고 메시지를 보내세요!"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dodaj tenten i wyślij wiadomość!"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thêm tenten và gửi tin nhắn!"
+          }
+        }
+      }
+    },
+    "Copy tenten’s PIN" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copiar el PIN de tenten"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copier le PIN de tenten"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tentenのPINをコピー"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tenten의 PIN 복사"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skopiuj PIN tenten"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sao chép PIN của tenten"
+          }
+        }
+      }
+    },
+    "Matched with %@!" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Emparejado con %@!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correspondance avec %@ !"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@さんとマッチしたよ！"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@님과 매치되었습니다!"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dopasowany z %@!"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kết hợp với %@!"
+          }
+        }
+      }
+    },
+    "Report" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signaler"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通報"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "신고"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zgłoś"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Báo cáo"
+          }
+        }
+      }
+    },
+    "The operator may check and delete the contents of messages for the purpose of operating a sound service. In addition, the account may be suspended if inappropriate use is confirmed." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El operador puede verificar y eliminar el contenido de los mensajes con el propósito de operar un servicio saludable. Además, la cuenta puede ser suspendida si se confirma el uso inapropiado."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'opérateur peut vérifier et supprimer le contenu des messages dans le but de fournir un service sain. De plus, le compte peut être suspendu si une utilisation inappropriée est confirmée."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "健全なサービスを運営する目的で運営者がメッセージの内容を確認・削除する場合があります。また、不適切な利用を確認するとアカウントを停止する場合があります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "운영자는 건전한 서비스를 운영하기 위해 메시지 내용을 확인하고 삭제할 수 있습니다. 또한 부적절한 사용이 확인되면 계정이 정지될 수 있습니다."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Operator może sprawdzać i usuwać treści wiadomości w celu zapewnienia prawidłowego działania usługi. Ponadto konto może zostać zawieszone w przypadku potwierdzenia nieodpowiedniego użytkowania."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nhà điều hành có thể kiểm tra và xóa nội dung tin nhắn để cung cấp dịch vụ tốt. Ngoài ra, tài khoản có thể bị đình chỉ nếu phát hiện sử dụng không đúng mục đích."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
