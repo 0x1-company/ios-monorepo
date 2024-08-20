@@ -20,7 +20,7 @@ public struct InvitationCodeView: View {
             .overlay(alignment: .center) {
               Text(viewStore.code)
                 .foregroundStyle(Color(0xFFFF_CC00))
-                .font(.system(.largeTitle, design: .rounded, weight: .bold))
+                .font(.system(.largeTitle, weight: .bold))
                 .offset(x: -35, y: 8)
             }
         }

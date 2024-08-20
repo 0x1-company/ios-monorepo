@@ -52,12 +52,12 @@ public struct RecentMatchGridView: View {
 
           VStack(spacing: 4) {
             Text(viewStore.displayName)
-              .font(.system(.subheadline, design: .rounded, weight: .semibold))
+              .font(.system(.subheadline, weight: .semibold))
               .frame(maxWidth: .infinity, alignment: .leading)
 
             Text(viewStore.createdAt, format: Date.FormatStyle(date: .numeric))
               .foregroundStyle(Color.gray)
-              .font(.system(.caption2, design: .rounded, weight: .semibold))
+              .font(.system(.caption2, weight: .semibold))
               .frame(maxWidth: .infinity, alignment: .leading)
           }
         }

@@ -60,7 +60,7 @@ public struct UnsentDirectMessageListContentReceivedLikeRowView: View {
                 .font(.system(size: 14))
 
               Text(viewStore.displayCount)
-                .font(.system(.body, design: .rounded, weight: .semibold))
+                .font(.system(.body, weight: .semibold))
             }
             .foregroundStyle(Color.black)
             .padding(.vertical, 4)
@@ -70,7 +70,7 @@ public struct UnsentDirectMessageListContentReceivedLikeRowView: View {
           }
 
           Text("Likes", bundle: .module)
-            .font(.system(.subheadline, design: .rounded, weight: .semibold))
+            .font(.system(.subheadline, weight: .semibold))
             .foregroundStyle(Color.primary)
         }
       }

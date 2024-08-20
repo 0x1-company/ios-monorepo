@@ -18,7 +18,7 @@ public struct DirectMessageEmptyView: View {
 
           VStack(spacing: 8) {
             Text("Matched with \(viewStore.displayName)!", bundle: .module)
-              .font(.system(.title3, design: .rounded, weight: .semibold))
+              .font(.system(.title3, weight: .semibold))
 
             Text("Add tenten and send a message!", bundle: .module)
           }
@@ -33,7 +33,7 @@ public struct DirectMessageEmptyView: View {
 
             Text("🧷 \(viewStore.tentenPinCode)", bundle: .module)
               .foregroundStyle(Color.white)
-              .font(.system(.caption, design: .rounded, weight: .semibold))
+              .font(.system(.caption, weight: .semibold))
           }
         }
         .frame(maxHeight: .infinity)

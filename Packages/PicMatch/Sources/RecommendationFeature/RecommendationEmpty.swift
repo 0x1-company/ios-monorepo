@@ -22,7 +22,7 @@ public struct RecommendationEmptyView: View {
 
         VStack(spacing: 16) {
           Text("Too much swiping...\nPlease help us share TenMatch... 🙏", bundle: .module)
-            .font(.system(.subheadline, design: .rounded, weight: .semibold))
+            .font(.system(.subheadline, weight: .semibold))
             .foregroundStyle(Color.white)
             .multilineTextAlignment(.center)
 
@@ -30,7 +30,7 @@ public struct RecommendationEmptyView: View {
             store.send(.shareButtonTapped)
           } label: {
             Text("Share", bundle: .module)
-              .font(.system(.subheadline, design: .rounded, weight: .semibold))
+              .font(.system(.subheadline, weight: .semibold))
               .frame(height: 50)
               .frame(maxWidth: .infinity)
               .foregroundStyle(Color.black)

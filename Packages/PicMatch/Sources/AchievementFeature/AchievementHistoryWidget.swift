@@ -14,7 +14,7 @@ public struct AchievementHistoryWidgetView: View {
       VStack(alignment: .leading, spacing: 0) {
         Label("HISTORY", systemImage: "calendar")
           .foregroundStyle(Color.secondary)
-          .font(.system(.headline, design: .rounded, weight: .semibold))
+          .font(.system(.headline, weight: .semibold))
 
         HStack(alignment: .bottom, spacing: 8) {
           Text(viewStore.displayDaysAgo)
@@ -27,7 +27,7 @@ public struct AchievementHistoryWidgetView: View {
 
         Text(viewStore.displayCreationDate)
           .foregroundStyle(Color.secondary)
-          .font(.system(.headline, design: .rounded, weight: .semibold))
+          .font(.system(.headline, weight: .semibold))
       }
       .frame(maxWidth: .infinity, alignment: .leading)
       .padding(.vertical, 16)

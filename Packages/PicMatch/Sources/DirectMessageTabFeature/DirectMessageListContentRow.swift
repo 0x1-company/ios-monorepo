@@ -47,7 +47,7 @@ public struct DirectMessageListContentRowView: View {
           VStack(alignment: .leading, spacing: 6) {
             HStack(spacing: 0) {
               Text(viewStore.displayName)
-                .font(.system(.subheadline, design: .rounded, weight: .semibold))
+                .font(.system(.subheadline, weight: .semibold))
                 .frame(maxWidth: .infinity, alignment: .leading)
 
               if !viewStore.isAuthor {

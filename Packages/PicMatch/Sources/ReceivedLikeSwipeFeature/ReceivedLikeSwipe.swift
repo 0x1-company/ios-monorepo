@@ -61,7 +61,7 @@ public struct ReceivedLikeSwipeView: View {
         .frame(width: 120)
 
       Text("Looks like he's gone.", bundle: .module)
-        .font(.system(.title3, design: .rounded, weight: .semibold))
+        .font(.system(.title3, weight: .semibold))
 
       PrimaryButton(
         String(localized: "Swipe others", bundle: .module)

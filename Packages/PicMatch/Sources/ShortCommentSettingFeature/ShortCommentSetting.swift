@@ -15,7 +15,7 @@ public struct ShortCommentSettingView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 24) {
         Text("Do not write tenten or other social media username.", bundle: .module)
-          .font(.system(.subheadline, design: .rounded, weight: .semibold))
+          .font(.system(.subheadline, weight: .semibold))
           .foregroundStyle(Color.secondary)
 
         TextEditor(text: viewStore.$shortComment)

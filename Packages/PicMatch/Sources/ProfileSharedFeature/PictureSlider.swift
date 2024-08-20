@@ -59,7 +59,7 @@ public struct PictureSliderView: View {
               .padding(.bottom, 16)
               .padding(.horizontal, 32)
               .multilineTextAlignment(.center)
-              .font(.system(.footnote, design: .rounded, weight: .semibold))
+              .font(.system(.footnote, weight: .semibold))
           }
         }
         .clipShape(RoundedRectangle(cornerRadius: 16))

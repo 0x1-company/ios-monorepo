@@ -13,10 +13,10 @@ public struct NetworkErrorView: View {
     WithViewStore(store, observe: { $0 }) { _ in
       VStack(spacing: 24) {
         Text("NETWORK ERROR", bundle: .module)
-          .font(.system(.headline, design: .rounded, weight: .semibold))
+          .font(.system(.headline, weight: .semibold))
 
         Text("Servers are crowded. Please try restarting the application after a while.", bundle: .module)
-          .font(.system(.body, design: .rounded, weight: .semibold))
+          .font(.system(.body, weight: .semibold))
           .foregroundStyle(Color.secondary)
       }
       .padding(.horizontal, 16)

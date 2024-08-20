@@ -13,7 +13,7 @@ public struct DirectMessageListView: View {
     LazyVStack(alignment: .leading, spacing: 8) {
       Text("Messages", bundle: .module)
         .foregroundStyle(Color.secondary)
-        .font(.system(.callout, design: .rounded, weight: .semibold))
+        .font(.system(.callout, weight: .semibold))
 
       SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
         switch initialState {

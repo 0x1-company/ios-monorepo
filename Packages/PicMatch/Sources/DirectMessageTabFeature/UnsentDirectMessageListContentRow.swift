@@ -49,7 +49,7 @@ public struct UnsentDirectMessageListContentRowView: View {
           }
 
           Text(viewStore.displayName)
-            .font(.system(.subheadline, design: .rounded, weight: .semibold))
+            .font(.system(.subheadline, weight: .semibold))
             .foregroundStyle(Color.primary)
         }
       }

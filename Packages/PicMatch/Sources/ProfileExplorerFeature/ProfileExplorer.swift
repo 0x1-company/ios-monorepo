@@ -63,7 +63,7 @@ public struct ProfileExplorerView: View {
           } label: {
             Text(viewStore.displayName)
               .foregroundStyle(Color.primary)
-              .font(.system(.callout, design: .rounded, weight: .semibold))
+              .font(.system(.callout, weight: .semibold))
           }
         }
 

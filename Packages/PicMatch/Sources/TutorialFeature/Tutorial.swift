@@ -53,7 +53,7 @@ public struct TutorialView: View {
             } label: {
               Text("Skip", bundle: .module)
                 .foregroundStyle(Color.godTextSecondaryDark)
-                .font(.system(.body, design: .rounded, weight: .bold))
+                .font(.system(.body, weight: .bold))
             }
           }
           .padding(.horizontal, 60)
@@ -77,7 +77,7 @@ public struct TutorialView: View {
           } label: {
             Text("Skip", bundle: .module)
               .foregroundStyle(Color.godTextSecondaryDark)
-              .font(.system(.body, design: .rounded, weight: .bold))
+              .font(.system(.body, weight: .bold))
               .padding(.all, 24)
           }
         }

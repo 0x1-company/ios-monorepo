@@ -9,7 +9,7 @@ struct Step1View: View {
 
       VStack(spacing: 16) {
         Text("Let's get started!", bundle: .module)
-          .font(.system(.title, design: .rounded, weight: .bold))
+          .font(.system(.title, weight: .bold))
 
         Text("TenMatch is an application that allows you to exchange tenten with everyone in Global!", bundle: .module)
           .font(.system(.headline, design: .rounded))

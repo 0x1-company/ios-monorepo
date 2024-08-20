@@ -4,7 +4,7 @@ import SwiftUI
 struct ConversionSecondaryButtonStyle: ButtonStyle {
   func makeBody(configuration: Configuration) -> some View {
     configuration.label
-      .font(.system(.subheadline, design: .rounded, weight: .semibold))
+      .font(.system(.subheadline, weight: .semibold))
       .frame(height: 50)
       .frame(maxWidth: .infinity)
       .foregroundStyle(Color.black)

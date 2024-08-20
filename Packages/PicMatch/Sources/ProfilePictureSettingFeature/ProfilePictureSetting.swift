@@ -28,10 +28,10 @@ public struct ProfilePictureSettingView: View {
           VStack(spacing: 32) {
             VStack(spacing: 8) {
               Text("Set your profile pic.", bundle: .module)
-                .font(.system(.title2, design: .rounded, weight: .bold))
+                .font(.system(.title2, weight: .bold))
 
               Text("It will be public 🌎", bundle: .module)
-                .font(.system(.footnote, design: .rounded, weight: .semibold))
+                .font(.system(.footnote, weight: .semibold))
                 .foregroundStyle(Color.secondary)
             }
 

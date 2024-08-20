@@ -55,7 +55,7 @@ public struct MatchedView: View {
 
           Text("You matched with \(viewStore.targetUserDisplayName)", bundle: .module)
             .foregroundStyle(Color.white)
-            .font(.system(.headline, design: .rounded, weight: .semibold))
+            .font(.system(.headline, weight: .semibold))
         }
         .frame(maxHeight: .infinity)
         .padding(.horizontal, 37)
@@ -69,7 +69,7 @@ public struct MatchedView: View {
 
           Text("🧷 \(viewStore.displayTargetUserInfo)", bundle: .module)
             .foregroundStyle(Color.white)
-            .font(.system(.caption, design: .rounded, weight: .semibold))
+            .font(.system(.caption, weight: .semibold))
         }
       }
       .padding(.horizontal, 16)

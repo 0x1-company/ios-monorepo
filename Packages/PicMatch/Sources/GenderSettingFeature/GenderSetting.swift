@@ -40,7 +40,7 @@ public struct GenderSettingView: View {
               }
             } label: {
               Text(gender.displayValue)
-                .font(.system(.headline, design: .rounded, weight: .semibold))
+                .font(.system(.headline, weight: .semibold))
             }
             .frame(height: 44)
           }
@@ -68,7 +68,7 @@ public struct GenderSettingView: View {
               Text("Skip", bundle: .module)
                 .frame(height: 50)
                 .foregroundStyle(Color.white)
-                .font(.system(.subheadline, design: .rounded, weight: .semibold))
+                .font(.system(.subheadline, weight: .semibold))
             }
           }
         }

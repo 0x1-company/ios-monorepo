@@ -5,7 +5,7 @@ struct AchievementRatingWidgetView: View {
     VStack(alignment: .leading, spacing: 8) {
       Text("RATING", bundle: .module)
         .foregroundStyle(Color.secondary)
-        .font(.system(.headline, design: .rounded, weight: .semibold))
+        .font(.system(.headline, weight: .semibold))
 
       HStack(spacing: 8) {
         ForEach(0 ..< 5) { _ in
@@ -24,7 +24,7 @@ struct AchievementRatingWidgetView: View {
 
       Text("Count of swipes across Japan", bundle: .module)
         .foregroundStyle(Color.secondary)
-        .font(.system(.headline, design: .rounded, weight: .semibold))
+        .font(.system(.headline, weight: .semibold))
     }
     .frame(maxWidth: .infinity, alignment: .leading)
     .padding(.vertical, 16)
