@@ -1,0 +1,86 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "NETWORK ERROR" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ネットワークエラー"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "네트워크 오류"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ERREUR RÉSEAU"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BŁĄD SIECI"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LỖI MẠNG"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ERROR DE RED"
+          }
+        }
+      }
+    },
+    "Servers are crowded. Please try restarting the application after a while." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サーバーが混み合っています。しばらくしてからアプリの再起動をお試しください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "서버가 혼잡합니다. 잠시 후에 애플리케이션을 다시 시작해보세요."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les serveurs sont surchargés. Veuillez essayer de redémarrer l'application après un certain temps."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serwery są przeciążone. Spróbuj ponownie uruchomić aplikację za chwilę."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Máy chủ đang quá tải. Vui lòng thử khởi động lại ứng dụng sau một thời gian."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los servidores están congestionados. Por favor, intenta reiniciar la aplicación después de un rato."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

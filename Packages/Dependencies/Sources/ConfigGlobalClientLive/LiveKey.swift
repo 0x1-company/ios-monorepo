@@ -1,3 +1,4 @@
+import ConfigGlobalClient
 import Dependencies
 import FirebaseFirestore
 

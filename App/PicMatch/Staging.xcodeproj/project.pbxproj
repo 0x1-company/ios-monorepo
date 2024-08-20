@@ -18,6 +18,7 @@
 		B79C34522C69BC8A002C4E79 /* AnalyticsClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = B79C34512C69BC8A002C4E79 /* AnalyticsClientLive */; };
 		B7AAEEEF2BCFF941005704E4 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B7AAEEEE2BCFF941005704E4 /* Localizable.xcstrings */; };
 		B7BC78B82B55571400C0B97E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7BC78B72B55571400C0B97E /* StoreKit.framework */; };
+		B7C03D472C74F78300FF7DA2 /* ConfigGlobalClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = B7C03D462C74F78300FF7DA2 /* ConfigGlobalClientLive */; };
 		B7C884252BCFD7540099548C /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B7C884242BCFD7540099548C /* AppFeature */; };
 		B7DA47D92C43E00C00BC96F2 /* APIClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = B7DA47D82C43E00C00BC96F2 /* APIClientLive */; };
 /* End PBXBuildFile section */
@@ -61,6 +62,7 @@
 				B7765AF22B46C80D001B5C13 /* AdSupport.framework in Frameworks */,
 				B78C59022C6877C7009FD1E1 /* AppsFlyerClientLive in Frameworks */,
 				B7DA47D92C43E00C00BC96F2 /* APIClientLive in Frameworks */,
+				B7C03D472C74F78300FF7DA2 /* ConfigGlobalClientLive in Frameworks */,
 				B79C34522C69BC8A002C4E79 /* AnalyticsClientLive in Frameworks */,
 				B7BC78B82B55571400C0B97E /* StoreKit.framework in Frameworks */,
 				B7C884252BCFD7540099548C /* AppFeature in Frameworks */,
@@ -144,6 +146,7 @@
 				B7DA47D82C43E00C00BC96F2 /* APIClientLive */,
 				B78C59012C6877C7009FD1E1 /* AppsFlyerClientLive */,
 				B79C34512C69BC8A002C4E79 /* AnalyticsClientLive */,
+				B7C03D462C74F78300FF7DA2 /* ConfigGlobalClientLive */,
 			);
 			productName = iOS;
 			productReference = B783E0F32A11FFD0002E782F /* App.app */;
@@ -432,6 +435,10 @@
 		B79C34512C69BC8A002C4E79 /* AnalyticsClientLive */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AnalyticsClientLive;
+		};
+		B7C03D462C74F78300FF7DA2 /* ConfigGlobalClientLive */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ConfigGlobalClientLive;
 		};
 		B7C884242BCFD7540099548C /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;

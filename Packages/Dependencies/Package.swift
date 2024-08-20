@@ -19,6 +19,7 @@ var package = Package(
     .library(name: "AVPlayerNotificationClient", targets: ["AVPlayerNotificationClient"]),
     .library(name: "Build", targets: ["Build"]),
     .library(name: "ConfigGlobalClient", targets: ["ConfigGlobalClient"]),
+    .library(name: "ConfigGlobalClientLive", targets: ["ConfigGlobalClientLive"]),
     .library(name: "ContactsClient", targets: ["ContactsClient"]),
     .library(name: "DeviceCheckClient", targets: ["DeviceCheckClient"]),
     .library(name: "DeviceClient", targets: ["DeviceClient"]),
@@ -85,8 +86,11 @@ var package = Package(
     ]),
     .target(name: "ConfigGlobalClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
-      .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"),
       .product(name: "DependenciesMacros", package: "swift-dependencies"),
+    ]),
+    .target(name: "ConfigGlobalClientLive", dependencies: [
+      "ConfigGlobalClient",
+      .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"),
     ]),
     .target(name: "ContactsClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
