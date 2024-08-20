@@ -25,28 +25,14 @@ public struct ProfilePictureSettingView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 8) {
         ScrollView {
-          VStack(spacing: 36) {
+          VStack(spacing: 32) {
             VStack(spacing: 8) {
-              Text("Set your saved photo to your profile (it will be public 🌏)", bundle: .module)
-                .lineLimit(2)
-                .frame(minHeight: 50)
-                .layoutPriority(1)
-                .font(.system(.title3, weight: .semibold))
+              Text("Set your profile pic.", bundle: .module)
+                .font(.system(.title2, design: .rounded, weight: .bold))
 
-              if viewStore.isWarningTextVisible {
-                Button {
-                  store.send(.howToButtonTapped)
-                } label: {
-                  HStack(spacing: 2) {
-                    Image(systemName: "exclamationmark.triangle.fill")
-                      .foregroundStyle(Color.yellow)
-
-                    Text("Select a photo saved with BeReal.", bundle: .module)
-                      .foregroundStyle(Color.secondary)
-                  }
-                  .font(.callout)
-                }
-              }
+              Text("It will be public 🌎", bundle: .module)
+                .font(.system(.footnote, design: .rounded, weight: .semibold))
+                .foregroundStyle(Color.secondary)
             }
 
             LazyVGrid(
@@ -78,7 +64,7 @@ public struct ProfilePictureSettingView: View {
         PrimaryButton(
           nextButtonStyle == .save
             ? String(localized: "Save", bundle: .module)
-            : String(localized: "Next", bundle: .module),
+            : String(localized: "Continue", bundle: .module),
           isLoading: viewStore.isActivityIndicatorVisible
         ) {
           store.send(.nextButtonTapped)

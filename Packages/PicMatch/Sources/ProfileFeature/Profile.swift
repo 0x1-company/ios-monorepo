@@ -8,6 +8,7 @@ public struct ProfileView: View {
   @State var translation: CGSize = .zero
   @State var scaleEffect: Double = 1.0
   let store: StoreOf<ProfileLogic>
+  let width = UIScreen.main.bounds.width
 
   public init(store: StoreOf<ProfileLogic>) {
     self.store = store
@@ -16,7 +17,7 @@ public struct ProfileView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack {
-        VStack(spacing: 24) {
+        VStack(spacing: 56) {
           HStack(spacing: 0) {
             Button {
               store.send(.closeButtonTapped)
@@ -30,11 +31,11 @@ public struct ProfileView: View {
             if let displayName = viewStore.currentUser?.displayName {
               Text(displayName)
                 .foregroundStyle(Color.white)
-                .font(.system(.callout, weight: .semibold))
+                .font(.system(.callout, design: .rounded, weight: .semibold))
             } else if let username = viewStore.currentUser?.berealUsername {
               Text(username)
                 .foregroundStyle(Color.white)
-                .font(.system(.callout, weight: .semibold))
+                .font(.system(.callout, design: .rounded, weight: .semibold))
             }
             Spacer()
             Spacer()
@@ -43,29 +44,32 @@ public struct ProfileView: View {
           .padding(.top, 56)
           .padding(.horizontal, 16)
 
-          IfLetStore(
-            store.scope(state: \.pictureSlider, action: \.pictureSlider),
-            then: PictureSliderView.init(store:),
-            else: {
-              Color.black
-                .aspectRatio(3 / 4, contentMode: .fill)
-                .frame(width: UIScreen.main.bounds.width)
-            }
-          )
+          VStack(spacing: 16) {
+            IfLetStore(
+              store.scope(state: \.pictureSlider, action: \.pictureSlider),
+              then: PictureSliderView.init(store:),
+              else: {
+                Color.black
+                  .aspectRatio(contentMode: .fill)
+                  .frame(width: width, height: width * (4 / 3))
+              }
+            )
 
-          if let url = viewStore.currentUser?.externalProductUrl {
-            Button {
-              store.send(.jumpExternalProductButtonTapped)
-            } label: {
-              Text("🔗 \(url)")
-                .font(.system(.caption))
-                .foregroundStyle(Color.primary)
+            if let url = viewStore.currentUser?.externalProductUrl {
+              Button {
+                store.send(.jumpExternalProductButtonTapped)
+              } label: {
+                Text("🔗 \(url)")
+                  .font(.system(.caption))
+                  .foregroundStyle(Color.primary)
+              }
             }
           }
+
           Spacer()
         }
         .background(Color.black)
-        .cornerRadius(40)
+        .cornerRadius(16)
         .scaleEffect(scaleEffect)
         .ignoresSafeArea()
       }
@@ -104,7 +108,7 @@ public struct ProfileView: View {
         store: store.scope(state: \.$destination.editUsername, action: \.destination.editUsername)
       ) { childStore in
         NavigationStack {
-          UsernameSettingView(store: childStore, nextButtonStyle: .save)
+          UsernameSettingView(store: childStore)
             .toolbar {
               ToolbarItem(placement: .topBarLeading) {
                 Button {

@@ -1,146 +1,362 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "BeMatch is an application that allows you to exchange BeReal with everyone in Global!" : {
+    "Continue" : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeMatch est une application qui vous permet d'échanger BeReal avec tout le monde dans le monde entier !"
-          }
-        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeMatchは日本中のみんなとBeRealを交換できるアプリです"
+            "value" : "続ける"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계속"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontynuuj"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiếp tục"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
           }
         }
       }
     },
     "Get started" : {
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "さっそくはじめる"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시작하기"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Commencer"
           }
         },
-        "ja" : {
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "さっそくはじめる"
+            "value" : "Zacznij"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bắt đầu"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empezar"
           }
         }
       }
     },
     "Hmmm... left when" : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hmmm... à gauche quand"
-          }
-        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "うーん...のときは左"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "흠... 언제 떠났나요?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hmmm... gauche quand"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hmmm... lewo, kiedy"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hmmm... bên trái khi"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hmmm... izquierda cuando"
           }
         }
       }
     },
     "If you both Like each other, a match is made. Let's give it a try right away!" : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Si vous vous aimez tous les deux, une correspondance est établie. Essayons-le tout de suite !"
-          }
-        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "お互いにLikeするとマッチが成立。早速試してみよう！"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "두 사람이 서로 마음에 들면 매칭이 성사됩니다. 지금 바로 시도해 보세요!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si vous vous aimez tous les deux, une correspondance est faite. Essayons tout de suite!"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeśli oboje się lubicie, następuje dopasowanie. Wypróbujmy od razu!"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nếu cả hai bạn thích nhau, một cặp đôi được tạo ra. Hãy thử ngay thôi nào!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si ambos se gustan, se forma una coincidencia. ¡Vamos a intentarlo de inmediato!"
           }
         }
       }
     },
     "If you think, \"Maybe not...\", swipe left. If you think it's not quite right, swipe left." : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Si vous pensez « Peut-être pas... », balayez vers la gauche. Si vous pensez que ce n'est pas tout à fait ça, balayez vers la gauche."
-          }
-        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ちょっと違うかも...と思ったら、左にスワイプしよう。Nopeしたことは相手に伝わらないから大丈夫。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“아닐 수도 있는데...”라고 생각되면 왼쪽으로 스와이프합니다.적절하지 않다고 생각되면 왼쪽으로 스와이프합니다."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si vous pensez, « Peut-être pas... », balayez vers la gauche. Si vous pensez que ce n'est pas tout à fait ça, balayez vers la gauche."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeśli myślisz: „Może nie...”, przesuń palcem w lewo. Jeśli uważasz, że to nie do końca to, przesuń palcem w lewo."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nếu bạn nghĩ, \"Có lẽ không...\", hãy vuốt sang trái. Nếu bạn nghĩ rằng không đúng lắm, hãy vuốt sang trái."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si piensas: \"Quizás no...\", desliza hacia la izquierda. Si crees que no es del todo correcto, desliza hacia la izquierda."
           }
         }
       }
     },
     "Let's get started!" : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Commençons !"
-          }
-        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "さっそくはじめよう！"
           }
-        }
-      }
-    },
-    "Next" : {
-      "localizations" : {
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시작해보자!"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Suivant"
+            "value" : "Commençons!"
           }
         },
-        "ja" : {
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "次へ"
+            "value" : "Zacznijmy!"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hãy bắt đầu nào!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Vamos a empezar!"
           }
         }
       }
     },
     "Right if you are interested!" : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "À droite si vous êtes intéressé !"
-          }
-        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "気になる人は右！"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "관심이 있으시다면 바로 그거예요!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À droite si vous êtes intéressé!"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "W prawo, jeśli jesteś zainteresowany!"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vuốt sang phải nếu bạn quan tâm!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Derecha si estás interesado!"
           }
         }
       }
     },
     "Skip" : {
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スキップ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "건너뛰기"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Passer"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pomiń"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bỏ qua"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saltar"
+          }
+        }
+      }
+    },
+    "TenMatch is an application that allows you to exchange tenten with everyone in Global!" : {
+      "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "スキップ"
+            "value" : "TenMatchは日本中のみんなとtentenを交換できるアプリです"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "트링켓은 한국의 모든 사람들과 로켓을 교환할 수 있는 애플리케이션입니다!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TenMatch est une application qui vous permet d'échanger tenten avec tout le monde dans le monde!"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TenMatch to aplikacja umożliwiająca wymianę tenten z wszystkimi na całym świecie!"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TenMatch là một ứng dụng cho phép bạn trao đổi tenten với mọi người trên toàn cầu!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡TenMatch es una aplicación que te permite intercambiar tenten con todos en el mundo!"
           }
         }
       }

@@ -4,40 +4,98 @@
     "" : {
 
     },
-    "Next" : {
+    "Continue" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Suivant"
+            "value" : "Continuer"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "つぎへ"
+            "value" : "続ける"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "다음"
+            "value" : "계속"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontynuuj"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tiếp theo"
+            "value" : "Tiếp tục"
           }
         }
       }
     },
-    "What's your nick name?" : {
+    "ex. tomokisun" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ej. tomokisun"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quel est votre surnom ?"
+            "value" : "ex. tomokisun"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "例: ともき"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "예: tomokisun"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "np. tomokisun"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ví dụ: tomokisun"
+          }
+        }
+      }
+    },
+    "Set your nick name" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Establece tu apodo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Définissez votre pseudo"
           }
         },
         "ja" : {
@@ -49,13 +107,19 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "닉네임이 무엇인가요?"
+            "value" : "별명을 설정하세요"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ustaw swój pseudonim"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Biệt danh của bạn là gì?"
+            "value" : "Đặt biệt danh của bạn"
           }
         }
       }

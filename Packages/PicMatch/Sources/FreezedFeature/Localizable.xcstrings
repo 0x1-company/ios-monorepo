@@ -3,112 +3,160 @@
   "strings" : {
     "Answer" : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Répondre"
-          }
-        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "回答する"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Trả lời"
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "답변"
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "답변"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Répondre"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odpowiedz"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trả lời"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Responder"
           }
         }
       }
     },
     "Currently unable to re-register" : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Actuellement impossible de se réinscrire"
-          }
-        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "現在再登録することができません"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hiện không thể đăng ký lại"
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "현재 재등록할 수 없습니다"
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "현재 재등록 불가"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de se réinscrire actuellement"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obecnie brak możliwości ponownej rejestracji"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hiện không thể đăng ký lại"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualmente no es posible volver a registrarse"
           }
         }
       }
     },
-    "Once you have deleted your BeMatch account, you will not be able to register again for a certain period of time after the deletion." : {
+    "Once you have deleted your TenMatch account, you will not be able to register again for a certain period of time after the deletion." : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Une fois que vous avez supprimé votre compte BeMatch, vous ne pourrez pas vous réinscrire pendant une certaine période après la suppression."
-          }
-        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "一度BeMatchのアカウント削除をされた方は、削除してから一定期間は再登録していただくことができません。"
+            "value" : "一度TenMatchのアカウント削除をされた方は、削除してから一定期間は再登録していただくことができません。"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sau khi bạn đã xóa tài khoản BeMatch của mình, bạn sẽ không thể đăng ký lại trong một khoảng thời gian nhất định sau khi xóa."
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TenMatch 계정을 삭제하면 삭제 후 일정 기간 동안 다시 등록할 수 없습니다."
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "BeMatch 계정을 삭제하면 삭제 후 일정 기간 동안 다시 등록할 수 없습니다."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une fois que vous avez supprimé votre compte TenMatch, vous ne pourrez pas vous réinscrire pendant une certaine période après la suppression."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Po usunięciu konta TenMatch, nie będzie można ponownie zarejestrować się przez pewien czas po usunięciu."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sau khi xóa tài khoản TenMatch của bạn, bạn sẽ không thể đăng ký lại trong một khoảng thời gian nhất định sau khi xóa."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Una vez que hayas eliminado tu cuenta de TenMatch, no podrás registrarte nuevamente por un cierto período de tiempo después de la eliminación."
           }
         }
       }
     },
     "Please answer our simple questionnaire to help us improve our service." : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Veuillez répondre à notre simple questionnaire pour nous aider à améliorer notre service."
-          }
-        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "サービス改善のためにかんたんなアンケートへのご回答お願いします。"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vui lòng trả lời bảng câu hỏi đơn giản của chúng tôi để giúp chúng tôi cải thiện dịch vụ của mình."
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "서비스 개선을 위해 간단한 설문지에 답변해 주세요."
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "서비스 개선을 위해 간단한 설문지에 답변해 주세요."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez répondre à notre simple questionnaire pour nous aider à améliorer notre service."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prosimy o odpowiedź na naszą prostą ankietę, aby pomóc nam poprawić nasze usługi."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vui lòng trả lời bảng câu hỏi đơn giản của chúng tôi để giúp chúng tôi cải thiện dịch vụ của mình."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, responda a nuestro sencillo cuestionario para ayudarnos a mejorar nuestro servicio."
           }
         }
       }
@@ -116,4 +164,3 @@
   },
   "version" : "1.0"
 }
-

@@ -8,9 +8,9 @@ struct HowToReceiveBenefitView: View {
     VStack(spacing: 24) {
       VStack(spacing: 8) {
         Text("1. Send invitation code", bundle: .module)
-          .font(.system(.title3, weight: .semibold))
+          .font(.system(.title3, design: .rounded, weight: .semibold))
 
-        Text("Send an invitation code to a friend who hasn't used BeMatch.", bundle: .module)
+        Text("Send an invitation code to a friend who hasn't used TenMatch", bundle: .module)
       }
 
       Image(ImageResource.line)
@@ -19,9 +19,9 @@ struct HowToReceiveBenefitView: View {
 
       VStack(spacing: 8) {
         Text("2. \(displayDuration) free for both parties!", bundle: .module)
-          .font(.system(.title3, weight: .semibold))
+          .font(.system(.title3, design: .rounded, weight: .semibold))
 
-        Text("When they enter the Invitation Code and register, you will both receive BeMatch.PRO for sure!", bundle: .module)
+        Text("When they enter the Invitation Code and register, you will both receive TenMatch PRO for sure!", bundle: .module)
       }
 
       Image(ImageResource.invitationCodeSample)
@@ -36,7 +36,7 @@ struct HowToReceiveBenefitView: View {
     .clipShape(RoundedRectangle(cornerRadius: 16))
     .overlay(alignment: .top) {
       Text("How to Receive Benefits", bundle: .module)
-        .font(.system(.title2, weight: .semibold))
+        .font(.system(.title2, design: .rounded, weight: .semibold))
         .frame(height: 40)
         .padding(.horizontal, 8)
         .background(

@@ -1,119 +1,166 @@
 {
-  "sourceLanguage": "en",
-  "strings": {
-    "If you have an invitation code.\nPlease let us know.": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "招待コードがあれば\n教えてください"
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Continue" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "続ける"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Si vous avez un code d'invitation.\nVeuillez nous le faire savoir."
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계속"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nếu bạn có mã mời.\nVui lòng cho chúng tôi biết."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer"
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "초대 코드가 있으면\n알려주세요."
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontynuuj"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiếp tục"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
           }
         }
       }
     },
-    "Invitation Code": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "招待コード"
+    "If you have an invitation code.\nPlease let us know." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "招待コードがあれば\n教えてください"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Code d'invitation"
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "초대 코드가 있으면 알려주세요."
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mã mời"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si vous avez un code d'invitation, \nveuillez nous en informer."
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "초대 코드"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeśli masz kod zaproszenia.\nProszę, daj nam znać."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nếu bạn có mã mời.\nVui lòng cho chúng tôi biết."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si tienes un código de invitación.\nPor favor, háznoslo saber."
           }
         }
       }
     },
-    "Next": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "つぎへ"
+    "Invitation Code" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "招待コード"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Suivant"
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "초대 코드"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tiếp theo"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Code d'invitation"
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "다음"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kod zaproszenia"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mã mời"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Código de invitación"
           }
         }
       }
     },
-    "Skip": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "スキップ"
+    "Skip" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スキップ"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Passer"
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "건너뛰기"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bỏ qua"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passer"
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "건너뛰기"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pomiń"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bỏ qua"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Omitir"
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }
-

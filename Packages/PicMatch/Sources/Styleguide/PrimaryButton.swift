@@ -29,13 +29,17 @@ public struct PrimaryButton: View {
           Text(title)
         }
       }
-      .font(.system(.subheadline, weight: .semibold))
+      .font(.system(.subheadline, design: .rounded, weight: .semibold))
       .frame(height: 50)
       .frame(maxWidth: .infinity)
-      .foregroundStyle(Color.black)
+      .foregroundStyle(
+        isLoading || isDisabled
+          ? Color(uiColor: UIColor.quaternaryLabel)
+          : Color.black
+      )
       .background(
         isLoading || isDisabled
-          ? Color(uiColor: UIColor.systemGray2)
+          ? Color(uiColor: UIColor.secondarySystemBackground)
           : Color.white
       )
       .cornerRadius(16)

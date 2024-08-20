@@ -25,11 +25,12 @@ public struct UnsentDirectMessageListContentRowView: View {
             content: { image in
               image
                 .resizable()
-                .frame(width: 90, height: 120)
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 96, height: 120)
             },
             placeholder: {
               Color.black
-                .frame(width: 90, height: 120)
+                .frame(width: 96, height: 120)
                 .overlay {
                   ProgressView()
                     .progressViewStyle(CircularProgressViewStyle())
@@ -37,22 +38,18 @@ public struct UnsentDirectMessageListContentRowView: View {
                 }
             }
           )
-          .clipShape(RoundedRectangle(cornerRadius: 6))
+          .clipShape(RoundedRectangle(cornerRadius: 8))
           .overlay(alignment: .bottom) {
             if !viewStore.isRead {
-              Color.pink
+              Color.red
                 .frame(width: 16, height: 16)
                 .clipShape(Circle())
-                .overlay {
-                  RoundedRectangle(cornerRadius: 16 / 2)
-                    .stroke(Color.white, lineWidth: 2)
-                }
-                .offset(y: 10)
+                .offset(y: 8)
             }
           }
 
           Text(viewStore.displayName)
-            .font(.system(.subheadline, weight: .semibold))
+            .font(.system(.subheadline, design: .rounded, weight: .semibold))
             .foregroundStyle(Color.primary)
         }
       }

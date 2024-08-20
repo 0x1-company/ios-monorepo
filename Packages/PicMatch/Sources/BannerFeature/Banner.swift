@@ -15,7 +15,7 @@ public struct BannerView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 8) {
         Text(viewStore.banner.title)
-          .font(.system(.footnote, weight: .semibold))
+          .font(.system(.footnote, design: .rounded, weight: .semibold))
 
         if let description = viewStore.banner.description {
           Text(description)
@@ -26,7 +26,7 @@ public struct BannerView: View {
           store.send(.bannerButtonTapped)
         } label: {
           Text(viewStore.banner.buttonTitle)
-            .font(.system(.caption2, weight: .semibold))
+            .font(.system(.caption2, design: .rounded, weight: .semibold))
             .foregroundStyle(Color.black)
             .frame(height: 38)
             .frame(maxWidth: .infinity)
@@ -51,10 +51,10 @@ public struct BannerView: View {
           _dataDict: DataDict(
             data: [
               "id": "id",
-              "title": "BeMatch.の社長と話そう",
+              "title": "TenMatchの社長と話そう",
               "description": "アプリの改善策や不具合などあれば教えてください。",
               "buttonTitle": "開く",
-              "url": "https://bematch.jp",
+              "url": "https://tenmatch.app",
               "startAt": 10,
               "endAt": 10,
             ],

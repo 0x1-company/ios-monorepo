@@ -43,7 +43,7 @@ public struct TutorialView: View {
         if !viewStore.isNextButtonHidden {
           VStack(spacing: 24) {
             PrimaryButton(
-              String(localized: "Next", bundle: .module)
+              String(localized: "Continue", bundle: .module)
             ) {
               store.send(.nextButtonTapped, animation: .default)
             }

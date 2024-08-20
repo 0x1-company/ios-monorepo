@@ -18,16 +18,22 @@ public struct DirectMessageEmptyView: View {
 
           VStack(spacing: 8) {
             Text("Matched with \(viewStore.displayName)!", bundle: .module)
-              .font(.system(.title3, weight: .semibold))
+              .font(.system(.title3, design: .rounded, weight: .semibold))
 
-            Text("Add BeReal and send a message!", bundle: .module)
+            Text("Add tenten and send a message!", bundle: .module)
           }
           .multilineTextAlignment(.center)
 
-          PrimaryButton(
-            String(localized: "Add BeReal", bundle: .module)
-          ) {
-            store.send(.jumpExternalProductButtonTapped)
+          VStack(spacing: 12) {
+            PrimaryButton(
+              String(localized: "Copy tenten’s PIN", bundle: .module)
+            ) {
+              store.send(.jumpExternalProductButtonTapped)
+            }
+
+            Text("🧷 \(viewStore.tentenPinCode)", bundle: .module)
+              .foregroundStyle(Color.white)
+              .font(.system(.caption, design: .rounded, weight: .semibold))
           }
         }
         .frame(maxHeight: .infinity)
@@ -40,4 +46,20 @@ public struct DirectMessageEmptyView: View {
       .padding(.horizontal, 16)
     }
   }
+}
+
+#Preview {
+  NavigationStack {
+    DirectMessageEmptyView(
+      store: .init(
+        initialState: DirectMessageEmptyLogic.State(
+          displayName: "tomokisun",
+          externalProductUrl: "https://bere.al/tomokisun",
+          tentenPinCode: "du9v5pq"
+        ),
+        reducer: { DirectMessageEmptyLogic() }
+      )
+    )
+  }
+  .environment(\.colorScheme, .dark)
 }

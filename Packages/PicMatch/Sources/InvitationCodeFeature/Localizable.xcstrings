@@ -1,35 +1,46 @@
 {
-  "sourceLanguage": "en",
-  "strings": {
-    "Invitation Code": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "招待コード"
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Invitation Code" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "招待コード"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Code d'invitation"
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "초대 코드"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mã mời"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Code d'invitation"
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "초대 코드"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kod zaproszenia"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mã mời"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Código de invitación"
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }
-

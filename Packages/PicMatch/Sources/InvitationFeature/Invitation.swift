@@ -16,7 +16,7 @@ public struct InvitationView: View {
       VStack(spacing: 32) {
         Text("If you have an invitation code.\nPlease let us know.", bundle: .module)
           .frame(height: 50)
-          .font(.system(.title3, weight: .semibold))
+          .font(.system(.title3, design: .rounded, weight: .semibold))
 
         TextField(text: viewStore.$code) {
           Text("Invitation Code", bundle: .module)
@@ -26,13 +26,13 @@ public struct InvitationView: View {
         .textInputAutocapitalization(.never)
         .autocorrectionDisabled()
         .focused($isFocused)
-        .font(.system(.title3, weight: .semibold))
+        .font(.system(.title3, design: .rounded, weight: .semibold))
 
         Spacer()
 
         VStack(spacing: 0) {
           PrimaryButton(
-            String(localized: "Next", bundle: .module),
+            String(localized: "Continue", bundle: .module),
             isLoading: viewStore.isActivityIndicatorVisible,
             isDisabled: viewStore.isDisabled
           ) {
@@ -45,7 +45,7 @@ public struct InvitationView: View {
             Text("Skip", bundle: .module)
               .frame(height: 50)
               .foregroundStyle(Color.white)
-              .font(.system(.subheadline, weight: .semibold))
+              .font(.system(.subheadline, design: .rounded, weight: .semibold))
           }
         }
       }

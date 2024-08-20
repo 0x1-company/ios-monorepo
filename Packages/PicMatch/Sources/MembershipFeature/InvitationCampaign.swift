@@ -36,7 +36,7 @@ public struct InvitationCampaignView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 12) {
         Text("Limited to first \(viewStore.quantity) Users", bundle: .module)
-          .font(.system(.headline, weight: .semibold))
+          .font(.system(.headline, design: .rounded, weight: .semibold))
           .padding(.vertical, 6)
           .padding(.horizontal, 8)
           .overlay(

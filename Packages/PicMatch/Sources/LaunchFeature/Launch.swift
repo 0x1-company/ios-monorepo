@@ -16,13 +16,13 @@ public struct LaunchView: View {
         .aspectRatio(contentMode: .fit)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .ignoresSafeArea()
-        .background(Color(0xFFFD_2D76))
+        .background(Color(0xFFFF_0000))
         .task { await store.send(.onTask).finish() }
         .overlay {
           if viewStore.isActivityIndicatorVisible {
             ProgressView()
               .tint(Color.white)
-              .offset(y: 40)
+              .offset(y: 114)
           }
         }
     }

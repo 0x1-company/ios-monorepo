@@ -1,30 +1,82 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Next" : {
+    "Continue" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Suivant"
+            "value" : "Continuer"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "つぎへ"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tiếp theo"
+            "value" : "続ける"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "다음"
+            "value" : "계속"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontynuuj"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiếp tục"
+          }
+        }
+      }
+    },
+    "It will be public 🌎" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Será público 🌎"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce sera public 🌎"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "公開されます🌎"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "공개됩니다 🌎"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Będzie publiczne 🌎"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nó sẽ được công khai 🌎"
           }
         }
       }
@@ -32,6 +84,12 @@
     "Save" : {
       "extractionState" : "manual",
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -44,72 +102,62 @@
             "value" : "保存する"
           }
         },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lưu"
-          }
-        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "저장"
           }
-        }
-      }
-    },
-    "Select a photo saved with BeReal." : {
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sélectionnez une photo enregistrée avec BeReal."
-          }
         },
-        "ja" : {
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeRealで保存した写真を選択してください"
+            "value" : "Zapisz"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chọn một bức ảnh đã lưu bằng BeReal."
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeReal로 저장한 사진을 선택하세요."
+            "value" : "Lưu"
           }
         }
       }
     },
-    "Set your saved photo to your profile (it will be public 🌏)" : {
+    "Set your profile pic." : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Establece tu foto de perfil."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Définissez votre photo enregistrée sur votre profil (elle sera publique 🌏)"
+            "value" : "Définissez votre photo de profil."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeRealで保存した写真を3枚プロフィールに設定しよう（公開されるよ 🌏）"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Đặt ảnh đã lưu của bạn làm ảnh hồ sơ (sẽ được công khai 🌏)"
+            "value" : "プロフィール写真を設定してください。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "저장된 사진을 프로필로 설정하세요 (공개됩니다 🌏)"
+            "value" : "프로필 사진을 설정하세요."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ustaw swoje zdjęcie profilowe."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đặt ảnh hồ sơ của bạn."
           }
         }
       }
