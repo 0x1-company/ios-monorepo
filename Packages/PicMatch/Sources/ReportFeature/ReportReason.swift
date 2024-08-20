@@ -21,7 +21,7 @@ public struct ReportReasonView: View {
             .layoutPriority(1)
             .frame(minHeight: 50)
         }
-        .font(.system(.footnote))
+        .font(.system(.footnote, design: .rounded))
 
         VStack(alignment: .leading, spacing: 8) {
           TextEditor(text: viewStore.$text)
@@ -35,7 +35,7 @@ public struct ReportReasonView: View {
 
           Text("Minimum of 10 characters required.", bundle: .module)
             .foregroundStyle(Color.secondary)
-            .font(.caption)
+            .font(.system(.caption, design: .rounded))
         }
 
         Spacer()
@@ -51,7 +51,7 @@ public struct ReportReasonView: View {
       .padding(.vertical, 24)
       .padding(.horizontal, 16)
       .formStyle(ColumnsFormStyle())
-      .navigationTitle(Text("Report a BeMatch.", bundle: .module))
+      .navigationTitle(Text("Report a TenMatch", bundle: .module))
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
       .bind(viewStore.$focus, to: $focus)

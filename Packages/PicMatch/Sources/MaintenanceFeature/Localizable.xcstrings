@@ -1,90 +1,126 @@
 {
-  "sourceLanguage": "en",
-  "strings": {
-    "Contact us": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "お問い合わせ"
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Contact us" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お問い合わせ"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Contactez-nous"
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "문의하기"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Liên hệ với chúng tôi"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contactez-nous"
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "문의하기"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skontaktuj się z nami"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liên hệ với chúng tôi"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contáctanos"
           }
         }
       }
     },
-    "Please wait for a while until service resumes.": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "サービス再開までしばらくお待ち下さい。"
+    "Please wait for a while until service resumes." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サービス再開までしばらくお待ち下さい。"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Veuillez patienter un moment jusqu'à ce que le service reprenne."
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "서비스가 재개될 때까지 잠시 기다려주십시오."
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vui lòng đợi một chút cho đến khi dịch vụ hoạt động trở lại."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez patienter un moment jusqu'à la reprise du service."
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "서비스가 재개될 때까지 잠시 기다려 주십시오."
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proszę czekać na wznowienie usługi."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vui lòng đợi một lát cho đến khi dịch vụ được tiếp tục."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, espere un momento hasta que se reanude el servicio."
           }
         }
       }
     },
-    "Under Maintenance": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "メンテナンス中"
+    "Under Maintenance" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メンテナンス中"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "En maintenance"
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "점검 중"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Đang bảo trì"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En maintenance"
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "점검 중"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "W trakcie konserwacji"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đang bảo trì"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En mantenimiento"
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

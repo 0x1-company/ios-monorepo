@@ -13,7 +13,8 @@ public struct UnsentDirectMessageListView: View {
   public var body: some View {
     VStack(alignment: .leading, spacing: 8) {
       HStack(spacing: 0) {
-        Text("RECENT MATCH", bundle: .module)
+        Text("Recently Match", bundle: .module)
+          .foregroundStyle(Color.secondary)
           .font(.system(.callout, weight: .semibold))
           .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -21,8 +22,9 @@ public struct UnsentDirectMessageListView: View {
           store.send(.seeAllButtonTapped)
         } label: {
           HStack(spacing: 4) {
-            Text("SEE MORE", bundle: .module)
+            Text("See More", bundle: .module)
               .font(.caption)
+              .foregroundStyle(Color.secondary)
 
             Image(systemName: "chevron.right")
           }

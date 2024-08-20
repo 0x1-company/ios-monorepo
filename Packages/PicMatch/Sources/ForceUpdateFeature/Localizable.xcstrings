@@ -1,91 +1,126 @@
 {
-  "sourceLanguage": "en",
-  "strings": {
-    "... Oh? ! ! Looks like BeMatch...! \nPlease update to the latest version.": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "...おや？！BeMatch.のようすが...！\n最新バージョンへのアップデートをお願いします。"
+  "sourceLanguage" : "en",
+  "strings" : {
+    "... Oh? ! ! Looks like TenMatch...! \nPlease update to the latest version." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "...おや？！TenMatchのようすが...！\n最新バージョンへのアップデートをお願いします。"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "... Oh? ! ! On dirait BeMatch... ! \nVeuillez mettre à jour vers la dernière version."
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "...오? ! ! TenMatch처럼 보이네요...! \n최신 버전으로 업데이트해 주세요."
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "... Ồ? ! ! Có vẻ như BeMatch...! \nVui lòng cập nhật lên phiên bản mới nhất."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "... Oh ? ! ! On dirait TenMatch...! \nVeuillez mettre à jour vers la dernière version."
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "... 오? ! ! BeMatch인 것 같아요...! \n최신 버전으로 업데이트 해주세요."
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "... Och? ! ! Wygląda na TenMatch...! \nProszę zaktualizować do najnowszej wersji."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "... Ồ? ! ! Trông giống như TenMatch...! \nVui lòng cập nhật lên phiên bản mới nhất."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "... ¡Oh? ! ! Parece TenMatch...! \nPor favor, actualiza a la última versión."
           }
         }
       }
     },
-    "Notice": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "お知らせ"
+    "Notice" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お知らせ"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Avis"
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "공지"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Thông báo"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avis"
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "공지"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Powiadomienie"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thông báo"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aviso"
           }
         }
       }
     },
-    "Update": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "アップデート"
+    "Update" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アップデート"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mettre à jour"
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "업데이트"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cập nhật"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mettre à jour"
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "업데이트"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualizować"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cập nhật"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualizar"
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }
-

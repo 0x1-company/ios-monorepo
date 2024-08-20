@@ -51,10 +51,10 @@ public struct BannerView: View {
           _dataDict: DataDict(
             data: [
               "id": "id",
-              "title": "BeMatch.の社長と話そう",
+              "title": "TenMatchの社長と話そう",
               "description": "アプリの改善策や不具合などあれば教えてください。",
               "buttonTitle": "開く",
-              "url": "https://bematch.jp",
+              "url": "https://tenmatch.app",
               "startAt": 10,
               "endAt": 10,
             ],

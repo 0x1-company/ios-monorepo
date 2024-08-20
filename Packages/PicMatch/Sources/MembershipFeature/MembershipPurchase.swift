@@ -43,8 +43,17 @@ public struct MembershipPurchaseView: View {
                     .stroke(Color.white, lineWidth: 1)
                 )
 
-              Text("Find someone you care about!", bundle: .module)
-                .font(.system(.title2, weight: .bold))
+              VStack(spacing: 24) {
+                Text("Find someone you care about!", bundle: .module)
+                  .font(.system(.title2, weight: .bold))
+
+                Button {
+                  store.send(.upgradeButtonTapped)
+                } label: {
+                  Text("Upgrade for \(viewStore.displayPrice)/week", bundle: .module)
+                }
+                .buttonStyle(ConversionPrimaryButtonStyle())
+              }
 
               SpecialOfferView()
 

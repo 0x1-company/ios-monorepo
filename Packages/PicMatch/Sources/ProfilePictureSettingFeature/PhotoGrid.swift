@@ -17,10 +17,6 @@ public struct PhotoGrid: View {
           .aspectRatio(3 / 4, contentMode: .fill)
           .clipped()
           .clipShape(RoundedRectangle(cornerRadius: 10))
-          .overlay {
-            RoundedRectangle(cornerRadius: 10)
-              .stroke(Color(uiColor: UIColor.opaqueSeparator), lineWidth: 1)
-          }
       }
       .buttonStyle(HoldDownButtonStyle())
     case let .warning(image):
@@ -38,10 +34,6 @@ public struct PhotoGrid: View {
         .aspectRatio(3 / 4, contentMode: .fill)
         .clipped()
         .clipShape(RoundedRectangle(cornerRadius: 10))
-        .overlay {
-          RoundedRectangle(cornerRadius: 10)
-            .stroke(Color(uiColor: UIColor.opaqueSeparator), lineWidth: 1)
-        }
       }
       .buttonStyle(HoldDownButtonStyle())
     case .empty:
@@ -51,18 +43,11 @@ public struct PhotoGrid: View {
         selectionBehavior: .default,
         preferredItemEncoding: .automatic
       ) {
-        Color(uiColor: UIColor.secondarySystemBackground)
+        Color(uiColor: UIColor.secondarySystemFill)
           .aspectRatio(3 / 4, contentMode: .fill)
           .cornerRadius(10)
           .overlay {
             PlusIcon()
-          }
-          .overlay {
-            RoundedRectangle(cornerRadius: 10)
-              .stroke(
-                Color(uiColor: UIColor.opaqueSeparator),
-                style: StrokeStyle(dash: [8, 8])
-              )
           }
       }
       .buttonStyle(HoldDownButtonStyle())

@@ -18,7 +18,7 @@ public struct ProductPurchaseContentView: View {
           .frame(width: 190, height: 190)
           .clipShape(Circle())
           .offset(y: -190)
-          .blur(radius: 128)
+          .blur(radius: 64)
 
         VStack(spacing: 0) {
           ScrollView(.vertical) {

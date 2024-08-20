@@ -13,7 +13,7 @@ struct AchievementWidgetView: View {
         .font(.system(.headline, weight: .semibold))
 
       Text(displayCount)
-        .font(.system(size: 64, weight: .semibold))
+        .font(.system(size: 64, weight: .semibold, design: .rounded))
 
       Text(text)
         .foregroundStyle(Color.secondary)

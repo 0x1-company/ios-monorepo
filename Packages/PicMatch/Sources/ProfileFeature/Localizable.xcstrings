@@ -3,13 +3,37 @@
   "strings" : {
     "🔗 %@" : {
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🔗 %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🔗 %@"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "🔗 %@"
           }
         },
-        "ja" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🔗 %@"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🔗 %@"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "🔗 %@"

@@ -1,63 +1,86 @@
 {
-  "sourceLanguage": "en",
-  "strings": {
-    "Looks like he's gone.": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "もういないみたい..."
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Looks like he's gone." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "もういないみたい..."
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "On dirait qu'il est parti."
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "그는 사라진 것 같아..."
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Có vẻ như anh ấy đã đi rồi."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On dirait qu'il est parti..."
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "그가 떠난 것 같아요."
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wygląda na to, że go nie ma..."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Có vẻ như anh ấy đã đi rồi..."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parece que se ha ido..."
           }
         }
       }
     },
-    "Swipe others": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "他の人をスワイプする"
+    "Swipe others" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "他の人をスワイプする"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Balayer d'autres"
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다른 사람들을 스와이프"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vuốt những người khác"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swiper d'autres personnes"
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "다른 사람들 스와이프"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przesuń innych"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vuốt người khác"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desliza a otros"
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }
-

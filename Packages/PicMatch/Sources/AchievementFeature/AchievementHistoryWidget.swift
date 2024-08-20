@@ -18,10 +18,10 @@ public struct AchievementHistoryWidgetView: View {
 
         HStack(alignment: .bottom, spacing: 8) {
           Text(viewStore.displayDaysAgo)
-            .font(.system(size: 64, weight: .semibold))
+            .font(.system(size: 64, weight: .semibold, design: .rounded))
 
           Text("days.", bundle: .module)
-            .font(.system(size: 32, weight: .semibold))
+            .font(.system(size: 32, weight: .semibold, design: .rounded))
             .padding(.bottom, 8)
         }
 

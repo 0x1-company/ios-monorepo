@@ -4,60 +4,50 @@ import SwiftUI
 import UsernameSettingLogic
 
 public struct UsernameSettingView: View {
-  public enum NextButtonStyle: Equatable {
-    case next
-    case save
-  }
-
   @FocusState var isFocused: Bool
   let store: StoreOf<UsernameSettingLogic>
-  private let nextButtonStyle: NextButtonStyle
 
   public init(
-    store: StoreOf<UsernameSettingLogic>,
-    nextButtonStyle: NextButtonStyle
+    store: StoreOf<UsernameSettingLogic>
   ) {
     self.store = store
-    self.nextButtonStyle = nextButtonStyle
   }
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
-      VStack(spacing: 32) {
-        Text("What's your username on BeReal?", bundle: .module)
-          .frame(height: 50)
-          .font(.system(.title3, weight: .semibold))
+      VStack(spacing: 16) {
+        Text("Please tell me your\ntenten PIN.", bundle: .module)
+          .font(.system(.title2, weight: .bold))
 
-        VStack(spacing: 0) {
-          Text("BeRe.al/", bundle: .module)
-            .foregroundStyle(Color.gray)
-            .hidden()
-
-          TextField("", text: viewStore.$value)
-            .foregroundStyle(Color.white)
-            .keyboardType(.alphabet)
-            .textInputAutocapitalization(.never)
-            .autocorrectionDisabled()
-            .focused($isFocused)
-        }
-        .font(.system(.title3, weight: .semibold))
-
-        Text("By entering your username you agree to our [Terms](https://docs.bematch.jp/terms-of-use) and [Privacy Policy](https://docs.bematch.jp/privacy-policy)", bundle: .module)
-          .font(.system(.caption))
+        Text("ex. du9v5pq", bundle: .module)
+          .font(.system(.caption, design: .rounded))
+          .tint(Color.gray)
           .foregroundStyle(Color.gray)
+
+        TextField("", text: viewStore.$value)
+          .foregroundStyle(Color.white)
+          .textInputAutocapitalization(.never)
+          .autocorrectionDisabled()
+          .frame(height: 56)
+          .focused($isFocused)
+          .background(Color(uiColor: UIColor.systemFill))
+          .font(.system(.title3, weight: .semibold))
+          .clipShape(RoundedRectangle(cornerRadius: 12))
 
         Spacer()
 
+        Text("By doing this, you agree\nto our [Privacy Policy](https://docs.tenmatch.app/privacy-policy) and [Terms of Use](https://docs.tenmatch.app/terms-of-use).", bundle: .module)
+          .font(.system(.caption, design: .rounded))
+          .foregroundStyle(Color.gray)
+
         PrimaryButton(
-          nextButtonStyle == .save
-            ? String(localized: "Save", bundle: .module)
-            : String(localized: "Next", bundle: .module),
+          String(localized: "Continue", bundle: .module),
           isLoading: viewStore.isActivityIndicatorVisible
         ) {
           store.send(.nextButtonTapped)
         }
       }
-      .padding(.top, 24)
+      .padding(.top, 32)
       .padding(.bottom, 16)
       .padding(.horizontal, 16)
       .multilineTextAlignment(.center)
@@ -86,8 +76,7 @@ public struct UsernameSettingView: View {
           username: ""
         ),
         reducer: { UsernameSettingLogic() }
-      ),
-      nextButtonStyle: .next
+      )
     )
   }
   .environment(\.colorScheme, .dark)

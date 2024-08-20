@@ -1,63 +1,86 @@
 {
-  "sourceLanguage": "en",
-  "strings": {
-    "Next": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "つぎへ"
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Continue" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "続ける"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Suivant"
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계속"
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tiếp theo"
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer"
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "다음"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontynuuj"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiếp tục"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
           }
         }
       }
     },
-    "Press \"Add to Photo\" in memory and save it 📸.": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "メモリーで、お気に入りを選んで「写真に追加」で保存してね 📸"
+    "In the tenten, select your favorites and tap 'Save' 📸." : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tentenでお気に入りを選択し、「保存」📸をタップします。"
           }
         },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Appuyez sur \"Ajouter à la photo\" en mémoire et enregistrez-le 📸."
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tenten에서 즐겨찾기를 선택하고 '저장' 📸을(를) 탭하세요."
           }
         },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nhấn \"Thêm vào Ảnh\" trong bộ nhớ và lưu lại 📸."
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dans le tenten, sélectionnez vos favoris et appuyez sur 'Enregistrer' 📸."
           }
         },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "메모리에서 \"사진에 추가\"를 눌러 저장하세요 📸."
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "W tenten wybierz swoje ulubione i dotknij 'Zapisz' 📸."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trong tenten, chọn những mục yêu thích của bạn và nhấn 'Lưu' 📸."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En el tenten, selecciona tus favoritos y toca 'Guardar' 📸."
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }
-

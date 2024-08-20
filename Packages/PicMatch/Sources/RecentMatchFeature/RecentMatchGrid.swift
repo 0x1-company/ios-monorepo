@@ -7,6 +7,7 @@ import SwiftUI
 public struct RecentMatchGridView: View {
   @Environment(\.displayScale) var displayScale
   let store: StoreOf<RecentMatchGridLogic>
+  let width = UIScreen.main.bounds.width
 
   public init(store: StoreOf<RecentMatchGridLogic>) {
     self.store = store
@@ -17,7 +18,7 @@ public struct RecentMatchGridView: View {
       Button {
         store.send(.matchButtonTapped)
       } label: {
-        VStack(spacing: 20) {
+        VStack(spacing: 8) {
           CachedAsyncImage(
             url: URL(string: viewStore.imageUrl),
             urlCache: .shared,
@@ -25,11 +26,13 @@ public struct RecentMatchGridView: View {
             content: { image in
               image
                 .resizable()
-                .aspectRatio(3 / 4, contentMode: .fill)
+                .aspectRatio(contentMode: .fill)
+                .frame(width: width, height: width * (4 / 3))
             },
             placeholder: {
               Color.black
-                .aspectRatio(3 / 4, contentMode: .fill)
+                .aspectRatio(contentMode: .fill)
+                .frame(width: width, height: width * (4 / 3))
                 .overlay {
                   ProgressView()
                     .progressViewStyle(CircularProgressViewStyle())
@@ -40,18 +43,14 @@ public struct RecentMatchGridView: View {
           .clipShape(RoundedRectangle(cornerRadius: 6))
           .overlay(alignment: .bottom) {
             if !viewStore.isRead {
-              Color.pink
+              Color(0xFFD60A)
                 .frame(width: 16, height: 16)
                 .clipShape(Circle())
-                .overlay {
-                  RoundedRectangle(cornerRadius: 16 / 2)
-                    .stroke(Color.white, lineWidth: 2)
-                }
-                .offset(y: 10)
+                .offset(y: 8)
             }
           }
 
-          VStack(spacing: 8) {
+          VStack(spacing: 4) {
             Text(viewStore.displayName)
               .font(.system(.subheadline, weight: .semibold))
               .frame(maxWidth: .infinity, alignment: .leading)

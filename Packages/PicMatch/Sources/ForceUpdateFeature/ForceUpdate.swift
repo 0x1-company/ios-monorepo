@@ -16,7 +16,7 @@ public struct ForceUpdateView: View {
         Text("Notice", bundle: .module)
           .font(.system(.title, weight: .semibold))
 
-        Text("... Oh? ! ! Looks like BeMatch...! \nPlease update to the latest version.", bundle: .module)
+        Text("... Oh? ! ! Looks like TenMatch...! \nPlease update to the latest version.", bundle: .module)
           .font(.system(.body, weight: .semibold))
 
         PrimaryButton(

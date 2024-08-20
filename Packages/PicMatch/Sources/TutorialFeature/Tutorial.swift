@@ -43,7 +43,7 @@ public struct TutorialView: View {
         if !viewStore.isNextButtonHidden {
           VStack(spacing: 24) {
             PrimaryButton(
-              String(localized: "Next", bundle: .module)
+              String(localized: "Continue", bundle: .module)
             ) {
               store.send(.nextButtonTapped, animation: .default)
             }
@@ -53,7 +53,7 @@ public struct TutorialView: View {
             } label: {
               Text("Skip", bundle: .module)
                 .foregroundStyle(Color.godTextSecondaryDark)
-                .font(.system(.body, design: .rounded, weight: .bold))
+                .font(.system(.body, weight: .bold))
             }
           }
           .padding(.horizontal, 60)
@@ -77,7 +77,7 @@ public struct TutorialView: View {
           } label: {
             Text("Skip", bundle: .module)
               .foregroundStyle(Color.godTextSecondaryDark)
-              .font(.system(.body, design: .rounded, weight: .bold))
+              .font(.system(.body, weight: .bold))
               .padding(.all, 24)
           }
         }

@@ -3,6 +3,12 @@
   "strings" : {
     "Continue" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14,11 +20,35 @@
             "state" : "translated",
             "value" : "続ける"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계속"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontynuuj"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiếp tục"
+          }
         }
       }
     },
     "most popular" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "más popular"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -30,11 +60,35 @@
             "state" : "translated",
             "value" : "いちばん人気"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "가장 인기 있는"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "najbardziej popularny"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "phổ biến nhất"
+          }
         }
       }
     },
     "Premium Plan" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan Premium"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -46,15 +100,39 @@
             "state" : "translated",
             "value" : "10倍楽しめるプレミアムプラン"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "프리미엄 플랜"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan Premium"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gói cao cấp"
+          }
         }
       }
     },
     "Recurring billing. You can cancel at any time. Your payment will be charged to your iTunes account and will auto-renew until you cancel in the iTunes Store settings. By tapping Unlock, you agree to the Terms of Service and auto-renewal." : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facturación recurrente. Puedes cancelar en cualquier momento. Su pago se cargará a su cuenta de iTunes y se renovará automáticamente hasta que cancele en la configuración de la tienda de iTunes. Al tocar Desbloquear, acepta los Términos de servicio y la renovación automática."
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Facturation récurrente. Vous pouvez annuler à tout moment. Votre paiement sera débité de votre compte iTunes et sera renouvelé automatiquement jusqu'à ce que vous annuliez dans les paramètres de l'iTunes Store. En appuyant sur Débloquer, vous acceptez les conditions d'utilisation et le renouvellement automatique."
+            "value" : "Facturation récurrente. Vous pouvez annuler à tout moment. Votre paiement sera débité de votre compte iTunes et sera renouvelé automatiquement jusqu'à ce que vous annuliez dans les paramètres de l'iTunes Store. En appuyant sur Déverrouiller, vous acceptez les Conditions d'utilisation et le renouvellement automatique."
           }
         },
         "ja" : {
@@ -62,27 +140,38 @@
             "state" : "translated",
             "value" : "定期課金。いつでもキャンセルできます。お支払いはiTunesアカウントに請求され、iTunes Storeの設定でキャンセルするまで、自動更新されます。ロック解除をタップすると、利用規約と自動更新に同意したことになります。"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "정기 결제. 언제든지 취소할 수 있습니다. 결제는 iTunes 계정으로 청구되며 iTunes 스토어 설정에서 취소할 때까지 자동 갱신됩니다. 잠금을 해제하면 서비스 약관 및 자동 갱신에 동의하게 됩니다."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Okresowe rozliczenia. Możesz anulować w dowolnym momencie. Twoja płatność zostanie obciążona na Twoim koncie iTunes i będzie automatycznie odnawiana, dopóki nie anulujesz w ustawieniach sklepu iTunes Store. Dotykając Odblokuj, zgadzasz się na Warunki korzystania z usługi i automatyczne odnawianie."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lập hóa đơn định kỳ. Bạn có thể hủy bất cứ lúc nào. Thanh toán của bạn sẽ được tính vào tài khoản iTunes của bạn và sẽ tự động gia hạn cho đến khi bạn hủy trong cài đặt của iTunes Store. Bằng cách nhấn Mở khóa, bạn đồng ý với Điều khoản dịch vụ và tự động gia hạn."
+          }
         }
       }
     },
     "Restore a purchase" : {
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restaurer un achat"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "購入を復元する"
-          }
-        }
-      }
+
     },
     "See who likes you" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver quién te gusta"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -93,6 +182,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "自分をLikeした人を見れる！"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "당신을 좋아하는 사람을 확인하세요"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobacz, kto cię lubi"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xem ai thích bạn"
           }
         }
       }

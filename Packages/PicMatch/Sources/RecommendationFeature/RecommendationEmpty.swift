@@ -14,13 +14,14 @@ public struct RecommendationEmptyView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 40) {
-        Image(ImageResource.highAlert)
+        Image(ImageResource.break)
           .resizable()
           .aspectRatio(contentMode: .fit)
-          .frame(height: 160)
+          .frame(maxWidth: .infinity)
+          .padding(.horizontal, 37)
 
         VStack(spacing: 16) {
-          Text("Just a little... Too much swiping... Please help me share BeMatch... 🙏.", bundle: .module)
+          Text("Too much swiping...\nPlease help us share TenMatch... 🙏", bundle: .module)
             .font(.system(.subheadline, weight: .semibold))
             .foregroundStyle(Color.white)
             .multilineTextAlignment(.center)
@@ -38,9 +39,19 @@ public struct RecommendationEmptyView: View {
           }
           .buttonStyle(HoldDownButtonStyle())
         }
+        .padding(.horizontal, 16)
       }
-      .padding(.horizontal, 16)
-      .background(Color.black)
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .background(
+        LinearGradient(
+          colors: [
+            Color(0xFFB8_5BE9),
+            Color(0xFF00_0000),
+          ],
+          startPoint: .topTrailing,
+          endPoint: .bottomLeading
+        )
+      )
       .task { await store.send(.onTask).finish() }
       .sheet(isPresented: viewStore.$isPresented) {
         ActivityView(
@@ -63,11 +74,18 @@ public struct RecommendationEmptyView: View {
 }
 
 #Preview {
-  RecommendationEmptyView(
-    store: .init(
-      initialState: RecommendationEmptyLogic.State(),
-      reducer: { RecommendationEmptyLogic() }
+  NavigationStack {
+    RecommendationEmptyView(
+      store: .init(
+        initialState: RecommendationEmptyLogic.State(),
+        reducer: { RecommendationEmptyLogic() }
+      )
     )
-  )
+    .toolbar {
+      ToolbarItem(placement: .principal) {
+        Image(ImageResource.logo)
+      }
+    }
+  }
   .environment(\.locale, Locale(identifier: "ja-JP"))
 }
