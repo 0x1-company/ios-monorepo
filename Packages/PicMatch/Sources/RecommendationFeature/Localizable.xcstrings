@@ -41,7 +41,11 @@
         }
       }
     },
+    "Too much swiping...\nPlease help us share PicMatch... 🙏" : {
+
+    },
     "Too much swiping...\nPlease help us share TenMatch... 🙏" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {

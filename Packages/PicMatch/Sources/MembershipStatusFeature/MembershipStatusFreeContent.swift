@@ -28,7 +28,7 @@ public struct MembershipStatusFreeContentView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Text("About TenMatch PRO", bundle: .module)
+              Text("About PicMatch PRO", bundle: .module)
                 .foregroundStyle(Color.primary)
             }
           }

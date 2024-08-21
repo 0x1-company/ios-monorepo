@@ -36,7 +36,7 @@ public struct UsernameSettingView: View {
 
         Spacer()
 
-        Text("By doing this, you agree\nto our [Privacy Policy](https://docs.tenmatch.app/privacy-policy) and [Terms of Use](https://docs.tenmatch.app/terms-of-use).", bundle: .module)
+        Text("By doing this, you agree\nto our [Privacy Policy](https://docs.PicMatch.app/privacy-policy) and [Terms of Use](https://docs.PicMatch.app/terms-of-use).", bundle: .module)
           .font(.system(.caption, design: .rounded))
           .foregroundStyle(Color.gray)
 

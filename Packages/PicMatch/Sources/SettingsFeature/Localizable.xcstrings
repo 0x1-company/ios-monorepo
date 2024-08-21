@@ -359,7 +359,7 @@
         }
       }
     },
-    "Rate TenMatch" : {
+    "Rate PicMatch" : {
 
     },
     "Rate TenMatch." : {
@@ -419,7 +419,11 @@
         }
       }
     },
+    "Share PicMatch" : {
+
+    },
     "Share TenMatch" : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {

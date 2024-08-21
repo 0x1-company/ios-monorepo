@@ -123,7 +123,7 @@ public struct MatchedView: View {
         reducer: MatchedLogic.init,
         withDependencies: {
           $0.environment = .live(
-            brand: .tenmatch,
+            brand: .picmatch,
             instagramUsername: "",
             appId: "",
             appStoreForEmptyURL: .applicationDirectory,

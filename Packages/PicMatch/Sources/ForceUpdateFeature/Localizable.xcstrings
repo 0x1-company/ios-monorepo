@@ -1,8 +1,24 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "... Oh? ! ! Looks like PicMatch...! \nPlease update to the latest version." : {
+
+    },
     "... Oh? ! ! Looks like TenMatch...! \nPlease update to the latest version." : {
+      "extractionState" : "stale",
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "... ¡Oh? ! ! Parece TenMatch...! \nPor favor, actualiza a la última versión."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "... Oh ? ! ! On dirait TenMatch...! \nVeuillez mettre à jour vers la dernière version."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13,12 +29,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "...오? ! ! TenMatch처럼 보이네요...! \n최신 버전으로 업데이트해 주세요."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "... Oh ? ! ! On dirait TenMatch...! \nVeuillez mettre à jour vers la dernière version."
           }
         },
         "pl" : {
@@ -32,17 +42,23 @@
             "state" : "translated",
             "value" : "... Ồ? ! ! Trông giống như TenMatch...! \nVui lòng cập nhật lên phiên bản mới nhất."
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "... ¡Oh? ! ! Parece TenMatch...! \nPor favor, actualiza a la última versión."
-          }
         }
       }
     },
     "Notice" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aviso"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avis"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53,12 +69,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "공지"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Avis"
           }
         },
         "pl" : {
@@ -72,17 +82,23 @@
             "state" : "translated",
             "value" : "Thông báo"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aviso"
-          }
         }
       }
     },
     "Update" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualizar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mettre à jour"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -95,12 +111,6 @@
             "value" : "업데이트"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mettre à jour"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -111,12 +121,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cập nhật"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Actualizar"
           }
         }
       }

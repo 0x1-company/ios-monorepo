@@ -3,6 +3,18 @@
   "strings" : {
     "Fake profile" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfil falso"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faux profil"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13,12 +25,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "가짜 프로필"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Faux profil"
           }
         },
         "pl" : {
@@ -32,17 +38,23 @@
             "state" : "translated",
             "value" : "Hồ sơ giả"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Perfil falso"
-          }
         }
       }
     },
     "If you or someone you know is in immediate danger, contact local low enforcement or your local emergency services immediately." : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si usted o alguien que conoce está en peligro inmediato, contacte inmediatamente a las fuerzas del orden locales o a los servicios de emergencia."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si vous ou quelqu'un que vous connaissez est en danger immédiat, contactez immédiatement les forces de l'ordre locales ou les services d'urgence."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53,12 +65,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "당신이나 당신이 아는 사람이 즉각적인 위험에 처해 있다면, 즉시 지역 경찰 또는 응급 서비스에 연락하세요."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Si vous ou quelqu'un que vous connaissez est en danger immédiat, contactez immédiatement les forces de l'ordre locales ou les services d'urgence."
           }
         },
         "pl" : {
@@ -72,17 +78,23 @@
             "state" : "translated",
             "value" : "Nếu bạn hoặc ai đó mà bạn biết đang gặp nguy hiểm ngay lập tức, hãy liên hệ ngay với cơ quan thực thi pháp luật địa phương hoặc dịch vụ khẩn cấp địa phương."
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Si usted o alguien que conoce está en peligro inmediato, contacte inmediatamente a las fuerzas del orden locales o a los servicios de emergencia."
-          }
         }
       }
     },
     "Minimum of 10 characters required." : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se requieren un mínimo de 10 caracteres."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minimum de 10 caractères requis."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -93,12 +105,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "최소 10자 이상 입력해야 합니다."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Minimum de 10 caractères requis."
           }
         },
         "pl" : {
@@ -112,17 +118,23 @@
             "state" : "translated",
             "value" : "Yêu cầu tối thiểu 10 ký tự."
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Se requieren un mínimo de 10 caracteres."
-          }
         }
       }
     },
     "Nudity or something sexualy explicit" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desnudez o contenido sexual explícito"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nudité ou contenu sexuellement explicite"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -133,12 +145,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "누드 또는 성적으로 노골적인 내용"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nudité ou contenu sexuellement explicite"
           }
         },
         "pl" : {
@@ -152,17 +158,23 @@
             "state" : "translated",
             "value" : "Nội dung khỏa thân hoặc khiêu dâm"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Desnudez o contenido sexual explícito"
-          }
         }
       }
     },
     "Other" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otro"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autre"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -173,12 +185,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "기타"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Autre"
           }
         },
         "pl" : {
@@ -192,17 +198,27 @@
             "state" : "translated",
             "value" : "Khác"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Otro"
-          }
         }
       }
     },
+    "Report a PicMatch" : {
+
+    },
     "Report a TenMatch" : {
+      "extractionState" : "stale",
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reportar un TenMatch"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signaler un TenMatch"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -213,12 +229,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "트링켓 신고하기"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Signaler un TenMatch"
           }
         },
         "pl" : {
@@ -232,17 +242,23 @@
             "state" : "translated",
             "value" : "Báo cáo một TenMatch"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reportar un TenMatch"
-          }
         }
       }
     },
     "Send" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envoyer"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -253,12 +269,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "보내기"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Envoyer"
           }
         },
         "pl" : {
@@ -272,17 +282,23 @@
             "state" : "translated",
             "value" : "Gửi"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enviar"
-          }
         }
       }
     },
     "Spam" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correo no deseado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spam"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -293,12 +309,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "스팸"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Spam"
           }
         },
         "pl" : {
@@ -312,17 +322,23 @@
             "state" : "translated",
             "value" : "Thư rác"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Correo no deseado"
-          }
         }
       }
     },
     "Suicide or self-harm" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suicidio o autolesiones"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suicide ou automutilation"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -333,12 +349,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "자살 또는 자해"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Suicide ou automutilation"
           }
         },
         "pl" : {
@@ -352,17 +362,23 @@
             "state" : "translated",
             "value" : "Tự tử hoặc tự gây hại"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Suicidio o autolesiones"
-          }
         }
       }
     },
     "Violent or dangerous" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Violento o peligroso"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Violent ou dangereux"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -373,12 +389,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "폭력적 또는 위험한"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Violent ou dangereux"
           }
         },
         "pl" : {
@@ -392,17 +402,23 @@
             "state" : "translated",
             "value" : "Bạo lực hoặc nguy hiểm"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Violento o peligroso"
-          }
         }
       }
     },
     "Your report is confidential." : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Su informe es confidencial."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre signalement est confidentiel."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -415,12 +431,6 @@
             "value" : "신고 내용은 기밀로 처리됩니다."
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Votre signalement est confidentiel."
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -431,12 +441,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Báo cáo của bạn được bảo mật."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Su informe es confidencial."
           }
         }
       }
