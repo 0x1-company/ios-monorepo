@@ -17,7 +17,7 @@ public struct BannedView: View {
         Text("Your account has been banned from PicMatch.", bundle: .module)
           .font(.system(.headline, weight: .semibold))
 
-        Text("It's important to us that PicMatch is a welcoming and safe space for everyone.\nUnfortunately, we found that you violated our [Terms of Use](https://docs.PicMatch.app/terms-of-use) and so we've made the decision to remove you from the PicMatch Platform.", bundle: .module)
+        Text("It's important to us that PicMatch is a welcoming and safe space for everyone.\nUnfortunately, we found that you violated our [Terms of Use](https://docs.picmatch.app/terms-of-use) and so we've made the decision to remove you from the PicMatch Platform.", bundle: .module)
           .font(.system(.body, weight: .semibold))
           .foregroundStyle(Color.secondary)
 

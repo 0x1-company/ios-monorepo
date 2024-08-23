@@ -55,7 +55,7 @@ public struct BannerView: View {
               "description": "アプリの改善策や不具合などあれば教えてください。",
               "buttonTitle": "開く",
               // TODO: URL
-              "url": "https://PicMatch.app",
+              "url": "https://picmatch.app",
               "startAt": 10,
               "endAt": 10,
             ],
