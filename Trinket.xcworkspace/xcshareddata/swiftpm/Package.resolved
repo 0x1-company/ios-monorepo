@@ -185,8 +185,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-composable-architecture",
       "state" : {
-        "revision" : "b432441cbc11a38c678312bad1a01138a7cd64e0",
-        "version" : "1.13.0"
+        "revision" : "121b6080697b5457ac63e37d2f2d97cf5acd999a",
+        "version" : "1.13.1"
       }
     },
     {
@@ -230,8 +230,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-navigation",
       "state" : {
-        "revision" : "339ba3e305dc727b5baa6ddb476430a842167d4e",
-        "version" : "2.0.5"
+        "revision" : "70321c441d51b0b893c3abbf79687f550a027fde",
+        "version" : "2.0.6"
       }
     },
     {
