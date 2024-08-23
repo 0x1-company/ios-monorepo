@@ -41,24 +41,28 @@
         }
       }
     },
-    "Too much swiping...\nPlease help us share TenMatch... 🙏" : {
+    "Too much swiping...\nPlease help us share PicMatch... 🙏" : {
+
+    },
+    "Too much swiping...\nPlease help us share PicMatch... 🙏" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Demasiado deslizamiento...\nPor favor, ayúdanos a compartir TenMatch... 🙏"
+            "value" : "Demasiado deslizamiento...\nPor favor, ayúdanos a compartir PicMatch... 🙏"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Trop de balayage...\nAidez-nous à partager TenMatch... 🙏"
+            "value" : "Trop de balayage...\nAidez-nous à partager PicMatch... 🙏"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ちょっと...スワイプしすぎです...。 TenMatchのシェアに協力してください... 🙏"
+            "value" : "ちょっと...スワイプしすぎです...。 PicMatchのシェアに協力してください... 🙏"
           }
         },
         "ko" : {
@@ -70,13 +74,13 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Za dużo przesuń...\nProszę, pomóż nam udostępnić TenMatch... 🙏"
+            "value" : "Za dużo przesuń...\nProszę, pomóż nam udostępnić PicMatch... 🙏"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quẹt quá nhiều...\nXin hãy giúp chúng tôi chia sẻ TenMatch... 🙏"
+            "value" : "Quẹt quá nhiều...\nXin hãy giúp chúng tôi chia sẻ PicMatch... 🙏"
           }
         }
       }

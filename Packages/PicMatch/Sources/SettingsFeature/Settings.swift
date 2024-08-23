@@ -141,7 +141,7 @@ public struct SettingsView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Text("Share TenMatch", bundle: .module)
+              Text("Share PicMatch", bundle: .module)
                 .foregroundStyle(Color.primary)
             }
           }
@@ -152,7 +152,7 @@ public struct SettingsView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Text("Rate TenMatch", bundle: .module)
+              Text("Rate PicMatch", bundle: .module)
                 .foregroundStyle(Color.primary)
             }
           }

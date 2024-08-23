@@ -21,7 +21,7 @@ public struct RecommendationEmptyView: View {
           .padding(.horizontal, 37)
 
         VStack(spacing: 16) {
-          Text("Too much swiping...\nPlease help us share TenMatch... 🙏", bundle: .module)
+          Text("Too much swiping...\nPlease help us share PicMatch... 🙏", bundle: .module)
             .font(.system(.subheadline, weight: .semibold))
             .foregroundStyle(Color.white)
             .multilineTextAlignment(.center)

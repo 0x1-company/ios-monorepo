@@ -14,7 +14,7 @@ public struct MembershipStatusPaidContentView: View {
       List {
         Section {
           LabeledContent {
-            Text("TenMatch PRO", bundle: .module)
+            Text("PicMatch PRO", bundle: .module)
           } label: {
             Text("Status", bundle: .module)
           }

@@ -9,6 +9,18 @@
             "value" : "%1$@ for %2$@"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ por %2$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ pour %2$@"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19,12 +31,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@을 위해 %2$@"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ pour %2$@"
           }
         },
         "pl" : {
@@ -38,17 +44,23 @@
             "state" : "translated",
             "value" : "%1$@ cho %2$@"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ por %2$@"
-          }
         }
       }
     },
     "1. Send invitation code" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Enviar código de invitación"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Envoyer le code d'invitation"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -59,12 +71,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "1. 초대 코드 보내기"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1. Envoyer le code d'invitation"
           }
         },
         "pl" : {
@@ -78,17 +84,23 @@
             "state" : "translated",
             "value" : "1. Gửi mã mời"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1. Enviar código de invitación"
-          }
         }
       }
     },
     "2. %@ free for both parties!" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. ¡%@ gratis para ambas partes!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. %@ gratuit pour les deux parties !"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -99,12 +111,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "2. 양측 모두 %@ 무료!"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "2. %@ gratuit pour les deux parties !"
           }
         },
         "pl" : {
@@ -118,17 +124,23 @@
             "state" : "translated",
             "value" : "2. %@ miễn phí cho cả hai bên!"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "2. ¡%@ gratis para ambas partes!"
-          }
         }
       }
     },
     "Find someone you care about!" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Encuentra a alguien que te importe!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trouvez quelqu'un qui vous tient à cœur !"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -139,12 +151,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "당신이 신경 쓰는 사람을 찾아보세요!"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Trouvez quelqu'un qui vous tient à cœur !"
           }
         },
         "pl" : {
@@ -158,17 +164,23 @@
             "state" : "translated",
             "value" : "Tìm ai đó bạn quan tâm!"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¡Encuentra a alguien que te importe!"
-          }
         }
       }
     },
     "How to Receive Benefits" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cómo recibir beneficios"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comment recevoir des avantages"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -179,12 +191,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "혜택을 받는 방법"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Comment recevoir des avantages"
           }
         },
         "pl" : {
@@ -198,12 +204,6 @@
             "state" : "translated",
             "value" : "Cách nhận lợi ích"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cómo recibir beneficios"
-          }
         }
       }
     },
@@ -213,6 +213,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "see-who-sent-it"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "see-who-sent-it-es"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "see-who-sent-it-fr"
           }
         },
         "ja" : {
@@ -227,12 +239,6 @@
             "value" : "see-who-sent-it-ko"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "see-who-sent-it-fr"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -244,17 +250,23 @@
             "state" : "translated",
             "value" : "see-who-sent-it-vi"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "see-who-sent-it-es"
-          }
         }
       }
     },
     "Invite a friend and both receive" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invita a un amigo y ambos reciban"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invitez un ami et recevez tous les deux"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -265,12 +277,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "친구를 초대하고 둘 다 받으세요"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Invitez un ami et recevez tous les deux"
           }
         },
         "pl" : {
@@ -284,17 +290,23 @@
             "state" : "translated",
             "value" : "Mời một người bạn và cả hai cùng nhận"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Invita a un amigo y ambos reciban"
-          }
         }
       }
     },
     "invite-ticket" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "invite-ticket-es"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "invite-ticket-fr"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -305,12 +317,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "invite-ticket-ko"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "invite-ticket-fr"
           }
         },
         "pl" : {
@@ -324,17 +330,23 @@
             "state" : "translated",
             "value" : "invite-ticket-vi"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "invite-ticket-es"
-          }
         }
       }
     },
     "Limited to first %lld Users" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limitado a los primeros %lld usuarios"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limité aux premiers %lld utilisateurs"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -345,12 +357,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "최초 %lld명의 사용자로 제한됨"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Limité aux premiers %lld utilisateurs"
           }
         },
         "pl" : {
@@ -364,17 +370,23 @@
             "state" : "translated",
             "value" : "Giới hạn cho %lld người dùng đầu tiên"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Limitado a los primeros %lld usuarios"
-          }
         }
       }
     },
     "Premium Plan" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan Premium"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan Premium"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -385,12 +397,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "프리미엄 플랜"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Plan Premium"
           }
         },
         "pl" : {
@@ -404,17 +410,23 @@
             "state" : "translated",
             "value" : "Gói cao cấp"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Plan Premium"
-          }
         }
       }
     },
     "Recurring billing. You can cancel at any time. Payment will be charged to your iTunes account and your subscription will auto-renew at %@/week until you cancel in iTunes Store settings. By tapping Unlock, you agree to the Terms of Service and auto-renewal." : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facturación recurrente. Puedes cancelar en cualquier momento. El pago se cargará a tu cuenta de iTunes y tu suscripción se renovará automáticamente a %@/semana hasta que canceles en la configuración de la tienda de iTunes. Al tocar Desbloquear, aceptas los Términos de servicio y la renovación automática."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Facturation récurrente. Vous pouvez annuler à tout moment. Le paiement sera débité de votre compte iTunes et votre abonnement sera automatiquement renouvelé à %@/semaine jusqu'à ce que vous annuliez dans les paramètres de l'iTunes Store. En appuyant sur Déverrouiller, vous acceptez les Conditions de service et le renouvellement automatique."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -425,12 +437,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "정기 결제. 언제든지 취소할 수 있습니다. 결제는 iTunes 계정으로 청구되며 iTunes Store 설정에서 취소할 때까지 구독이 %@/주로 자동 갱신됩니다. 잠금 해제를 탭하면 서비스 약관 및 자동 갱신에 동의하게 됩니다."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Facturation récurrente. Vous pouvez annuler à tout moment. Le paiement sera débité de votre compte iTunes et votre abonnement sera automatiquement renouvelé à %@/semaine jusqu'à ce que vous annuliez dans les paramètres de l'iTunes Store. En appuyant sur Déverrouiller, vous acceptez les Conditions de service et le renouvellement automatique."
           }
         },
         "pl" : {
@@ -444,17 +450,23 @@
             "state" : "translated",
             "value" : "Lập hóa đơn định kỳ. Bạn có thể hủy bất cứ lúc nào. Thanh toán sẽ được tính vào tài khoản iTunes của bạn và đăng ký của bạn sẽ tự động gia hạn ở mức %@/tuần cho đến khi bạn hủy trong cài đặt của iTunes Store. Bằng cách nhấn Mở khóa, bạn đồng ý với Điều khoản Dịch vụ và tự động gia hạn."
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Facturación recurrente. Puedes cancelar en cualquier momento. El pago se cargará a tu cuenta de iTunes y tu suscripción se renovará automáticamente a %@/semana hasta que canceles en la configuración de la tienda de iTunes. Al tocar Desbloquear, aceptas los Términos de servicio y la renovación automática."
-          }
         }
       }
     },
     "See who sent it!" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Mira quién lo envió!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voir qui l'a envoyé !"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -465,12 +477,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "누가 보냈는지 확인하세요!"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Voir qui l'a envoyé !"
           }
         },
         "pl" : {
@@ -484,57 +490,67 @@
             "state" : "translated",
             "value" : "Xem ai đã gửi nó!"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¡Mira quién lo envió!"
-          }
         }
       }
     },
-    "Send an invitation code to a friend who hasn't used TenMatch" : {
+    "Send an invitation code to a friend who hasn't used PicMatch" : {
+
+    },
+    "Send an invitation code to a friend who hasn't used PicMatch" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "ja" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "まだTenMatchを使っていない友達に招待コードを贈りましょう！"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "아직 TenMatch을 사용하지 않은 친구에게 초대 코드를 보내세요"
+            "value" : "Envía un código de invitación a un amigo que no ha usado PicMatch"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Envoyez un code d'invitation à un ami qui n'a pas utilisé TenMatch"
+            "value" : "Envoyez un code d'invitation à un ami qui n'a pas utilisé PicMatch"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "まだPicMatchを使っていない友達に招待コードを贈りましょう！"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아직 PicMatch을 사용하지 않은 친구에게 초대 코드를 보내세요"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wyślij kod zaproszenia do znajomego, który nie używał TenMatch"
+            "value" : "Wyślij kod zaproszenia do znajomego, który nie używał PicMatch"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gửi mã mời đến một người bạn chưa sử dụng TenMatch"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Envía un código de invitación a un amigo que no ha usado TenMatch"
+            "value" : "Gửi mã mời đến một người bạn chưa sử dụng PicMatch"
           }
         }
       }
     },
     "Send Invitation Code" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviar código de invitación"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envoyer le code d'invitation"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -545,12 +561,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "초대 코드 보내기"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Envoyer le code d'invitation"
           }
         },
         "pl" : {
@@ -564,17 +574,23 @@
             "state" : "translated",
             "value" : "Gửi mã mời"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enviar código de invitación"
-          }
         }
       }
     },
     "Special offer" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oferta especial"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offre spéciale"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -585,12 +601,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "특별 제공"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Offre spéciale"
           }
         },
         "pl" : {
@@ -604,17 +614,23 @@
             "state" : "translated",
             "value" : "Ưu đãi đặc biệt"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Oferta especial"
-          }
         }
       }
     },
     "Upgrade for %@/week" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualizar por %@/semana"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mettre à niveau pour %@/semaine"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -625,12 +641,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "업그레이드 - %@/주"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mettre à niveau pour %@/semaine"
           }
         },
         "pl" : {
@@ -644,57 +654,67 @@
             "state" : "translated",
             "value" : "Nâng cấp cho %@/tuần"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Actualizar por %@/semana"
-          }
         }
       }
     },
-    "When they enter the Invitation Code and register, you will both receive TenMatch PRO for sure!" : {
+    "When they enter the Invitation Code and register, you will both receive PicMatch PRO for sure!" : {
+
+    },
+    "When they enter the Invitation Code and register, you will both receive PicMatch PRO for sure!" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "ja" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "相手が招待コードを入力して登録すると、お互いにTenMatch PROを必ずプレゼント！"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "상대가 초대 코드를 입력하고 등록하면, 둘 다 TenMatch PRO를 받을 수 있습니다!"
+            "value" : "¡Cuando ingresen el código de invitación y se registren, ambos recibirán PicMatch PRO seguro!"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lorsqu'ils saisissent le code d'invitation et s'inscrivent, vous recevrez tous les deux TenMatch PRO pour sûr !"
+            "value" : "Lorsqu'ils saisissent le code d'invitation et s'inscrivent, vous recevrez tous les deux PicMatch PRO pour sûr !"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "相手が招待コードを入力して登録すると、お互いにPicMatch PROを必ずプレゼント！"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "상대가 초대 코드를 입력하고 등록하면, 둘 다 PicMatch PRO를 받을 수 있습니다!"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kiedy wprowadzą kod zaproszenia i zarejestrują się, obaj otrzymacie TenMatch PRO na pewno!"
+            "value" : "Kiedy wprowadzą kod zaproszenia i zarejestrują się, obaj otrzymacie PicMatch PRO na pewno!"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Khi họ nhập mã mời và đăng ký, cả hai bạn sẽ nhận được TenMatch PRO chắc chắn!"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¡Cuando ingresen el código de invitación y se registren, ambos recibirán TenMatch PRO seguro!"
+            "value" : "Khi họ nhập mã mời và đăng ký, cả hai bạn sẽ nhận được PicMatch PRO chắc chắn!"
           }
         }
       }
     },
     "when they use your invitation code you get" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "cuando usan tu código de invitación, obtienes"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "lorsqu'ils utilisent votre code d'invitation, vous obtenez"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -705,12 +725,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "그들이 당신의 초대 코드를 사용하면 당신은"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "lorsqu'ils utilisent votre code d'invitation, vous obtenez"
           }
         },
         "pl" : {
@@ -724,17 +738,23 @@
             "state" : "translated",
             "value" : "khi họ sử dụng mã mời của bạn, bạn nhận được"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "cuando usan tu código de invitación, obtienes"
-          }
         }
       }
     },
     "worth benefits" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "beneficios por valor de"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "d'avantages"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -747,12 +767,6 @@
             "value" : "상당한 혜택"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "d'avantages"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -763,12 +777,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "những lợi ích đáng giá"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "beneficios por valor de"
           }
         }
       }

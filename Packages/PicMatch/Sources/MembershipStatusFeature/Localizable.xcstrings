@@ -1,48 +1,64 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "About TenMatch PRO" : {
+    "About PicMatch PRO" : {
+
+    },
+    "About PicMatch PRO" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "ja" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatch PROについて"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "TenMatch PRO에 대하여"
+            "value" : "Acerca de PicMatch PRO"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "À propos de TenMatch PRO"
+            "value" : "À propos de PicMatch PRO"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PicMatch PROについて"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PicMatch PRO에 대하여"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O TenMatch PRO"
+            "value" : "O PicMatch PRO"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Về TenMatch PRO"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Acerca de TenMatch PRO"
+            "value" : "Về PicMatch PRO"
           }
         }
       }
     },
     "App Store" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -50,12 +66,6 @@
           }
         },
         "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "App Store"
-          }
-        },
-        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "App Store"
@@ -71,98 +81,64 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "App Store"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "App Store"
-          }
-        }
-      }
-    },
-    "TenMatch PRO" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "TenMatch PRO"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "TenMatch PRO"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "TenMatch PRO"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "TenMatch PRO"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "TenMatch PRO"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "TenMatch PRO"
           }
         }
       }
     },
     "Cancellation" : {
       "localizations" : {
-        "ja" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatch PROの解約"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "TenMatch PRO의 취소"
+            "value" : "Cancelación de PicMatch PRO"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Annulation de TenMatch PRO"
+            "value" : "Annulation de PicMatch PRO"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PicMatch PROの解約"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PicMatch PRO의 취소"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Anulowanie TenMatch PRO"
+            "value" : "Anulowanie PicMatch PRO"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hủy TenMatch PRO"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cancelación de TenMatch PRO"
+            "value" : "Hủy PicMatch PRO"
           }
         }
       }
     },
     "Expiration date" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha de vencimiento"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date d'expiration"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -173,12 +149,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "만료 날짜"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Date d'expiration"
           }
         },
         "pl" : {
@@ -192,17 +162,23 @@
             "state" : "translated",
             "value" : "Ngày hết hạn"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fecha de vencimiento"
-          }
         }
       }
     },
     "FREE" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GRATIS"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GRATUIT"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -213,12 +189,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "무료 회원"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GRATUIT"
           }
         },
         "pl" : {
@@ -232,17 +202,23 @@
             "state" : "translated",
             "value" : "MIỄN PHÍ"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GRATIS"
-          }
         }
       }
     },
     "Invitation Campaigns" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Campañas de invitación"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Campagnes d'invitation"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -253,12 +229,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "초대 캠페인"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Campagnes d'invitation"
           }
         },
         "pl" : {
@@ -272,17 +242,23 @@
             "state" : "translated",
             "value" : "Chiến dịch mời"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Campañas de invitación"
-          }
         }
       }
     },
     "Membership Status" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado de membresía"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statut de membre"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -293,12 +269,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "회원 상태"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Statut de membre"
           }
         },
         "pl" : {
@@ -312,17 +282,23 @@
             "state" : "translated",
             "value" : "Tình trạng thành viên"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Estado de membresía"
-          }
         }
       }
     },
     "Payment Method" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Método de pago"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Méthode de paiement"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -333,12 +309,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "결제 방법"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Méthode de paiement"
           }
         },
         "pl" : {
@@ -352,17 +322,26 @@
             "state" : "translated",
             "value" : "Phương thức thanh toán"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Método de pago"
-          }
         }
       }
     },
+    "PicMatch PRO" : {
+
+    },
     "Status" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statut"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -373,12 +352,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "상태"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Statut"
           }
         },
         "pl" : {
@@ -392,17 +365,64 @@
             "state" : "translated",
             "value" : "Trạng thái"
           }
-        },
+        }
+      }
+    },
+    "PicMatch PRO" : {
+      "extractionState" : "stale",
+      "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Estado"
+            "value" : "PicMatch PRO"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PicMatch PRO"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PicMatch PRO"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PicMatch PRO"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PicMatch PRO"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PicMatch PRO"
           }
         }
       }
     },
     "The subscription will be automatically cancelled upon expiration." : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La suscripción se cancelará automáticamente al vencimiento."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'abonnement sera automatiquement annulé à l'expiration."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -415,12 +435,6 @@
             "value" : "구독은 만료 시 자동으로 취소됩니다."
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "L'abonnement sera automatiquement annulé à l'expiration."
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -431,12 +445,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Đăng ký sẽ tự động bị hủy khi hết hạn."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "La suscripción se cancelará automáticamente al vencimiento."
           }
         }
       }

@@ -50,16 +50,18 @@ public struct SwipeCardView: View {
             Image(ImageResource.like)
               .resizable()
               .aspectRatio(contentMode: .fit)
-              .frame(width: 310)
-              .offset(x: -50, y: -110)
+              .rotationEffect(.degrees(-15))
+              .frame(height: 150)
+              .offset(x: 24)
               .opacity(translation.width)
           }
           .overlay(alignment: .topTrailing) {
             Image(ImageResource.nope)
               .resizable()
               .aspectRatio(contentMode: .fit)
-              .frame(width: 260)
-              .offset(x: 0, y: -110)
+              .rotationEffect(.degrees(15))
+              .frame(height: 150)
+              .offset(x: -20)
               .opacity(-translation.width)
           }
         }

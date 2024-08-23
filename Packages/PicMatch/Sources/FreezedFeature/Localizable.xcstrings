@@ -3,6 +3,18 @@
   "strings" : {
     "Answer" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Responder"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Répondre"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13,12 +25,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "답변"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Répondre"
           }
         },
         "pl" : {
@@ -32,17 +38,23 @@
             "state" : "translated",
             "value" : "Trả lời"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Responder"
-          }
         }
       }
     },
     "Currently unable to re-register" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualmente no es posible volver a registrarse"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de se réinscrire actuellement"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53,12 +65,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "현재 재등록할 수 없습니다"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Impossible de se réinscrire actuellement"
           }
         },
         "pl" : {
@@ -72,57 +78,67 @@
             "state" : "translated",
             "value" : "Hiện không thể đăng ký lại"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Actualmente no es posible volver a registrarse"
-          }
         }
       }
     },
-    "Once you have deleted your TenMatch account, you will not be able to register again for a certain period of time after the deletion." : {
+    "Once you have deleted your PicMatch account, you will not be able to register again for a certain period of time after the deletion." : {
+
+    },
+    "Once you have deleted your PicMatch account, you will not be able to register again for a certain period of time after the deletion." : {
+      "extractionState" : "stale",
       "localizations" : {
-        "ja" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "一度TenMatchのアカウント削除をされた方は、削除してから一定期間は再登録していただくことができません。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "TenMatch 계정을 삭제하면 삭제 후 일정 기간 동안 다시 등록할 수 없습니다."
+            "value" : "Una vez que hayas eliminado tu cuenta de PicMatch, no podrás registrarte nuevamente por un cierto período de tiempo después de la eliminación."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Une fois que vous avez supprimé votre compte TenMatch, vous ne pourrez pas vous réinscrire pendant une certaine période après la suppression."
+            "value" : "Une fois que vous avez supprimé votre compte PicMatch, vous ne pourrez pas vous réinscrire pendant une certaine période après la suppression."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一度PicMatchのアカウント削除をされた方は、削除してから一定期間は再登録していただくことができません。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PicMatch 계정을 삭제하면 삭제 후 일정 기간 동안 다시 등록할 수 없습니다."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Po usunięciu konta TenMatch, nie będzie można ponownie zarejestrować się przez pewien czas po usunięciu."
+            "value" : "Po usunięciu konta PicMatch, nie będzie można ponownie zarejestrować się przez pewien czas po usunięciu."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sau khi xóa tài khoản TenMatch của bạn, bạn sẽ không thể đăng ký lại trong một khoảng thời gian nhất định sau khi xóa."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Una vez que hayas eliminado tu cuenta de TenMatch, no podrás registrarte nuevamente por un cierto período de tiempo después de la eliminación."
+            "value" : "Sau khi xóa tài khoản PicMatch của bạn, bạn sẽ không thể đăng ký lại trong một khoảng thời gian nhất định sau khi xóa."
           }
         }
       }
     },
     "Please answer our simple questionnaire to help us improve our service." : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, responda a nuestro sencillo cuestionario para ayudarnos a mejorar nuestro servicio."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez répondre à notre simple questionnaire pour nous aider à améliorer notre service."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -135,12 +151,6 @@
             "value" : "서비스 개선을 위해 간단한 설문지에 답변해 주세요."
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Veuillez répondre à notre simple questionnaire pour nous aider à améliorer notre service."
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -151,12 +161,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vui lòng trả lời bảng câu hỏi đơn giản của chúng tôi để giúp chúng tôi cải thiện dịch vụ của mình."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Por favor, responda a nuestro sencillo cuestionario para ayudarnos a mejorar nuestro servicio."
           }
         }
       }
