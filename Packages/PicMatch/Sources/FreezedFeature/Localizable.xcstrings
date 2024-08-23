@@ -84,43 +84,43 @@
     "Once you have deleted your PicMatch account, you will not be able to register again for a certain period of time after the deletion." : {
 
     },
-    "Once you have deleted your TenMatch account, you will not be able to register again for a certain period of time after the deletion." : {
+    "Once you have deleted your PicMatch account, you will not be able to register again for a certain period of time after the deletion." : {
       "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Una vez que hayas eliminado tu cuenta de TenMatch, no podrás registrarte nuevamente por un cierto período de tiempo después de la eliminación."
+            "value" : "Una vez que hayas eliminado tu cuenta de PicMatch, no podrás registrarte nuevamente por un cierto período de tiempo después de la eliminación."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Une fois que vous avez supprimé votre compte TenMatch, vous ne pourrez pas vous réinscrire pendant une certaine période après la suppression."
+            "value" : "Une fois que vous avez supprimé votre compte PicMatch, vous ne pourrez pas vous réinscrire pendant une certaine période après la suppression."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "一度TenMatchのアカウント削除をされた方は、削除してから一定期間は再登録していただくことができません。"
+            "value" : "一度PicMatchのアカウント削除をされた方は、削除してから一定期間は再登録していただくことができません。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatch 계정을 삭제하면 삭제 후 일정 기간 동안 다시 등록할 수 없습니다."
+            "value" : "PicMatch 계정을 삭제하면 삭제 후 일정 기간 동안 다시 등록할 수 없습니다."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Po usunięciu konta TenMatch, nie będzie można ponownie zarejestrować się przez pewien czas po usunięciu."
+            "value" : "Po usunięciu konta PicMatch, nie będzie można ponownie zarejestrować się przez pewien czas po usunięciu."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sau khi xóa tài khoản TenMatch của bạn, bạn sẽ không thể đăng ký lại trong một khoảng thời gian nhất định sau khi xóa."
+            "value" : "Sau khi xóa tài khoản PicMatch của bạn, bạn sẽ không thể đăng ký lại trong một khoảng thời gian nhất định sau khi xóa."
           }
         }
       }

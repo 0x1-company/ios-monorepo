@@ -496,43 +496,43 @@
     "Send an invitation code to a friend who hasn't used PicMatch" : {
 
     },
-    "Send an invitation code to a friend who hasn't used TenMatch" : {
+    "Send an invitation code to a friend who hasn't used PicMatch" : {
       "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Envía un código de invitación a un amigo que no ha usado TenMatch"
+            "value" : "Envía un código de invitación a un amigo que no ha usado PicMatch"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Envoyez un code d'invitation à un ami qui n'a pas utilisé TenMatch"
+            "value" : "Envoyez un code d'invitation à un ami qui n'a pas utilisé PicMatch"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "まだTenMatchを使っていない友達に招待コードを贈りましょう！"
+            "value" : "まだPicMatchを使っていない友達に招待コードを贈りましょう！"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "아직 TenMatch을 사용하지 않은 친구에게 초대 코드를 보내세요"
+            "value" : "아직 PicMatch을 사용하지 않은 친구에게 초대 코드를 보내세요"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wyślij kod zaproszenia do znajomego, który nie używał TenMatch"
+            "value" : "Wyślij kod zaproszenia do znajomego, który nie używał PicMatch"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gửi mã mời đến một người bạn chưa sử dụng TenMatch"
+            "value" : "Gửi mã mời đến một người bạn chưa sử dụng PicMatch"
           }
         }
       }
@@ -660,43 +660,43 @@
     "When they enter the Invitation Code and register, you will both receive PicMatch PRO for sure!" : {
 
     },
-    "When they enter the Invitation Code and register, you will both receive TenMatch PRO for sure!" : {
+    "When they enter the Invitation Code and register, you will both receive PicMatch PRO for sure!" : {
       "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¡Cuando ingresen el código de invitación y se registren, ambos recibirán TenMatch PRO seguro!"
+            "value" : "¡Cuando ingresen el código de invitación y se registren, ambos recibirán PicMatch PRO seguro!"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lorsqu'ils saisissent le code d'invitation et s'inscrivent, vous recevrez tous les deux TenMatch PRO pour sûr !"
+            "value" : "Lorsqu'ils saisissent le code d'invitation et s'inscrivent, vous recevrez tous les deux PicMatch PRO pour sûr !"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "相手が招待コードを入力して登録すると、お互いにTenMatch PROを必ずプレゼント！"
+            "value" : "相手が招待コードを入力して登録すると、お互いにPicMatch PROを必ずプレゼント！"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "상대가 초대 코드를 입력하고 등록하면, 둘 다 TenMatch PRO를 받을 수 있습니다!"
+            "value" : "상대가 초대 코드를 입력하고 등록하면, 둘 다 PicMatch PRO를 받을 수 있습니다!"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kiedy wprowadzą kod zaproszenia i zarejestrują się, obaj otrzymacie TenMatch PRO na pewno!"
+            "value" : "Kiedy wprowadzą kod zaproszenia i zarejestrują się, obaj otrzymacie PicMatch PRO na pewno!"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Khi họ nhập mã mời và đăng ký, cả hai bạn sẽ nhận được TenMatch PRO chắc chắn!"
+            "value" : "Khi họ nhập mã mời và đăng ký, cả hai bạn sẽ nhận được PicMatch PRO chắc chắn!"
           }
         }
       }

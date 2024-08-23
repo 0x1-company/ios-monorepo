@@ -44,43 +44,43 @@
     "It's important to us that PicMatch is a welcoming and safe space for everyone.\nUnfortunately, we found that you violated our [Terms of Use](https://docs.picmatch.app/terms-of-use) and so we've made the decision to remove you from the PicMatch Platform." : {
 
     },
-    "It's important to us that TenMatch is a welcoming and safe space for everyone.\nUnfortunately, we found that you violated our [Terms of Use](https://docs.tenmatch.app/terms-of-use) and so we've made the decision to remove you from the TenMatch Platform." : {
+    "It's important to us that PicMatch is a welcoming and safe space for everyone.\nUnfortunately, we found that you violated our [Terms of Use](https://docs.tenmatch.app/terms-of-use) and so we've made the decision to remove you from the PicMatch Platform." : {
       "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Es importante para nosotros que TenMatch sea un espacio acogedor y seguro para todos. Desafortunadamente, encontramos que has violado nuestros [Términos de uso](https://docs.tenmatch.app/terms-of-use) y por lo tanto hemos tomado la decisión de eliminarte de la plataforma TenMatch."
+            "value" : "Es importante para nosotros que PicMatch sea un espacio acogedor y seguro para todos. Desafortunadamente, encontramos que has violado nuestros [Términos de uso](https://docs.tenmatch.app/terms-of-use) y por lo tanto hemos tomado la decisión de eliminarte de la plataforma PicMatch."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Il est important pour nous que TenMatch soit un espace accueillant et sûr pour tout le monde. Malheureusement, nous avons constaté que vous avez violé nos [Conditions d'utilisation](https://docs.tenmatch.app/terms-of-use) et avons donc pris la décision de vous retirer de la plateforme TenMatch."
+            "value" : "Il est important pour nous que PicMatch soit un espace accueillant et sûr pour tout le monde. Malheureusement, nous avons constaté que vous avez violé nos [Conditions d'utilisation](https://docs.tenmatch.app/terms-of-use) et avons donc pris la décision de vous retirer de la plateforme PicMatch."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatchでは、すべての人にとって安心で安全な場所であることを重視しています。残念ながらあなたの行為が[利用規約](https://docs.tenmatch.app/terms-of-use)に違反したことが判明したため、当社はあなたをTenMatchのプラットフォームから削除することを決定しました。"
+            "value" : "PicMatchでは、すべての人にとって安心で安全な場所であることを重視しています。残念ながらあなたの行為が[利用規約](https://docs.tenmatch.app/terms-of-use)に違反したことが判明したため、当社はあなたをPicMatchのプラットフォームから削除することを決定しました。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatch은 모든 사람에게 환영받고 안전한 공간이 되는 것이 중요합니다. 안타깝게도 귀하가 당사의 [이용 약관](https://docs.tenmatch.app/terms-of-use)을 위반한 사실이 발견되어 귀하를 TenMatch 플랫폼에서 삭제하기로 결정했습니다."
+            "value" : "PicMatch은 모든 사람에게 환영받고 안전한 공간이 되는 것이 중요합니다. 안타깝게도 귀하가 당사의 [이용 약관](https://docs.tenmatch.app/terms-of-use)을 위반한 사실이 발견되어 귀하를 PicMatch 플랫폼에서 삭제하기로 결정했습니다."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dla nas ważne jest, aby TenMatch było przyjaznym i bezpiecznym miejscem dla każdego. Niestety stwierdziliśmy, że naruszyłeś nasze [Warunki użytkowania](https://docs.tenmatch.app/terms-of-use), dlatego podjęliśmy decyzję o usunięciu Cię z platformy TenMatch."
+            "value" : "Dla nas ważne jest, aby PicMatch było przyjaznym i bezpiecznym miejscem dla każdego. Niestety stwierdziliśmy, że naruszyłeś nasze [Warunki użytkowania](https://docs.tenmatch.app/terms-of-use), dlatego podjęliśmy decyzję o usunięciu Cię z platformy PicMatch."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Điều quan trọng đối với chúng tôi là TenMatch là một không gian chào đón và an toàn cho mọi người. Thật không may, chúng tôi nhận thấy rằng bạn đã vi phạm [Điều khoản Sử dụng](https://docs.tenmatch.app/terms-of-use) của chúng tôi và do đó, chúng tôi đã quyết định xóa bạn khỏi Nền tảng TenMatch."
+            "value" : "Điều quan trọng đối với chúng tôi là PicMatch là một không gian chào đón và an toàn cho mọi người. Thật không may, chúng tôi nhận thấy rằng bạn đã vi phạm [Điều khoản Sử dụng](https://docs.tenmatch.app/terms-of-use) của chúng tôi và do đó, chúng tôi đã quyết định xóa bạn khỏi Nền tảng PicMatch."
           }
         }
       }
@@ -128,43 +128,43 @@
     "You will no longer be able to access your PicMatch account or create new accounts in the future." : {
 
     },
-    "You will no longer be able to access your TenMatch account or create new accounts in the future." : {
+    "You will no longer be able to access your PicMatch account or create new accounts in the future." : {
       "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ya no podrás acceder a tu cuenta de TenMatch ni crear nuevas cuentas en el futuro."
+            "value" : "Ya no podrás acceder a tu cuenta de PicMatch ni crear nuevas cuentas en el futuro."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vous ne pourrez plus accéder à votre compte TenMatch ni créer de nouveaux comptes à l'avenir."
+            "value" : "Vous ne pourrez plus accéder à votre compte PicMatch ni créer de nouveaux comptes à l'avenir."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "あなたは今後、TenMatchのアカウントにアクセスしたり、新しいアカウントを作成することは出来ません。"
+            "value" : "あなたは今後、PicMatchのアカウントにアクセスしたり、新しいアカウントを作成することは出来ません。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "더 이상 TenMatch 계정에 액세스하거나 새 계정을 만들 수 없습니다."
+            "value" : "더 이상 PicMatch 계정에 액세스하거나 새 계정을 만들 수 없습니다."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nie będziesz już mieć dostępu do swojego konta TenMatch ani tworzyć nowych kont w przyszłości."
+            "value" : "Nie będziesz już mieć dostępu do swojego konta PicMatch ani tworzyć nowych kont w przyszłości."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bạn sẽ không thể truy cập tài khoản TenMatch của mình hoặc tạo tài khoản mới trong tương lai."
+            "value" : "Bạn sẽ không thể truy cập tài khoản PicMatch của mình hoặc tạo tài khoản mới trong tương lai."
           }
         }
       }
@@ -172,43 +172,43 @@
     "Your account has been banned from PicMatch." : {
 
     },
-    "Your account has been banned from TenMatch." : {
+    "Your account has been banned from PicMatch." : {
       "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tu cuenta ha sido prohibida en TenMatch."
+            "value" : "Tu cuenta ha sido prohibida en PicMatch."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Votre compte a été banni de TenMatch."
+            "value" : "Votre compte a été banni de PicMatch."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "あなたのTenMatchアカウントは利用停止されました。"
+            "value" : "あなたのPicMatchアカウントは利用停止されました。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "귀하의 TenMatch 계정이 정지되었습니다."
+            "value" : "귀하의 PicMatch 계정이 정지되었습니다."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Twoje konto zostało zbanowane na TenMatch."
+            "value" : "Twoje konto zostało zbanowane na PicMatch."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tài khoản của bạn đã bị cấm khỏi TenMatch."
+            "value" : "Tài khoản của bạn đã bị cấm khỏi PicMatch."
           }
         }
       }

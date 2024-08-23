@@ -180,7 +180,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatchの使い方"
+            "value" : "PicMatchの使い方"
           }
         },
         "ko" : {
@@ -362,31 +362,31 @@
     "Rate PicMatch" : {
 
     },
-    "Rate TenMatch." : {
+    "Rate PicMatch." : {
       "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Évaluer TenMatch."
+            "value" : "Évaluer PicMatch."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatchを評価"
+            "value" : "PicMatchを評価"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatch 평가하기"
+            "value" : "PicMatch 평가하기"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Đánh giá TenMatch."
+            "value" : "Đánh giá PicMatch."
           }
         }
       }
@@ -422,31 +422,31 @@
     "Share PicMatch" : {
 
     },
-    "Share TenMatch" : {
+    "Share PicMatch" : {
       "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Partager TenMatch"
+            "value" : "Partager PicMatch"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatchをシェア"
+            "value" : "PicMatchをシェア"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatch 공유하기"
+            "value" : "PicMatch 공유하기"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chia sẻ TenMatch"
+            "value" : "Chia sẻ PicMatch"
           }
         }
       }

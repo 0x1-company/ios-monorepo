@@ -324,25 +324,25 @@
         }
       }
     },
-    "TenMatch is an application that allows you to exchange tenten with everyone in Global!" : {
+    "PicMatch is an application that allows you to exchange tenten with everyone in Global!" : {
       "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¡TenMatch es una aplicación que te permite intercambiar tenten con todos en el mundo!"
+            "value" : "¡PicMatch es una aplicación que te permite intercambiar tenten con todos en el mundo!"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatch est une application qui vous permet d'échanger tenten avec tout le monde dans le monde!"
+            "value" : "PicMatch est une application qui vous permet d'échanger tenten avec tout le monde dans le monde!"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatchは日本中のみんなとtentenを交換できるアプリです"
+            "value" : "PicMatchは日本中のみんなとtentenを交換できるアプリです"
           }
         },
         "ko" : {
@@ -354,13 +354,13 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatch to aplikacja umożliwiająca wymianę tenten z wszystkimi na całym świecie!"
+            "value" : "PicMatch to aplikacja umożliwiająca wymianę tenten z wszystkimi na całym świecie!"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatch là một ứng dụng cho phép bạn trao đổi tenten với mọi người trên toàn cầu!"
+            "value" : "PicMatch là một ứng dụng cho phép bạn trao đổi tenten với mọi người trên toàn cầu!"
           }
         }
       }

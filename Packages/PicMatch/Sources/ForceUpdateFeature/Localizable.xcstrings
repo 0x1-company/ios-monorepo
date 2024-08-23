@@ -4,43 +4,43 @@
     "... Oh? ! ! Looks like PicMatch...! \nPlease update to the latest version." : {
 
     },
-    "... Oh? ! ! Looks like TenMatch...! \nPlease update to the latest version." : {
+    "... Oh? ! ! Looks like PicMatch...! \nPlease update to the latest version." : {
       "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "... ¡Oh? ! ! Parece TenMatch...! \nPor favor, actualiza a la última versión."
+            "value" : "... ¡Oh? ! ! Parece PicMatch...! \nPor favor, actualiza a la última versión."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "... Oh ? ! ! On dirait TenMatch...! \nVeuillez mettre à jour vers la dernière version."
+            "value" : "... Oh ? ! ! On dirait PicMatch...! \nVeuillez mettre à jour vers la dernière version."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "...おや？！TenMatchのようすが...！\n最新バージョンへのアップデートをお願いします。"
+            "value" : "...おや？！PicMatchのようすが...！\n最新バージョンへのアップデートをお願いします。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "...오? ! ! TenMatch처럼 보이네요...! \n최신 버전으로 업데이트해 주세요."
+            "value" : "...오? ! ! PicMatch처럼 보이네요...! \n최신 버전으로 업데이트해 주세요."
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "... Och? ! ! Wygląda na TenMatch...! \nProszę zaktualizować do najnowszej wersji."
+            "value" : "... Och? ! ! Wygląda na PicMatch...! \nProszę zaktualizować do najnowszej wersji."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "... Ồ? ! ! Trông giống như TenMatch...! \nVui lòng cập nhật lên phiên bản mới nhất."
+            "value" : "... Ồ? ! ! Trông giống như PicMatch...! \nVui lòng cập nhật lên phiên bản mới nhất."
           }
         }
       }

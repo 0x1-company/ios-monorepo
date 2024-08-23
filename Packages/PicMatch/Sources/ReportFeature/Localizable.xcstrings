@@ -204,19 +204,19 @@
     "Report a PicMatch" : {
 
     },
-    "Report a TenMatch" : {
+    "Report a PicMatch" : {
       "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Reportar un TenMatch"
+            "value" : "Reportar un PicMatch"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Signaler un TenMatch"
+            "value" : "Signaler un PicMatch"
           }
         },
         "ja" : {
@@ -234,13 +234,13 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zgłoś TenMatch"
+            "value" : "Zgłoś PicMatch"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Báo cáo một TenMatch"
+            "value" : "Báo cáo một PicMatch"
           }
         }
       }

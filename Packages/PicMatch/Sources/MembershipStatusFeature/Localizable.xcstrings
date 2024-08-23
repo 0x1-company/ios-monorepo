@@ -4,43 +4,43 @@
     "About PicMatch PRO" : {
 
     },
-    "About TenMatch PRO" : {
+    "About PicMatch PRO" : {
       "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Acerca de TenMatch PRO"
+            "value" : "Acerca de PicMatch PRO"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "À propos de TenMatch PRO"
+            "value" : "À propos de PicMatch PRO"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatch PROについて"
+            "value" : "PicMatch PROについて"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatch PRO에 대하여"
+            "value" : "PicMatch PRO에 대하여"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "O TenMatch PRO"
+            "value" : "O PicMatch PRO"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Về TenMatch PRO"
+            "value" : "Về PicMatch PRO"
           }
         }
       }
@@ -90,37 +90,37 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cancelación de TenMatch PRO"
+            "value" : "Cancelación de PicMatch PRO"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Annulation de TenMatch PRO"
+            "value" : "Annulation de PicMatch PRO"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatch PROの解約"
+            "value" : "PicMatch PROの解約"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatch PRO의 취소"
+            "value" : "PicMatch PRO의 취소"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Anulowanie TenMatch PRO"
+            "value" : "Anulowanie PicMatch PRO"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hủy TenMatch PRO"
+            "value" : "Hủy PicMatch PRO"
           }
         }
       }
@@ -368,43 +368,43 @@
         }
       }
     },
-    "TenMatch PRO" : {
+    "PicMatch PRO" : {
       "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatch PRO"
+            "value" : "PicMatch PRO"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatch PRO"
+            "value" : "PicMatch PRO"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatch PRO"
+            "value" : "PicMatch PRO"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatch PRO"
+            "value" : "PicMatch PRO"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatch PRO"
+            "value" : "PicMatch PRO"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TenMatch PRO"
+            "value" : "PicMatch PRO"
           }
         }
       }
