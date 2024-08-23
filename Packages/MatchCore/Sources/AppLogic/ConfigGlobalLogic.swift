@@ -31,8 +31,11 @@ public struct ConfigGlobalLogic {
       let isForceUpdate = config.isForceUpdate(shortVersion)
       let isMaintenance = config.isMaintenance
 
-      state.account.isForceUpdate = .success(isForceUpdate)
-      state.account.isMaintenance = .success(isMaintenance)
+      state.account = AppLogic.State.Account(
+        user: state.account.user,
+        isForceUpdate: .success(isForceUpdate),
+        isMaintenance: .success(isMaintenance)
+      )
 
       if isForceUpdate || isMaintenance {
         return .none
