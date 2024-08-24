@@ -48,7 +48,8 @@ public struct PhotoGrid: View {
       PhotosPicker(
         selection: $selection,
         maxSelectionCount: 9,
-        selectionBehavior: .default,
+        selectionBehavior: .ordered,
+        matching: .images,
         preferredItemEncoding: .automatic
       ) {
         Color(uiColor: UIColor.secondarySystemBackground)
