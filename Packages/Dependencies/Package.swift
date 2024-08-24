@@ -37,6 +37,8 @@ var package = Package(
     .library(name: "ScreenshotClient", targets: ["ScreenshotClient"]),
     .library(name: "StoreKitClient", targets: ["StoreKitClient"]),
     .library(name: "UIApplicationClient", targets: ["UIApplicationClient"]),
+    .library(name: "UIDeviceClient", targets: ["UIDeviceClient"]),
+    .library(name: "UIDeviceClientLive", targets: ["UIDeviceClientLive"]),
     .library(name: "UIPasteboardClient", targets: ["UIPasteboardClient"]),
     .library(name: "UserDefaultsClient", targets: ["UserDefaultsClient"]),
     .library(name: "UserNotificationClient", targets: ["UserNotificationClient"]),
@@ -165,6 +167,13 @@ var package = Package(
     .target(name: "UIApplicationClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
       .product(name: "DependenciesMacros", package: "swift-dependencies"),
+    ]),
+    .target(name: "UIDeviceClient", dependencies: [
+      .product(name: "Dependencies", package: "swift-dependencies"),
+      .product(name: "DependenciesMacros", package: "swift-dependencies"),
+    ]),
+    .target(name: "UIDeviceClientLive", dependencies: [
+      "UIDeviceClient",
     ]),
     .target(name: "UIPasteboardClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
