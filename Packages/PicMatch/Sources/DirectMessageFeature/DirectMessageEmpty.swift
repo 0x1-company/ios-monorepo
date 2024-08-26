@@ -20,21 +20,15 @@ public struct DirectMessageEmptyView: View {
             Text("Matched with \(viewStore.displayName)!", bundle: .module)
               .font(.system(.title3, weight: .semibold))
 
-            Text("Add tenten and send a message!", bundle: .module)
+            Text("Add Instagram and send a message!", bundle: .module)
           }
           .multilineTextAlignment(.center)
 
-          VStack(spacing: 12) {
             PrimaryButton(
-              String(localized: "Copy tenten’s PIN", bundle: .module)
+              String(localized: "Add Instagram", bundle: .module)
             ) {
               store.send(.jumpExternalProductButtonTapped)
             }
-
-            Text("🧷 \(viewStore.tentenPinCode)", bundle: .module)
-              .foregroundStyle(Color.white)
-              .font(.system(.caption, weight: .semibold))
-          }
         }
         .frame(maxHeight: .infinity)
 

@@ -241,7 +241,7 @@
         }
       }
     },
-    "PicMatch is an application that allows you to exchange tenten with everyone in Global!" : {
+    "PicMatch is an application that allows you to exchange Instagram with everyone in Global!" : {
 
     },
     "Right if you are interested!" : {
@@ -320,47 +320,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bỏ qua"
-          }
-        }
-      }
-    },
-    "PicMatch is an application that allows you to exchange tenten with everyone in Global!" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¡PicMatch es una aplicación que te permite intercambiar tenten con todos en el mundo!"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PicMatch est une application qui vous permet d'échanger tenten avec tout le monde dans le monde!"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PicMatchは日本中のみんなとtentenを交換できるアプリです"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "트링켓은 한국의 모든 사람들과 로켓을 교환할 수 있는 애플리케이션입니다!"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PicMatch to aplikacja umożliwiająca wymianę tenten z wszystkimi na całym świecie!"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PicMatch là một ứng dụng cho phép bạn trao đổi tenten với mọi người trên toàn cầu!"
           }
         }
       }

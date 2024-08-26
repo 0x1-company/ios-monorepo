@@ -14,7 +14,7 @@ public struct ShortCommentSettingView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 24) {
-        Text("Do not write tenten or other social media username.", bundle: .module)
+        Text("Do not write Instagram or other social media username.", bundle: .module)
           .font(.system(.subheadline, weight: .semibold))
           .foregroundStyle(Color.secondary)
 

@@ -55,6 +55,7 @@
       }
     },
     "ex. du9v5pq" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {

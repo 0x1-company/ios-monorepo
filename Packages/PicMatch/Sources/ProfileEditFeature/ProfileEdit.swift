@@ -25,7 +25,7 @@ public struct ProfileEditView: View {
             LabeledContent {
               Image(systemName: "chevron.right")
             } label: {
-              Text("tenten PIN", bundle: .module)
+              Text("Instagram username", bundle: .module)
                 .foregroundStyle(Color.primary)
             }
           }

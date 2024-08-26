@@ -163,6 +163,9 @@
         }
       }
     },
+    "Instagram username" : {
+
+    },
     "Nick Name" : {
       "localizations" : {
         "es" : {
@@ -446,6 +449,7 @@
       }
     },
     "tenten PIN" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
