@@ -9,8 +9,8 @@ import BannedLogic
 import Build
 import ComposableArchitecture
 import FirebaseAuthClient
-import StoreKit
 import FirebaseCrashlyticsClient
+import StoreKit
 
 @Reducer
 public struct AuthLogic {
