@@ -10,6 +10,7 @@ import Build
 import ComposableArchitecture
 import FirebaseAuthClient
 import StoreKit
+import FirebaseCrashlyticsClient
 
 @Reducer
 public struct AuthLogic {
@@ -18,6 +19,7 @@ public struct AuthLogic {
   @Dependency(\.locale) var locale
   @Dependency(\.appsFlyer) var appsFlyer
   @Dependency(\.analytics) var analytics
+  @Dependency(\.crashlytics) var crashlytics
   @Dependency(\.api.createUser) var createUser
   @Dependency(\.trackingManager) var trackingManager
   @Dependency(\.firebaseAuth.signInAnonymously) var signInAnonymously
@@ -49,7 +51,9 @@ public struct AuthLogic {
         }))
       }
 
-    case .signInAnonymouslyResponse(.failure):
+    case let .signInAnonymouslyResponse(.failure(error)):
+      crashlytics.record(error: error)
+
       state.child = .networkError()
       return .none
 
@@ -63,7 +67,9 @@ public struct AuthLogic {
         await requestCreateUser(send: send, countryCode: countryCode)
       }
 
-    case .productsResponse(.failure):
+    case let .productsResponse(.failure(error)):
+      crashlytics.record(error: error)
+
       let countryCode = locale.region?.identifier
       return .run { send in
         await requestCreateUser(send: send, countryCode: countryCode)
@@ -88,7 +94,9 @@ public struct AuthLogic {
         ))
       }
 
-    case .createUserResponse(.failure):
+    case let .createUserResponse(.failure(error)):
+      crashlytics.record(error: error)
+
       state.child = .networkError()
       return .none
 
