@@ -1,9 +1,11 @@
 import Build
 import ComposableArchitecture
 import ConfigGlobalClient
+import FirebaseCrashlyticsClient
 
 @Reducer
 public struct ConfigGlobalLogic {
+  @Dependency(\.crashlytics) var crashlytics
   @Dependency(\.configGlobal) var configGlobal
   @Dependency(\.build.bundleShortVersion) var bundleShortVersion
 
@@ -42,7 +44,9 @@ public struct ConfigGlobalLogic {
       }
       return .send(.configFetched)
 
-    case .configResponse(.failure):
+    case let .configResponse(.failure(error)):
+      crashlytics.record(error: error)
+
       state.account.isForceUpdate = .success(false)
       state.account.isMaintenance = .success(false)
       state.child = .networkError()
