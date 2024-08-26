@@ -16,13 +16,8 @@ public struct UsernameSettingView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 16) {
-        Text("Please tell me your\ntenten PIN.", bundle: .module)
+        Text("Please tell me your\nInstagram username.", bundle: .module)
           .font(.system(.title2, weight: .bold))
-
-        Text("ex. du9v5pq", bundle: .module)
-          .font(.system(.caption, design: .rounded))
-          .tint(Color.gray)
-          .foregroundStyle(Color.gray)
 
         TextField("", text: viewStore.$value)
           .foregroundStyle(Color.white)
