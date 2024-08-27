@@ -46,6 +46,11 @@ public struct ConfigGlobalLogic {
 
     case let .configResponse(.failure(error)):
       crashlytics.record(error: error)
+      state.destination = .alert(
+        AlertState {
+          TextState(error.localizedDescription)
+        }
+      )
 
       state.account.isForceUpdate = .success(false)
       state.account.isMaintenance = .success(false)

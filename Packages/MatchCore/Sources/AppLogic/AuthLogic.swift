@@ -53,6 +53,11 @@ public struct AuthLogic {
 
     case let .signInAnonymouslyResponse(.failure(error)):
       crashlytics.record(error: error)
+      state.destination = .alert(
+        AlertState {
+          TextState(error.localizedDescription)
+        }
+      )
 
       state.child = .networkError()
       return .none
@@ -69,6 +74,11 @@ public struct AuthLogic {
 
     case let .productsResponse(.failure(error)):
       crashlytics.record(error: error)
+      state.destination = .alert(
+        AlertState {
+          TextState(error.localizedDescription)
+        }
+      )
 
       let countryCode = locale.region?.identifier
       return .run { send in
@@ -96,6 +106,11 @@ public struct AuthLogic {
 
     case let .createUserResponse(.failure(error)):
       crashlytics.record(error: error)
+      state.destination = .alert(
+        AlertState {
+          TextState(error.localizedDescription)
+        }
+      )
 
       state.child = .networkError()
       return .none
