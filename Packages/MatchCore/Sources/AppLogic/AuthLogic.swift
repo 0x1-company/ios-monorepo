@@ -56,6 +56,8 @@ public struct AuthLogic {
       state.destination = .alert(
         AlertState {
           TextState(error.localizedDescription)
+        } message: {
+          TextState("\(#function):\(#line)")
         }
       )
 
@@ -73,13 +75,6 @@ public struct AuthLogic {
       }
 
     case let .productsResponse(.failure(error)):
-      crashlytics.record(error: error)
-      state.destination = .alert(
-        AlertState {
-          TextState(error.localizedDescription)
-        }
-      )
-
       let countryCode = locale.region?.identifier
       return .run { send in
         await requestCreateUser(send: send, countryCode: countryCode)
@@ -109,6 +104,8 @@ public struct AuthLogic {
       state.destination = .alert(
         AlertState {
           TextState(error.localizedDescription)
+        } message: {
+          TextState("\(#function):\(#line)")
         }
       )
 
