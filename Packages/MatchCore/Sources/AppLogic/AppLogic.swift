@@ -266,7 +266,7 @@ public struct AppLogic {
       case alert(Alert)
       case receivedLike(ReceivedLikeRouterLogic.Action)
 
-      public enum ConfirmationDialog: Equatable {
+      public enum Alert: Equatable {
         case confirm
       }
     }
