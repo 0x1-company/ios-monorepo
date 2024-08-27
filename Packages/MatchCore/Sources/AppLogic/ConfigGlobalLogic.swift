@@ -49,6 +49,8 @@ public struct ConfigGlobalLogic {
       state.destination = .alert(
         AlertState {
           TextState(error.localizedDescription)
+        } message: {
+          TextState("\(#function):\(#line)")
         }
       )
 
