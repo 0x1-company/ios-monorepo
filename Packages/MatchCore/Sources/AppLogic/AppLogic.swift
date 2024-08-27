@@ -258,21 +258,14 @@ public struct AppLogic {
   @Reducer
   public struct Destination {
     public enum State: Equatable {
-      case alert(AlertState<Action.Alert>)
       case receivedLike(ReceivedLikeRouterLogic.State = .loading)
     }
 
     public enum Action {
-      case alert(Alert)
       case receivedLike(ReceivedLikeRouterLogic.Action)
-
-      public enum Alert: Equatable {
-        case confirm
-      }
     }
 
     public var body: some Reducer<State, Action> {
-      Scope(state: \.alert, action: \.alert) {}
       Scope(state: \.receivedLike, action: \.receivedLike, child: ReceivedLikeRouterLogic.init)
     }
   }
