@@ -86,6 +86,5 @@ public struct AppView: View {
       store: store.scope(state: \.$destination.receivedLike, action: \.destination.receivedLike),
       content: ReceivedLikeRouterView.init(store:)
     )
-    .alert(store: store.scope(state: \.$destination.alert, action: \.destination.alert))
   }
 }

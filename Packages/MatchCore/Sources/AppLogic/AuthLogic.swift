@@ -53,13 +53,6 @@ public struct AuthLogic {
 
     case let .signInAnonymouslyResponse(.failure(error)):
       crashlytics.record(error: error)
-      state.destination = .alert(
-        AlertState {
-          TextState(error.localizedDescription)
-        } message: {
-          TextState("\(#function):\(#line)")
-        }
-      )
 
       state.child = .networkError()
       return .none
@@ -101,13 +94,6 @@ public struct AuthLogic {
 
     case let .createUserResponse(.failure(error)):
       crashlytics.record(error: error)
-      state.destination = .alert(
-        AlertState {
-          TextState(error.localizedDescription)
-        } message: {
-          TextState("\(#function):\(#line)")
-        }
-      )
 
       state.child = .networkError()
       return .none
