@@ -1,12 +1,6 @@
 #!/bin/sh
 set -e
 
-if [[ $CI_WORKFLOW != "Upload Symbols" ]];
-then
-    echo "CI_WORKFLOWがUpload Symbols以外のため、dSYMアップロードを実行しません"
-    exit 0
-fi
-
 if [[ -z $CI_ARCHIVE_PATH ]];
 then
     echo "CI_ARCHIVE_PATHが存在しないため、dSYMアップロードを実行しません"
