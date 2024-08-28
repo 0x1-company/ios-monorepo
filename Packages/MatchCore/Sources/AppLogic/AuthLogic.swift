@@ -34,8 +34,6 @@ public struct AuthLogic {
         await send(.signInAnonymouslyResponse(Result {
           try await signInAnonymously()
         }))
-      } catch: { error, _ in
-        crashlytics.record(error: error)
       }
 
     case .child(.navigation(.message(.destination(.presented(.settings(.destination(.presented(.other(.deleteAccount(.presented(.delegate(.accountDeletionCompleted)))))))))))):
@@ -43,8 +41,6 @@ public struct AuthLogic {
         await send(.signInAnonymouslyResponse(Result {
           try await signInAnonymously()
         }))
-      } catch: { error, _ in
-        crashlytics.record(error: error)
       }
 
     case .signInAnonymouslyResponse(.success):
@@ -53,8 +49,6 @@ public struct AuthLogic {
         await send(.productsResponse(Result {
           try await store.products(ids)
         }))
-      } catch: { error, _ in
-        crashlytics.record(error: error)
       }
 
     case let .signInAnonymouslyResponse(.failure(error)):
@@ -71,16 +65,12 @@ public struct AuthLogic {
       }
       return .run { send in
         await requestCreateUser(send: send, countryCode: countryCode)
-      } catch: { error, _ in
-        crashlytics.record(error: error)
       }
 
-    case let .productsResponse(.failure(error)):
+    case .productsResponse(.failure):
       let countryCode = locale.region?.identifier
       return .run { send in
         await requestCreateUser(send: send, countryCode: countryCode)
-      } catch: { error, _ in
-        crashlytics.record(error: error)
       }
 
     case let .createUserResponse(.success(data)):
@@ -99,8 +89,6 @@ public struct AuthLogic {
         await send(.trackingAuthorization(
           await trackingManager.requestTrackingAuthorization()
         ))
-      } catch: { error, _ in
-        crashlytics.record(error: error)
       }
 
     case let .createUserResponse(.failure(error)):
