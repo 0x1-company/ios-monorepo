@@ -90,7 +90,6 @@ public struct AuthLogic {
 
       analytics.setUserProperty(key: \.id, value: user.id)
       analytics.setUserProperty(key: \.gender, value: user.gender.rawValue)
-      analytics.setUserProperty(key: \.username, value: user.berealUsername)
 
       appsFlyer.customerUserID(user.id)
       appsFlyer.waitForATTUserAuthorization(60)
