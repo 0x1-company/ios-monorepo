@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "%@ for %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -695,6 +696,7 @@
       }
     },
     "when they use your invitation code you get" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
