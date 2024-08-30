@@ -29,7 +29,7 @@ public struct ProfilePictureSettingView: View {
             VStack(spacing: 8) {
               Text(
                 viewStore.allowNonExternalProductPhoto
-                  ? "Set your saved photo to your profile (it will be public 🌏)"
+                  ? "Set your photo to your profile (it will be public 🌏)"
                   : "Set 3 photos saved by BeReal in your profile (it will be public 🌏)",
                 bundle: .module
               )
