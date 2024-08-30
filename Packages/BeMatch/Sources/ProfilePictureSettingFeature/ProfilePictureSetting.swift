@@ -29,13 +29,13 @@ public struct ProfilePictureSettingView: View {
             VStack(spacing: 8) {
               Text(
                 viewStore.allowNonExternalProductPhoto
-                ? "Set your saved photo to your profile (it will be public 🌏)"
-                : "Set 3 photos saved by BeReal in your profile (it will be public 🌏)",
+                  ? "Set your saved photo to your profile (it will be public 🌏)"
+                  : "Set 3 photos saved by BeReal in your profile (it will be public 🌏)",
                 bundle: .module
               )
-                .frame(minHeight: 50)
-                .layoutPriority(1)
-                .font(.system(.title3, weight: .semibold))
+              .frame(minHeight: 50)
+              .layoutPriority(1)
+              .font(.system(.title3, weight: .semibold))
 
               if viewStore.isWarningTextVisible {
                 Button {
