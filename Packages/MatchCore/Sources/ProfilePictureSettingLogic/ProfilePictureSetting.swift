@@ -2,6 +2,7 @@ import AnalyticsClient
 import API
 import APIClient
 import ComposableArchitecture
+import CryptoKit
 import EnvironmentClient
 import FeedbackGeneratorClient
 import FirebaseAuthClient
@@ -156,7 +157,7 @@ public struct ProfilePictureSettingLogic {
         state.isActivityIndicatorVisible = true
 
         return .run { send in
-          var imageUrls: [Int: URL] = [:]
+          var images: [Int: (url: URL, digest: String)] = [:]
           let userFolder = "users/profile_images/\(uid)"
 
           do {
@@ -166,14 +167,21 @@ public struct ProfilePictureSettingLogic {
                 path: userFolder + "/\(uuid().uuidString).jpeg",
                 uploadData: imageData
               )
-              imageUrls[order] = imageUrl
+              let digest = SHA256.hash(data: imageData)
+                .compactMap { String(format: "%02x", $0) }
+                .joined()
+              images[order] = (imageUrl, digest)
             }
           } catch {
             await send(.uploadResponse(.failure(error)))
           }
 
-          let inputs = imageUrls.map { order, imageUrl in
-            API.UpdateUserImageV2Input(imageUrl: imageUrl.absoluteString, order: order)
+          let inputs = images.map { order, imageInfo in
+            API.UpdateUserImageV2Input(
+              imageHash: .some(imageInfo.digest),
+              imageUrl: imageInfo.url.absoluteString,
+              order: order
+            )
           }
 
           await send(.updateUserImageV2(Result {

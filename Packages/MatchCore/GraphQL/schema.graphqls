@@ -506,6 +506,9 @@ input UpdateUserImageInput {
 }
 
 input UpdateUserImageV2Input {
+  """画像のハッシュ。互換性のためnullable"""
+  imageHash: String
+
   """ユーザー画像URL"""
   imageUrl: String!
 

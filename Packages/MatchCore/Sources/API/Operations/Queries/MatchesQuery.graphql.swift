@@ -129,37 +129,7 @@ public extension API {
               public var matchGrid: MatchGrid { _toFragment() }
             }
 
-            /// Matches.Edge.Node.TargetUser
-            ///
-            /// Parent Type: `User`
-            public struct TargetUser: API.SelectionSet {
-              public let __data: DataDict
-              public init(_dataDict: DataDict) { __data = _dataDict }
-
-              public static var __parentType: any ApolloAPI.ParentType { API.Objects.User }
-
-              /// user id
-              public var id: API.ID { __data["id"] }
-              public var displayName: String? { __data["displayName"] }
-              /// BeRealのusername
-              public var berealUsername: String { __data["berealUsername"] }
-              public var externalProductUrl: String { __data["externalProductUrl"] }
-              /// 一言コメント
-              public var shortComment: ShortComment? { __data["shortComment"] }
-              /// ユーザーの画像一覧
-              public var images: [Image] { __data["images"] }
-
-              public struct Fragments: FragmentContainer {
-                public let __data: DataDict
-                public init(_dataDict: DataDict) { __data = _dataDict }
-
-                public var pictureSlider: PictureSlider { _toFragment() }
-              }
-
-              public typealias ShortComment = PictureSlider.ShortComment
-
-              public typealias Image = PictureSlider.Image
-            }
+            public typealias TargetUser = MatchGrid.TargetUser
           }
         }
       }
