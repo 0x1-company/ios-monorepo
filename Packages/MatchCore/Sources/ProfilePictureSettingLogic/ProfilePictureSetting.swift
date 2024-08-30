@@ -41,7 +41,7 @@ public struct ProfilePictureSettingLogic {
   public init() {}
 
   public struct State: Equatable {
-    let allowNonExternalProductPhoto: Bool
+    public let allowNonExternalProductPhoto: Bool
     @PresentationState public var destination: Destination.State?
     @BindingState public var photoPickerItems: [PhotosPickerItem] = []
     public var images: [PhotoGridState] = Array(repeating: .empty, count: 9)
