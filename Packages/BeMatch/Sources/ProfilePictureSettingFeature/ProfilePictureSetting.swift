@@ -27,8 +27,12 @@ public struct ProfilePictureSettingView: View {
         ScrollView {
           VStack(spacing: 36) {
             VStack(spacing: 8) {
-              Text("Set your saved photo to your profile (it will be public 🌏)", bundle: .module)
-                .lineLimit(2)
+              Text(
+                viewStore.allowNonExternalProductPhoto
+                ? "Set your saved photo to your profile (it will be public 🌏)"
+                : "Set 3 photos saved by BeReal in your profile (it will be public 🌏)",
+                bundle: .module
+              )
                 .frame(minHeight: 50)
                 .layoutPriority(1)
                 .font(.system(.title3, weight: .semibold))
