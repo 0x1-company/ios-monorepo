@@ -88,16 +88,16 @@
     },
     "Set 3 photos saved by BeReal in your profile (it will be public 🌏)" : {
       "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeRealで保存した写真を3枚プロフィールに設定しよう（公開されるよ 🌏）"
-          }
-        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Définissez 3 photos enregistrées par BeReal dans votre profil (elles seront publiques 🌏)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeRealで保存した写真を3枚プロフィールに設定しよう（公開されるよ 🌏）"
           }
         },
         "ko" : {
@@ -114,30 +114,30 @@
         }
       }
     },
-    "Set your saved photo to your profile (it will be public 🌏)" : {
+    "Set your photo to your profile (it will be public 🌏)" : {
       "localizations" : {
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Définissez votre photo enregistrée sur votre profil (elle sera publique 🌏)"
+            "value" : "Définissez votre photo sur votre profil (elle sera publique 🌏)"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "保存した写真をプロフィールに設定しよう（公開されるよ 🌏）"
+            "value" : "プロフィールに写真を設定しよう（公開されるよ 🌏）"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "저장된 사진을 프로필에 설정하세요 (공개됩니다 🌏)"
+            "value" : "프로필에 사진을 설정하세요 (공개됩니다 🌏)"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Đặt ảnh đã lưu vào hồ sơ của bạn (sẽ được công khai 🌏)"
+            "value" : "Đặt ảnh của bạn vào hồ sơ (sẽ được công khai 🌏)"
           }
         }
       }
