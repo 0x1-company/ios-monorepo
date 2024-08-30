@@ -66,7 +66,11 @@ public struct ProfileEditLogic {
         return .send(.delegate(.dismiss))
 
       case .pictureSettingButtonTapped:
-        state.destination = .pictureSetting()
+        state.destination = .pictureSetting(
+          ProfilePictureSettingLogic.State(
+            allowNonExternalProductPhoto: true
+          )
+        )
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
@@ -180,7 +184,7 @@ public struct ProfileEditLogic {
   public struct Destination {
     public enum State: Equatable {
       case howToMovie(HowToMovieLogic.State = .init())
-      case pictureSetting(ProfilePictureSettingLogic.State = .init())
+      case pictureSetting(ProfilePictureSettingLogic.State)
       case genderSetting(GenderSettingLogic.State)
       case usernameSetting(UsernameSettingLogic.State)
       case shortComment(ShortCommentSettingLogic.State)
