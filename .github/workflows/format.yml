@@ -26,7 +26,7 @@ jobs:
       - run: swift build -c release --package-path ./SwiftScripts/SwiftFormatTool --product swiftformat
       - run: ./SwiftScripts/SwiftFormatTool/.build/release/swiftformat ./
       - continue-on-error: true
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7
         id: create-pr
         with:
           delete-branch: true
