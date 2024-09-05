@@ -24,11 +24,11 @@ public struct DirectMessageEmptyView: View {
           }
           .multilineTextAlignment(.center)
 
-            PrimaryButton(
-              String(localized: "Add Instagram", bundle: .module)
-            ) {
-              store.send(.jumpExternalProductButtonTapped)
-            }
+          PrimaryButton(
+            String(localized: "Add Instagram", bundle: .module)
+          ) {
+            store.send(.jumpExternalProductButtonTapped)
+          }
         }
         .frame(maxHeight: .infinity)
 
