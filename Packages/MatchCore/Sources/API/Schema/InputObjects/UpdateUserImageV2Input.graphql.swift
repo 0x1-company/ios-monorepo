@@ -12,13 +12,21 @@ public extension API {
     }
 
     public init(
+      imageHash: GraphQLNullable<String> = nil,
       imageUrl: String,
       order: Int
     ) {
       __data = InputDict([
+        "imageHash": imageHash,
         "imageUrl": imageUrl,
         "order": order,
       ])
+    }
+
+    /// 画像のハッシュ。互換性のためnullable
+    public var imageHash: GraphQLNullable<String> {
+      get { __data["imageHash"] }
+      set { __data["imageHash"] = newValue }
     }
 
     /// ユーザー画像URL

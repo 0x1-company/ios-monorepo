@@ -113,23 +113,31 @@ public struct AppDelegateLogic {
         #endif
         firebaseMessaging.setAPNSToken(tokenData)
         await createFirebaseRegistrationTokenRequest(send: send)
+      } catch: { error, _ in
+        crashlytics.record(error: error)
       }
 
     case let .userNotifications(.willPresentNotification(notification, completionHandler)):
       _ = firebaseMessaging.appDidReceiveMessage(notification.request)
       return .run { _ in
         completionHandler([.list, .sound, .badge, .banner])
+      } catch: { error, _ in
+        crashlytics.record(error: error)
       }
 
     case let .userNotifications(.didReceiveResponse(response, completionHandler)):
       _ = firebaseMessaging.appDidReceiveMessage(response.notification.request)
       return .run { @MainActor _ in
         completionHandler()
+      } catch: { error, _ in
+        crashlytics.record(error: error)
       }
 
     case .messaging(.didReceiveRegistrationToken):
       return .run { send in
         await createFirebaseRegistrationTokenRequest(send: send)
+      } catch: { error, _ in
+        crashlytics.record(error: error)
       }
 
     default:

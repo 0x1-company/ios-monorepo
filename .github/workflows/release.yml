@@ -39,7 +39,7 @@ jobs:
           sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ steps.next-version.outputs.NEXT_VERSION }}/g" App/Trinket/Multiplatform/Staging/Info.plist
           sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ steps.next-version.outputs.NEXT_VERSION }}/g" App/Trinket/Multiplatform/Production/Info.plist
       - continue-on-error: true
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7
         id: create-pr
         with:
           delete-branch: true

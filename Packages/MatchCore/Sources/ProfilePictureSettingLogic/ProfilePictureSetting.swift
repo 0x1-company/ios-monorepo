@@ -2,6 +2,7 @@ import AnalyticsClient
 import API
 import APIClient
 import ComposableArchitecture
+import CryptoKit
 import EnvironmentClient
 import FeedbackGeneratorClient
 import FirebaseAuthClient
@@ -41,6 +42,8 @@ public struct ProfilePictureSettingLogic {
   public init() {}
 
   public struct State: Equatable {
+    public let allowNonExternalProductPhoto: Bool
+    @PresentationState public var destination: Destination.State?
     @BindingState public var photoPickerItems: [PhotosPickerItem] = []
     public var images: [PhotoGridState] = Array(repeating: .empty, count: 9)
     public var isActivityIndicatorVisible = false
@@ -48,8 +51,9 @@ public struct ProfilePictureSettingLogic {
       !images.filter(\.isWarning).isEmpty
     }
 
-    @PresentationState public var destination: Destination.State?
-    public init() {}
+    public init(allowNonExternalProductPhoto: Bool = false) {
+      self.allowNonExternalProductPhoto = allowNonExternalProductPhoto
+    }
   }
 
   public enum Action: BindableAction {
@@ -115,7 +119,7 @@ public struct ProfilePictureSettingLogic {
           return .none
         }
         let brand = environment.brand()
-        if isValidSize(for: brand, size: image.size) {
+        if isValidSize(for: brand, size: image.size, allowNonExternalProductPhoto: state.allowNonExternalProductPhoto) {
           state.images[offset] = .active(image)
         } else {
           state.images[offset] = .warning(image)
@@ -156,7 +160,7 @@ public struct ProfilePictureSettingLogic {
         state.isActivityIndicatorVisible = true
 
         return .run { send in
-          var imageUrls: [Int: URL] = [:]
+          var images: [Int: (url: URL, digest: String)] = [:]
           let userFolder = "users/profile_images/\(uid)"
 
           do {
@@ -166,14 +170,21 @@ public struct ProfilePictureSettingLogic {
                 path: userFolder + "/\(uuid().uuidString).jpeg",
                 uploadData: imageData
               )
-              imageUrls[order] = imageUrl
+              let digest = SHA256.hash(data: imageData)
+                .compactMap { String(format: "%02x", $0) }
+                .joined()
+              images[order] = (imageUrl, digest)
             }
           } catch {
             await send(.uploadResponse(.failure(error)))
           }
 
-          let inputs = imageUrls.map { order, imageUrl in
-            API.UpdateUserImageV2Input(imageUrl: imageUrl.absoluteString, order: order)
+          let inputs = images.map { order, imageInfo in
+            API.UpdateUserImageV2Input(
+              imageHash: .some(imageInfo.digest),
+              imageUrl: imageInfo.url.absoluteString,
+              order: order
+            )
           }
 
           await send(.updateUserImageV2(Result {
@@ -237,9 +248,16 @@ public struct ProfilePictureSettingLogic {
     }
   }
 
-  func isValidSize(for brand: EnvironmentClient.Brand, size: CGSize) -> Bool {
+  func isValidSize(
+    for brand: EnvironmentClient.Brand,
+    size: CGSize,
+    allowNonExternalProductPhoto: Bool
+  ) -> Bool {
     switch brand {
     case .bematch:
+      if allowNonExternalProductPhoto {
+        return true
+      }
       return size == CGSize(width: 1500, height: 2000)
     case .picmatch:
       return true

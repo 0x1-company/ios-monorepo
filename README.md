@@ -18,11 +18,13 @@ To address this, we've adopted an approach where the business logic is shared ac
   - This code is decoupled from the main application, making it reusable even when developing entirely different products.
   - We've been reusing this dependencies code from two previous products.
 - BeMatch (App UI Package)
-  - The UI code for BeMatch.
+  - UI code for BeMatch.
 - TapMatch (App UI Package)
-  - The UI code for TapMatch.
+  - UI code for TapMatch.
 - Trinket (App UI Package)
-  - The UI code for Trinket.
+  - UI code for Trinket.
+- PicMatch (App UI Package)
+  - UI code for PicMatch.
 - MatchCore
   - A package that consolidates all the business logic.
   - It's essentially a collection of reducers, as per TCA.
@@ -37,6 +39,7 @@ MatchCore --> BeMatch
 MatchCore --> TapMatch
 MatchCore --> TenMatch
 MatchCore --> Trinket
+MatchCore --> PicMatch
 ```
 
 MatchCore is a package that only implements reducers, as defined in TCA.<br>

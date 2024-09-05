@@ -67,9 +67,7 @@ public struct AuthLogic {
         await requestCreateUser(send: send, countryCode: countryCode)
       }
 
-    case let .productsResponse(.failure(error)):
-      crashlytics.record(error: error)
-
+    case .productsResponse(.failure):
       let countryCode = locale.region?.identifier
       return .run { send in
         await requestCreateUser(send: send, countryCode: countryCode)
@@ -82,7 +80,6 @@ public struct AuthLogic {
 
       analytics.setUserProperty(key: \.id, value: user.id)
       analytics.setUserProperty(key: \.gender, value: user.gender.rawValue)
-      analytics.setUserProperty(key: \.username, value: user.berealUsername)
 
       appsFlyer.customerUserID(user.id)
       appsFlyer.waitForATTUserAuthorization(60)

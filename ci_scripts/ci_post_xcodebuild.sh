@@ -1,24 +1,23 @@
 #!/bin/sh
 set -e
 
-if [[ $CI_WORKFLOW != "Upload Symbols" ]];
-then
-    echo "CI_WORKFLOWがUpload Symbols以外のため、dSYMアップロードを実行しません"
-    exit 0
-fi
-
-if [[ -z $CI_ARCHIVE_PATH ]];
-then
+if [[ -z $CI_ARCHIVE_PATH ]]; then
     echo "CI_ARCHIVE_PATHが存在しないため、dSYMアップロードを実行しません"
     exit 0
 fi
 
-# ここに新しいコードを追加する
+if [[ $CI_BUNDLE_ID == *"staging"* ]]; then
+    TARGET_ENV="Staging"
+else
+    TARGET_ENV="Production"
+fi
+
 # 親ディレクトリに移動
 cd ..
+
 # Crashlytics dSYMs スクリプトを実行
-$CI_DERIVED_DATA_PATH/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/upload-symbols -gsp $CI_PRIMARY_REPOSITORY_PATH/App/BeMatch/Multiplatform/Production/GoogleService-Info.plist -p ios $CI_ARCHIVE_PATH/dSYMs
-$CI_DERIVED_DATA_PATH/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/upload-symbols -gsp $CI_PRIMARY_REPOSITORY_PATH/App/PicMatch/Multiplatform/Production/GoogleService-Info.plist -p ios $CI_ARCHIVE_PATH/dSYMs
-$CI_DERIVED_DATA_PATH/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/upload-symbols -gsp $CI_PRIMARY_REPOSITORY_PATH/App/TapMatch/Multiplatform/Production/GoogleService-Info.plist -p ios $CI_ARCHIVE_PATH/dSYMs
-$CI_DERIVED_DATA_PATH/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/upload-symbols -gsp $CI_PRIMARY_REPOSITORY_PATH/App/Trinket/Multiplatform/Production/GoogleService-Info.plist -p ios $CI_ARCHIVE_PATH/dSYMs
-$CI_DERIVED_DATA_PATH/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/upload-symbols -gsp $CI_PRIMARY_REPOSITORY_PATH/App/TenMatch/Multiplatform/Production/GoogleService-Info.plist -p ios $CI_ARCHIVE_PATH/dSYMs
+$CI_DERIVED_DATA_PATH/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/upload-symbols -gsp $CI_PRIMARY_REPOSITORY_PATH/App/BeMatch/Multiplatform/$TARGET_ENV/GoogleService-Info.plist -p ios $CI_ARCHIVE_PATH/dSYMs
+$CI_DERIVED_DATA_PATH/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/upload-symbols -gsp $CI_PRIMARY_REPOSITORY_PATH/App/PicMatch/Multiplatform/$TARGET_ENV/GoogleService-Info.plist -p ios $CI_ARCHIVE_PATH/dSYMs
+$CI_DERIVED_DATA_PATH/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/upload-symbols -gsp $CI_PRIMARY_REPOSITORY_PATH/App/TapMatch/Multiplatform/$TARGET_ENV/GoogleService-Info.plist -p ios $CI_ARCHIVE_PATH/dSYMs
+$CI_DERIVED_DATA_PATH/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/upload-symbols -gsp $CI_PRIMARY_REPOSITORY_PATH/App/Trinket/Multiplatform/$TARGET_ENV/GoogleService-Info.plist -p ios $CI_ARCHIVE_PATH/dSYMs
+$CI_DERIVED_DATA_PATH/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/upload-symbols -gsp $CI_PRIMARY_REPOSITORY_PATH/App/TenMatch/Multiplatform/$TARGET_ENV/GoogleService-Info.plist -p ios $CI_ARCHIVE_PATH/dSYMs

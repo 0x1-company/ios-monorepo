@@ -115,7 +115,6 @@ public struct UsernameSettingLogic {
            .updateTentenResponse(.success),
            .updateInstagramResponse(.success):
         state.isActivityIndicatorVisible = false
-        analytics.setUserProperty(key: \.username, value: state.value)
         return .send(.delegate(.nextScreen))
 
       case let .updateBeRealResponse(.failure(error as ServerError)):
