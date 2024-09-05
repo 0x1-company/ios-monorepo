@@ -164,7 +164,44 @@
       }
     },
     "Instagram username" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "untranslated",
+            "value" : ""
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "untranslated",
+            "value" : ""
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "untranslated",
+            "value" : ""
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "untranslated",
+            "value" : ""
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "untranslated",
+            "value" : ""
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "untranslated",
+            "value" : ""
+          }
+        }
+      }
     },
     "Nick Name" : {
       "localizations" : {

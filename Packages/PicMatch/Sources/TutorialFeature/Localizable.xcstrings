@@ -242,7 +242,44 @@
       }
     },
     "PicMatch is an application that allows you to exchange Instagram with everyone in Global!" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PicMatch es una aplicación que te permite intercambiar Instagram con todo el mundo a nivel global."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PicMatch est une application qui vous permet d'échanger Instagram avec tout le monde dans le monde."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PicMatchは世界中のみんなとInstagramを交換できるアプリです"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PicMatch는 전 세계 사람들과 Instagram을 교환할 수 있는 애플리케이션입니다."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PicMatch to aplikacja, która pozwala wymieniać się Instagramem z każdym na całym świecie!"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PicMatch là một ứng dụng cho phép bạn trao đổi Instagram với mọi người trên toàn cầu!"
+          }
+        }
+      }
     },
     "Right if you are interested!" : {
       "localizations" : {
