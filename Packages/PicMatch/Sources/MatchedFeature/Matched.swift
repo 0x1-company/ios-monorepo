@@ -62,7 +62,7 @@ public struct MatchedView: View {
 
         VStack(spacing: 12) {
           PrimaryButton(
-            String(localized: "Copy Instagram's username", bundle: .module)
+            String(localized: "Add Instagram", bundle: .module)
           ) {
             store.send(.addExternalProductButtonTapped)
           }
