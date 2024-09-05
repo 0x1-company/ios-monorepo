@@ -2,10 +2,6 @@
   "sourceLanguage" : "en",
   "strings" : {
     "About PicMatch PRO" : {
-
-    },
-    "About PicMatch PRO" : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -28,7 +24,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "PicMatch PRO에 대하여"
+            "value" : "PicMatch PRO에 대해"
           }
         },
         "pl" : {
@@ -326,7 +322,44 @@
       }
     },
     "PicMatch PRO" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PicMatch PRO"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PicMatch PRO"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PicMatch PRO"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PicMatch PRO"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PicMatch PRO"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PicMatch PRO"
+          }
+        }
+      }
     },
     "Status" : {
       "localizations" : {
@@ -364,47 +397,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Trạng thái"
-          }
-        }
-      }
-    },
-    "PicMatch PRO" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PicMatch PRO"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PicMatch PRO"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PicMatch PRO"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PicMatch PRO"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PicMatch PRO"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PicMatch PRO"
           }
         }
       }
