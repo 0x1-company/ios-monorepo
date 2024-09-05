@@ -5,45 +5,11 @@
 
     },
     "By doing this, you agree\nto our [Privacy Policy](https://docs.picmatch.app/privacy-policy) and [Terms of Use](https://docs.picmatch.app/terms-of-use)." : {
-
-    },
-    "By doing this, you agree\nto our [Privacy Policy](https://docs.tenmatch.app/privacy-policy) and [Terms of Use](https://docs.tenmatch.app/terms-of-use)." : {
-      "extractionState" : "stale",
       "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Al hacer esto, aceptas\nnuestra [Política de Privacidad](https://docs.tenmatch.app/privacy-policy) y [Términos de Uso](https://docs.tenmatch.app/terms-of-use)."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En faisant cela, vous acceptez\nnotre [Politique de confidentialité](https://docs.tenmatch.app/privacy-policy) et nos [Conditions d'utilisation](https://docs.tenmatch.app/terms-of-use)."
-          }
-        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "続けることで[プライバシーポリシー](https://docs.tenmatch.app/privacy-policy)および[利用規約](https://docs.tenmatch.app/terms-of-use)に同意するものとします。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "이렇게 하면 [개인정보 처리방침](https://docs.tenmatch.app/privacy-policy) 및 [이용약관](https://docs.tenmatch.app/terms-of-use)에 동의하는 것으로 간주됩니다."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Postępując w ten sposób, zgadzasz się\nna naszą [Politykę Prywatności](https://docs.tenmatch.app/privacy-policy) oraz [Warunki Użytkowania](https://docs.tenmatch.app/terms-of-use)."
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bằng cách này, bạn đồng ý với\n[Chính sách quyền riêng tư](https://docs.tenmatch.app/privacy-policy) và [Điều khoản sử dụng](https://docs.tenmatch.app/terms-of-use) của chúng tôi."
+            "value" : "この操作を行うと、私たちの[プライバシーポリシー](https://docs.picmatch.app/privacy-policy)と[利用規約](https://docs.picmatch.app/terms-of-use)に同意したことになります。\""
           }
         }
       }
@@ -89,6 +55,7 @@
       }
     },
     "ex. du9v5pq" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -128,42 +95,12 @@
         }
       }
     },
-    "Please tell me your\ntenten PIN." : {
+    "Please tell me your\nInstagram username." : {
       "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Por favor, dime tu\nPIN de tenten."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "S'il vous plaît dites-moi votre\nPIN de tenten."
-          }
-        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "tentenのPINを教えてください。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "tenten PIN을 알려주세요."
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Proszę powiedz mi swój\nPIN tenten."
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vui lòng cho tôi biết PIN của bạn\ntrên tenten."
+            "value" : "Instagramのユーザーネームを教えてください"
           }
         }
       }

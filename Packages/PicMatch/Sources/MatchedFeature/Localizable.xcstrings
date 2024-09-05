@@ -41,42 +41,42 @@
         }
       }
     },
-    "Copy tenten’s PIN" : {
+    "Add Instagram" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Copiar el PIN de tenten"
+            "value" : "Agregar Instagram"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Copier le PIN de tenten"
+            "value" : "Ajouter Instagram"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "tentenのPINをコピー"
+            "value" : "Instagramを追加する"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "tenten의 PIN 복사"
+            "value" : "Instagram 추가하기"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Skopiuj PIN tenten"
+            "value" : "Dodaj Instagram"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sao chép PIN của tenten"
+            "value" : "Thêm Instagram"
           }
         }
       }

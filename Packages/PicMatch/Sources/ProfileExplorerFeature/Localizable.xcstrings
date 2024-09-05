@@ -1,48 +1,23 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Add tenten" : {
+    "Add Instagram" : {
+
+    },
+    "Block" : {
       "localizations" : {
-        "ja" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "tentenを追加する"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "로켓 추가"
+            "value" : "Bloquear"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ajouter un tenten"
+            "value" : "Bloquer"
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dodaj tenten"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Thêm tenten"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Agregar tenten"
-          }
-        }
-      }
-    },
-    "Block" : {
-      "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53,12 +28,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "차단"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bloquer"
           }
         },
         "pl" : {
@@ -72,18 +41,24 @@
             "state" : "translated",
             "value" : "Chặn"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bloquear"
-          }
         }
       }
     },
     "Cancel" : {
       "extractionState" : "manual",
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -94,12 +69,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "취소"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Annuler"
           }
         },
         "pl" : {
@@ -113,18 +82,24 @@
             "state" : "translated",
             "value" : "Hủy bỏ"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cancelar"
-          }
         }
       }
     },
     "I confirmed transmission" : {
       "extractionState" : "manual",
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transmisión confirmada"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transmission confirmée"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -135,12 +110,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "전송 확인"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Transmission confirmée"
           }
         },
         "pl" : {
@@ -154,17 +123,23 @@
             "state" : "translated",
             "value" : "Tôi đã xác nhận truyền tải"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Transmisión confirmada"
-          }
         }
       }
     },
     "Message" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mensaje"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Message"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -175,12 +150,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "메시지"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Message"
           }
         },
         "pl" : {
@@ -194,17 +163,23 @@
             "state" : "translated",
             "value" : "Tin nhắn"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mensaje"
-          }
         }
       }
     },
     "Report" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reportar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signaler"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -215,12 +190,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "신고"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Signaler"
           }
         },
         "pl" : {
@@ -234,17 +203,23 @@
             "state" : "translated",
             "value" : "Báo cáo"
           }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reportar"
-          }
         }
       }
     },
     "Unmatch" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desemparejar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler la correspondance"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -257,12 +232,6 @@
             "value" : "언매치"
           }
         },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Annuler la correspondance"
-          }
-        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -273,12 +242,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hủy ghép đôi"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Desemparejar"
           }
         }
       }
