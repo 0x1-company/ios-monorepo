@@ -1,42 +1,42 @@
 {
-  "sourceLanguage": "en",
+  "sourceLanguage" : "en",
   "strings": {
     "ABOUT": {
       "localizations": {
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "À PROPOS"
+            "state" : "translated",
+            "value" : "À PROPOS"
           }
         },
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "基本情報"
+            "state" : "translated",
+            "value" : "基本情報"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "정보"
+            "state" : "translated",
+            "value" : "정보"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "VỀ CHÚNG TÔI"
+            "state" : "translated",
+            "value" : "VỀ CHÚNG TÔI"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "ACERCA DE"
+            "state" : "translated",
+            "value" : "ACERCA DE"
           }
         },
         "pl": {
           "stringUnit": {
-            "state": "translated",
-            "value": "O NAS"
+            "state" : "translated",
+            "value" : "O NAS"
           }
         }
       }
@@ -45,38 +45,38 @@
       "localizations": {
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Contactez-nous"
+            "state" : "translated",
+            "value" : "Contactez-nous"
           }
         },
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "お問い合わせ"
+            "state" : "translated",
+            "value" : "お問い合わせ"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "문의하기"
+            "state" : "translated",
+            "value" : "문의하기"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Liên hệ với chúng tôi"
+            "state" : "translated",
+            "value" : "Liên hệ với chúng tôi"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Contáctenos"
+            "state" : "translated",
+            "value" : "Contáctenos"
           }
         },
         "pl": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Skontaktuj się z nami"
+            "state" : "translated",
+            "value" : "Skontaktuj się z nami"
           }
         }
       }
@@ -85,38 +85,38 @@
       "localizations": {
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Supprimer le compte"
+            "state" : "translated",
+            "value" : "Supprimer le compte"
           }
         },
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "アカウントを削除する"
+            "state" : "translated",
+            "value" : "アカウントを削除する"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "계정 삭제"
+            "state" : "translated",
+            "value" : "계정 삭제"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Xóa tài khoản"
+            "state" : "translated",
+            "value" : "Xóa tài khoản"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Eliminar cuenta"
+            "state" : "translated",
+            "value" : "Eliminar cuenta"
           }
         },
         "pl": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Usuń konto"
+            "state" : "translated",
+            "value" : "Usuń konto"
           }
         }
       }
@@ -125,38 +125,38 @@
       "localizations": {
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Modifier le profil"
+            "state" : "translated",
+            "value" : "Modifier le profil"
           }
         },
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "プロフィール編集"
+            "state" : "translated",
+            "value" : "プロフィール編集"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "프로필 수정"
+            "state" : "translated",
+            "value" : "프로필 수정"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Chỉnh sửa hồ sơ"
+            "state" : "translated",
+            "value" : "Chỉnh sửa hồ sơ"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Editar perfil"
+            "state" : "translated",
+            "value" : "Editar perfil"
           }
         },
         "pl": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Edytuj profil"
+            "state" : "translated",
+            "value" : "Edytuj profil"
           }
         }
       }
@@ -165,38 +165,38 @@
       "localizations": {
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "FAQ"
+            "state" : "translated",
+            "value" : "FAQ"
           }
         },
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "よくある質問"
+            "state" : "translated",
+            "value" : "よくある質問"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "자주 묻는 질문"
+            "state" : "translated",
+            "value" : "자주 묻는 질문"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Câu hỏi thường gặp"
+            "state" : "translated",
+            "value" : "Câu hỏi thường gặp"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Preguntas frecuentes"
+            "state" : "translated",
+            "value" : "Preguntas frecuentes"
           }
         },
         "pl": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Najczęściej zadawane pytania"
+            "state" : "translated",
+            "value" : "Najczęściej zadawane pytania"
           }
         }
       }
@@ -205,38 +205,38 @@
       "localizations": {
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Aide"
+            "state" : "translated",
+            "value" : "Aide"
           }
         },
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "ヘルプ"
+            "state" : "translated",
+            "value" : "ヘルプ"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "도움말"
+            "state" : "translated",
+            "value" : "도움말"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Trợ giúp"
+            "state" : "translated",
+            "value" : "Trợ giúp"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Ayuda"
+            "state" : "translated",
+            "value" : "Ayuda"
           }
         },
         "pl": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Pomoc"
+            "state" : "translated",
+            "value" : "Pomoc"
           }
         }
       }
@@ -245,38 +245,38 @@
       "localizations": {
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Comment ça marche"
+            "state" : "translated",
+            "value" : "Comment ça marche"
           }
         },
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "PicMatchの使い方"
+            "state" : "translated",
+            "value" : "PicMatchの使い方"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "작동 방식"
+            "state" : "translated",
+            "value" : "작동 방식"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Cách hoạt động"
+            "state" : "translated",
+            "value" : "Cách hoạt động"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Cómo funciona"
+            "state" : "translated",
+            "value" : "Cómo funciona"
           }
         },
         "pl": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Jak to działa"
+            "state" : "translated",
+            "value" : "Jak to działa"
           }
         }
       }
@@ -285,38 +285,38 @@
       "localizations": {
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Statut de membre"
+            "state" : "translated",
+            "value" : "Statut de membre"
           }
         },
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "会員ステータス"
+            "state" : "translated",
+            "value" : "会員ステータス"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "회원 상태"
+            "state" : "translated",
+            "value" : "회원 상태"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Tình trạng hội viên"
+            "state" : "translated",
+            "value" : "Tình trạng hội viên"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Estado de membresía"
+            "state" : "translated",
+            "value" : "Estado de membresía"
           }
         },
         "pl": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Status członkostwa"
+            "state" : "translated",
+            "value" : "Status członkostwa"
           }
         }
       }
@@ -325,38 +325,38 @@
       "localizations": {
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Mon profil"
+            "state" : "translated",
+            "value" : "Mon profil"
           }
         },
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "自分のプロフィール"
+            "state" : "translated",
+            "value" : "自分のプロフィール"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "내 프로필"
+            "state" : "translated",
+            "value" : "내 프로필"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Hồ sơ của tôi"
+            "state" : "translated",
+            "value" : "Hồ sơ của tôi"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Mi perfil"
+            "state" : "translated",
+            "value" : "Mi perfil"
           }
         },
         "pl": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Mój profil"
+            "state" : "translated",
+            "value" : "Mój profil"
           }
         }
       }
@@ -365,38 +365,38 @@
       "localizations": {
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Autre"
+            "state" : "translated",
+            "value" : "Autre"
           }
         },
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "その他"
+            "state" : "translated",
+            "value" : "その他"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "기타"
+            "state" : "translated",
+            "value" : "기타"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Khác"
+            "state" : "translated",
+            "value" : "Khác"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Otro"
+            "state" : "translated",
+            "value" : "Otro"
           }
         },
         "pl": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Inne"
+            "state" : "translated",
+            "value" : "Inne"
           }
         }
       }
@@ -405,38 +405,38 @@
       "localizations": {
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Politique de confidentialité"
+            "state" : "translated",
+            "value" : "Politique de confidentialité"
           }
         },
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "プライバシーポリシー"
+            "state" : "translated",
+            "value" : "プライバシーポリシー"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "개인정보 처리방침"
+            "state" : "translated",
+            "value" : "개인정보 처리방침"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Chính sách bảo mật"
+            "state" : "translated",
+            "value" : "Chính sách bảo mật"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Política de privacidad"
+            "state" : "translated",
+            "value" : "Política de privacidad"
           }
         },
         "pl": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Polityka prywatności"
+            "state" : "translated",
+            "value" : "Polityka prywatności"
           }
         }
       }
@@ -445,38 +445,38 @@
       "localizations": {
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "PROFIL"
+            "state" : "translated",
+            "value" : "PROFIL"
           }
         },
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "プロフィール"
+            "state" : "translated",
+            "value" : "プロフィール"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "프로필"
+            "state" : "translated",
+            "value" : "프로필"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "HỒ SƠ"
+            "state" : "translated",
+            "value" : "HỒ SƠ"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "PERFIL"
+            "state" : "translated",
+            "value" : "PERFIL"
           }
         },
         "pl": {
           "stringUnit": {
-            "state": "translated",
-            "value": "PROFIL"
+            "state" : "translated",
+            "value" : "PROFIL"
           }
         }
       }
@@ -485,38 +485,38 @@
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "プッシュ通知"
+            "state" : "translated",
+            "value" : "プッシュ通知"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "푸시 알림"
+            "state" : "translated",
+            "value" : "푸시 알림"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Thông báo đẩy"
+            "state" : "translated",
+            "value" : "Thông báo đẩy"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Notificaciones push"
+            "state" : "translated",
+            "value" : "Notificaciones push"
           }
         },
         "pl": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Powiadomienia push"
+            "state" : "translated",
+            "value" : "Powiadomienia push"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Notifications push"
+            "state" : "translated",
+            "value" : "Notifications push"
           }
         }
       }
@@ -525,38 +525,38 @@
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "PicMatchを評価"
+            "state" : "translated",
+            "value" : "PicMatchを評価"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Califica PicMatch"
+            "state" : "translated",
+            "value" : "Califica PicMatch"
           }
         },
         "pl": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Oceń PicMatch"
+            "state" : "translated",
+            "value" : "Oceń PicMatch"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "PicMatch 평가하기"
+            "state" : "translated",
+            "value" : "PicMatch 평가하기"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Évaluer PicMatch"
+            "state" : "translated",
+            "value" : "Évaluer PicMatch"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Đánh giá PicMatch"
+            "state" : "translated",
+            "value" : "Đánh giá PicMatch"
           }
         }
       }
@@ -565,38 +565,38 @@
       "localizations": {
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Paramètres"
+            "state" : "translated",
+            "value" : "Paramètres"
           }
         },
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "設定"
+            "state" : "translated",
+            "value" : "設定"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "설정"
+            "state" : "translated",
+            "value" : "설정"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Cài đặt"
+            "state" : "translated",
+            "value" : "Cài đặt"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Configuraciones"
+            "state" : "translated",
+            "value" : "Configuraciones"
           }
         },
         "pl": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Ustawienia"
+            "state" : "translated",
+            "value" : "Ustawienia"
           }
         }
       }
@@ -605,38 +605,38 @@
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "PicMatchをシェア"
+            "state" : "translated",
+            "value" : "PicMatchをシェア"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Compartir PicMatch"
+            "state" : "translated",
+            "value" : "Compartir PicMatch"
           }
         },
         "pl": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Udostępnij PicMatch"
+            "state" : "translated",
+            "value" : "Udostępnij PicMatch"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "PicMatch 공유하기"
+            "state" : "translated",
+            "value" : "PicMatch 공유하기"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Partager PicMatch"
+            "state" : "translated",
+            "value" : "Partager PicMatch"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Chia sẻ PicMatch"
+            "state" : "translated",
+            "value" : "Chia sẻ PicMatch"
           }
         }
       }
@@ -645,38 +645,38 @@
       "localizations": {
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Conditions d'utilisation"
+            "state" : "translated",
+            "value" : "Conditions d'utilisation"
           }
         },
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "利用規約"
+            "state" : "translated",
+            "value" : "利用規約"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "이용 약관"
+            "state" : "translated",
+            "value" : "이용 약관"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Điều khoản sử dụng"
+            "state" : "translated",
+            "value" : "Điều khoản sử dụng"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Términos de uso"
+            "state" : "translated",
+            "value" : "Términos de uso"
           }
         },
         "pl": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Warunki użytkowania"
+            "state" : "translated",
+            "value" : "Warunki użytkowania"
           }
         }
       }
@@ -685,42 +685,42 @@
       "localizations": {
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Version"
+            "state" : "translated",
+            "value" : "Version"
           }
         },
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "バージョン"
+            "state" : "translated",
+            "value" : "バージョン"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "버전"
+            "state" : "translated",
+            "value" : "버전"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Phiên bản"
+            "state" : "translated",
+            "value" : "Phiên bản"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Versión"
+            "state" : "translated",
+            "value" : "Versión"
           }
         },
         "pl": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Wersja"
+            "state" : "translated",
+            "value" : "Wersja"
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

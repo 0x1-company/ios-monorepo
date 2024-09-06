@@ -1,30 +1,30 @@
 {
-  "sourceLanguage": "en",
+  "sourceLanguage" : "en",
   "strings": {
     "NETWORK ERROR": {
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "ネットワークエラー"
+            "state" : "translated",
+            "value" : "ネットワークエラー"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "ERREUR RÉSEAU"
+            "state" : "translated",
+            "value" : "ERREUR RÉSEAU"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "LỖI MẠNG"
+            "state" : "translated",
+            "value" : "LỖI MẠNG"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "네트워크 오류"
+            "state" : "translated",
+            "value" : "네트워크 오류"
           }
         }
       }
@@ -33,31 +33,31 @@
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "サーバーが混み合っています。しばらくしてからアプリの再起動をお試しください。"
+            "state" : "translated",
+            "value" : "サーバーが混み合っています。しばらくしてからアプリの再起動をお試しください。"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Les serveurs sont saturés. Veuillez réessayer de redémarrer l'application après un certain temps."
+            "state" : "translated",
+            "value" : "Les serveurs sont saturés. Veuillez réessayer de redémarrer l'application après un certain temps."
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Máy chủ đang quá tải. Vui lòng thử khởi động lại ứng dụng sau một thời gian."
+            "state" : "translated",
+            "value" : "Máy chủ đang quá tải. Vui lòng thử khởi động lại ứng dụng sau một thời gian."
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "서버가 혼잡합니다. 잠시 후 애플리케이션을 다시 시작해 주세요."
+            "state" : "translated",
+            "value" : "서버가 혼잡합니다. 잠시 후 애플리케이션을 다시 시작해 주세요."
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }
 

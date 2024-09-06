@@ -1,30 +1,30 @@
 {
-  "sourceLanguage": "en",
+  "sourceLanguage" : "en",
   "strings": {
     "Error": {
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "エラー"
+            "state" : "translated",
+            "value" : "エラー"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "오류"
+            "state" : "translated",
+            "value" : "오류"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Erreur"
+            "state" : "translated",
+            "value" : "Erreur"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Lỗi"
+            "state" : "translated",
+            "value" : "Lỗi"
           }
         }
       }
@@ -33,30 +33,30 @@
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "OK"
+            "state" : "translated",
+            "value" : "OK"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "OK"
+            "state" : "translated",
+            "value" : "OK"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "OK"
+            "state" : "translated",
+            "value" : "OK"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "OK"
+            "state" : "translated",
+            "value" : "OK"
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

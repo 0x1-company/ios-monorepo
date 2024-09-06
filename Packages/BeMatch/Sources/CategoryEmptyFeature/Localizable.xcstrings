@@ -1,30 +1,30 @@
 {
-  "sourceLanguage": "en",
+  "sourceLanguage" : "en",
   "strings": {
     "Looks like he's gone.": {
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "もういないみたい..."
+            "state" : "translated",
+            "value" : "もういないみたい..."
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "On dirait qu'il est parti."
+            "state" : "translated",
+            "value" : "On dirait qu'il est parti."
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Có vẻ như anh ấy đã đi rồi."
+            "state" : "translated",
+            "value" : "Có vẻ như anh ấy đã đi rồi."
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "그가 떠난 것 같아요."
+            "state" : "translated",
+            "value" : "그가 떠난 것 같아요."
           }
         }
       }
@@ -33,31 +33,31 @@
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "他の人をスワイプする"
+            "state" : "translated",
+            "value" : "他の人をスワイプする"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Balayer d'autres"
+            "state" : "translated",
+            "value" : "Balayer d'autres"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Vuốt những người khác"
+            "state" : "translated",
+            "value" : "Vuốt những người khác"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "다른 사람들 스와이프"
+            "state" : "translated",
+            "value" : "다른 사람들 스와이프"
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }
 

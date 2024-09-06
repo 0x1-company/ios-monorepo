@@ -1,42 +1,42 @@
 {
-  "sourceLanguage": "en",
+  "sourceLanguage" : "en",
   "strings": {
     "Message": {
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "メッセージ"
+            "state" : "translated",
+            "value" : "メッセージ"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "메시지"
+            "state" : "translated",
+            "value" : "메시지"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Message"
+            "state" : "translated",
+            "value" : "Message"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Tin nhắn"
+            "state" : "translated",
+            "value" : "Tin nhắn"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Mensaje"
+            "state" : "translated",
+            "value" : "Mensaje"
           }
         },
         "pl": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Wiadomość"
+            "state" : "translated",
+            "value" : "Wiadomość"
           }
         }
       }
@@ -45,38 +45,38 @@
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "新しいLike"
+            "state" : "translated",
+            "value" : "新しいLike"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "새로운 좋아요"
+            "state" : "translated",
+            "value" : "새로운 좋아요"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Nouveau Like"
+            "state" : "translated",
+            "value" : "Nouveau Like"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Lượt thích mới"
+            "state" : "translated",
+            "value" : "Lượt thích mới"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Nuevo Like"
+            "state" : "translated",
+            "value" : "Nuevo Like"
           }
         },
         "pl": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Nowy Like"
+            "state" : "translated",
+            "value" : "Nowy Like"
           }
         }
       }
@@ -85,38 +85,38 @@
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "新しいマッチ"
+            "state" : "translated",
+            "value" : "新しいマッチ"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "새로운 매치"
+            "state" : "translated",
+            "value" : "새로운 매치"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Nouvelle correspondance"
+            "state" : "translated",
+            "value" : "Nouvelle correspondance"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Ghép đôi mới"
+            "state" : "translated",
+            "value" : "Ghép đôi mới"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Nuevo Match"
+            "state" : "translated",
+            "value" : "Nuevo Match"
           }
         },
         "pl": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Nowy Match"
+            "state" : "translated",
+            "value" : "Nowy Match"
           }
         }
       }
@@ -125,42 +125,42 @@
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "プッシュ通知"
+            "state" : "translated",
+            "value" : "プッシュ通知"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "푸시 알림"
+            "state" : "translated",
+            "value" : "푸시 알림"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Notifications push"
+            "state" : "translated",
+            "value" : "Notifications push"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Thông báo đẩy"
+            "state" : "translated",
+            "value" : "Thông báo đẩy"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Notificaciones push"
+            "state" : "translated",
+            "value" : "Notificaciones push"
           }
         },
         "pl": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Powiadomienia push"
+            "state" : "translated",
+            "value" : "Powiadomienia push"
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

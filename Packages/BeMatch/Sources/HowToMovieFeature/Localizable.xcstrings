@@ -1,30 +1,30 @@
 {
-  "sourceLanguage": "en",
+  "sourceLanguage" : "en",
   "strings": {
     "Next": {
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "つぎへ"
+            "state" : "translated",
+            "value" : "つぎへ"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Suivant"
+            "state" : "translated",
+            "value" : "Suivant"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Tiếp theo"
+            "state" : "translated",
+            "value" : "Tiếp theo"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "다음"
+            "state" : "translated",
+            "value" : "다음"
           }
         }
       }
@@ -33,31 +33,31 @@
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "メモリーで、お気に入りを選んで「写真に追加」で保存してね 📸"
+            "state" : "translated",
+            "value" : "メモリーで、お気に入りを選んで「写真に追加」で保存してね 📸"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Appuyez sur \"Ajouter à la photo\" en mémoire et enregistrez-le 📸."
+            "state" : "translated",
+            "value" : "Appuyez sur \"Ajouter à la photo\" en mémoire et enregistrez-le 📸."
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Nhấn \"Thêm vào Ảnh\" trong bộ nhớ và lưu lại 📸."
+            "state" : "translated",
+            "value" : "Nhấn \"Thêm vào Ảnh\" trong bộ nhớ và lưu lại 📸."
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "메모리에서 \"사진에 추가\"를 눌러 저장하세요 📸."
+            "state" : "translated",
+            "value" : "메모리에서 \"사진에 추가\"를 눌러 저장하세요 📸."
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }
 
