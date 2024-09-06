@@ -167,38 +167,38 @@
       "localizations" : {
         "es" : {
           "stringUnit" : {
-            "state" : "untranslated",
-            "value" : ""
+            "state" : "translated",
+            "value" : "Nombre de usuario de Instagram"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "untranslated",
-            "value" : ""
+            "state" : "translated",
+            "value" : "Nom d'utilisateur Instagram"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "untranslated",
-            "value" : ""
+            "state" : "translated",
+            "value" : "Instagramのユーザーネーム"
           }
         },
         "ko" : {
           "stringUnit" : {
-            "state" : "untranslated",
-            "value" : ""
+            "state" : "translated",
+            "value" : "Instagram 사용자 이름"
           }
         },
         "pl" : {
           "stringUnit" : {
-            "state" : "untranslated",
-            "value" : ""
+            "state" : "translated",
+            "value" : "Nazwa użytkownika na Instagramie"
           }
         },
         "vi" : {
           "stringUnit" : {
-            "state" : "untranslated",
-            "value" : ""
+            "state" : "translated",
+            "value" : "Tên người dùng Instagram"
           }
         }
       }
@@ -481,17 +481,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bình luận ngắn"
-          }
-        }
-      }
-    },
-    "tenten PIN" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "tentenのPIN"
           }
         }
       }
