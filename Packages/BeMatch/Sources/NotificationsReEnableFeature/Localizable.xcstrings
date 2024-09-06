@@ -1,18 +1,18 @@
 {
-  "sourceLanguage": "en",
+  "sourceLanguage" : "en",
   "strings": {
     "Activate": {
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "有効にする"
+            "state" : "translated",
+            "value" : "有効にする"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Activer"
+            "state" : "translated",
+            "value" : "Activer"
           }
         }
       }
@@ -21,18 +21,18 @@
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "マッチした時に気づくために通知を有効にしてね。"
+            "state" : "translated",
+            "value" : "マッチした時に気づくために通知を有効にしてね。"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Vous devrez activer les notifications pour remarquer quand vous avez une correspondance."
+            "state" : "translated",
+            "value" : "Vous devrez activer les notifications pour remarquer quand vous avez une correspondance."
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

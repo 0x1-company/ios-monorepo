@@ -1,52 +1,52 @@
 {
-  "sourceLanguage": "en",
+  "sourceLanguage" : "en",
   "strings": {
     "Hey, new users have been pouring in lately, so how about we check it out again soon?": {
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "最近、新しいユーザーがどんどん増えてるから、久しぶりにチェックしてみない？"
+            "state" : "translated",
+            "value" : "最近、新しいユーザーがどんどん増えてるから、久しぶりにチェックしてみない？"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "최근 새로운 사용자가 많이 들어오고 있어서, 다시 한번 확인해보는 게 어때요?"
+            "state" : "translated",
+            "value" : "최근 새로운 사용자가 많이 들어오고 있어서, 다시 한번 확인해보는 게 어때요?"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Hé, de nouveaux utilisateurs affluent ces derniers temps, alors pourquoi ne pas vérifier ça bientôt ?"
+            "state" : "translated",
+            "value" : "Hé, de nouveaux utilisateurs affluent ces derniers temps, alors pourquoi ne pas vérifier ça bientôt ?"
           }
         },
         "pl": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Hej, ostatnio napływają nowi użytkownicy, więc może warto to sprawdzić ponownie wkrótce?"
+            "state" : "translated",
+            "value" : "Hej, ostatnio napływają nowi użytkownicy, więc może warto to sprawdzić ponownie wkrótce?"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Này, người dùng mới đang đổ vào gần đây, vậy tại sao chúng ta không kiểm tra lại sớm?"
+            "state" : "translated",
+            "value" : "Này, người dùng mới đang đổ vào gần đây, vậy tại sao chúng ta không kiểm tra lại sớm?"
           }
         },
         "es": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Oye, últimamente están llegando nuevos usuarios, ¿qué tal si lo revisamos pronto?"
+            "state" : "translated",
+            "value" : "Oye, últimamente están llegando nuevos usuarios, ¿qué tal si lo revisamos pronto?"
           }
         },
         "pt-BR": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Ei, novos usuários têm chegado ultimamente, que tal darmos uma olhada de novo em breve?"
+            "state" : "translated",
+            "value" : "Ei, novos usuários têm chegado ultimamente, que tal darmos uma olhada de novo em breve?"
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

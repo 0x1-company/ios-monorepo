@@ -1,30 +1,30 @@
 {
-  "sourceLanguage": "en",
+  "sourceLanguage" : "en",
   "strings": {
     "Let's swipe.": {
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "スワイプしよう"
+            "state" : "translated",
+            "value" : "スワイプしよう"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Faisons glisser."
+            "state" : "translated",
+            "value" : "Faisons glisser."
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Hãy vuốt."
+            "state" : "translated",
+            "value" : "Hãy vuốt."
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "스와이프 해요."
+            "state" : "translated",
+            "value" : "스와이프 해요."
           }
         }
       }
@@ -33,26 +33,26 @@
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "スワイプする"
+            "state" : "translated",
+            "value" : "スワイプする"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Glisser"
+            "state" : "translated",
+            "value" : "Glisser"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Vuốt"
+            "state" : "translated",
+            "value" : "Vuốt"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "스와이프"
+            "state" : "translated",
+            "value" : "스와이프"
           }
         }
       }
@@ -61,31 +61,31 @@
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "誰かとマッチするとここに相手のプロフィールが表示されます"
+            "state" : "translated",
+            "value" : "誰かとマッチするとここに相手のプロフィールが表示されます"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Lorsque vous correspondez avec quelqu'un, son profil apparaîtra ici"
+            "state" : "translated",
+            "value" : "Lorsque vous correspondez avec quelqu'un, son profil apparaîtra ici"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Khi bạn kết nối với ai đó, hồ sơ của họ sẽ xuất hiện ở đây"
+            "state" : "translated",
+            "value" : "Khi bạn kết nối với ai đó, hồ sơ của họ sẽ xuất hiện ở đây"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "누군가와 매치되면 프로필이 여기에 나타납니다"
+            "state" : "translated",
+            "value" : "누군가와 매치되면 프로필이 여기에 나타납니다"
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }
 

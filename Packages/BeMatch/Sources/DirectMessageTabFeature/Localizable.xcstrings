@@ -1,30 +1,30 @@
 {
-  "sourceLanguage": "en",
+  "sourceLanguage" : "en",
   "strings": {
     "Let's Reply": {
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "返信しよう"
+            "state" : "translated",
+            "value" : "返信しよう"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Répondons"
+            "state" : "translated",
+            "value" : "Répondons"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Hãy trả lời"
+            "state" : "translated",
+            "value" : "Hãy trả lời"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "답장하자"
+            "state" : "translated",
+            "value" : "답장하자"
           }
         }
       }
@@ -33,26 +33,26 @@
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Like"
+            "state" : "translated",
+            "value" : "Like"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "J'aime"
+            "state" : "translated",
+            "value" : "J'aime"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Thích"
+            "state" : "translated",
+            "value" : "Thích"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "좋아요"
+            "state" : "translated",
+            "value" : "좋아요"
           }
         }
       }
@@ -61,26 +61,26 @@
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "メッセージ"
+            "state" : "translated",
+            "value" : "メッセージ"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "MESSAGE"
+            "state" : "translated",
+            "value" : "MESSAGE"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "TIN NHẮN"
+            "state" : "translated",
+            "value" : "TIN NHẮN"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "메시지"
+            "state" : "translated",
+            "value" : "메시지"
           }
         }
       }
@@ -89,26 +89,26 @@
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "最近のマッチ"
+            "state" : "translated",
+            "value" : "最近のマッチ"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "CORRESPONDANCE RÉCENTE"
+            "state" : "translated",
+            "value" : "CORRESPONDANCE RÉCENTE"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "GHÉP ĐÔI GẦN ĐÂY"
+            "state" : "translated",
+            "value" : "GHÉP ĐÔI GẦN ĐÂY"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "최근 매치"
+            "state" : "translated",
+            "value" : "최근 매치"
           }
         }
       }
@@ -117,31 +117,31 @@
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "すべて見る"
+            "state" : "translated",
+            "value" : "すべて見る"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Voir plus"
+            "state" : "translated",
+            "value" : "Voir plus"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Xem thêm"
+            "state" : "translated",
+            "value" : "Xem thêm"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "더 보기"
+            "state" : "translated",
+            "value" : "더 보기"
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }
 

@@ -1,30 +1,30 @@
 {
-  "sourceLanguage": "en",
+  "sourceLanguage" : "en",
   "strings": {
     "id: %@": {
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "id: %@"
+            "state" : "translated",
+            "value" : "id: %@"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "id : %@"
+            "state" : "translated",
+            "value" : "id : %@"
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "id: %@"
+            "state" : "translated",
+            "value" : "id: %@"
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "id: %@"
+            "state" : "translated",
+            "value" : "id: %@"
           }
         }
       }
@@ -33,26 +33,26 @@
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "BeMatchでは、すべての人にとって安心で安全な場所であることを重視しています。残念ながらあなたの行為が[利用規約](https://docs.bematch.jp/terms-of-use)に違反したことが判明したため、当社はあなたをBeMatchのプラットフォームから削除することを決定しました。"
+            "state" : "translated",
+            "value" : "BeMatchでは、すべての人にとって安心で安全な場所であることを重視しています。残念ながらあなたの行為が[利用規約](https://docs.bematch.jp/terms-of-use)に違反したことが判明したため、当社はあなたをBeMatchのプラットフォームから削除することを決定しました。"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Il est important pour nous que BeMatch soit un espace accueillant et sûr pour tout le monde. Malheureusement, nous avons constaté que vous avez violé nos [Conditions d'utilisation](https://docs.bematch.jp/terms-of-use) et avons donc décidé de vous retirer de la plateforme BeMatch."
+            "state" : "translated",
+            "value" : "Il est important pour nous que BeMatch soit un espace accueillant et sûr pour tout le monde. Malheureusement, nous avons constaté que vous avez violé nos [Conditions d'utilisation](https://docs.bematch.jp/terms-of-use) et avons donc décidé de vous retirer de la plateforme BeMatch."
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Điều quan trọng đối với chúng tôi là BeMatch là một không gian chào đón và an toàn cho mọi người. Thật không may, chúng tôi phát hiện rằng bạn đã vi phạm [Điều khoản Sử dụng](https://docs.bematch.jp/terms-of-use) và do đó, chúng tôi đã quyết định xóa bạn khỏi Nền tảng BeMatch."
+            "state" : "translated",
+            "value" : "Điều quan trọng đối với chúng tôi là BeMatch là một không gian chào đón và an toàn cho mọi người. Thật không may, chúng tôi phát hiện rằng bạn đã vi phạm [Điều khoản Sử dụng](https://docs.bematch.jp/terms-of-use) và do đó, chúng tôi đã quyết định xóa bạn khỏi Nền tảng BeMatch."
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "BeMatch는 모든 사람에게 환영받고 안전한 공간이 되는 것이 중요합니다. 불행히도 귀하가 [이용 약관](https://docs.bematch.jp/terms-of-use)을 위반한 것으로 확인되어 BeMatch 플랫폼에서 귀하를 삭제하기로 결정했습니다."
+            "state" : "translated",
+            "value" : "BeMatch는 모든 사람에게 환영받고 안전한 공간이 되는 것이 중요합니다. 불행히도 귀하가 [이용 약관](https://docs.bematch.jp/terms-of-use)을 위반한 것으로 확인되어 BeMatch 플랫폼에서 귀하를 삭제하기로 결정했습니다."
           }
         }
       }
@@ -61,26 +61,26 @@
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "App Storeを通じて購読している場合は、App Storeで解約する必要がありますのでご注意ください。"
+            "state" : "translated",
+            "value" : "App Storeを通じて購読している場合は、App Storeで解約する必要がありますのでご注意ください。"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Veuillez noter que si vous êtes abonné à des services premium via l'App Store, vous devrez annuler votre abonnement auprès du fournisseur approprié."
+            "state" : "translated",
+            "value" : "Veuillez noter que si vous êtes abonné à des services premium via l'App Store, vous devrez annuler votre abonnement auprès du fournisseur approprié."
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Xin lưu ý rằng nếu bạn đã đăng ký bất kỳ dịch vụ cao cấp nào qua App Store, bạn sẽ cần hủy đăng ký của mình với nhà cung cấp tương ứng."
+            "state" : "translated",
+            "value" : "Xin lưu ý rằng nếu bạn đã đăng ký bất kỳ dịch vụ cao cấp nào qua App Store, bạn sẽ cần hủy đăng ký của mình với nhà cung cấp tương ứng."
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "App Store를 통해 프리미엄 서비스에 가입한 경우 해당 제공업체에서 구독을 취소해야 합니다."
+            "state" : "translated",
+            "value" : "App Store를 통해 프리미엄 서비스에 가입한 경우 해당 제공업체에서 구독을 취소해야 합니다."
           }
         }
       }
@@ -89,26 +89,26 @@
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "あなたは今後、BeMatchのアカウントにアクセスしたり、新しいアカウントを作成することは出来ません。"
+            "state" : "translated",
+            "value" : "あなたは今後、BeMatchのアカウントにアクセスしたり、新しいアカウントを作成することは出来ません。"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Vous ne pourrez plus accéder à votre compte BeMatch ou créer de nouveaux comptes à l'avenir."
+            "state" : "translated",
+            "value" : "Vous ne pourrez plus accéder à votre compte BeMatch ou créer de nouveaux comptes à l'avenir."
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Bạn sẽ không thể truy cập vào tài khoản BeMatch của mình hoặc tạo tài khoản mới trong tương lai."
+            "state" : "translated",
+            "value" : "Bạn sẽ không thể truy cập vào tài khoản BeMatch của mình hoặc tạo tài khoản mới trong tương lai."
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "더 이상 BeMatch 계정에 액세스하거나 새 계정을 만들 수 없습니다."
+            "state" : "translated",
+            "value" : "더 이상 BeMatch 계정에 액세스하거나 새 계정을 만들 수 없습니다."
           }
         }
       }
@@ -117,31 +117,31 @@
       "localizations": {
         "ja": {
           "stringUnit": {
-            "state": "translated",
-            "value": "あなたのBeMatchアカウントは利用停止されました。"
+            "state" : "translated",
+            "value" : "あなたのBeMatchアカウントは利用停止されました。"
           }
         },
         "fr": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Votre compte a été banni de BeMatch."
+            "state" : "translated",
+            "value" : "Votre compte a été banni de BeMatch."
           }
         },
         "vi": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Tài khoản của bạn đã bị cấm sử dụng BeMatch."
+            "state" : "translated",
+            "value" : "Tài khoản của bạn đã bị cấm sử dụng BeMatch."
           }
         },
         "ko": {
           "stringUnit": {
-            "state": "translated",
-            "value": "귀하의 BeMatch 계정이 정지되었습니다."
+            "state" : "translated",
+            "value" : "귀하의 BeMatch 계정이 정지되었습니다."
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }
 
