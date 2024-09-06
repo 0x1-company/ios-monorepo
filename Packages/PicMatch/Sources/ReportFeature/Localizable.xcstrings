@@ -202,23 +202,7 @@
       }
     },
     "Report a PicMatch" : {
-
-    },
-    "Report a PicMatch" : {
-      "extractionState" : "stale",
       "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reportar un PicMatch"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Signaler un PicMatch"
-          }
-        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -228,7 +212,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "트링켓 신고하기"
+            "value" : "PicMatch 신고"
           }
         },
         "pl" : {
@@ -237,10 +221,22 @@
             "value" : "Zgłoś PicMatch"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reportar un PicMatch"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Báo cáo một PicMatch"
+            "value" : "Báo cáo PicMatch"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signaler un PicMatch"
           }
         }
       }
