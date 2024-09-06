@@ -1,15 +1,43 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "" : {
-
-    },
+    "" : {},
     "By doing this, you agree\nto our [Privacy Policy](https://docs.picmatch.app/privacy-policy) and [Terms of Use](https://docs.picmatch.app/terms-of-use)." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "この操作を行うと、私たちの[プライバシーポリシー](https://docs.picmatch.app/privacy-policy)と[利用規約](https://docs.picmatch.app/terms-of-use)に同意したことになります。\""
+            "value" : "この操作を行うと、私たちの[プライバシーポリシー](https://docs.picmatch.app/privacy-policy)と[利用規約](https://docs.picmatch.app/terms-of-use)に同意したことになります。"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al hacer esto, aceptas nuestra [Política de privacidad](https://docs.picmatch.app/privacy-policy) y [Términos de uso](https://docs.picmatch.app/terms-of-use)."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En faisant cela, vous acceptez notre [Politique de confidentialité](https://docs.picmatch.app/privacy-policy) et nos [Conditions d'utilisation](https://docs.picmatch.app/terms-of-use)."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 작업을 수행하면 [개인정보 처리방침](https://docs.picmatch.app/privacy-policy) 및 [이용 약관](https://docs.picmatch.app/terms-of-use)에 동의하게 됩니다."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wykonując tę czynność, zgadzasz się z naszą [Polityką prywatności](https://docs.picmatch.app/privacy-policy) oraz [Warunkami użytkowania](https://docs.picmatch.app/terms-of-use)."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bằng cách thực hiện điều này, bạn đồng ý với [Chính sách quyền riêng tư](https://docs.picmatch.app/privacy-policy) và [Điều khoản sử dụng](https://docs.picmatch.app/terms-of-use) của chúng tôi."
           }
         }
       }
@@ -54,53 +82,42 @@
         }
       }
     },
-    "ex. du9v5pq" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "p. ej. du9v5pq"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ex. du9v5pq"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "例: du9v5pq"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "예: du9v5pq"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "np. du9v5pq"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ví dụ: du9v5pq"
-          }
-        }
-      }
-    },
     "Please tell me your\nInstagram username." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Instagramのユーザーネームを教えてください"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, dime tu nombre de usuario de Instagram."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez me dire votre nom d'utilisateur Instagram."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instagram 사용자 이름을 알려주세요."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proszę podaj mi swoją nazwę użytkownika na Instagramie."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vui lòng cho tôi biết tên người dùng Instagram của bạn."
           }
         }
       }

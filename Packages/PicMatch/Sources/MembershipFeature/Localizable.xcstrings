@@ -494,23 +494,7 @@
       }
     },
     "Send an invitation code to a friend who hasn't used PicMatch" : {
-
-    },
-    "Send an invitation code to a friend who hasn't used PicMatch" : {
-      "extractionState" : "stale",
       "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Envía un código de invitación a un amigo que no ha usado PicMatch"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Envoyez un code d'invitation à un ami qui n'a pas utilisé PicMatch"
-          }
-        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -520,19 +504,31 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "아직 PicMatch을 사용하지 않은 친구에게 초대 코드를 보내세요"
+            "value" : "PicMatch를 사용하지 않은 친구에게 초대 코드를 보내세요!"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wyślij kod zaproszenia do znajomego, który nie używał PicMatch"
+            "value" : "Wyślij kod zaproszenia do znajomego, który nie korzystał z PicMatch"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envía un código de invitación a un amigo que no haya usado PicMatch"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gửi mã mời đến một người bạn chưa sử dụng PicMatch"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envoyez un code d'invitation à un ami qui n'a pas utilisé PicMatch"
           }
         }
       }
@@ -658,23 +654,7 @@
       }
     },
     "When they enter the Invitation Code and register, you will both receive PicMatch PRO for sure!" : {
-
-    },
-    "When they enter the Invitation Code and register, you will both receive PicMatch PRO for sure!" : {
-      "extractionState" : "stale",
       "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¡Cuando ingresen el código de invitación y se registren, ambos recibirán PicMatch PRO seguro!"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lorsqu'ils saisissent le code d'invitation et s'inscrivent, vous recevrez tous les deux PicMatch PRO pour sûr !"
-          }
-        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -684,19 +664,31 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "상대가 초대 코드를 입력하고 등록하면, 둘 다 PicMatch PRO를 받을 수 있습니다!"
+            "value" : "초대 코드를 입력하고 등록하면 두 분 다 PicMatch PRO를 받으실 수 있습니다!"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kiedy wprowadzą kod zaproszenia i zarejestrują się, obaj otrzymacie PicMatch PRO na pewno!"
+            "value" : "Kiedy wprowadzą kod zaproszenia i zarejestrują się, oboje otrzymacie PicMatch PRO!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cuando ingresen el código de invitación y se registren, ¡ambos recibirán PicMatch PRO!"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Khi họ nhập mã mời và đăng ký, cả hai bạn sẽ nhận được PicMatch PRO chắc chắn!"
+            "value" : "Khi họ nhập Mã mời và đăng ký, cả hai bạn sẽ nhận được PicMatch PRO!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lorsqu'ils entreront le code d'invitation et s'inscriront, vous recevrez tous les deux PicMatch PRO !"
           }
         }
       }

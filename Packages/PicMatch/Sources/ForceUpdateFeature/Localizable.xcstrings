@@ -2,10 +2,6 @@
   "sourceLanguage" : "en",
   "strings" : {
     "... Oh? ! ! Looks like PicMatch...! \nPlease update to the latest version." : {
-
-    },
-    "... Oh? ! ! Looks like PicMatch...! \nPlease update to the latest version." : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
