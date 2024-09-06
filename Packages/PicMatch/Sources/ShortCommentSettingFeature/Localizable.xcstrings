@@ -48,6 +48,36 @@
             "state" : "translated",
             "value" : "インスタグラムや他のSNSのIDを書かないでください。"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No escribas el nombre de usuario de Instagram u otras redes sociales."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "N'écrivez pas de nom d'utilisateur Instagram ou d'autres réseaux sociaux."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instagram 또는 다른 소셜 미디어 사용자 이름을 작성하지 마세요."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie wpisuj nazwy użytkownika Instagrama lub innych mediów społecznościowych."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đừng viết tên người dùng Instagram hoặc mạng xã hội khác."
+          }
         }
       }
     },
