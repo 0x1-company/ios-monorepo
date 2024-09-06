@@ -82,10 +82,6 @@
       }
     },
     "Once you have deleted your PicMatch account, you will not be able to register again for a certain period of time after the deletion." : {
-
-    },
-    "Once you have deleted your PicMatch account, you will not be able to register again for a certain period of time after the deletion." : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
