@@ -50,8 +50,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/facebook/facebook-ios-sdk",
       "state" : {
-        "revision" : "2b87f9dd8adc2766dc4dbfd1ee4333bcf0167b4e",
-        "version" : "17.0.3"
+        "revision" : "3cebc3b1d13dbe85868cc04f5bed63648e8c410c",
+        "version" : "17.1.0"
       }
     },
     {
