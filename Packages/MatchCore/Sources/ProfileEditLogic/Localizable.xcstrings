@@ -86,6 +86,7 @@
       }
     },
     "Short Comment" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
