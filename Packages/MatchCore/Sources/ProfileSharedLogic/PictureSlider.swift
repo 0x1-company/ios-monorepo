@@ -9,9 +9,10 @@ import SwiftUI
 public struct PictureSliderLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public let data: API.PictureSlider
-    @BindingState public var selection: API.PictureSlider.Image
+    public var selection: API.PictureSlider.Image
 
     public init(data: API.PictureSlider) {
       self.data = data

@@ -3,7 +3,7 @@ import MembershipStatusLogic
 import SwiftUI
 
 public struct MembershipStatusView: View {
-  let store: StoreOf<MembershipStatusLogic>
+  @Bindable var store: StoreOf<MembershipStatusLogic>
 
   public init(store: StoreOf<MembershipStatusLogic>) {
     self.store = store

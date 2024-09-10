@@ -14,7 +14,7 @@ import TutorialFeature
 
 public struct AppView: View {
   @Environment(\.scenePhase) private var scenePhase
-  let store: StoreOf<AppLogic>
+  @Bindable var store: StoreOf<AppLogic>
 
   public init(store: StoreOf<AppLogic>) {
     self.store = store
@@ -83,7 +83,7 @@ public struct AppView: View {
       )
     }
     .fullScreenCover(
-      store: store.scope(state: \.$destination.receivedLike, action: \.destination.receivedLike),
+      item: $store.scope(state: \.destination?.receivedLike, action: \.destination.receivedLike),
       content: ReceivedLikeRouterView.init(store:)
     )
   }

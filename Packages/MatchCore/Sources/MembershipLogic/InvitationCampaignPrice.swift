@@ -5,6 +5,7 @@ import SwiftUI
 public struct InvitationCampaignPriceLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public let displayDuration: String
     public let currencyCode: String

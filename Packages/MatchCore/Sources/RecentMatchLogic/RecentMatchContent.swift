@@ -9,6 +9,7 @@ import ReceivedLikeRouterLogic
 public struct RecentMatchContentLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public var matches: IdentifiedArrayOf<RecentMatchGridLogic.State> = []
     public var likeGrid: LikeGridLogic.State?
@@ -16,7 +17,7 @@ public struct RecentMatchContentLogic {
     public var hasNextPage: Bool
     var after: String?
 
-    @PresentationState public var destination: Destination.State?
+    @Presents public var destination: Destination.State?
   }
 
   public enum Action {

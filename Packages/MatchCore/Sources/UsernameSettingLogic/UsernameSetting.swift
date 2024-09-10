@@ -12,10 +12,11 @@ import HowToLocketLinkLogic
 public struct UsernameSettingLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public var isActivityIndicatorVisible = false
-    @BindingState public var value: String
-    @PresentationState public var destination: Destination.State?
+    public var value: String
+    @Presents public var destination: Destination.State?
 
     public init(username: String) {
       value = username

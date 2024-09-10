@@ -4,7 +4,7 @@ import Styleguide
 import SwiftUI
 
 public struct FreezedView: View {
-  let store: StoreOf<FreezedLogic>
+  @Bindable var store: StoreOf<FreezedLogic>
 
   public init(store: StoreOf<FreezedLogic>) {
     self.store = store

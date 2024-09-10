@@ -8,6 +8,7 @@ import Foundation
 public struct DirectMessageEmptyLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public let displayName: String
     let externalProductUrl: String

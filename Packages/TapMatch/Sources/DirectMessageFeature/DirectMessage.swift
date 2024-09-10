@@ -4,7 +4,7 @@ import ReportFeature
 import SwiftUI
 
 public struct DirectMessageView: View {
-  let store: StoreOf<DirectMessageLogic>
+  @Bindable var store: StoreOf<DirectMessageLogic>
 
   public init(store: StoreOf<DirectMessageLogic>) {
     self.store = store

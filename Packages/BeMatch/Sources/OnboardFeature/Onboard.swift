@@ -9,7 +9,7 @@ import SwiftUI
 import UsernameSettingFeature
 
 public struct OnboardView: View {
-  let store: StoreOf<OnboardLogic>
+  @Bindable var store: StoreOf<OnboardLogic>
 
   public init(store: StoreOf<OnboardLogic>) {
     self.store = store
@@ -18,7 +18,7 @@ public struct OnboardView: View {
   public var body: some View {
     NavigationStackStore(store.scope(state: \.path, action: \.path)) {
       UsernameSettingView(
-        store: store.scope(state: \.username, action: \.username),
+        item: $store.scope(state: \.username, action: \.username),
         nextButtonStyle: .next
       )
     } destination: { store in
@@ -64,7 +64,7 @@ public struct OnboardView: View {
     .tint(Color.white)
     .task { await store.send(.onTask).finish() }
     .sheet(
-      store: store.scope(state: \.$destination.howToMovie, action: \.destination.howToMovie)
+      item: $store.scope(state: \.destination?.howToMovie, action: \.destination.howToMovie)
     ) { store in
       NavigationStack {
         HowToMovieView(store: store)

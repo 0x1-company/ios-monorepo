@@ -16,8 +16,9 @@ import UserNotificationClient
 public struct DirectMessageTabLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
-    @PresentationState public var destination: Destination.State?
+    @Presents public var destination: Destination.State?
     public var banners: IdentifiedArrayOf<BannerLogic.State> = []
     public var unsent: UnsentDirectMessageListLogic.State? = .loading
     public var messages: DirectMessageListLogic.State? = .loading

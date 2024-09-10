@@ -12,6 +12,7 @@ import SwipeLogic
 public struct ReceivedLikeSwipeLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public var child = Child.State.loading
 

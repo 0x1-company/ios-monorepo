@@ -29,9 +29,10 @@ public struct SettingsLogic {
     }
   }
 
+  @ObservableState
   public struct State: Equatable {
-    @PresentationState public var destination: Destination.State?
-    @BindingState public var isSharePresented = false
+    @Presents public var destination: Destination.State?
+    public var isSharePresented = false
 
     public var bundleShortVersion: String
     public var creationDate: CreationDateLogic.State?

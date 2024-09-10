@@ -4,32 +4,30 @@ import Styleguide
 import SwiftUI
 
 public struct CategoryEmptyView: View {
-  let store: StoreOf<CategoryEmptyLogic>
+  @Bindable var store: StoreOf<CategoryEmptyLogic>
 
   public init(store: StoreOf<CategoryEmptyLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { _ in
-      VStack(spacing: 24) {
-        Image(ImageResource.empty)
-          .resizable()
-          .aspectRatio(contentMode: .fit)
-          .frame(width: 120)
+    VStack(spacing: 24) {
+      Image(ImageResource.empty)
+        .resizable()
+        .aspectRatio(contentMode: .fit)
+        .frame(width: 120)
 
-        Text("Looks like he's gone.", bundle: .module)
-          .font(.system(.title3, design: .rounded, weight: .semibold))
+      Text("Looks like he's gone.", bundle: .module)
+        .font(.system(.title3, design: .rounded, weight: .semibold))
 
-        PrimaryButton(
-          String(localized: "Swipe others", bundle: .module)
-        ) {
-          store.send(.emptyButtonTapped)
-        }
+      PrimaryButton(
+        String(localized: "Swipe others", bundle: .module)
+      ) {
+        store.send(.emptyButtonTapped)
       }
-      .padding(.horizontal, 16)
-      .multilineTextAlignment(.center)
     }
+    .padding(.horizontal, 16)
+    .multilineTextAlignment(.center)
   }
 }
 

@@ -3,7 +3,7 @@ import ComposableArchitecture
 import SwiftUI
 
 public struct AchievementView: View {
-  let store: StoreOf<AchievementLogic>
+  @Bindable var store: StoreOf<AchievementLogic>
 
   public init(store: StoreOf<AchievementLogic>) {
     self.store = store

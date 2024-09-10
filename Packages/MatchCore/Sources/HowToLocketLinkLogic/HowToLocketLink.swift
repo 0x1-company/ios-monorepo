@@ -7,6 +7,7 @@ import FeedbackGeneratorClient
 public struct HowToLocketLinkLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public let player: AVPlayer
 

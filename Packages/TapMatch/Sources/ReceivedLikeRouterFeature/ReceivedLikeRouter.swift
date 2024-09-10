@@ -5,7 +5,7 @@ import ReceivedLikeSwipeFeature
 import SwiftUI
 
 public struct ReceivedLikeRouterView: View {
-  let store: StoreOf<ReceivedLikeRouterLogic>
+  @Bindable var store: StoreOf<ReceivedLikeRouterLogic>
 
   public init(store: StoreOf<ReceivedLikeRouterLogic>) {
     self.store = store

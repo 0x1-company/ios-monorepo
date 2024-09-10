@@ -9,10 +9,11 @@ import SwiftUI
 public struct ShortCommentSettingLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
-    @BindingState public var shortComment: String
-    @BindingState public var focus: Focus?
-    @PresentationState public var alert: AlertState<Action.Alert>?
+    public var shortComment: String
+    public var focus: Focus?
+    @Presents public var alert: AlertState<Action.Alert>?
 
     public var isActivityIndicatorVisible = false
 

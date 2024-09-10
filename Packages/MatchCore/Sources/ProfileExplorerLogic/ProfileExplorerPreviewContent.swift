@@ -11,10 +11,11 @@ import SwiftUI
 public struct ProfileExplorerPreviewContentLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public let user: API.ProfileExplorerPreviewQuery.Data.UserByMatched
 
-    @PresentationState public var confirmationDialog: ConfirmationDialogState<Action.ConfirmationDialog>?
+    @Presents public var confirmationDialog: ConfirmationDialogState<Action.ConfirmationDialog>?
     public var pictureSlider: PictureSliderLogic.State
 
     public init(user: API.ProfileExplorerPreviewQuery.Data.UserByMatched) {

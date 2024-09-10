@@ -6,6 +6,7 @@ import SwiftUI
 public struct MaintenanceLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public let contactUsURL: URL
     public init() {

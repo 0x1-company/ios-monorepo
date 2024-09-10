@@ -3,7 +3,7 @@ import ProductPurchaseLogic
 import SwiftUI
 
 public struct ProductPurchaseView: View {
-  let store: StoreOf<ProductPurchaseLogic>
+  @Bindable var store: StoreOf<ProductPurchaseLogic>
 
   public init(store: StoreOf<ProductPurchaseLogic>) {
     self.store = store

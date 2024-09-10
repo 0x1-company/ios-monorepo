@@ -9,10 +9,11 @@ import SwiftUI
 public struct InvitationLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public var isDisabled = true
     public var isActivityIndicatorVisible = false
-    @BindingState public var code = String()
+    public var code = String()
 
     public init() {}
   }

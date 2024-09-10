@@ -13,11 +13,12 @@ import UsernameSettingLogic
 public struct ProfileLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public var currentUser: API.UserInternal?
 
     public var pictureSlider: PictureSliderLogic.State?
-    @PresentationState public var destination: Destination.State?
+    @Presents public var destination: Destination.State?
     public init() {}
   }
 

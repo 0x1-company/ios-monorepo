@@ -7,7 +7,7 @@ import SwipeCardFeature
 import SwipeFeature
 
 public struct ReceivedLikeSwipeView: View {
-  let store: StoreOf<ReceivedLikeSwipeLogic>
+  @Bindable var store: StoreOf<ReceivedLikeSwipeLogic>
 
   public init(store: StoreOf<ReceivedLikeSwipeLogic>) {
     self.store = store

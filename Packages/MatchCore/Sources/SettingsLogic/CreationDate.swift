@@ -6,6 +6,7 @@ import SwiftUI
 public struct CreationDateLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public let creationDate: Date
     public var creationDateString = ""

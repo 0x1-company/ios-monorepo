@@ -3,7 +3,7 @@ import DirectMessageTabLogic
 import SwiftUI
 
 public struct DirectMessageListView: View {
-  let store: StoreOf<DirectMessageListLogic>
+  @Bindable var store: StoreOf<DirectMessageListLogic>
 
   public init(store: StoreOf<DirectMessageListLogic>) {
     self.store = store

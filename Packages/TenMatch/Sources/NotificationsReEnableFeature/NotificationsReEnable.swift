@@ -3,7 +3,7 @@ import NotificationsReEnableLogic
 import SwiftUI
 
 public struct NotificationsReEnableView: View {
-  let store: StoreOf<NotificationsReEnableLogic>
+  @Bindable var store: StoreOf<NotificationsReEnableLogic>
 
   public init(store: StoreOf<NotificationsReEnableLogic>) {
     self.store = store

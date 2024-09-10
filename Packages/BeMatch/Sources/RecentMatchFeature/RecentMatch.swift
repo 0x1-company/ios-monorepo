@@ -3,7 +3,7 @@ import RecentMatchLogic
 import SwiftUI
 
 public struct RecentMatchView: View {
-  let store: StoreOf<RecentMatchLogic>
+  @Bindable var store: StoreOf<RecentMatchLogic>
 
   public init(store: StoreOf<RecentMatchLogic>) {
     self.store = store

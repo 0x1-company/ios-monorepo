@@ -5,6 +5,7 @@ import SwiftUI
 public struct AchievementHistoryWidgetLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public let displayDaysAgo: String
     public let displayCreationDate: String

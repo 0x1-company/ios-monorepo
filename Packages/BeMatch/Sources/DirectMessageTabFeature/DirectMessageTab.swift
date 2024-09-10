@@ -9,7 +9,7 @@ import SettingsFeature
 import SwiftUI
 
 public struct DirectMessageTabView: View {
-  let store: StoreOf<DirectMessageTabLogic>
+  @Bindable var store: StoreOf<DirectMessageTabLogic>
 
   public init(store: StoreOf<DirectMessageTabLogic>) {
     self.store = store
@@ -60,19 +60,19 @@ public struct DirectMessageTabView: View {
         }
       }
       .sheet(
-        store: store.scope(state: \.$destination.directMessage, action: \.destination.directMessage),
+        item: $store.scope(state: \.destination?.directMessage, action: \.destination.directMessage),
         content: DirectMessageView.init(store:)
       )
       .fullScreenCover(
-        store: store.scope(state: \.$destination.receivedLike, action: \.destination.receivedLike),
+        item: $store.scope(state: \.destination?.receivedLike, action: \.destination.receivedLike),
         content: ReceivedLikeRouterView.init(store:)
       )
       .navigationDestination(
-        store: store.scope(state: \.$destination.explorer, action: \.destination.explorer),
+        item: $store.scope(state: \.destination?.explorer, action: \.destination.explorer),
         destination: ProfileExplorerView.init(store:)
       )
       .navigationDestination(
-        store: store.scope(state: \.$destination.settings, action: \.destination.settings),
+        item: $store.scope(state: \.destination?.settings, action: \.destination.settings),
         destination: SettingsView.init(store:)
       )
     }

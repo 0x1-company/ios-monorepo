@@ -7,6 +7,7 @@ import SwiftUI
 public struct ExplorerContentSectionLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable, Identifiable {
     public let explorer: API.ExplorersQuery.Data.Explorer
     public var id: String {

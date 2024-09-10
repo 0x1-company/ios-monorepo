@@ -14,6 +14,7 @@ import SwipeLogic
 public struct CategorySwipeLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     let id: String
     public let title: String

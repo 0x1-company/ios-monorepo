@@ -6,6 +6,7 @@ import SwiftUI
 public struct ProductPurchaseContentRowLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable, Identifiable {
     public var id: String
 

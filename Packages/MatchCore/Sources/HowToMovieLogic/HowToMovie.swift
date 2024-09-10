@@ -8,6 +8,7 @@ import FeedbackGeneratorClient
 public struct HowToMovieLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public let player: AVPlayer
 

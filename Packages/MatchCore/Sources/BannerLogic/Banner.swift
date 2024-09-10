@@ -8,6 +8,7 @@ import SwiftUI
 public struct BannerLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable, Identifiable {
     public let banner: API.BannerCard
 

@@ -9,6 +9,7 @@ import SwipeLogic
 public struct ExplorerSwipeLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     let id: String
     public let title: String

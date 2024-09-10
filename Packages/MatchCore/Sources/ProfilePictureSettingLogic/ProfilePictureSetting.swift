@@ -41,10 +41,11 @@ public enum PhotoGridState: Equatable {
 public struct ProfilePictureSettingLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public let allowNonExternalProductPhoto: Bool
-    @PresentationState public var destination: Destination.State?
-    @BindingState public var photoPickerItems: [PhotosPickerItem] = []
+    @Presents public var destination: Destination.State?
+    public var photoPickerItems: [PhotosPickerItem] = []
     public var images: [PhotoGridState] = Array(repeating: .empty, count: 9)
     public var isActivityIndicatorVisible = false
     public var isWarningTextVisible: Bool {
@@ -98,7 +99,7 @@ public struct ProfilePictureSettingLogic {
       case .howToButtonTapped:
         return .send(.delegate(.howTo))
 
-      case .binding(\.$photoPickerItems):
+      case .binding(\.photoPickerItems):
         guard !state.photoPickerItems.isEmpty
         else { return .none }
 

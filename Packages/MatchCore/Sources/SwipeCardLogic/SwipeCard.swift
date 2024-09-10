@@ -9,9 +9,10 @@ import SwiftUI
 public struct SwipeCardLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable, Identifiable {
     public let data: API.SwipeCard
-    @BindingState public var selection: API.SwipeCard.Image
+    public var selection: API.SwipeCard.Image
 
     public var id: String {
       data.id

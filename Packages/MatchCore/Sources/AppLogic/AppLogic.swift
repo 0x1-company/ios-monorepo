@@ -28,6 +28,7 @@ import UserNotificationClient
 public struct AppLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     var account = Account()
 
@@ -35,7 +36,7 @@ public struct AppLogic {
     var sceneDelegate = SceneDelegateLogic.State()
     public var child: Child.State = .launch()
     public var tutorial: TutorialLogic.State?
-    @PresentationState public var destination: Destination.State?
+    @Presents public var destination: Destination.State?
 
     public struct Account: Equatable {
       var user = AsyncValue<API.UserInternal>.none

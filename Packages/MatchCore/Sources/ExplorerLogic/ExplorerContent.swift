@@ -10,9 +10,10 @@ import SwiftUI
 public struct ExplorerContentLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public var rows: IdentifiedArrayOf<ExplorerContentSectionLogic.State> = []
-    @PresentationState public var destination: Destination.State?
+    @Presents public var destination: Destination.State?
 
     public init(uniqueElements: [ExplorerContentSectionLogic.State]) {
       rows = IdentifiedArrayOf(uniqueElements: uniqueElements)

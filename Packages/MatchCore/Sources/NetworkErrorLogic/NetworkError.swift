@@ -6,6 +6,7 @@ import SwiftUI
 public struct NetworkErrorLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public init() {}
   }

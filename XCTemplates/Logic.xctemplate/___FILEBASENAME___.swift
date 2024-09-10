@@ -5,6 +5,7 @@ import ComposableArchitecture
 public struct ___VARIABLE_productName: identifier___Logic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public init() {}
   }

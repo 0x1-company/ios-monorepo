@@ -9,6 +9,7 @@ import SwiftUI
 public struct DirectMessageLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     let targetUserId: String
 

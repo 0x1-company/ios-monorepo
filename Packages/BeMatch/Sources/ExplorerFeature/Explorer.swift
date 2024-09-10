@@ -3,7 +3,7 @@ import ExplorerLogic
 import SwiftUI
 
 public struct ExplorerView: View {
-  let store: StoreOf<ExplorerLogic>
+  @Bindable var store: StoreOf<ExplorerLogic>
 
   public init(store: StoreOf<ExplorerLogic>) {
     self.store = store

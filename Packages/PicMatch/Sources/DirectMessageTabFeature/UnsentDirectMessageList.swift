@@ -4,7 +4,7 @@ import RecentMatchFeature
 import SwiftUI
 
 public struct UnsentDirectMessageListView: View {
-  let store: StoreOf<UnsentDirectMessageListLogic>
+  @Bindable var store: StoreOf<UnsentDirectMessageListLogic>
 
   public init(store: StoreOf<UnsentDirectMessageListLogic>) {
     self.store = store
@@ -52,7 +52,7 @@ public struct UnsentDirectMessageListView: View {
     }
     .padding(.top, 16)
     .navigationDestination(
-      store: store.scope(state: \.$destination.recentMatch, action: \.destination.recentMatch),
+      item: $store.scope(state: \.destination?.recentMatch, action: \.destination.recentMatch),
       destination: RecentMatchView.init(store:)
     )
   }

@@ -4,7 +4,7 @@ import SwiftUI
 import SwipeFeature
 
 public struct RecommendationView: View {
-  let store: StoreOf<RecommendationLogic>
+  @Bindable var store: StoreOf<RecommendationLogic>
 
   public init(store: StoreOf<RecommendationLogic>) {
     self.store = store

@@ -10,7 +10,7 @@ public struct ProfilePictureSettingView: View {
     case save
   }
 
-  let store: StoreOf<ProfilePictureSettingLogic>
+  @Bindable var store: StoreOf<ProfilePictureSettingLogic>
   private let nextButtonStyle: NextButtonStyle
 
   public init(
@@ -22,93 +22,91 @@ public struct ProfilePictureSettingView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
-      VStack(spacing: 8) {
-        ScrollView {
-          VStack(spacing: 36) {
-            VStack(spacing: 8) {
-              Text("Set your saved Locket.\nto your profile. ", bundle: .module)
-                .frame(minHeight: 56)
-                .font(.system(.title2, weight: .bold))
+    VStack(spacing: 8) {
+      ScrollView {
+        VStack(spacing: 36) {
+          VStack(spacing: 8) {
+            Text("Set your saved Locket.\nto your profile. ", bundle: .module)
+              .frame(minHeight: 56)
+              .font(.system(.title2, weight: .bold))
 
-              Text("It will be public 🌎", bundle: .module)
-                .font(.system(.footnote, weight: .semibold))
-                .foregroundStyle(Color.secondary)
+            Text("It will be public 🌎", bundle: .module)
+              .font(.system(.footnote, weight: .semibold))
+              .foregroundStyle(Color.secondary)
 
-              if viewStore.isWarningTextVisible {
-                Button {
-                  store.send(.howToButtonTapped)
-                } label: {
-                  HStack(spacing: 2) {
-                    Image(systemName: "exclamationmark.triangle.fill")
-                      .foregroundStyle(Color.yellow)
+            if store.isWarningTextVisible {
+              Button {
+                store.send(.howToButtonTapped)
+              } label: {
+                HStack(spacing: 2) {
+                  Image(systemName: "exclamationmark.triangle.fill")
+                    .foregroundStyle(Color.yellow)
 
-                    Text("Select a photo saved with Locket.", bundle: .module)
-                      .foregroundStyle(Color.secondary)
-                  }
-                  .font(.callout)
+                  Text("Select a photo saved with Locket.", bundle: .module)
+                    .foregroundStyle(Color.secondary)
                 }
-              }
-            }
-
-            LazyVGrid(
-              columns: Array(
-                repeating: GridItem(spacing: 16),
-                count: 3
-              ),
-              alignment: .center,
-              spacing: 16
-            ) {
-              ForEach(
-                Array(viewStore.images.enumerated()),
-                id: \.offset
-              ) { offset, state in
-                PhotoGrid(
-                  state: state,
-                  selection: viewStore.$photoPickerItems,
-                  onDelete: {
-                    store.send(.onDelete(offset))
-                  }
-                )
-                .id(offset)
+                .font(.callout)
               }
             }
           }
-          .padding(.top, 24)
-        }
 
-        PrimaryButton(
-          nextButtonStyle == .save
-            ? String(localized: "Save", bundle: .module)
-            : String(localized: "Continue", bundle: .module),
-          isLoading: viewStore.isActivityIndicatorVisible
-        ) {
-          store.send(.nextButtonTapped)
+          LazyVGrid(
+            columns: Array(
+              repeating: GridItem(spacing: 16),
+              count: 3
+            ),
+            alignment: .center,
+            spacing: 16
+          ) {
+            ForEach(
+              Array(store.images.enumerated()),
+              id: \.offset
+            ) { offset, state in
+              PhotoGrid(
+                state: state,
+                selection: $store.photoPickerItems,
+                onDelete: {
+                  store.send(.onDelete(offset))
+                }
+              )
+              .id(offset)
+            }
+          }
         }
+        .padding(.top, 24)
       }
-      .padding(.bottom, 16)
-      .padding(.horizontal, 16)
-      .multilineTextAlignment(.center)
-      .navigationBarTitleDisplayMode(.inline)
-      .task { await store.send(.onTask).finish() }
-      .toolbar {
-        ToolbarItem(placement: .principal) {
-          Image(ImageResource.logo)
-        }
+
+      PrimaryButton(
+        nextButtonStyle == .save
+          ? String(localized: "Save", bundle: .module)
+          : String(localized: "Continue", bundle: .module),
+        isLoading: store.isActivityIndicatorVisible
+      ) {
+        store.send(.nextButtonTapped)
       }
-      .alert(
-        store: store.scope(
-          state: \.$destination.alert,
-          action: \.destination.alert
-        )
-      )
-      .confirmationDialog(
-        store: store.scope(
-          state: \.$destination.confirmationDialog,
-          action: \.destination.confirmationDialog
-        )
-      )
     }
+    .padding(.bottom, 16)
+    .padding(.horizontal, 16)
+    .multilineTextAlignment(.center)
+    .navigationBarTitleDisplayMode(.inline)
+    .task { await store.send(.onTask).finish() }
+    .toolbar {
+      ToolbarItem(placement: .principal) {
+        Image(ImageResource.logo)
+      }
+    }
+    .alert(
+      item: $store.scope(
+        state: \.destination?.alert,
+        action: \.destination.alert
+      )
+    )
+    .confirmationDialog(
+      item: $store.scope(
+        state: \.destination?.confirmationDialog,
+        action: \.destination.confirmationDialog
+      )
+    )
   }
 }
 

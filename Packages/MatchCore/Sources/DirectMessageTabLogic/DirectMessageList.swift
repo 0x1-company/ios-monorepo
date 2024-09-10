@@ -5,6 +5,7 @@ import SwiftUI
 public struct DirectMessageListLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public var child = Child.State.loading
 

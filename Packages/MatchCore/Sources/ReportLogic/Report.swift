@@ -13,6 +13,7 @@ public struct ReportLogic {
     case message(messageId: String)
   }
 
+  @ObservableState
   public struct State: Equatable {
     let kind: Kind
 

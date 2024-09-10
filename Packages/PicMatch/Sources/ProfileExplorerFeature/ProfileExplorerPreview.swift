@@ -3,7 +3,7 @@ import ProfileExplorerLogic
 import SwiftUI
 
 public struct ProfileExplorerPreviewView: View {
-  let store: StoreOf<ProfileExplorerPreviewLogic>
+  @Bindable var store: StoreOf<ProfileExplorerPreviewLogic>
 
   public init(store: StoreOf<ProfileExplorerPreviewLogic>) {
     self.store = store

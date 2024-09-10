@@ -9,6 +9,7 @@ import FeedbackGeneratorClient
 public struct GenderSettingLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public var selection: API.Gender?
     public var genders = API.Gender.allCases

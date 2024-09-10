@@ -4,7 +4,7 @@ import Styleguide
 import SwiftUI
 
 public struct ExplorerEmptyView: View {
-  let store: StoreOf<ExplorerEmptyLogic>
+  @Bindable var store: StoreOf<ExplorerEmptyLogic>
 
   public init(store: StoreOf<ExplorerEmptyLogic>) {
     self.store = store

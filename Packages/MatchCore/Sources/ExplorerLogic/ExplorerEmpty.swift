@@ -7,6 +7,7 @@ import SwiftUI
 public struct ExplorerEmptyLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public init() {}
   }

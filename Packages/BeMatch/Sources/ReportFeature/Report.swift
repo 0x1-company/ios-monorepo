@@ -4,7 +4,7 @@ import Styleguide
 import SwiftUI
 
 public struct ReportView: View {
-  let store: StoreOf<ReportLogic>
+  @Bindable var store: StoreOf<ReportLogic>
 
   public init(store: StoreOf<ReportLogic>) {
     self.store = store

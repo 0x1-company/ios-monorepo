@@ -11,9 +11,10 @@ import SwiftUI
 public struct CategoryLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public var child = Child.State.loading
-    @PresentationState public var alert: AlertState<Action.Alert>?
+    @Presents public var alert: AlertState<Action.Alert>?
     public init() {}
   }
 

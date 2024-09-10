@@ -27,6 +27,7 @@ public struct MembershipLogic {
     }
   }
 
+  @ObservableState
   public struct State: Equatable {
     public var child = Child.State.loading
 
@@ -34,8 +35,8 @@ public struct MembershipLogic {
 
     public var invitationCode = ""
 
-    @BindingState public var isPresented = false
-    @PresentationState public var destination: Destination.State?
+    public var isPresented = false
+    @Presents public var destination: Destination.State?
 
     public var shareText = ""
 

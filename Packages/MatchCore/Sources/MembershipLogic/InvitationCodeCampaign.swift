@@ -4,6 +4,7 @@ import ComposableArchitecture
 public struct InvitationCodeCampaignLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public let code: String
 

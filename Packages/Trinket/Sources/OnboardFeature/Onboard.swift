@@ -9,7 +9,7 @@ import SwiftUI
 import UsernameSettingFeature
 
 public struct OnboardView: View {
-  let store: StoreOf<OnboardLogic>
+  @Bindable var store: StoreOf<OnboardLogic>
 
   public init(store: StoreOf<OnboardLogic>) {
     self.store = store
@@ -61,7 +61,7 @@ public struct OnboardView: View {
     .tint(Color.white)
     .task { await store.send(.onTask).finish() }
     .sheet(
-      store: store.scope(state: \.$destination.howToMovie, action: \.destination.howToMovie)
+      item: $store.scope(state: \.destination?.howToMovie, action: \.destination.howToMovie)
     ) { store in
       NavigationStack {
         HowToMovieView(store: store)

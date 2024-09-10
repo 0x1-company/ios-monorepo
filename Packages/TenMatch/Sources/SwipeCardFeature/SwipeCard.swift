@@ -7,7 +7,7 @@ import SwipeCardLogic
 
 public struct SwipeCardView: View {
   @Environment(\.displayScale) var displayScale
-  let store: StoreOf<SwipeCardLogic>
+  @Bindable var store: StoreOf<SwipeCardLogic>
   @State var translation: CGSize = .zero
   let width = UIScreen.main.bounds.width
 
@@ -16,122 +16,120 @@ public struct SwipeCardView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
-      ForEach(viewStore.data.images, id: \.id) { image in
-        if image == viewStore.selection {
-          CachedAsyncImage(
-            url: URL(string: image.imageUrl),
-            urlCache: .shared,
-            scale: displayScale,
-            content: { content in
-              content
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: width, height: width * (4 / 3))
-            },
-            placeholder: {
-              ProgressView()
-                .progressViewStyle(CircularProgressViewStyle())
-                .tint(Color.white)
-                .frame(width: width, height: width * (4 / 3))
-                .background()
-            }
+    ForEach(store.data.images, id: \.id) { image in
+      if image == store.selection {
+        CachedAsyncImage(
+          url: URL(string: image.imageUrl),
+          urlCache: .shared,
+          scale: displayScale,
+          content: { content in
+            content
+              .resizable()
+              .aspectRatio(contentMode: .fill)
+              .frame(width: width, height: width * (4 / 3))
+          },
+          placeholder: {
+            ProgressView()
+              .progressViewStyle(CircularProgressViewStyle())
+              .tint(Color.white)
+              .frame(width: width, height: width * (4 / 3))
+              .background()
+          }
+        )
+        .cornerRadius(16)
+        .overlay(alignment: .top) {
+          SelectControl(
+            current: store.selection,
+            items: store.data.images
           )
-          .cornerRadius(16)
-          .overlay(alignment: .top) {
-            SelectControl(
-              current: viewStore.selection,
-              items: viewStore.data.images
-            )
-            .padding(.top, 8)
-            .padding(.horizontal, 40)
-          }
-          .overlay(alignment: .topLeading) {
-            Image(ImageResource.like)
-              .resizable()
-              .aspectRatio(contentMode: .fit)
-              .frame(width: 310)
-              .offset(x: -50, y: -110)
-              .opacity(translation.width)
-          }
-          .overlay(alignment: .topTrailing) {
-            Image(ImageResource.nope)
-              .resizable()
-              .aspectRatio(contentMode: .fit)
-              .frame(width: 260)
-              .offset(x: 0, y: -110)
-              .opacity(-translation.width)
-          }
+          .padding(.top, 8)
+          .padding(.horizontal, 40)
+        }
+        .overlay(alignment: .topLeading) {
+          Image(ImageResource.like)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 310)
+            .offset(x: -50, y: -110)
+            .opacity(translation.width)
+        }
+        .overlay(alignment: .topTrailing) {
+          Image(ImageResource.nope)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 260)
+            .offset(x: 0, y: -110)
+            .opacity(-translation.width)
         }
       }
-      .overlay(alignment: .topTrailing) {
-        Menu {
-          Button {
-            store.send(.reportButtonTapped)
-          } label: {
-            Text("Report", bundle: .module)
-          }
-
-          Button {
-            store.send(.swipeToNope)
-          } label: {
-            Text("Block", bundle: .module)
-          }
-        } label: {
-          Image(systemName: "ellipsis")
-            .bold()
-            .foregroundStyle(Color.white)
-            .frame(width: 44, height: 44)
-            .padding(.all, 4)
-        }
-      }
-      .overlay(alignment: .bottom) {
-        if let shortComment = viewStore.data.shortComment?.body {
-          Text(shortComment)
-            .padding(.vertical, 12)
-            .padding(.horizontal, 24)
-            .background(Material.ultraThin)
-            .clipShape(Capsule())
-            .padding(.bottom, 16)
-            .padding(.horizontal, 32)
-            .multilineTextAlignment(.center)
-            .font(.system(.footnote, design: .rounded, weight: .semibold))
-        }
-      }
-      .offset(translation)
-      .rotationEffect(.degrees(Double(translation.width / 300) * 25), anchor: .bottom)
-      .gesture(
-        DragGesture()
-          .onChanged { translation = $0.translation }
-          .onEnded { _ in
-            let targetHorizontalTranslation = UIScreen.main.bounds.width / 2 + UIScreen.main.bounds.width / 2
-            withAnimation {
-              switch translation.width {
-              case let width where width > 100:
-                translation = CGSize(width: targetHorizontalTranslation, height: translation.height)
-                store.send(.swipeToLike)
-              case let width where width < -100:
-                translation = CGSize(width: -targetHorizontalTranslation, height: translation.height)
-                store.send(.swipeToNope)
-              default:
-                translation = CGSize.zero
-              }
-            }
-          }
-      )
-      .gesture(
-        DragGesture(minimumDistance: 0)
-          .onEnded { value in
-            if value.translation.equalTo(.zero) {
-              if value.location.x <= UIScreen.main.bounds.width / 2 {
-                store.send(.backButtonTapped)
-              } else {
-                store.send(.forwardButtonTapped)
-              }
-            }
-          }
-      )
     }
+    .overlay(alignment: .topTrailing) {
+      Menu {
+        Button {
+          store.send(.reportButtonTapped)
+        } label: {
+          Text("Report", bundle: .module)
+        }
+
+        Button {
+          store.send(.swipeToNope)
+        } label: {
+          Text("Block", bundle: .module)
+        }
+      } label: {
+        Image(systemName: "ellipsis")
+          .bold()
+          .foregroundStyle(Color.white)
+          .frame(width: 44, height: 44)
+          .padding(.all, 4)
+      }
+    }
+    .overlay(alignment: .bottom) {
+      if let shortComment = store.data.shortComment?.body {
+        Text(shortComment)
+          .padding(.vertical, 12)
+          .padding(.horizontal, 24)
+          .background(Material.ultraThin)
+          .clipShape(Capsule())
+          .padding(.bottom, 16)
+          .padding(.horizontal, 32)
+          .multilineTextAlignment(.center)
+          .font(.system(.footnote, design: .rounded, weight: .semibold))
+      }
+    }
+    .offset(translation)
+    .rotationEffect(.degrees(Double(translation.width / 300) * 25), anchor: .bottom)
+    .gesture(
+      DragGesture()
+        .onChanged { translation = $0.translation }
+        .onEnded { _ in
+          let targetHorizontalTranslation = UIScreen.main.bounds.width / 2 + UIScreen.main.bounds.width / 2
+          withAnimation {
+            switch translation.width {
+            case let width where width > 100:
+              translation = CGSize(width: targetHorizontalTranslation, height: translation.height)
+              store.send(.swipeToLike)
+            case let width where width < -100:
+              translation = CGSize(width: -targetHorizontalTranslation, height: translation.height)
+              store.send(.swipeToNope)
+            default:
+              translation = CGSize.zero
+            }
+          }
+        }
+    )
+    .gesture(
+      DragGesture(minimumDistance: 0)
+        .onEnded { value in
+          if value.translation.equalTo(.zero) {
+            if value.location.x <= UIScreen.main.bounds.width / 2 {
+              store.send(.backButtonTapped)
+            } else {
+              store.send(.forwardButtonTapped)
+            }
+          }
+        }
+    )
   }
 }
 

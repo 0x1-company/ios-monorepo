@@ -5,6 +5,7 @@ import SwiftUI
 public struct InvitationCampaignLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public let quantity: Int
     public let durationWeeks: Int

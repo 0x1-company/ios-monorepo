@@ -6,6 +6,7 @@ import SwiftUI
 public struct UnsentDirectMessageListContentReceivedLikeRowLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public let imageUrl: String
     public let displayCount: String

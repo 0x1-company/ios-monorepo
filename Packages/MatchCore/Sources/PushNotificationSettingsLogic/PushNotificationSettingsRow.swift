@@ -5,12 +5,13 @@ import ComposableArchitecture
 public struct PushNotificationSettingsRowLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable, Identifiable {
     public var id: String {
       pushNotificationKind.rawValue
     }
 
-    @BindingState public var allow: Bool
+    public var allow: Bool
     public var pushNotificationKind: GraphQLEnum<API.PushNotificationKind>
 
     public init(

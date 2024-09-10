@@ -16,12 +16,13 @@ import UsernameSettingLogic
 public struct OnboardLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     let user: API.UserInternal?
     public var username: UsernameSettingLogic.State
     public var path = StackState<Path.State>()
     var hasInvitationCampaign = false
-    @PresentationState public var destination: Destination.State?
+    @Presents public var destination: Destination.State?
 
     public init(user: API.UserInternal?) {
       self.user = user

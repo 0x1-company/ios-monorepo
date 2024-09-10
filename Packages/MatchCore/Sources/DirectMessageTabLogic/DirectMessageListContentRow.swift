@@ -6,6 +6,7 @@ import SwiftUI
 public struct DirectMessageListContentRowLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable, Identifiable {
     public let id: String
     public let targetUserId: String

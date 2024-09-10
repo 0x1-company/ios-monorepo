@@ -7,7 +7,7 @@ import SwipeCardFeature
 import SwipeLogic
 
 public struct SwipeView: View {
-  let store: StoreOf<SwipeLogic>
+  @Bindable var store: StoreOf<SwipeLogic>
 
   public init(store: StoreOf<SwipeLogic>) {
     self.store = store
@@ -47,10 +47,10 @@ public struct SwipeView: View {
     }
     .padding(.top, 16)
     .fullScreenCover(
-      store: store.scope(state: \.$destination.matched, action: \.destination.matched),
+      item: $store.scope(state: \.destination?.matched, action: \.destination.matched),
       content: MatchedView.init(store:)
     )
-    .sheet(store: store.scope(state: \.$destination.report, action: \.destination.report)) { store in
+    .sheet(item: $store.scope(state: \.destination?.report, action: \.destination.report)) { store in
       NavigationStack {
         ReportView(store: store)
       }

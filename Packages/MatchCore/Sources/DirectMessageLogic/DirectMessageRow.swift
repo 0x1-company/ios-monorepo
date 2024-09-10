@@ -6,6 +6,7 @@ import SwiftUI
 public struct DirectMessageRowLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable, Identifiable {
     public let message: API.MessageRow
 

@@ -4,75 +4,73 @@ import MembershipLogic
 import SwiftUI
 
 public struct MembershipCampaignView: View {
-  let store: StoreOf<MembershipCampaignLogic>
+  @Bindable var store: StoreOf<MembershipCampaignLogic>
 
   public init(store: StoreOf<MembershipCampaignLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
-      VStack(spacing: 16) {
-        ScrollView {
-          VStack(spacing: 0) {
-            InvitationCampaignView(
-              store: store.scope(
-                state: \.invitationCampaign,
-                action: \.invitationCampaign
+    VStack(spacing: 16) {
+      ScrollView {
+        VStack(spacing: 0) {
+          InvitationCampaignView(
+            store: $store.scope(
+              state: \.invitationCampaign,
+              action: \.invitationCampaign
+            )
+          )
+
+          InvitationCampaignPriceView(
+            store: $store.scope(
+              state: \.invitationCampaignPrice,
+              action: \.invitationCampaignPrice
+            )
+          )
+
+          VStack(spacing: 60) {
+            InvitationCodeCampaignView(
+              store: $store.scope(
+                state: \.invitationCodeCampaign,
+                action: \.invitationCodeCampaign
               )
             )
 
-            InvitationCampaignPriceView(
-              store: store.scope(
-                state: \.invitationCampaignPrice,
-                action: \.invitationCampaignPrice
-              )
+            SpecialOfferView()
+
+            HowToReceiveBenefitView(
+              displayDuration: store.displayDuration
             )
 
-            VStack(spacing: 60) {
-              InvitationCodeCampaignView(
-                store: store.scope(
-                  state: \.invitationCodeCampaign,
-                  action: \.invitationCodeCampaign
-                )
-              )
-
-              SpecialOfferView()
-
-              HowToReceiveBenefitView(
-                displayDuration: viewStore.displayDuration
-              )
-
-              PurchaseAboutView(
-                displayPrice: viewStore.displayPrice
-              )
-            }
-            .padding(.horizontal, 16)
+            PurchaseAboutView(
+              displayPrice: store.displayPrice
+            )
           }
-          .padding(.bottom, 80)
+          .padding(.horizontal, 16)
         }
-
-        VStack(spacing: 16) {
-          Button {
-            store.send(.invitationCodeButtonTapped)
-          } label: {
-            Text("Send Invitation Code", bundle: .module)
-          }
-          .buttonStyle(ConversionPrimaryButtonStyle())
-
-          Button {
-            store.send(.upgradeButtonTapped)
-          } label: {
-            Text("Upgrade for \(viewStore.displayPrice)/week", bundle: .module)
-          }
-          .buttonStyle(ConversionSecondaryButtonStyle())
-        }
-        .padding(.horizontal, 16)
-        .padding(.bottom, 36)
+        .padding(.bottom, 80)
       }
-      .background()
-      .task { await store.send(.onTask).finish() }
+
+      VStack(spacing: 16) {
+        Button {
+          store.send(.invitationCodeButtonTapped)
+        } label: {
+          Text("Send Invitation Code", bundle: .module)
+        }
+        .buttonStyle(ConversionPrimaryButtonStyle())
+
+        Button {
+          store.send(.upgradeButtonTapped)
+        } label: {
+          Text("Upgrade for \(store.displayPrice)/week", bundle: .module)
+        }
+        .buttonStyle(ConversionSecondaryButtonStyle())
+      }
+      .padding(.horizontal, 16)
+      .padding(.bottom, 36)
     }
+    .background()
+    .task { await store.send(.onTask).finish() }
   }
 }
 
