@@ -216,15 +216,15 @@ public struct SettingsView: View {
       }
     }
     .navigationDestination(
-      item: $store.scope(state: \.destination?.membershipStatus, action: \.destination.membershipStatus),
+      store: store.scope(state: \.$destination.membershipStatus, action: \.destination.membershipStatus),
       destination: MembershipStatusView.init(store:)
     )
     .navigationDestination(
-      item: $store.scope(state: \.destination?.other, action: \.destination.other),
+      store: store.scope(state: \.$destination.other, action: \.destination.other),
       destination: SettingsOtherView.init(store:)
     )
     .navigationDestination(
-      item: $store.scope(state: \.destination?.pushNotificationSettings, action: \.destination.pushNotificationSettings),
+      store: store.scope(state: \.$destination.pushNotificationSettings, action: \.destination.pushNotificationSettings),
       destination: PushNotificationSettingsView.init(store:)
     )
   }

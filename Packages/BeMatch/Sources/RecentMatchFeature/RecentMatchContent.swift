@@ -48,7 +48,7 @@ public struct RecentMatchContentView: View {
       content: ReceivedLikeRouterView.init(store:)
     )
     .navigationDestination(
-      item: $store.scope(state: \.destination?.explorer, action: \.destinatio.explorer),
+      store: store.scope(state: \.$destination.explorer, action: \.destinatio.explorer),
       destination: ProfileExplorerView.init(store:)
     )
   }

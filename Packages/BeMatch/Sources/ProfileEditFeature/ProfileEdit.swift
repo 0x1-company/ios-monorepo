@@ -28,6 +28,9 @@ public struct ProfileEditView: View {
               .foregroundStyle(Color.primary)
           }
         }
+        .navigationDestination(store: store.scope( state: \.$destination.usernameSetting, action: \.destination.usernameSetting)) { store in
+          UsernameSettingView(store: store, nextButtonStyle: .save)
+        }
 
         Button {
           store.send(.displayNameSettingButtonTapped)
@@ -39,6 +42,10 @@ public struct ProfileEditView: View {
               .foregroundStyle(Color.primary)
           }
         }
+        .navigationDestination(
+          store: store.scope(state: \.$destination.displayNameSetting, action: \.destination.displayNameSetting),
+          destination: DisplayNameSettingView.init(store:)
+        )
 
         Button {
           store.send(.genderSettingButtonTapped)
@@ -50,6 +57,9 @@ public struct ProfileEditView: View {
               .foregroundStyle(Color.primary)
           }
         }
+        .navigationDestination(store: store.scope(state: \.$destination.genderSetting, action: \.destination.genderSetting)) { store in
+          GenderSettingView(store: store, nextButtonStyle: .save, canSkip: false)
+        }
 
         Button {
           store.send(.pictureSettingButtonTapped)
@@ -60,6 +70,9 @@ public struct ProfileEditView: View {
             Text("Profile Picture", bundle: .module)
               .foregroundStyle(Color.primary)
           }
+        }
+        .navigationDestination(store: store.scope(state: \.$destination.pictureSetting, action: \.destination.pictureSetting)) { store in
+          ProfilePictureSettingView(store: store, nextButtonStyle: .save)
         }
 
         Button {
@@ -75,6 +88,10 @@ public struct ProfileEditView: View {
               .foregroundStyle(Color.primary)
           }
         }
+        .navigationDestination(
+          store: store.scope(state: \.$destination.shortComment, action: \.destination.shortComment),
+          destination: ShortCommentSettingView.init(store:)
+        )
       } header: {
         Text("PROFILE", bundle: .module)
       }
@@ -94,53 +111,10 @@ public struct ProfileEditView: View {
         }
       }
     }
-    .sheet(
-      item: $store.scope(
-        state: \.destination?.howToMovie,
-        action: \.destination.howToMovie
-      )
-    ) { store in
+    .sheet(item: $store.scope(state: \.destination?.howToMovie, action: \.destination.howToMovie)) { store in
       NavigationStack {
         HowToMovieView(store: store)
       }
     }
-    .navigationDestination(
-      item: $store.scope(
-        state: \.destination?.genderSetting,
-        action: \.destination.genderSetting
-      )
-    ) { store in
-      GenderSettingView(store: store, nextButtonStyle: .save, canSkip: false)
-    }
-    .navigationDestination(
-      item: $store.scope(
-        state: \.destination?.usernameSetting,
-        action: \.destination.usernameSetting
-      )
-    ) { store in
-      UsernameSettingView(store: store, nextButtonStyle: .save)
-    }
-    .navigationDestination(
-      item: $store.scope(
-        state: \.destination?.pictureSetting,
-        action: \.destination.pictureSetting
-      )
-    ) { store in
-      ProfilePictureSettingView(store: store, nextButtonStyle: .save)
-    }
-    .navigationDestination(
-      item: $store.scope(
-        state: \.destination?.shortComment,
-        action: \.destination.shortComment
-      ),
-      destination: ShortCommentSettingView.init(store:)
-    )
-    .navigationDestination(
-      item: $store.scope(
-        state: \.destination?.displayNameSetting,
-        action: \.destination.displayNameSetting
-      ),
-      destination: DisplayNameSettingView.init(store:)
-    )
   }
 }

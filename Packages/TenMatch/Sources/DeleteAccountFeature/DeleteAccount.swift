@@ -88,7 +88,7 @@ public struct DeleteAccountView: View {
     }
     .alert($store.scope(state: \.destination?.alert, action: \.destination.alert))
     .confirmationDialog(
-      item: $store.scope(
+     $store.scope(
         state: \.destination?.confirmationDialog,
         action: \.destination.confirmationDialog
       )

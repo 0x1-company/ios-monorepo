@@ -97,17 +97,9 @@ public struct ProfilePictureSettingView: View {
         Image(ImageResource.logo)
       }
     }
-    .alert(
-      item: $store.scope(
-        state: \.destination?.alert,
-        action: \.destination.alert
-      )
-    )
+    .alert($store.scope(state: \.destination?.alert, action: \.destination.alert))
     .confirmationDialog(
-      item: $store.scope(
-        state: \.destination?.confirmationDialog,
-        action: \.destination.confirmationDialog
-      )
+     $store.scope(state: \.destination?.confirmationDialog, action: \.destination.confirmationDialog)
     )
   }
 }

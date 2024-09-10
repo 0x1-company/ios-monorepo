@@ -106,7 +106,7 @@ public struct ProfileExplorerView: View {
       content: ReportView.init(store:)
     )
     .confirmationDialog(
-      item: $store.scope(
+     $store.scope(
         state: \.destination?.confirmationDialog,
         action: \.destination.confirmationDialog
       )

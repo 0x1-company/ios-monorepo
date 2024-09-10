@@ -94,49 +94,44 @@ public struct ProfileEditView: View {
         }
       }
     }
-    .sheet(
-      item: $store.scope(
-        state: \.destination?.howToMovie,
-        action: \.destination.howToMovie
-      )
-    ) { store in
+    .sheet(item: $store.scope(state: \.destination?.howToMovie, action: \.destination.howToMovie)) { store in
       NavigationStack {
         HowToMovieView(store: store)
       }
     }
     .navigationDestination(
-      item: $store.scope(
-        state: \.destination?.genderSetting,
+      store: store.scope(
+        state: \.$destination.genderSetting,
         action: \.destination.genderSetting
       )
     ) { store in
       GenderSettingView(store: store, nextButtonStyle: .save, canSkip: false)
     }
     .navigationDestination(
-      item: $store.scope(
-        state: \.destination?.usernameSetting,
+      store: store.scope(
+        state: \.$destination.usernameSetting,
         action: \.destination.usernameSetting
       ),
       destination: UsernameSettingView.init(store:)
     )
     .navigationDestination(
-      item: $store.scope(
-        state: \.destination?.pictureSetting,
+      store: store.scope(
+        state: \.$destination.pictureSetting,
         action: \.destination.pictureSetting
       )
     ) { store in
       ProfilePictureSettingView(store: store, nextButtonStyle: .save)
     }
     .navigationDestination(
-      item: $store.scope(
-        state: \.destination?.shortComment,
+      store: store.scope(
+        state: \.$destination.shortComment,
         action: \.destination.shortComment
       ),
       destination: ShortCommentSettingView.init(store:)
     )
     .navigationDestination(
-      item: $store.scope(
-        state: \.destination?.displayNameSetting,
+      store: store.scope(
+        state: \.$destination.displayNameSetting,
         action: \.destination.displayNameSetting
       ),
       destination: DisplayNameSettingView.init(store:)

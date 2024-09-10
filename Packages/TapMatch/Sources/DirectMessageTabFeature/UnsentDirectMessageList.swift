@@ -50,7 +50,7 @@ public struct UnsentDirectMessageListView: View {
     }
     .padding(.top, 16)
     .navigationDestination(
-      item: $store.scope(state: \.destination?.recentMatch, action: \.destination.recentMatch),
+      store: store.scope(state: \.$destination.recentMatch, action: \.destination.recentMatch),
       destination: RecentMatchView.init(store:)
     )
   }
