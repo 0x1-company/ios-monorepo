@@ -11,18 +11,14 @@ public struct RecentMatchView: View {
 
   public var body: some View {
     Group {
-      SwitchStore(store) { initialState in
-        switch initialState {
-        case .loading:
-          ProgressView()
-            .tint(Color.white)
+      switch store.state {
+      case .loading:
+        ProgressView()
+          .tint(Color.white)
 
-        case .content:
-          CaseLet(
-            /RecentMatchLogic.State.content,
-            action: RecentMatchLogic.Action.content,
-            then: RecentMatchContentView.init(store:)
-          )
+      case .content:
+        if let store = store.scope(state: \.content, action: \.content) {
+          RecentMatchContentView(store: store)
         }
       }
     }
