@@ -74,7 +74,7 @@ public struct ExplorerContentLogic {
             ExplorerSwipeLogic.State(explorer: explorer)
           )
         } else {
-          state.destination = .membership()
+          state.destination = .membership(MembershipLogic.State())
         }
         return .none
 
@@ -85,27 +85,12 @@ public struct ExplorerContentLogic {
     .forEach(\.rows, action: \.rows) {
       ExplorerContentSectionLogic()
     }
-    .ifLet(\.$destination, action: \.destination) {
-      Destination()
-    }
+    .ifLet(\.$destination, action: \.destination)
   }
 
-  @Reducer
-  public struct Destination {
-    @ObservableState
-    public enum State: Equatable {
-      case swipe(ExplorerSwipeLogic.State)
-      case membership(MembershipLogic.State = .init())
-    }
-
-    public enum Action {
-      case swipe(ExplorerSwipeLogic.Action)
-      case membership(MembershipLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.swipe, action: \.swipe, child: ExplorerSwipeLogic.init)
-      Scope(state: \.membership, action: \.membership, child: MembershipLogic.init)
-    }
+  @Reducer(state: .equatable)
+  public enum Destination {
+    case swipe(ExplorerSwipeLogic)
+    case membership(MembershipLogic)
   }
 }

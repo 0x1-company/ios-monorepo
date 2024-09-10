@@ -11,21 +11,16 @@ public struct ExplorerSwipeView: View {
   }
 
   public var body: some View {
-    SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
-      switch initialState {
-      case .content:
-        CaseLet(
-          /ExplorerSwipeLogic.Child.State.content,
-          action: ExplorerSwipeLogic.Child.Action.content,
-          then: SwipeView.init(store:)
-        )
-        .padding(.horizontal, 16)
+    Group {
+      switch store.scope(state: \.child, action: \.child).state {
       case .empty:
-        CaseLet(
-          /ExplorerSwipeLogic.Child.State.empty,
-          action: ExplorerSwipeLogic.Child.Action.empty,
-          then: ExplorerEmptyView.init(store:)
-        )
+        if let store = store.scope(state: \.child.empty, action: \.child.empty) {
+          ExplorerEmptyView(store: store)
+        }
+      case .content:
+        if let store = store.scope(state: \.child.content, action: \.child.content) {
+          SwipeView(store: store)
+        }
       }
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)

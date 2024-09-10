@@ -45,7 +45,7 @@ public struct ExplorerSwipeLogic {
   @Dependency(\.analytics) var analytics
 
   public var body: some Reducer<State, Action> {
-    Scope(state: \.child, action: \.child, child: Child.init)
+    Scope(state: \.child, action: \.child, child: {})
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
@@ -57,7 +57,7 @@ public struct ExplorerSwipeLogic {
         return .send(.delegate(.dismiss))
 
       case .child(.content(.delegate(.finished))):
-        state.child = .empty()
+        state.child = .empty(ExplorerEmptyLogic.State())
         return .none
 
       case .child(.empty(.emptyButtonTapped)):
@@ -69,22 +69,9 @@ public struct ExplorerSwipeLogic {
     }
   }
 
-  @Reducer
-  public struct Child {
-    @ObservableState
-    public enum State: Equatable {
-      case content(SwipeLogic.State)
-      case empty(ExplorerEmptyLogic.State = .init())
-    }
-
-    public enum Action {
-      case content(SwipeLogic.Action)
-      case empty(ExplorerEmptyLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.content, action: \.content, child: SwipeLogic.init)
-      Scope(state: \.empty, action: \.empty, child: ExplorerEmptyLogic.init)
-    }
+  @Reducer(state: .equatable)
+  public enum Child {
+    case content(SwipeLogic)
+    case empty(ExplorerEmptyLogic)
   }
 }
