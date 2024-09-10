@@ -11,23 +11,19 @@ public struct ExplorerView: View {
 
   public var body: some View {
     NavigationStack {
-      SwitchStore(store) { initialState in
-        switch initialState {
+      Group {
+        switch store.state {
         case .loading:
           ProgressView()
             .tint(Color.white)
         case .empty:
-          CaseLet(
-            /ExplorerLogic.State.empty,
-            action: ExplorerLogic.Action.empty,
-            then: ExplorerEmptyView.init(store:)
-          )
+          if let store = store.scope(state: \.empty, action: \.empty) {
+            ExplorerEmptyView(store: store)
+          }
         case .content:
-          CaseLet(
-            /ExplorerLogic.State.content,
-            action: ExplorerLogic.Action.content,
-            then: ExplorerContentView.init(store:)
-          )
+          if let store = store.scope(state: \.content, action: \.content) {
+            ExplorerContentView(store: store)
+          }
         }
       }
       .navigationBarTitleDisplayMode(.inline)
