@@ -10,32 +10,23 @@ public struct MembershipStatusView: View {
   }
 
   public var body: some View {
-    SwitchStore(store) { initialState in
-      switch initialState {
+    Group {
+      switch store.state {
       case .loading:
         ProgressView()
           .tint(Color.white)
-
       case .free:
-        CaseLet(
-          /MembershipStatusLogic.State.free,
-          action: MembershipStatusLogic.Action.free,
-          then: MembershipStatusFreeContentView.init(store:)
-        )
-
+        if let store = store.scope(state: \.free, action: \.free) {
+          MembershipStatusFreeContentView(store: store)
+        }
       case .paid:
-        CaseLet(
-          /MembershipStatusLogic.State.paid,
-          action: MembershipStatusLogic.Action.paid,
-          then: MembershipStatusPaidContentView.init(store:)
-        )
-
+        if let store = store.scope(state: \.paid, action: \.paid) {
+          MembershipStatusPaidContentView(store: store)
+        }
       case .campaign:
-        CaseLet(
-          /MembershipStatusLogic.State.campaign,
-          action: MembershipStatusLogic.Action.campaign,
-          then: MembershipStatusCampaignContentView.init(store:)
-        )
+        if let store = store.scope(state: \.campaign, action: \.campaign) {
+          MembershipStatusCampaignContentView(store: store)
+        }
       }
     }
     .navigationTitle(String(localized: "Membership Status", bundle: .module))
