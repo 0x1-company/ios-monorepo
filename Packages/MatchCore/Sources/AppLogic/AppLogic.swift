@@ -223,7 +223,7 @@ public struct AppLogic {
   @Reducer
   public struct Child {
     @ObservableState
-  public enum State: Equatable {
+    public enum State: Equatable {
       case launch(LaunchLogic.State = .init())
       case onboard(OnboardLogic.State)
       case navigation(RootNavigationLogic.State = .init())
@@ -260,7 +260,7 @@ public struct AppLogic {
   @Reducer
   public struct Destination {
     @ObservableState
-  public enum State: Equatable {
+    public enum State: Equatable {
       case receivedLike(ReceivedLikeRouterLogic.State = .loading)
     }
 

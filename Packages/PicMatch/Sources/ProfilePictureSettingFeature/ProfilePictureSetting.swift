@@ -80,13 +80,13 @@ public struct ProfilePictureSettingView: View {
       }
     }
     .alert(
-     $store.scope(
+      $store.scope(
         state: \.destination?.alert,
         action: \.destination.alert
       )
     )
     .confirmationDialog(
-     $store.scope(
+      $store.scope(
         state: \.destination?.confirmationDialog,
         action: \.destination.confirmationDialog
       )

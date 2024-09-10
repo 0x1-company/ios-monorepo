@@ -78,7 +78,7 @@ public struct ReportLogic {
   @Reducer
   public struct Path {
     @ObservableState
-  public enum State: Equatable {
+    public enum State: Equatable {
       case reason(ReportReasonLogic.State)
     }
 

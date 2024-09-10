@@ -104,7 +104,7 @@ public struct DirectMessageLogic {
   @Reducer
   public struct Child {
     @ObservableState
-  public enum State: Equatable {
+    public enum State: Equatable {
       case loading
       case empty(DirectMessageEmptyLogic.State)
       case content(DirectMessageContentLogic.State)

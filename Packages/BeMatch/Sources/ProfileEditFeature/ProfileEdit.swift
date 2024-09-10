@@ -28,7 +28,7 @@ public struct ProfileEditView: View {
               .foregroundStyle(Color.primary)
           }
         }
-        .navigationDestination(store: store.scope( state: \.$destination.usernameSetting, action: \.destination.usernameSetting)) { store in
+        .navigationDestination(store: store.scope(state: \.$destination.usernameSetting, action: \.destination.usernameSetting)) { store in
           UsernameSettingView(store: store, nextButtonStyle: .save)
         }
 

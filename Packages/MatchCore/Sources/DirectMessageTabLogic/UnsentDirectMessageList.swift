@@ -71,7 +71,7 @@ public struct UnsentDirectMessageListLogic {
   @Reducer
   public struct Destination {
     @ObservableState
-  public enum State: Equatable {
+    public enum State: Equatable {
       case recentMatch(RecentMatchLogic.State = .loading)
     }
 
@@ -87,7 +87,7 @@ public struct UnsentDirectMessageListLogic {
   @Reducer
   public struct Child {
     @ObservableState
-  public enum State: Equatable {
+    public enum State: Equatable {
       case loading
       case content(UnsentDirectMessageListContentLogic.State)
     }

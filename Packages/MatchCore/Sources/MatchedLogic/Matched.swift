@@ -147,7 +147,7 @@ public struct MatchedLogic {
   @Reducer
   public struct Destination {
     @ObservableState
-  public enum State: Equatable {
+    public enum State: Equatable {
       case alert(AlertState<Action.Alert>)
     }
 

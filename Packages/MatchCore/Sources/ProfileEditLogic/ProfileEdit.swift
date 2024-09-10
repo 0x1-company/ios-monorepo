@@ -184,7 +184,7 @@ public struct ProfileEditLogic {
   @Reducer
   public struct Destination {
     @ObservableState
-  public enum State: Equatable {
+    public enum State: Equatable {
       case howToMovie(HowToMovieLogic.State = .init())
       case pictureSetting(ProfilePictureSettingLogic.State)
       case genderSetting(GenderSettingLogic.State)

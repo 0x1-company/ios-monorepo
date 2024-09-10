@@ -97,7 +97,7 @@ public struct CategoryListLogic {
   @Reducer
   public struct Destination {
     @ObservableState
-  public enum State: Equatable {
+    public enum State: Equatable {
       case swipe(CategorySwipeLogic.State)
       case membership(MembershipLogic.State = .init())
     }

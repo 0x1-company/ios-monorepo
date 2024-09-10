@@ -102,7 +102,7 @@ public struct RecentMatchContentLogic {
   @Reducer
   public struct Destination {
     @ObservableState
-  public enum State: Equatable {
+    public enum State: Equatable {
       case explorer(ProfileExplorerLogic.State)
       case likeRouter(ReceivedLikeRouterLogic.State = .loading)
     }

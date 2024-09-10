@@ -165,7 +165,7 @@ public struct DeleteAccountLogic {
   @Reducer
   public struct Destination {
     @ObservableState
-  public enum State: Equatable {
+    public enum State: Equatable {
       case alert(AlertState<Action.Alert>)
       case confirmationDialog(ConfirmationDialogState<Action.ConfirmationDialog>)
     }

@@ -94,7 +94,7 @@ public struct ProfileView: View {
         }
     )
     .confirmationDialog(
-     $store.scope(
+      $store.scope(
         state: \.destination?.confirmationDialog,
         action: \.destination.confirmationDialog
       )

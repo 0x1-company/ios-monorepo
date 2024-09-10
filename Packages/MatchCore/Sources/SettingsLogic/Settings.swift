@@ -193,7 +193,7 @@ public struct SettingsLogic {
   @Reducer
   public struct Destination {
     @ObservableState
-  public enum State: Equatable {
+    public enum State: Equatable {
       case profileEdit(ProfileEditLogic.State = .init())
       case profile(ProfileLogic.State = .init())
       case tutorial(TutorialLogic.State = .init())

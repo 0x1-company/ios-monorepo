@@ -93,7 +93,7 @@ public struct ExplorerContentLogic {
   @Reducer
   public struct Destination {
     @ObservableState
-  public enum State: Equatable {
+    public enum State: Equatable {
       case swipe(ExplorerSwipeLogic.State)
       case membership(MembershipLogic.State = .init())
     }

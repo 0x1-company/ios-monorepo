@@ -4,11 +4,11 @@ import SwiftUI
 
 public struct MembershipStatusPaidContentView: View {
   @Bindable var store: StoreOf<MembershipStatusPaidContentLogic>
-  
+
   public init(store: StoreOf<MembershipStatusPaidContentLogic>) {
     self.store = store
   }
-  
+
   public var body: some View {
     List {
       Section {
@@ -17,20 +17,20 @@ public struct MembershipStatusPaidContentView: View {
         } label: {
           Text("Status", bundle: .module)
         }
-        
+
         LabeledContent {
           Text(store.expireAt, format: .dateTime)
         } label: {
           Text("Expiration date", bundle: .module)
         }
-        
+
         LabeledContent {
           Text("App Store", bundle: .module)
         } label: {
           Text("Payment Method", bundle: .module)
         }
       }
-      
+
       Section {
         Button {
           store.send(.cancellationButtonTapped)

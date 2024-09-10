@@ -150,7 +150,7 @@ public struct SwipeLogic {
   @Reducer
   public struct Destination {
     @ObservableState
-  public enum State: Equatable {
+    public enum State: Equatable {
       case report(ReportLogic.State)
       case matched(MatchedLogic.State)
     }
