@@ -13,8 +13,9 @@ import TcaHelpers
 public struct SwipeLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
-    @PresentationState public var destination: Destination.State?
+    @Presents public var destination: Destination.State?
 
     public var rows: IdentifiedArrayOf<SwipeCardLogic.State> = []
 
@@ -148,6 +149,7 @@ public struct SwipeLogic {
 
   @Reducer
   public struct Destination {
+    @ObservableState
     public enum State: Equatable {
       case report(ReportLogic.State)
       case matched(MatchedLogic.State)

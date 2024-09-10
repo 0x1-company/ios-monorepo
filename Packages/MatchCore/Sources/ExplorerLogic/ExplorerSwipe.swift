@@ -9,6 +9,7 @@ import SwipeLogic
 public struct ExplorerSwipeLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     let id: String
     public let title: String
@@ -70,6 +71,7 @@ public struct ExplorerSwipeLogic {
 
   @Reducer
   public struct Child {
+    @ObservableState
     public enum State: Equatable {
       case content(SwipeLogic.State)
       case empty(ExplorerEmptyLogic.State = .init())

@@ -3,17 +3,15 @@ import SettingsLogic
 import SwiftUI
 
 public struct CreationDateView: View {
-  let store: StoreOf<CreationDateLogic>
+  @Bindable var store: StoreOf<CreationDateLogic>
 
   public init(store: StoreOf<CreationDateLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
-      Text(viewStore.creationDateString)
-        .task { await store.send(.onTask).finish() }
-    }
+    Text(store.creationDateString)
+      .task { await store.send(.onTask).finish() }
   }
 }
 

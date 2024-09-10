@@ -9,6 +9,7 @@ import SwiftUI
 public struct AchievementLogic {
   public init() {}
 
+  @ObservableState
   public enum State: Equatable {
     case loading
     case content(AchievementContentLogic.State)

@@ -6,7 +6,7 @@ import SwiftUI
 
 public struct CategoryRowView: View {
   @Environment(\.displayScale) var displayScale
-  let store: StoreOf<CategoryRowLogic>
+  @Bindable var store: StoreOf<CategoryRowLogic>
 
   public init(store: StoreOf<CategoryRowLogic>) {
     self.store = store
@@ -24,38 +24,36 @@ public struct CategoryRowView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
-      Button {
-        store.send(.rowButtonTapped)
-      } label: {
-        CachedAsyncImage(
-          url: URL(string: viewStore.user.images[0].imageUrl),
-          urlCache: URLCache.shared,
-          scale: displayScale
-        ) { image in
-          image
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: 144, height: 144)
-        } placeholder: {
-          Color.black
-            .frame(width: 144, height: 144)
-            .overlay {
-              ProgressView()
-                .tint(Color.white)
-            }
-        }
-        .blur(radius: viewStore.isBlur ? 18 : 0)
-        .clipShape(RoundedRectangle(cornerRadius: 8))
-        .overlay {
-          if viewStore.isBlur {
-            RoundedRectangle(cornerRadius: 8)
-              .stroke(goldGradient, lineWidth: 3)
+    Button {
+      store.send(.rowButtonTapped)
+    } label: {
+      CachedAsyncImage(
+        url: URL(string: store.user.images[0].imageUrl),
+        urlCache: URLCache.shared,
+        scale: displayScale
+      ) { image in
+        image
+          .resizable()
+          .aspectRatio(contentMode: .fill)
+          .frame(width: 144, height: 144)
+      } placeholder: {
+        Color.black
+          .frame(width: 144, height: 144)
+          .overlay {
+            ProgressView()
+              .tint(Color.white)
           }
-        }
-        .padding(.vertical, 2)
       }
-      .buttonStyle(HoldDownButtonStyle())
+      .blur(radius: store.isBlur ? 18 : 0)
+      .clipShape(RoundedRectangle(cornerRadius: 8))
+      .overlay {
+        if store.isBlur {
+          RoundedRectangle(cornerRadius: 8)
+            .stroke(goldGradient, lineWidth: 3)
+        }
+      }
+      .padding(.vertical, 2)
     }
+    .buttonStyle(HoldDownButtonStyle())
   }
 }

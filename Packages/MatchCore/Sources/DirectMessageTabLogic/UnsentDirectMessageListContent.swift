@@ -7,6 +7,7 @@ import SwiftUI
 public struct UnsentDirectMessageListContentLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     var after: String?
     public var hasNextPage = false

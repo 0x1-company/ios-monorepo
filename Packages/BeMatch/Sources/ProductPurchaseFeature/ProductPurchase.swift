@@ -3,25 +3,22 @@ import ProductPurchaseLogic
 import SwiftUI
 
 public struct ProductPurchaseView: View {
-  let store: StoreOf<ProductPurchaseLogic>
+  @Bindable var store: StoreOf<ProductPurchaseLogic>
 
   public init(store: StoreOf<ProductPurchaseLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    SwitchStore(store) { initialState in
-      switch initialState {
+    Group {
+      switch store.state {
       case .loading:
         ProgressView()
           .tint(Color.white)
-
       case .content:
-        CaseLet(
-          /ProductPurchaseLogic.State.content,
-          action: ProductPurchaseLogic.Action.content,
-          then: ProductPurchaseContentView.init(store:)
-        )
+        if let store = store.scope(state: \.content, action: \.content) {
+          ProductPurchaseContentView(store: store)
+        }
       }
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)

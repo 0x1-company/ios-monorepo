@@ -21,13 +21,14 @@ public struct RootNavigationLogic {
     case message
   }
 
+  @ObservableState
   public struct State: Equatable {
     public var recommendation = RecommendationLogic.State.loading
     public var category = CategoryLogic.State()
     public var explorer = ExplorerLogic.State.loading
     public var message = DirectMessageTabLogic.State()
 
-    @BindingState public var tab = Tab.recommendation
+    public var tab = Tab.recommendation
 
     public init() {}
   }
@@ -76,7 +77,7 @@ public struct RootNavigationLogic {
           }
         }
 
-      case .binding(\.$tab):
+      case .binding(\.tab):
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }

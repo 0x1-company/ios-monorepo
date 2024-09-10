@@ -8,6 +8,7 @@ import SwiftUI
 public struct MembershipCampaignLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public let campaign: API.MembershipQuery.Data.ActiveInvitationCampaign
     public let displayPrice: String

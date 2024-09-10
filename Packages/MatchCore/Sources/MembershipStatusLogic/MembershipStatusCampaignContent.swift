@@ -5,6 +5,7 @@ import SwiftUI
 public struct MembershipStatusCampaignContentLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public let expireAt: Date
 

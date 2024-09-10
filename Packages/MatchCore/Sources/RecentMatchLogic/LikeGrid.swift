@@ -4,6 +4,7 @@ import ComposableArchitecture
 public struct LikeGridLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public let imageUrl: String
     public let count: Int

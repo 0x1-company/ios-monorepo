@@ -5,6 +5,7 @@ import SwiftUI
 public struct LaunchLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public var isActivityIndicatorVisible = false
 

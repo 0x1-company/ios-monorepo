@@ -4,47 +4,45 @@ import Styleguide
 import SwiftUI
 
 public struct DirectMessageEmptyView: View {
-  let store: StoreOf<DirectMessageEmptyLogic>
+  @Bindable var store: StoreOf<DirectMessageEmptyLogic>
 
   public init(store: StoreOf<DirectMessageEmptyLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
-      VStack(spacing: 0) {
-        VStack(spacing: 24) {
-          Image(ImageResource.yes)
+    VStack(spacing: 0) {
+      VStack(spacing: 24) {
+        Image(ImageResource.yes)
 
-          VStack(spacing: 8) {
-            Text("Matched with \(viewStore.displayName)!", bundle: .module)
-              .font(.system(.title3, design: .rounded, weight: .semibold))
+        VStack(spacing: 8) {
+          Text("Matched with \(store.displayName)!", bundle: .module)
+            .font(.system(.title3, design: .rounded, weight: .semibold))
 
-            Text("Add tenten and send a message!", bundle: .module)
-          }
-          .multilineTextAlignment(.center)
-
-          VStack(spacing: 12) {
-            PrimaryButton(
-              String(localized: "Copy tenten’s PIN", bundle: .module)
-            ) {
-              store.send(.jumpExternalProductButtonTapped)
-            }
-
-            Text("🧷 \(viewStore.tentenPinCode)", bundle: .module)
-              .foregroundStyle(Color.white)
-              .font(.system(.caption, design: .rounded, weight: .semibold))
-          }
+          Text("Add tenten and send a message!", bundle: .module)
         }
-        .frame(maxHeight: .infinity)
+        .multilineTextAlignment(.center)
 
-        Text("The operator may check and delete the contents of messages for the purpose of operating a sound service. In addition, the account may be suspended if inappropriate use is confirmed.", bundle: .module)
-          .font(.caption)
-          .foregroundStyle(Color.secondary)
+        VStack(spacing: 12) {
+          PrimaryButton(
+            String(localized: "Copy tenten’s PIN", bundle: .module)
+          ) {
+            store.send(.jumpExternalProductButtonTapped)
+          }
+
+          Text("🧷 \(store.tentenPinCode)", bundle: .module)
+            .foregroundStyle(Color.white)
+            .font(.system(.caption, design: .rounded, weight: .semibold))
+        }
       }
-      .padding(.bottom, 8)
-      .padding(.horizontal, 16)
+      .frame(maxHeight: .infinity)
+
+      Text("The operator may check and delete the contents of messages for the purpose of operating a sound service. In addition, the account may be suspended if inappropriate use is confirmed.", bundle: .module)
+        .font(.caption)
+        .foregroundStyle(Color.secondary)
     }
+    .padding(.bottom, 8)
+    .padding(.horizontal, 16)
   }
 }
 

@@ -8,6 +8,7 @@ import SwiftUI
 public struct UnsentDirectMessageListContentRowLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable, Identifiable {
     public let id: String
     public let createdAt: API.Date

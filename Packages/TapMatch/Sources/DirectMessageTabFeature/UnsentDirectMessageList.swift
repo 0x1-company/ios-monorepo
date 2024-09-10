@@ -4,7 +4,7 @@ import RecentMatchFeature
 import SwiftUI
 
 public struct UnsentDirectMessageListView: View {
-  let store: StoreOf<UnsentDirectMessageListLogic>
+  @Bindable var store: StoreOf<UnsentDirectMessageListLogic>
 
   public init(store: StoreOf<UnsentDirectMessageListLogic>) {
     self.store = store
@@ -30,21 +30,17 @@ public struct UnsentDirectMessageListView: View {
       }
       .padding(.horizontal, 16)
 
-      SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
-        switch initialState {
-        case .loading:
-          VStack(spacing: 0) {
-            ProgressView()
-              .tint(Color.white)
-              .frame(maxWidth: .infinity, alignment: .center)
-          }
-          .frame(height: 150)
-        case .content:
-          CaseLet(
-            /UnsentDirectMessageListLogic.Child.State.content,
-            action: UnsentDirectMessageListLogic.Child.Action.content,
-            then: UnsentDirectMessageListContentView.init(store:)
-          )
+      switch store.scope(state: \.child, action: \.child).state {
+      case .loading:
+        VStack(spacing: 0) {
+          ProgressView()
+            .tint(Color.white)
+            .frame(maxWidth: .infinity, alignment: .center)
+        }
+        .frame(height: 150)
+      case .content:
+        if let store = store.scope(state: \.child.content, action: \.child.content) {
+          UnsentDirectMessageListContentView(store: store)
         }
       }
     }

@@ -10,15 +10,16 @@ import SwiftUI
 public struct ReportReasonLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public let title: String
     let kind: ReportLogic.Kind
 
     public var isDisabled = true
     public var isActivityIndicatorVisible = false
-    @BindingState public var text = String()
-    @BindingState public var focus: Field?
-    @PresentationState public var alert: AlertState<Action.Alert>?
+    public var text = String()
+    public var focus: Field?
+    @Presents public var alert: AlertState<Action.Alert>?
 
     public init(title: String, kind: ReportLogic.Kind) {
       self.title = title

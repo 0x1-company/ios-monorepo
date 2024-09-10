@@ -11,9 +11,10 @@ import SwiftUI
 public struct CategoryLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public var child = Child.State.loading
-    @PresentationState public var alert: AlertState<Action.Alert>?
+    @Presents public var alert: AlertState<Action.Alert>?
     public init() {}
   }
 
@@ -93,6 +94,7 @@ public struct CategoryLogic {
 
   @Reducer
   public struct Child {
+    @ObservableState
     public enum State: Equatable {
       case loading
       case empty(CategoryEmptyLogic.State = .init())

@@ -6,6 +6,7 @@ import SwiftUI
 public struct BannedLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public let userId: String
 

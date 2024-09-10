@@ -34,6 +34,7 @@ func formatNumber(_ number: Int, locale: Locale) -> String {
 public struct AchievementContentLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public let displayMatchCount: String
     public let displayVisitCount: String

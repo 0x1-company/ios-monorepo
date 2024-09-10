@@ -5,7 +5,7 @@ import ComposableArchitecture
 import SwiftUI
 
 public struct CategoryView: View {
-  let store: StoreOf<CategoryLogic>
+  @Bindable var store: StoreOf<CategoryLogic>
 
   public init(store: StoreOf<CategoryLogic>) {
     self.store = store
@@ -34,7 +34,7 @@ public struct CategoryView: View {
       }
       .navigationBarTitleDisplayMode(.inline)
       .task { await store.send(.onTask).finish() }
-      .alert(store: store.scope(state: \.$alert, action: \.alert))
+      .alert($store.scope(state: \.alert, action: \.alert))
       .toolbar {
         ToolbarItem(placement: .principal) {
           Image(ImageResource.logo)

@@ -7,6 +7,7 @@ import SwiftUI
 public struct ProfileExplorerPreviewLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     let targetUserId: String
 
@@ -54,6 +55,7 @@ public struct ProfileExplorerPreviewLogic {
 
   @Reducer
   public struct Child {
+    @ObservableState
     public enum State: Equatable {
       case loading
       case content(ProfileExplorerPreviewContentLogic.State)

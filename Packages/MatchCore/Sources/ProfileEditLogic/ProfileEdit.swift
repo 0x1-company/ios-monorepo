@@ -15,8 +15,9 @@ import UsernameSettingLogic
 public struct ProfileEditLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
-    @PresentationState public var destination: Destination.State?
+    @Presents public var destination: Destination.State?
     public var user: API.UserInternal?
 
     public init() {}
@@ -182,6 +183,7 @@ public struct ProfileEditLogic {
 
   @Reducer
   public struct Destination {
+    @ObservableState
     public enum State: Equatable {
       case howToMovie(HowToMovieLogic.State = .init())
       case pictureSetting(ProfilePictureSettingLogic.State)

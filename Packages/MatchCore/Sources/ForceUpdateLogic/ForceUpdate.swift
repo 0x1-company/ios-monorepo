@@ -10,6 +10,7 @@ import SwiftUI
 public struct ForceUpdateLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public init() {}
   }

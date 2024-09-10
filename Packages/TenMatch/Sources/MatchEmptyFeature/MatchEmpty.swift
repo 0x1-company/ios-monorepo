@@ -4,7 +4,7 @@ import Styleguide
 import SwiftUI
 
 public struct MatchEmptyView: View {
-  let store: StoreOf<MatchEmptyLogic>
+  @Bindable var store: StoreOf<MatchEmptyLogic>
 
   public init(store: StoreOf<MatchEmptyLogic>) {
     self.store = store

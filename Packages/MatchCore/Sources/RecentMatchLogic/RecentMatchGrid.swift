@@ -6,6 +6,7 @@ import Foundation
 public struct RecentMatchGridLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable, Identifiable {
     let targetUserId: String
 

@@ -9,10 +9,11 @@ import FeedbackGeneratorClient
 public struct DisplayNameSettingLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public var isActivityIndicatorVisible = false
-    @BindingState public var displayName: String
-    @PresentationState public var alert: AlertState<Action.Alert>?
+    public var displayName: String
+    @Presents public var alert: AlertState<Action.Alert>?
 
     public init(displayName: String? = nil) {
       self.displayName = displayName ?? ""

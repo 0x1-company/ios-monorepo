@@ -4,7 +4,7 @@ import MembershipLogic
 import SwiftUI
 
 public struct InvitationCampaignView: View {
-  let store: StoreOf<InvitationCampaignLogic>
+  @Bindable var store: StoreOf<InvitationCampaignLogic>
 
   var textGradient: LinearGradient {
     LinearGradient(
@@ -22,32 +22,30 @@ public struct InvitationCampaignView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
-      VStack(spacing: 16) {
-        Text("Limited to first \(viewStore.quantity) Users", bundle: .module)
-          .font(.system(.headline, weight: .semibold))
-          .padding(.vertical, 6)
-          .padding(.horizontal, 8)
-          .overlay(
-            RoundedRectangle(cornerRadius: 4)
-              .stroke(Color.primary, lineWidth: 1)
-          )
+    VStack(spacing: 16) {
+      Text("Limited to first \(store.quantity) Users", bundle: .module)
+        .font(.system(.headline, weight: .semibold))
+        .padding(.vertical, 6)
+        .padding(.horizontal, 8)
+        .overlay(
+          RoundedRectangle(cornerRadius: 4)
+            .stroke(Color.primary, lineWidth: 1)
+        )
 
-        VStack(spacing: 0) {
-          Text("Invite a friend and both receive", bundle: .module)
-            .font(.system(.title2, weight: .bold))
+      VStack(spacing: 0) {
+        Text("Invite a friend and both receive", bundle: .module)
+          .font(.system(.title2, weight: .bold))
 
-          Text(viewStore.specialOfferDisplayPrice)
-            .font(.system(size: 72, weight: .heavy))
-            .foregroundStyle(textGradient)
+        Text(store.specialOfferDisplayPrice)
+          .font(.system(size: 72, weight: .heavy))
+          .foregroundStyle(textGradient)
 
-          Text("worth benefits", bundle: .module)
-            .font(.system(.title2, weight: .bold))
-        }
+        Text("worth benefits", bundle: .module)
+          .font(.system(.title2, weight: .bold))
       }
-      .frame(maxWidth: .infinity)
-      .multilineTextAlignment(.center)
     }
+    .frame(maxWidth: .infinity)
+    .multilineTextAlignment(.center)
   }
 }
 

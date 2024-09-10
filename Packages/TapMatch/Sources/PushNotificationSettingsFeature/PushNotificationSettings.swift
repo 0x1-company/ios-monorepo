@@ -3,7 +3,7 @@ import PushNotificationSettingsLogic
 import SwiftUI
 
 public struct PushNotificationSettingsView: View {
-  let store: StoreOf<PushNotificationSettingsLogic>
+  @Bindable var store: StoreOf<PushNotificationSettingsLogic>
 
   public init(store: StoreOf<PushNotificationSettingsLogic>) {
     self.store = store

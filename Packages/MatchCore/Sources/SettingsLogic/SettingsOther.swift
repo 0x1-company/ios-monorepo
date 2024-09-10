@@ -7,8 +7,9 @@ import EnvironmentClient
 public struct SettingsOtherLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
-    @PresentationState public var deleteAccount: DeleteAccountLogic.State?
+    @Presents public var deleteAccount: DeleteAccountLogic.State?
     public init() {}
   }
 

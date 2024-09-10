@@ -4,16 +4,14 @@ import Styleguide
 import SwiftUI
 
 public struct ReportView: View {
-  let store: StoreOf<ReportLogic>
+  @Bindable var store: StoreOf<ReportLogic>
 
   public init(store: StoreOf<ReportLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    NavigationStackStore(
-      store.scope(state: \.path, action: \.path)
-    ) {
+    NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
       List(
         [
           String(localized: "Spam", bundle: .module),
@@ -51,15 +49,9 @@ public struct ReportView: View {
         }
       }
     } destination: { store in
-      SwitchStore(store) { initialState in
-        switch initialState {
-        case .reason:
-          CaseLet(
-            /ReportLogic.Path.State.reason,
-            action: ReportLogic.Path.Action.reason,
-            then: ReportReasonView.init(store:)
-          )
-        }
+      switch store.case {
+      case let .reason(store):
+        ReportReasonView(store: store)
       }
     }
     .tint(Color.white)

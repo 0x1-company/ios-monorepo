@@ -5,7 +5,7 @@ import ProductPurchaseFeature
 import SwiftUI
 
 public struct MembershipView: View {
-  let store: StoreOf<MembershipLogic>
+  @Bindable var store: StoreOf<MembershipLogic>
 
   public init(store: StoreOf<MembershipLogic>) {
     self.store = store
@@ -13,7 +13,7 @@ public struct MembershipView: View {
 
   public var body: some View {
     NavigationStack {
-      WithViewStore(store, observe: { $0 }) { viewStore in
+      WithViewStore(store, observe: { $0 }) { _ in
         SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
           switch initialState {
           case .loading:
@@ -35,7 +35,7 @@ public struct MembershipView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .task { await store.send(.onTask).finish() }
-        .alert(store: store.scope(state: \.$destination.alert, action: \.destination.alert))
+        .alert($store.scope(state: \.destination?.alert, action: \.destination.alert))
         .toolbar {
           ToolbarItem(placement: .topBarLeading) {
             Button {
@@ -51,15 +51,15 @@ public struct MembershipView: View {
           }
         }
         .fullScreenCover(
-          store: store.scope(state: \.$destination.purchase, action: \.destination.purchase)
+          item: $store.scope(state: \.destination?.purchase, action: \.destination.purchase)
         ) { store in
           NavigationStack {
             ProductPurchaseView(store: store)
           }
         }
-        .sheet(isPresented: viewStore.$isPresented) {
+        .sheet(isPresented: $store.isPresented) {
           ActivityView(
-            activityItems: [viewStore.shareText],
+            activityItems: [store.shareText],
             applicationActivities: nil
           ) { activityType, result, _, _ in
             store.send(

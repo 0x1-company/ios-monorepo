@@ -10,9 +10,10 @@ import SwiftUI
 public struct ExplorerContentLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public var rows: IdentifiedArrayOf<ExplorerContentSectionLogic.State> = []
-    @PresentationState public var destination: Destination.State?
+    @Presents public var destination: Destination.State?
 
     public init(uniqueElements: [ExplorerContentSectionLogic.State]) {
       rows = IdentifiedArrayOf(uniqueElements: uniqueElements)
@@ -73,7 +74,7 @@ public struct ExplorerContentLogic {
             ExplorerSwipeLogic.State(explorer: explorer)
           )
         } else {
-          state.destination = .membership()
+          state.destination = .membership(MembershipLogic.State())
         }
         return .none
 
@@ -84,26 +85,12 @@ public struct ExplorerContentLogic {
     .forEach(\.rows, action: \.rows) {
       ExplorerContentSectionLogic()
     }
-    .ifLet(\.$destination, action: \.destination) {
-      Destination()
-    }
+    .ifLet(\.$destination, action: \.destination)
   }
 
-  @Reducer
-  public struct Destination {
-    public enum State: Equatable {
-      case swipe(ExplorerSwipeLogic.State)
-      case membership(MembershipLogic.State = .init())
-    }
-
-    public enum Action {
-      case swipe(ExplorerSwipeLogic.Action)
-      case membership(MembershipLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.swipe, action: \.swipe, child: ExplorerSwipeLogic.init)
-      Scope(state: \.membership, action: \.membership, child: MembershipLogic.init)
-    }
+  @Reducer(state: .equatable)
+  public enum Destination {
+    case swipe(ExplorerSwipeLogic)
+    case membership(MembershipLogic)
   }
 }

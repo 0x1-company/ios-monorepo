@@ -4,28 +4,26 @@ import Styleguide
 import SwiftUI
 
 public struct LaunchView: View {
-  let store: StoreOf<LaunchLogic>
+  @Bindable var store: StoreOf<LaunchLogic>
 
   public init(store: StoreOf<LaunchLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
-      Image(ImageResource.logo)
-        .aspectRatio(contentMode: .fit)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .ignoresSafeArea()
-        .background(Color(0xFFFF_0000))
-        .task { await store.send(.onTask).finish() }
-        .overlay {
-          if viewStore.isActivityIndicatorVisible {
-            ProgressView()
-              .tint(Color.white)
-              .offset(y: 114)
-          }
+    Image(ImageResource.logo)
+      .aspectRatio(contentMode: .fit)
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .ignoresSafeArea()
+      .background(Color(0xFFFF_0000))
+      .task { await store.send(.onTask).finish() }
+      .overlay {
+        if store.isActivityIndicatorVisible {
+          ProgressView()
+            .tint(Color.white)
+            .offset(y: 114)
         }
-    }
+      }
   }
 }
 

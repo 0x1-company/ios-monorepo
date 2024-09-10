@@ -7,6 +7,7 @@ import SwiftUI
 public struct MembershipStatusPaidContentLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public let expireAt: Date
 

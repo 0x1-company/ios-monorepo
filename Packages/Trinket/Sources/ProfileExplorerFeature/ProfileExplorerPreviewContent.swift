@@ -5,7 +5,7 @@ import Styleguide
 import SwiftUI
 
 public struct ProfileExplorerPreviewContentView: View {
-  let store: StoreOf<ProfileExplorerPreviewContentLogic>
+  @Bindable var store: StoreOf<ProfileExplorerPreviewContentLogic>
 
   public init(store: StoreOf<ProfileExplorerPreviewContentLogic>) {
     self.store = store
@@ -22,6 +22,6 @@ public struct ProfileExplorerPreviewContentView: View {
       }
       .padding(.horizontal, 16)
     }
-    .confirmationDialog(store: store.scope(state: \.$confirmationDialog, action: \.confirmationDialog))
+    .confirmationDialog($store.scope(state: \.confirmationDialog, action: \.confirmationDialog))
   }
 }

@@ -7,6 +7,7 @@ import ComposableArchitecture
 public struct PushNotificationSettingsLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public var rows: IdentifiedArrayOf<PushNotificationSettingsRowLogic.State> = []
     public init() {}
@@ -46,7 +47,7 @@ public struct PushNotificationSettingsLogic {
       case .userPushNotificationSettingsResponse(.failure):
         return .none
 
-      case .rows(.element(_, .binding(\.$allow))):
+      case .rows(.element(_, .binding(\.allow))):
         let inputs = state.rows.map { row in
           API.UpdateUserPushNotificationSettingInput(
             allow: row.allow,

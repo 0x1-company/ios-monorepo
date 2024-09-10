@@ -7,7 +7,7 @@ import SwipeCardFeature
 import SwipeFeature
 
 public struct ReceivedLikeSwipeView: View {
-  let store: StoreOf<ReceivedLikeSwipeLogic>
+  @Bindable var store: StoreOf<ReceivedLikeSwipeLogic>
 
   public init(store: StoreOf<ReceivedLikeSwipeLogic>) {
     self.store = store
@@ -15,8 +15,8 @@ public struct ReceivedLikeSwipeView: View {
 
   public var body: some View {
     NavigationStack {
-      SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
-        switch initialState {
+      Group {
+        switch store.scope(state: \.child, action: \.child).state {
         case .loading:
           Color.black
             .overlay {
@@ -28,11 +28,9 @@ public struct ReceivedLikeSwipeView: View {
           emptyView
 
         case .content:
-          CaseLet(
-            /ReceivedLikeSwipeLogic.Child.State.content,
-            action: ReceivedLikeSwipeLogic.Child.Action.content,
-            then: SwipeView.init(store:)
-          )
+          if let store = store.scope(state: \.child.content, action: \.child.content) {
+            SwipeView(store: store)
+          }
         }
       }
       .navigationTitle(String(localized: "See who likes you", bundle: .module))

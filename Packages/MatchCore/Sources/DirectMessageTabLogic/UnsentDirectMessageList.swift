@@ -7,12 +7,13 @@ import SwiftUI
 public struct UnsentDirectMessageListLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public var child = Child.State.loading
 
     static let loading = State()
 
-    @PresentationState public var destination: Destination.State?
+    @Presents public var destination: Destination.State?
 
     public init() {}
 
@@ -84,6 +85,7 @@ public struct UnsentDirectMessageListLogic {
 
   @Reducer
   public struct Child {
+    @ObservableState
     public enum State: Equatable {
       case loading
       case content(UnsentDirectMessageListContentLogic.State)

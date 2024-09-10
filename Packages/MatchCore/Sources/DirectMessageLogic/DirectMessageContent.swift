@@ -7,6 +7,7 @@ import SwiftUI
 public struct DirectMessageContentLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     let targetUserId: String
     var after: String?

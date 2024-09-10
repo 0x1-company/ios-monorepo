@@ -16,16 +16,17 @@ public struct ProfileExplorerLogic {
     case profile
   }
 
+  @ObservableState
   public struct State: Equatable {
     public let displayName: String
     public let targetUserId: String
 
-    @BindingState public var currentTab: Tab
-    @BindingState public var text = ""
+    public var currentTab: Tab
+    public var text = ""
 
     public var directMessage: DirectMessageLogic.State
     public var preview: ProfileExplorerPreviewLogic.State
-    @PresentationState public var destination: Destination.State?
+    @Presents public var destination: Destination.State?
 
     public var isDisabled: Bool {
       return text.isEmpty
@@ -163,6 +164,7 @@ public struct ProfileExplorerLogic {
 
   @Reducer
   public struct Destination {
+    @ObservableState
     public enum State: Equatable {
       case report(ReportLogic.State)
       case confirmationDialog(ConfirmationDialogState<Action.ConfirmationDialog>)

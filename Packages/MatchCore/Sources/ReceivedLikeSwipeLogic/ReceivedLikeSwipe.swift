@@ -3,7 +3,6 @@ import API
 import APIClient
 import ComposableArchitecture
 import MatchedLogic
-
 import SwiftUI
 import SwipeCardLogic
 import SwipeLogic
@@ -12,6 +11,7 @@ import SwipeLogic
 public struct ReceivedLikeSwipeLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public var child = Child.State.loading
 
@@ -85,6 +85,7 @@ public struct ReceivedLikeSwipeLogic {
 
   @Reducer
   public struct Child {
+    @ObservableState
     public enum State: Equatable {
       case loading
       case empty

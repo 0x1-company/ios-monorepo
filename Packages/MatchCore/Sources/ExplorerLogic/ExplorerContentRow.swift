@@ -8,6 +8,7 @@ import SwiftUI
 public struct ExplorerContentRowLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable, Identifiable {
     public let user: API.SwipeCard
     public let isBlur: Bool

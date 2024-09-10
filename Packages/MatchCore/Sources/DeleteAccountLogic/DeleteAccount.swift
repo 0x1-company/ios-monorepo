@@ -13,10 +13,11 @@ import SwiftUI
 public struct DeleteAccountLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public var isActivityIndicatorVisible = false
-    @PresentationState public var destination: Destination.State?
-    @BindingState public var otherReason = ""
+    @Presents public var destination: Destination.State?
+    public var otherReason = ""
     public var selectedReasons: [String] = []
     public let reasons = [
       String(localized: "Safety or privacy concerns", bundle: .module),
@@ -163,6 +164,7 @@ public struct DeleteAccountLogic {
 
   @Reducer
   public struct Destination {
+    @ObservableState
     public enum State: Equatable {
       case alert(AlertState<Action.Alert>)
       case confirmationDialog(ConfirmationDialogState<Action.ConfirmationDialog>)

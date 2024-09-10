@@ -6,6 +6,7 @@ import FeedbackGeneratorClient
 public struct MembershipPurchaseLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public let displayPrice: String
 

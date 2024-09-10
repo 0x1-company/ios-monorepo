@@ -7,8 +7,9 @@ import StoreKitClient
 public struct MembershipStatusFreeContentLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
-    @PresentationState public var destination: Destination.State?
+    @Presents public var destination: Destination.State?
     public init() {}
   }
 
@@ -53,6 +54,7 @@ public struct MembershipStatusFreeContentLogic {
 
   @Reducer
   public struct Destination {
+    @ObservableState
     public enum State: Equatable {
       case membership(MembershipLogic.State = .init())
     }

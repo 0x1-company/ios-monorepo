@@ -19,13 +19,14 @@ public struct RecommendationEmptyLogic {
     }
   }
 
+  @ObservableState
   public struct State: Equatable {
     public var shareURL: URL
     public var shareText: String {
       return shareURL.absoluteString
     }
 
-    @BindingState public var isPresented = false
+    public var isPresented = false
     public init() {
       @Dependency(\.environment) var environment
       shareURL = environment.appStoreForEmptyURL()

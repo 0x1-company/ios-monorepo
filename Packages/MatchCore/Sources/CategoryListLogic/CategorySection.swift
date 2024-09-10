@@ -7,6 +7,7 @@ import SwiftUI
 public struct CategorySectionLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable, Identifiable {
     public let userCategory: API.UserCategoriesQuery.Data.UserCategory
     public var id: String {

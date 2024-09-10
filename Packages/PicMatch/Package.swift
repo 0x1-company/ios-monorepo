@@ -7,7 +7,7 @@ let package = Package(
   name: "PicMatch",
   defaultLocalization: "en",
   platforms: [
-    .iOS("16.4"),
+    .iOS("17.0"),
   ],
   products: [
     .library(name: "AchievementFeature", targets: ["AchievementFeature"]),

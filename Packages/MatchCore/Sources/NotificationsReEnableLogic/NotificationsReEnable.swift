@@ -7,6 +7,7 @@ import UIApplicationClient
 public struct NotificationsReEnableLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public init() {}
   }

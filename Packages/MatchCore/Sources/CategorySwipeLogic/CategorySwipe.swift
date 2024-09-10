@@ -14,6 +14,7 @@ import SwipeLogic
 public struct CategorySwipeLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     let id: String
     public let title: String
@@ -82,6 +83,7 @@ public struct CategorySwipeLogic {
 
   @Reducer
   public struct Child {
+    @ObservableState
     public enum State: Equatable {
       case swipe(SwipeLogic.State)
       case empty(CategoryEmptyLogic.State = .init())

@@ -10,6 +10,7 @@ import StoreKitHelpers
 public struct ProductPurchaseContentLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     var selectProductID: String
     let appAccountToken: UUID
@@ -18,7 +19,7 @@ public struct ProductPurchaseContentLogic {
 
     public var rows: IdentifiedArrayOf<ProductPurchaseContentRowLogic.State> = []
 
-    @PresentationState public var destination: Destination.State?
+    @Presents public var destination: Destination.State?
 
     public init(
       appAccountToken: UUID,
@@ -174,6 +175,7 @@ public struct ProductPurchaseContentLogic {
 
   @Reducer
   public struct Destination {
+    @ObservableState
     public enum State: Equatable {
       case alert(AlertState<Action.Alert>)
     }

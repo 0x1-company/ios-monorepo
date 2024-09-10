@@ -4,7 +4,7 @@ import MembershipLogic
 import SwiftUI
 
 public struct InvitationCampaignView: View {
-  let store: StoreOf<InvitationCampaignLogic>
+  @Bindable var store: StoreOf<InvitationCampaignLogic>
 
   var backgroundGradient: LinearGradient {
     LinearGradient(
@@ -33,36 +33,34 @@ public struct InvitationCampaignView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
-      VStack(spacing: 12) {
-        Text("Limited to first \(viewStore.quantity) Users", bundle: .module)
-          .font(.system(.headline, weight: .semibold))
-          .padding(.vertical, 6)
-          .padding(.horizontal, 8)
-          .overlay(
-            RoundedRectangle(cornerRadius: 4)
-              .stroke(Color.primary, lineWidth: 1)
-          )
+    VStack(spacing: 12) {
+      Text("Limited to first \(store.quantity) Users", bundle: .module)
+        .font(.system(.headline, weight: .semibold))
+        .padding(.vertical, 6)
+        .padding(.horizontal, 8)
+        .overlay(
+          RoundedRectangle(cornerRadius: 4)
+            .stroke(Color.primary, lineWidth: 1)
+        )
 
-        VStack(spacing: 0) {
-          Text("Invite a friend and both receive", bundle: .module)
+      VStack(spacing: 0) {
+        Text("Invite a friend and both receive", bundle: .module)
 
-          VStack(spacing: 8) {
-            Text(viewStore.specialOfferDisplayPrice)
-              .font(.system(size: 72, weight: .heavy))
-              .foregroundStyle(textGradient)
+        VStack(spacing: 8) {
+          Text(store.specialOfferDisplayPrice)
+            .font(.system(size: 72, weight: .heavy))
+            .foregroundStyle(textGradient)
 
-            Text("worth benefits", bundle: .module)
-          }
+          Text("worth benefits", bundle: .module)
         }
-        .font(.system(.title2, weight: .bold))
       }
-      .padding(.top, 80)
-      .padding(.bottom, 28)
-      .frame(maxWidth: .infinity)
-      .background(backgroundGradient)
-      .multilineTextAlignment(.center)
+      .font(.system(.title2, weight: .bold))
     }
+    .padding(.top, 80)
+    .padding(.bottom, 28)
+    .frame(maxWidth: .infinity)
+    .background(backgroundGradient)
+    .multilineTextAlignment(.center)
   }
 }
 

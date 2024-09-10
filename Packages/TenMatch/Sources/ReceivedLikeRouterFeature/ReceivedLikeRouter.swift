@@ -5,32 +5,26 @@ import ReceivedLikeSwipeFeature
 import SwiftUI
 
 public struct ReceivedLikeRouterView: View {
-  let store: StoreOf<ReceivedLikeRouterLogic>
+  @Bindable var store: StoreOf<ReceivedLikeRouterLogic>
 
   public init(store: StoreOf<ReceivedLikeRouterLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    SwitchStore(store) { initialState in
-      switch initialState {
+    Group {
+      switch store.state {
       case .loading:
         ProgressView()
           .tint(Color.white)
-
       case .membership:
-        CaseLet(
-          /ReceivedLikeRouterLogic.State.membership,
-          action: ReceivedLikeRouterLogic.Action.membership,
-          then: MembershipView.init(store:)
-        )
-
+        if let store = store.scope(state: \.membership, action: \.membership) {
+          MembershipView(store: store)
+        }
       case .swipe:
-        CaseLet(
-          /ReceivedLikeRouterLogic.State.swipe,
-          action: ReceivedLikeRouterLogic.Action.swipe,
-          then: ReceivedLikeSwipeView.init(store:)
-        )
+        if let store = store.scope(state: \.swipe, action: \.swipe) {
+          ReceivedLikeSwipeView(store: store)
+        }
       }
     }
     .task { await store.send(.onTask).finish() }

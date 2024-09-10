@@ -11,6 +11,7 @@ import UserNotificationClient
 public struct RecommendationLogic {
   public init() {}
 
+  @ObservableState
   public enum State: Equatable {
     case loading
     case content(SwipeLogic.State)

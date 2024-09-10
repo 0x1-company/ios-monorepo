@@ -12,6 +12,7 @@ import SwiftUI
 public struct MatchedLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     let targetUserId: String
     let tentenPinCode: String
@@ -31,7 +32,7 @@ public struct MatchedLogic {
       }
     }
 
-    @PresentationState public var destination: Destination.State?
+    @Presents public var destination: Destination.State?
 
     public init(
       targetUserId: String,
@@ -145,6 +146,7 @@ public struct MatchedLogic {
 
   @Reducer
   public struct Destination {
+    @ObservableState
     public enum State: Equatable {
       case alert(AlertState<Action.Alert>)
     }

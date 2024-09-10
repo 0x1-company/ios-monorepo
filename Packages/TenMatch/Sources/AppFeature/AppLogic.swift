@@ -14,63 +14,47 @@ import TutorialFeature
 
 public struct AppView: View {
   @Environment(\.scenePhase) private var scenePhase
-  let store: StoreOf<AppLogic>
+  @Bindable var store: StoreOf<AppLogic>
 
   public init(store: StoreOf<AppLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
-      switch initialState {
+    Group {
+      switch store.scope(state: \.child, action: \.child).state {
       case .launch:
-        CaseLet(
-          /AppLogic.Child.State.launch,
-          action: AppLogic.Child.Action.launch,
-          then: LaunchView.init(store:)
-        )
+        if let store = store.scope(state: \.child.launch, action: \.child.launch) {
+          LaunchView(store: store)
+        }
       case .onboard:
-        CaseLet(
-          /AppLogic.Child.State.onboard,
-          action: AppLogic.Child.Action.onboard,
-          then: OnboardView.init(store:)
-        )
+        if let store = store.scope(state: \.child.onboard, action: \.child.onboard) {
+          OnboardView(store: store)
+        }
       case .navigation:
-        CaseLet(
-          /AppLogic.Child.State.navigation,
-          action: AppLogic.Child.Action.navigation,
-          then: RootNavigationView.init(store:)
-        )
+        if let store = store.scope(state: \.child.navigation, action: \.child.navigation) {
+          RootNavigationView(store: store)
+        }
       case .forceUpdate:
-        CaseLet(
-          /AppLogic.Child.State.forceUpdate,
-          action: AppLogic.Child.Action.forceUpdate,
-          then: ForceUpdateView.init(store:)
-        )
+        if let store = store.scope(state: \.child.forceUpdate, action: \.child.forceUpdate) {
+          ForceUpdateView(store: store)
+        }
       case .maintenance:
-        CaseLet(
-          /AppLogic.Child.State.maintenance,
-          action: AppLogic.Child.Action.maintenance,
-          then: MaintenanceView.init(store:)
-        )
+        if let store = store.scope(state: \.child.maintenance, action: \.child.maintenance) {
+          MaintenanceView(store: store)
+        }
       case .banned:
-        CaseLet(
-          /AppLogic.Child.State.banned,
-          action: AppLogic.Child.Action.banned,
-          then: BannedView.init(store:)
-        )
+        if let store = store.scope(state: \.child.banned, action: \.child.banned) {
+          BannedView(store: store)
+        }
       case .freezed:
-        CaseLet(
-          /AppLogic.Child.State.freezed,
-          action: AppLogic.Child.Action.freezed,
-          then: FreezedView.init(store:)
-        )
+        if let store = store.scope(state: \.child.freezed, action: \.child.freezed) {
+          FreezedView(store: store)
+        }
       case .networkError:
-        CaseLet(
-          /AppLogic.Child.State.networkError,
-          action: AppLogic.Child.Action.networkError,
-          then: NetworkErrorView.init(store:)
-        )
+        if let store = store.scope(state: \.child.networkError, action: \.child.networkError) {
+          NetworkErrorView(store: store)
+        }
       }
     }
     .onChange(of: scenePhase) { _ in
@@ -83,7 +67,7 @@ public struct AppView: View {
       )
     }
     .fullScreenCover(
-      store: store.scope(state: \.$destination.receivedLike, action: \.destination.receivedLike),
+      item: $store.scope(state: \.destination?.receivedLike, action: \.destination.receivedLike),
       content: ReceivedLikeRouterView.init(store:)
     )
   }

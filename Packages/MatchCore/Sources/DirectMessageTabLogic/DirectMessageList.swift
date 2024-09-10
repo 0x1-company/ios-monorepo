@@ -5,6 +5,7 @@ import SwiftUI
 public struct DirectMessageListLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public var child = Child.State.loading
 
@@ -40,19 +41,11 @@ public struct DirectMessageListLogic {
 
   public var body: some Reducer<State, Action> {
     Scope(state: \.child, action: \.child, child: Child.init)
-    Reduce<State, Action> { _, action in
-      switch action {
-      case .onTask:
-        return .none
-
-      default:
-        return .none
-      }
-    }
   }
 
   @Reducer
   public struct Child {
+    @ObservableState
     public enum State: Equatable {
       case loading
       case content(DirectMessageListContentLogic.State)

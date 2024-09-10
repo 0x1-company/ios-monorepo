@@ -9,6 +9,7 @@ import SwiftUI
 public struct InvitationCodeLogic {
   public init() {}
 
+  @ObservableState
   public struct State: Equatable {
     public var code = ""
 

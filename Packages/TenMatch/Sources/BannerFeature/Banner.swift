@@ -5,41 +5,39 @@ import Styleguide
 import SwiftUI
 
 public struct BannerView: View {
-  let store: StoreOf<BannerLogic>
+  @Bindable var store: StoreOf<BannerLogic>
 
   public init(store: StoreOf<BannerLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
-      VStack(spacing: 8) {
-        Text(viewStore.banner.title)
-          .font(.system(.footnote, design: .rounded, weight: .semibold))
+    VStack(spacing: 8) {
+      Text(store.banner.title)
+        .font(.system(.footnote, design: .rounded, weight: .semibold))
 
-        if let description = viewStore.banner.description {
-          Text(description)
-            .font(.system(.caption))
-        }
-
-        Button {
-          store.send(.bannerButtonTapped)
-        } label: {
-          Text(viewStore.banner.buttonTitle)
-            .font(.system(.caption2, design: .rounded, weight: .semibold))
-            .foregroundStyle(Color.black)
-            .frame(height: 38)
-            .frame(maxWidth: .infinity)
-            .background(Color.white)
-            .cornerRadius(12)
-        }
+      if let description = store.banner.description {
+        Text(description)
+          .font(.system(.caption))
       }
-      .padding(.all, 16)
-      .frame(maxWidth: .infinity)
-      .multilineTextAlignment(.center)
-      .background(Color(uiColor: UIColor.secondarySystemBackground))
-      .cornerRadius(12)
+
+      Button {
+        store.send(.bannerButtonTapped)
+      } label: {
+        Text(store.banner.buttonTitle)
+          .font(.system(.caption2, design: .rounded, weight: .semibold))
+          .foregroundStyle(Color.black)
+          .frame(height: 38)
+          .frame(maxWidth: .infinity)
+          .background(Color.white)
+          .cornerRadius(12)
+      }
     }
+    .padding(.all, 16)
+    .frame(maxWidth: .infinity)
+    .multilineTextAlignment(.center)
+    .background(Color(uiColor: UIColor.secondarySystemBackground))
+    .cornerRadius(12)
   }
 }
 

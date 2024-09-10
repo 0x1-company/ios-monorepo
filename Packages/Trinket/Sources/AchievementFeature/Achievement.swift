@@ -3,25 +3,22 @@ import ComposableArchitecture
 import SwiftUI
 
 public struct AchievementView: View {
-  let store: StoreOf<AchievementLogic>
+  @Bindable var store: StoreOf<AchievementLogic>
 
   public init(store: StoreOf<AchievementLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    SwitchStore(store) { initialState in
-      switch initialState {
+    Group {
+      switch store.state {
       case .loading:
         ProgressView()
           .tint(Color.white)
-
       case .content:
-        CaseLet(
-          /AchievementLogic.State.content,
-          action: AchievementLogic.Action.content,
-          then: AchievementContentView.init(store:)
-        )
+        if let store = store.scope(state: \.content, action: \.content) {
+          AchievementContentView(store: store)
+        }
       }
     }
     .navigationTitle(String(localized: "Achievement", bundle: .module))
