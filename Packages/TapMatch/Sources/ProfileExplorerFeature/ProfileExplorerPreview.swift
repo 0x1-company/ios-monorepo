@@ -10,18 +10,15 @@ public struct ProfileExplorerPreviewView: View {
   }
 
   public var body: some View {
-    SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
-      switch initialState {
+    Group {
+      switch store.scope(state: \.child, action: \.child).state {
       case .loading:
         ProgressView()
           .tint(Color.white)
-
       case .content:
-        CaseLet(
-          /ProfileExplorerPreviewLogic.Child.State.content,
-          action: ProfileExplorerPreviewLogic.Child.Action.content,
-          then: ProfileExplorerPreviewContentView.init(store:)
-        )
+        if let store = store.scope(state: \.child.content, action: \.child.content) {
+          ProfileExplorerPreviewContentView(store: store)
+        }
       }
     }
     .task { await store.send(.onTask).finish() }
