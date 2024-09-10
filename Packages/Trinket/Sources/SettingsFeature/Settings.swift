@@ -29,6 +29,13 @@ public struct SettingsView: View {
               .foregroundStyle(Color.primary)
           }
         }
+        .fullScreenCover(
+          item: $store.scope(state: \.destination?.profile, action: \.destination.profile)
+        ) { store in
+          NavigationStack {
+            ProfileView(store: store)
+          }
+        }
 
         Button {
           store.send(.editProfileButtonTapped)
@@ -38,6 +45,13 @@ public struct SettingsView: View {
           } label: {
             Text("Edit Profile", bundle: .module)
               .foregroundStyle(Color.primary)
+          }
+        }
+        .fullScreenCover(
+          item: $store.scope(state: \.destination?.profileEdit, action: \.destination.profileEdit)
+        ) { store in
+          NavigationStack {
+            ProfileEditView(store: store)
           }
         }
 
@@ -51,6 +65,10 @@ public struct SettingsView: View {
               .foregroundStyle(Color.primary)
           }
         }
+        .navigationDestination(
+          store: store.scope(state: \.$destination.membershipStatus, action: \.destination.membershipStatus),
+          destination: MembershipStatusView.init(store:)
+        )
       } header: {
         Text("PROFILE", bundle: .module)
       }
@@ -66,6 +84,10 @@ public struct SettingsView: View {
               .foregroundStyle(Color.primary)
           }
         }
+        .fullScreenCover(
+          item: $store.scope(state: \.destination?.tutorial, action: \.destination.tutorial),
+          content: TutorialView.init(store:)
+        )
 
         Link(destination: store.faqURL) {
           LabeledContent {
@@ -100,6 +122,10 @@ public struct SettingsView: View {
               .foregroundStyle(Color.primary)
           }
         }
+        .navigationDestination(
+          store: store.scope(state: \.$destination.pushNotificationSettings, action: \.destination.pushNotificationSettings),
+          destination: PushNotificationSettingsView.init(store:)
+        )
 
         Button {
           store.send(.otherButtonTapped)
@@ -111,6 +137,10 @@ public struct SettingsView: View {
               .foregroundStyle(Color.primary)
           }
         }
+        .navigationDestination(
+          store: store.scope(state: \.$destination.other, action: \.destination.other),
+          destination: SettingsOtherView.init(store:)
+        )
       } header: {
         Text("Settings", bundle: .module)
       }
@@ -197,36 +227,6 @@ public struct SettingsView: View {
       }
       .presentationDetents([.medium, .large])
     }
-    .fullScreenCover(
-      item: $store.scope(state: \.destination?.tutorial, action: \.destination.tutorial),
-      content: TutorialView.init(store:)
-    )
-    .fullScreenCover(
-      item: $store.scope(state: \.destination?.profile, action: \.destination.profile)
-    ) { store in
-      NavigationStack {
-        ProfileView(store: store)
-      }
-    }
-    .fullScreenCover(
-      item: $store.scope(state: \.destination?.profileEdit, action: \.destination.profileEdit)
-    ) { store in
-      NavigationStack {
-        ProfileEditView(store: store)
-      }
-    }
-    .navigationDestination(
-      store: store.scope(state: \.$destination.membershipStatus, action: \.destination.membershipStatus),
-      destination: MembershipStatusView.init(store:)
-    )
-    .navigationDestination(
-      store: store.scope(state: \.$destination.other, action: \.destination.other),
-      destination: SettingsOtherView.init(store:)
-    )
-    .navigationDestination(
-      store: store.scope(state: \.$destination.pushNotificationSettings, action: \.destination.pushNotificationSettings),
-      destination: PushNotificationSettingsView.init(store:)
-    )
   }
 }
 
