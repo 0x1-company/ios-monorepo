@@ -33,6 +33,8 @@ public struct MatchedView: View {
                 content: { image in
                   image
                     .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 128, height: 128)
                 },
                 placeholder: {
                   Color.clear
