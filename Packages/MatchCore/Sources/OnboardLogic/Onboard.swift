@@ -101,14 +101,14 @@ public struct OnboardLogic {
       case .path(.element(_, .displayName(.delegate(.nextScreen)))):
         switch environment.brand() {
         case .tenmatch, .picmatch:
-          state.path.append(.profilePicture())
+          state.path.append(.profilePicture(ProfilePictureSettingLogic.State()))
         default:
-          state.path.append(.howToMovie())
+          state.path.append(.howToMovie(HowToMovieLogic.State()))
         }
         return .none
 
       case .path(.element(_, .howToMovie(.delegate(.nextScreen)))):
-        state.path.append(.profilePicture())
+        state.path.append(.profilePicture(ProfilePictureSettingLogic.State()))
         return .none
 
       case .path(.element(_, .profilePicture(.delegate(.howTo)))):
@@ -116,13 +116,13 @@ public struct OnboardLogic {
         case .tenmatch, .picmatch:
           return .none
         default:
-          state.path.append(.howToMovie())
+          state.path.append(.howToMovie(HowToMovieLogic.State()))
         }
         return .none
 
       case .path(.element(_, .profilePicture(.delegate(.nextScreen)))):
         if state.hasInvitationCampaign {
-          state.path.append(.invitation())
+          state.path.append(.invitation(InvitationLogic.State()))
           return .none
         }
         return .send(.delegate(.finish), animation: .default)
@@ -138,40 +138,19 @@ public struct OnboardLogic {
         return .none
       }
     }
-    .forEach(\.path, action: \.path) {
-      Path()
-    }
+    .forEach(\.path, action: \.path)
     .ifLet(\.$destination, action: \.destination) {
       Destination()
     }
   }
 
-  @Reducer
-  public struct Path {
-    @ObservableState
-    public enum State: Equatable {
-      case gender(GenderSettingLogic.State)
-      case howToMovie(HowToMovieLogic.State = .init())
-      case profilePicture(ProfilePictureSettingLogic.State = .init())
-      case displayName(DisplayNameSettingLogic.State = .init())
-      case invitation(InvitationLogic.State = .init())
-    }
-
-    public enum Action {
-      case gender(GenderSettingLogic.Action)
-      case howToMovie(HowToMovieLogic.Action)
-      case profilePicture(ProfilePictureSettingLogic.Action)
-      case displayName(DisplayNameSettingLogic.Action)
-      case invitation(InvitationLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.gender, action: \.gender, child: GenderSettingLogic.init)
-      Scope(state: \.howToMovie, action: \.howToMovie, child: HowToMovieLogic.init)
-      Scope(state: \.profilePicture, action: \.profilePicture, child: ProfilePictureSettingLogic.init)
-      Scope(state: \.displayName, action: \.displayName, child: DisplayNameSettingLogic.init)
-      Scope(state: \.invitation, action: \.invitation, child: InvitationLogic.init)
-    }
+  @Reducer(state: .equatable)
+  public enum Path {
+    case gender(GenderSettingLogic)
+    case howToMovie(HowToMovieLogic)
+    case profilePicture(ProfilePictureSettingLogic)
+    case displayName(DisplayNameSettingLogic)
+    case invitation(InvitationLogic)
   }
 
   @Reducer
