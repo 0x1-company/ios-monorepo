@@ -217,7 +217,8 @@ public struct MembershipLogic {
 
   @Reducer
   public struct Child {
-    public enum State: Equatable {
+    @ObservableState
+  public enum State: Equatable {
       case loading
       case campaign(MembershipCampaignLogic.State)
       case purchase(MembershipPurchaseLogic.State)
@@ -240,7 +241,8 @@ public struct MembershipLogic {
 
   @Reducer
   public struct Destination {
-    public enum State: Equatable {
+    @ObservableState
+  public enum State: Equatable {
       case alert(AlertState<Action.Alert>)
       case purchase(ProductPurchaseLogic.State = .loading)
     }

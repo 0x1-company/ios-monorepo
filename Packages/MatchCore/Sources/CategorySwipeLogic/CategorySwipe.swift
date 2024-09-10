@@ -83,7 +83,8 @@ public struct CategorySwipeLogic {
 
   @Reducer
   public struct Child {
-    public enum State: Equatable {
+    @ObservableState
+  public enum State: Equatable {
       case swipe(SwipeLogic.State)
       case empty(CategoryEmptyLogic.State = .init())
     }

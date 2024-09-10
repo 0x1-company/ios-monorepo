@@ -55,7 +55,8 @@ public struct ProfileExplorerPreviewLogic {
 
   @Reducer
   public struct Child {
-    public enum State: Equatable {
+    @ObservableState
+  public enum State: Equatable {
       case loading
       case content(ProfileExplorerPreviewContentLogic.State)
     }

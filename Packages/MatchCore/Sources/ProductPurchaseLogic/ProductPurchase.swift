@@ -11,6 +11,7 @@ import StoreKitClient
 public struct ProductPurchaseLogic {
   public init() {}
 
+  @ObservableState
   public enum State: Equatable {
     case loading
     case content(ProductPurchaseContentLogic.State)

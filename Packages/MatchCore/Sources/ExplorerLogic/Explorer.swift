@@ -8,6 +8,7 @@ import SwiftUI
 public struct ExplorerLogic {
   public init() {}
 
+  @ObservableState
   public enum State: Equatable {
     case loading
     case empty(ExplorerEmptyLogic.State = .init())

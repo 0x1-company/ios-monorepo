@@ -164,7 +164,8 @@ public struct ProfileExplorerLogic {
 
   @Reducer
   public struct Destination {
-    public enum State: Equatable {
+    @ObservableState
+  public enum State: Equatable {
       case report(ReportLogic.State)
       case confirmationDialog(ConfirmationDialogState<Action.ConfirmationDialog>)
     }

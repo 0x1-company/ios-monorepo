@@ -196,7 +196,8 @@ public struct DirectMessageTabLogic {
 
   @Reducer
   public struct Destination {
-    public enum State: Equatable {
+    @ObservableState
+  public enum State: Equatable {
       case settings(SettingsLogic.State = .init())
       case directMessage(DirectMessageLogic.State)
       case explorer(ProfileExplorerLogic.State)

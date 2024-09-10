@@ -175,7 +175,8 @@ public struct ProductPurchaseContentLogic {
 
   @Reducer
   public struct Destination {
-    public enum State: Equatable {
+    @ObservableState
+  public enum State: Equatable {
       case alert(AlertState<Action.Alert>)
     }
 

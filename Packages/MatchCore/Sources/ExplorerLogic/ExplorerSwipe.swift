@@ -71,7 +71,8 @@ public struct ExplorerSwipeLogic {
 
   @Reducer
   public struct Child {
-    public enum State: Equatable {
+    @ObservableState
+  public enum State: Equatable {
       case content(SwipeLogic.State)
       case empty(ExplorerEmptyLogic.State = .init())
     }

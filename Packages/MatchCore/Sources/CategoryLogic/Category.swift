@@ -94,7 +94,8 @@ public struct CategoryLogic {
 
   @Reducer
   public struct Child {
-    public enum State: Equatable {
+    @ObservableState
+  public enum State: Equatable {
       case loading
       case empty(CategoryEmptyLogic.State = .init())
       case list(CategoryListLogic.State)

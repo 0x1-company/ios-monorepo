@@ -8,6 +8,7 @@ import SwiftUI
 public struct MembershipStatusLogic {
   public init() {}
 
+  @ObservableState
   public enum State: Equatable {
     case loading
     case free(MembershipStatusFreeContentLogic.State)

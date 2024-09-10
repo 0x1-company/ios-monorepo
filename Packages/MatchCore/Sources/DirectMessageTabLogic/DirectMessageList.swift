@@ -54,7 +54,8 @@ public struct DirectMessageListLogic {
 
   @Reducer
   public struct Child {
-    public enum State: Equatable {
+    @ObservableState
+  public enum State: Equatable {
       case loading
       case content(DirectMessageListContentLogic.State)
     }

@@ -54,7 +54,8 @@ public struct MembershipStatusFreeContentLogic {
 
   @Reducer
   public struct Destination {
-    public enum State: Equatable {
+    @ObservableState
+  public enum State: Equatable {
       case membership(MembershipLogic.State = .init())
     }
 

@@ -86,7 +86,8 @@ public struct ReceivedLikeSwipeLogic {
 
   @Reducer
   public struct Child {
-    public enum State: Equatable {
+    @ObservableState
+  public enum State: Equatable {
       case loading
       case empty
       case content(SwipeLogic.State)

@@ -127,7 +127,8 @@ public struct ProfileLogic {
 
   @Reducer
   public struct Destination {
-    public enum State: Equatable {
+    @ObservableState
+  public enum State: Equatable {
       case editUsername(UsernameSettingLogic.State)
       case confirmationDialog(ConfirmationDialogState<Action.ConfirmationDialog>)
     }

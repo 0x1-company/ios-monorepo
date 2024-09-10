@@ -148,7 +148,8 @@ public struct OnboardLogic {
 
   @Reducer
   public struct Path {
-    public enum State: Equatable {
+    @ObservableState
+  public enum State: Equatable {
       case gender(GenderSettingLogic.State)
       case howToMovie(HowToMovieLogic.State = .init())
       case profilePicture(ProfilePictureSettingLogic.State = .init())
@@ -175,7 +176,8 @@ public struct OnboardLogic {
 
   @Reducer
   public struct Destination {
-    public enum State: Equatable {
+    @ObservableState
+  public enum State: Equatable {
       case howToMovie(HowToMovieLogic.State = .init())
     }
 

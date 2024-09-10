@@ -176,7 +176,8 @@ public struct UsernameSettingLogic {
 
   @Reducer
   public struct Destination {
-    public enum State: Equatable {
+    @ObservableState
+  public enum State: Equatable {
       case alert(AlertState<Action.Alert>)
       case howToLocketLink(HowToLocketLinkLogic.State = .init())
     }
