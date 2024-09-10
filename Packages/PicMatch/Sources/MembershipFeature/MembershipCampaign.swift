@@ -15,14 +15,14 @@ public struct MembershipCampaignView: View {
       ScrollView {
         VStack(spacing: 0) {
           InvitationCampaignView(
-            store: $store.scope(
+            store: store.scope(
               state: \.invitationCampaign,
               action: \.invitationCampaign
             )
           )
 
           InvitationCampaignPriceView(
-            store: $store.scope(
+            store: store.scope(
               state: \.invitationCampaignPrice,
               action: \.invitationCampaignPrice
             )
@@ -30,7 +30,7 @@ public struct MembershipCampaignView: View {
 
           VStack(spacing: 60) {
             InvitationCodeCampaignView(
-              store: $store.scope(
+              store: store.scope(
                 state: \.invitationCodeCampaign,
                 action: \.invitationCodeCampaign
               )

@@ -30,7 +30,7 @@ public struct MembershipCampaignView: View {
             .padding(.top, 16)
 
             InvitationCodeCampaignView(
-              store: $store.scope(
+              store: store.scope(
                 state: \.invitationCodeCampaign,
                 action: \.invitationCodeCampaign
               )
