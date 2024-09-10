@@ -40,7 +40,7 @@ public struct ReceivedLikeSwipeLogic {
   }
 
   public var body: some Reducer<State, Action> {
-    Scope(state: \.child, action: \.child, child: Child.init)
+    Scope(state: \.child, action: \.child, child: {})
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
@@ -84,23 +84,10 @@ public struct ReceivedLikeSwipeLogic {
     }
   }
 
-  @Reducer
-  public struct Child {
-    @ObservableState
-    public enum State: Equatable {
-      case loading
-      case empty
-      case content(SwipeLogic.State)
-    }
-
-    public enum Action {
-      case loading
-      case empty
-      case content(SwipeLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.content, action: \.content, child: SwipeLogic.init)
-    }
+  @Reducer(state: .equatable)
+  public enum Child {
+    case loading
+    case empty
+    case content(SwipeLogic)
   }
 }

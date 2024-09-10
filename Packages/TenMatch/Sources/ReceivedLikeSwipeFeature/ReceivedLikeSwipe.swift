@@ -15,24 +15,21 @@ public struct ReceivedLikeSwipeView: View {
 
   public var body: some View {
     NavigationStack {
-      SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
-        switch initialState {
+      Group {
+        switch store.scope(state: \.child, action: \.child).state {
         case .loading:
-          Color.black
-            .overlay {
-              ProgressView()
-                .tint(Color.white)
-            }
-
+        Color.black
+          .overlay {
+            ProgressView()
+              .tint(Color.white)
+          }
         case .empty:
           emptyView
 
         case .content:
-          CaseLet(
-            /ReceivedLikeSwipeLogic.Child.State.content,
-            action: ReceivedLikeSwipeLogic.Child.Action.content,
-            then: SwipeView.init(store:)
-          )
+          if let store = store.scope(state: \.child.content, action: \.child.content) {
+            SwipeView(store: store)
+          }
         }
       }
       .navigationTitle(String(localized: "See who likes you", bundle: .module))
