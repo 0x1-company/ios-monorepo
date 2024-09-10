@@ -40,7 +40,7 @@ public struct DirectMessageLogic {
   @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   public var body: some Reducer<State, Action> {
-    Scope(state: \.child, action: \.child, child: Child.init)
+    Scope(state: \.child, action: \.child, child: {})
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
@@ -101,24 +101,10 @@ public struct DirectMessageLogic {
     }
   }
 
-  @Reducer
-  public struct Child {
-    @ObservableState
-    public enum State: Equatable {
-      case loading
-      case empty(DirectMessageEmptyLogic.State)
-      case content(DirectMessageContentLogic.State)
-    }
-
-    public enum Action {
-      case loading
-      case empty(DirectMessageEmptyLogic.Action)
-      case content(DirectMessageContentLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.empty, action: \.empty, child: DirectMessageEmptyLogic.init)
-      Scope(state: \.content, action: \.content, child: DirectMessageContentLogic.init)
-    }
+  @Reducer(state: .equatable)
+  public enum Child {
+    case loading
+    case empty(DirectMessageEmptyLogic)
+    case content(DirectMessageContentLogic)
   }
 }

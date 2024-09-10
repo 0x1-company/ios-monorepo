@@ -11,26 +11,20 @@ public struct DirectMessageView: View {
   }
 
   public var body: some View {
-    SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
-      switch initialState {
-      case .empty:
-        CaseLet(
-          /DirectMessageLogic.Child.State.empty,
-          action: DirectMessageLogic.Child.Action.empty,
-          then: DirectMessageEmptyView.init(store:)
-        )
-
+    Group {
+      switch store.scope(state: \.child, action: \.child).state {
       case .loading:
         ProgressView()
           .tint(Color.white)
           .frame(maxHeight: .infinity)
-
+      case .empty:
+        if let store = store.scope(state: \.child.empty, action: \.child.empty) {
+          DirectMessageEmptyView(store: store)
+        }
       case .content:
-        CaseLet(
-          /DirectMessageLogic.Child.State.content,
-          action: DirectMessageLogic.Child.Action.content,
-          then: DirectMessageContentView.init(store:)
-        )
+        if let store = store.scope(state: \.child.content, action: \.child.content) {
+          DirectMessageContentView(store: store)
+        }
       }
     }
     .task { await store.send(.onTask).finish() }
