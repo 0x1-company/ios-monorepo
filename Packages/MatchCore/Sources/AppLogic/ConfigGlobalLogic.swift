@@ -2,7 +2,6 @@ import Build
 import ComposableArchitecture
 import ConfigGlobalClient
 import FirebaseCrashlyticsClient
-import NetworkErrorLogic
 
 @Reducer
 public struct ConfigGlobalLogic {
@@ -50,7 +49,7 @@ public struct ConfigGlobalLogic {
 
       state.account.isForceUpdate = .success(false)
       state.account.isMaintenance = .success(false)
-      state.child = .networkError(NetworkErrorLogic.State())
+      state.child = .networkError()
       return .none
 
     default:

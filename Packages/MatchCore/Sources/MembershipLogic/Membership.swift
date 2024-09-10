@@ -72,7 +72,7 @@ public struct MembershipLogic {
 
   public var body: some Reducer<State, Action> {
     BindingReducer()
-    Scope(state: \.child, action: \.child, child: {})
+    Scope(state: \.child, action: \.child, child: Child.init)
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
@@ -215,16 +215,32 @@ public struct MembershipLogic {
     return result.joined(separator: ", ")
   }
 
-  @Reducer(state: .equatable)
-  public enum Child {
-    case loading
-    case campaign(MembershipCampaignLogic)
-    case purchase(MembershipPurchaseLogic)
+  @Reducer
+  public struct Child {
+    @ObservableState
+    public enum State: Equatable {
+      case loading
+      case campaign(MembershipCampaignLogic.State)
+      case purchase(MembershipPurchaseLogic.State)
+    }
+
+    public enum Action {
+      case campaign(MembershipCampaignLogic.Action)
+      case purchase(MembershipPurchaseLogic.Action)
+    }
+
+    public var body: some Reducer<State, Action> {
+      Scope(state: \.campaign, action: \.campaign) {
+        MembershipCampaignLogic()
+      }
+      Scope(state: \.purchase, action: \.purchase) {
+        MembershipPurchaseLogic()
+      }
+    }
   }
 
   @Reducer
   public struct Destination {
-    @ObservableState
     public enum State: Equatable {
       case alert(AlertState<Action.Alert>)
       case purchase(ProductPurchaseLogic.State = .loading)

@@ -3,7 +3,6 @@ import API
 import APIClient
 import ComposableArchitecture
 import MatchedLogic
-
 import SwiftUI
 import SwipeCardLogic
 import SwipeLogic
@@ -40,7 +39,7 @@ public struct ReceivedLikeSwipeLogic {
   }
 
   public var body: some Reducer<State, Action> {
-    Scope(state: \.child, action: \.child, child: {})
+    Scope(state: \.child, action: \.child, child: Child.init)
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
@@ -84,10 +83,23 @@ public struct ReceivedLikeSwipeLogic {
     }
   }
 
-  @Reducer(state: .equatable)
-  public enum Child {
-    case loading
-    case empty
-    case content(SwipeLogic)
+  @Reducer
+  public struct Child {
+    @ObservableState
+    public enum State: Equatable {
+      case loading
+      case empty
+      case content(SwipeLogic.State)
+    }
+
+    public enum Action {
+      case loading
+      case empty
+      case content(SwipeLogic.Action)
+    }
+
+    public var body: some Reducer<State, Action> {
+      Scope(state: \.content, action: \.content, child: SwipeLogic.init)
+    }
   }
 }

@@ -27,7 +27,7 @@ public struct ProfileExplorerPreviewLogic {
   @Dependency(\.api) var api
 
   public var body: some Reducer<State, Action> {
-    Scope(state: \.child, action: \.child, child: {})
+    Scope(state: \.child, action: \.child, child: Child.init)
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
@@ -53,9 +53,23 @@ public struct ProfileExplorerPreviewLogic {
     }
   }
 
-  @Reducer(state: .equatable)
-  public enum Child {
-    case loading
-    case content(ProfileExplorerPreviewContentLogic)
+  @Reducer
+  public struct Child {
+    @ObservableState
+    public enum State: Equatable {
+      case loading
+      case content(ProfileExplorerPreviewContentLogic.State)
+    }
+
+    public enum Action {
+      case loading
+      case content(ProfileExplorerPreviewContentLogic.Action)
+    }
+
+    public var body: some Reducer<State, Action> {
+      Scope(state: \.content, action: \.content) {
+        ProfileExplorerPreviewContentLogic()
+      }
+    }
   }
 }

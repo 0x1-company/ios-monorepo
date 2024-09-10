@@ -50,7 +50,7 @@ public struct UnsentDirectMessageListLogic {
   @Dependency(\.feedbackGenerator) var feedbackGenerator
 
   public var body: some Reducer<State, Action> {
-    Scope(state: \.child, action: \.child, child: {})
+    Scope(state: \.child, action: \.child, child: Child.init)
     Reduce<State, Action> { state, action in
       switch action {
       case .seeAllButtonTapped:
@@ -70,7 +70,6 @@ public struct UnsentDirectMessageListLogic {
 
   @Reducer
   public struct Destination {
-    @ObservableState
     public enum State: Equatable {
       case recentMatch(RecentMatchLogic.State = .loading)
     }
@@ -84,9 +83,20 @@ public struct UnsentDirectMessageListLogic {
     }
   }
 
-  @Reducer(state: .equatable)
-  public enum Child {
-    case loading
-    case content(UnsentDirectMessageListContentLogic)
+  @Reducer
+  public struct Child {
+    @ObservableState
+    public enum State: Equatable {
+      case loading
+      case content(UnsentDirectMessageListContentLogic.State)
+    }
+
+    public enum Action {
+      case content(UnsentDirectMessageListContentLogic.Action)
+    }
+
+    public var body: some Reducer<State, Action> {
+      Scope(state: \.content, action: \.content, child: UnsentDirectMessageListContentLogic.init)
+    }
   }
 }
