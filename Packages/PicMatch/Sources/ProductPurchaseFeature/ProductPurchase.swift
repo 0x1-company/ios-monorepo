@@ -10,18 +10,15 @@ public struct ProductPurchaseView: View {
   }
 
   public var body: some View {
-    SwitchStore(store) { initialState in
-      switch initialState {
-      case .loading:
-        ProgressView()
-          .tint(Color.white)
-
-      case .content:
-        CaseLet(
-          /ProductPurchaseLogic.State.content,
-          action: ProductPurchaseLogic.Action.content,
-          then: ProductPurchaseContentView.init(store:)
-        )
+    Group {
+      switch store.state {
+        case .loading:
+          ProgressView()
+            .tint(Color.white)
+        case .content:
+          if let store = store.scope(state: \.content, action: \.content) {
+            ProductPurchaseContentView(store: store)
+          }
       }
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
