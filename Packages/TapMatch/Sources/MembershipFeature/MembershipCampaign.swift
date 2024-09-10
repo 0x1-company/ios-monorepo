@@ -22,7 +22,7 @@ public struct MembershipCampaignView: View {
         ScrollView {
           VStack(spacing: 16) {
             InvitationCampaignView(
-              item: $store.scope(
+              store: store.scope(
                 state: \.invitationCampaign,
                 action: \.invitationCampaign
               )
