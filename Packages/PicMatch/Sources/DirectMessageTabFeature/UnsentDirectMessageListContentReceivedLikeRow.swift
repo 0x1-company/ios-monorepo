@@ -36,12 +36,12 @@ public struct UnsentDirectMessageListContentReceivedLikeRowView: View {
             content: { image in
               image
                 .resizable()
-                .frame(width: 96, height: 96)
+                .frame(width: 90, height: 120)
                 .blur(radius: 18)
             },
             placeholder: {
               Color.black
-                .frame(width: 96, height: 96)
+                .frame(width: 90, height: 120)
                 .overlay {
                   ProgressView()
                     .progressViewStyle(CircularProgressViewStyle())
