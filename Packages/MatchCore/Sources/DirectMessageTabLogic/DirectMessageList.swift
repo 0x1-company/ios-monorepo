@@ -40,32 +40,12 @@ public struct DirectMessageListLogic {
   }
 
   public var body: some Reducer<State, Action> {
-    Scope(state: \.child, action: \.child, child: Child.init)
-    Reduce<State, Action> { _, action in
-      switch action {
-      case .onTask:
-        return .none
-
-      default:
-        return .none
-      }
-    }
+    Scope(state: \.child, action: \.child, child: {})
   }
 
-  @Reducer
-  public struct Child {
-    @ObservableState
-    public enum State: Equatable {
-      case loading
-      case content(DirectMessageListContentLogic.State)
-    }
-
-    public enum Action {
-      case content(DirectMessageListContentLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.content, action: \.content, child: DirectMessageListContentLogic.init)
-    }
+  @Reducer(state: .equatable)
+  public enum Child {
+    case loading
+    case content(DirectMessageListContentLogic)
   }
 }
