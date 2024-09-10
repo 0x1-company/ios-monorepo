@@ -11,26 +11,21 @@ public struct RecommendationView: View {
   }
 
   public var body: some View {
-    SwitchStore(store) { initialState in
-      switch initialState {
+    Group {
+      switch store.state {
       case .loading:
         ProgressView()
           .tint(Color.white)
-          .progressViewStyle(CircularProgressViewStyle())
 
       case .content:
-        CaseLet(
-          /RecommendationLogic.State.content,
-          action: RecommendationLogic.Action.content,
-          then: SwipeView.init(store:)
-        )
+        if let store = store.scope(state: \.content, action: \.content) {
+          SwipeView(store: store)
+        }
 
       case .empty:
-        CaseLet(
-          /RecommendationLogic.State.empty,
-          action: RecommendationLogic.Action.empty,
-          then: RecommendationEmptyView.init(store:)
-        )
+        if let store = store.scope(state: \.empty, action: \.empty) {
+          RecommendationEmptyView(store: store)
+        }
       }
     }
     .task { await store.send(.onTask).finish() }

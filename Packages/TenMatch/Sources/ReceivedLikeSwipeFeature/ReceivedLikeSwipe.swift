@@ -18,11 +18,12 @@ public struct ReceivedLikeSwipeView: View {
       Group {
         switch store.scope(state: \.child, action: \.child).state {
         case .loading:
-        Color.black
-          .overlay {
-            ProgressView()
-              .tint(Color.white)
-          }
+          Color.black
+            .overlay {
+              ProgressView()
+                .tint(Color.white)
+            }
+
         case .empty:
           emptyView
 

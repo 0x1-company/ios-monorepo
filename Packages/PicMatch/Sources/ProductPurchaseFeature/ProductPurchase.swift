@@ -12,13 +12,13 @@ public struct ProductPurchaseView: View {
   public var body: some View {
     Group {
       switch store.state {
-        case .loading:
-          ProgressView()
-            .tint(Color.white)
-        case .content:
-          if let store = store.scope(state: \.content, action: \.content) {
-            ProductPurchaseContentView(store: store)
-          }
+      case .loading:
+        ProgressView()
+          .tint(Color.white)
+      case .content:
+        if let store = store.scope(state: \.content, action: \.content) {
+          ProductPurchaseContentView(store: store)
+        }
       }
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
