@@ -70,24 +70,11 @@ public struct ReportLogic {
         return .none
       }
     }
-    .forEach(\.path, action: \.path) {
-      Path()
-    }
+    .forEach(\.path, action: \.path)
   }
 
-  @Reducer
-  public struct Path {
-    @ObservableState
-    public enum State: Equatable {
-      case reason(ReportReasonLogic.State)
-    }
-
-    public enum Action {
-      case reason(ReportReasonLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.reason, action: \.reason, child: ReportReasonLogic.init)
-    }
+  @Reducer(state: .equatable)
+  public enum Path {
+    case reason(ReportReasonLogic)
   }
 }

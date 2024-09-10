@@ -11,9 +11,7 @@ public struct ReportView: View {
   }
 
   public var body: some View {
-    NavigationStackStore(
-      store.scope(state: \.path, action: \.path)
-    ) {
+    NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
       List(
         [
           String(localized: "Spam", bundle: .module),
@@ -51,15 +49,9 @@ public struct ReportView: View {
         }
       }
     } destination: { store in
-      SwitchStore(store) { initialState in
-        switch initialState {
-        case .reason:
-          CaseLet(
-            /ReportLogic.Path.State.reason,
-            action: ReportLogic.Path.Action.reason,
-            then: ReportReasonView.init(store:)
-          )
-        }
+      switch store.case {
+      case let .reason(store):
+        ReportReasonView(store: store)
       }
     }
     .tint(Color.white)
