@@ -1,5 +1,4 @@
 import API
-import Dependencies
 import DependenciesMacros
 
 @DependencyClient
