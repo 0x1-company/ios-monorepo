@@ -31,8 +31,8 @@ jobs:
           sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ steps.next-version.outputs.NEXT_VERSION }}/g" App/BeMatch/Multiplatform/Staging/Info.plist
           sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ steps.next-version.outputs.NEXT_VERSION }}/g" App/BeMatch/Multiplatform/Production/Info.plist
           sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ steps.next-version.outputs.NEXT_VERSION }}/g" App/PicMatch/Multiplatform/Staging/Info.plist
-          sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ steps.next-version.outputs.NEXT_VERSION }}/g" App/PicMatch/Multiplatform/Staging/Info.plist
-          sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ steps.next-version.outputs.NEXT_VERSION }}/g" App/TapMatch/Multiplatform/Production/Info.plist
+          sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ steps.next-version.outputs.NEXT_VERSION }}/g" App/PicMatch/Multiplatform/Production/Info.plist
+          sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ steps.next-version.outputs.NEXT_VERSION }}/g" App/TapMatch/Multiplatform/Staging/Info.plist
           sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ steps.next-version.outputs.NEXT_VERSION }}/g" App/TapMatch/Multiplatform/Production/Info.plist
           sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ steps.next-version.outputs.NEXT_VERSION }}/g" App/TenMatch/Multiplatform/Staging/Info.plist
           sed -i '' "s/${{ steps.current-version.outputs.CURRENT_VERSION }}/${{ steps.next-version.outputs.NEXT_VERSION }}/g" App/TenMatch/Multiplatform/Production/Info.plist
