@@ -314,6 +314,7 @@ let package = Package(
       .product(name: "TutorialLogic", package: "MatchCore"),
     ]),
     .target(name: "UsernameSettingFeature", dependencies: [
+      "HowToLocketLinkFeature",
       .product(name: "UsernameSettingLogic", package: "MatchCore"),
     ]),
   ]
