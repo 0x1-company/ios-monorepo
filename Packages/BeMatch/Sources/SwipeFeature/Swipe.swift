@@ -16,10 +16,12 @@ public struct SwipeView: View {
   public var body: some View {
     VStack(spacing: 24) {
       ZStack {
-        ForEachStore(
+        ForEach(
           store.scope(state: \.rows, action: \.rows),
-          content: SwipeCardView.init(store:)
-        )
+          id: \.state.id
+        ) { store in
+          SwipeCardView(store: store)
+        }
       }
 
       HStack(spacing: 40) {

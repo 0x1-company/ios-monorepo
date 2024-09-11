@@ -14,10 +14,12 @@ public struct CategoryListView: View {
   public var body: some View {
     ScrollView(.vertical) {
       LazyVStack(spacing: 16) {
-        ForEachStore(
+        ForEach(
           store.scope(state: \.rows, action: \.rows),
-          content: CategorySectionView.init(store:)
-        )
+          id: \.state.id
+        ) { store in
+          CategorySectionView(store: store)
+        }
       }
       .padding(.top, 16)
       .padding(.bottom, 48)

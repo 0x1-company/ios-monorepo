@@ -23,10 +23,12 @@ public struct DirectMessageTabView: View {
             NotificationsReEnableView(store: store)
           }
 
-          ForEachStore(
+          ForEach(
             store.scope(state: \.banners, action: \.banners),
-            content: BannerView.init(store:)
-          )
+            id: \.state.id
+          ) { store in
+            BannerView(store: store)
+          }
         }
         .padding(.horizontal, 16)
 

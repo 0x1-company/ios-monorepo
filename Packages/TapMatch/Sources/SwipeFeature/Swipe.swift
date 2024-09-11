@@ -20,10 +20,12 @@ public struct SwipeView: View {
       Spacer()
 
       ZStack {
-        ForEachStore(
+        ForEach(
           store.scope(state: \.rows, action: \.rows),
-          content: SwipeCardView.init(store:)
-        )
+          id: \.state.id
+        ) { store in
+          SwipeCardView(store: store)
+        }
       }
 
       HStack(spacing: 40) {

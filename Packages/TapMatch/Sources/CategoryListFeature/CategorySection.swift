@@ -18,10 +18,12 @@ public struct CategorySectionView: View {
 
       ScrollView(.horizontal, showsIndicators: false) {
         LazyHStack(spacing: 8) {
-          ForEachStore(
+          ForEach(
             store.scope(state: \.rows, action: \.rows),
-            content: CategoryRowView.init(store:)
-          )
+            id: \.state.id
+          ) { store in
+            CategoryRowView(store: store)
+          }
         }
         .padding(.horizontal, 16)
       }

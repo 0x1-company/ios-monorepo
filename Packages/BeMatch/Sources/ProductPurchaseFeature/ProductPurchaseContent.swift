@@ -36,10 +36,12 @@ public struct ProductPurchaseContentView: View {
               .font(.title2)
               .fontWeight(.bold)
 
-            ForEachStore(
+            ForEach(
               store.scope(state: \.rows, action: \.rows),
-              content: ProductPurchaseContentRowView.init(store:)
-            )
+              id: \.state.id
+            ) { store in
+              ProductPurchaseContentRowView(store: store)
+            }
 
             Button {
               store.send(.restoreButtonTapped)

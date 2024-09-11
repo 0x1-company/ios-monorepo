@@ -25,10 +25,12 @@ public struct RecentMatchContentView: View {
             LikeGridView(store: store)
           }
 
-          ForEachStore(
+          ForEach(
             store.scope(state: \.matches, action: \.matches),
-            content: RecentMatchGridView.init(store:)
-          )
+            id: \.state.id
+          ) { store in
+            RecentMatchGridView(store: store)
+          }
         }
 
         if store.hasNextPage {

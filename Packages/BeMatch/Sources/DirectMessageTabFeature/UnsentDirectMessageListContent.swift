@@ -16,10 +16,12 @@ public struct UnsentDirectMessageListContentView: View {
           UnsentDirectMessageListContentReceivedLikeRowView(store: store)
         }
 
-        ForEachStore(
+        ForEach(
           store.scope(state: \.sortedRows, action: \.rows),
-          content: UnsentDirectMessageListContentRowView.init(store:)
-        )
+          id: \.state.id
+        ) { store in
+          UnsentDirectMessageListContentRowView(store: store)
+        }
 
         if store.hasNextPage {
           ProgressView()
