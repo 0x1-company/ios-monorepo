@@ -12,10 +12,9 @@ public struct UnsentDirectMessageListContentView: View {
   public var body: some View {
     ScrollView(.horizontal) {
       LazyHStack(spacing: 12) {
-        IfLetStore(
-          store.scope(state: \.receivedLike, action: \.receivedLike),
-          then: UnsentDirectMessageListContentReceivedLikeRowView.init(store:)
-        )
+        if let store = store.scope(state: \.receivedLike, action: \.receivedLike) {
+          UnsentDirectMessageListContentReceivedLikeRowView(store: store)
+        }
 
         ForEachStore(
           store.scope(state: \.sortedRows, action: \.rows),

@@ -44,15 +44,13 @@ public struct ProfileView: View {
         .padding(.horizontal, 16)
 
         VStack(spacing: 16) {
-          IfLetStore(
-            store.scope(state: \.pictureSlider, action: \.pictureSlider),
-            then: PictureSliderView.init(store:),
-            else: {
-              Color.black
-                .aspectRatio(contentMode: .fill)
-                .frame(width: width, height: width * (4 / 3))
-            }
-          )
+          if let store = store.scope(state: \.pictureSlider, action: \.pictureSlider) {
+            PictureSliderView(store: store)
+          } else {
+            Color.black
+              .aspectRatio(contentMode: .fill)
+              .frame(width: width, height: width * (4 / 3))
+          }
 
           if let url = store.currentUser?.externalProductUrl {
             Button {

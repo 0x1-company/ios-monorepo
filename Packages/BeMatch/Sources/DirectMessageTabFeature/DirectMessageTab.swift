@@ -19,10 +19,9 @@ public struct DirectMessageTabView: View {
     NavigationStack {
       ScrollView(.vertical) {
         LazyVStack(spacing: 16) {
-          IfLetStore(
-            store.scope(state: \.notificationsReEnable, action: \.notificationsReEnable),
-            then: NotificationsReEnableView.init(store:)
-          )
+          if let store = store.scope(state: \.notificationsReEnable, action: \.notificationsReEnable) {
+            NotificationsReEnableView(store: store)
+          }
 
           ForEachStore(
             store.scope(state: \.banners, action: \.banners),
@@ -32,15 +31,13 @@ public struct DirectMessageTabView: View {
         .padding(.horizontal, 16)
 
         LazyVStack(alignment: .leading, spacing: 32) {
-          IfLetStore(
-            store.scope(state: \.unsent, action: \.unsent),
-            then: UnsentDirectMessageListView.init(store:)
-          )
+          if let store = store.scope(state: \.unsent, action: \.unsent) {
+            UnsentDirectMessageListView(store: store)
+          }
 
-          IfLetStore(
-            store.scope(state: \.messages, action: \.messages),
-            then: DirectMessageListView.init(store:)
-          )
+          if let store = store.scope(state: \.messages, action: \.messages) {
+            DirectMessageListView(store: store)
+          }
         }
       }
       .toolbar(.visible, for: .tabBar)
