@@ -14,13 +14,11 @@ let package = Package(
     .library(name: "AppFeature", targets: ["AppFeature"]),
     .library(name: "BannedFeature", targets: ["BannedFeature"]),
     .library(name: "BannerFeature", targets: ["BannerFeature"]),
-    .library(name: "CategoryEmptyFeature", targets: ["CategoryEmptyFeature"]),
-    .library(name: "CategoryFeature", targets: ["CategoryFeature"]),
-    .library(name: "CategoryListFeature", targets: ["CategoryListFeature"]),
-    .library(name: "CategorySwipeFeature", targets: ["CategorySwipeFeature"]),
     .library(name: "DeleteAccountFeature", targets: ["DeleteAccountFeature"]),
     .library(name: "DirectMessageFeature", targets: ["DirectMessageFeature"]),
     .library(name: "DirectMessageTabFeature", targets: ["DirectMessageTabFeature"]),
+    .library(name: "DisplayNameSettingFeature", targets: ["DisplayNameSettingFeature"]),
+    .library(name: "ExplorerFeature", targets: ["ExplorerFeature"]),
     .library(name: "ForceUpdateFeature", targets: ["ForceUpdateFeature"]),
     .library(name: "FreezedFeature", targets: ["FreezedFeature"]),
     .library(name: "GenderSettingFeature", targets: ["GenderSettingFeature"]),
@@ -91,32 +89,12 @@ let package = Package(
       .product(name: "FirebaseCrashlyticsClient", package: "Dependencies"),
     ]),
     .target(name: "BannedFeature", dependencies: [
-      .product(name: "BannedLogic", package: "MatchCore"),
       "Styleguide",
+      .product(name: "BannedLogic", package: "MatchCore"),
     ]),
     .target(name: "BannerFeature", dependencies: [
+      "Styleguide",
       .product(name: "BannerLogic", package: "MatchCore"),
-      "Styleguide",
-    ]),
-    .target(name: "CategoryEmptyFeature", dependencies: [
-      .product(name: "CategoryEmptyLogic", package: "MatchCore"),
-      "Styleguide",
-    ]),
-    .target(name: "CategoryFeature", dependencies: [
-      .product(name: "CategoryLogic", package: "MatchCore"),
-      "CategoryListFeature",
-    ]),
-    .target(name: "CategoryListFeature", dependencies: [
-      .product(name: "CategoryListLogic", package: "MatchCore"),
-      "Styleguide",
-      "MembershipFeature",
-      "CategorySwipeFeature",
-      .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
-    ]),
-    .target(name: "CategorySwipeFeature", dependencies: [
-      .product(name: "CategorySwipeLogic", package: "MatchCore"),
-      "SwipeFeature",
-      "CategoryEmptyFeature",
     ]),
     .target(name: "DeleteAccountFeature", dependencies: [
       "Styleguide",
@@ -137,20 +115,26 @@ let package = Package(
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
     ]),
     .target(name: "DisplayNameSettingFeature", dependencies: [
-      .product(name: "DisplayNameSettingLogic", package: "MatchCore"),
       "Styleguide",
+      .product(name: "DisplayNameSettingLogic", package: "MatchCore"),
+    ]),
+    .target(name: "ExplorerFeature", dependencies: [
+      "Styleguide",
+      "SwipeFeature",
+      "MembershipFeature",
+      .product(name: "ExplorerLogic", package: "MatchCore"),
     ]),
     .target(name: "ForceUpdateFeature", dependencies: [
-      .product(name: "ForceUpdateLogic", package: "MatchCore"),
       "Styleguide",
+      .product(name: "ForceUpdateLogic", package: "MatchCore"),
     ]),
     .target(name: "FreezedFeature", dependencies: [
-      .product(name: "FreezedLogic", package: "MatchCore"),
       "Styleguide",
+      .product(name: "FreezedLogic", package: "MatchCore"),
     ]),
     .target(name: "GenderSettingFeature", dependencies: [
-      .product(name: "GenderSettingLogic", package: "MatchCore"),
       "Styleguide",
+      .product(name: "GenderSettingLogic", package: "MatchCore"),
     ]),
     .target(name: "HowToMovieFeature", dependencies: [
       "Styleguide",
@@ -158,20 +142,20 @@ let package = Package(
       .product(name: "HowToMovieLogic", package: "MatchCore"),
     ]),
     .target(name: "InvitationCodeFeature", dependencies: [
-      .product(name: "InvitationCodeLogic", package: "MatchCore"),
       "Styleguide",
+      .product(name: "InvitationCodeLogic", package: "MatchCore"),
     ]),
     .target(name: "InvitationFeature", dependencies: [
-      .product(name: "InvitationLogic", package: "MatchCore"),
       "Styleguide",
+      .product(name: "InvitationLogic", package: "MatchCore"),
     ]),
     .target(name: "LaunchFeature", dependencies: [
       "Styleguide",
       .product(name: "LaunchLogic", package: "MatchCore"),
     ]),
     .target(name: "MaintenanceFeature", dependencies: [
-      .product(name: "MaintenanceLogic", package: "MatchCore"),
       "Styleguide",
+      .product(name: "MaintenanceLogic", package: "MatchCore"),
     ]),
     .target(name: "MatchedFeature", dependencies: [
       "Styleguide",
@@ -179,8 +163,8 @@ let package = Package(
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
     ]),
     .target(name: "MatchEmptyFeature", dependencies: [
-      .product(name: "MatchEmptyLogic", package: "MatchCore"),
       "Styleguide",
+      .product(name: "MatchEmptyLogic", package: "MatchCore"),
     ]),
     .target(name: "MembershipFeature", dependencies: [
       "Styleguide",
@@ -198,10 +182,10 @@ let package = Package(
       .product(name: "MembershipStatusLogic", package: "MatchCore"),
     ]),
     .target(name: "NavigationFeature", dependencies: [
-      .product(name: "NavigationLogic", package: "MatchCore"),
-      "CategoryFeature",
-      "DirectMessageTabFeature",
+      "ExplorerFeature",
       "RecommendationFeature",
+      "DirectMessageTabFeature",
+      .product(name: "NavigationLogic", package: "MatchCore"),
     ]),
     .target(name: "NetworkErrorFeature", dependencies: [
       .product(name: "NetworkErrorLogic", package: "MatchCore"),
@@ -212,13 +196,13 @@ let package = Package(
       .product(name: "UIApplicationClient", package: "Dependencies"),
     ]),
     .target(name: "OnboardFeature", dependencies: [
-      .product(name: "OnboardLogic", package: "MatchCore"),
       "InvitationFeature",
       "HowToMovieFeature",
       "GenderSettingFeature",
       "UsernameSettingFeature",
-      "ProfilePictureSettingFeature",
       "DisplayNameSettingFeature",
+      "ProfilePictureSettingFeature",
+      .product(name: "OnboardLogic", package: "MatchCore"),
       .product(name: "PhotosClient", package: "Dependencies"),
       .product(name: "UserDefaultsClient", package: "Dependencies"),
       .product(name: "UIApplicationClient", package: "Dependencies"),
@@ -231,23 +215,23 @@ let package = Package(
       .product(name: "ProductPurchaseLogic", package: "MatchCore"),
     ]),
     .target(name: "ProfileEditFeature", dependencies: [
-      .product(name: "ProfileEditLogic", package: "MatchCore"),
       "HowToMovieFeature",
       "GenderSettingFeature",
       "UsernameSettingFeature",
       "ShortCommentSettingFeature",
       "ProfilePictureSettingFeature",
       "DisplayNameSettingFeature",
+      .product(name: "ProfileEditLogic", package: "MatchCore"),
     ]),
     .target(name: "ProfileExplorerFeature", dependencies: [
-      .product(name: "ProfileExplorerLogic", package: "MatchCore"),
       "DirectMessageFeature",
       "ProfileSharedFeature",
+      .product(name: "ProfileExplorerLogic", package: "MatchCore"),
     ]),
     .target(name: "ProfileFeature", dependencies: [
-      .product(name: "ProfileLogic", package: "MatchCore"),
       "ProfileSharedFeature",
       "UsernameSettingFeature",
+      .product(name: "ProfileLogic", package: "MatchCore"),
     ]),
     .target(name: "ProfilePictureSettingFeature", dependencies: [
       "Styleguide",
@@ -308,8 +292,8 @@ let package = Package(
       .product(name: "FirebaseAuthClient", package: "Dependencies"),
     ]),
     .target(name: "ShortCommentSettingFeature", dependencies: [
-      .product(name: "ShortCommentSettingLogic", package: "MatchCore"),
       "Styleguide",
+      .product(name: "ShortCommentSettingLogic", package: "MatchCore"),
     ]),
     .target(name: "Styleguide"),
     .target(name: "SwipeCardFeature", dependencies: [
@@ -318,16 +302,16 @@ let package = Package(
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
     ]),
     .target(name: "SwipeFeature", dependencies: [
-      .product(name: "SwipeLogic", package: "MatchCore"),
       "Styleguide",
       "ReportFeature",
       "MatchedFeature",
       "SwipeCardFeature",
       .product(name: "TcaHelpers", package: "Utility"),
+      .product(name: "SwipeLogic", package: "MatchCore"),
     ]),
     .target(name: "TutorialFeature", dependencies: [
-      .product(name: "TutorialLogic", package: "MatchCore"),
       "Styleguide",
+      .product(name: "TutorialLogic", package: "MatchCore"),
     ]),
     .target(name: "UsernameSettingFeature", dependencies: [
       .product(name: "UsernameSettingLogic", package: "MatchCore"),

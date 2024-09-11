@@ -1,6 +1,6 @@
-import CategoryFeature
 import ComposableArchitecture
 import DirectMessageTabFeature
+import ExplorerFeature
 import NavigationLogic
 import RecommendationFeature
 import SwiftUI
@@ -29,11 +29,11 @@ public struct RootNavigationView: View {
         .frame(width: 30, height: 30)
       }
 
-      CategoryView(store: store.scope(state: \.category, action: \.category))
-        .tag(RootNavigationLogic.Tab.category)
+      ExplorerView(store: store.scope(state: \.explorer, action: \.explorer))
+        .tag(RootNavigationLogic.Tab.explorer)
         .tabItem {
           Image(
-            store.tab.is(\.category)
+            store.tab.is(\.explorer)
               ? ImageResource.explorerActive
               : ImageResource.explorerDeactive
           )
