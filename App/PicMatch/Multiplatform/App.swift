@@ -64,7 +64,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
             brand: EnvironmentClient.Brand.picmatch,
             instagramUsername: String(localized: "picmatchus"),
             appId: "6473888485",
-            appStoreForEmptyURL: URL(string: "https://picmatch.onelink.me/nob4/ta8yroer")!,
+            appStoreForEmptyURL: URL(string: "https://picmatch.onelink.me/1q0w/kohur2q3")!,
             docsURL: URL(string: "https://docs.picmatch.app")!,
             howToMovieURL: URL(string: "https://storage.googleapis.com/picmatch-production.appspot.com/public/how-to.mov")!
           )
