@@ -22,6 +22,7 @@ let package = Package(
     .library(name: "ForceUpdateFeature", targets: ["ForceUpdateFeature"]),
     .library(name: "FreezedFeature", targets: ["FreezedFeature"]),
     .library(name: "GenderSettingFeature", targets: ["GenderSettingFeature"]),
+    .library(name: "HowToLocketLinkFeature", targets: ["HowToLocketLinkFeature"]),
     .library(name: "HowToMovieFeature", targets: ["HowToMovieFeature"]),
     .library(name: "InvitationCodeFeature", targets: ["InvitationCodeFeature"]),
     .library(name: "InvitationFeature", targets: ["InvitationFeature"]),
@@ -135,6 +136,10 @@ let package = Package(
     .target(name: "GenderSettingFeature", dependencies: [
       "Styleguide",
       .product(name: "GenderSettingLogic", package: "MatchCore"),
+    ]),
+    .target(name: "HowToLocketLinkFeature", dependencies: [
+      "Styleguide",
+      .product(name: "HowToLocketLinkLogic", package: "MatchCore"),
     ]),
     .target(name: "HowToMovieFeature", dependencies: [
       "Styleguide",
