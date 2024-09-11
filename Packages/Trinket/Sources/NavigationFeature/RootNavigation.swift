@@ -1,6 +1,6 @@
-import ExplorerFeature
 import ComposableArchitecture
 import DirectMessageTabFeature
+import ExplorerFeature
 import NavigationLogic
 import RecommendationFeature
 import SwiftUI
