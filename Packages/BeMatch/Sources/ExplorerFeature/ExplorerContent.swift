@@ -13,10 +13,12 @@ public struct ExplorerContentView: View {
   public var body: some View {
     ScrollView(.vertical) {
       VStack(spacing: 24) {
-        ForEachStore(
+        ForEach(
           store.scope(state: \.rows, action: \.rows),
-          content: ExplorerContentSectionView.init(store:)
-        )
+          id: \.state.id
+        ) { store in
+          ExplorerContentSectionView(store: store)
+        }
       }
       .padding(.top, 16)
       .padding(.bottom, 48)

@@ -18,10 +18,12 @@ public struct ExplorerContentSectionView: View {
 
       ScrollView(.horizontal, showsIndicators: false) {
         LazyHStack(spacing: 12) {
-          ForEachStore(
+          ForEach(
             store.scope(state: \.rows, action: \.rows),
-            content: ExplorerContentRowView.init(store:)
-          )
+            id: \.state.id
+          ) { store in
+            ExplorerContentRowView(store: store)
+          }
         }
         .padding(.horizontal, 16)
       }

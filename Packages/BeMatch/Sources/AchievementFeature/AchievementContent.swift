@@ -53,10 +53,9 @@ public struct AchievementContentView: View {
         }
 
         GridRow(alignment: .top) {
-          IfLetStore(
-            store.scope(state: \.history, action: \.history),
-            then: AchievementHistoryWidgetView.init(store:)
-          )
+          if let store = store.scope(state: \.history, action: \.history) {
+            AchievementHistoryWidgetView(store: store)
+          }
         }
       }
       .padding(.top, 16)

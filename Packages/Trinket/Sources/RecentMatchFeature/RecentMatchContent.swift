@@ -21,15 +21,16 @@ public struct RecentMatchContentView: View {
           ),
           spacing: 16
         ) {
-          IfLetStore(
-            store.scope(state: \.likeGrid, action: \.likeGrid),
-            then: LikeGridView.init(store:)
-          )
+          if let store = store.scope(state: \.likeGrid, action: \.likeGrid) {
+            LikeGridView(store: store)
+          }
 
-          ForEachStore(
+          ForEach(
             store.scope(state: \.matches, action: \.matches),
-            content: RecentMatchGridView.init(store:)
-          )
+            id: \.state.id
+          ) { store in
+            RecentMatchGridView(store: store)
+          }
         }
 
         if store.hasNextPage {

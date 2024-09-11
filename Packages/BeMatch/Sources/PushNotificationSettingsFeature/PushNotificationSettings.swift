@@ -11,10 +11,12 @@ public struct PushNotificationSettingsView: View {
 
   public var body: some View {
     List {
-      ForEachStore(
+      ForEach(
         store.scope(state: \.rows, action: \.rows),
-        content: PushNotificationSettingsRowView.init(store:)
-      )
+        id: \.state.id
+      ) { store in
+        PushNotificationSettingsRowView(store: store)
+      }
     }
     .navigationBarTitleDisplayMode(.inline)
     .navigationTitle(String(localized: "Push Notifications", bundle: .module))

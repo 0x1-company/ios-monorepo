@@ -11,10 +11,12 @@ public struct DirectMessageListContentView: View {
 
   public var body: some View {
     LazyVStack(alignment: .leading, spacing: 8) {
-      ForEachStore(
+      ForEach(
         store.scope(state: \.sortedRows, action: \.rows),
-        content: DirectMessageListContentRowView.init(store:)
-      )
+        id: \.state.id
+      ) { store in
+        DirectMessageListContentRowView(store: store)
+      }
 
       if store.hasNextPage {
         ProgressView()

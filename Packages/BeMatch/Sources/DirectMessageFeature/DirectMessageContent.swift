@@ -21,10 +21,12 @@ public struct DirectMessageContentView: View {
               .task { await store.send(.scrollViewBottomReached).finish() }
           }
 
-          ForEachStore(
+          ForEach(
             store.scope(state: \.sortedRows, action: \.rows),
-            content: DirectMessageRowView.init(store:)
-          )
+            id: \.state.id
+          ) { store in
+            DirectMessageRowView(store: store)
+          }
         }
         .padding(.all, 16)
         .onAppear {

@@ -199,13 +199,12 @@ public struct SettingsView: View {
       } header: {
         Text("ABOUT", bundle: .module)
       } footer: {
-        IfLetStore(
-          store.scope(state: \.creationDate, action: \.creationDate),
-          then: CreationDateView.init(store:)
-        )
-        .padding(.bottom, 24)
-        .frame(maxWidth: .infinity, alignment: .center)
-        .multilineTextAlignment(.center)
+        if let store = store.scope(state: \.creationDate, action: \.creationDate) {
+          CreationDateView(store: store)
+            .padding(.bottom, 24)
+            .frame(maxWidth: .infinity, alignment: .center)
+            .multilineTextAlignment(.center)
+        }
       }
     }
     .navigationTitle(String(localized: "Settings", bundle: .module))

@@ -61,10 +61,9 @@ public struct AppView: View {
       store.send(.scenePhaseChanged(scenePhase))
     }
     .overlay {
-      IfLetStore(
-        store.scope(state: \.tutorial, action: \.tutorial),
-        then: TutorialView.init(store:)
-      )
+      if let store = store.scope(state: \.tutorial, action: \.tutorial) {
+        TutorialView(store: store)
+      }
     }
     .fullScreenCover(
       item: $store.scope(state: \.destination?.receivedLike, action: \.destination.receivedLike),
