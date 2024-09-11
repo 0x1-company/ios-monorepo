@@ -14,13 +14,11 @@ let package = Package(
     .library(name: "AppFeature", targets: ["AppFeature"]),
     .library(name: "BannedFeature", targets: ["BannedFeature"]),
     .library(name: "BannerFeature", targets: ["BannerFeature"]),
-    .library(name: "CategoryEmptyFeature", targets: ["CategoryEmptyFeature"]),
-    .library(name: "CategoryFeature", targets: ["CategoryFeature"]),
-    .library(name: "CategoryListFeature", targets: ["CategoryListFeature"]),
-    .library(name: "CategorySwipeFeature", targets: ["CategorySwipeFeature"]),
     .library(name: "DeleteAccountFeature", targets: ["DeleteAccountFeature"]),
     .library(name: "DirectMessageFeature", targets: ["DirectMessageFeature"]),
     .library(name: "DirectMessageTabFeature", targets: ["DirectMessageTabFeature"]),
+    .library(name: "DisplayNameSettingFeature", targets: ["DisplayNameSettingFeature"]),
+    .library(name: "ExplorerFeature", targets: ["ExplorerFeature"]),
     .library(name: "ForceUpdateFeature", targets: ["ForceUpdateFeature"]),
     .library(name: "FreezedFeature", targets: ["FreezedFeature"]),
     .library(name: "GenderSettingFeature", targets: ["GenderSettingFeature"]),
@@ -98,26 +96,6 @@ let package = Package(
       .product(name: "BannerLogic", package: "MatchCore"),
       "Styleguide",
     ]),
-    .target(name: "CategoryEmptyFeature", dependencies: [
-      .product(name: "CategoryEmptyLogic", package: "MatchCore"),
-      "Styleguide",
-    ]),
-    .target(name: "CategoryFeature", dependencies: [
-      .product(name: "CategoryLogic", package: "MatchCore"),
-      "CategoryListFeature",
-    ]),
-    .target(name: "CategoryListFeature", dependencies: [
-      .product(name: "CategoryListLogic", package: "MatchCore"),
-      "Styleguide",
-      "MembershipFeature",
-      "CategorySwipeFeature",
-      .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
-    ]),
-    .target(name: "CategorySwipeFeature", dependencies: [
-      .product(name: "CategorySwipeLogic", package: "MatchCore"),
-      "SwipeFeature",
-      "CategoryEmptyFeature",
-    ]),
     .target(name: "DeleteAccountFeature", dependencies: [
       "Styleguide",
       .product(name: "DeleteAccountLogic", package: "MatchCore"),
@@ -139,6 +117,12 @@ let package = Package(
     .target(name: "DisplayNameSettingFeature", dependencies: [
       .product(name: "DisplayNameSettingLogic", package: "MatchCore"),
       "Styleguide",
+    ]),
+    .target(name: "ExplorerFeature", dependencies: [
+      "Styleguide",
+      "SwipeFeature",
+      "MembershipFeature",
+      .product(name: "ExplorerLogic", package: "MatchCore"),
     ]),
     .target(name: "ForceUpdateFeature", dependencies: [
       .product(name: "ForceUpdateLogic", package: "MatchCore"),
@@ -198,10 +182,10 @@ let package = Package(
       .product(name: "MembershipStatusLogic", package: "MatchCore"),
     ]),
     .target(name: "NavigationFeature", dependencies: [
-      .product(name: "NavigationLogic", package: "MatchCore"),
-      "CategoryFeature",
-      "DirectMessageTabFeature",
+      "ExplorerFeature",
       "RecommendationFeature",
+      "DirectMessageTabFeature",
+      .product(name: "NavigationLogic", package: "MatchCore"),
     ]),
     .target(name: "NetworkErrorFeature", dependencies: [
       .product(name: "NetworkErrorLogic", package: "MatchCore"),

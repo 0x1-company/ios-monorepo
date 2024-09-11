@@ -1,26 +1,26 @@
-import CategoryListLogic
 import ComposableArchitecture
+import ExplorerLogic
 import SwiftUI
 
-public struct CategorySectionView: View {
-  @Bindable var store: StoreOf<CategorySectionLogic>
+public struct ExplorerContentSectionView: View {
+  @Bindable var store: StoreOf<ExplorerContentSectionLogic>
 
-  public init(store: StoreOf<CategorySectionLogic>) {
+  public init(store: StoreOf<ExplorerContentSectionLogic>) {
     self.store = store
   }
 
   public var body: some View {
     VStack(alignment: .leading, spacing: 8) {
-      Text(store.userCategory.title)
-        .font(.system(.subheadline, weight: .semibold))
+      Text(store.explorer.title)
         .foregroundStyle(Color.secondary)
+        .font(.system(.headline, weight: .semibold))
         .padding(.horizontal, 16)
 
       ScrollView(.horizontal, showsIndicators: false) {
-        LazyHStack(spacing: 8) {
+        LazyHStack(spacing: 12) {
           ForEachStore(
             store.scope(state: \.rows, action: \.rows),
-            content: CategoryRowView.init(store:)
+            content: ExplorerContentRowView.init(store:)
           )
         }
         .padding(.horizontal, 16)

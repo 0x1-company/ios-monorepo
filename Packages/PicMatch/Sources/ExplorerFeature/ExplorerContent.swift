@@ -1,22 +1,21 @@
-import CategoryListLogic
-import CategorySwipeFeature
 import ComposableArchitecture
+import ExplorerLogic
 import MembershipFeature
 import SwiftUI
 
-public struct CategoryListView: View {
-  @Bindable var store: StoreOf<CategoryListLogic>
+public struct ExplorerContentView: View {
+  @Bindable var store: StoreOf<ExplorerContentLogic>
 
-  public init(store: StoreOf<CategoryListLogic>) {
+  public init(store: StoreOf<ExplorerContentLogic>) {
     self.store = store
   }
 
   public var body: some View {
     ScrollView(.vertical) {
-      LazyVStack(spacing: 16) {
+      VStack(spacing: 24) {
         ForEachStore(
           store.scope(state: \.rows, action: \.rows),
-          content: CategorySectionView.init(store:)
+          content: ExplorerContentSectionView.init(store:)
         )
       }
       .padding(.top, 16)
@@ -26,7 +25,7 @@ public struct CategoryListView: View {
       item: $store.scope(state: \.destination?.swipe, action: \.destination.swipe)
     ) { store in
       NavigationStack {
-        CategorySwipeView(store: store)
+        ExplorerSwipeView(store: store)
       }
     }
     .fullScreenCover(

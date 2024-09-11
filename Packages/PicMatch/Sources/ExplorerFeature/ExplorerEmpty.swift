@@ -1,12 +1,12 @@
-import CategoryEmptyLogic
 import ComposableArchitecture
+import ExplorerLogic
 import Styleguide
 import SwiftUI
 
-public struct CategoryEmptyView: View {
-  @Bindable var store: StoreOf<CategoryEmptyLogic>
+public struct ExplorerEmptyView: View {
+  @Bindable var store: StoreOf<ExplorerEmptyLogic>
 
-  public init(store: StoreOf<CategoryEmptyLogic>) {
+  public init(store: StoreOf<ExplorerEmptyLogic>) {
     self.store = store
   }
 
@@ -33,10 +33,10 @@ public struct CategoryEmptyView: View {
 
 #Preview {
   NavigationStack {
-    CategoryEmptyView(
+    ExplorerEmptyView(
       store: .init(
-        initialState: CategoryEmptyLogic.State(),
-        reducer: { CategoryEmptyLogic() }
+        initialState: ExplorerEmptyLogic.State(),
+        reducer: { ExplorerEmptyLogic() }
       )
     )
   }

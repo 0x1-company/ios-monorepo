@@ -1,36 +1,26 @@
-import CategoryEmptyFeature
-import CategorySwipeLogic
 import ComposableArchitecture
-import MatchedFeature
-import ReportFeature
-import Styleguide
+import ExplorerLogic
 import SwiftUI
-import SwipeCardFeature
 import SwipeFeature
 
-public struct CategorySwipeView: View {
-  @Bindable var store: StoreOf<CategorySwipeLogic>
+public struct ExplorerSwipeView: View {
+  @Bindable var store: StoreOf<ExplorerSwipeLogic>
 
-  public init(store: StoreOf<CategorySwipeLogic>) {
+  public init(store: StoreOf<ExplorerSwipeLogic>) {
     self.store = store
   }
 
   public var body: some View {
-    SwitchStore(store.scope(state: \.child, action: \.child)) { initialState in
-      switch initialState {
-      case .swipe:
-        CaseLet(
-          /CategorySwipeLogic.Child.State.swipe,
-          action: CategorySwipeLogic.Child.Action.swipe,
-          then: SwipeView.init(store:)
-        )
-        .padding(.horizontal, 16)
+    Group {
+      switch store.scope(state: \.child, action: \.child).state {
       case .empty:
-        CaseLet(
-          /CategorySwipeLogic.Child.State.empty,
-          action: CategorySwipeLogic.Child.Action.empty,
-          then: CategoryEmptyView.init(store:)
-        )
+        if let store = store.scope(state: \.child.empty, action: \.child.empty) {
+          ExplorerEmptyView(store: store)
+        }
+      case .content:
+        if let store = store.scope(state: \.child.content, action: \.child.content) {
+          SwipeView(store: store)
+        }
       }
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
