@@ -95,7 +95,7 @@ public struct OnboardLogic {
         return .none
 
       case .username(.delegate(.nextScreen)),
-          .displayName(.delegate(.nextScreen)):
+           .displayName(.delegate(.nextScreen)):
         let gender = state.user?.gender.value
         state.path.append(.gender(GenderSettingLogic.State(gender: gender == .other ? nil : gender)))
         return .none
