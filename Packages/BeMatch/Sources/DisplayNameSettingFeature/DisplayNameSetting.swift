@@ -25,7 +25,7 @@ public struct DisplayNameSettingView: View {
           .autocorrectionDisabled()
           .focused($isFocused)
           .font(.system(.title3, weight: .semibold))
-        
+
         Text("By entering your username you agree to our [Terms](https://docs.bematch.jp/terms-of-use) and [Privacy Policy](https://docs.bematch.jp/privacy-policy).This application is provided by ONE, Inc. and not by BeReal.", bundle: .module)
           .font(.system(.caption))
           .foregroundStyle(Color.gray)
