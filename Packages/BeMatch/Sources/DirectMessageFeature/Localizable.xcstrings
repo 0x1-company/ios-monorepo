@@ -1,142 +1,114 @@
 {
   "sourceLanguage" : "en",
-  "strings": {
-    "Add BeReal": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state" : "translated",
-            "value" : "BeRealを追加する"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state" : "translated",
-            "value" : "Ajouter BeReal"
-          }
-        },
-        "vi": {
-          "stringUnit": {
-            "state" : "translated",
-            "value" : "Thêm BeReal"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state" : "translated",
-            "value" : "BeReal 추가"
-          }
-        }
-      }
-    },
-    "Add BeReal and send a message!": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state" : "translated",
-            "value" : "BeRealを追加してメッセージを送ってみよう！"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state" : "translated",
-            "value" : "Ajoutez BeReal et envoyez un message !"
-          }
-        },
-        "vi": {
-          "stringUnit": {
-            "state" : "translated",
-            "value" : "Thêm BeReal và gửi tin nhắn!"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state" : "translated",
-            "value" : "BeReal을 추가하고 메시지 보내기!"
-          }
-        }
-      }
-    },
-    "Matched with %@!": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state" : "translated",
-            "value" : "%@さんとマッチしたよ！"
-          }
-        },
-        "fr": {
-          "stringUnit": {
+  "strings" : {
+    "Matched with %@!" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
             "state" : "translated",
             "value" : "Correspondance avec %@ !"
           }
         },
-        "vi": {
-          "stringUnit": {
+        "ja" : {
+          "stringUnit" : {
             "state" : "translated",
-            "value" : "Đã ghép đôi với %@!"
+            "value" : "%@さんとマッチしたよ！"
           }
         },
-        "ko": {
-          "stringUnit": {
+        "ko" : {
+          "stringUnit" : {
             "state" : "translated",
             "value" : "%@와 매치되었습니다!"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đã ghép đôi với %@!"
           }
         }
       }
     },
-    "Report": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
-            "state" : "translated",
-            "value" : "通報"
-          }
-        },
-        "fr": {
-          "stringUnit": {
+    "Report" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
             "state" : "translated",
             "value" : "Signaler"
           }
         },
-        "vi": {
-          "stringUnit": {
+        "ja" : {
+          "stringUnit" : {
             "state" : "translated",
-            "value" : "Báo cáo"
+            "value" : "通報"
           }
         },
-        "ko": {
-          "stringUnit": {
+        "ko" : {
+          "stringUnit" : {
             "state" : "translated",
             "value" : "신고"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Báo cáo"
           }
         }
       }
     },
-    "The operator may check and delete the contents of messages for the purpose of operating a sound service. In addition, the account may be suspended if inappropriate use is confirmed.": {
-      "localizations": {
-        "ja": {
-          "stringUnit": {
+    "Send a message!" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
             "state" : "translated",
-            "value" : "健全なサービスを運営する目的で運営者がメッセージの内容を確認・削除する場合があります。また、不適切な利用を確認するとアカウントを停止する場合があります。"
+            "value" : "Envoyer un message!"
           }
         },
-        "fr": {
-          "stringUnit": {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "メッセージを送る！"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "메시지를 보내다!"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gửi một tin nhắn!"
+          }
+        }
+      }
+    },
+    "The operator may check and delete the contents of messages for the purpose of operating a sound service. In addition, the account may be suspended if inappropriate use is confirmed." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
             "state" : "translated",
             "value" : "L'opérateur peut vérifier et supprimer le contenu des messages afin de maintenir un service sain. De plus, le compte peut être suspendu en cas d'utilisation inappropriée."
           }
         },
-        "vi": {
-          "stringUnit": {
+        "ja" : {
+          "stringUnit" : {
             "state" : "translated",
-            "value" : "Người điều hành có thể kiểm tra và xóa nội dung tin nhắn nhằm duy trì dịch vụ lành mạnh. Ngoài ra, tài khoản có thể bị đình chỉ nếu xác nhận việc sử dụng không phù hợp."
+            "value" : "健全なサービスを運営する目的で運営者がメッセージの内容を確認・削除する場合があります。また、不適切な利用を確認するとアカウントを停止する場合があります。"
           }
         },
-        "ko": {
-          "stringUnit": {
+        "ko" : {
+          "stringUnit" : {
             "state" : "translated",
             "value" : "운영자는 건전한 서비스를 위해 메시지 내용을 확인 및 삭제할 수 있습니다. 또한 부적절한 사용이 확인되면 계정이 정지될 수 있습니다."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Người điều hành có thể kiểm tra và xóa nội dung tin nhắn nhằm duy trì dịch vụ lành mạnh. Ngoài ra, tài khoản có thể bị đình chỉ nếu xác nhận việc sử dụng không phù hợp."
           }
         }
       }
@@ -144,3 +116,4 @@
   },
   "version" : "1.0"
 }
+

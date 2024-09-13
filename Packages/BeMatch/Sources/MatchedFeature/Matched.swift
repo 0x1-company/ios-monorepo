@@ -17,18 +17,6 @@ public struct MatchedView: View {
         .resizable()
         .aspectRatio(contentMode: .fit)
         .frame(height: 240)
-
-      VStack(spacing: 12) {
-        PrimaryButton(
-          String(localized: "Add BeReal.", bundle: .module)
-        ) {
-          store.send(.addExternalProductButtonTapped)
-        }
-
-        Text("🔗 \(store.displayTargetUserInfo)", bundle: .module)
-          .foregroundStyle(Color.white)
-          .font(.system(.caption, weight: .semibold))
-      }
     }
     .padding(.horizontal, 16)
     .ignoresSafeArea()
