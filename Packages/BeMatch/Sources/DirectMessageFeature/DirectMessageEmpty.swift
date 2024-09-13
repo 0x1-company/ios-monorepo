@@ -19,15 +19,9 @@ public struct DirectMessageEmptyView: View {
           Text("Matched with \(store.displayName)!", bundle: .module)
             .font(.system(.title3, weight: .semibold))
 
-          Text("Add BeReal and send a message!", bundle: .module)
+          Text("Send a message!", bundle: .module)
         }
         .multilineTextAlignment(.center)
-
-        PrimaryButton(
-          String(localized: "Add BeReal", bundle: .module)
-        ) {
-          store.send(.jumpExternalProductButtonTapped)
-        }
       }
       .frame(maxHeight: .infinity)
 
