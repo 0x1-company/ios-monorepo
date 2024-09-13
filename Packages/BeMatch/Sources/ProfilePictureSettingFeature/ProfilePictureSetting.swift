@@ -26,30 +26,10 @@ public struct ProfilePictureSettingView: View {
       ScrollView {
         VStack(spacing: 36) {
           VStack(spacing: 8) {
-            Text(
-              store.allowNonExternalProductPhoto
-                ? "Set your photo to your profile (it will be public 🌏)"
-                : "Set 3 photos saved by BeReal in your profile (it will be public 🌏)",
-              bundle: .module
-            )
+            Text("Set your photo to your profile (it will be public 🌏)", bundle: .module)
             .frame(minHeight: 50)
             .layoutPriority(1)
             .font(.system(.title3, weight: .semibold))
-
-            if store.isWarningTextVisible {
-              Button {
-                store.send(.howToButtonTapped)
-              } label: {
-                HStack(spacing: 2) {
-                  Image(systemName: "exclamationmark.triangle.fill")
-                    .foregroundStyle(Color.yellow)
-
-                  Text("Select a photo saved with BeReal.", bundle: .module)
-                    .foregroundStyle(Color.secondary)
-                }
-                .font(.callout)
-              }
-            }
           }
 
           LazyVGrid(

@@ -257,10 +257,7 @@ public struct ProfilePictureSettingLogic {
   ) -> Bool {
     switch brand {
     case .bematch:
-      if allowNonExternalProductPhoto {
-        return true
-      }
-      return size == CGSize(width: 1500, height: 2000)
+      return true
     case .picmatch:
       return true
     case .tapmatch:
