@@ -354,7 +354,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "まだBeMatch.を使っていない友達に招待コードを贈りましょう！"
+            "value" : "まだBeMatchを使っていない友達に招待コードを贈りましょう！"
           }
         },
         "vi" : {
@@ -455,30 +455,30 @@
         }
       }
     },
-    "When they enter the Invitation Code and register, you will both receive BeMatch.PRO for sure!" : {
+    "When they enter the Invitation Code and register, you will both receive BeMatch PRO for sure!" : {
       "localizations" : {
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lorsqu'ils saisissent le code d'invitation et s'inscrivent, vous recevrez tous les deux BeMatch.PRO !"
+            "value" : "Lorsqu'ils saisissent le code d'invitation et s'inscrivent, vous recevrez tous les deux BeMatch PRO !"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "相手が招待コードを入力して登録すると、お互いにBeMatch.PROを必ずプレゼント！"
+            "value" : "相手が招待コードを入力して登録すると、お互いにBeMatch PROを必ずプレゼント！"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Khi họ nhập Mã mời và đăng ký, cả hai bạn chắc chắn sẽ nhận được BeMatch.PRO!"
+            "value" : "Khi họ nhập Mã mời và đăng ký, cả hai bạn chắc chắn sẽ nhận được BeMatch PRO!"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "초대 코드를 입력하고 등록하면 두 사람 모두 BeMatch.PRO를 받을 수 있습니다!"
+            "value" : "초대 코드를 입력하고 등록하면 두 사람 모두 BeMatch PRO를 받을 수 있습니다!"
           }
         }
       }

@@ -21,7 +21,7 @@ struct HowToReceiveBenefitView: View {
         Text("2. \(displayDuration) free for both parties!", bundle: .module)
           .font(.system(.title3, weight: .semibold))
 
-        Text("When they enter the Invitation Code and register, you will both receive BeMatch.PRO for sure!", bundle: .module)
+        Text("When they enter the Invitation Code and register, you will both receive BeMatch PRO for sure!", bundle: .module)
       }
 
       Image(ImageResource.invitationCodeSample)
