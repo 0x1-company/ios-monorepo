@@ -4,8 +4,54 @@
     "" : {
 
     },
+    "By entering your username you agree to our [Terms](https://docs.bematch.jp/terms-of-use) and [Privacy Policy](https://docs.bematch.jp/privacy-policy).This application is provided by ONE, Inc. and not by BeReal." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al ingresar su nombre de usuario, acepta nuestros [Términos](https://docs.bematch.jp/terms-of-use) y [Política de Privacidad](https://docs.bematch.jp/privacy-policy). Esta aplicación es proporcionada por ONE, Inc. y no por BeReal."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En entrant votre nom d'utilisateur, vous acceptez nos [Conditions d'utilisation](https://docs.bematch.jp/terms-of-use) et notre [Politique de confidentialité](https://docs.bematch.jp/privacy-policy). Cette application est fournie par ONE, Inc. et non par BeReal."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この操作を行うと、私たちの[利用規約](https://docs.bematch.jp/terms-of-use)と[プライバシーポリシー](https://docs.bematch.jp/privacy-policy)に同意したことになります。本アプリはONE, Inc.が提供するものであり、BeRealが提供するものではありません。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사용자 이름을 입력함으로써 당사의 [이용 약관](https://docs.bematch.jp/terms-of-use) 및 [개인정보 보호정책](https://docs.bematch.jp/privacy-policy)에 동의하게 됩니다. 이 애플리케이션은 BeReal이 아닌 ONE, Inc.에서 제공합니다."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wprowadzając swoją nazwę użytkownika, zgadzasz się na nasze [Warunki](https://docs.bematch.jp/terms-of-use) i [Politykę Prywatności](https://docs.bematch.jp/privacy-policy). Ta aplikacja jest dostarczana przez ONE, Inc., a nie przez BeReal."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bằng cách nhập tên người dùng của bạn, bạn đồng ý với [Điều khoản](https://docs.bematch.jp/terms-of-use) và [Chính sách quyền riêng tư](https://docs.bematch.jp/privacy-policy) của chúng tôi. Ứng dụng này được cung cấp bởi ONE, Inc. và không phải bởi BeReal."
+          }
+        }
+      }
+    },
     "Next" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siguiente"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -24,6 +70,12 @@
             "value" : "다음"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dalej"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
@@ -34,6 +86,12 @@
     },
     "What's your nick name?" : {
       "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Cuál es tu apodo?"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -43,13 +101,19 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ニックネームを設定してください"
+            "value" : "ニックネームを教えてください"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "닉네임이 무엇인가요?"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jaki jest twój pseudonim?"
           }
         },
         "vi" : {

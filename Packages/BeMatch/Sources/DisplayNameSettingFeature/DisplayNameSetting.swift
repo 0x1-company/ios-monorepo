@@ -18,14 +18,18 @@ public struct DisplayNameSettingView: View {
         .frame(height: 50)
         .font(.system(.title3, weight: .semibold))
 
-      VStack(spacing: 0) {
+      VStack(spacing: 64) {
         TextField("", text: $store.displayName)
           .foregroundStyle(Color.white)
           .textInputAutocapitalization(.never)
           .autocorrectionDisabled()
           .focused($isFocused)
+          .font(.system(.title3, weight: .semibold))
+        
+        Text("By entering your username you agree to our [Terms](https://docs.bematch.jp/terms-of-use) and [Privacy Policy](https://docs.bematch.jp/privacy-policy).This application is provided by ONE, Inc. and not by BeReal.", bundle: .module)
+          .font(.system(.caption))
+          .foregroundStyle(Color.gray)
       }
-      .font(.system(.title3, weight: .semibold))
 
       Spacer()
 
