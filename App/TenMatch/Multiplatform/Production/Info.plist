@@ -33,7 +33,7 @@
 	<key>FacebookClientToken</key>
 	<string>c0105ac08c9f2af92ea97f15eebc4387</string>
 	<key>FacebookDisplayName</key>
-	<string>BeMatch.</string>
+	<string>BeMatch</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
 	<key>FirebaseAutomaticScreenReportingEnabled</key>
