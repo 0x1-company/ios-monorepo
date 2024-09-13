@@ -58,62 +58,6 @@
         }
       }
     },
-    "Select a photo saved with BeReal." : {
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sélectionnez une photo enregistrée avec BeReal."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeRealで保存した写真を選択してください"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeReal로 저장한 사진을 선택하세요."
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chọn một bức ảnh đã lưu bằng BeReal."
-          }
-        }
-      }
-    },
-    "Set 3 photos saved by BeReal in your profile (it will be public 🌏)" : {
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Définissez 3 photos enregistrées par BeReal dans votre profil (elles seront publiques 🌏)"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeRealで保存した写真を3枚プロフィールに設定しよう（公開されるよ 🌏）"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeReal로 저장한 사진 3장을 프로필에 설정하세요 (공개됩니다 🌏)"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Đặt 3 bức ảnh đã lưu bằng BeReal vào hồ sơ của bạn (sẽ được công khai 🌏)"
-          }
-        }
-      }
-    },
     "Set your photo to your profile (it will be public 🌏)" : {
       "localizations" : {
         "fr" : {
