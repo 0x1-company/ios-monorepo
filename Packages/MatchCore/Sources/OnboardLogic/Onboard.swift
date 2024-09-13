@@ -20,6 +20,7 @@ public struct OnboardLogic {
   public struct State: Equatable {
     let user: API.UserInternal?
     public var username: UsernameSettingLogic.State
+    public var displayName: DisplayNameSettingLogic.State
     public var path = StackState<Path.State>()
     var hasInvitationCampaign = false
     @Presents public var destination: Destination.State?
@@ -40,6 +41,7 @@ public struct OnboardLogic {
       case .trinket:
         username = UsernameSettingLogic.State(username: user?.locketUrl ?? "")
       }
+      displayName = DisplayNameSettingLogic.State(displayName: user?.displayName)
       if !username.value.isEmpty {
         let gender = user?.gender.value
         path.append(.gender(GenderSettingLogic.State(gender: gender == .other ? nil : gender)))
@@ -51,6 +53,7 @@ public struct OnboardLogic {
     case onTask
     case activeInvitationCampaign(Result<API.ActiveInvitationCampaignQuery.Data, Error>)
     case username(UsernameSettingLogic.Action)
+    case displayName(DisplayNameSettingLogic.Action)
     case path(StackAction<Path.State, Path.Action>)
     case destination(PresentationAction<Destination.Action>)
     case delegate(Delegate)
@@ -72,6 +75,9 @@ public struct OnboardLogic {
     Scope(state: \.username, action: \.username) {
       UsernameSettingLogic()
     }
+    Scope(state: \.displayName, action: \.displayName) {
+      DisplayNameSettingLogic()
+    }
     Reduce<State, Action> { state, action in
       switch action {
       case .onTask:
@@ -88,14 +94,20 @@ public struct OnboardLogic {
         state.hasInvitationCampaign = data.activeInvitationCampaign != nil
         return .none
 
-      case .username(.delegate(.nextScreen)):
+      case .username(.delegate(.nextScreen)),
+          .displayName(.delegate(.nextScreen)):
         let gender = state.user?.gender.value
         state.path.append(.gender(GenderSettingLogic.State(gender: gender == .other ? nil : gender)))
         return .none
 
       case .path(.element(_, .gender(.delegate(.nextScreen)))):
-        let displayName = state.user?.displayName
-        state.path.append(.displayName(DisplayNameSettingLogic.State(displayName: displayName)))
+        switch environment.brand() {
+        case .bematch:
+          state.path.append(.profilePicture(ProfilePictureSettingLogic.State()))
+        default:
+          let displayName = state.user?.displayName
+          state.path.append(.displayName(DisplayNameSettingLogic.State(displayName: displayName)))
+        }
         return .none
 
       case .path(.element(_, .displayName(.delegate(.nextScreen)))):

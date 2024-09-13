@@ -17,9 +17,8 @@ public struct OnboardView: View {
 
   public var body: some View {
     NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
-      UsernameSettingView(
-        store: store.scope(state: \.username, action: \.username),
-        nextButtonStyle: .next
+      DisplayNameSettingView(
+        store: store.scope(state: \.displayName, action: \.displayName)
       )
     } destination: { store in
       switch store.case {
@@ -37,12 +36,5 @@ public struct OnboardView: View {
     }
     .tint(Color.white)
     .task { await store.send(.onTask).finish() }
-    .sheet(
-      item: $store.scope(state: \.destination?.howToMovie, action: \.destination.howToMovie)
-    ) { store in
-      NavigationStack {
-        HowToMovieView(store: store)
-      }
-    }
   }
 }
