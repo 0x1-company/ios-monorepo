@@ -125,10 +125,10 @@ public struct OnboardLogic {
 
       case .path(.element(_, .profilePicture(.delegate(.howTo)))):
         switch environment.brand() {
-        case .tenmatch, .picmatch:
+        case .tenmatch, .picmatch, .bematch:
           return .none
         default:
-          state.path.append(.howToMovie(HowToMovieLogic.State()))
+          state.destination = .howToMovie(HowToMovieLogic.State())
         }
         return .none
 
