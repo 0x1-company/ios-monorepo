@@ -120,37 +120,23 @@ public struct ProfileLogic {
     .ifLet(\.pictureSlider, action: \.pictureSlider) {
       PictureSliderLogic()
     }
-    .ifLet(\.$destination, action: \.destination) {
-      Destination()
-    }
+    .ifLet(\.$destination, action: \.destination)
   }
 
-  @Reducer
-  public struct Destination {
-    @ObservableState
-    public enum State: Equatable {
-      case editUsername(UsernameSettingLogic.State)
-      case confirmationDialog(ConfirmationDialogState<Action.ConfirmationDialog>)
-    }
+  @Reducer(state: .equatable)
+  public enum Destination {
+    case editUsername(UsernameSettingLogic)
+    case confirmationDialog(ConfirmationDialogState<ConfirmationDialog>)
 
-    public enum Action {
-      case editUsername(UsernameSettingLogic.Action)
-      case confirmationDialog(ConfirmationDialog)
-
-      public enum ConfirmationDialog: Equatable {
-        case jumpToBeReal
-        case editUsername
-      }
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.editUsername, action: \.editUsername, child: UsernameSettingLogic.init)
-      Scope(state: \.confirmationDialog, action: \.confirmationDialog, child: EmptyReducer.init)
+    @CasePathable
+    public enum ConfirmationDialog: Equatable {
+      case jumpToBeReal
+      case editUsername
     }
   }
 }
 
-extension ConfirmationDialogState where Action == ProfileLogic.Destination.Action.ConfirmationDialog {
+extension ConfirmationDialogState where Action == ProfileLogic.Destination.ConfirmationDialog {
   static func bematch() -> Self {
     Self {
       TextState("Select BeReal", bundle: .module)
