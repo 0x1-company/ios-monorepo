@@ -34,7 +34,7 @@ public struct AppLogic {
 
     var appDelegate = AppDelegateLogic.State()
     var sceneDelegate = SceneDelegateLogic.State()
-    public var child: Child.State = .launch()
+    public var child = Child.State.launch(LaunchLogic.State())
     public var tutorial: TutorialLogic.State?
     @Presents public var destination: Destination.State?
 
@@ -79,13 +79,13 @@ public struct AppLogic {
       }
       .onChange(of: \.account.isForceUpdate) { isForceUpdate, state, _ in
         if case .success(true) = isForceUpdate {
-          state.child = .forceUpdate()
+          state.child = .forceUpdate(ForceUpdateLogic.State())
         }
         return .none
       }
       .onChange(of: \.account.isMaintenance) { isMaintenance, state, _ in
         if case .success(true) = isMaintenance {
-          state.child = .maintenance()
+          state.child = .maintenance(MaintenanceLogic.State())
         }
         return .none
       }
@@ -106,7 +106,7 @@ public struct AppLogic {
 
         case .case(.active):
           analytics.setUserProperty(key: \.onboardCompleted, value: "true")
-          state.child = .navigation()
+          state.child = .navigation(RootNavigationLogic.State())
 
         case .case(.banned):
           state.child = .banned(
@@ -121,7 +121,7 @@ public struct AppLogic {
 
         case let .unknown(unknown):
           crashlytics.log(message: "failed to user.status: \(unknown)")
-          state.child = .maintenance()
+          state.child = .maintenance(MaintenanceLogic.State())
         }
         return .none
       }
@@ -135,7 +135,7 @@ public struct AppLogic {
       case .child(.onboard(.delegate(.finish))):
         analytics.setUserProperty(key: \.onboardCompleted, value: "true")
         state.tutorial = .init()
-        state.child = .navigation()
+        state.child = .navigation(RootNavigationLogic.State())
         return .none
 
       case .tutorial(.delegate(.finish)):
@@ -209,7 +209,9 @@ public struct AppLogic {
   var core: some Reducer<State, Action> {
     Scope(state: \.appDelegate, action: \.appDelegate, child: AppDelegateLogic.init)
     Scope(state: \.sceneDelegate, action: \.sceneDelegate, child: SceneDelegateLogic.init)
-    Scope(state: \.child, action: \.child, child: Child.init)
+    Scope(state: \.child, action: \.child) {
+      Child.body
+    }
     AuthLogic()
     ConfigGlobalLogic()
     QuickActionLogic()
@@ -218,41 +220,16 @@ public struct AppLogic {
     StoreLogic()
   }
 
-  @Reducer
-  public struct Child {
-    @ObservableState
-    public enum State: Equatable {
-      case launch(LaunchLogic.State = .init())
-      case onboard(OnboardLogic.State)
-      case navigation(RootNavigationLogic.State = .init())
-      case forceUpdate(ForceUpdateLogic.State = .init())
-      case maintenance(MaintenanceLogic.State = .init())
-      case banned(BannedLogic.State)
-      case freezed(FreezedLogic.State = .init())
-      case networkError(NetworkErrorLogic.State = .init())
-    }
-
-    public enum Action {
-      case launch(LaunchLogic.Action)
-      case onboard(OnboardLogic.Action)
-      case navigation(RootNavigationLogic.Action)
-      case forceUpdate(ForceUpdateLogic.Action)
-      case maintenance(MaintenanceLogic.Action)
-      case banned(BannedLogic.Action)
-      case freezed(FreezedLogic.Action)
-      case networkError(NetworkErrorLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.launch, action: \.launch, child: LaunchLogic.init)
-      Scope(state: \.onboard, action: \.onboard, child: OnboardLogic.init)
-      Scope(state: \.navigation, action: \.navigation, child: RootNavigationLogic.init)
-      Scope(state: \.forceUpdate, action: \.forceUpdate, child: ForceUpdateLogic.init)
-      Scope(state: \.maintenance, action: \.maintenance, child: MaintenanceLogic.init)
-      Scope(state: \.banned, action: \.banned, child: BannedLogic.init)
-      Scope(state: \.freezed, action: \.freezed, child: FreezedLogic.init)
-      Scope(state: \.networkError, action: \.networkError, child: NetworkErrorLogic.init)
-    }
+  @Reducer(state: .equatable)
+  public enum Child {
+    case launch(LaunchLogic)
+    case onboard(OnboardLogic)
+    case navigation(RootNavigationLogic)
+    case forceUpdate(ForceUpdateLogic)
+    case maintenance(MaintenanceLogic)
+    case banned(BannedLogic)
+    case freezed(FreezedLogic)
+    case networkError(NetworkErrorLogic)
   }
 
   @Reducer(state: .equatable)
