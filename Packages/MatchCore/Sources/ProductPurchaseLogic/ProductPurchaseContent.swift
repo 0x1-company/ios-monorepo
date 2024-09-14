@@ -168,28 +168,16 @@ public struct ProductPurchaseContentLogic {
     .forEach(\.rows, action: \.rows) {
       ProductPurchaseContentRowLogic()
     }
-    .ifLet(\.$destination, action: \.destination) {
-      Destination()
-    }
+    .ifLet(\.$destination, action: \.destination)
   }
 
-  @Reducer
-  public struct Destination {
-    @ObservableState
-    public enum State: Equatable {
-      case alert(AlertState<Action.Alert>)
-    }
+  @Reducer(state: .equatable)
+  public enum Destination {
+    case alert(AlertState<Alert>)
 
-    public enum Action {
-      case alert(Alert)
-
-      public enum Alert: Equatable {
-        case confirmOkay
-      }
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.alert, action: \.alert) {}
+    @CasePathable
+    public enum Alert: Equatable {
+      case confirmOkay
     }
   }
 }
