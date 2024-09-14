@@ -10,6 +10,7 @@ import Build
 import ComposableArchitecture
 import FirebaseAuthClient
 import FirebaseCrashlyticsClient
+import NetworkErrorLogic
 import StoreKit
 
 @Reducer
@@ -54,7 +55,7 @@ public struct AuthLogic {
     case let .signInAnonymouslyResponse(.failure(error)):
       crashlytics.record(error: error)
 
-      state.child = .networkError()
+      state.child = .networkError(NetworkErrorLogic.State())
       return .none
 
     case let .productsResponse(.success(products)):
@@ -94,7 +95,7 @@ public struct AuthLogic {
     case let .createUserResponse(.failure(error)):
       crashlytics.record(error: error)
 
-      state.child = .networkError()
+      state.child = .networkError(NetworkErrorLogic.State())
       return .none
 
     default:
