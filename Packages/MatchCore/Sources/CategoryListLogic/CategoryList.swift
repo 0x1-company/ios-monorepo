@@ -78,7 +78,7 @@ public struct CategoryListLogic {
             CategorySwipeLogic.State(userCategory: userCategory)
           )
         } else {
-          state.destination = .membership()
+          state.destination = .membership(MembershipLogic.State())
         }
         return .none
 
@@ -86,30 +86,15 @@ public struct CategoryListLogic {
         return .none
       }
     }
+    .ifLet(\.$destination, action: \.destination)
     .forEach(\.rows, action: \.rows) {
       CategorySectionLogic()
     }
-    .ifLet(\.$destination, action: \.destination) {
-      Destination()
-    }
   }
 
-  @Reducer
-  public struct Destination {
-    @ObservableState
-    public enum State: Equatable {
-      case swipe(CategorySwipeLogic.State)
-      case membership(MembershipLogic.State = .init())
-    }
-
-    public enum Action {
-      case swipe(CategorySwipeLogic.Action)
-      case membership(MembershipLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.swipe, action: \.swipe, child: CategorySwipeLogic.init)
-      Scope(state: \.membership, action: \.membership, child: MembershipLogic.init)
-    }
+  @Reducer(state: .equatable)
+  public enum Destination {
+    case swipe(CategorySwipeLogic)
+    case membership(MembershipLogic)
   }
 }
