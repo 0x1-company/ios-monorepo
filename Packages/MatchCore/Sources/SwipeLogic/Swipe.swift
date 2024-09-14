@@ -124,9 +124,7 @@ public struct SwipeLogic {
     .forEach(\.rows, action: \.rows) {
       SwipeCardLogic()
     }
-    .ifLet(\.$destination, action: \.destination) {
-      Destination()
-    }
+    .ifLet(\.$destination, action: \.destination)
   }
 
   private func createNope(send: Send<Action>, targetUserId: String) async {
@@ -147,22 +145,9 @@ public struct SwipeLogic {
     }
   }
 
-  @Reducer
-  public struct Destination {
-    @ObservableState
-    public enum State: Equatable {
-      case report(ReportLogic.State)
-      case matched(MatchedLogic.State)
-    }
-
-    public enum Action {
-      case report(ReportLogic.Action)
-      case matched(MatchedLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.report, action: \.report, child: ReportLogic.init)
-      Scope(state: \.matched, action: \.matched, child: MatchedLogic.init)
-    }
+  @Reducer(state: .equatable)
+  public enum Destination {
+    case report(ReportLogic)
+    case matched(MatchedLogic)
   }
 }

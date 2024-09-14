@@ -73,11 +73,9 @@ public struct AppLogic {
 
   public var body: some Reducer<State, Action> {
     core
+      .ifLet(\.$destination, action: \.destination)
       .ifLet(\.tutorial, action: \.tutorial) {
         TutorialLogic()
-      }
-      .ifLet(\.$destination, action: \.destination) {
-        Destination()
       }
       .onChange(of: \.account.isForceUpdate) { isForceUpdate, state, _ in
         if case .success(true) = isForceUpdate {
@@ -142,7 +140,7 @@ public struct AppLogic {
 
       case .tutorial(.delegate(.finish)):
         state.tutorial = nil
-        state.destination = .receivedLike()
+        state.destination = .receivedLike(ReceivedLikeRouterLogic.State.loading)
         return .none
 
       case let .appDelegate(.userNotifications(.didReceiveResponse(response, _))):
@@ -153,7 +151,7 @@ public struct AppLogic {
           let kind = API.PushNotificationKind(rawValue: rawKind)
         else { return .none }
         if case .like = kind {
-          state.destination = .receivedLike()
+          state.destination = .receivedLike(ReceivedLikeRouterLogic.State.loading)
         }
         return .none
 
@@ -257,18 +255,8 @@ public struct AppLogic {
     }
   }
 
-  @Reducer
-  public struct Destination {
-    public enum State: Equatable {
-      case receivedLike(ReceivedLikeRouterLogic.State = .loading)
-    }
-
-    public enum Action {
-      case receivedLike(ReceivedLikeRouterLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.receivedLike, action: \.receivedLike, child: ReceivedLikeRouterLogic.init)
-    }
+  @Reducer(state: .equatable)
+  public enum Destination {
+    case receivedLike(ReceivedLikeRouterLogic)
   }
 }

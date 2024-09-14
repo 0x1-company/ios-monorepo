@@ -94,37 +94,37 @@ public struct SettingsLogic {
         return .none
 
       case .myProfileButtonTapped:
-        state.destination = .profile()
+        state.destination = .profile(ProfileLogic.State())
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
 
       case .editProfileButtonTapped:
-        state.destination = .profileEdit()
+        state.destination = .profileEdit(ProfileEditLogic.State())
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
 
       case .membershipStatusButtonTapped:
-        state.destination = .membershipStatus()
+        state.destination = .membershipStatus(MembershipStatusLogic.State.loading)
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
 
       case .pushNotificationSettingsButtonTapped:
-        state.destination = .pushNotificationSettings()
+        state.destination = .pushNotificationSettings(PushNotificationSettingsLogic.State())
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
 
       case .otherButtonTapped:
-        state.destination = .other()
+        state.destination = .other(SettingsOtherLogic.State())
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
 
       case .howItWorksButtonTapped:
-        state.destination = .tutorial()
+        state.destination = .tutorial(TutorialLogic.State())
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
@@ -182,59 +182,20 @@ public struct SettingsLogic {
         return .none
       }
     }
-    .ifLet(\.$destination, action: \.destination) {
-      Destination()
-    }
+    .ifLet(\.$destination, action: \.destination)
     .ifLet(\.creationDate, action: \.creationDate) {
       CreationDateLogic()
     }
   }
 
-  @Reducer
-  public struct Destination {
-    @ObservableState
-    public enum State: Equatable {
-      case profileEdit(ProfileEditLogic.State = .init())
-      case profile(ProfileLogic.State = .init())
-      case tutorial(TutorialLogic.State = .init())
-      case achievement(AchievementLogic.State = .loading)
-      case other(SettingsOtherLogic.State = .init())
-      case membershipStatus(MembershipStatusLogic.State = .loading)
-      case pushNotificationSettings(PushNotificationSettingsLogic.State = .init())
-    }
-
-    public enum Action {
-      case profileEdit(ProfileEditLogic.Action)
-      case profile(ProfileLogic.Action)
-      case tutorial(TutorialLogic.Action)
-      case achievement(AchievementLogic.Action)
-      case other(SettingsOtherLogic.Action)
-      case membershipStatus(MembershipStatusLogic.Action)
-      case pushNotificationSettings(PushNotificationSettingsLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.profileEdit, action: \.profileEdit) {
-        ProfileEditLogic()
-      }
-      Scope(state: \.profile, action: \.profile) {
-        ProfileLogic()
-      }
-      Scope(state: \.tutorial, action: \.tutorial) {
-        TutorialLogic()
-      }
-      Scope(state: \.achievement, action: \.achievement) {
-        AchievementLogic()
-      }
-      Scope(state: \.other, action: \.other) {
-        SettingsOtherLogic()
-      }
-      Scope(state: \.membershipStatus, action: \.membershipStatus) {
-        MembershipStatusLogic()
-      }
-      Scope(state: \.pushNotificationSettings, action: \.pushNotificationSettings) {
-        PushNotificationSettingsLogic()
-      }
-    }
+  @Reducer(state: .equatable)
+  public enum Destination {
+    case profileEdit(ProfileEditLogic)
+    case profile(ProfileLogic)
+    case tutorial(TutorialLogic)
+    case achievement(AchievementLogic)
+    case other(SettingsOtherLogic)
+    case membershipStatus(MembershipStatusLogic)
+    case pushNotificationSettings(PushNotificationSettingsLogic)
   }
 }

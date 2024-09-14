@@ -146,7 +146,7 @@ public struct ProfileEditLogic {
         return .send(.delegate(.profileUpdated))
 
       case .destination(.presented(.pictureSetting(.delegate(.howTo)))):
-        state.destination = .howToMovie()
+        state.destination = .howToMovie(HowToMovieLogic.State())
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
@@ -176,51 +176,16 @@ public struct ProfileEditLogic {
         return .none
       }
     }
-    .ifLet(\.$destination, action: \.destination) {
-      Destination()
-    }
+    .ifLet(\.$destination, action: \.destination)
   }
 
-  @Reducer
-  public struct Destination {
-    @ObservableState
-    public enum State: Equatable {
-      case howToMovie(HowToMovieLogic.State = .init())
-      case pictureSetting(ProfilePictureSettingLogic.State)
-      case genderSetting(GenderSettingLogic.State)
-      case usernameSetting(UsernameSettingLogic.State)
-      case shortComment(ShortCommentSettingLogic.State)
-      case displayNameSetting(DisplayNameSettingLogic.State)
-    }
-
-    public enum Action {
-      case howToMovie(HowToMovieLogic.Action)
-      case pictureSetting(ProfilePictureSettingLogic.Action)
-      case genderSetting(GenderSettingLogic.Action)
-      case usernameSetting(UsernameSettingLogic.Action)
-      case shortComment(ShortCommentSettingLogic.Action)
-      case displayNameSetting(DisplayNameSettingLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.howToMovie, action: \.howToMovie) {
-        HowToMovieLogic()
-      }
-      Scope(state: \.pictureSetting, action: \.pictureSetting) {
-        ProfilePictureSettingLogic()
-      }
-      Scope(state: \.genderSetting, action: \.genderSetting) {
-        GenderSettingLogic()
-      }
-      Scope(state: \.usernameSetting, action: \.usernameSetting) {
-        UsernameSettingLogic()
-      }
-      Scope(state: \.shortComment, action: \.shortComment) {
-        ShortCommentSettingLogic()
-      }
-      Scope(state: \.displayNameSetting, action: \.displayNameSetting) {
-        DisplayNameSettingLogic()
-      }
-    }
+  @Reducer(state: .equatable)
+  public enum Destination {
+    case howToMovie(HowToMovieLogic)
+    case pictureSetting(ProfilePictureSettingLogic)
+    case genderSetting(GenderSettingLogic)
+    case usernameSetting(UsernameSettingLogic)
+    case shortComment(ShortCommentSettingLogic)
+    case displayNameSetting(DisplayNameSettingLogic)
   }
 }

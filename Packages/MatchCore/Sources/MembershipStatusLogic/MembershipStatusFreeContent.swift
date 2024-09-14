@@ -27,7 +27,7 @@ public struct MembershipStatusFreeContentLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .membershipButtonTapped:
-        state.destination = .membership()
+        state.destination = .membership(MembershipLogic.State())
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
@@ -47,24 +47,11 @@ public struct MembershipStatusFreeContentLogic {
         return .none
       }
     }
-    .ifLet(\.$destination, action: \.destination) {
-      Destination()
-    }
+    .ifLet(\.$destination, action: \.destination)
   }
 
-  @Reducer
-  public struct Destination {
-    @ObservableState
-    public enum State: Equatable {
-      case membership(MembershipLogic.State = .init())
-    }
-
-    public enum Action {
-      case membership(MembershipLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.membership, action: \.membership, child: MembershipLogic.init)
-    }
+  @Reducer(state: .equatable)
+  public enum Destination {
+    case membership(MembershipLogic)
   }
 }

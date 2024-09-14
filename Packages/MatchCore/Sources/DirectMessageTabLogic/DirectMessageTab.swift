@@ -68,7 +68,7 @@ public struct DirectMessageTabLogic {
         }
 
       case .settingsButtonTapped:
-        state.destination = .settings()
+        state.destination = .settings(SettingsLogic.State())
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
@@ -126,7 +126,7 @@ public struct DirectMessageTabLogic {
         return .none
 
       case .unsent(.child(.content(.receivedLike(.rowButtonTapped)))):
-        state.destination = .receivedLike()
+        state.destination = .receivedLike(ReceivedLikeRouterLogic.State.loading)
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
@@ -177,11 +177,9 @@ public struct DirectMessageTabLogic {
         return .none
       }
     }
+    .ifLet(\.$destination, action: \.destination)
     .forEach(\.banners, action: \.banners) {
       BannerLogic()
-    }
-    .ifLet(\.$destination, action: \.destination) {
-      Destination()
     }
     .ifLet(\.unsent, action: \.unsent) {
       UnsentDirectMessageListLogic()
@@ -194,36 +192,11 @@ public struct DirectMessageTabLogic {
     }
   }
 
-  @Reducer
-  public struct Destination {
-    @ObservableState
-    public enum State: Equatable {
-      case settings(SettingsLogic.State = .init())
-      case directMessage(DirectMessageLogic.State)
-      case explorer(ProfileExplorerLogic.State)
-      case receivedLike(ReceivedLikeRouterLogic.State = .loading)
-    }
-
-    public enum Action {
-      case settings(SettingsLogic.Action)
-      case directMessage(DirectMessageLogic.Action)
-      case explorer(ProfileExplorerLogic.Action)
-      case receivedLike(ReceivedLikeRouterLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.settings, action: \.settings) {
-        SettingsLogic()
-      }
-      Scope(state: \.directMessage, action: \.directMessage) {
-        DirectMessageLogic()
-      }
-      Scope(state: \.explorer, action: \.explorer) {
-        ProfileExplorerLogic()
-      }
-      Scope(state: \.receivedLike, action: \.receivedLike) {
-        ReceivedLikeRouterLogic()
-      }
-    }
+  @Reducer(state: .equatable)
+  public enum Destination {
+    case settings(SettingsLogic)
+    case directMessage(DirectMessageLogic)
+    case explorer(ProfileExplorerLogic)
+    case receivedLike(ReceivedLikeRouterLogic)
   }
 }

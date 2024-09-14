@@ -67,7 +67,7 @@ public struct RecentMatchContentLogic {
         return .none
 
       case .likeGrid(.gridButtonTapped):
-        state.destination = .likeRouter()
+        state.destination = .likeRouter(ReceivedLikeRouterLogic.State.loading)
         return .none
 
       case let .matches(.element(matchId, .matchButtonTapped)):
@@ -94,31 +94,12 @@ public struct RecentMatchContentLogic {
         return .none
       }
     }
-    .ifLet(\.$destination, action: \.destinatio) {
-      Destination()
-    }
+    .ifLet(\.$destination, action: \.destinatio)
   }
 
-  @Reducer
-  public struct Destination {
-    @ObservableState
-    public enum State: Equatable {
-      case explorer(ProfileExplorerLogic.State)
-      case likeRouter(ReceivedLikeRouterLogic.State = .loading)
-    }
-
-    public enum Action {
-      case explorer(ProfileExplorerLogic.Action)
-      case likeRouter(ReceivedLikeRouterLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.explorer, action: \.explorer) {
-        ProfileExplorerLogic()
-      }
-      Scope(state: \.likeRouter, action: \.likeRouter) {
-        ReceivedLikeRouterLogic()
-      }
-    }
+  @Reducer(state: .equatable)
+  public enum Destination {
+    case explorer(ProfileExplorerLogic)
+    case likeRouter(ReceivedLikeRouterLogic)
   }
 }

@@ -185,9 +185,7 @@ public struct MembershipLogic {
         return .none
       }
     }
-    .ifLet(\.$destination, action: \.destination) {
-      Destination()
-    }
+    .ifLet(\.$destination, action: \.destination)
   }
 
   func formatDuration(_ durationWeeks: Int) -> String {
@@ -239,25 +237,14 @@ public struct MembershipLogic {
     }
   }
 
-  @Reducer
-  public struct Destination {
-    public enum State: Equatable {
-      case alert(AlertState<Action.Alert>)
-      case purchase(ProductPurchaseLogic.State = .loading)
-    }
+  @Reducer(state: .equatable)
+  public enum Destination {
+    case alert(AlertState<Alert>)
+    case purchase(ProductPurchaseLogic)
 
-    public enum Action {
-      case alert(Alert)
-      case purchase(ProductPurchaseLogic.Action)
-
-      public enum Alert: Equatable {
-        case confirmOkay
-      }
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.alert, action: \.alert) {}
-      Scope(state: \.purchase, action: \.purchase, child: ProductPurchaseLogic.init)
+    @CasePathable
+    public enum Alert: Equatable {
+      case confirmOkay
     }
   }
 }
