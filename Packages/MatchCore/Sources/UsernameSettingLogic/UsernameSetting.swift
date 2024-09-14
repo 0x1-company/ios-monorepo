@@ -176,7 +176,7 @@ public struct UsernameSettingLogic {
   public enum Destination {
     case alert(AlertState<Alert>)
     case howToLocketLink(HowToLocketLinkLogic)
-    
+
     @CasePathable
     public enum Alert: Equatable {
       case confirmOkay

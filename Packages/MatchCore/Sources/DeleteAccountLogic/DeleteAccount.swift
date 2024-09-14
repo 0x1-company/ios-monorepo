@@ -164,7 +164,7 @@ public struct DeleteAccountLogic {
   public enum Destination {
     case alert(AlertState<Alert>)
     case confirmationDialog(ConfirmationDialogState<ConfirmationDialog>)
-    
+
     @CasePathable
     public enum ConfirmationDialog: Equatable {
       case confirm

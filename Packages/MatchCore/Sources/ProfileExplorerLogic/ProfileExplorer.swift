@@ -164,7 +164,7 @@ public struct ProfileExplorerLogic {
   public enum Destination {
     case report(ReportLogic)
     case confirmationDialog(ConfirmationDialogState<ConfirmationDialog>)
-    
+
     @CasePathable
     public enum ConfirmationDialog: Equatable {
       case confirm
