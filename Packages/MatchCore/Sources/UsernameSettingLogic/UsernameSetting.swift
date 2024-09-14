@@ -55,7 +55,7 @@ public struct UsernameSettingLogic {
         return .none
 
       case .locketQuestionButtonTapped:
-        state.destination = .howToLocketLink()
+        state.destination = .howToLocketLink(HowToLocketLinkLogic.State())
         return .none
 
       case .nextButtonTapped:
@@ -169,38 +169,22 @@ public struct UsernameSettingLogic {
         return .none
       }
     }
-    .ifLet(\.$destination, action: \.destination) {
-      Destination()
-    }
+    .ifLet(\.$destination, action: \.destination)
   }
 
-  @Reducer
-  public struct Destination {
-    @ObservableState
-    public enum State: Equatable {
-      case alert(AlertState<Action.Alert>)
-      case howToLocketLink(HowToLocketLinkLogic.State = .init())
-    }
-
-    public enum Action {
-      case alert(Alert)
-      case howToLocketLink(HowToLocketLinkLogic.Action)
-
-      public enum Alert: Equatable {
-        case confirmOkay
-      }
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.alert, action: \.alert, child: {})
-      Scope(state: \.howToLocketLink, action: \.howToLocketLink) {
-        HowToLocketLinkLogic()
-      }
+  @Reducer(state: .equatable)
+  public enum Destination {
+    case alert(AlertState<Alert>)
+    case howToLocketLink(HowToLocketLinkLogic)
+    
+    @CasePathable
+    public enum Alert: Equatable {
+      case confirmOkay
     }
   }
 }
 
-extension AlertState where Action == UsernameSettingLogic.Destination.Action.Alert {
+extension AlertState where Action == UsernameSettingLogic.Destination.Alert {
   static func errorLog(message: String) -> Self {
     Self {
       TextState("Error", bundle: .module)
