@@ -54,7 +54,7 @@ public struct UnsentDirectMessageListLogic {
     Reduce<State, Action> { state, action in
       switch action {
       case .seeAllButtonTapped:
-        state.destination = .recentMatch()
+        state.destination = .recentMatch(RecentMatchLogic.State.loading)
         return .run { _ in
           await feedbackGenerator.impactOccurred()
         }
@@ -63,24 +63,12 @@ public struct UnsentDirectMessageListLogic {
         return .none
       }
     }
-    .ifLet(\.$destination, action: \.destination) {
-      Destination()
-    }
+    .ifLet(\.$destination, action: \.destination)
   }
 
-  @Reducer
-  public struct Destination {
-    public enum State: Equatable {
-      case recentMatch(RecentMatchLogic.State = .loading)
-    }
-
-    public enum Action {
-      case recentMatch(RecentMatchLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.recentMatch, action: \.recentMatch, child: RecentMatchLogic.init)
-    }
+  @Reducer(state: .equatable)
+  public enum Destination {
+    case recentMatch(RecentMatchLogic)
   }
 
   @Reducer
