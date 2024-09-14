@@ -151,9 +151,7 @@ public struct OnboardLogic {
       }
     }
     .forEach(\.path, action: \.path)
-    .ifLet(\.$destination, action: \.destination) {
-      Destination()
-    }
+    .ifLet(\.$destination, action: \.destination)
   }
 
   @Reducer(state: .equatable)
@@ -165,19 +163,8 @@ public struct OnboardLogic {
     case invitation(InvitationLogic)
   }
 
-  @Reducer
-  public struct Destination {
-    @ObservableState
-    public enum State: Equatable {
-      case howToMovie(HowToMovieLogic.State = .init())
-    }
-
-    public enum Action {
-      case howToMovie(HowToMovieLogic.Action)
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.howToMovie, action: \.howToMovie, child: HowToMovieLogic.init)
-    }
+  @Reducer(state: .equatable)
+  public enum Destination {
+    case howToMovie(HowToMovieLogic)
   }
 }
