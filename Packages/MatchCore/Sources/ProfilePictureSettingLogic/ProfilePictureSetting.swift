@@ -218,35 +218,21 @@ public struct ProfilePictureSettingLogic {
         return .none
       }
     }
-    .ifLet(\.$destination, action: \.destination) {
-      Destination()
-    }
+    .ifLet(\.$destination, action: \.destination)
   }
 
-  @Reducer
-  public struct Destination {
-    @ObservableState
-    public enum State: Equatable {
-      case alert(AlertState<Action.Alert>)
-      case confirmationDialog(ConfirmationDialogState<Action.ConfirmationDialog>)
+  @Reducer(state: .equatable)
+  public enum Destination {
+    case alert(AlertState<Alert>)
+    case confirmationDialog(ConfirmationDialogState<ConfirmationDialog>)
+
+    @CasePathable
+    public enum Alert: Equatable {
+      case confirmOkay
     }
 
-    public enum Action {
-      case alert(Alert)
-      case confirmationDialog(ConfirmationDialog)
-
-      public enum Alert: Equatable {
-        case confirmOkay
-      }
-
-      public enum ConfirmationDialog: Equatable {
-        case distory(Int)
-      }
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.alert, action: \.alert) {}
-      Scope(state: \.confirmationDialog, action: \.confirmationDialog) {}
+    public enum ConfirmationDialog: Equatable {
+      case distory(Int)
     }
   }
 
@@ -270,7 +256,7 @@ public struct ProfilePictureSettingLogic {
   }
 }
 
-extension AlertState where Action == ProfilePictureSettingLogic.Destination.Action.Alert {
+extension AlertState where Action == ProfilePictureSettingLogic.Destination.Alert {
   static func pleaseSelectPhotos() -> Self {
     Self {
       TextState("Please select at least 3 saved photos.", bundle: .module)
@@ -292,7 +278,7 @@ extension AlertState where Action == ProfilePictureSettingLogic.Destination.Acti
   }
 }
 
-extension ConfirmationDialogState where Action == ProfilePictureSettingLogic.Destination.Action.ConfirmationDialog {
+extension ConfirmationDialogState where Action == ProfilePictureSettingLogic.Destination.ConfirmationDialog {
   static func deletePhoto(_ offset: Int) -> Self {
     Self {
       TextState("Edit Profile", bundle: .module)
