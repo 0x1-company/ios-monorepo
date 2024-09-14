@@ -157,35 +157,22 @@ public struct DeleteAccountLogic {
         return .none
       }
     }
-    .ifLet(\.$destination, action: \.destination) {
-      Destination()
-    }
+    .ifLet(\.$destination, action: \.destination)
   }
 
-  @Reducer
-  public struct Destination {
-    @ObservableState
-    public enum State: Equatable {
-      case alert(AlertState<Action.Alert>)
-      case confirmationDialog(ConfirmationDialogState<Action.ConfirmationDialog>)
+  @Reducer(state: .equatable)
+  public enum Destination {
+    case alert(AlertState<Alert>)
+    case confirmationDialog(ConfirmationDialogState<ConfirmationDialog>)
+    
+    @CasePathable
+    public enum ConfirmationDialog: Equatable {
+      case confirm
     }
 
-    public enum Action {
-      case alert(Alert)
-      case confirmationDialog(ConfirmationDialog)
-
-      public enum ConfirmationDialog: Equatable {
-        case confirm
-      }
-
-      public enum Alert: Equatable {
-        case confirmOkay
-      }
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.alert, action: \.alert) {}
-      Scope(state: \.confirmationDialog, action: \.confirmationDialog) {}
+    @CasePathable
+    public enum Alert: Equatable {
+      case confirmOkay
     }
   }
 }
