@@ -157,30 +157,17 @@ public struct ProfileExplorerLogic {
         return .none
       }
     }
-    .ifLet(\.$destination, action: \.destination) {
-      Destination()
-    }
+    .ifLet(\.$destination, action: \.destination)
   }
 
-  @Reducer
-  public struct Destination {
-    @ObservableState
-    public enum State: Equatable {
-      case report(ReportLogic.State)
-      case confirmationDialog(ConfirmationDialogState<Action.ConfirmationDialog>)
-    }
-
-    public enum Action {
-      case report(ReportLogic.Action)
-      case confirmationDialog(ConfirmationDialog)
-      public enum ConfirmationDialog: Equatable {
-        case confirm
-      }
-    }
-
-    public var body: some Reducer<State, Action> {
-      Scope(state: \.report, action: \.report, child: ReportLogic.init)
-      Scope(state: \.confirmationDialog, action: \.confirmationDialog) {}
+  @Reducer(state: .equatable)
+  public enum Destination {
+    case report(ReportLogic)
+    case confirmationDialog(ConfirmationDialogState<ConfirmationDialog>)
+    
+    @CasePathable
+    public enum ConfirmationDialog: Equatable {
+      case confirm
     }
   }
 }
