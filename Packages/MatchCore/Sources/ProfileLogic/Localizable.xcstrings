@@ -3,10 +3,10 @@
   "strings" : {
     "Edit locket link" : {
       "localizations" : {
-        "ja" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Locket招待リンクを変更"
+            "value" : "Editar enlace de Locket"
           }
         },
         "fr" : {
@@ -15,22 +15,16 @@
             "value" : "Modifier le lien Locket"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Locket招待リンクを変更"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Locket 링크 수정"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Editar enlace de Locket"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chỉnh sửa liên kết Locket"
           }
         },
         "pl" : {
@@ -38,15 +32,21 @@
             "state" : "translated",
             "value" : "Edytuj link do Locket"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chỉnh sửa liên kết Locket"
+          }
         }
       }
     },
     "Edit PIN" : {
       "localizations" : {
-        "ja" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "PINを変更"
+            "value" : "Editar PIN"
           }
         },
         "fr" : {
@@ -55,22 +55,16 @@
             "value" : "Modifier le PIN"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PINを変更"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "PIN 수정"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Editar PIN"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chỉnh sửa PIN"
           }
         },
         "pl" : {
@@ -78,15 +72,21 @@
             "state" : "translated",
             "value" : "Edytuj PIN"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chỉnh sửa PIN"
+          }
         }
       }
     },
     "Edit username" : {
       "localizations" : {
-        "ja" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ユーザーネームを変更"
+            "value" : "Editar nombre de usuario"
           }
         },
         "fr" : {
@@ -95,22 +95,16 @@
             "value" : "Modifier le nom d'utilisateur"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ユーザーネームを変更"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "사용자 이름 수정"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Editar nombre de usuario"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chỉnh sửa tên người dùng"
           }
         },
         "pl" : {
@@ -118,15 +112,22 @@
             "state" : "translated",
             "value" : "Edytuj nazwę użytkownika"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chỉnh sửa tên người dùng"
+          }
         }
       }
     },
     "Jump to BeReal" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "ja" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeRealに飛ぶ"
+            "value" : "Ir a BeReal"
           }
         },
         "fr" : {
@@ -135,22 +136,16 @@
             "value" : "Aller à BeReal"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeRealに飛ぶ"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "BeReal로 이동"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ir a BeReal"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chuyển đến BeReal"
           }
         },
         "pl" : {
@@ -158,15 +153,21 @@
             "state" : "translated",
             "value" : "Przejdź do BeReal"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chuyển đến BeReal"
+          }
         }
       }
     },
     "Jump to Instagram" : {
       "localizations" : {
-        "ja" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Instagramに飛ぶ"
+            "value" : "Ir a Instagram"
           }
         },
         "fr" : {
@@ -175,22 +176,16 @@
             "value" : "Aller à Instagram"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instagramに飛ぶ"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Instagram으로 이동"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ir a Instagram"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chuyển đến Instagram"
           }
         },
         "pl" : {
@@ -198,15 +193,21 @@
             "state" : "translated",
             "value" : "Przejdź do Instagram"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chuyển đến Instagram"
+          }
         }
       }
     },
     "Jump to Locket" : {
       "localizations" : {
-        "ja" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Locketに飛ぶ"
+            "value" : "Ir a Locket"
           }
         },
         "fr" : {
@@ -215,22 +216,16 @@
             "value" : "Aller à Locket"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Locketに飛ぶ"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Locket으로 이동"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ir a Locket"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chuyển đến Locket"
           }
         },
         "pl" : {
@@ -238,15 +233,21 @@
             "state" : "translated",
             "value" : "Przejdź do Locket"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chuyển đến Locket"
+          }
         }
       }
     },
     "Jump to TapNow" : {
       "localizations" : {
-        "ja" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TapNowに飛ぶ"
+            "value" : "Ir a TapNow"
           }
         },
         "fr" : {
@@ -255,22 +256,16 @@
             "value" : "Aller à TapNow"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TapNowに飛ぶ"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "TapNow로 이동"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ir a TapNow"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chuyển đến TapNow"
           }
         },
         "pl" : {
@@ -278,15 +273,21 @@
             "state" : "translated",
             "value" : "Przejdź do TapNow"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chuyển đến TapNow"
+          }
         }
       }
     },
     "Jump to tenten" : {
       "localizations" : {
-        "ja" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "tentenに飛ぶ"
+            "value" : "Ir a tenten"
           }
         },
         "fr" : {
@@ -295,22 +296,16 @@
             "value" : "Aller à tenten"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tentenに飛ぶ"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "tenten으로 이동"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ir a tenten"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chuyển đến tenten"
           }
         },
         "pl" : {
@@ -318,15 +313,22 @@
             "state" : "translated",
             "value" : "Przejdź do tenten"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chuyển đến tenten"
+          }
         }
       }
     },
     "Select BeReal" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "ja" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Select BeReal"
+            "value" : "Seleccionar BeReal"
           }
         },
         "fr" : {
@@ -335,22 +337,16 @@
             "value" : "Sélectionner BeReal"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select BeReal"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "BeReal 선택"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seleccionar BeReal"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chọn BeReal"
           }
         },
         "pl" : {
@@ -358,15 +354,21 @@
             "state" : "translated",
             "value" : "Wybierz BeReal"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chọn BeReal"
+          }
         }
       }
     },
     "Select Instagram" : {
       "localizations" : {
-        "ja" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Instagramを選択"
+            "value" : "Seleccionar Instagram"
           }
         },
         "fr" : {
@@ -375,22 +377,16 @@
             "value" : "Sélectionner Instagram"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instagramを選択"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Instagram 선택"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seleccionar Instagram"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chọn Instagram"
           }
         },
         "pl" : {
@@ -398,15 +394,21 @@
             "state" : "translated",
             "value" : "Wybierz Instagram"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chọn Instagram"
+          }
         }
       }
     },
     "Select Locket" : {
       "localizations" : {
-        "ja" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Select Locket"
+            "value" : "Seleccionar Locket"
           }
         },
         "fr" : {
@@ -415,22 +417,16 @@
             "value" : "Sélectionner Locket"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Locket"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Locket 선택"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seleccionar Locket"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chọn Locket"
           }
         },
         "pl" : {
@@ -438,15 +434,21 @@
             "state" : "translated",
             "value" : "Wybierz Locket"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chọn Locket"
+          }
         }
       }
     },
     "Select TapNow" : {
       "localizations" : {
-        "ja" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Select TapNow"
+            "value" : "Seleccionar TapNow"
           }
         },
         "fr" : {
@@ -455,22 +457,16 @@
             "value" : "Sélectionner TapNow"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select TapNow"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "TapNow 선택"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seleccionar TapNow"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chọn TapNow"
           }
         },
         "pl" : {
@@ -478,15 +474,21 @@
             "state" : "translated",
             "value" : "Wybierz TapNow"
           }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chọn TapNow"
+          }
         }
       }
     },
     "Select tenten" : {
       "localizations" : {
-        "ja" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "tentenを選択"
+            "value" : "Seleccionar tenten"
           }
         },
         "fr" : {
@@ -495,28 +497,28 @@
             "value" : "Sélectionner tenten"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tentenを選択"
+          }
+        },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "tenten 선택"
           }
         },
-        "es" : {
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seleccionar tenten"
+            "value" : "Wybierz tenten"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chọn tenten"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wybierz tenten"
           }
         }
       }
