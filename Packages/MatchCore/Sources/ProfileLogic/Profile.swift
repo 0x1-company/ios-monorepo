@@ -89,9 +89,20 @@ public struct ProfileLogic {
           await openURL(url)
         }
 
-      case .destination(.presented(.confirmationDialog(.editUsername))):
-        guard let username = state.currentUser?.berealUsername
-        else { return .none }
+      case .destination(.presented(.confirmationDialog(.editUsername))):        
+        let username = switch environment.brand() {
+        case .bematch:
+          ""
+          assertionFailure("not supported by bematch")
+        case .picmatch:
+          state.currentUser?.instagramUsername ?? ""
+        case .tapmatch:
+          state.currentUser?.tapnowUsername ?? ""
+        case .tenmatch:
+          state.currentUser?.tentenPinCode ?? ""
+        case .trinket:
+          state.currentUser?.locketUrl ?? ""
+        }
 
         state.destination = .editUsername(UsernameSettingLogic.State(username: username))
         return .none
