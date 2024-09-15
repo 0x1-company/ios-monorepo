@@ -90,7 +90,7 @@ public struct ProfileEditLogic {
         let brand = environment.brand()
         let username = switch brand {
         case .bematch:
-          state.user?.berealUsername ?? ""
+          ""
         case .picmatch:
           state.user?.instagramUsername ?? ""
         case .tapmatch:

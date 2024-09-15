@@ -86,7 +86,7 @@ public struct DirectMessageLogic {
         let user = data.userByMatched
 
         let emptyState = DirectMessageEmptyLogic.State(
-          displayName: user.displayName ?? user.berealUsername,
+          displayName: user.displayName ?? "",
           externalProductUrl: user.externalProductUrl,
           tentenPinCode: user.tentenPinCode
         )

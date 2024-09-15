@@ -31,7 +31,8 @@ public struct OnboardLogic {
       @Dependency(\.environment) var environment
       switch environment.brand() {
       case .bematch:
-        username = UsernameSettingLogic.State(username: user?.berealUsername ?? "")
+        assertionFailure("not supported by bematch")
+        username = UsernameSettingLogic.State(username: "")
       case .picmatch:
         username = UsernameSettingLogic.State(username: user?.instagramUsername ?? "")
       case .tapmatch:
