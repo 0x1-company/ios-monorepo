@@ -193,7 +193,7 @@ public struct AppLogic {
   ) -> Bool {
     switch brand {
     case .bematch:
-      return !user.berealUsername.isEmpty && user.images.count >= 3
+      return user.displayName != nil && user.images.count >= 3
     case .picmatch:
       return !user.instagramUsername.isEmpty && user.images.count >= 3
     case .tapmatch:
