@@ -5,7 +5,6 @@ fragment RecentMatchGrid on Match {
   targetUser {
     id
     displayName
-    berealUsername
     externalProductUrl
     images {
       id

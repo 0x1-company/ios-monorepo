@@ -31,7 +31,7 @@ public struct ProfileView: View {
             Text(displayName)
               .foregroundStyle(Color.white)
               .font(.system(.callout, design: .rounded, weight: .semibold))
-          } else if let username = store.currentUser?.berealUsername {
+          } else if let username = store.currentUser?.tentenPinCode {
             Text(username)
               .foregroundStyle(Color.white)
               .font(.system(.callout, design: .rounded, weight: .semibold))

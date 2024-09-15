@@ -30,10 +30,6 @@ public struct ProfileView: View {
             Text(displayName)
               .foregroundStyle(Color.white)
               .font(.system(.callout, weight: .semibold))
-          } else if let username = store.currentUser?.berealUsername {
-            Text(username)
-              .foregroundStyle(Color.white)
-              .font(.system(.callout, weight: .semibold))
           }
           Spacer()
           Spacer()

@@ -48,8 +48,6 @@ public extension API {
         /// user id
         public var id: API.ID { __data["id"] }
         public var displayName: String? { __data["displayName"] }
-        /// BeRealのusername
-        public var berealUsername: String { __data["berealUsername"] }
         /// TapNowのusername
         public var tapnowUsername: String { __data["tapnowUsername"] }
         /// LocketのURL
