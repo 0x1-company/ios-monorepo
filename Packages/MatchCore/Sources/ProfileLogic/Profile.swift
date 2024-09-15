@@ -89,11 +89,10 @@ public struct ProfileLogic {
           await openURL(url)
         }
 
-      case .destination(.presented(.confirmationDialog(.editUsername))):        
-        let username = switch environment.brand() {
+      case .destination(.presented(.confirmationDialog(.editUsername))):
+        let username: String = switch environment.brand() {
         case .bematch:
           ""
-          assertionFailure("not supported by bematch")
         case .picmatch:
           state.currentUser?.instagramUsername ?? ""
         case .tapmatch:
