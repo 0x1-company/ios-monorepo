@@ -146,9 +146,12 @@ public struct ProfileEditLogic {
         return .send(.delegate(.profileUpdated))
 
       case .destination(.presented(.pictureSetting(.delegate(.howTo)))):
-        state.destination = .howToMovie(HowToMovieLogic.State())
-        return .run { _ in
-          await feedbackGenerator.impactOccurred()
+        switch environment.brand() {
+        case .bematch, .tenmatch, .picmatch:
+          return .none
+        case .trinket, .tapmatch:
+          state.destination = .howToMovie(HowToMovieLogic.State())
+          return .none
         }
 
       case .destination(.presented(.howToMovie(.delegate(.nextScreen)))):

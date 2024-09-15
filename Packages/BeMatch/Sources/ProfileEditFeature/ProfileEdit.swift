@@ -1,7 +1,6 @@
 import ComposableArchitecture
 import DisplayNameSettingFeature
 import GenderSettingFeature
-import HowToMovieFeature
 import ProfileEditLogic
 import ProfilePictureSettingFeature
 import ShortCommentSettingFeature
@@ -95,11 +94,6 @@ public struct ProfileEditView: View {
             .bold()
             .foregroundStyle(Color.white)
         }
-      }
-    }
-    .sheet(item: $store.scope(state: \.destination?.howToMovie, action: \.destination.howToMovie)) { store in
-      NavigationStack {
-        HowToMovieView(store: store)
       }
     }
   }
