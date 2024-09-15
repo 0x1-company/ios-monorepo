@@ -19,20 +19,6 @@ public struct ProfileEditView: View {
     List {
       Section {
         Button {
-          store.send(.usernameSettingButtonTapped)
-        } label: {
-          LabeledContent {
-            Image(systemName: "chevron.right")
-          } label: {
-            Text("Username on BeReal.", bundle: .module)
-              .foregroundStyle(Color.primary)
-          }
-        }
-        .navigationDestination(store: store.scope(state: \.$destination.usernameSetting, action: \.destination.usernameSetting)) { store in
-          UsernameSettingView(store: store, nextButtonStyle: .save)
-        }
-
-        Button {
           store.send(.displayNameSettingButtonTapped)
         } label: {
           LabeledContent {

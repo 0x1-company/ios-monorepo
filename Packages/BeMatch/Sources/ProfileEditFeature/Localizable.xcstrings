@@ -197,22 +197,6 @@
           }
         }
       }
-    },
-    "Username on BeReal." : {
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nom d'utilisateur sur BeReal."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeRealのユーザーネーム"
-          }
-        }
-      }
     }
   },
   "version" : "1.0"
