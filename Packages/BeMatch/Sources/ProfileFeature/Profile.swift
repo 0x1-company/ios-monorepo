@@ -30,10 +30,6 @@ public struct ProfileView: View {
             Text(displayName)
               .foregroundStyle(Color.white)
               .font(.system(.callout, weight: .semibold))
-          } else if let username = store.currentUser?.berealUsername {
-            Text(username)
-              .foregroundStyle(Color.white)
-              .font(.system(.callout, weight: .semibold))
           }
           Spacer()
           Spacer()
@@ -48,16 +44,6 @@ public struct ProfileView: View {
           Color.black
             .aspectRatio(3 / 4, contentMode: .fill)
             .frame(width: UIScreen.main.bounds.width)
-        }
-
-        if let url = store.currentUser?.externalProductUrl {
-          Button {
-            store.send(.jumpExternalProductButtonTapped)
-          } label: {
-            Text("🔗 \(url)")
-              .font(.system(.caption))
-              .foregroundStyle(Color.primary)
-          }
         }
         Spacer()
       }

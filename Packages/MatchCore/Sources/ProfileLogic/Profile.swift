@@ -62,7 +62,7 @@ public struct ProfileLogic {
       case .jumpExternalProductButtonTapped:
         switch environment.brand() {
         case .bematch:
-          state.destination = .confirmationDialog(.bematch())
+          assertionFailure("not supported by bematch")
         case .picmatch:
           state.destination = .confirmationDialog(.picmatch())
         case .tapmatch:
@@ -137,19 +137,6 @@ public struct ProfileLogic {
 }
 
 extension ConfirmationDialogState where Action == ProfileLogic.Destination.ConfirmationDialog {
-  static func bematch() -> Self {
-    Self {
-      TextState("Select BeReal", bundle: .module)
-    } actions: {
-      ButtonState(action: .jumpToBeReal) {
-        TextState("Jump to BeReal", bundle: .module)
-      }
-      ButtonState(action: .editUsername) {
-        TextState("Edit username", bundle: .module)
-      }
-    }
-  }
-
   static func picmatch() -> Self {
     Self {
       TextState("Select Instagram", bundle: .module)
