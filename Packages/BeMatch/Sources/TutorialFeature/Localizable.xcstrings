@@ -1,18 +1,42 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "BeMatch is an application that allows you to exchange BeReal with everyone in Global!" : {
+    "BeMatch is an app that lets you make friends with people all over the world." : {
       "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "BeMatch est une application qui vous permet d'échanger BeReal avec tout le monde dans le monde entier !"
-          }
-        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "BeMatchは日本中のみんなとBeRealを交換できるアプリです"
+            "value" : "BeMatchは日本中のみんなと\n友だちを作れるアプリです"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeMatch는 전 세계 사람들과 친구를 사귈 수 있는 앱입니다."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeMatch es una aplicación que te permite hacer amigos con personas de todo el mundo."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeMatch là ứng dụng giúp bạn kết bạn với mọi người trên khắp thế giới."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeMatch to aplikacja, która pozwala nawiązywać przyjaźnie z ludźmi z całego świata."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BeMatch est une application qui vous permet de vous faire des amis avec des gens du monde entier."
           }
         }
       }
@@ -30,6 +54,30 @@
             "state" : "translated",
             "value" : "さっそくはじめる"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시작하기"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empezar"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bắt đầu"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zacznij"
+          }
         }
       }
     },
@@ -45,6 +93,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "うーん...のときは左"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "흠... 왼쪽으로 이동할 때"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hmmm... izquierda cuando"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hmmm... trái khi"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hmmm... w lewo, gdy"
           }
         }
       }
@@ -62,6 +134,30 @@
             "state" : "translated",
             "value" : "お互いにLikeするとマッチが成立。早速試してみよう！"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "서로 관심이 있으면 매치가 성사됩니다. 바로 시도해보세요!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si ambos se gustan, se hace una coincidencia. ¡Intentémoslo de inmediato!"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nếu cả hai cùng thích nhau, một trận đấu được tạo ra. Hãy thử ngay nào!"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeśli oboje się polubicie, nastąpi dopasowanie. Spróbujmy od razu!"
+          }
         }
       }
     },
@@ -77,6 +173,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ちょっと違うかも...と思ったら、左にスワイプしよう。Nopeしたことは相手に伝わらないから大丈夫。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "만약 '아니겠지...'라고 생각되면 왼쪽으로 스와이프하세요. 적합하지 않다고 생각되면 왼쪽으로 스와이프하세요."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si piensas, \"Tal vez no...\", desliza hacia la izquierda. Si crees que no es del todo correcto, desliza hacia la izquierda."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nếu bạn nghĩ rằng, \"Có lẽ không...\", vuốt sang trái. Nếu bạn nghĩ rằng nó không hoàn toàn đúng, vuốt sang trái."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeśli myślisz „Może nie...”, przesuń w lewo. Jeśli myślisz, że to nie to, przesuń w lewo."
           }
         }
       }
@@ -94,6 +214,30 @@
             "state" : "translated",
             "value" : "さっそくはじめよう！"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시작합시다!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Empecemos!"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bắt đầu nào!"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zaczynajmy!"
+          }
         }
       }
     },
@@ -109,6 +253,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "次へ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다음"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siguiente"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiếp"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Następny"
           }
         }
       }
@@ -126,6 +294,30 @@
             "state" : "translated",
             "value" : "気になる人は右！"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "관심이 있으면 오른쪽으로!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡A la derecha si estás interesado!"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phải nếu bạn quan tâm!"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "W prawo, jeśli jesteś zainteresowany!"
+          }
         }
       }
     },
@@ -141,6 +333,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "スキップ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "건너뛰기"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Omitir"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bỏ qua"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pomiń"
           }
         }
       }
