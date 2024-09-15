@@ -112,10 +112,9 @@ public struct OnboardLogic {
         return .none
 
       case .path(.element(_, .displayName(.delegate(.nextScreen)))):
-        switch environment.brand() {
-        case .tenmatch, .picmatch:
+        if environment.brand().isHowToMovieVisible {
           state.path.append(.profilePicture(ProfilePictureSettingLogic.State()))
-        default:
+        } else {
           state.path.append(.howToMovie(HowToMovieLogic.State()))
         }
         return .none
@@ -125,13 +124,12 @@ public struct OnboardLogic {
         return .none
 
       case .path(.element(_, .profilePicture(.delegate(.howTo)))):
-        switch environment.brand() {
-        case .tenmatch, .picmatch, .bematch:
+        if environment.brand().isHowToMovieVisible {
           return .none
-        default:
+        } else {
           state.destination = .howToMovie(HowToMovieLogic.State())
+          return .none
         }
-        return .none
 
       case .path(.element(_, .profilePicture(.delegate(.nextScreen)))):
         if state.hasInvitationCampaign {

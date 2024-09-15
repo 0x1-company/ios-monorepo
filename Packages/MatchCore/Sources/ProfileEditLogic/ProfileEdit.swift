@@ -146,10 +146,9 @@ public struct ProfileEditLogic {
         return .send(.delegate(.profileUpdated))
 
       case .destination(.presented(.pictureSetting(.delegate(.howTo)))):
-        switch environment.brand() {
-        case .bematch, .tenmatch, .picmatch:
+        if environment.brand().isHowToMovieVisible {
           return .none
-        case .trinket, .tapmatch:
+        } else {
           state.destination = .howToMovie(HowToMovieLogic.State())
           return .none
         }
