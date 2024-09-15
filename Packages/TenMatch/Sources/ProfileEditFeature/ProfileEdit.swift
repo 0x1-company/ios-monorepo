@@ -131,10 +131,5 @@ public struct ProfileEditView: View {
         }
       }
     }
-    .sheet(item: $store.scope(state: \.destination?.howToMovie, action: \.destination.howToMovie)) { store in
-      NavigationStack {
-        HowToMovieView(store: store)
-      }
-    }
   }
 }

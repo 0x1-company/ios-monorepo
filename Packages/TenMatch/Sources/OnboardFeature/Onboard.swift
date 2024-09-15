@@ -34,12 +34,5 @@ public struct OnboardView: View {
     }
     .tint(Color.white)
     .task { await store.send(.onTask).finish() }
-    .sheet(
-      item: $store.scope(state: \.destination?.howToMovie, action: \.destination.howToMovie)
-    ) { store in
-      NavigationStack {
-        HowToMovieView(store: store)
-      }
-    }
   }
 }

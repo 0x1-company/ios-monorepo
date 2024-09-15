@@ -62,5 +62,9 @@ public struct EnvironmentClient {
         return "Locket"
       }
     }
+    
+    public var isHowToMovieVisible: Bool {
+      return [Brand.trinket, Brand.tapmatch].contains(self)
+    }
   }
 }
