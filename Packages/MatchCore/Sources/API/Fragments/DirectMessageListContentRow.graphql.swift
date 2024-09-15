@@ -6,7 +6,7 @@
 public extension API {
   struct DirectMessageListContentRow: API.SelectionSet, Fragment {
     public static var fragmentDefinition: StaticString {
-      #"fragment DirectMessageListContentRow on MessageRoom { __typename id updatedAt targetUser { __typename id status displayName berealUsername externalProductUrl images { __typename id imageUrl } } latestMessage { __typename id text isAuthor isRead } }"#
+      #"fragment DirectMessageListContentRow on MessageRoom { __typename id updatedAt targetUser { __typename id status displayName externalProductUrl images { __typename id imageUrl } } latestMessage { __typename id text isAuthor isRead } }"#
     }
 
     public let __data: DataDict
@@ -39,7 +39,6 @@ public extension API {
         .field("id", API.ID.self),
         .field("status", GraphQLEnum<API.UserStatus>.self),
         .field("displayName", String?.self),
-        .field("berealUsername", String.self),
         .field("externalProductUrl", String.self),
         .field("images", [Image].self),
       ] }
@@ -48,8 +47,6 @@ public extension API {
       public var id: API.ID { __data["id"] }
       public var status: GraphQLEnum<API.UserStatus> { __data["status"] }
       public var displayName: String? { __data["displayName"] }
-      /// BeRealのusername
-      public var berealUsername: String { __data["berealUsername"] }
       public var externalProductUrl: String { __data["externalProductUrl"] }
       /// ユーザーの画像一覧
       public var images: [Image] { __data["images"] }

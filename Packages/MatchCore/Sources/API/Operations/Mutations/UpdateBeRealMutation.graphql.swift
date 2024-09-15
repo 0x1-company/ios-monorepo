@@ -8,7 +8,7 @@ public extension API {
     public static let operationName: String = "UpdateBeReal"
     public static let operationDocument: ApolloAPI.OperationDocument = .init(
       definition: .init(
-        #"mutation UpdateBeReal($input: UpdateBeRealInput!) { updateBeReal(input: $input) { __typename id berealUsername } }"#
+        #"mutation UpdateBeReal($input: UpdateBeRealInput!) { updateBeReal(input: $input) { __typename id } }"#
       ))
 
     public var input: UpdateBeRealInput
@@ -42,13 +42,10 @@ public extension API {
         public static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
           .field("id", API.ID.self),
-          .field("berealUsername", String.self),
         ] }
 
         /// user id
         public var id: API.ID { __data["id"] }
-        /// BeRealのusername
-        public var berealUsername: String { __data["berealUsername"] }
       }
     }
   }

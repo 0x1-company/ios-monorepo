@@ -4,7 +4,6 @@ query DirectMessage($targetUserId: ID!, $targetUserIdString: String!, $first: In
   userByMatched(targetUserId: $targetUserIdString) {
     id
     displayName
-    berealUsername
     tentenPinCode
     externalProductUrl
   }
