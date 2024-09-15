@@ -22,7 +22,7 @@ public struct UnsentDirectMessageListContentRowLogic {
       createdAt = match.createdAt
       matchId = match.id
       isRead = match.isRead
-      displayName = match.targetUser.displayName ?? match.targetUser.berealUsername
+      displayName = match.targetUser.displayName ?? ""
       imageUrl = match.targetUser.images.first!.imageUrl
     }
 

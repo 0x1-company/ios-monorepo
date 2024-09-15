@@ -21,7 +21,7 @@ public struct RecentMatchGridLogic {
 
       id = match.id
       isRead = match.isRead
-      displayName = match.targetUser.displayName ?? match.targetUser.berealUsername
+      displayName = match.targetUser.displayName ?? ""
       imageUrl = match.targetUser.images.first!.imageUrl
       createdAt = if let timeInterval = TimeInterval(match.createdAt) {
         Date(timeIntervalSince1970: timeInterval / 1000.0)
