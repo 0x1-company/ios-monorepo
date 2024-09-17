@@ -9,10 +9,5 @@ public extension DependencyValues {
 }
 
 extension FirebaseMessagingClient: TestDependencyKey {
-  public static let testValue = Self(
-    delegate: unimplemented("\(Self.self).delegate", placeholder: .finished),
-    setAPNSToken: unimplemented("\(Self.self).setAPNSToken"),
-    token: unimplemented("\(Self.self).token"),
-    appDidReceiveMessage: unimplemented("\(Self.self).appDidReceiveMessage")
-  )
+  public static let testValue = Self()
 }
