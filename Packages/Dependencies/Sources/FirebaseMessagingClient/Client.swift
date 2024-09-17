@@ -1,7 +1,7 @@
+import DependenciesMacros
 import FirebaseMessaging
 import Foundation
 import UserNotifications
-import DependenciesMacros
 
 @DependencyClient
 public struct FirebaseMessagingClient: Sendable {
