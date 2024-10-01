@@ -67,7 +67,7 @@ let package = Package(
   dependencies: [
     .package(path: "../Utility"),
     .package(path: "../Dependencies"),
-    .package(url: "https://github.com/apollographql/apollo-ios", from: "1.15.1"),
+    .package(url: "https://github.com/apollographql/apollo-ios", from: "1.15.2"),
     .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.4.1"),
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.15.0"),
   ],
