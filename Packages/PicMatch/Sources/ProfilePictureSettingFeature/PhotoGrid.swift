@@ -12,9 +12,13 @@ public struct PhotoGrid: View {
     switch state {
     case let .active(image):
       Button(action: onDelete) {
-        Image(uiImage: image)
-          .resizable()
-          .aspectRatio(3 / 4, contentMode: .fill)
+        Rectangle()
+          .aspectRatio(2 / 3, contentMode: .fill)
+          .overlay {
+            Image(uiImage: image)
+              .resizable()
+              .scaledToFill()
+          }
           .clipped()
           .clipShape(RoundedRectangle(cornerRadius: 10))
       }
