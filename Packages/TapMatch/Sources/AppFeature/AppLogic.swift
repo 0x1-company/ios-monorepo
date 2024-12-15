@@ -8,7 +8,6 @@ import MaintenanceFeature
 import NavigationFeature
 import NetworkErrorFeature
 import OnboardFeature
-import ReceivedLikeRouterFeature
 import SwiftUI
 import TutorialFeature
 
@@ -65,9 +64,5 @@ public struct AppView: View {
         TutorialView(store: store)
       }
     }
-    .fullScreenCover(
-      item: $store.scope(state: \.destination?.receivedLike, action: \.destination.receivedLike),
-      content: ReceivedLikeRouterView.init(store:)
-    )
   }
 }

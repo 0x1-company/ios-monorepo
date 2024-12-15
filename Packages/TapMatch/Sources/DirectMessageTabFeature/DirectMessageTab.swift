@@ -4,7 +4,6 @@ import DirectMessageFeature
 import DirectMessageTabLogic
 import NotificationsReEnableFeature
 import ProfileExplorerFeature
-import ReceivedLikeRouterFeature
 import SettingsFeature
 import SwiftUI
 
@@ -61,10 +60,6 @@ public struct DirectMessageTabView: View {
       .sheet(
         item: $store.scope(state: \.destination?.directMessage, action: \.destination.directMessage),
         content: DirectMessageView.init(store:)
-      )
-      .fullScreenCover(
-        item: $store.scope(state: \.destination?.receivedLike, action: \.destination.receivedLike),
-        content: ReceivedLikeRouterView.init(store:)
       )
       .navigationDestination(
         item: $store.scope(state: \.destination?.explorer, action: \.destination.explorer),

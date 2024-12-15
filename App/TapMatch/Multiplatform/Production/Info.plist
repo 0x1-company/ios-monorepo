@@ -47,10 +47,6 @@
 	<key>PRODUCTS</key>
 	<array>
 		<string>jp.tapmatch.ios.production.subscription.pro.1week</string>
-		<string>jp.tapmatch.ios.production.subscription.pro.1month</string>
-		<string>jp.tapmatch.ios.production.subscription.pro.3month</string>
-		<string>jp.tapmatch.ios.production.subscription.pro.6month</string>
-		<string>jp.tapmatch.ios.production.subscription.pro.1year</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

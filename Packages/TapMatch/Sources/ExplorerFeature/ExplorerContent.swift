@@ -1,6 +1,5 @@
 import ComposableArchitecture
 import ExplorerLogic
-import MembershipFeature
 import SwiftUI
 
 public struct ExplorerContentView: View {
@@ -28,9 +27,5 @@ public struct ExplorerContentView: View {
         ExplorerSwipeView(store: store)
       }
     }
-    .fullScreenCover(
-      item: $store.scope(state: \.destination?.membership, action: \.destination.membership),
-      content: MembershipView.init(store:)
-    )
   }
 }
