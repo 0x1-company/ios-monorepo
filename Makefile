@@ -1,4 +1,4 @@
-PLATFORM_IOS = iOS Simulator,name=iPhone 15 Pro,OS=17.5
+PLATFORM_IOS = iOS Simulator,name=iPhone 16 Pro,OS=18.1
 
 bootstrap: secrets
 
@@ -50,6 +50,14 @@ build-all:
 		-scheme "App (Staging project)" \
 		-destination platform="$(PLATFORM_IOS)" \
 		-skipMacroValidation | xcpretty
+
+resolve-dependencies:
+	@for workspace in BeMatch PicMatch TapMatch TenMatch Trinket; do \
+		rm -f $$workspace.xcworkspace/xcshareddata/swiftpm/Package.resolved; \
+		xcodebuild -resolvePackageDependencies \
+			-workspace $$workspace.xcworkspace \
+			-scheme "App (Staging project)"; \
+	done
 
 secrets: # Set secrets
 	echo $(BEMATCH_FILE_FIREBASE_STAGING) | base64 -D > App/BeMatch/Multiplatform/Staging/GoogleService-Info.plist
