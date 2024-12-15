@@ -1,6 +1,5 @@
 import ComposableArchitecture
 import ProfileExplorerFeature
-import ReceivedLikeRouterFeature
 import RecentMatchLogic
 import SwiftUI
 
@@ -44,10 +43,6 @@ public struct RecentMatchContentView: View {
       .padding(.bottom, 24)
       .padding(.horizontal, 16)
     }
-    .fullScreenCover(
-      item: $store.scope(state: \.destination?.likeRouter, action: \.destinatio.likeRouter),
-      content: ReceivedLikeRouterView.init(store:)
-    )
     .navigationDestination(
       store: store.scope(state: \.$destination.explorer, action: \.destinatio.explorer),
       destination: ProfileExplorerView.init(store:)

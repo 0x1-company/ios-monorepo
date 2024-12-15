@@ -29,21 +29,16 @@ let package = Package(
     .library(name: "MaintenanceFeature", targets: ["MaintenanceFeature"]),
     .library(name: "MatchedFeature", targets: ["MatchedFeature"]),
     .library(name: "MatchEmptyFeature", targets: ["MatchEmptyFeature"]),
-    .library(name: "MembershipFeature", targets: ["MembershipFeature"]),
-    .library(name: "MembershipStatusFeature", targets: ["MembershipStatusFeature"]),
     .library(name: "NavigationFeature", targets: ["NavigationFeature"]),
     .library(name: "NetworkErrorFeature", targets: ["NetworkErrorFeature"]),
     .library(name: "NotificationsReEnableFeature", targets: ["NotificationsReEnableFeature"]),
     .library(name: "OnboardFeature", targets: ["OnboardFeature"]),
-    .library(name: "ProductPurchaseFeature", targets: ["ProductPurchaseFeature"]),
     .library(name: "ProfileEditFeature", targets: ["ProfileEditFeature"]),
     .library(name: "ProfileExplorerFeature", targets: ["ProfileExplorerFeature"]),
     .library(name: "ProfileFeature", targets: ["ProfileFeature"]),
     .library(name: "ProfilePictureSettingFeature", targets: ["ProfilePictureSettingFeature"]),
     .library(name: "ProfileSharedFeature", targets: ["ProfileSharedFeature"]),
     .library(name: "PushNotificationSettingsFeature", targets: ["PushNotificationSettingsFeature"]),
-    .library(name: "ReceivedLikeRouterFeature", targets: ["ReceivedLikeRouterFeature"]),
-    .library(name: "ReceivedLikeSwipeFeature", targets: ["ReceivedLikeSwipeFeature"]),
     .library(name: "RecentMatchFeature", targets: ["RecentMatchFeature"]),
     .library(name: "RecommendationFeature", targets: ["RecommendationFeature"]),
     .library(name: "ReportFeature", targets: ["ReportFeature"]),
@@ -109,7 +104,6 @@ let package = Package(
       "BannerFeature",
       "SettingsFeature",
       "RecentMatchFeature",
-      "ReceivedLikeRouterFeature",
       "NotificationsReEnableFeature",
       .product(name: "DirectMessageTabLogic", package: "MatchCore"),
       .product(name: "CachedAsyncImage", package: "swiftui-cached-async-image"),
@@ -121,7 +115,6 @@ let package = Package(
     .target(name: "ExplorerFeature", dependencies: [
       "Styleguide",
       "SwipeFeature",
-      "MembershipFeature",
       .product(name: "ExplorerLogic", package: "MatchCore"),
     ]),
     .target(name: "ForceUpdateFeature", dependencies: [
@@ -166,21 +159,6 @@ let package = Package(
       "Styleguide",
       .product(name: "MatchEmptyLogic", package: "MatchCore"),
     ]),
-    .target(name: "MembershipFeature", dependencies: [
-      "Styleguide",
-      "ProductPurchaseFeature",
-      .product(name: "ColorHex", package: "Utility"),
-      .product(name: "Build", package: "Dependencies"),
-      .product(name: "TcaHelpers", package: "Utility"),
-      .product(name: "MembershipLogic", package: "MatchCore"),
-      .product(name: "ActivityView", package: "Dependencies"),
-      .product(name: "StoreKitClient", package: "Dependencies"),
-      .product(name: "StoreKitHelpers", package: "Utility"),
-    ]),
-    .target(name: "MembershipStatusFeature", dependencies: [
-      "MembershipFeature",
-      .product(name: "MembershipStatusLogic", package: "MatchCore"),
-    ]),
     .target(name: "NavigationFeature", dependencies: [
       "ExplorerFeature",
       "RecommendationFeature",
@@ -209,10 +187,6 @@ let package = Package(
       .product(name: "FirebaseAuthClient", package: "Dependencies"),
       .product(name: "UserNotificationClient", package: "Dependencies"),
       .product(name: "FirebaseStorageClient", package: "Dependencies"),
-    ]),
-    .target(name: "ProductPurchaseFeature", dependencies: [
-      "Styleguide",
-      .product(name: "ProductPurchaseLogic", package: "MatchCore"),
     ]),
     .target(name: "ProfileEditFeature", dependencies: [
       "HowToMovieFeature",
@@ -252,18 +226,8 @@ let package = Package(
     .target(name: "PushNotificationSettingsFeature", dependencies: [
       .product(name: "PushNotificationSettingsLogic", package: "MatchCore"),
     ]),
-    .target(name: "ReceivedLikeRouterFeature", dependencies: [
-      "MembershipFeature",
-      "ReceivedLikeSwipeFeature",
-      .product(name: "ReceivedLikeRouterLogic", package: "MatchCore"),
-    ]),
-    .target(name: "ReceivedLikeSwipeFeature", dependencies: [
-      "SwipeFeature",
-      .product(name: "ReceivedLikeSwipeLogic", package: "MatchCore"),
-    ]),
     .target(name: "RecentMatchFeature", dependencies: [
       "ProfileExplorerFeature",
-      "ReceivedLikeRouterFeature",
       .product(name: "RecentMatchLogic", package: "MatchCore"),
     ]),
     .target(name: "RecommendationFeature", dependencies: [
@@ -284,7 +248,6 @@ let package = Package(
       "AchievementFeature",
       "ProfileEditFeature",
       "DeleteAccountFeature",
-      "MembershipStatusFeature",
       "PushNotificationSettingsFeature",
       .product(name: "Build", package: "Dependencies"),
       .product(name: "SettingsLogic", package: "MatchCore"),

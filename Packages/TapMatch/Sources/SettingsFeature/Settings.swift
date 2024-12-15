@@ -1,7 +1,6 @@
 import AchievementFeature
 import ActivityView
 import ComposableArchitecture
-import MembershipStatusFeature
 import ProfileEditFeature
 import ProfileFeature
 import PushNotificationSettingsFeature
@@ -54,21 +53,6 @@ public struct SettingsView: View {
             ProfileEditView(store: store)
           }
         }
-
-        Button {
-          store.send(.membershipStatusButtonTapped)
-        } label: {
-          LabeledContent {
-            Image(systemName: "chevron.right")
-          } label: {
-            Text("Membership Status", bundle: .module)
-              .foregroundStyle(Color.primary)
-          }
-        }
-        .navigationDestination(
-          store: store.scope(state: \.$destination.membershipStatus, action: \.destination.membershipStatus),
-          destination: MembershipStatusView.init(store:)
-        )
       } header: {
         Text("PROFILE", bundle: .module)
       }
