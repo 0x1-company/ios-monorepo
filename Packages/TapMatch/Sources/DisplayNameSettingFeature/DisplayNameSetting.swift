@@ -52,11 +52,6 @@ public struct DisplayNameSettingView: View {
     .onAppear {
       isFocused = true
     }
-    .toolbar {
-      ToolbarItem(placement: .principal) {
-        Image(ImageResource.logo)
-      }
-    }
     .alert($store.scope(state: \.alert, action: \.alert))
   }
 }

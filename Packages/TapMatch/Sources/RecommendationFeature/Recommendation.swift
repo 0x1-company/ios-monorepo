@@ -30,10 +30,5 @@ public struct RecommendationView: View {
     }
     .task { await store.send(.onTask).finish() }
     .navigationBarTitleDisplayMode(.inline)
-    .toolbar {
-      ToolbarItem(placement: .principal) {
-        Image(ImageResource.logo)
-      }
-    }
   }
 }
