@@ -40,7 +40,7 @@ public struct EnvironmentClient {
       case .picmatch:
         return "PicMatch"
       case .tapmatch:
-        return "TapMatch"
+        return "NewMatch"
       case .tenmatch:
         return "TenMatch"
       case .trinket:

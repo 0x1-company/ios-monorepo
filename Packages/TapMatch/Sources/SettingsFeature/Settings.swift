@@ -154,7 +154,7 @@ public struct SettingsView: View {
           LabeledContent {
             Image(systemName: "chevron.right")
           } label: {
-            Text("Share TapMatch", bundle: .module)
+            Text("Share NewMatch", bundle: .module)
               .foregroundStyle(Color.primary)
           }
         }
@@ -165,7 +165,7 @@ public struct SettingsView: View {
           LabeledContent {
             Image(systemName: "chevron.right")
           } label: {
-            Text("Rate TapMatch", bundle: .module)
+            Text("Rate NewMatch", bundle: .module)
               .foregroundStyle(Color.primary)
           }
         }

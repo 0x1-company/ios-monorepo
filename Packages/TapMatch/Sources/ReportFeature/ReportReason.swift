@@ -50,7 +50,7 @@ public struct ReportReasonView: View {
     .padding(.vertical, 24)
     .padding(.horizontal, 16)
     .formStyle(ColumnsFormStyle())
-    .navigationTitle(Text("Report a TapMatch", bundle: .module))
+    .navigationTitle(Text("Report a NewMatch", bundle: .module))
     .navigationBarTitleDisplayMode(.inline)
     .task { await store.send(.onTask).finish() }
     .bind($store.focus, to: $focus)

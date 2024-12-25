@@ -180,7 +180,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TapMatchの使い方"
+            "value" : "NewMatchの使い方"
           }
         },
         "ko" : {
@@ -359,34 +359,34 @@
         }
       }
     },
-    "Rate TapMatch" : {
+    "Rate NewMatch" : {
 
     },
-    "Rate TapMatch." : {
+    "Rate NewMatch." : {
       "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Évaluer TapMatch."
+            "value" : "Évaluer NewMatch."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TapMatchを評価"
+            "value" : "NewMatchを評価"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TapMatch 평가하기"
+            "value" : "NewMatch 평가하기"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Đánh giá TapMatch."
+            "value" : "Đánh giá NewMatch."
           }
         }
       }
@@ -419,30 +419,30 @@
         }
       }
     },
-    "Share TapMatch" : {
+    "Share NewMatch" : {
       "localizations" : {
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Partager TapMatch"
+            "value" : "Partager NewMatch"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TapMatchをシェア"
+            "value" : "NewMatchをシェア"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TapMatch 공유하기"
+            "value" : "NewMatch 공유하기"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chia sẻ TapMatch"
+            "value" : "Chia sẻ NewMatch"
           }
         }
       }
