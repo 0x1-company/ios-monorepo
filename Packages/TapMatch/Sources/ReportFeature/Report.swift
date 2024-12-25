@@ -34,7 +34,7 @@ public struct ReportView: View {
           }
         }
       }
-      .navigationTitle(String(localized: "Report a TapMatch", bundle: .module))
+      .navigationTitle(String(localized: "Report a NewMatch", bundle: .module))
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
         ToolbarItem(placement: .topBarLeading) {

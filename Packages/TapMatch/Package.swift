@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-  name: "TapMatch",
+  name: "NewMatch",
   defaultLocalization: "en",
   platforms: [
     .iOS("17.0"),

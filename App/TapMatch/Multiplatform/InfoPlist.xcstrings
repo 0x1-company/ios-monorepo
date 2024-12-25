@@ -164,49 +164,49 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "TapMatch"
+            "value" : "NewMatch"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "TapMatch"
+            "value" : "NewMatch"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "TapMatch"
+            "value" : "NewMatch"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "TapMatch"
+            "value" : "NewMatch"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "TapMatch"
+            "value" : "NewMatch"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "TapMatch"
+            "value" : "NewMatch"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "TapMatch"
+            "value" : "NewMatch"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "TapMatch"
+            "value" : "NewMatch"
           }
         }
       }

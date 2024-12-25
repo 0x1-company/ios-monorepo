@@ -81,12 +81,12 @@
         }
       }
     },
-    "TapMatch is an application that allows you to exchange TapNow with everyone in Global!" : {
+    "NewMatch is an application that allows you to exchange TapNow with everyone in Global!" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TapMatchは日本中のみんなとTapNowを交換できるアプリです"
+            "value" : "NewMatchは日本中のみんなとTapNowを交換できるアプリです"
           }
         }
       }

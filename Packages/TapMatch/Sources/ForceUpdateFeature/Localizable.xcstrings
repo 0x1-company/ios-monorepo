@@ -1,12 +1,12 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "... Oh? ! ! Looks like TapMatch...! \nPlease update to the latest version." : {
+    "... Oh? ! ! Looks like NewMatch...! \nPlease update to the latest version." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "...おや？！TapMatchのようすが...！\n最新バージョンへのアップデートをお願いします。"
+            "value" : "...おや？！NewMatchのようすが...！\n最新バージョンへのアップデートをお願いします。"
           }
         }
       }

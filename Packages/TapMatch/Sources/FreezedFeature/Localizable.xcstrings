@@ -21,12 +21,12 @@
         }
       }
     },
-    "Once you have deleted your TapMatch account, you will not be able to register again for a certain period of time after the deletion." : {
+    "Once you have deleted your NewMatch account, you will not be able to register again for a certain period of time after the deletion." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "一度TapMatchのアカウント削除をされた方は、削除してから一定期間は再登録していただくことができません。"
+            "value" : "一度NewMatchのアカウント削除をされた方は、削除してから一定期間は再登録していただくことができません。"
           }
         }
       }

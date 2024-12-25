@@ -11,12 +11,12 @@
         }
       }
     },
-    "It's important to us that TapMatch is a welcoming and safe space for everyone.\nUnfortunately, we found that you violated our [Terms of Use](https://docs.tapmatch.jp/terms-of-use) and so we've made the decision to remove you from the TapMatch Platform." : {
+    "It's important to us that NewMatch is a welcoming and safe space for everyone.\nUnfortunately, we found that you violated our [Terms of Use](https://docs.tapmatch.jp/terms-of-use) and so we've made the decision to remove you from the NewMatch Platform." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TapMatchでは、すべての人にとって安心で安全な場所であることを重視しています。残念ながらあなたの行為が[利用規約](https://docs.tapmatch.jp/terms-of-use)に違反したことが判明したため、当社はあなたをTapMatchのプラットフォームから削除することを決定しました。"
+            "value" : "NewMatchでは、すべての人にとって安心で安全な場所であることを重視しています。残念ながらあなたの行為が[利用規約](https://docs.tapmatch.jp/terms-of-use)に違反したことが判明したため、当社はあなたをNewMatchのプラットフォームから削除することを決定しました。"
           }
         }
       }
@@ -31,22 +31,22 @@
         }
       }
     },
-    "You will no longer be able to access your TapMatch account or create new accounts in the future." : {
+    "You will no longer be able to access your NewMatch account or create new accounts in the future." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "あなたは今後、TapMatchのアカウントにアクセスしたり、新しいアカウントを作成することは出来ません。"
+            "value" : "あなたは今後、NewMatchのアカウントにアクセスしたり、新しいアカウントを作成することは出来ません。"
           }
         }
       }
     },
-    "Your account has been banned from TapMatch." : {
+    "Your account has been banned from NewMatch." : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "あなたのTapMatchアカウントは利用停止されました。"
+            "value" : "あなたのNewMatchアカウントは利用停止されました。"
           }
         }
       }

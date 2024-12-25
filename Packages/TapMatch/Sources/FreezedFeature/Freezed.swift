@@ -20,7 +20,7 @@ public struct FreezedView: View {
       Text("Currently unable to re-register", bundle: .module)
         .font(.system(.title3, weight: .semibold))
 
-      Text("Once you have deleted your TapMatch account, you will not be able to register again for a certain period of time after the deletion.", bundle: .module)
+      Text("Once you have deleted your NewMatch account, you will not be able to register again for a certain period of time after the deletion.", bundle: .module)
 
       Text("Please answer our simple questionnaire to help us improve our service.", bundle: .module)
 

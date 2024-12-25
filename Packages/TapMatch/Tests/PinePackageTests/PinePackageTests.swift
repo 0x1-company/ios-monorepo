@@ -1,11 +1,11 @@
-@testable import TapMatchPackage
+@testable import NewMatchPackage
 import XCTest
 
-final class TapMatchPackageTests: XCTestCase {
+final class NewMatchPackageTests: XCTestCase {
   func testExample() throws {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct
     // results.
-    XCTAssertEqual(TapMatchPackage().text, "Hello, World!")
+    XCTAssertEqual(NewMatchPackage().text, "Hello, World!")
   }
 }

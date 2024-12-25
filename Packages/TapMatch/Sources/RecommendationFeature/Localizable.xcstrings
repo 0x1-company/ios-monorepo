@@ -11,12 +11,12 @@
         }
       }
     },
-    "Too much swiping...\nPlease help us share TapMatch... 🙏" : {
+    "Too much swiping...\nPlease help us share NewMatch... 🙏" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ちょっと...スワイプしすぎです...。TapMatchのシェアに協力してください... 🙏"
+            "value" : "ちょっと...スワイプしすぎです...。NewMatchのシェアに協力してください... 🙏"
           }
         }
       }

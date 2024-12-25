@@ -19,7 +19,7 @@
 		<string>vi</string>
 	</array>
 	<key>CFBundleName</key>
-	<string>TapMatch</string>
+	<string>NewMatch</string>
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>

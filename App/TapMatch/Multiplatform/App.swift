@@ -57,7 +57,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
           let apolloClient = ApolloClient(
             appVersion: appVersion,
             endpoint: endpoint,
-            product: "TapMatch"
+            product: "NewMatch"
           )
           $0.api = APIClient.live(apolloClient: apolloClient)
           $0.environment = EnvironmentClient.live(
@@ -134,7 +134,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
 }
 
 @main
-struct TapMatchApp: App {
+struct NewMatchApp: App {
   @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
 
   var body: some Scene {
