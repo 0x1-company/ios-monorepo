@@ -57,11 +57,6 @@ public struct UsernameSettingView: View {
     .onAppear {
       isFocused = true
     }
-    .toolbar {
-      ToolbarItem(placement: .principal) {
-        Image(ImageResource.logo)
-      }
-    }
     .alert($store.scope(state: \.destination?.alert, action: \.destination.alert))
   }
 }

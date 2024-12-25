@@ -90,11 +90,6 @@ public struct ProfilePictureSettingView: View {
     .multilineTextAlignment(.center)
     .navigationBarTitleDisplayMode(.inline)
     .task { await store.send(.onTask).finish() }
-    .toolbar {
-      ToolbarItem(placement: .principal) {
-        Image(ImageResource.logo)
-      }
-    }
     .alert(
       $store.scope(
         state: \.destination?.alert,

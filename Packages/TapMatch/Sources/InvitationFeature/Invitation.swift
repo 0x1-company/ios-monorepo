@@ -57,11 +57,6 @@ public struct InvitationView: View {
     .onAppear {
       isFocused = true
     }
-    .toolbar {
-      ToolbarItem(placement: .principal) {
-        Image(ImageResource.logo)
-      }
-    }
   }
 }
 
