@@ -247,7 +247,7 @@ public struct ProfilePictureSettingLogic {
     case .picmatch:
       return true
     case .tapmatch:
-      return size.width == size.height
+      return true
     case .tenmatch:
       return true
     case .trinket:
