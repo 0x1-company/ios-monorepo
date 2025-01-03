@@ -25,30 +25,10 @@ public struct ProfilePictureSettingView: View {
     VStack(spacing: 8) {
       ScrollView {
         VStack(spacing: 36) {
-          VStack(spacing: 8) {
-            Text("Set your saved TapNow.\nto your profile. ", bundle: .module)
-              .frame(minHeight: 56)
-              .font(.system(.title2, weight: .bold))
-
-            Text("It will be public 🌎", bundle: .module)
-              .font(.system(.footnote, weight: .semibold))
-              .foregroundStyle(Color.secondary)
-
-            if store.isWarningTextVisible {
-              Button {
-                store.send(.howToButtonTapped)
-              } label: {
-                HStack(spacing: 2) {
-                  Image(systemName: "exclamationmark.triangle.fill")
-                    .foregroundStyle(Color.yellow)
-
-                  Text("Select a photo saved with TapNow.", bundle: .module)
-                    .foregroundStyle(Color.secondary)
-                }
-                .font(.callout)
-              }
-            }
-          }
+          Text("Set your photo to your profile (it will be public 🌏)", bundle: .module)
+            .frame(minHeight: 50)
+            .layoutPriority(1)
+            .font(.system(.title3, weight: .semibold))
 
           LazyVGrid(
             columns: Array(
