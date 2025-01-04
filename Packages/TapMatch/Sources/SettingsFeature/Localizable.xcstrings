@@ -198,6 +198,7 @@
       }
     },
     "Membership Status" : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {

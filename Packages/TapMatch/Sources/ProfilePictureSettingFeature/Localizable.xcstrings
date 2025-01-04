@@ -11,16 +11,6 @@
         }
       }
     },
-    "It will be public 🌎" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "公開されるよ 🌏"
-          }
-        }
-      }
-    },
     "Save" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -32,22 +22,12 @@
         }
       }
     },
-    "Select a photo saved with TapNow." : {
+    "Set your photo to your profile (it will be public 🌏)" : {
       "localizations" : {
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "TapNowで保存した写真を選択してください。"
-          }
-        }
-      }
-    },
-    "Set your saved TapNow.\nto your profile. " : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "TapNowで保存した写真を3枚プロフィールに設定しよう"
+            "value" : "プロフィールに写真を設定しよう（公開されるよ 🌏）"
           }
         }
       }
