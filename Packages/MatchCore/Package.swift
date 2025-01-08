@@ -69,7 +69,7 @@ let package = Package(
     .package(path: "../Dependencies"),
     .package(url: "https://github.com/apollographql/apollo-ios", from: "1.15.3"),
     .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.6.2"),
-    .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.17.0"),
+    .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.17.1"),
   ],
   targets: [
     .target(name: "AchievementLogic", dependencies: [
