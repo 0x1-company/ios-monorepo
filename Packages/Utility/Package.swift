@@ -17,7 +17,7 @@ var package = Package(
     .library(name: "TcaHelpers", targets: ["TcaHelpers"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/apollographql/apollo-ios", from: "1.16.0"),
+    .package(url: "https://github.com/apollographql/apollo-ios", from: "1.16.1"),
     .package(url: "https://github.com/firebase/firebase-ios-sdk", from: "11.6.0"),
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.17.1"),
   ],
