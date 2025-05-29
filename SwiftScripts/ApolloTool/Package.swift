@@ -9,7 +9,7 @@ let package = Package(
     .macOS(.v12),
   ],
   dependencies: [
-    .package(url: "https://github.com/apple/swift-argument-parser", from: "1.5.0"),
+    .package(url: "https://github.com/apple/swift-argument-parser", from: "1.5.1"),
     .package(url: "https://github.com/apollographql/apollo-ios-codegen", from: "1.16.0"),
   ],
   targets: [
