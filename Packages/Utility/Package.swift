@@ -18,7 +18,7 @@ var package = Package(
   ],
   dependencies: [
     .package(url: "https://github.com/apollographql/apollo-ios", from: "1.16.0"),
-    .package(url: "https://github.com/firebase/firebase-ios-sdk", from: "11.6.0"),
+    .package(url: "https://github.com/firebase/firebase-ios-sdk", from: "12.2.0"),
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.17.1"),
   ],
   targets: [
